@@ -55,6 +55,7 @@
     }
     .desktop-nav a:hover { color: #003087; }
 
+    /* Language Switch */
     .lang-switch button {
       padding: 8px 20px;
       border: 1px solid #ddd;
@@ -65,7 +66,7 @@
       transition: all 0.3s;
     }
 
-    .lang-btn.active {
+    .lang-switch button.active {
       background: #003087;
       color: white;
       border-color: #003087;
@@ -128,10 +129,16 @@
       font-size: 1rem;
     }
 
+    .mobile-lang button.active {
+      background: #003087;
+      color: white;
+    }
+
     /* ==================== HERO - ЦЕНТРАЛЬНОЕ ОКНО ==================== */
     .hero {
       height: 100vh;
       min-height: 720px;
+      padding-top: 70px;           /* ← Добавлено: отступ от фиксированной шапки */
       background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), 
                   url('background-hero.jpg') center/cover no-repeat;
       position: relative;
@@ -283,6 +290,11 @@
       .lang-switch { display: none; }
       .hamburger { display: flex; }
       .footer-container { grid-template-columns: 1fr 1fr; gap: 30px; }
+      
+      .hero {
+        padding-top: 80px;        /* чуть больше отступа на мобильных */
+        min-height: 650px;
+      }
     }
 
     /* Hamburger animation */
@@ -302,7 +314,6 @@
     <div class="nav-container">
       <a href="index.html" class="logo">JMA Medical Information</a>
       
-      <!-- Desktop Navigation -->
       <nav class="desktop-nav">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -314,13 +325,11 @@
         </ul>
       </nav>
 
-      <!-- Language Switch -->
       <div class="lang-switch">
         <button onclick="location.href='index_jp.html'">JP</button>
         <button class="active">EN</button>
       </div>
 
-      <!-- Hamburger Button -->
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span>
         <span></span>
@@ -347,7 +356,7 @@
     </div>
   </header>
 
-  <!-- Hero - Центральное окно (полностью сохранено) -->
+  <!-- Hero -->
   <section class="hero">
     <div class="window">
       <div class="window-content">
@@ -362,7 +371,7 @@
     </div>
   </section>
 
-  <!-- Новости -->
+  <!-- News Section -->
   <section class="news-section">
     <div style="max-width:1280px; margin:0 auto;">
       <h2 style="text-align:center; margin-bottom:3rem;">News & Events</h2>
@@ -441,6 +450,7 @@
       mobileMenu.style.display = (mobileMenu.style.display === 'block') ? 'none' : 'block';
     });
 
+    // Close mobile menu when clicking a link
     document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
