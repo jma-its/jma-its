@@ -88,7 +88,7 @@
       height: 3px;
       background: #003087;
       border-radius: 3px;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
     }
 
     /* Mobile Menu */
@@ -128,7 +128,7 @@
       font-size: 1rem;
     }
 
-    /* Hero и остальной дизайн без изменений */
+    /* ==================== HERO - ЦЕНТРАЛЬНОЕ ОКНО ==================== */
     .hero {
       height: 100vh;
       min-height: 720px;
@@ -140,8 +140,61 @@
       justify-content: center;
     }
 
-    /* ... (весь твой предыдущий код hero, window, news-section остаётся без изменений) ... */
+    .window {
+      background: rgba(255,255,255,0.95);
+      width: 92%;
+      max-width: 1080px;
+      border-radius: 24px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
 
+    .window-content {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .window-image {
+      flex: 1;
+      min-width: 340px;
+      background: url('window1.jpg') center/cover no-repeat;
+      height: 520px;
+    }
+
+    .window-text {
+      flex: 1;
+      min-width: 340px;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .window-text h1 {
+      font-size: 2.8rem;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: #003087;
+    }
+
+    .window-text p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: #444;
+    }
+
+    .btn-primary {
+      background: #00a0df;
+      color: white;
+      padding: 16px 42px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* News Section */
     .news-section {
       padding: 100px 20px;
       background: #f8f9fa;
@@ -232,6 +285,7 @@
       .footer-container { grid-template-columns: 1fr 1fr; gap: 30px; }
     }
 
+    /* Hamburger animation */
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(6px, 6px);
     }
@@ -243,7 +297,7 @@
 </head>
 <body>
 
-  <!-- HEADER WITH MOBILE MENU -->
+  <!-- HEADER -->
   <header>
     <div class="nav-container">
       <a href="index.html" class="logo">JMA Medical Information</a>
@@ -260,13 +314,13 @@
         </ul>
       </nav>
 
-      <!-- Language Switch (desktop) -->
+      <!-- Language Switch -->
       <div class="lang-switch">
         <button onclick="location.href='index_jp.html'">JP</button>
         <button class="active">EN</button>
       </div>
 
-      <!-- Hamburger -->
+      <!-- Hamburger Button -->
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span>
         <span></span>
@@ -293,7 +347,7 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero - Центральное окно (полностью сохранено) -->
   <section class="hero">
     <div class="window">
       <div class="window-content">
@@ -384,10 +438,9 @@
 
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
-      mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+      mobileMenu.style.display = (mobileMenu.style.display === 'block') ? 'none' : 'block';
     });
 
-    // Close menu when clicking a link
     document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
