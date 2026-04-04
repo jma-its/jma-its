@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions | JMA Medical Information College</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+      color: #333;
+      background: #f9f9f9;
+    }
+
+    header {
+      background: rgba(255,255,255,0.97);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #003087;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    nav a:hover { color: #003087; }
+
+    .lang-switch button {
+      padding: 8px 20px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    .lang-btn.active {
+      background: #003087;
+      color: white;
+    }
+
+    .hero {
+      height: 380px;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('background-hero.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .content {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      font-size: 2.1rem;
+      color: #003087;
+      margin: 50px 0 25px;
+    }
+
+    p, li {
+      font-size: 1.18rem;
+      margin-bottom: 1.2rem;
+      max-width: 820px;
+    }
+
+    .admission-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-top: 30px;
+    }
+
+    .type-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .type-card h3 {
+      color: #003087;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .highlight {
+      background: #fff8e1;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      border-left: 5px solid #00a0df;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 40px 0 20px;
+      padding: 12px 28px;
+      background: #f1f1f1;
+      color: #003087;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .back-btn:hover { background: #003087; color: white; }
+
+    table {
+      width: 100%;
+      max-width: 820px;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #003087;
+      color: white;
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      background: #003087;
+      color: white;
+      padding: 60px 20px 30px;
+      margin-top: 80px;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    footer h3 {
+      color: #00a0df;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      line-height: 1.9;
+    }
+    footer a:hover { color: white; }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 25px;
+      border-top: 1px solid #0055aa;
+      font-size: 0.95rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 900px) {
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .hero h1 { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">JMA Medical Information</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="program.html">Program</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="news.html">News & Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch">
+        <button onclick="location.href='admissions_jp.html'">JP</button>
+        <button class="active">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Admissions</h1>
+  </section>
+
+  <div class="content">
+    <a href="index.html" class="back-btn">← Back to Home</a>
+
+    <h2>Admission to Department of Medical Information (2027 Entry)</h2>
+    <p>We welcome motivated individuals who want to build a career connecting healthcare and advanced information technology.</p>
+
+    <div class="highlight">
+      <strong>Capacity:</strong> 40 students<br>
+      <strong>Program duration:</strong> 2 years (full-time)<br>
+      <strong>Degree awarded:</strong> Diploma (専門士)
+    </div>
+
+    <h2>Eligibility</h2>
+    <ul>
+      <li>High school graduates or those expected to graduate in March 2027</li>
+      <li>Individuals who have completed 12 years of formal education or equivalent (as recognized by the Minister of Education, Culture, Sports, Science and Technology)</li>
+      <li>International students who meet the above criteria and have sufficient Japanese language proficiency (JLPT N2 or equivalent recommended)</li>
+    </ul>
+
+    <h2>Admission Types</h2>
+    <div class="admission-types">
+      <div class="type-card">
+        <h3>総合型選抜 (Comprehensive Selection / AO)</h3>
+        <p>Evaluation based on motivation, aptitude, and interview. Ideal for those with clear goals in medical IT.</p>
+      </div>
+      <div class="type-card">
+        <h3>学校推薦型選抜 (School Recommendation)</h3>
+        <p>Recommended by your high school. Focuses on academic record and recommendation letter.</p>
+      </div>
+      <div class="type-card">
+        <h3>一般選抜 (General Entrance Examination)</h3>
+        <p>Essay (小論文) + Interview. Open to all eligible applicants.</p>
+      </div>
+    </div>
+
+    <h2>Selection Process</h2>
+    <p>Most examinations include:</p>
+    <ul>
+      <li>Essay (小論文 ≈ 800 characters) on topics related to healthcare and IT</li>
+      <li>Personal interview (individual or group)</li>
+      <li>Review of academic transcript and motivation</li>
+    </ul>
+
+    <h2>Important Dates for 2027 Entry</h2>
+    <table>
+      <tr>
+        <th>Admission Type</th>
+        <th>Application Period</th>
+        <th>Examination Date</th>
+        <th>Result Announcement</th>
+      </tr>
+      <tr>
+        <td>総合型選抜 (1st)</td>
+        <td>September – October 2026</td>
+        <td>October – November 2026</td>
+        <td>Within 2 weeks</td>
+      </tr>
+      <tr>
+        <td>学校推薦型</td>
+        <td>November – December 2026</td>
+        <td>December 2026 – January 2027</td>
+        <td>Within 2 weeks</td>
+      </tr>
+      <tr>
+        <td>一般選抜</td>
+        <td>January – February 2027</td>
+        <td>February 2027</td>
+        <td>Within 1 week</td>
+      </tr>
+    </table>
+
+    <p style="font-size:1.05rem; color:#555;">※ Exact dates will be announced on the official website and in the 2027 Student Recruitment Guidelines (募集要項). Please check the latest information on our website or contact us.</p>
+
+    <h2>Required Documents</h2>
+    <ul>
+      <li>Application form (official form)</li>
+      <li>High school transcript (調査書)</li>
+      <li>Letter of recommendation (for recommendation-based admission)</li>
+      <li>Essay (if required)</li>
+      <li>Health certificate (if applicable)</li>
+      <li>Application fee: ¥20,000</li>
+    </ul>
+
+    <h2>Tuition & Fees (Approximate for 2027)</h2>
+    <p>Please contact the admissions office for the latest fee structure. Typical first-year total is around ¥1,200,000 – ¥1,400,000 (including entrance fee and first-year tuition).</p>
+
+    <a href="contact.html" class="back-btn" style="background:#003087; color:white; margin-top:40px;">
+      Contact Admissions Office →
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="footer-logo">JMA Medical Information</div>
+        <p>Training the next generation of healthcare IT professionals in Shimonoseki, Yamaguchi.</p>
+      </div>
+
+      <div>
+        <h3>Navigation</h3>
+        <a href="index.html">Home</a><br>
+        <a href="about.html">About Us</a><br>
+        <a href="program.html">Program</a><br>
+        <a href="admissions.html">Admissions</a><br>
+        <a href="news.html">News & Events</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <a href="admissions.html">Apply Now</a><br>
+        <a href="program.html">Curriculum</a><br>
+        <a href="contact.html">Campus Visit</a>
+      </div>
+
+      <div>
+        <h3>Contact Info</h3>
+        <p>〒751-0806<br>
+           山口県下関市一の宮町3-12-28<br><br>
+           TEL: 083-256-7711<br>
+           Email: <a href="mailto:info@its.jma.ac.jp">info@its.jma.ac.jp</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br>
+      School Corporation Japan Medical Academy
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JMA Medical Information College</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    /* Большой бэкграунд */
+    .hero {
+      height: 100vh;
+      min-height: 720px;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), 
+                  url('background-hero.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Окно в центре */
+    .window {
+      background: rgba(255,255,255,0.95);
+      width: 92%;
+      max-width: 1080px;
+      border-radius: 24px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      overflow: hidden;
+      z-index: 2;
+      position: relative;
+    }
+
+    .window-content {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    /* Левая часть окна - картинка с девочкой */
+    .window-image {
+      flex: 1;
+      min-width: 340px;
+      background: url('window1.jpg') center/cover no-repeat;
+      height: 520px;
+    }
+
+    /* Правая часть окна - текст и кнопка */
+    .window-text {
+      flex: 1;
+      min-width: 340px;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .window-text h1 {
+      font-size: 2.8rem;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: #003087;
+    }
+
+    .window-text p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: #444;
+    }
+
+    .btn-primary {
+      background: #00a0df;
+      color: white;
+      padding: 16px 42px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    /* Новости внизу */
+    .news-section {
+      padding: 100px 20px;
+      background: #f8f9fa;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header style="background:rgba(255,255,255,0.97); position:fixed; width:100%; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+    <div style="max-width:1280px; margin:0 auto; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center;">
+      <a href="#" style="font-family:'Playfair Display',serif; font-size:1.9rem; font-weight:700; color:#003087; text-decoration:none;">
+        JMA Medical Information
+      </a>
+      <nav style="display:flex; gap:2rem;">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Program</a>
+        <a href="#">Admissions</a>
+        <a href="#">News</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div>
+        <button onclick="location.href='index_jp.html'" style="padding:8px 18px; border:1px solid #ddd; background:white; border-radius:30px;">JP</button>
+        <button style="padding:8px 18px; border:1px solid #003087; background:#003087; color:white; border-radius:30px;">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero с бэкграундом + окно -->
+  <section class="hero">
+    <div class="window">
+      <div class="window-content">
+        <!-- Левая часть - картинка с девочкой -->
+        <div class="window-image"></div>
+        
+        <!-- Правая часть - текст -->
+        <div class="window-text">
+          <h1>Training the Future of Healthcare IT</h1>
+          <p>日本医療専門学校 医療情報学科<br>
+             Developing professionals who connect medicine and advanced technology</p>
+          <button class="btn-primary" onclick="location.href='admissions.html'">Apply Now / 入試案内</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Новости -->
+  <section class="news-section">
+    <div style="max-width:1280px; margin:0 auto;">
+      <h2 style="text-align:center; margin-bottom:3rem;">News & Events</h2>
+      <div class="news-grid">
+        <!-- Здесь будут новости -->
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

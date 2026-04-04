@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program | JMA Medical Information College</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+      color: #333;
+      background: #f9f9f9;
+    }
+
+    header {
+      background: rgba(255,255,255,0.97);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #003087;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    nav a:hover { color: #003087; }
+
+    .lang-switch button {
+      padding: 8px 20px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    .lang-btn.active {
+      background: #003087;
+      color: white;
+    }
+
+    .hero {
+      height: 380px;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('background-hero.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .content {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      font-size: 2.1rem;
+      color: #003087;
+      margin: 50px 0 25px;
+    }
+
+    p {
+      font-size: 1.18rem;
+      margin-bottom: 1.4rem;
+      max-width: 820px;
+    }
+
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 30px;
+    }
+
+    .curriculum-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .curriculum-card h3 {
+      color: #003087;
+      margin-bottom: 1rem;
+      font-size: 1.35rem;
+    }
+
+    ul {
+      line-height: 1.9;
+      font-size: 1.1rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 40px 0 20px;
+      padding: 12px 28px;
+      background: #f1f1f1;
+      color: #003087;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .back-btn:hover { background: #003087; color: white; }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      background: #003087;
+      color: white;
+      padding: 60px 20px 30px;
+      margin-top: 80px;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    footer h3 {
+      color: #00a0df;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      line-height: 1.9;
+    }
+    footer a:hover { color: white; }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 25px;
+      border-top: 1px solid #0055aa;
+      font-size: 0.95rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 900px) {
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .hero h1 { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">JMA Medical Information</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="program.html">Program</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="news.html">News & Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch">
+        <button onclick="location.href='program_jp.html'">JP</button>
+        <button class="active">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Our Program</h1>
+  </section>
+
+  <div class="content">
+    <a href="index.html" class="back-btn">← Back to Home</a>
+
+    <h2>Department of Medical Information</h2>
+    <p>The Department of Medical Information (医療情報学科) trains specialists who bridge medicine and information technology. In an era of rapid digitalization of healthcare — including electronic medical records (電子カルテ), hospital information systems, and medical data analysis — we develop professionals capable of supporting high-quality, efficient medical services.</p>
+
+    <h2>Program Overview</h2>
+    <p>• Duration: 2 years (full-time)<br>
+       • Capacity: 40 students per year<br>
+       • Qualification: Diploma (専門士) in Medical Information</p>
+
+    <p>Our curriculum combines medical knowledge with practical IT skills. Students learn to manage electronic health records, implement hospital systems, analyze medical data, and ensure information security — all while understanding the unique requirements of the healthcare environment.</p>
+
+    <h2>Curriculum</h2>
+    <div class="curriculum-grid">
+      <div class="curriculum-card">
+        <h3>Medical Foundation</h3>
+        <ul>
+          <li>Medical Terminology</li>
+          <li>Anatomy and Physiology</li>
+          <li>Clinical Medicine Overview</li>
+          <li>Healthcare System and Medical Ethics</li>
+          <li>Public Health</li>
+        </ul>
+      </div>
+
+      <div class="curriculum-card">
+        <h3>Information Technology</h3>
+        <ul>
+          <li>Computer Fundamentals and Programming</li>
+          <li>Database Systems</li>
+          <li>Network and System Administration</li>
+          <li>Web Development for Medical Applications</li>
+          <li>Information Security</li>
+        </ul>
+      </div>
+
+      <div class="curriculum-card">
+        <h3>Medical Informatics</h3>
+        <ul>
+          <li>Electronic Medical Records (EMR)</li>
+          <li>Hospital Information Systems (HIS)</li>
+          <li>Medical Image Management (PACS)</li>
+          <li>Medical Data Analysis and Statistics</li>
+          <li>Order Entry Systems and Receipt Processing</li>
+        </ul>
+      </div>
+
+      <div class="curriculum-card">
+        <h3>Practical Training</h3>
+        <ul>
+          <li>Internship at partner hospitals and clinics</li>
+          <li>System implementation exercises</li>
+          <li>Project-based learning</li>
+          <li>Graduation research / thesis</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Aimable Qualifications</h2>
+    <p>Students can prepare for and obtain the following certifications during or after the program:</p>
+    <ul>
+      <li>Medical Informatics Engineer (医療情報技師)</li>
+      <li>IT Passport (ITパスポート)</li>
+      <li>Fundamental Information Technology Engineer (基本情報技術者)</li>
+      <li>Certified Medical Office Administrator related qualifications</li>
+    </ul>
+
+    <h2>After Graduation</h2>
+    <p>Graduates work in various healthcare IT roles:</p>
+    <ul>
+      <li>Hospital / Clinic IT departments</li>
+      <li>Medical system vendors and developers</li>
+      <li>Electronic medical record management</li>
+      <li>Medical data analysis and healthcare AI support</li>
+      <li>Medical information management positions</li>
+    </ul>
+
+    <a href="admissions.html" class="back-btn" style="background:#003087; color:white; margin-top:40px;">
+      Learn About Admissions →
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="footer-logo">JMA Medical Information</div>
+        <p>Training the next generation of healthcare IT professionals in Shimonoseki, Yamaguchi.</p>
+      </div>
+
+      <div>
+        <h3>Navigation</h3>
+        <a href="index.html">Home</a><br>
+        <a href="about.html">About Us</a><br>
+        <a href="program.html">Program</a><br>
+        <a href="admissions.html">Admissions</a><br>
+        <a href="news.html">News & Events</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <a href="admissions.html">Apply Now</a><br>
+        <a href="program.html">Curriculum</a><br>
+        <a href="contact.html">Campus Visit</a>
+      </div>
+
+      <div>
+        <h3>Contact Info</h3>
+        <p>〒751-0806<br>
+           山口県下関市一の宮町3-12-28<br><br>
+           TEL: 083-256-7711<br>
+           Email: <a href="mailto:info@its.jma.ac.jp">info@its.jma.ac.jp</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br>
+      School Corporation Japan Medical Academy
+    </div>
+  </footer>
+
+</body>
+</html>
