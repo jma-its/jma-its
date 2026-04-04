@@ -88,7 +88,6 @@
       height: 3px;
       background: #003087;
       border-radius: 3px;
-      transition: all 0.3s;
     }
 
     /* Mobile Menu */
@@ -133,10 +132,10 @@
       color: white;
     }
 
-    /* ==================== HERO - ИСПРАВЛЕНО ==================== */
+    /* Hero */
     .hero {
       min-height: 100vh;
-      padding-top: 90px;           /* Увеличил отступ от шапки */
+      padding-top: 90px;
       background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), 
                   url('background-hero.jpg') center/cover no-repeat;
       display: flex;
@@ -145,11 +144,11 @@
     }
 
     .window {
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.96);
       width: 92%;
-      max-width: 1080px;
+      max-width: 1050px;
       border-radius: 24px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      box-shadow: 0 25px 55px rgba(0,0,0,0.35);
       overflow: hidden;
     }
 
@@ -162,35 +161,35 @@
       flex: 1;
       min-width: 340px;
       background: url('window1.jpg') center/cover no-repeat;
-      height: 520px;
+      height: 500px;
     }
 
     .window-text {
       flex: 1;
       min-width: 340px;
-      padding: 60px 50px;
+      padding: 55px 48px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
     .window-text h1 {
-      font-size: 2.8rem;
+      font-size: 2.85rem;
       line-height: 1.1;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
       color: #003087;
     }
 
     .window-text p {
       font-size: 1.25rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.3rem;
       color: #444;
     }
 
     .btn-primary {
       background: #00a0df;
       color: white;
-      padding: 16px 42px;
+      padding: 16px 44px;
       border: none;
       border-radius: 50px;
       font-size: 1.15rem;
@@ -217,15 +216,6 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
-
-    .news-card:hover { transform: translateY(-8px); }
-
-    .news-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
     }
 
     .news-content { padding: 1.6rem; }
@@ -281,25 +271,11 @@
       color: #aaa;
     }
 
-    /* ==================== RESPONSIVE ==================== */
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
       .lang-switch { display: none; }
       .hamburger { display: flex; }
       .footer-container { grid-template-columns: 1fr 1fr; gap: 30px; }
-      
-      .hero {
-        padding-top: 100px;        /* Ещё больше отступа на мобильных */
-        min-height: 680px;
-      }
-    }
-
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
-    }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
     }
   </style>
 </head>
@@ -359,9 +335,8 @@
         <div class="window-image"></div>
         <div class="window-text">
           <h1>Training the Future of Healthcare IT</h1>
-          <p>日本医療専門学校 医療情報学科<br>
-             Developing professionals who connect medicine and advanced technology</p>
-          <button class="btn-primary" onclick="location.href='admissions.html'">Apply Now / 入試案内</button>
+          <p>Developing professionals who connect medicine and advanced technology</p>
+          <button class="btn-primary" onclick="location.href='admissions.html'">Apply Now</button>
         </div>
       </div>
     </div>
@@ -388,19 +363,11 @@
             <p>Expanded practical training opportunities for our students.</p>
           </div>
         </div>
-        <div class="news-card">
-          <img src="https://picsum.photos/id/301/800/500" alt="News">
-          <div class="news-content">
-            <div class="news-date">February 20, 2026</div>
-            <h3>Graduation Ceremony 2026</h3>
-            <p>Our students successfully completed the program and received their certificates.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
     <div class="footer-container">
       <div>
