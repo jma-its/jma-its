@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | JMA Medical Information College</title>
+  <title>お問い合わせ | 日本医療専門学校 医療情報学科</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   
   <style>
@@ -42,7 +42,6 @@
       text-decoration: none;
     }
 
-    /* Desktop Navigation */
     .desktop-nav ul {
       display: flex;
       list-style: none;
@@ -72,7 +71,6 @@
       border-color: #003087;
     }
 
-    /* Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -92,7 +90,6 @@
       transition: all 0.3s;
     }
 
-    /* Mobile Menu */
     .mobile-menu {
       display: none;
       position: fixed;
@@ -134,10 +131,9 @@
       color: white;
     }
 
-    /* HERO — стандартизировано */
     .hero {
       height: 380px;
-      padding-top: 80px;                    /* ← исправлено */
+      padding-top: 80px;
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                   url('background-hero.jpg') center/cover no-repeat;
       display: flex;
@@ -211,7 +207,6 @@
       font-weight: 500;
     }
 
-    /* Footer */
     footer {
       background: #003087;
       color: white;
@@ -279,25 +274,25 @@
 </head>
 <body>
 
-  <!-- HEADER (правильная) -->
+  <!-- HEADER -->
   <header>
     <div class="nav-container">
-      <a href="index.html" class="logo">JMA Medical Information</a>
+      <a href="index_jp.html" class="logo">JMA Medical Information</a>
       
       <nav class="desktop-nav">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index_jp.html">ホーム</a></li>
+          <li><a href="about_jp.html">学校案内</a></li>
+          <li><a href="program_jp.html">学科紹介</a></li>
+          <li><a href="admissions_jp.html">入試案内</a></li>
+          <li><a href="news_jp.html">お知らせ</a></li>
+          <li><a href="contact_jp.html">お問い合わせ</a></li>
         </ul>
       </nav>
 
       <div class="lang-switch">
-        <button onclick="location.href='contact_jp.html'">JP</button>
-        <button class="active">EN</button>
+        <button onclick="location.href='contact.html'" class="active">JP</button>
+        <button onclick="location.href='contact.html'">EN</button>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -308,45 +303,45 @@
     <div class="mobile-menu" id="mobile-menu">
       <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index_jp.html">ホーム</a></li>
+          <li><a href="about_jp.html">学校案内</a></li>
+          <li><a href="program_jp.html">学科紹介</a></li>
+          <li><a href="admissions_jp.html">入試案内</a></li>
+          <li><a href="news_jp.html">お知らせ</a></li>
+          <li><a href="contact_jp.html">お問い合わせ</a></li>
         </ul>
       </nav>
       <div class="mobile-lang">
-        <button onclick="location.href='contact_jp.html'">日本語</button>
-        <button class="active">English</button>
+        <button onclick="location.href='contact.html'" class="active">日本語</button>
+        <button onclick="location.href='contact.html'">English</button>
       </div>
     </div>
   </header>
 
-  <!-- Hero — теперь стандартизирован -->
+  <!-- Hero -->
   <section class="hero">
-    <h1>Contact Us</h1>
+    <h1>お問い合わせ</h1>
   </section>
 
   <div class="content">
-    <a href="index.html" class="back-btn">← Back to Home</a>
+    <a href="index_jp.html" class="back-btn">← ホームに戻る</a>
 
     <p style="font-size:1.25rem; color:#555;">日本医療専門学校 医療情報学科</p>
 
     <div class="contact-grid">
       <div>
-        <h2>Get in Touch</h2>
-        <p>We are happy to answer any questions about the program, admissions, or campus visits.</p>
+        <h2>お気軽にご連絡ください</h2>
+        <p>学科、入学、入試、キャンパス見学などについてのご質問を承ります。</p>
 
-        <h3>Address</h3>
+        <h3>所在地</h3>
         <p>〒751-0806<br>
            山口県下関市一の宮町3-12-28<br>
            日本医療専門学校</p>
 
-        <h3>Phone</h3>
+        <h3>電話</h3>
         <p>083-256-7711（代表）</p>
 
-        <h3>Email</h3>
+        <h3>メール</h3>
         <p><a href="mailto:info@its.jma.ac.jp" style="color:#003087;">info@its.jma.ac.jp</a></p>
       </div>
 
@@ -357,13 +352,13 @@
         </div>
 
         <div class="form-container" style="margin-top:40px;">
-          <h3>Send us a message</h3>
+          <h3>メッセージを送信</h3>
           <form action="#" method="POST">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <input type="text" placeholder="Subject">
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit" class="submit-btn">Send Message</button>
+            <input type="text" placeholder="お名前" required>
+            <input type="email" placeholder="メールアドレス" required>
+            <input type="text" placeholder="件名">
+            <textarea placeholder="お問い合わせ内容" required></textarea>
+            <button type="submit" class="submit-btn">送信する</button>
           </form>
         </div>
       </div>
@@ -374,26 +369,26 @@
   <footer>
     <div class="footer-container">
       <div>
-        <div class="footer-logo" style="color:white;">JMA Medical Information</div>
-        <p style="color:#ccc; max-width:320px;">Training the next generation of healthcare IT professionals in Shimonoseki.</p>
+        <div class="footer-logo">JMA Medical Information</div>
+        <p style="color:#ccc; max-width:320px;">山口県下関市で次世代の医療IT専門家を育成しています。</p>
       </div>
 
       <div>
-        <h3>Navigation</h3>
-        <p><a href="index.html">Home</a></p>
-        <p><a href="about.html">About Us</a></p>
-        <p><a href="program.html">Program</a></p>
-        <p><a href="admissions.html">Admissions</a></p>
+        <h3>ナビゲーション</h3>
+        <p><a href="index_jp.html">ホーム</a></p>
+        <p><a href="about_jp.html">学校案内</a></p>
+        <p><a href="program_jp.html">学科紹介</a></p>
+        <p><a href="admissions_jp.html">入試案内</a></p>
       </div>
 
       <div>
-        <h3>Quick Links</h3>
-        <p><a href="news.html">News & Events</a></p>
-        <p><a href="contact.html">Contact</a></p>
+        <h3>クイックリンク</h3>
+        <p><a href="news_jp.html">お知らせ</a></p>
+        <p><a href="contact_jp.html">お問い合わせ</a></p>
       </div>
 
       <div>
-        <h3>Contact</h3>
+        <h3>連絡先</h3>
         <p>〒751-0806 山口県下関市一の宮町3-12-28</p>
         <p>TEL: 083-256-7711</p>
         <p><a href="mailto:info@its.jma.ac.jp">info@its.jma.ac.jp</a></p>

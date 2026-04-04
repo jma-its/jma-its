@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | JMA Medical Information College</title>
+  <title>JMA Medical Information College</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   
   <style>
@@ -11,9 +11,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      line-height: 1.8;
+      line-height: 1.7;
       color: #333;
-      background: #f9f9f9;
     }
 
     header {
@@ -134,81 +133,107 @@
       color: white;
     }
 
-    /* HERO — стандартизировано */
+    /* ==================== HERO - ИСПРАВЛЕНО ==================== */
     .hero {
-      height: 380px;
-      padding-top: 80px;                    /* ← исправлено */
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+      min-height: 100vh;
+      padding-top: 90px;           /* Увеличил отступ от шапки */
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), 
                   url('background-hero.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      text-align: center;
     }
 
-    .hero h1 {
-      font-size: 3.2rem;
-      font-family: 'Playfair Display', serif;
+    .window {
+      background: rgba(255,255,255,0.95);
+      width: 92%;
+      max-width: 1080px;
+      border-radius: 24px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      overflow: hidden;
     }
 
-    .content {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 0 20px;
+    .window-content {
+      display: flex;
+      flex-wrap: wrap;
     }
 
-    h2, h3 {
+    .window-image {
+      flex: 1;
+      min-width: 340px;
+      background: url('window1.jpg') center/cover no-repeat;
+      height: 520px;
+    }
+
+    .window-text {
+      flex: 1;
+      min-width: 340px;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .window-text h1 {
+      font-size: 2.8rem;
+      line-height: 1.1;
+      margin-bottom: 1rem;
       color: #003087;
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      margin-top: 40px;
+    .window-text p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: #444;
     }
 
-    .form-container {
-      background: white;
-      padding: 2.5rem;
-      border-radius: 16px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 1.05rem;
-      margin-bottom: 1.2rem;
-    }
-
-    textarea { height: 160px; resize: vertical; }
-
-    .submit-btn {
+    .btn-primary {
       background: #00a0df;
       color: white;
-      padding: 14px 40px;
+      padding: 16px 42px;
       border: none;
       border-radius: 50px;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 600;
       cursor: pointer;
     }
 
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 40px 0 30px;
-      padding: 12px 28px;
-      background: #f1f1f1;
-      color: #003087;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 500;
+    /* News Section */
+    .news-section {
+      padding: 100px 20px;
+      background: #f8f9fa;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .news-card:hover { transform: translateY(-8px); }
+
+    .news-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .news-content { padding: 1.6rem; }
+
+    .news-date {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
     }
 
     /* Footer */
@@ -243,29 +268,30 @@
     footer a {
       color: #ddd;
       text-decoration: none;
-      line-height: 1.8;
+      line-height: 1.9;
     }
-
-    footer a:hover {
-      color: white;
-    }
+    footer a:hover { color: white; }
 
     .footer-bottom {
       text-align: center;
       margin-top: 50px;
-      padding-top: 20px;
+      padding-top: 25px;
       border-top: 1px solid #0055aa;
       font-size: 0.95rem;
       color: #aaa;
     }
 
+    /* ==================== RESPONSIVE ==================== */
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
       .lang-switch { display: none; }
       .hamburger { display: flex; }
-      .footer-container { grid-template-columns: 1fr 1fr; }
-      .hero { padding-top: 90px; }
-      .hero h1 { font-size: 2.6rem; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 30px; }
+      
+      .hero {
+        padding-top: 100px;        /* Ещё больше отступа на мобильных */
+        min-height: 680px;
+      }
     }
 
     .hamburger.active span:nth-child(1) {
@@ -279,7 +305,7 @@
 </head>
 <body>
 
-  <!-- HEADER (правильная) -->
+  <!-- HEADER -->
   <header>
     <div class="nav-container">
       <a href="index.html" class="logo">JMA Medical Information</a>
@@ -296,15 +322,18 @@
       </nav>
 
       <div class="lang-switch">
-        <button onclick="location.href='contact_jp.html'">JP</button>
+        <button onclick="location.href='index_jp.html'">JP</button>
         <button class="active">EN</button>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
 
+    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
       <nav>
         <ul>
@@ -317,89 +346,91 @@
         </ul>
       </nav>
       <div class="mobile-lang">
-        <button onclick="location.href='contact_jp.html'">日本語</button>
+        <button onclick="location.href='index_jp.html'">日本語</button>
         <button class="active">English</button>
       </div>
     </div>
   </header>
 
-  <!-- Hero — теперь стандартизирован -->
+  <!-- Hero -->
   <section class="hero">
-    <h1>Contact Us</h1>
-  </section>
-
-  <div class="content">
-    <a href="index.html" class="back-btn">← Back to Home</a>
-
-    <p style="font-size:1.25rem; color:#555;">日本医療専門学校 医療情報学科</p>
-
-    <div class="contact-grid">
-      <div>
-        <h2>Get in Touch</h2>
-        <p>We are happy to answer any questions about the program, admissions, or campus visits.</p>
-
-        <h3>Address</h3>
-        <p>〒751-0806<br>
-           山口県下関市一の宮町3-12-28<br>
-           日本医療専門学校</p>
-
-        <h3>Phone</h3>
-        <p>083-256-7711（代表）</p>
-
-        <h3>Email</h3>
-        <p><a href="mailto:info@its.jma.ac.jp" style="color:#003087;">info@its.jma.ac.jp</a></p>
-      </div>
-
-      <div>
-        <div style="border-radius:16px; overflow:hidden; box-shadow:0 15px 35px rgba(0,0,0,0.15); height:420px;">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.85!2d130.94815!3d33.99615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3543f0b0b0b0b0b0%3A0x8b5e5e5e5e5e5e5e!2z5pel5pys5Yy755m85LiT6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1743772800000" 
-                  width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-
-        <div class="form-container" style="margin-top:40px;">
-          <h3>Send us a message</h3>
-          <form action="#" method="POST">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <input type="text" placeholder="Subject">
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit" class="submit-btn">Send Message</button>
-          </form>
+    <div class="window">
+      <div class="window-content">
+        <div class="window-image"></div>
+        <div class="window-text">
+          <h1>Training the Future of Healthcare IT</h1>
+          <p>日本医療専門学校 医療情報学科<br>
+             Developing professionals who connect medicine and advanced technology</p>
+          <button class="btn-primary" onclick="location.href='admissions.html'">Apply Now / 入試案内</button>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="news-section">
+    <div style="max-width:1280px; margin:0 auto;">
+      <h2 style="text-align:center; margin-bottom:3rem;">News & Events</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <img src="https://picsum.photos/id/1015/800/500" alt="News">
+          <div class="news-content">
+            <div class="news-date">March 18, 2026</div>
+            <h3>Information Session for 2027 Admissions</h3>
+            <p>We will hold online and offline sessions for prospective students.</p>
+          </div>
+        </div>
+        <div class="news-card">
+          <img src="https://picsum.photos/id/201/800/500" alt="News">
+          <div class="news-content">
+            <div class="news-date">March 5, 2026</div>
+            <h3>New Partnership with Yamaguchi University Hospital</h3>
+            <p>Expanded practical training opportunities for our students.</p>
+          </div>
+        </div>
+        <div class="news-card">
+          <img src="https://picsum.photos/id/301/800/500" alt="News">
+          <div class="news-content">
+            <div class="news-date">February 20, 2026</div>
+            <h3>Graduation Ceremony 2026</h3>
+            <p>Our students successfully completed the program and received their certificates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <div>
-        <div class="footer-logo" style="color:white;">JMA Medical Information</div>
-        <p style="color:#ccc; max-width:320px;">Training the next generation of healthcare IT professionals in Shimonoseki.</p>
+        <div class="footer-logo">JMA Medical Information</div>
+        <p>Training the next generation of healthcare IT professionals in Shimonoseki, Yamaguchi.</p>
       </div>
-
       <div>
         <h3>Navigation</h3>
-        <p><a href="index.html">Home</a></p>
-        <p><a href="about.html">About Us</a></p>
-        <p><a href="program.html">Program</a></p>
-        <p><a href="admissions.html">Admissions</a></p>
+        <a href="index.html">Home</a><br>
+        <a href="about.html">About Us</a><br>
+        <a href="program.html">Program</a><br>
+        <a href="admissions.html">Admissions</a><br>
+        <a href="news.html">News & Events</a><br>
+        <a href="contact.html">Contact</a>
       </div>
-
       <div>
         <h3>Quick Links</h3>
-        <p><a href="news.html">News & Events</a></p>
-        <p><a href="contact.html">Contact</a></p>
+        <a href="admissions.html">Apply Now</a><br>
+        <a href="program.html">Curriculum</a><br>
+        <a href="contact.html">Campus Visit</a>
       </div>
-
       <div>
-        <h3>Contact</h3>
-        <p>〒751-0806 山口県下関市一の宮町3-12-28</p>
-        <p>TEL: 083-256-7711</p>
-        <p><a href="mailto:info@its.jma.ac.jp">info@its.jma.ac.jp</a></p>
+        <h3>Contact Info</h3>
+        <p>〒751-0806<br>
+           山口県下関市一の宮町3-12-28<br><br>
+           TEL: 083-256-7711<br>
+           Email: <a href="mailto:info@its.jma.ac.jp">info@its.jma.ac.jp</a>
+        </p>
       </div>
     </div>
-
     <div class="footer-bottom">
       © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br>
       School Corporation Japan Medical Academy

@@ -42,19 +42,18 @@
       text-decoration: none;
     }
 
-    /* Desktop Navigation */
-    .desktop-nav ul {
+    nav ul {
       display: flex;
       list-style: none;
       gap: 2rem;
     }
 
-    .desktop-nav a {
+    nav a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
     }
-    .desktop-nav a:hover { color: #003087; }
+    nav a:hover { color: #003087; }
 
     .lang-switch button {
       padding: 8px 20px;
@@ -63,80 +62,14 @@
       border-radius: 30px;
       font-size: 0.95rem;
       cursor: pointer;
-      transition: all 0.3s;
     }
-
-    .lang-switch button.active {
-      background: #003087;
-      color: white;
-      border-color: #003087;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 28px;
-      height: 22px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-    }
-
-    .hamburger span {
-      width: 100%;
-      height: 3px;
-      background: #003087;
-      border-radius: 3px;
-      transition: all 0.3s;
-    }
-
-    /* Mobile Menu */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.98);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      padding: 25px 20px;
-      z-index: 999;
-    }
-
-    .mobile-menu a {
-      display: block;
-      padding: 16px 0;
-      font-size: 1.25rem;
-      color: #333;
-      text-decoration: none;
-      border-bottom: 1px solid #eee;
-    }
-
-    .mobile-lang {
-      margin-top: 25px;
-      display: flex;
-      gap: 12px;
-    }
-
-    .mobile-lang button {
-      flex: 1;
-      padding: 12px;
-      border: 1px solid #ddd;
-      background: white;
-      border-radius: 30px;
-      font-size: 1rem;
-    }
-
-    .mobile-lang button.active {
+    .lang-btn.active {
       background: #003087;
       color: white;
     }
 
     .hero {
       height: 380px;
-      padding-top: 80px;
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                   url('background-hero.jpg') center/cover no-repeat;
       display: flex;
@@ -144,6 +77,7 @@
       justify-content: center;
       color: white;
       text-align: center;
+      margin-top: 70px;
     }
 
     .hero h1 {
@@ -232,7 +166,7 @@
       color: white;
     }
 
-    /* Footer */
+    /* ==================== FOOTER ==================== */
     footer {
       background: #003087;
       color: white;
@@ -278,51 +212,17 @@
     }
 
     @media (max-width: 900px) {
-      .desktop-nav { display: none; }
-      .lang-switch { display: none; }
-      .hamburger { display: flex; }
       .footer-container { grid-template-columns: 1fr 1fr; gap: 30px; }
-      .hero { padding-top: 90px; }
-    }
-
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
-    }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
+      .hero h1 { font-size: 2.6rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER — точно как в program.html (правильная высота) -->
+  <!-- Header -->
   <header>
     <div class="nav-container">
       <a href="index.html" class="logo">JMA Medical Information</a>
-      
-      <nav class="desktop-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="lang-switch">
-        <button onclick="location.href='admissions_jp.html'">JP</button>
-        <button class="active">EN</button>
-      </div>
-
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="mobile-menu" id="mobile-menu">
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -333,9 +233,9 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-      <div class="mobile-lang">
-        <button onclick="location.href='admissions_jp.html'">日本語</button>
-        <button class="active">English</button>
+      <div class="lang-switch">
+        <button onclick="location.href='admissions_jp.html'">JP</button>
+        <button class="active">EN</button>
       </div>
     </div>
   </header>
@@ -428,6 +328,9 @@
       <li>Application fee: ¥20,000</li>
     </ul>
 
+    <h2>Tuition & Fees (Approximate for 2027)</h2>
+    <p>Please contact the admissions office for the latest fee structure. Typical first-year total is around ¥1,200,000 – ¥1,400,000 (including entrance fee and first-year tuition).</p>
+
     <a href="contact.html" class="back-btn" style="background:#003087; color:white; margin-top:40px;">
       Contact Admissions Office →
     </a>
@@ -440,6 +343,7 @@
         <div class="footer-logo">JMA Medical Information</div>
         <p>Training the next generation of healthcare IT professionals in Shimonoseki, Yamaguchi.</p>
       </div>
+
       <div>
         <h3>Navigation</h3>
         <a href="index.html">Home</a><br>
@@ -449,12 +353,14 @@
         <a href="news.html">News & Events</a><br>
         <a href="contact.html">Contact</a>
       </div>
+
       <div>
         <h3>Quick Links</h3>
         <a href="admissions.html">Apply Now</a><br>
         <a href="program.html">Curriculum</a><br>
         <a href="contact.html">Campus Visit</a>
       </div>
+
       <div>
         <h3>Contact Info</h3>
         <p>〒751-0806<br>
@@ -464,27 +370,12 @@
         </p>
       </div>
     </div>
+
     <div class="footer-bottom">
       © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br>
       School Corporation Japan Medical Academy
     </div>
   </footer>
 
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.style.display = (mobileMenu.style.display === 'block') ? 'none' : 'block';
-    });
-
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileMenu.style.display = 'none';
-      });
-    });
-  </script>
 </body>
 </html>
