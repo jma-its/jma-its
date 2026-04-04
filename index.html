@@ -55,7 +55,6 @@
     }
     .desktop-nav a:hover { color: #003087; }
 
-    /* Language Switch */
     .lang-switch button {
       padding: 8px 20px;
       border: 1px solid #ddd;
@@ -134,14 +133,12 @@
       color: white;
     }
 
-    /* ==================== HERO - ЦЕНТРАЛЬНОЕ ОКНО ==================== */
+    /* ==================== HERO - ИСПРАВЛЕНО ==================== */
     .hero {
-      height: 100vh;
-      min-height: 720px;
-      padding-top: 70px;           /* ← Добавлено: отступ от фиксированной шапки */
+      min-height: 100vh;
+      padding-top: 90px;           /* Увеличил отступ от шапки */
       background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), 
                   url('background-hero.jpg') center/cover no-repeat;
-      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -292,12 +289,11 @@
       .footer-container { grid-template-columns: 1fr 1fr; gap: 30px; }
       
       .hero {
-        padding-top: 80px;        /* чуть больше отступа на мобильных */
-        min-height: 650px;
+        padding-top: 100px;        /* Ещё больше отступа на мобильных */
+        min-height: 680px;
       }
     }
 
-    /* Hamburger animation */
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(6px, 6px);
     }
@@ -450,7 +446,6 @@
       mobileMenu.style.display = (mobileMenu.style.display === 'block') ? 'none' : 'block';
     });
 
-    // Close mobile menu when clicking a link
     document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
