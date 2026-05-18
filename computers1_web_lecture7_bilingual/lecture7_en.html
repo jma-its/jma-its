@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 7 — Electricity, Magnetism, Motors and Generators</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="kicker">Computers 1 · Engineering Basics for Medical IT</div>
+    <h1>Lecture 7<br>Electricity, Magnetism, Motors and Generators</h1>
+    <p class="subtitle">How electric charge becomes motion, and how motion becomes electricity.</p>
+    <div class="header-actions">
+      <a class="button" href="#start">Start lesson</a>
+      <a class="button secondary" href="lecture7_ja.html">日本語版</a>
+      <a class="button secondary" href="#practice">Practice</a>
+      <a class="button secondary" href="downloads/computers1_lecture7_with_images_large_fonts.pptx">Download slides</a>
+      <a class="button secondary" href="downloads/computers1_lecture7_with_images_large_fonts.pdf">Download PDF</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="overview card" id="start">
+<p class="lead">Today we study the physical idea behind electric motors and generators. We start from electric charge. Then we move to current, magnetic field, force, torque, motor, Faraday induction, generator, and finally Tesla's rotating magnetic field.</p>
+<figure class="figure"><img src="assets/lecture7/electricity_flow_through_machines_diagram.png" alt="Roadmap: charge → magnetism → loop → motor → generator."><figcaption>Roadmap: charge → magnetism → loop → motor → generator.</figcaption></figure>
+<div class="grid">
+  <div class="small-card"><h3>Question 1</h3><p>How can electricity create motion?</p></div>
+  <div class="small-card"><h3>Question 2</h3><p>How can motion create electricity?</p></div>
+  <div class="small-card"><h3>Main chain</h3><p>charge → current → magnetic field → force → rotation</p></div>
+</div>
+</section>
+
+<section class="toc card">
+<h2>Lesson map</h2>
+<ol>
+<li><a href="#charge">Electric charge</a></li>
+<li><a href="#field">Electric field</a></li>
+<li><a href="#circuit">Voltage, current, resistance</a></li>
+<li><a href="#magnetism">Magnetism</a></li>
+<li><a href="#current-field">Current creates magnetic field</a></li>
+<li><a href="#parallel-wires">Two wires</a></li>
+<li><a href="#force">Magnetic force</a></li>
+<li><a href="#loop">Current loop</a></li>
+<li><a href="#commutator">Commutator</a></li>
+<li><a href="#motor">DC motor</a></li>
+<li><a href="#faraday">Faraday</a></li>
+<li><a href="#generator">Generator</a></li>
+<li><a href="#tesla">Tesla and AC</a></li>
+<li><a href="#applications">Applications</a></li>
+<li><a href="#practice">Practice</a></li>
+</ol>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Vocabulary</span>
+<h2>Key words</h2>
+<p>Read these words first. The same words will come back again and again.</p>
+<table class="keywords">
+<tr><th>Word</th><th>Simple meaning</th></tr>
+<tr><td>charge</td><td>electric property of matter; positive or negative</td></tr>
+<tr><td>field</td><td>invisible area where a force can act</td></tr>
+<tr><td>voltage</td><td>electric push</td></tr>
+<tr><td>current</td><td>flow of electric charge</td></tr>
+<tr><td>resistance</td><td>opposition to current</td></tr>
+<tr><td>magnetic field</td><td>area where magnetic force acts</td></tr>
+<tr><td>torque</td><td>turning force</td></tr>
+<tr><td>commutator</td><td>switching contact in a DC motor</td></tr>
+<tr><td>induction</td><td>making voltage by changing magnetic flux</td></tr>
+</table>
+</section>
+
+<section class="lesson-block" id="charge">
+<span class="slide-label">Slide 3</span>
+<h2>1. Electric charge</h2>
+<p>Electricity starts with charge. There are two types of electric charge: positive charge and negative charge.</p>
+<p>Same charges repel. This means they push away from each other. Opposite charges attract. This means they pull toward each other.</p>
+<figure class="figure"><img src="assets/lecture7/electrostatic_charge_interactions_explained.png" alt="Electric charges: opposite charges attract, like charges repel."><figcaption>Electric charges: opposite charges attract, like charges repel.</figcaption></figure>
+<div class="formula"><span class="math">same charges repel<br>opposite charges attract</span></div>
+<p>This is the first basic rule. We will use it later when we talk about electric fields, voltage, and current.</p>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 4</span>
+<h2>2. Coulomb's law</h2>
+<p>Coulomb's law describes the force between two electric charges.</p>
+<div class="formula"><span class="math">F = k q₁ q₂ / r²</span><p><strong>F</strong> = electric force<br><strong>q₁, q₂</strong> = charges<br><strong>r</strong> = distance between charges<br><strong>k</strong> = constant</p></div>
+<div class="meaning">
+<h3>Meaning</h3>
+<ul class="clean-list">
+<li>Bigger charges give bigger force.</li>
+<li>Bigger distance gives much smaller force.</li>
+<li>The force changes with the square of distance.</li>
+</ul>
+</div>
+<p>Today we do not need difficult Coulomb calculations. The important idea is simple: electric charges can create force at a distance.</p>
+</section>
+
+<section class="lesson-block" id="field">
+<span class="slide-label">Slide 5</span>
+<h2>3. Electric field</h2>
+<p>A charge creates an electric field around it. A field is an invisible area of influence. You cannot see the field directly, but you can see its effect.</p>
+<p>The electric field can push or pull another charge. Field lines show the direction of force on a positive test charge.</p>
+<figure class="figure"><img src="assets/lecture7/electric_field_lines_and_charge_interactions.png" alt="Electric field lines around positive and negative charges."><figcaption>Electric field lines around positive and negative charges.</figcaption></figure>
+<div class="formula"><span class="math">E = F / q</span><p><strong>E</strong> = electric field<br><strong>F</strong> = force<br><strong>q</strong> = test charge</p></div>
+<div class="meaning"><p><strong>Simple meaning:</strong> charge creates electric field, and electric field creates force on other charges.</p></div>
+</section>
+
+<section class="lesson-block" id="circuit">
+<span class="slide-label">Slides 6–7</span>
+<h2>4. Voltage, current and resistance</h2>
+<p>Now we move from electrostatics to electric circuits. In electrostatics, charges can be at rest. In a circuit, charges move. Moving charge is current.</p>
+<figure class="figure"><img src="assets/lecture7/understanding_a_simple_electric_circuit.png" alt="Simple circuit: voltage pushes, current flows, resistance opposes."><figcaption>Simple circuit: voltage pushes, current flows, resistance opposes.</figcaption></figure>
+<div class="three-col">
+<div class="formula"><span class="math">Voltage</span><p>Voltage is electric push. A battery or power supply gives voltage.</p></div>
+<div class="formula"><span class="math">Current</span><p>Current is flow of electric charge through a wire.</p></div>
+<div class="formula"><span class="math">Resistance</span><p>Resistance opposes current. High resistance makes current smaller.</p></div>
+</div>
+<div class="meaning"><p><strong>Memory sentence:</strong> Voltage pushes. Current flows. Resistance opposes.</p></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 7</span>
+<h2>5. Basic electrical formulas</h2>
+<p>These are the main calculation formulas for this lecture.</p>
+<div class="formula"><span class="math">I = Q / t</span><p>Current = charge / time.</p></div>
+<div class="formula"><span class="math">V = I R</span><p>Ohm's law. Voltage = current × resistance.</p></div>
+<div class="formula"><span class="math">P = V I</span><p>Electrical power = voltage × current.</p></div>
+<div class="example"><h3>Example</h3><p>Voltage = 12 V<br>Current = 2 A</p><p><strong>P = V × I = 12 × 2 = 24 W</strong></p></div>
+<div class="task"><h3>Try it</h3><p>Current = 3 A<br>Resistance = 4 Ω<br>Voltage = ?</p><details><summary>Show answer</summary><p>V = I × R = 3 × 4 = <strong>12 V</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="magnetism">
+<span class="slide-label">Slide 8</span>
+<h2>6. Magnets and magnetic field</h2>
+<p>A magnet has two poles: north pole and south pole. Like magnetic poles repel. Opposite magnetic poles attract.</p>
+<p>A magnet creates a magnetic field around it. Magnetic field lines show the direction of magnetic field. Outside a magnet, the field lines go from N to S.</p>
+<figure class="figure"><img src="assets/lecture7/magnetic_field_around_a_bar_magnet.png" alt="Magnetic field lines around a bar magnet."><figcaption>Magnetic field lines around a bar magnet.</figcaption></figure>
+<div class="meaning"><p>Electric motors need magnetic fields. Without a magnetic field, we cannot explain why a motor turns.</p></div>
+</section>
+
+<section class="lesson-block" id="current-field">
+<span class="slide-label">Slide 9</span>
+<h2>7. Current creates magnetic field</h2>
+<p>This is one of the most important ideas in the whole lecture.</p>
+<p>When electric current flows in a wire, a magnetic field appears around the wire. The magnetic field lines make circles around the wire.</p>
+<figure class="figure"><img src="assets/lecture7/magnetic_field_around_a_current_carrying_wire.png" alt="A current-carrying wire creates a circular magnetic field."><figcaption>A current-carrying wire creates a circular magnetic field.</figcaption></figure>
+<div class="formula"><span class="math">current → magnetic field</span></div>
+<p>If the current becomes stronger, the magnetic field becomes stronger. If we change the direction of current, the direction of the magnetic field also changes.</p>
+</section>
+
+<section class="lesson-block" id="parallel-wires">
+<span class="slide-label">Slide 10</span>
+<h2>8. Two parallel wires</h2>
+<p>Two wires with current can push or pull each other. This is not electrostatic force. It is magnetic force caused by current.</p>
+<figure class="figure"><img src="assets/lecture7/forces_on_parallel_currents_in_wires.png" alt="Forces between two parallel current-carrying wires."><figcaption>Forces between two parallel current-carrying wires.</figcaption></figure>
+<div class="formula"><span class="math">same current direction → attract<br>opposite current directions → repel</span></div>
+<p>This idea is useful because a motor has many conductors and coils. Current in conductors creates magnetic fields, and these magnetic fields create forces.</p>
+</section>
+
+<section class="lesson-block" id="force">
+<span class="slide-label">Slide 11</span>
+<h2>9. Force on a moving charge</h2>
+<p>A moving charge in a magnetic field feels force. The direction of the force is perpendicular to the velocity and also perpendicular to the magnetic field.</p>
+<figure class="figure"><img src="assets/lecture7/magnetic_force_on_a_charged_particle.png" alt="Force on a moving charge in a magnetic field."><figcaption>Force on a moving charge in a magnetic field.</figcaption></figure>
+<div class="formula"><span class="math">F = q v B sinθ</span><p><strong>q</strong> = charge<br><strong>v</strong> = velocity<br><strong>B</strong> = magnetic field<br><strong>θ</strong> = angle between velocity and magnetic field</p></div>
+<div class="meaning">
+<p><strong>Meaning:</strong> if the charge moves parallel to the magnetic field, the force is zero. If it moves perpendicular to the field, the force is maximum.</p>
+</div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 12</span>
+<h2>10. Force on a current-carrying conductor</h2>
+<p>A wire with current is full of moving charges. So a current-carrying conductor in a magnetic field also feels force.</p>
+<figure class="figure"><img src="assets/lecture7/force_on_a_current_carrying_conductor.png" alt="Force on a current-carrying conductor in a magnetic field."><figcaption>Force on a current-carrying conductor in a magnetic field.</figcaption></figure>
+<div class="formula"><span class="math">F = B I l sinθ</span><p><strong>B</strong> = magnetic field<br><strong>I</strong> = current<br><strong>l</strong> = length of wire in the magnetic field<br><strong>θ</strong> = angle between current direction and magnetic field</p></div>
+<p>This is the main formula behind a simple electric motor.</p>
+<div class="task"><h3>Concept check</h3><p>When is the force maximum?</p><details><summary>Show answer</summary><p>The force is maximum when the current direction is perpendicular to the magnetic field. Then sinθ = 1.</p></details></div>
+</section>
+
+<section class="lesson-block" id="loop">
+<span class="slide-label">Slides 14–15</span>
+<h2>11. Current loop in a magnetic field</h2>
+<p>Now we can build the idea of a motor step by step.</p>
+<p>A rectangular loop is placed between N and S magnetic poles. Current flows around the loop. The magnetic field creates forces on the two vertical sides of the loop.</p>
+<p>One side feels force upward. The other side feels force downward. These opposite forces make a turning effect. This turning effect is called torque.</p>
+<figure class="figure"><img src="assets/lecture7/magnetic_field_and_current_loop_forces.png" alt="A current loop in a magnetic field feels opposite forces and torque."><figcaption>A current loop in a magnetic field feels opposite forces and torque.</figcaption></figure>
+<div class="formula"><span class="math">opposite forces → torque → rotation</span></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 15</span>
+<h2>12. Torque on a loop</h2>
+<p>Torque means turning force. A current loop in a magnetic field feels torque.</p>
+<figure class="figure"><img src="assets/lecture7/torque_on_a_current_loop.png" alt="Torque on a current loop."><figcaption>Torque on a current loop.</figcaption></figure>
+<div class="formula"><span class="math">τ = N B I A sinθ</span><p><strong>τ</strong> = torque<br><strong>N</strong> = number of turns<br><strong>B</strong> = magnetic field<br><strong>I</strong> = current<br><strong>A</strong> = area of loop<br><strong>θ</strong> = angle</p></div>
+<div class="meaning">
+<p><strong>Meaning:</strong> more turns, stronger magnetic field, more current, and larger loop area give more torque.</p>
+</div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 16</span>
+<h2>13. Why a simple loop stops</h2>
+<p>A simple current loop is not enough for a real motor. At one position, the torque becomes zero. This is called a dead point.</p>
+<figure class="figure"><img src="assets/lecture7/understanding_why_a_loop_stops.png" alt="A simple loop has a dead point where torque becomes zero."><figcaption>A simple loop has a dead point where torque becomes zero.</figcaption></figure>
+<p>If nothing changes, the loop can stop or the torque direction can become wrong. So we need a switching system.</p>
+<div class="formula"><span class="math">simple loop + no switching → not continuous rotation</span></div>
+</section>
+
+<section class="lesson-block" id="commutator">
+<span class="slide-label">Slides 17–18</span>
+<h2>14. Split-ring commutator and brushes</h2>
+<p>The split-ring commutator solves the problem. It reverses the current every half turn.</p>
+<p>Brushes touch the commutator and connect the moving rotor to the external circuit. The brushes stay still. The commutator rotates with the coil.</p>
+<figure class="figure"><img src="assets/lecture7/dc_motor_component_diagram_with_labels.png" alt="Split-ring commutator and brushes."><figcaption>Split-ring commutator and brushes.</figcaption></figure>
+<div class="formula"><span class="math">commutator = automatic current switch</span></div>
+<p>Because the current reverses at the right time, the torque keeps helping the same rotation direction.</p>
+<figure class="figure"><img src="assets/lecture7/dc_motor_loop_current_reversal_diagram.png" alt="Loop with switching contacts: current reverses every half turn."><figcaption>Loop with switching contacts: current reverses every half turn.</figcaption></figure>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slides 19–20</span>
+<h2>15. From one loop to many coils</h2>
+<p>One loop is useful for explanation, but real motors are not built from only one loop.</p>
+<p>Real motors use several coils. More coils give smoother rotation, more stable torque, and better performance.</p>
+<figure class="figure"><img src="assets/lecture7/one_loop_to_many_coils_comparison.png" alt="From one loop to many coils."><figcaption>From one loop to many coils.</figcaption></figure>
+<figure class="figure"><img src="assets/lecture7/a_clean_technical_diagram_on_a_white_background_sh.png" alt="Three coils around the rotor, 120° apart."><figcaption>Three coils around the rotor, 120° apart.</figcaption></figure>
+<div class="meaning"><p>Three coils arranged 120° apart are an important step toward real rotating machines and also toward the idea of a rotating magnetic field.</p></div>
+</section>
+
+<section class="lesson-block" id="motor">
+<span class="slide-label">Slide 21</span>
+<h2>16. DC motor structure</h2>
+<p>Now we can understand a DC motor as a real machine, not as a black box.</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_technical_illustration_diagram.png" alt="DC motor cutaway view."><figcaption>DC motor cutaway view.</figcaption></figure>
+<ul class="clean-list">
+<li><strong>Stator:</strong> fixed part that provides magnetic field.</li>
+<li><strong>Rotor:</strong> rotating part with coils.</li>
+<li><strong>Commutator:</strong> switching contact that reverses current.</li>
+<li><strong>Brushes:</strong> electrical contacts to the rotating commutator.</li>
+<li><strong>Shaft:</strong> gives useful mechanical rotation outside the motor.</li>
+</ul>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 22</span>
+<h2>17. Motor energy chain</h2>
+<p>The motor changes electrical energy into mechanical motion.</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_infographic_slide_diagram_on_a.png" alt="DC motor energy chain."><figcaption>DC motor energy chain.</figcaption></figure>
+<div class="formula"><span class="math">electricity → magnetic field → force → torque → rotation</span></div>
+<p>This chain is the main idea of an electric motor. In hospital and IT equipment, motors use this principle to move fans, pumps, beds, doors, and many other parts.</p>
+</section>
+
+<section class="lesson-block" id="faraday">
+<span class="slide-label">Slides 23–25</span>
+<h2>18. Faraday's idea</h2>
+<p>Now we ask the opposite question.</p>
+<p>A motor changes electricity into motion. Can motion create electricity?</p>
+<p>Faraday showed that a changing magnetic field can create voltage. More exactly: changing magnetic flux induces voltage.</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_physics_diagram_on_a_white_bac.png" alt="Faraday's law: changing magnetic flux induces voltage."><figcaption>Faraday's law: changing magnetic flux induces voltage.</figcaption></figure>
+<div class="formula"><span class="math">changing magnetic flux → induced voltage</span></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 24</span>
+<h2>19. Magnetic flux</h2>
+<p>Magnetic flux means how much magnetic field passes through a surface or loop.</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_physics_infographic_on_a_white.png" alt="Magnetic flux through a surface."><figcaption>Magnetic flux through a surface.</figcaption></figure>
+<div class="formula"><span class="math">Φ = B A cosθ</span><p><strong>Φ</strong> = magnetic flux<br><strong>B</strong> = magnetic field<br><strong>A</strong> = area<br><strong>θ</strong> = angle between magnetic field and area vector</p></div>
+<p>When a loop rotates, the angle changes. When the angle changes, the flux changes. This is why a rotating coil can generate voltage.</p>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 25</span>
+<h2>20. Faraday's law</h2>
+<p>Faraday's law connects changing flux with induced voltage.</p>
+<div class="formula"><span class="math">ε = − dΦ / dt</span><p><strong>ε</strong> = induced voltage<br><strong>Φ</strong> = magnetic flux<br><strong>dΦ/dt</strong> = how fast the flux changes</p></div>
+<div class="meaning">
+<p><strong>Simple meaning:</strong> if magnetic flux changes quickly, induced voltage is larger. If magnetic flux does not change, there is no induced voltage.</p>
+</div>
+<p>The minus sign shows the direction rule. Today, we only need the main idea: changing flux makes voltage.</p>
+</section>
+
+<section class="lesson-block" id="generator">
+<span class="slide-label">Slides 26–27</span>
+<h2>21. Generator principle</h2>
+<p>A generator uses Faraday's law. A coil rotates in a magnetic field. The magnetic flux through the coil changes. Voltage appears at the output.</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_infographic_diagram_on_a_white.png" alt="Rotating coil generator."><figcaption>Rotating coil generator.</figcaption></figure>
+<div class="formula"><span class="math">motion → changing flux → induced voltage → electricity</span></div>
+<p>A generator changes mechanical motion into electrical energy.</p>
+<figure class="figure"><img src="assets/lecture7/motor_vs_generator_comparison_infographic.png" alt="Motor vs generator: opposite energy directions."><figcaption>Motor vs generator: opposite energy directions.</figcaption></figure>
+</section>
+
+<section class="lesson-block" id="tesla">
+<span class="slide-label">Slides 28–30</span>
+<h2>22. Tesla, AC and rotating magnetic field</h2>
+<p>Nikola Tesla is important here not as a myth, but as an engineer and inventor connected with AC power and rotating magnetic fields.</p>
+<p>Three-phase AC currents can feed three coils placed around a stator. The currents are shifted in time. The result is a magnetic field that rotates smoothly.</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_infographic_slide_style_imag.png" alt="Tesla and the rotating magnetic field."><figcaption>Tesla and the rotating magnetic field.</figcaption></figure>
+<div class="formula"><span class="math">three-phase AC → rotating magnetic field → AC motor</span></div>
+<p>This idea made many practical AC motors possible. AC motors are used in industry, buildings, pumps, fans, and many power systems.</p>
+<figure class="figure"><img src="assets/lecture7/comparing_dc_and_ac_power_systems.png" alt="DC and AC current comparison."><figcaption>DC and AC current comparison.</figcaption></figure>
+</section>
+
+<section class="lesson-block" id="applications">
+<span class="slide-label">Slide 31</span>
+<h2>23. Applications in hospitals and IT</h2>
+<p>This lecture is not only theory. Motors and generators are everywhere in real medical and IT systems.</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_infographic_slide_poster_style_image_about.png" alt="Applications in hospitals and IT."><figcaption>Applications in hospitals and IT.</figcaption></figure>
+<ul class="clean-list">
+<li>Infusion pumps use motors to move liquid carefully.</li>
+<li>Hospital beds use motors or actuators to change position.</li>
+<li>Printers use motors to move paper and rollers.</li>
+<li>Cooling fans use motors to remove heat from electronics.</li>
+<li>Automatic doors use motors for safe movement.</li>
+<li>Backup power systems use generators to keep important equipment running.</li>
+</ul>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Practical thinking</span>
+<h2>24. Troubleshooting idea</h2>
+<p>If a motor or electric device does not work, do not panic. Think step by step.</p>
+<ol class="clean-list">
+<li>Is there power?</li>
+<li>Is the cable connected?</li>
+<li>Is the switch on?</li>
+<li>Is there a blown fuse or protection stop?</li>
+<li>Is the motor blocked?</li>
+<li>Is there overheating?</li>
+<li>Is there strange sound or vibration?</li>
+<li>If unsafe, stop and call a technician.</li>
+</ol>
+<p>This is useful for future work with hospital and IT equipment.</p>
+</section>
+
+<section class="lesson-block" id="practice">
+<span class="slide-label">Slides 32–33</span>
+<h2>25. Practice problems</h2>
+<p>Use the formulas. Work slowly. Write the formula first.</p>
+
+<div class="task"><h3>Problem 1 — Current</h3><p>Q = 10 C<br>t = 2 s<br>I = ?</p><details><summary>Show answer</summary><p>I = Q / t = 10 / 2 = <strong>5 A</strong></p></details></div>
+
+<div class="task"><h3>Problem 2 — Ohm's law</h3><p>I = 3 A<br>R = 4 Ω<br>V = ?</p><details><summary>Show answer</summary><p>V = I × R = 3 × 4 = <strong>12 V</strong></p></details></div>
+
+<div class="task"><h3>Problem 3 — Electrical power</h3><p>V = 12 V<br>I = 2 A<br>P = ?</p><details><summary>Show answer</summary><p>P = V × I = 12 × 2 = <strong>24 W</strong></p></details></div>
+
+<div class="task"><h3>Problem 4 — Concept</h3><p>Same current direction in two parallel wires: attract or repel?</p><details><summary>Show answer</summary><p><strong>Attract.</strong> Same current direction in parallel wires gives attraction.</p></details></div>
+
+<div class="task"><h3>Problem 5 — Concept</h3><p>What does the commutator do in a DC motor?</p><details><summary>Show answer</summary><p>It reverses the current every half turn, so the torque keeps the same rotation direction.</p></details></div>
+
+<div class="task"><h3>Problem 6 — Concept</h3><p>What must change for Faraday induction to happen?</p><details><summary>Show answer</summary><p><strong>Magnetic flux must change.</strong> Changing flux induces voltage.</p></details></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 34</span>
+<h2>26. Summary</h2>
+<ul class="clean-list">
+<li>Charge creates electric field.</li>
+<li>Voltage pushes. Current flows. Resistance opposes current.</li>
+<li>Current creates magnetic field.</li>
+<li>A current-carrying conductor in a magnetic field feels force.</li>
+<li>A current loop feels torque.</li>
+<li>A commutator keeps a DC motor turning in the same direction.</li>
+<li>Many coils make smoother rotation.</li>
+<li>Changing magnetic flux induces voltage.</li>
+<li>Motor: electricity → motion.</li>
+<li>Generator: motion → electricity.</li>
+<li>Tesla's rotating magnetic field idea is important for AC motors.</li>
+</ul>
+<p class="lead">The big engineering idea is simple: electricity and magnetism can create controlled motion, and controlled motion can create electricity.</p>
+</section>
+
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 7 · English web lesson.</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>

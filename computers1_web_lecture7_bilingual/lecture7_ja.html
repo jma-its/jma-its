@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第7回 — 電気・磁気・モーター・発電機</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="kicker">Computers 1 · 医療IT学生のための工学基礎</div>
+    <h1>第7回<br>電気・磁気・モーター・発電機</h1>
+    <p class="subtitle">電荷はどのように運動を生み、運動はどのように電気を生むのか。</p>
+    <div class="header-actions">
+      <a class="button" href="#start">授業を始める</a>
+      <a class="button secondary" href="lecture7_en.html">English version</a>
+      <a class="button secondary" href="#practice">練習問題</a>
+      <a class="button secondary" href="downloads/computers1_lecture7_with_images_large_fonts.pptx">スライドをダウンロード</a>
+      <a class="button secondary" href="downloads/computers1_lecture7_with_images_large_fonts.pdf">PDFをダウンロード</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="overview card" id="start">
+<p class="lead">この授業では、電動機（モーター）と発電機の基本原理を学びます。電荷から始め、電流、磁場、力、トルク、モーター、ファラデーの電磁誘導、発電機、そしてテスラの回転磁場へと進みます。</p>
+<figure class="figure"><img src="assets/lecture7/electricity_flow_through_machines_diagram.png" alt="学習の流れ"><figcaption>学習の流れ：電荷 → 磁気 → ループ → モーター → 発電機。</figcaption></figure>
+<div class="grid">
+  <div class="small-card"><h3>問い 1</h3><p>電気はどのように運動を作るのか。</p></div>
+  <div class="small-card"><h3>問い 2</h3><p>運動はどのように電気を作るのか。</p></div>
+  <div class="small-card"><h3>主な流れ</h3><p>電荷 → 電流 → 磁場 → 力 → 回転</p></div>
+</div>
+</section>
+
+<section class="toc card">
+<h2>授業の流れ</h2>
+<ol>
+<li><a href="#charge">電荷</a></li><li><a href="#field">電場</a></li><li><a href="#circuit">電圧・電流・抵抗</a></li><li><a href="#magnetism">磁気</a></li><li><a href="#current-field">電流が磁場を作る</a></li><li><a href="#parallel-wires">2本の導線</a></li><li><a href="#force">磁場中の力</a></li><li><a href="#loop">電流ループ</a></li><li><a href="#commutator">整流子</a></li><li><a href="#motor">DCモーター</a></li><li><a href="#faraday">ファラデー</a></li><li><a href="#generator">発電機</a></li><li><a href="#tesla">テスラとAC</a></li><li><a href="#applications">応用例</a></li><li><a href="#practice">練習問題</a></li>
+</ol>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Vocabulary</span>
+<h2>重要語句</h2>
+<p>この授業で何度も使う基本用語です。</p>
+<table class="keywords">
+<tr><th>用語</th><th>簡単な意味</th></tr>
+<tr><td>charge / 電荷</td><td>物質が持つ電気的な性質。正または負がある。</td></tr>
+<tr><td>field / 場</td><td>力が働く見えない空間。</td></tr>
+<tr><td>voltage / 電圧</td><td>電気的な押す力。</td></tr>
+<tr><td>current / 電流</td><td>電荷の流れ。</td></tr>
+<tr><td>resistance / 抵抗</td><td>電流の流れにくさ。</td></tr>
+<tr><td>magnetic field / 磁場</td><td>磁気的な力が働く空間。</td></tr>
+<tr><td>torque / トルク</td><td>物体を回そうとする力。</td></tr>
+<tr><td>commutator / 整流子</td><td>DCモーターで電流の向きを切り替える接点。</td></tr>
+<tr><td>induction / 誘導</td><td>磁束の変化によって電圧が生じること。</td></tr>
+</table>
+</section>
+
+<section class="lesson-block" id="charge">
+<span class="slide-label">Slide 3</span>
+<h2>1. 電荷</h2>
+<p>電気は電荷から始まります。電荷には2種類あります。正の電荷と負の電荷です。</p>
+<p>同じ種類の電荷は反発します。つまり互いに離れようとします。異なる種類の電荷は引き合います。つまり互いに近づこうとします。</p>
+<figure class="figure"><img src="assets/lecture7/electrostatic_charge_interactions_explained.png" alt="電荷"><figcaption>電荷の基本：異なる電荷は引き合い、同じ電荷は反発する。</figcaption></figure>
+<div class="formula"><span class="math">同じ電荷 → 反発<br>異なる電荷 → 引力</span></div>
+<p>これは最初の基本ルールです。後で電場、電圧、電流を考えるときにも、この考え方が土台になります。</p>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 4</span>
+<h2>2. クーロンの法則</h2>
+<p>クーロンの法則は、2つの電荷の間に働く力を表します。</p>
+<div class="formula"><span class="math">F = k q₁ q₂ / r²</span><p><strong>F</strong> = 電気的な力<br><strong>q₁, q₂</strong> = 電荷<br><strong>r</strong> = 電荷間の距離<br><strong>k</strong> = 定数</p></div>
+<div class="meaning"><h3>意味</h3><ul class="clean-list"><li>電荷が大きいほど、力は大きくなります。</li><li>距離が大きいほど、力は小さくなります。</li><li>距離の2乗に関係して力が変わります。</li></ul></div>
+<p>この授業では、難しいクーロン計算を主目的にはしません。重要なのは、電荷は離れた場所にも力を及ぼすことができる、という考え方です。</p>
+</section>
+
+<section class="lesson-block" id="field">
+<span class="slide-label">Slide 5</span>
+<h2>3. 電場</h2>
+<p>電荷は、そのまわりに電場を作ります。場とは、力が働く見えない空間です。場そのものは見えませんが、その効果は観察できます。</p>
+<p>電場は、他の電荷を押したり引いたりします。電場の線は、正の試験電荷に働く力の向きを表します。</p>
+<figure class="figure"><img src="assets/lecture7/electric_field_lines_and_charge_interactions.png" alt="電場"><figcaption>正電荷と負電荷のまわりの電場の線。</figcaption></figure>
+<div class="formula"><span class="math">E = F / q</span><p><strong>E</strong> = 電場<br><strong>F</strong> = 力<br><strong>q</strong> = 試験電荷</p></div>
+<div class="meaning"><p><strong>簡単に言うと：</strong>電荷が電場を作り、電場が他の電荷に力を与えます。</p></div>
+</section>
+
+<section class="lesson-block" id="circuit">
+<span class="slide-label">Slides 6–7</span>
+<h2>4. 電圧・電流・抵抗</h2>
+<p>ここから、静電気から電気回路へ進みます。静電気では電荷が止まっている場合があります。回路では電荷が動きます。動く電荷が電流です。</p>
+<figure class="figure"><img src="assets/lecture7/understanding_a_simple_electric_circuit.png" alt="簡単な回路"><figcaption>簡単な回路：電圧が押し、電流が流れ、抵抗が妨げる。</figcaption></figure>
+<div class="three-col"><div class="formula"><span class="math">Voltage</span><p>電圧は、電気的な押す力です。電池や電源が電圧を与えます。</p></div><div class="formula"><span class="math">Current</span><p>電流は、導線の中を流れる電荷の流れです。</p></div><div class="formula"><span class="math">Resistance</span><p>抵抗は、電流の流れを妨げる性質です。</p></div></div>
+<div class="meaning"><p><strong>覚え方：</strong>電圧は押す。電流は流れる。抵抗は妨げる。</p></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 7</span>
+<h2>5. 基本的な電気の公式</h2>
+<p>この授業で計算に使う主な公式です。</p>
+<div class="formula"><span class="math">I = Q / t</span><p>電流 = 電荷 / 時間。</p></div>
+<div class="formula"><span class="math">V = I R</span><p>オームの法則。電圧 = 電流 × 抵抗。</p></div>
+<div class="formula"><span class="math">P = V I</span><p>電力 = 電圧 × 電流。</p></div>
+<div class="example"><h3>例</h3><p>電圧 = 12 V<br>電流 = 2 A</p><p><strong>P = V × I = 12 × 2 = 24 W</strong></p></div>
+<div class="task"><h3>練習</h3><p>電流 = 3 A<br>抵抗 = 4 Ω<br>電圧 = ?</p><details><summary>答えを見る</summary><p>V = I × R = 3 × 4 = <strong>12 V</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="magnetism">
+<span class="slide-label">Slide 8</span>
+<h2>6. 磁石と磁場</h2>
+<p>磁石には2つの極があります。N極とS極です。同じ磁極は反発し、異なる磁極は引き合います。</p>
+<p>磁石は、そのまわりに磁場を作ります。磁場の線は、磁場の向きを表します。磁石の外側では、磁場の線はN極からS極へ向かいます。</p>
+<figure class="figure"><img src="assets/lecture7/magnetic_field_around_a_bar_magnet.png" alt="磁場"><figcaption>棒磁石のまわりの磁場の線。</figcaption></figure>
+<div class="meaning"><p>電動機を理解するには磁場が必要です。磁場なしでは、なぜモーターが回るのかを説明できません。</p></div>
+</section>
+
+<section class="lesson-block" id="current-field">
+<span class="slide-label">Slide 9</span>
+<h2>7. 電流が磁場を作る</h2>
+<p>これは、この授業の中でも特に重要な考え方です。</p>
+<p>導線に電流が流れると、その導線のまわりに磁場ができます。磁場の線は、導線のまわりを円形に取り囲みます。</p>
+<figure class="figure"><img src="assets/lecture7/magnetic_field_around_a_current_carrying_wire.png" alt="電流と磁場"><figcaption>電流が流れる導線のまわりには円形の磁場ができる。</figcaption></figure>
+<div class="formula"><span class="math">電流 → 磁場</span></div>
+<p>電流が大きくなると、磁場も強くなります。電流の向きが変わると、磁場の向きも変わります。</p>
+</section>
+
+<section class="lesson-block" id="parallel-wires">
+<span class="slide-label">Slide 10</span>
+<h2>8. 2本の平行な導線</h2>
+<p>電流が流れる2本の導線は、互いに押したり引いたりします。これは静電気の力ではなく、電流によって生じる磁気的な力です。</p>
+<figure class="figure"><img src="assets/lecture7/forces_on_parallel_currents_in_wires.png" alt="平行導線"><figcaption>平行な2本の導線に働く力。</figcaption></figure>
+<div class="formula"><span class="math">同じ向きの電流 → 引き合う<br>反対向きの電流 → 反発する</span></div>
+<p>モーターには多くの導体やコイルがあります。導体の電流が磁場を作り、その磁場が力を作ります。</p>
+</section>
+
+<section class="lesson-block" id="force">
+<span class="slide-label">Slide 11</span>
+<h2>9. 動く電荷に働く力</h2>
+<p>磁場の中を動く電荷には力が働きます。その力の向きは、速度の向きにも磁場の向きにも垂直です。</p>
+<figure class="figure"><img src="assets/lecture7/magnetic_force_on_a_charged_particle.png" alt="ローレンツ力"><figcaption>磁場中を動く電荷に働く力。</figcaption></figure>
+<div class="formula"><span class="math">F = q v B sinθ</span><p><strong>q</strong> = 電荷<br><strong>v</strong> = 速度<br><strong>B</strong> = 磁場<br><strong>θ</strong> = 速度と磁場の間の角度</p></div>
+<div class="meaning"><p><strong>意味：</strong>電荷が磁場と平行に動くと力はゼロです。磁場に対して垂直に動くと力は最大になります。</p></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 12</span>
+<h2>10. 電流が流れる導体に働く力</h2>
+<p>電流が流れる導線の中には、動いている電荷がたくさんあります。したがって、磁場中の電流が流れる導体にも力が働きます。</p>
+<figure class="figure"><img src="assets/lecture7/force_on_a_current_carrying_conductor.png" alt="導体に働く力"><figcaption>磁場中の電流が流れる導体に働く力。</figcaption></figure>
+<div class="formula"><span class="math">F = B I l sinθ</span><p><strong>B</strong> = 磁場<br><strong>I</strong> = 電流<br><strong>l</strong> = 磁場中にある導線の長さ<br><strong>θ</strong> = 電流の向きと磁場の向きの角度</p></div>
+<p>これは、単純な電動機を理解するための中心的な公式です。</p>
+<div class="task"><h3>確認</h3><p>力が最大になるのはどのような場合ですか。</p><details><summary>答えを見る</summary><p>電流の向きが磁場に対して垂直なときです。このとき sinθ = 1 になります。</p></details></div>
+</section>
+
+<section class="lesson-block" id="loop">
+<span class="slide-label">Slides 14–15</span>
+<h2>11. 磁場中の電流ループ</h2>
+<p>ここから、モーターの考え方を段階的に作ります。</p>
+<p>長方形のループをN極とS極の間に置きます。ループには電流が流れます。磁場は、ループの左右の縦部分に力を与えます。</p>
+<p>一方には上向きの力が働き、もう一方には下向きの力が働きます。この反対向きの力が、回転させる効果を作ります。この回そうとする効果をトルクと呼びます。</p>
+<figure class="figure"><img src="assets/lecture7/magnetic_field_and_current_loop_forces.png" alt="電流ループ"><figcaption>磁場中の電流ループには反対向きの力とトルクが働く。</figcaption></figure>
+<div class="formula"><span class="math">反対向きの力 → トルク → 回転</span></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 15</span>
+<h2>12. ループに働くトルク</h2>
+<p>トルクとは、物体を回そうとする力です。磁場中の電流ループにはトルクが働きます。</p>
+<figure class="figure"><img src="assets/lecture7/torque_on_a_current_loop.png" alt="トルク"><figcaption>電流ループに働くトルク。</figcaption></figure>
+<div class="formula"><span class="math">τ = N B I A sinθ</span><p><strong>τ</strong> = トルク<br><strong>N</strong> = 巻き数<br><strong>B</strong> = 磁場<br><strong>I</strong> = 電流<br><strong>A</strong> = ループの面積<br><strong>θ</strong> = 角度</p></div>
+<div class="meaning"><p><strong>意味：</strong>巻き数が多いほど、磁場が強いほど、電流が大きいほど、ループ面積が大きいほど、トルクは大きくなります。</p></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 16</span>
+<h2>13. なぜ単純なループは止まるのか</h2>
+<p>単純な電流ループだけでは、実用的なモーターにはなりません。ある位置ではトルクがゼロになります。この位置をデッドポイントと呼ぶことがあります。</p>
+<figure class="figure"><img src="assets/lecture7/understanding_why_a_loop_stops.png" alt="デッドポイント"><figcaption>単純なループにはトルクがゼロになる位置がある。</figcaption></figure>
+<p>何も変わらなければ、ループは止まるか、トルクの向きが不適切になります。そのため、電流を切り替える仕組みが必要になります。</p>
+<div class="formula"><span class="math">単純なループ + 切り替えなし → 連続回転しにくい</span></div>
+</section>
+
+<section class="lesson-block" id="commutator">
+<span class="slide-label">Slides 17–18</span>
+<h2>14. 整流子とブラシ</h2>
+<p>分割リング整流子は、この問題を解決します。整流子は半回転ごとに電流の向きを反転させます。</p>
+<p>ブラシは整流子に接触し、回転するローターを外部回路につなぎます。ブラシは固定され、整流子はコイルと一緒に回転します。</p>
+<figure class="figure"><img src="assets/lecture7/dc_motor_component_diagram_with_labels.png" alt="整流子"><figcaption>整流子とブラシ。</figcaption></figure>
+<div class="formula"><span class="math">整流子 = 自動的な電流切り替え装置</span></div>
+<p>適切なタイミングで電流が反転するため、トルクは同じ回転方向を助け続けます。</p>
+<figure class="figure"><img src="assets/lecture7/dc_motor_loop_current_reversal_diagram.png" alt="電流切り替え"><figcaption>接点の切り替えによって、半回転ごとに電流の向きが変わる。</figcaption></figure>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slides 19–20</span>
+<h2>15. 1つのループから複数のコイルへ</h2>
+<p>1つのループは説明には便利ですが、実際のモーターは1つのループだけでは作られません。</p>
+<p>実際のモーターでは、複数のコイルを使います。コイルが多いほど、回転が滑らかになり、トルクが安定し、性能がよくなります。</p>
+<figure class="figure"><img src="assets/lecture7/one_loop_to_many_coils_comparison.png" alt="複数コイル"><figcaption>1つのループから複数のコイルへ。</figcaption></figure>
+<figure class="figure"><img src="assets/lecture7/a_clean_technical_diagram_on_a_white_background_sh.png" alt="3つのコイル"><figcaption>120°間隔で配置された3つのコイル。</figcaption></figure>
+<div class="meaning"><p>120°間隔で配置された3つのコイルは、実際の回転機械や回転磁場の考え方へ進むために重要です。</p></div>
+</section>
+
+<section class="lesson-block" id="motor">
+<span class="slide-label">Slide 21</span>
+<h2>16. DCモーターの構造</h2>
+<p>ここまで来ると、DCモーターを「ブラックボックス」ではなく、理解できる機械として見ることができます。</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_technical_illustration_diagram.png" alt="DCモーター"><figcaption>DCモーターの断面図。</figcaption></figure>
+<ul class="clean-list"><li><strong>Stator / 固定子：</strong>固定された部分で、磁場を作ります。</li><li><strong>Rotor / 回転子：</strong>コイルを持ち、回転する部分です。</li><li><strong>Commutator / 整流子：</strong>電流の向きを切り替える接点です。</li><li><strong>Brushes / ブラシ：</strong>回転する整流子に電気をつなぐ接点です。</li><li><strong>Shaft / 軸：</strong>外部へ有用な回転を取り出す部分です。</li></ul>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 22</span>
+<h2>17. モーターのエネルギー変換</h2>
+<p>モーターは、電気エネルギーを機械的な運動に変えます。</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_infographic_slide_diagram_on_a.png" alt="モーターのエネルギー変換"><figcaption>DCモーターのエネルギー変換。</figcaption></figure>
+<div class="formula"><span class="math">電気 → 磁場 → 力 → トルク → 回転</span></div>
+<p>これが電動機の中心的な考え方です。病院やIT機器では、この原理によってファン、ポンプ、ベッド、ドアなどが動きます。</p>
+</section>
+
+<section class="lesson-block" id="faraday">
+<span class="slide-label">Slides 23–25</span>
+<h2>18. ファラデーの考え方</h2>
+<p>ここで逆の問いを考えます。</p>
+<p>モーターは電気を運動に変えます。では、運動から電気を作ることはできるでしょうか。</p>
+<p>ファラデーは、変化する磁場が電圧を作ることを示しました。より正確には、変化する磁束が電圧を誘導します。</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_physics_diagram_on_a_white_bac.png" alt="ファラデー"><figcaption>ファラデーの法則：磁束の変化が電圧を誘導する。</figcaption></figure>
+<div class="formula"><span class="math">磁束の変化 → 誘導電圧</span></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 24</span>
+<h2>19. 磁束</h2>
+<p>磁束とは、ある面またはループをどれだけの磁場が通過しているかを表します。</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_physics_infographic_on_a_white.png" alt="磁束"><figcaption>面を通過する磁束。</figcaption></figure>
+<div class="formula"><span class="math">Φ = B A cosθ</span><p><strong>Φ</strong> = 磁束<br><strong>B</strong> = 磁場<br><strong>A</strong> = 面積<br><strong>θ</strong> = 磁場と面積ベクトルの角度</p></div>
+<p>ループが回転すると、角度が変わります。角度が変わると、磁束が変わります。このため、回転するコイルは電圧を発生させることができます。</p>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 25</span>
+<h2>20. ファラデーの法則</h2>
+<p>ファラデーの法則は、磁束の変化と誘導電圧を結びつけます。</p>
+<div class="formula"><span class="math">ε = − dΦ / dt</span><p><strong>ε</strong> = 誘導電圧<br><strong>Φ</strong> = 磁束<br><strong>dΦ/dt</strong> = 磁束がどれだけ速く変化するか</p></div>
+<div class="meaning"><p><strong>簡単に言うと：</strong>磁束が速く変化すると、誘導電圧は大きくなります。磁束が変化しなければ、誘導電圧は生じません。</p></div>
+<p>マイナス符号は向きのルールを示します。この授業では、まず「磁束の変化が電圧を作る」という中心的な考え方を理解します。</p>
+</section>
+
+<section class="lesson-block" id="generator">
+<span class="slide-label">Slides 26–27</span>
+<h2>21. 発電機の原理</h2>
+<p>発電機はファラデーの法則を利用します。コイルが磁場の中で回転します。コイルを通る磁束が変化します。その結果、出力端子に電圧が現れます。</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_infographic_diagram_on_a_white.png" alt="発電機"><figcaption>回転コイル発電機。</figcaption></figure>
+<div class="formula"><span class="math">運動 → 磁束の変化 → 誘導電圧 → 電気</span></div>
+<p>発電機は、機械的な運動を電気エネルギーに変換します。</p>
+<figure class="figure"><img src="assets/lecture7/motor_vs_generator_comparison_infographic.png" alt="モーターと発電機"><figcaption>モーターと発電機：エネルギーの向きが逆。</figcaption></figure>
+</section>
+
+<section class="lesson-block" id="tesla">
+<span class="slide-label">Slides 28–30</span>
+<h2>22. テスラ、交流、回転磁場</h2>
+<p>ニコラ・テスラは、単なる伝説的人物ではなく、交流電力と回転磁場に関係する重要な技術者・発明家です。</p>
+<p>三相交流電流は、固定子のまわりに配置された3つのコイルに流すことができます。それぞれの電流は時間的にずれています。その結果、滑らかに回転する磁場ができます。</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_educational_infographic_slide_style_imag.png" alt="テスラ"><figcaption>テスラと回転磁場。</figcaption></figure>
+<div class="formula"><span class="math">三相交流 → 回転磁場 → ACモーター</span></div>
+<p>この考え方により、多くの実用的なACモーターが可能になりました。ACモーターは、産業、建物、ポンプ、ファン、電力システムなどで使われています。</p>
+<figure class="figure"><img src="assets/lecture7/comparing_dc_and_ac_power_systems.png" alt="DC AC"><figcaption>直流（DC）と交流（AC）の比較。</figcaption></figure>
+</section>
+
+<section class="lesson-block" id="applications">
+<span class="slide-label">Slide 31</span>
+<h2>23. 病院とITでの応用</h2>
+<p>この授業は理論だけではありません。モーターと発電機は、実際の医療機器やITシステムの中に多く使われています。</p>
+<figure class="figure"><img src="assets/lecture7/a_clean_infographic_slide_poster_style_image_about.png" alt="応用例"><figcaption>病院とITでの応用例。</figcaption></figure>
+<ul class="clean-list"><li>輸液ポンプは、液体を慎重に送るためにモーターを使います。</li><li>病院ベッドは、位置を変えるためにモーターやアクチュエーターを使います。</li><li>プリンターは、紙やローラーを動かすためにモーターを使います。</li><li>冷却ファンは、電子機器から熱を逃がすためにモーターを使います。</li><li>自動ドアは、安全に開閉するためにモーターを使います。</li><li>非常用電源システムは、重要な機器を動かし続けるために発電機を使います。</li></ul>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Practical thinking</span>
+<h2>24. トラブルシューティングの考え方</h2>
+<p>モーターや電気機器が動かないとき、すぐに慌てる必要はありません。段階的に考えます。</p>
+<ol class="clean-list"><li>電源はあるか。</li><li>ケーブルは接続されているか。</li><li>スイッチは入っているか。</li><li>ヒューズや保護機能が作動していないか。</li><li>モーターが機械的に止まっていないか。</li><li>過熱していないか。</li><li>異音や異常な振動はないか。</li><li>危険な場合は停止し、技術者に連絡する。</li></ol>
+<p>これは将来、病院やIT機器を扱うときに役立つ考え方です。</p>
+</section>
+
+<section class="lesson-block" id="practice">
+<span class="slide-label">Slides 32–33</span>
+<h2>25. 練習問題</h2>
+<p>公式を使いましょう。ゆっくり計算しましょう。まず公式を書きます。</p>
+<div class="task"><h3>問題1 — 電流</h3><p>Q = 10 C<br>t = 2 s<br>I = ?</p><details><summary>答えを見る</summary><p>I = Q / t = 10 / 2 = <strong>5 A</strong></p></details></div>
+<div class="task"><h3>問題2 — オームの法則</h3><p>I = 3 A<br>R = 4 Ω<br>V = ?</p><details><summary>答えを見る</summary><p>V = I × R = 3 × 4 = <strong>12 V</strong></p></details></div>
+<div class="task"><h3>問題3 — 電力</h3><p>V = 12 V<br>I = 2 A<br>P = ?</p><details><summary>答えを見る</summary><p>P = V × I = 12 × 2 = <strong>24 W</strong></p></details></div>
+<div class="task"><h3>問題4 — 概念確認</h3><p>同じ向きに電流が流れる2本の平行な導線は、引き合いますか、反発しますか。</p><details><summary>答えを見る</summary><p><strong>引き合います。</strong>同じ向きの電流が流れる平行導線は引き合います。</p></details></div>
+<div class="task"><h3>問題5 — 概念確認</h3><p>DCモーターで整流子は何をしますか。</p><details><summary>答えを見る</summary><p>半回転ごとに電流の向きを反転させ、トルクが同じ回転方向を助け続けるようにします。</p></details></div>
+<div class="task"><h3>問題6 — 概念確認</h3><p>ファラデーの電磁誘導が起こるためには、何が変化する必要がありますか。</p><details><summary>答えを見る</summary><p><strong>磁束が変化する必要があります。</strong>磁束の変化が誘導電圧を作ります。</p></details></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Slide 34</span>
+<h2>26. まとめ</h2>
+<ul class="clean-list"><li>電荷は電場を作ります。</li><li>電圧は押し、電流は流れ、抵抗は電流を妨げます。</li><li>電流は磁場を作ります。</li><li>磁場中の電流が流れる導体には力が働きます。</li><li>電流ループにはトルクが働きます。</li><li>整流子はDCモーターの回転を同じ方向に保ちます。</li><li>複数のコイルは回転を滑らかにします。</li><li>磁束の変化は電圧を誘導します。</li><li>モーター：電気 → 運動。</li><li>発電機：運動 → 電気。</li><li>テスラの回転磁場の考え方はACモーターに重要です。</li></ul>
+<p class="lead">大きな工学的考え方は単純です。電気と磁気は制御された運動を作ることができ、制御された運動は電気を作ることができます。</p>
+</section>
+
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 7 · Japanese web lesson.</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>
