@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第5回 — てこと単純機械</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="kicker">Computers 1 · 医療IT学生のための工学基礎</div>
+    <h1>第5回<br>てこと単純機械</h1>
+    <p class="subtitle">小さい力で重い物を動かすにはどうすればよいか。そして、なぜ病院の機器の中に単純機械がたくさんあるのか。</p>
+    <div class="header-actions">
+      <a class="button" href="#start">授業を始める</a>
+      <a class="button secondary" href="lecture5_en.html">English version</a>
+      <a class="button secondary" href="#practice">練習問題</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="overview card" id="start">
+<p class="lead">この授業では、てこの学習と単純機械の学習を一つにつなげます。単純機械はエネルギーを生み出すものではありません。力をより上手に使えるようにする仕組みです。小さい力で動かせることがありますが、その代わりにより長い距離を動かす必要があることが多いです。</p>
+<figure class="figure"><img src="assets/lecture5/lever_demonstration_with_book_and_pencil.png" alt="てこ：力点、支点、作用点。"><figcaption>てこ：力点、支点、作用点。</figcaption></figure>
+<div class="grid">
+  <div class="small-card"><h3>大きな問い</h3><p>どうすれば小さい力で重い物を動かせるのか。</p></div>
+  <div class="small-card"><h3>大切な原則</h3><p>何もないところから得をすることはできない。</p></div>
+  <div class="small-card"><h3>工学的な考え方</h3><p>力が小さくなれば、その分だけ距離が大きくなることが多い。</p></div>
+</div>
+</section>
+
+<section class="toc card">
+<h2>授業の流れ</h2>
+<ol>
+<li><a href="#review">復習：力・距離・仕事</a></li>
+<li><a href="#lever">てこの考え方</a></li>
+<li><a href="#formula">てこの公式</a></li>
+<li><a href="#classes">てこの3つの分類</a></li>
+<li><a href="#golden-rule">力学の黄金律</a></li>
+<li><a href="#wheel">車輪と車軸</a></li>
+<li><a href="#pulley">滑車</a></li>
+<li><a href="#ramp">斜面</a></li>
+<li><a href="#trig">簡単な三角比</a></li>
+<li><a href="#wedge">くさびと切る道具</a></li>
+<li><a href="#screw">ねじ</a></li>
+<li><a href="#hospital">病院とIT機器の例</a></li>
+<li><a href="#practice">練習問題</a></li>
+</ol>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Vocabulary</span>
+<h2>重要語句</h2>
+<p>まずは基本的な用語を確認します。</p>
+<table class="keywords">
+<tr><th>用語</th><th>簡単な意味</th></tr>
+<tr><td>force / 力</td><td>押す力または引く力</td></tr>
+<tr><td>load / 荷重</td><td>動かしたい物体や重さ</td></tr>
+<tr><td>effort / 力点</td><td>私たちが加える力</td></tr>
+<tr><td>fulcrum / 支点</td><td>てこが回る支えの点</td></tr>
+<tr><td>distance / 距離</td><td>どれだけ動いたか</td></tr>
+<tr><td>work / 仕事</td><td>力 × 距離</td></tr>
+<tr><td>mechanical advantage / 力の有利さ</td><td>機械がどれだけ力を助けるか</td></tr>
+<tr><td>friction / 摩擦</td><td>動きをじゃまする力</td></tr>
+<tr><td>inclined plane / 斜面</td><td>ランプや坂</td></tr>
+<tr><td>wedge / くさび</td><td>材料を分けるための、動く斜面</td></tr>
+<tr><td>screw / ねじ</td><td>円柱のまわりに巻かれた斜面</td></tr>
+</table>
+</section>
+
+<section class="lesson-block" id="review">
+<span class="slide-label">Part 1</span>
+<h2>1. 復習：力・距離・仕事</h2>
+<p>単純機械を学ぶ前に、3つの基本を思い出します。</p>
+<p>力は押す力または引く力です。距離は、どれだけ動いたかです。仕事は、力によって物体が動くことです。</p>
+<div class="formula"><span class="math">W = F × s</span><p><strong>W</strong> = 仕事（J）<br><strong>F</strong> = 力（N）<br><strong>s</strong> = 距離（m）</p></div>
+<p>壁を押しても壁が動かなければ、力は使っていますが、有用な機械的仕事はしていません。病院のベッドを押してベッドが動けば、仕事をしたことになります。</p>
+<div class="example"><h3>例</h3><p>力 = 50 N<br>距離 = 4 m</p><p><strong>W = 50 × 4 = 200 J</strong></p></div>
+</section>
+
+<section class="lesson-block" id="lever">
+<span class="slide-label">Part 2</span>
+<h2>2. てこの考え方</h2>
+<p>てこは、もっとも古く、もっとも重要な単純機械のひとつです。</p>
+<p>てこには3つの要素があります。力点、荷重点、支点です。力点は私たちが力を加える場所です。荷重点は動かしたい物体がある場所です。支点は回転の中心です。</p>
+<figure class="figure"><img src="assets/lecture5/lever_demonstration_with_book_and_pencil.png" alt="てこ：力点、支点、作用点。"><figcaption>てこ：力点、支点、作用点。</figcaption></figure>
+<div class="meaning">
+<p><strong>中心となる考え方：</strong>支点から遠い場所で力を加えると、小さい力でも大きい荷重を動かせることがあります。</p>
+</div>
+<p>だから長い柄は役に立ちます。長いレンチ、バール、はさみ、ペンチ、多くの医療用具は、この考え方を使っています。</p>
+</section>
+
+<section class="lesson-block" id="formula">
+<span class="slide-label">Part 3</span>
+<h2>3. てこの公式</h2>
+<p>てこはトルクの考え方で説明できます。トルクとは回転させる効果です。</p>
+<p>単純なつり合いでは、片側の回転効果と反対側の回転効果が等しくなります。</p>
+<figure class="figure"><img src="assets/lecture5/lever_worksheet_for_students.png" alt="てこがつり合うとき、両側の『力 × 距離』が等しくなる。"><figcaption>てこがつり合うとき、両側の『力 × 距離』が等しくなる。</figcaption></figure>
+<div class="formula"><span class="math">F₁ × d₁ = F₂ × d₂</span><p><strong>F₁</strong> = 力点の力<br><strong>d₁</strong> = 支点から力点までの距離<br><strong>F₂</strong> = 荷重の力<br><strong>d₂</strong> = 支点から荷重点までの距離</p></div>
+<div class="meaning">
+<p><strong>簡単に言うと：</strong>小さい力でも、支点から十分に遠い場所で加えれば、大きい荷重とつり合うことができます。</p>
+</div>
+<div class="example"><h3>例</h3><p>力点までの距離 = 2 m<br>荷重点までの距離 = 0.5 m<br>荷重 = 100 N</p><p>F₁ × 2 = 100 × 0.5<br>F₁ × 2 = 50<br><strong>F₁ = 25 N</strong></p></div>
+<div class="task"><h3>練習</h3><p>力点までの距離 = 3 m<br>荷重点までの距離 = 1 m<br>荷重 = 90 N<br>力点の力 = ?</p><details><summary>答えを見る</summary><p>F₁ × 3 = 90 × 1<br>F₁ = 90 / 3 = <strong>30 N</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="classes">
+<span class="slide-label">Part 4</span>
+<h2>4. てこの3つの分類</h2>
+<p>てこは、支点、力点、荷重点の位置によって分類できます。</p>
+<div class="three-col">
+<div class="formula"><span class="math">第1種てこ</span><p>支点が真ん中。<br>例：シーソー、はさみ。</p></div>
+<div class="formula"><span class="math">第2種てこ</span><p>荷重点が真ん中。<br>例：一輪車。</p></div>
+<div class="formula"><span class="math">第3種てこ</span><p>力点が真ん中。<br>例：ピンセット、人の腕。</p></div>
+</div>
+<p>暗記しすぎる必要はありません。大事なのは、支点、力点、荷重点を見つけられることです。</p>
+<div class="task"><h3>教室活動</h3><p>はさみ、ピンセット、ドアハンドルを見て、支点、力点、荷重点を指さしてみましょう。</p></div>
+</section>
+
+<section class="lesson-block" id="golden-rule">
+<span class="slide-label">Part 5</span>
+<h2>5. 力学の黄金律</h2>
+<p>これは単純機械で最も重要なルールです。</p>
+<div class="formula"><span class="math">小さい力 → 長い距離</span><p>必要な力を小さくできても、その代わりに長い距離を動かす必要があることが多いです。</p></div>
+<p>機械はエネルギーを生み出しません。力と距離の使い方を変えるだけです。</p>
+<div class="warning"><p><strong>魔法ではありません：</strong>てこで小さい力を使えるなら、その代わりにあなたの手は、荷重よりも長い距離を動くことが多いです。</p></div>
+<p>この考え方は、てこ、車輪と車軸、滑車、斜面、くさび、ねじのすべてに共通しています。</p>
+</section>
+
+<section class="lesson-block" id="wheel">
+<span class="slide-label">Part 6</span>
+<h2>6. 車輪と車軸</h2>
+<p>車輪と車軸は、2つの意味で動きを助けます。</p>
+<p>第一に、車輪はすべり摩擦を減らします。引きずるより、転がす方がふつうは楽です。だからベッド、カート、椅子、機器の台には車輪があります。</p>
+<p>第二に、大きい車輪と小さい車軸の組み合わせは、回転するてこのように働きます。</p>
+<figure class="figure"><img src="assets/lecture5/wheeled_objects_in_everyday_life.png" alt="車輪と車軸は摩擦を減らし、移動を助ける。"><figcaption>車輪と車軸は摩擦を減らし、移動を助ける。</figcaption></figure>
+<div class="formula"><span class="math">車輪半径 / 車軸半径 = 力の有利さ</span></div>
+<div class="meaning">
+<p><strong>簡単に言うと：</strong>大きいハンドルや車輪は回しやすくなりますが、そのぶん手はより長い道を動きます。</p>
+</div>
+<p>病院の例：車輪付きベッドは、車輪のないベッドより動かしやすいです。ただし、車輪は汚れ、損傷、ブレーキの状態を確認しなければなりません。</p>
+</section>
+
+<section class="lesson-block" id="pulley">
+<span class="slide-label">Part 7</span>
+<h2>7. 滑車</h2>
+<p>滑車は、ロープやベルトをかけた車輪です。滑車は力の向きを変えることができます。複数の滑車を使うと、荷重を持ち上げるために必要な力を小さくすることもできます。</p>
+
+<div class="formula"><span class="math">支えるロープの本数が多い → 必要な力が小さい</span></div>
+<p>しかし黄金律はここでも同じです。必要な力が小さくなるなら、その分だけより長いロープを引く必要があります。</p>
+<div class="example"><h3>簡単な例</h3><p>もし2本のロープが荷重を支えているなら、理想的には必要な力は荷重の半分くらいになります。実際には摩擦があるので少し不利になります。</p></div>
+<p>病院の例：患者リフトや持ち上げ装置には、滑車に近い考え方が使われます。</p>
+</section>
+
+<section class="lesson-block" id="ramp">
+<span class="slide-label">Part 8</span>
+<h2>8. 斜面</h2>
+<p>斜面はランプや坂です。</p>
+<p>物体をまっすぐ上に持ち上げる代わりに、長い道に沿って押したり引いたりします。必要な力は小さくできますが、動く距離は長くなります。</p>
+<figure class="figure"><img src="assets/lecture5/wheelchair_ramp_educational_guide.png" alt="斜面：長い距離を使って、より小さい力で動かす。"><figcaption>斜面：長い距離を使って、より小さい力で動かす。</figcaption></figure>
+<div class="formula"><span class="math">小さい力 + 長い距離</span></div>
+<p>これは車いす、病院カート、配達台車、機器の移動にとても役立ちます。</p>
+<div class="meaning">
+<p>急な斜面ほど大きい力が必要です。ゆるやかな斜面ほど必要な力は小さくなりますが、斜面は長くなります。</p>
+</div>
+</section>
+
+<section class="lesson-block" id="trig">
+<span class="slide-label">Part 9</span>
+<h2>9. 斜面と簡単な三角比</h2>
+<p>斜面は三角比ともつながります。皆さんは sine を学びました。ここではそれが実際の工学でどう役立つかを見ます。</p>
+<figure class="figure"><img src="assets/lecture5/comparing_ramp_angles_and_effort.png" alt="斜面と簡単な三角比。"><figcaption>斜面と簡単な三角比。</figcaption></figure>
+<div class="formula"><span class="math">F<sub>along ramp</sub> = W × sinθ</span><p><strong>W</strong> = 重さ<br><strong>θ</strong> = 斜面の角度</p></div>
+<p>角度が小さいと、sinθ も小さくなります。だから斜面に沿って必要な力も小さくなります。角度が大きいと、sinθ は大きくなり、斜面はより大変になります。</p>
+<div class="example"><h3>例</h3><p>重さ = 100 N<br>θ = 30°<br>sin30° = 0.5</p><p><strong>F = 100 × 0.5 = 50 N</strong></p></div>
+<div class="task"><h3>練習</h3><p>重さ = 200 N<br>θ = 30°<br>sin30° = 0.5<br>斜面に沿う力 = ?</p><details><summary>答えを見る</summary><p>F = 200 × 0.5 = <strong>100 N</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="wedge">
+<span class="slide-label">Part 10</span>
+<h2>10. くさび</h2>
+<p>くさびは、動く斜面と考えることができます。</p>
+<p>くさびを前へ押すと、材料を左右に押し分けます。これによって、割る、切る、分けることができます。</p>
+<figure class="figure"><img src="assets/lecture5/wedge_splitting_material_diagram.png" alt="くさび：動く斜面として材料を分ける。"><figcaption>くさび：動く斜面として材料を分ける。</figcaption></figure>
+<div class="formula"><span class="math">前へ押す → 横へ力が働く</span></div>
+<p>例：ナイフ、メス、針、斧、のみ、はさみの刃。</p>
+<div class="meaning">
+<p>鋭いくさびは、小さい力で入りやすいですが、その代わりに弱くて壊れやすいことがあります。ここでも工学ではバランスが必要です。</p>
+</div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Part 11</span>
+<h2>11. 切る道具：メス・針・はさみ</h2>
+<p>医療用具には単純機械の考え方がたくさん使われています。</p>
+<div class="two-col">
+<div>
+<figure class="figure"><img src="assets/lecture5/scalpel_as_a_wedge_tool.png" alt="メスの刃はくさびとして働く。"><figcaption>メスの刃はくさびとして働く。</figcaption></figure>
+<p>メスの刃はくさびです。前へ押す力を、切り開く力に変えます。</p>
+</div>
+<div>
+<figure class="figure"><img src="assets/lecture5/needle_tip_as_a_wedge_action.png" alt="針先は小さなくさびとして働く。"><figcaption>針先は小さなくさびとして働く。</figcaption></figure>
+<p>針先も小さなくさびです。小さい力で組織に入るために、十分に鋭くなければなりません。</p>
+</div>
+</div>
+<figure class="figure"><img src="assets/lecture5/scissors_mechanics_an_educational_diagram.png" alt="はさみはてことくさびを組み合わせている。"><figcaption>はさみはてことくさびを組み合わせている。</figcaption></figure>
+<p>はさみは、もっと複雑です。持ち手の部分はてこで、刃の部分はくさびです。単純機械が組み合わさった良い例です。</p>
+</section>
+
+<section class="lesson-block" id="screw">
+<span class="slide-label">Part 12</span>
+<h2>12. ねじ</h2>
+<p>ねじは、円柱のまわりに巻かれた斜面です。</p>
+<p>ねじを回すと、ねじ山が材料の中へ前進します。つまり、回転運動を前進運動に変えます。</p>
+<figure class="figure"><img src="assets/lecture5/understanding_screw_threads_and_ramps.png" alt="ねじ山：円柱のまわりに巻かれた斜面。"><figcaption>ねじ山：円柱のまわりに巻かれた斜面。</figcaption></figure>
+<div class="formula"><span class="math">回転 → 前進運動</span></div>
+<p>ねじは釘より時間がかかりますが、ねじ山が材料をつかむので、より強く固定できることが多いです。</p>
+<figure class="figure"><img src="assets/lecture5/nail_vs_screw_comparison_chart.png" alt="釘はまっすぐ入る。ねじは回って入る。"><figcaption>釘はまっすぐ入る。ねじは回って入る。</figcaption></figure>
+<div class="meaning">
+<p><strong>釘：</strong>まっすぐ入る。<br><strong>ねじ：</strong>回りながら入り、つかむ。</p>
+</div>
+<p>ITの例：コンピュータや医療機器には多くのねじがあります。ねじのおかげで、組み立て、分解、修理、交換ができます。</p>
+</section>
+
+<section class="lesson-block" id="hospital">
+<span class="slide-label">Part 13</span>
+<h2>13. 病院とIT機器の中の単純機械</h2>
+<p>単純機械は古い技術だけではありません。現代の機器の中にも入っています。</p>
+<figure class="figure"><img src="assets/lecture5/simple_machines_in_hospital_equipment.png" alt="病院やIT機器の中の単純機械。"><figcaption>病院やIT機器の中の単純機械。</figcaption></figure>
+<ul class="clean-list">
+<li>病院ベッドには、車輪、ねじ、てこ、リンク機構があります。</li>
+<li>患者リフトには、滑車やてこの考え方があります。</li>
+<li>はさみ、クランプ、メス、針には、くさびやてこが使われます。</li>
+<li>プリンターには、ローラー、車輪、ねじなどがあります。</li>
+<li>古いコンピュータや医療機器には、ねじ、ヒンジ、ファン、スライダーがあります。</li>
+</ul>
+<p>医療ITの仕事では、これが大切です。単純な機構を理解していれば、古い機器もそれほど怖くなくなります。</p>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Class activities</span>
+<h2>14. 教室活動</h2>
+<div class="task">
+<h3>活動1 — 人間てこモデル</h3>
+<p>3人の学生で、てこを表してみます。1人は支点、1人は力点、1人は荷重です。力点を支点に近づけたり、遠ざけたりして、いつ楽になるかを考えます。</p>
+</div>
+<div class="task">
+<h3>活動2 — 単純機械さがし</h3>
+<p>教室の中を見回して、車輪、ねじ、ヒンジ、ハンドル、斜面、くさび、てこを探します。1つ選んで絵を描き、ラベルを付けます。</p>
+</div>
+<div class="task">
+<h3>活動3 — 道具の探偵</h3>
+<p>はさみ、ペン、ねじ、カッターの写真を見て、それがてこ、くさび、ねじ、車輪のどれか、または複数かを考えます。</p>
+</div>
+</section>
+
+<section class="lesson-block" id="practice">
+<span class="slide-label">Practice</span>
+<h2>15. 練習問題</h2>
+<p>電卓を使ってよいです。まず公式を書いて、ゆっくり考えましょう。</p>
+
+<div class="task"><h3>問題1 — 仕事</h3><p>力 = 30 N<br>距離 = 5 m<br>仕事 = ?</p><details><summary>答えを見る</summary><p>W = F × s = 30 × 5 = <strong>150 J</strong></p></details></div>
+
+<div class="task"><h3>問題2 — てこ</h3><p>力点までの距離 = 2 m<br>荷重点までの距離 = 0.5 m<br>荷重 = 80 N<br>力点の力 = ?</p><details><summary>答えを見る</summary><p>F₁ × 2 = 80 × 0.5<br>F₁ × 2 = 40<br>F₁ = <strong>20 N</strong></p></details></div>
+
+<div class="task"><h3>問題3 — てこ</h3><p>力点の力 = 40 N<br>力点までの距離 = 3 m<br>荷重点までの距離 = 1 m<br>荷重 = ?</p><details><summary>答えを見る</summary><p>40 × 3 = F₂ × 1<br>120 = F₂<br>荷重 = <strong>120 N</strong></p></details></div>
+
+<div class="task"><h3>問題4 — 斜面と sine</h3><p>重さ = 300 N<br>θ = 30°<br>sin30° = 0.5<br>斜面に沿う力 = ?</p><details><summary>答えを見る</summary><p>F = W × sinθ = 300 × 0.5 = <strong>150 N</strong></p></details></div>
+
+<div class="task"><h3>問題5 — 概念確認</h3><p>ねじは何回も回して材料の中へ進みます。これは「タダで得をしている」ことですか。</p><details><summary>答えを見る</summary><p>いいえ。ねじは、小さい力を長い道のりで使っています。これは力学の黄金律に従っています。</p></details></div>
+</section>
+
+<section class="lesson-block">
+<span class="slide-label">Summary</span>
+<h2>16. まとめ</h2>
+<ul class="clean-list">
+<li>単純機械は、力をより上手に使うための仕組みです。</li>
+<li>エネルギーを生み出すわけではありません。</li>
+<li>てこは、支点からの距離を使って力を変えます。</li>
+<li>てこの公式：F₁ × d₁ = F₂ × d₂。</li>
+<li>黄金律：小さい力を使えるなら、その代わりに距離が大きくなることが多い。</li>
+<li>車輪と車軸は、摩擦を減らし、動きを助けます。</li>
+<li>滑車は力の向きを変え、必要な力を小さくできることがあります。</li>
+<li>斜面は、距離を長くする代わりに力を小さくします。</li>
+<li>くさびは材料を分けます。</li>
+<li>ねじは回転運動を前進運動に変えます。</li>
+<li>病院やIT機器の中にも、これらの考え方があります。</li>
+</ul>
+<p class="lead">工学は単純な考え方から始まります。単純機械を理解できれば、より複雑な機械も一歩ずつ理解できます。</p>
+</section>
+
+</main>
+<footer class="footer"><p>Computers 1 · Combined Lecture 5 · Japanese web lesson.</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>
