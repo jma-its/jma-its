@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第6回 — エネルギー・仕事・出力・効率・熱機関</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="kicker">Computers 1 · 医療IT学生のための工学基礎</div>
+    <h1>第6回<br>エネルギー・仕事・出力・効率・熱機関</h1>
+    <p class="subtitle">熱と燃料は、どのようにして有用な運動になるのか。</p>
+    <div class="header-actions">
+      <a class="button" href="#start">授業を始める</a>
+      <a class="button secondary" href="lecture6_en.html">English version</a>
+      <a class="button secondary" href="#practice">練習問題</a>
+      <a class="button secondary" href="downloads/computers1_lecture6_heat_engines_with_images_v2.pptx">スライドをダウンロード</a>
+      <a class="button secondary" href="downloads/computers1_lecture6_heat_engines_with_images_v2.pdf">PDFをダウンロード</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="overview card" id="start">
+<p class="lead">この授業では、単純機械からエンジンへと学習を進めます。単純機械は力の使い方を助けます。しかし、機械を動かすためにはエネルギーが必要です。エンジンを理解するために、仕事、エネルギー、出力、効率という基本概念を学びます。</p>
+<figure class="figure"><img src="assets/lecture6/thermodynamic_process_flow_diagram.png" alt="エネルギーの流れ：燃料 → 熱 → 圧力 → ピストン → 回転。"><figcaption>エネルギーの流れ：燃料 → 熱 → 圧力 → ピストン → 回転。</figcaption></figure>
+<div class="grid">
+  <div class="small-card"><h3>大きな問い</h3><p>熱と燃料は、どのようにして運動になるのか。</p></div>
+  <div class="small-card"><h3>主な流れ</h3><p>燃料 → 熱 → 圧力 → ピストン → 回転</p></div>
+  <div class="small-card"><h3>工学的な考え方</h3><p>機械はエネルギーを作り出すのではなく、変換する。</p></div>
+</div>
+</section>
+
+<section class="toc card">
+<h2>授業の流れ</h2>
+<ol>
+<li><a href="#work">仕事</a></li><li><a href="#energy">エネルギー</a></li><li><a href="#power">出力</a></li><li><a href="#efficiency">効率</a></li><li><a href="#percent">百分率と小数</a></li><li><a href="#multistage">多段効率</a></li><li><a href="#heat">熱と温度</a></li><li><a href="#pressure">圧力</a></li><li><a href="#steam">蒸気機関</a></li><li><a href="#combustion">内燃機関</a></li><li><a href="#troubleshooting">トラブルシューティング</a></li><li><a href="#practice">練習問題</a></li>
+</ol>
+</section>
+
+<section class="lesson-block">
+<h2>重要語句</h2>
+<p>この授業で何度も使う基本用語です。</p>
+<table class="keywords">
+<tr><th>用語</th><th>簡単な意味</th></tr>
+<tr><td>work / 仕事</td><td>力によって物体が移動すること</td></tr>
+<tr><td>energy / エネルギー</td><td>仕事をする能力</td></tr>
+<tr><td>power / 出力</td><td>どれだけ速く仕事をするか</td></tr>
+<tr><td>efficiency / 効率</td><td>入力のうち、どれだけが有用な出力になったか</td></tr>
+<tr><td>pressure / 圧力</td><td>面積あたりの力</td></tr>
+<tr><td>piston / ピストン</td><td>シリンダー内で動く壁のような部品</td></tr>
+<tr><td>crankshaft / クランクシャフト</td><td>直線運動を回転運動に変える部品</td></tr>
+</table>
+</section>
+
+<section class="lesson-block" id="work">
+<h2>1. 仕事</h2>
+<p>工学では、「仕事」という言葉には特別な意味があります。仕事とは、力によって物体が移動することです。</p>
+<p>壁を強く押しても、壁が動かなければ、有用な機械的仕事はしていません。</p>
+<p>一方で、病院のベッドを押してベッドが動けば、機械的仕事をしたことになります。</p>
+<div class="formula"><span class="math">W = F × s</span><p><strong>W</strong> = 仕事、単位 J（ジュール）<br><strong>F</strong> = 力、単位 N（ニュートン）<br><strong>s</strong> = 距離、単位 m（メートル）</p></div>
+<div class="example"><h3>例</h3><p>看護師が病院のベッドを押します。</p><p>力 = 60 N<br>距離 = 3 m</p><p><strong>W = F × s = 60 × 3 = 180 J</strong></p></div>
+<div class="task"><h3>練習</h3><p>力 = 40 N<br>距離 = 2 m<br>仕事 = ?</p><details><summary>答えを見る</summary><p>W = F × s = 40 × 2 = <strong>80 J</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="energy">
+<h2>2. エネルギー</h2>
+<p>エネルギーとは、仕事をする能力です。</p>
+<p>人は食べ物からエネルギーを得ます。エンジンは燃料からエネルギーを得ます。電池は電気エネルギーを蓄えています。動いている部品は機械的エネルギーを持っています。</p>
+<p>機械は何もないところからエネルギーを作るわけではありません。機械は、エネルギーの形を変えます。</p>
+<div class="formula"><span class="math">Energy transformation</span><p>化学エネルギー → 熱エネルギー → 機械的運動</p></div>
+<p>熱機関で重要な考え方は次の通りです。燃料には化学エネルギーがあります。燃料が燃えると熱が発生します。熱は気体の圧力を作ります。圧力はピストンを動かすことができます。</p>
+</section>
+
+<section class="lesson-block" id="power">
+<h2>3. 出力</h2>
+<p>出力とは、どれだけ速く仕事をするかを表します。</p>
+<p>2つの機械が同じ仕事をするとします。一方はゆっくり行い、もう一方は速く行います。速く仕事をする機械の方が出力が大きいと言えます。</p>
+<div class="formula"><span class="math">P = W / t</span><p><strong>P</strong> = 出力、単位 W（ワット）<br><strong>W</strong> = 仕事、単位 J（ジュール）<br><strong>t</strong> = 時間、単位 s（秒）</p></div>
+<div class="callout"><p><strong>注意：</strong>仕事の記号は <strong>W</strong> です。一方、ワットの単位も <strong>W</strong> と書きます。紛らわしいですが、物理では普通に使われます。</p></div>
+<div class="example"><h3>例</h3><p>仕事 = 180 J<br>時間 = 6 s</p><p><strong>P = W / t = 180 / 6 = 30 W</strong></p></div>
+<div class="task"><h3>練習</h3><p>仕事 = 200 J<br>時間 = 10 s<br>出力 = ?</p><details><summary>答えを見る</summary><p>P = W / t = 200 / 10 = <strong>20 W</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="efficiency">
+<h2>4. 効率</h2>
+<p>完全な機械は存在しません。</p>
+<p>機械にエネルギーを入れると、その一部は有用な出力になります。しかし一部は、熱、音、振動、摩擦として失われます。</p>
+<figure class="figure"><img src="assets/lecture6/energy_flow_through_a_machine.png" alt="入力エネルギーは、有用な出力と損失に分かれる。"><figcaption>入力エネルギーは、有用な出力と損失に分かれる。</figcaption></figure>
+<div class="formula"><span class="math">η = useful output / input × 100%</span><p><strong>η</strong> は効率を表します。効率は通常、百分率で表します。</p></div>
+<p>効率が高いとは、損失が小さいという意味です。効率が低いとは、損失が大きいという意味です。</p>
+<div class="example"><h3>例</h3><p>入力エネルギー = 100 J<br>有用な出力 = 80 J</p><p><strong>η = 80 / 100 × 100% = 80%</strong></p><p>20 J は失われます。</p></div>
+<div class="task"><h3>練習</h3><p>入力エネルギー = 200 J<br>有用な出力 = 150 J<br>効率 = ?</p><details><summary>答えを見る</summary><p>η = 150 / 200 × 100% = <strong>75%</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="percent">
+<h2>5. 百分率を小数に変える</h2>
+<p>効率の計算では、百分率を小数に変えることが非常に重要です。</p>
+<p>効率を掛け算するときは、まず百分率を小数に変えます。</p>
+<div class="formula"><span class="math">90% = 0.90</span><p>100で割ります：90 ÷ 100 = 0.90</p></div>
+<div class="two-col"><div><h3>百分率 → 小数</h3><ul class="clean-list"><li>80% = 0.80</li><li>75% = 0.75</li><li>60% = 0.60</li><li>50.4% = 0.504</li></ul></div><div><h3>小数 → 百分率</h3><ul class="clean-list"><li>0.72 = 72%</li><li>0.50 = 50%</li><li>0.504 = 50.4%</li></ul></div></div>
+<div class="task"><h3>練習</h3><p>小数に変えなさい：<br>85% = ?<br>40% = ?</p><details><summary>答えを見る</summary><p>85% = <strong>0.85</strong><br>40% = <strong>0.40</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="multistage">
+<h2>6. 多段効率</h2>
+<p>実際の機械には、多くの部品があります。エネルギーは、モーター、ベルト、ギアボックス、ポンプのように、段階的に伝わります。</p>
+<p>各段階で少しずつエネルギーが失われます。小さな損失でも、段数が多いと大きな損失になります。</p>
+<figure class="figure"><img src="assets/lecture6/mechanical_efficiency_flow_chart_diagram.png" alt="エネルギーは複数の機械要素を通って伝わる。"><figcaption>エネルギーは複数の機械要素を通って伝わる。</figcaption></figure>
+<div class="formula"><span class="math">η<sub>total</sub> = η₁ × η₂ × η₃</span><p>百分率ではなく、小数を使って計算します。</p></div>
+<div class="example"><h3>例</h3><p>ベルト効率 = 90% = 0.90<br>ギアボックス効率 = 80% = 0.80<br>ポンプ効率 = 70% = 0.70</p><p><strong>η<sub>total</sub> = 0.90 × 0.80 × 0.70 = 0.504 = 50.4%</strong></p><p>入力エネルギーのほぼ半分が失われます。</p></div>
+<div class="task"><h3>練習</h3><p>第1段階の効率 = 90%<br>第2段階の効率 = 80%<br>全体の効率 = ?</p><details><summary>答えを見る</summary><p>90% = 0.90<br>80% = 0.80<br>0.90 × 0.80 = 0.72 = <strong>72%</strong></p></details></div>
+</section>
+
+<section class="lesson-block">
+<h2>7. 有用な出力</h2>
+<p>効率を使うと、有用な出力も計算できます。</p>
+<div class="formula"><span class="math">有用な出力 = 入力 × 効率</span><p>ここでも、百分率を小数に変えてから計算します。</p></div>
+<div class="example"><h3>例</h3><p>入力 = 500 W<br>全体効率 = 60% = 0.60</p><p><strong>有用な出力 = 500 × 0.60 = 300 W</strong></p></div>
+<div class="task"><h3>練習</h3><p>入力 = 100 W<br>全体効率 = 72%<br>有用な出力 = ?</p><details><summary>答えを見る</summary><p>72% = 0.72<br>100 × 0.72 = <strong>72 W</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="heat">
+<h2>8. 熱と温度</h2>
+<p>温度と熱は同じではありません。</p>
+<div class="two-col"><div class="formula"><span class="math">Temperature</span><p>物体がどれだけ熱いかを表します。</p></div><div class="formula"><span class="math">Heat</span><p>熱い物体から冷たい物体へ移動するエネルギーです。</p></div></div>
+<p>熱いエンジンは空気へ熱を逃がします。熱い蒸気は金属部品へ熱を伝えます。熱の移動は、すべての熱機関で重要です。</p>
+</section>
+
+<section class="lesson-block">
+<h2>9. 気体粒子と温度</h2>
+<p>気体は、小さな粒子でできています。</p>
+<p>冷たい気体では粒子はゆっくり動きます。熱い気体では粒子は速く動きます。速い粒子は壁に強くぶつかります。その結果、圧力が大きくなります。</p>
+<figure class="figure"><img src="assets/lecture6/cold_gas_vs_hot_gas_comparison.png" alt="冷たい気体と熱い気体の粒子運動。"><figcaption>冷たい気体と熱い気体の粒子運動。</figcaption></figure>
+<div class="formula"><span class="math">温度が高い → 粒子が速い → 圧力が大きい</span></div>
+</section>
+
+<section class="lesson-block" id="pressure">
+<h2>10. 圧力</h2>
+<p>圧力とは、面積あたりの力です。エンジンでは、圧力がピストンを押すため、非常に重要です。</p>
+<div class="formula"><span class="math">P = F / A</span><p><strong>P</strong> = 圧力、単位 Pa（パスカル）<br><strong>F</strong> = 力、単位 N（ニュートン）<br><strong>A</strong> = 面積、単位 m²</p></div>
+<div class="formula"><span class="math">F = P × A</span><p>エンジンでは、この形が便利です。圧力が力を作ります。</p></div>
+<div class="example"><h3>例</h3><p>圧力 = 100,000 Pa<br>ピストン面積 = 0.01 m²</p><p><strong>F = P × A = 100,000 × 0.01 = 1,000 N</strong></p></div>
+<div class="task"><h3>練習</h3><p>圧力 = 200,000 Pa<br>ピストン面積 = 0.02 m²<br>力 = ?</p><details><summary>答えを見る</summary><p>F = P × A = 200,000 × 0.02 = <strong>4,000 N</strong></p></details></div>
+</section>
+
+<section class="lesson-block">
+<h2>11. 気体の膨張</h2>
+<p>気体が熱くなると膨張します。膨張とは、より大きな空間を取ろうとすることです。</p>
+<p>シリンダーの中では、気体は自由に広がることができません。そのため、熱い気体はピストンを押します。</p>
+<figure class="figure"><img src="assets/lecture6/slide17_hot_gas_pushing_piston.png" alt="熱い気体の圧力がピストンを押す。"><figcaption>熱い気体の圧力がピストンを押す。</figcaption></figure>
+<div class="formula"><span class="math">熱い気体が膨張する → 圧力がピストンを押す</span></div>
+<p>これは多くのエンジンの基本原理です。</p>
+</section>
+
+<section class="lesson-block" id="steam">
+<h2>12. 蒸気機関の原理</h2>
+<p>蒸気機関は熱を使います。火が水を熱します。水は蒸気になります。蒸気には圧力があります。蒸気圧がピストンを押します。</p>
+<figure class="figure"><img src="assets/lecture6/slide18_steam_engine_principle.png" alt="蒸気機関の原理。"><figcaption>蒸気機関の原理。</figcaption></figure>
+<div class="formula"><span class="math">燃料 → 火 → 水 → 蒸気 → 圧力 → ピストン</span></div>
+<p>蒸気機関は、熱エネルギーを機械的運動に変換します。</p>
+</section>
+
+<section class="lesson-block">
+<h2>13. ピストンから回転へ</h2>
+<p>ピストンは直線的に動きます。しかし多くの機械では回転が必要です。</p>
+<p>連接棒とクランクシャフトは、直線運動を回転運動に変えます。</p>
+<figure class="figure"><img src="assets/lecture6/slide19_piston_to_crankshaft_rotation.png" alt="ピストン、連接棒、クランクシャフト、回転運動。"><figcaption>ピストン、連接棒、クランクシャフト、回転運動。</figcaption></figure>
+<div class="formula"><span class="math">直線運動 → クランクシャフト → 回転運動</span></div>
+<p>この考え方は、蒸気機関でも内燃機関でも使われます。</p>
+</section>
+
+<section class="lesson-block">
+<h2>14. 蒸気機関のエネルギー変換</h2>
+<figure class="figure"><img src="assets/lecture6/slide20_steam_engine_energy_chain.png" alt="蒸気機関におけるエネルギー変換。"><figcaption>蒸気機関におけるエネルギー変換。</figcaption></figure>
+<p>エネルギーの流れを段階的に見てみましょう。</p>
+<ol class="clean-list"><li>燃料には化学エネルギーがあります。</li><li>燃料が燃えると熱が発生します。</li><li>熱によって水が蒸気になります。</li><li>蒸気圧がピストンを押します。</li><li>ピストン運動が回転運動になります。</li></ol>
+</section>
+
+<section class="lesson-block" id="combustion">
+<h2>15. 内燃機関</h2>
+<p>蒸気機関では、燃焼はシリンダーの外で起こります。内燃機関では、燃料がシリンダーの中で燃えます。</p>
+<p>燃料と空気がシリンダーに入ります。燃焼によって熱い気体ができます。熱い気体の圧力がピストンを押します。ピストンはクランクシャフトを回します。</p>
+<figure class="figure"><img src="assets/lecture6/slide21_combustion_engine_principle.png" alt="内燃機関の原理。"><figcaption>内燃機関の原理。</figcaption></figure>
+<div class="formula"><span class="math">燃料 + 空気 → 燃焼 → 熱い気体 → 圧力 → ピストン → 回転</span></div>
+</section>
+
+<section class="lesson-block">
+<h2>16. 4ストローク</h2>
+<p>一般的なガソリンエンジンでは、4ストロークのサイクルが使われます。ストロークとは、ピストンの1回の動きです。</p>
+<figure class="figure"><img src="assets/lecture6/slide22_four_stroke_cycle.png" alt="4ストローク機関の基本サイクル。"><figcaption>4ストローク機関の基本サイクル。</figcaption></figure>
+<ol class="clean-list"><li><strong>吸気：</strong>燃料と空気が入る。</li><li><strong>圧縮：</strong>ピストンが燃料と空気を圧縮する。</li><li><strong>膨張・出力：</strong>火花、燃焼、熱い気体がピストンを押す。</li><li><strong>排気：</strong>燃焼後の気体が外へ出る。</li></ol>
+<p>このサイクルが、1秒間に何度も繰り返されます。</p>
+</section>
+
+<section class="lesson-block">
+<h2>17. 蒸気機関と内燃機関の比較</h2>
+<div class="two-col"><div class="example"><h3>蒸気機関</h3><p>燃焼はシリンダーの外で起こります。</p><p>水が蒸気になります。</p><p>蒸気がピストンを押します。</p></div><div class="example"><h3>内燃機関</h3><p>燃焼はシリンダーの中で起こります。</p><p>燃料がシリンダー内で燃えます。</p><p>熱い気体がピストンを押します。</p></div></div>
+<p>どちらの機関も、圧力、ピストン運動、クランクシャフト回転を使います。</p>
+</section>
+
+<section class="lesson-block">
+<h2>18. ガソリンエンジンとディーゼルエンジン</h2>
+<p>ガソリンエンジンとディーゼルエンジンは、どちらも内燃機関ですが、燃焼の始まり方が違います。</p>
+<div class="two-col"><div class="formula"><span class="math">Gasoline engine</span><p>火花によって燃焼が始まります。</p></div><div class="formula"><span class="math">Diesel engine</span><p>高い圧縮によって燃焼が始まります。</p></div></div>
+<p>どちらも、燃料の化学エネルギーを機械的運動に変換します。</p>
+</section>
+
+<section class="lesson-block">
+<h2>19. 熱機関の利用例</h2>
+<figure class="figure"><img src="assets/lecture6/slide25_heat_engine_applications.png" alt="熱機関の利用例。"><figcaption>熱機関の利用例。</figcaption></figure>
+<p>熱機関は、自動車、救急車、船、列車、建設機械、非常用発電機などで使われています。</p>
+<p>病院では、電気が常に必要です。停電が起こると危険です。非常用発電機では、燃料エンジンが発電機を回し、電気を作ります。</p>
+</section>
+
+<section class="lesson-block" id="troubleshooting">
+<h2>20. トラブルシューティングの考え方</h2>
+<p>エンジンが動かないとき、すぐに慌てる必要はありません。まず単純な質問から確認します。</p>
+<ol class="clean-list"><li>燃料はあるか。</li><li>空気はあるか。</li><li>点火はあるか。</li><li>圧縮はあるか。</li><li>動く部品は動けるか。</li><li>何かが詰まっていないか、壊れていないか。</li></ol>
+<p>これはこれまで学んできた工学的な習慣と同じです。まず見る。まず考える。段階的に確認する。</p>
+</section>
+
+<section class="lesson-block" id="practice">
+<h2>21. 練習問題</h2>
+<p>電卓を使ってよいです。ゆっくり計算しましょう。まず公式を書きます。</p>
+<div class="task"><h3>問題1 — 仕事</h3><p>F = 50 N<br>s = 4 m<br>W = ?</p><details><summary>答えを見る</summary><p>W = F × s = 50 × 4 = <strong>200 J</strong></p></details></div>
+<div class="task"><h3>問題2 — 出力</h3><p>W = 200 J<br>t = 10 s<br>P = ?</p><details><summary>答えを見る</summary><p>P = W / t = 200 / 10 = <strong>20 W</strong></p></details></div>
+<div class="task"><h3>問題3 — 効率</h3><p>入力エネルギー = 500 J<br>有用な出力 = 150 J<br>η = ?</p><details><summary>答えを見る</summary><p>η = 150 / 500 × 100% = <strong>30%</strong></p></details></div>
+<div class="task"><h3>問題4 — 圧力による力</h3><p>P = 200,000 Pa<br>A = 0.02 m²<br>F = ?</p><details><summary>答えを見る</summary><p>F = P × A = 200,000 × 0.02 = <strong>4,000 N</strong></p></details></div>
+<div class="task"><h3>問題5 — 多段効率</h3><p>第1段階 = 90%<br>第2段階 = 80%<br>全体効率 = ?</p><details><summary>答えを見る</summary><p>90% = 0.90<br>80% = 0.80<br>ηtotal = 0.90 × 0.80 = 0.72 = <strong>72%</strong></p></details></div>
+</section>
+
+<section class="lesson-block">
+<h2>22. まとめ</h2>
+<ul class="clean-list"><li>仕事 = 力 × 距離。</li><li>出力 = 仕事 / 時間。</li><li>効率は有用な出力の割合を表します。</li><li>多段機械では、小数にした効率を掛けます。</li><li>熱は気体の圧力を作ることができます。</li><li>圧力はピストンを押すことができます。</li><li>クランクシャフトは直線運動を回転運動に変えます。</li><li>蒸気機関は蒸気圧を使います。</li><li>内燃機関は熱い気体の圧力を使います。</li></ul>
+<p class="lead">工学とは、エネルギーを受け取り、制御し、有用な仕事に変えることです。</p>
+</section>
+
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 6 · Japanese web lesson.</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>

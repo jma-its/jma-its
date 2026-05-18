@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 6 — Energy, Work, Power, Efficiency and Heat Engines</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="kicker">Computers 1 · Engineering Basics for Medical IT</div>
+    <h1>Lecture 6<br>Energy, Work, Power, Efficiency and Heat Engines</h1>
+    <p class="subtitle">How heat and fuel become useful motion.</p>
+    <div class="header-actions">
+      <a class="button" href="#start">Start lesson</a>
+      <a class="button secondary" href="lecture6_ja.html">日本語版</a>
+      <a class="button secondary" href="#practice">Practice problems</a>
+      <a class="button secondary" href="downloads/computers1_lecture6_heat_engines_with_images_v2.pptx">Download slides</a>
+      <a class="button secondary" href="downloads/computers1_lecture6_heat_engines_with_images_v2.pdf">Download PDF</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="overview card" id="start">
+<p class="lead">Today we move from simple machines to engines. Simple machines help us use force. Engines give machines power. To understand engines, we need four ideas: work, energy, power, and efficiency.</p>
+<figure class="figure"><img src="assets/lecture6/thermodynamic_process_flow_diagram.png" alt="Energy chain: fuel → heat → pressure → piston → rotation."><figcaption>Energy chain: fuel → heat → pressure → piston → rotation.</figcaption></figure>
+<div class="grid">
+  <div class="small-card"><h3>Big question</h3><p>How can heat and fuel become motion?</p></div>
+  <div class="small-card"><h3>Main chain</h3><p>fuel → heat → pressure → piston → rotation</p></div>
+  <div class="small-card"><h3>Engineering idea</h3><p>Machines do not create energy. They transform energy.</p></div>
+</div>
+</section>
+
+<section class="toc card">
+<h2>Lesson map</h2>
+<ol>
+<li><a href="#work">Work</a></li><li><a href="#energy">Energy</a></li><li><a href="#power">Power</a></li><li><a href="#efficiency">Efficiency</a></li><li><a href="#percent">Percent to decimal</a></li><li><a href="#multistage">Multi-stage efficiency</a></li><li><a href="#heat">Heat and temperature</a></li><li><a href="#pressure">Pressure</a></li><li><a href="#steam">Steam engine</a></li><li><a href="#combustion">Combustion engine</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li><a href="#practice">Practice</a></li>
+</ol>
+</section>
+
+<section class="lesson-block">
+<h2>Key words</h2>
+<p>Read these words first. They will appear many times in this lesson.</p>
+<table class="keywords">
+<tr><th>Word</th><th>Simple meaning</th></tr>
+<tr><td>work</td><td>force with movement</td></tr>
+<tr><td>energy</td><td>ability to do work</td></tr>
+<tr><td>power</td><td>how fast work is done</td></tr>
+<tr><td>efficiency</td><td>how much input becomes useful output</td></tr>
+<tr><td>pressure</td><td>force on area</td></tr>
+<tr><td>piston</td><td>a moving wall inside a cylinder</td></tr>
+<tr><td>crankshaft</td><td>a part that changes straight motion into rotation</td></tr>
+</table>
+</section>
+
+<section class="lesson-block" id="work">
+<h2>1. Work</h2>
+<p>In engineering, work has a special meaning. Work means force with movement.</p>
+<p>If you push a wall, you use force. But the wall does not move. So there is no useful mechanical work.</p>
+<p>If you push a hospital bed and the bed moves, you do mechanical work.</p>
+<div class="formula"><span class="math">W = F × s</span><p><strong>W</strong> = work, joule (J)<br><strong>F</strong> = force, newton (N)<br><strong>s</strong> = distance, meter (m)</p></div>
+<div class="example"><h3>Example</h3><p>A nurse pushes a hospital bed.</p><p>Force = 60 N<br>Distance = 3 m</p><p><strong>W = F × s = 60 × 3 = 180 J</strong></p></div>
+<div class="task"><h3>Try it</h3><p>Force = 40 N<br>Distance = 2 m<br>Work = ?</p><details><summary>Show answer</summary><p>W = F × s = 40 × 2 = <strong>80 J</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="energy">
+<h2>2. Energy</h2>
+<p>Energy means ability to do work.</p>
+<p>A person gets energy from food. An engine gets energy from fuel. A battery stores electrical energy. A moving part has mechanical energy.</p>
+<p>Machines do not create energy from nothing. A machine changes energy from one form into another form.</p>
+<div class="formula"><span class="math">Energy transformation</span><p>chemical energy → heat energy → mechanical motion</p></div>
+<p>For heat engines, the most important idea is this: fuel has chemical energy. Burning fuel makes heat. Heat makes gas pressure. Pressure can move a piston.</p>
+</section>
+
+<section class="lesson-block" id="power">
+<h2>3. Power</h2>
+<p>Power means how fast work is done.</p>
+<p>Two machines can do the same work. One machine does it slowly. Another machine does it quickly. The faster machine has more power.</p>
+<div class="formula"><span class="math">P = W / t</span><p><strong>P</strong> = power, watt (W)<br><strong>W</strong> = work, joule (J)<br><strong>t</strong> = time, second (s)</p></div>
+<div class="callout"><p><strong>Important:</strong> Work uses the symbol <strong>W</strong>. Watt also uses the letter <strong>W</strong> as a unit. This is confusing, but it is normal in physics.</p></div>
+<div class="example"><h3>Example</h3><p>Work = 180 J<br>Time = 6 s</p><p><strong>P = W / t = 180 / 6 = 30 W</strong></p></div>
+<div class="task"><h3>Try it</h3><p>Work = 200 J<br>Time = 10 s<br>Power = ?</p><details><summary>Show answer</summary><p>P = W / t = 200 / 10 = <strong>20 W</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="efficiency">
+<h2>4. Efficiency</h2>
+<p>No real machine is perfect.</p>
+<p>We put energy into a machine. Some energy becomes useful output. Some energy is lost as heat, sound, vibration, and friction.</p>
+<figure class="figure"><img src="assets/lecture6/energy_flow_through_a_machine.png" alt="Input energy becomes useful output and losses."><figcaption>Input energy becomes useful output and losses.</figcaption></figure>
+<div class="formula"><span class="math">η = useful output / input × 100%</span><p><strong>η</strong> is efficiency. Efficiency is usually written in percent.</p></div>
+<p>High efficiency means small losses. Low efficiency means big losses.</p>
+<div class="example"><h3>Example</h3><p>Input energy = 100 J<br>Useful output = 80 J</p><p><strong>η = 80 / 100 × 100% = 80%</strong></p><p>20 J is lost.</p></div>
+<div class="task"><h3>Try it</h3><p>Input energy = 200 J<br>Useful output = 150 J<br>Efficiency = ?</p><details><summary>Show answer</summary><p>η = 150 / 200 × 100% = <strong>75%</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="percent">
+<h2>5. Percent to decimal</h2>
+<p>This is very important for efficiency calculations.</p>
+<p>When we multiply efficiencies, we must first change percent into decimal form.</p>
+<div class="formula"><span class="math">90% = 0.90</span><p>Divide by 100: 90 ÷ 100 = 0.90</p></div>
+<div class="two-col"><div><h3>Percent → decimal</h3><ul class="clean-list"><li>80% = 0.80</li><li>75% = 0.75</li><li>60% = 0.60</li><li>50.4% = 0.504</li></ul></div><div><h3>Decimal → percent</h3><ul class="clean-list"><li>0.72 = 72%</li><li>0.50 = 50%</li><li>0.504 = 50.4%</li></ul></div></div>
+<div class="task"><h3>Try it</h3><p>Change to decimal:<br>85% = ?<br>40% = ?</p><details><summary>Show answer</summary><p>85% = <strong>0.85</strong><br>40% = <strong>0.40</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="multistage">
+<h2>6. Multi-stage efficiency</h2>
+<p>A real machine often has many parts. Energy goes step by step: motor, belt, gearbox, pump.</p>
+<p>Each part loses some energy. Small losses can become one big loss.</p>
+<figure class="figure"><img src="assets/lecture6/mechanical_efficiency_flow_chart_diagram.png" alt="Energy passes through several machine stages."><figcaption>Energy passes through several machine stages.</figcaption></figure>
+<div class="formula"><span class="math">η<sub>total</sub> = η₁ × η₂ × η₃</span><p>Use decimal numbers, not percent numbers.</p></div>
+<div class="example"><h3>Example</h3><p>Belt efficiency = 90% = 0.90<br>Gearbox efficiency = 80% = 0.80<br>Pump efficiency = 70% = 0.70</p><p><strong>η<sub>total</sub> = 0.90 × 0.80 × 0.70 = 0.504 = 50.4%</strong></p><p>Almost half of the input energy is lost.</p></div>
+<div class="task"><h3>Try it</h3><p>Stage 1 efficiency = 90%<br>Stage 2 efficiency = 80%<br>Total efficiency = ?</p><details><summary>Show answer</summary><p>90% = 0.90<br>80% = 0.80<br>0.90 × 0.80 = 0.72 = <strong>72%</strong></p></details></div>
+</section>
+
+<section class="lesson-block">
+<h2>7. Useful output power</h2>
+<p>Efficiency can also help us calculate useful output power.</p>
+<div class="formula"><span class="math">Useful output power = input power × efficiency</span><p>Again, change percent to decimal first.</p></div>
+<div class="example"><h3>Example</h3><p>Input power = 500 W<br>Total efficiency = 60% = 0.60</p><p><strong>Useful output power = 500 × 0.60 = 300 W</strong></p></div>
+<div class="task"><h3>Try it</h3><p>Input power = 100 W<br>Total efficiency = 72%<br>Useful output power = ?</p><details><summary>Show answer</summary><p>72% = 0.72<br>100 × 0.72 = <strong>72 W</strong></p></details></div>
+</section>
+
+<section class="lesson-block" id="heat">
+<h2>8. Heat and temperature</h2>
+<p>Temperature and heat are not the same.</p>
+<div class="two-col"><div class="formula"><span class="math">Temperature</span><p>How hot something is.</p></div><div class="formula"><span class="math">Heat</span><p>Energy moving from a hot object to a cold object.</p></div></div>
+<p>A hot engine gives heat to the air. Hot steam gives heat to metal parts. Heat flow is important in all heat engines.</p>
+</section>
+
+<section class="lesson-block">
+<h2>9. Gas particles and temperature</h2>
+<p>Gas is made of tiny moving particles.</p>
+<p>Cold gas particles move slowly. Hot gas particles move faster. Fast particles hit the walls harder. This creates more pressure.</p>
+<figure class="figure"><img src="assets/lecture6/cold_gas_vs_hot_gas_comparison.png" alt="Cold gas particles move slowly. Hot gas particles move faster."><figcaption>Cold gas particles move slowly. Hot gas particles move faster.</figcaption></figure>
+<div class="formula"><span class="math">higher temperature → faster particles → more pressure</span></div>
+</section>
+
+<section class="lesson-block" id="pressure">
+<h2>10. Pressure</h2>
+<p>Pressure means force on area. Pressure is very important in engines because pressure can push a piston.</p>
+<div class="formula"><span class="math">P = F / A</span><p><strong>P</strong> = pressure, pascal (Pa)<br><strong>F</strong> = force, newton (N)<br><strong>A</strong> = area, square meter (m²)</p></div>
+<div class="formula"><span class="math">F = P × A</span><p>For engines, this form is very useful: pressure makes force.</p></div>
+<div class="example"><h3>Example</h3><p>Pressure = 100,000 Pa<br>Piston area = 0.01 m²</p><p><strong>F = P × A = 100,000 × 0.01 = 1,000 N</strong></p></div>
+<div class="task"><h3>Try it</h3><p>Pressure = 200,000 Pa<br>Piston area = 0.02 m²<br>Force = ?</p><details><summary>Show answer</summary><p>F = P × A = 200,000 × 0.02 = <strong>4,000 N</strong></p></details></div>
+</section>
+
+<section class="lesson-block">
+<h2>11. Gas expansion</h2>
+<p>When gas becomes hot, it expands. Expand means it tries to take more space.</p>
+<p>Inside a cylinder, gas cannot go everywhere. So the hot gas pushes the piston.</p>
+<figure class="figure"><img src="assets/lecture6/slide17_hot_gas_pushing_piston.png" alt="Hot gas pressure pushes a piston."><figcaption>Hot gas pressure pushes a piston.</figcaption></figure>
+<div class="formula"><span class="math">hot gas expands → pressure pushes piston</span></div>
+<p>This is the basic idea of many engines.</p>
+</section>
+
+<section class="lesson-block" id="steam">
+<h2>12. Steam engine principle</h2>
+<p>A steam engine uses heat. Fire heats water. Water becomes steam. Steam has pressure. Steam pressure pushes a piston.</p>
+<figure class="figure"><img src="assets/lecture6/slide18_steam_engine_principle.png" alt="Steam engine principle: fire heats water, steam pressure pushes a piston."><figcaption>Steam engine principle: fire heats water, steam pressure pushes a piston.</figcaption></figure>
+<div class="formula"><span class="math">fuel → fire → water → steam → pressure → piston</span></div>
+<p>The steam engine changes heat energy into mechanical motion.</p>
+</section>
+
+<section class="lesson-block">
+<h2>13. From piston to rotation</h2>
+<p>A piston moves in a straight line. But many machines need rotation.</p>
+<p>A connecting rod and crankshaft change straight motion into rotation.</p>
+<figure class="figure"><img src="assets/lecture6/slide19_piston_to_crankshaft_rotation.png" alt="Piston, connecting rod, crankshaft and rotation."><figcaption>Piston, connecting rod, crankshaft and rotation.</figcaption></figure>
+<div class="formula"><span class="math">linear motion → crankshaft → rotation</span></div>
+<p>This idea is used in steam engines and combustion engines.</p>
+</section>
+
+<section class="lesson-block">
+<h2>14. Steam engine energy chain</h2>
+<figure class="figure"><img src="assets/lecture6/slide20_steam_engine_energy_chain.png" alt="Steam engine energy chain."><figcaption>Steam engine energy chain.</figcaption></figure>
+<p>Follow the energy step by step:</p>
+<ol class="clean-list"><li>Fuel has chemical energy.</li><li>Burning fuel gives heat.</li><li>Heat makes steam.</li><li>Steam pressure pushes the piston.</li><li>Piston motion becomes rotation.</li></ol>
+</section>
+
+<section class="lesson-block" id="combustion">
+<h2>15. Internal combustion engine</h2>
+<p>In a steam engine, burning is outside the cylinder. In an internal combustion engine, fuel burns inside the cylinder.</p>
+<p>Fuel and air enter the cylinder. Burning makes hot gas. Hot gas pressure pushes the piston. The piston turns the crankshaft.</p>
+<figure class="figure"><img src="assets/lecture6/slide21_combustion_engine_principle.png" alt="Combustion engine principle."><figcaption>Combustion engine principle.</figcaption></figure>
+<div class="formula"><span class="math">fuel + air → burn → hot gas → pressure → piston → rotation</span></div>
+</section>
+
+<section class="lesson-block">
+<h2>16. Four strokes</h2>
+<p>A common gasoline engine uses four strokes. A stroke means one movement of the piston.</p>
+<figure class="figure"><img src="assets/lecture6/slide22_four_stroke_cycle.png" alt="Four-stroke engine cycle."><figcaption>Four-stroke engine cycle.</figcaption></figure>
+<ol class="clean-list"><li><strong>Intake:</strong> fuel and air go in.</li><li><strong>Compression:</strong> the piston squeezes them.</li><li><strong>Power:</strong> spark, burning, hot gas pushes the piston.</li><li><strong>Exhaust:</strong> dirty gas goes out.</li></ol>
+<p>This cycle repeats many times per second.</p>
+</section>
+
+<section class="lesson-block">
+<h2>17. Steam engine vs combustion engine</h2>
+<div class="two-col"><div class="example"><h3>Steam engine</h3><p>Burning is outside the cylinder.</p><p>Water becomes steam.</p><p>Steam pushes the piston.</p></div><div class="example"><h3>Combustion engine</h3><p>Burning is inside the cylinder.</p><p>Fuel burns in the cylinder.</p><p>Hot gas pushes the piston.</p></div></div>
+<p>Both engines use pressure, piston motion, and crankshaft rotation.</p>
+</section>
+
+<section class="lesson-block">
+<h2>18. Gasoline and diesel</h2>
+<p>Both gasoline and diesel engines are combustion engines, but burning starts differently.</p>
+<div class="two-col"><div class="formula"><span class="math">Gasoline engine</span><p>A spark starts burning.</p></div><div class="formula"><span class="math">Diesel engine</span><p>High compression starts burning.</p></div></div>
+<p>Both change chemical energy in fuel into mechanical motion.</p>
+</section>
+
+<section class="lesson-block">
+<h2>19. Where heat engines are used</h2>
+<figure class="figure"><img src="assets/lecture6/slide25_heat_engine_applications.png" alt="Heat engine applications."><figcaption>Heat engine applications.</figcaption></figure>
+<p>Heat engines are used in cars, ambulances, ships, trains, construction machines, and backup generators.</p>
+<p>Hospitals need electricity all the time. If main power stops, a backup generator can help. A fuel engine turns a generator, and the generator makes electricity.</p>
+</section>
+
+<section class="lesson-block" id="troubleshooting">
+<h2>20. Troubleshooting idea</h2>
+<p>If an engine does not work, do not panic. Ask simple questions first.</p>
+<ol class="clean-list"><li>Is there fuel?</li><li>Is there air?</li><li>Is there ignition?</li><li>Is there compression?</li><li>Can the moving parts move?</li><li>Is something blocked or broken?</li></ol>
+<p>This is the same engineering habit as before: look first, think first, test step by step.</p>
+</section>
+
+<section class="lesson-block" id="practice">
+<h2>21. Practice problems</h2>
+<p>Use your calculator. Work slowly. Write the formula first.</p>
+<div class="task"><h3>Problem 1 — Work</h3><p>F = 50 N<br>s = 4 m<br>W = ?</p><details><summary>Show answer</summary><p>W = F × s = 50 × 4 = <strong>200 J</strong></p></details></div>
+<div class="task"><h3>Problem 2 — Power</h3><p>W = 200 J<br>t = 10 s<br>P = ?</p><details><summary>Show answer</summary><p>P = W / t = 200 / 10 = <strong>20 W</strong></p></details></div>
+<div class="task"><h3>Problem 3 — Efficiency</h3><p>Input energy = 500 J<br>Useful output = 150 J<br>η = ?</p><details><summary>Show answer</summary><p>η = 150 / 500 × 100% = <strong>30%</strong></p></details></div>
+<div class="task"><h3>Problem 4 — Pressure force</h3><p>P = 200,000 Pa<br>A = 0.02 m²<br>F = ?</p><details><summary>Show answer</summary><p>F = P × A = 200,000 × 0.02 = <strong>4,000 N</strong></p></details></div>
+<div class="task"><h3>Problem 5 — Multi-stage efficiency</h3><p>Stage 1 = 90%<br>Stage 2 = 80%<br>Total efficiency = ?</p><details><summary>Show answer</summary><p>90% = 0.90<br>80% = 0.80<br>ηtotal = 0.90 × 0.80 = 0.72 = <strong>72%</strong></p></details></div>
+</section>
+
+<section class="lesson-block">
+<h2>22. Summary</h2>
+<ul class="clean-list"><li>Work = force × distance.</li><li>Power = work / time.</li><li>Efficiency shows useful output.</li><li>For multi-stage machines, multiply efficiencies in decimal form.</li><li>Heat can make gas pressure.</li><li>Pressure can push a piston.</li><li>A crankshaft changes straight motion into rotation.</li><li>Steam engines use steam pressure.</li><li>Combustion engines use hot gas pressure.</li></ul>
+<p class="lead">Engineering means: take energy, control it, and make useful work.</p>
+</section>
+
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 6 · English web lesson pilot.</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>
