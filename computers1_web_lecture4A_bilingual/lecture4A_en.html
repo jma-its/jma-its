@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Lecture 4A — Statics for Medical Equipment</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header>
+<div class="header-inner">
+<div class="kicker">Computers 1 · Mechanics</div>
+<h1>Lecture 4A — Statics for Medical Equipment</h1>
+<p class="subtitle">Forces · Balance · Supports · Moments</p>
+<p>Self-study web lesson. The slide image, reading text, and question match the PowerPoint.</p>
+<div class="actions">
+<a class="btn" href="#part1">Start lesson</a>
+<a class="btn secondary" href="lecture4A_ja.html">日本語版</a>
+<a class="btn secondary" href="#slide26">Practice tasks</a>
+<a class="btn secondary" href="downloads/lecture4A_statics_with_images.pptx">PowerPoint</a>
+</div>
+</div>
+</header>
+<main>
+<section class="overview card">
+<p class="lead">Self-study web lesson. The slide image, reading text, and question match the PowerPoint.</p>
+<div class="grid">
+<div class="small"><h3>Main formula</h3><p>W = mg · M = F × d</p></div>
+<div class="small"><h3>Balance conditions</h3><p>ΣF = 0 · ΣM = 0</p></div>
+<div class="small"><h3>Medical link</h3><p>Beds, lifts, wheelchairs, tables, carts.</p></div>
+</div>
+</section>
+<section class="toc card"><h2>Lesson map</h2><ol><li><a href="#slide01">1. Statics for Medical Equipment</a></li><li><a href="#slide02">2. Why Do We Need Statics?</a></li><li><a href="#slide03">3. From Materials to Mechanics</a></li><li><a href="#slide04">4. What Is Statics?</a></li><li><a href="#slide05">5. Mass and Weight</a></li><li><a href="#slide06">6. Example: Patient Weight</a></li><li><a href="#slide07">7. What Is Force?</a></li><li><a href="#slide08">8. Force Arrows</a></li><li><a href="#slide09">9. Free-Body Diagram</a></li><li><a href="#slide10">10. Equilibrium: No Vertical Movement</a></li><li><a href="#slide11">11. Patient in the Middle</a></li><li><a href="#slide12">12. Why Half and Half?</a></li><li><a href="#slide13">13. Support Reactions</a></li><li><a href="#slide14">14. Patient Is Not in the Middle</a></li><li><a href="#slide15">15. Moment of Force</a></li><li><a href="#slide16">16. Door Example</a></li><li><a href="#slide17">17. Seesaw Rule</a></li><li><a href="#slide18">18. Heavy and Light Person</a></li><li><a href="#slide19">19. Two Conditions for Statics</a></li><li><a href="#slide20">20. Take Moment About Point A</a></li><li><a href="#slide21">21. Support Force Formulas</a></li><li><a href="#slide22">22. Example Task: Patient Off-Center</a></li><li><a href="#slide23">23. Step 1: Weight and Total Force</a></li><li><a href="#slide24">24. Step 2: Moment Balance</a></li><li><a href="#slide25">25. Formulas for One Point Load</a></li><li><a href="#slide26">26. Practice Task 1: Centered Patient</a></li><li><a href="#slide27">27. Practice Task 2: Off-Center Patient</a></li><li><a href="#slide28">28. Practice Task 3: Seesaw</a></li><li><a href="#slide29">29. Practice Task 4: Bed + Equipment</a></li><li><a href="#slide30">30. Practice Task 5: Will It Tip?</a></li><li><a href="#slide31">31. Common Mistakes</a></li><li><a href="#slide32">32. Summary</a></li></ol></section>
+<section class="part card" id="part1"><h2>Part 1 — Why Statics Matters</h2><p>Statics helps us check safety and balance in hospital equipment.</p></section><section class="block" id="slide01">
+<span class="topic-label">Slide 1</span>
+<h2>Statics for Medical Equipment</h2>
+<p class="lead">Forces. Balance. Supports. Moments.</p>
+<figure class="slide-img"><img src="assets/slides/slide_01.jpg" alt="Statics for Medical Equipment"><div class="slide-caption">Statics for Medical Equipment</div></figure>
+<p>Today we start the statics part of mechanics. Statics means the object is not moving, but forces are still working.</p><p>A bed, chair, table, lift, or wheelchair must be safe and balanced.</p><p>Today we learn how to see forces and calculate simple balance.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does statics study?</p><details class="answer"><summary>Show answer</summary><p>Objects at rest, with balanced forces.</p></details></div>
+</section><section class="block" id="slide02">
+<span class="topic-label">Slide 2</span>
+<h2>Why Do We Need Statics?</h2>
+<p class="lead">Hospital equipment must be safe.</p>
+<figure class="slide-img"><img src="assets/slides/slide_02.jpg" alt="Why Do We Need Statics?"><div class="slide-caption">Why Do We Need Statics?</div></figure>
+<p>A bed must not break. A wheelchair must not fall. An operating table must stay stable.</p><p>Statics helps us check balance and safety.</p><p>This is important for medical IT support because you may work near real devices, not only computers.</p>
+<div class="activity"><h3>Think and answer</h3><p>Name one hospital object that must be balanced.</p><details class="answer"><summary>Show answer</summary><p>Bed, wheelchair, patient lift, operating table, cart.</p></details></div>
+</section><section class="block" id="slide03">
+<span class="topic-label">Slide 3</span>
+<h2>From Materials to Mechanics</h2>
+<p class="lead">A strong material is not enough.</p>
+<figure class="slide-img"><img src="assets/slides/slide_03.jpg" alt="From Materials to Mechanics"><div class="slide-caption">From Materials to Mechanics</div></figure>
+<p>Last lesson was about materials. Now we study forces on those materials.</p><p>Even strong metal can fail if force is too large or placed badly.</p><p>So we ask: what force acts here? Where does it act? Can the object stay balanced?</p>
+<div class="activity"><h3>Think and answer</h3><p>Why are materials alone not enough?</p><details class="answer"><summary>Show answer</summary><p>Because shape, force, distance, and balance also matter.</p></details></div>
+</section><section class="part card" id="part2"><h2>Part 2 — Mass, Weight, Force, and Equilibrium</h2><p>We learn the basic words and formulas before solving tasks.</p></section><section class="block" id="slide04">
+<span class="topic-label">Slide 4</span>
+<h2>What Is Statics?</h2>
+<p class="lead">Statics = no movement.</p>
+<figure class="slide-img"><img src="assets/slides/slide_04.jpg" alt="What Is Statics?"><div class="slide-caption">What Is Statics?</div></figure>
+<p>The object is not moving. But this does not mean there is no force.</p><p>Forces can push down, supports can push up, and the object can still stay still.</p><p>Statics studies these balanced forces.</p>
+<div class="activity"><h3>Think and answer</h3><p>Can an object at rest have forces on it?</p><details class="answer"><summary>Show answer</summary><p>Yes. The forces can be balanced.</p></details></div>
+</section><section class="block" id="slide05">
+<span class="topic-label">Slide 5</span>
+<h2>Mass and Weight</h2>
+<p class="lead">Mass is kg. Weight is force.</p>
+<figure class="slide-img"><img src="assets/slides/slide_05.jpg" alt="Mass and Weight"><div class="slide-caption">Mass and Weight</div></figure>
+<p>Mass is the amount of matter. We measure mass in kilograms.</p><p>Weight is the force from gravity. We measure weight in newtons.</p><p>Formula: W = m g.</p>
+<div class="activity"><h3>Think and answer</h3><p>Is kg a unit of force?</p><details class="answer"><summary>Show answer</summary><p>No. kg is mass. Newton is force.</p></details></div>
+</section><section class="block" id="slide06">
+<span class="topic-label">Slide 6</span>
+<h2>Example: Patient Weight</h2>
+<p class="lead">Use g = 10 m/s².</p>
+<figure class="slide-img"><img src="assets/slides/slide_06.jpg" alt="Example: Patient Weight"><div class="slide-caption">Example: Patient Weight</div></figure>
+<p>A patient has mass 70 kg.</p><p>Weight is W = m g.</p><p>W = 70 × 10 = 700 N.</p><p>So the patient pushes down with 700 newtons.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the weight of a 70 kg patient if g = 10?</p><details class="answer"><summary>Show answer</summary><p>700 N.</p></details></div>
+</section><section class="block" id="slide07">
+<span class="topic-label">Slide 7</span>
+<h2>What Is Force?</h2>
+<p class="lead">A force can push, pull, or press down.</p>
+<figure class="slide-img"><img src="assets/slides/slide_07.jpg" alt="What Is Force?"><div class="slide-caption">What Is Force?</div></figure>
+<p>Force can push a bed away from a person.</p><p>Force can pull a cart toward a person.</p><p>Weight is also a force. It acts downward because of gravity.</p><p>Force has direction.</p>
+<div class="activity"><h3>Think and answer</h3><p>Give one example of force.</p><details class="answer"><summary>Show answer</summary><p>Push, pull, lift, press, or weight.</p></details></div>
+</section><section class="block" id="slide08">
+<span class="topic-label">Slide 8</span>
+<h2>Force Arrows</h2>
+<p class="lead">We draw forces with arrows.</p>
+<figure class="slide-img"><img src="assets/slides/slide_08.jpg" alt="Force Arrows"><div class="slide-caption">Force Arrows</div></figure>
+<p>An arrow shows direction.</p><p>An arrow also shows where the force acts.</p><p>A longer arrow can show a bigger force.</p><p>In statics diagrams, arrows are very important.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does a force arrow show?</p><details class="answer"><summary>Show answer</summary><p>Direction, place, and sometimes size.</p></details></div>
+</section><section class="block" id="slide09">
+<span class="topic-label">Slide 9</span>
+<h2>Free-Body Diagram</h2>
+<p class="lead">Simplify the real object.</p>
+<figure class="slide-img"><img src="assets/slides/slide_09.jpg" alt="Free-Body Diagram"><div class="slide-caption">Free-Body Diagram</div></figure>
+<p>A free-body diagram removes extra details.</p><p>We keep only the object and the forces.</p><p>This helps us calculate and not get confused by the picture.</p>
+<div class="activity"><h3>Think and answer</h3><p>Why do we use a free-body diagram?</p><details class="answer"><summary>Show answer</summary><p>To focus only on the forces.</p></details></div>
+</section><section class="block" id="slide10">
+<span class="topic-label">Slide 10</span>
+<h2>Equilibrium: No Vertical Movement</h2>
+<p class="lead">Upward forces equal downward forces.</p>
+<figure class="slide-img"><img src="assets/slides/slide_10.jpg" alt="Equilibrium: No Vertical Movement"><div class="slide-caption">Equilibrium: No Vertical Movement</div></figure>
+<p>If the bed is not moving up or down, vertical forces are balanced.</p><p>The condition is: sum of vertical forces equals zero.</p><p>In simple words: support forces up equal weight down.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does equilibrium mean?</p><details class="answer"><summary>Show answer</summary><p>Balance. No acceleration.</p></details></div>
+</section><section class="block" id="slide11">
+<span class="topic-label">Slide 11</span>
+<h2>Patient in the Middle</h2>
+<p class="lead">Two supports share the weight equally.</p>
+<figure class="slide-img"><img src="assets/slides/slide_11.jpg" alt="Patient in the Middle"><div class="slide-caption">Patient in the Middle</div></figure>
+<p>The patient is in the middle of the bed.</p><p>The left and right supports are symmetric.</p><p>So the reactions are equal: RA = RB.</p><p>If W = 700 N, each support gets 350 N.</p>
+<div class="activity"><h3>Think and answer</h3><p>Why are the support forces equal here?</p><details class="answer"><summary>Show answer</summary><p>Because the patient is in the middle.</p></details></div>
+</section><section class="block" id="slide12">
+<span class="topic-label">Slide 12</span>
+<h2>Why Half and Half?</h2>
+<p class="lead">Use two simple equations.</p>
+<figure class="slide-img"><img src="assets/slides/slide_12.jpg" alt="Why Half and Half?"><div class="slide-caption">Why Half and Half?</div></figure>
+<p>The total upward force must equal the downward weight.</p><p>RA + RB = W.</p><p>If the patient is in the middle, RA = RB.</p><p>So each support carries W divided by 2.</p>
+<div class="activity"><h3>Think and answer</h3><p>If W = 600 N in the middle, what is each support?</p><details class="answer"><summary>Show answer</summary><p>300 N and 300 N.</p></details></div>
+</section><section class="block" id="slide13">
+<span class="topic-label">Slide 13</span>
+<h2>Support Reactions</h2>
+<p class="lead">Supports push up.</p>
+<figure class="slide-img"><img src="assets/slides/slide_13.jpg" alt="Support Reactions"><div class="slide-caption">Support Reactions</div></figure>
+<p>The patient pushes down on the bed.</p><p>The bed pushes down on the supports.</p><p>The supports push up on the bed.</p><p>These upward forces are called support reactions: RA and RB.</p>
+<div class="activity"><h3>Think and answer</h3><p>What direction do support reactions act?</p><details class="answer"><summary>Show answer</summary><p>Upward.</p></details></div>
+</section><section class="part card" id="part3"><h2>Part 3 — Moments and Support Reactions</h2><p>Off-center loads need moments. The closer support gets bigger force.</p></section><section class="block" id="slide14">
+<span class="topic-label">Slide 14</span>
+<h2>Patient Is Not in the Middle</h2>
+<p class="lead">The closer support gets bigger force.</p>
+<figure class="slide-img"><img src="assets/slides/slide_14.jpg" alt="Patient Is Not in the Middle"><div class="slide-caption">Patient Is Not in the Middle</div></figure>
+<p>Now the patient is closer to one support.</p><p>The two reactions are no longer equal.</p><p>The closer support carries more load.</p><p>To calculate this, we need moments.</p>
+<div class="activity"><h3>Think and answer</h3><p>Are the supports always equal?</p><details class="answer"><summary>Show answer</summary><p>No. They are equal only in symmetric cases.</p></details></div>
+</section><section class="block" id="slide15">
+<span class="topic-label">Slide 15</span>
+<h2>Moment of Force</h2>
+<p class="lead">Moment is turning effect.</p>
+<figure class="slide-img"><img src="assets/slides/slide_15.jpg" alt="Moment of Force"><div class="slide-caption">Moment of Force</div></figure>
+<p>A force can make an object rotate.</p><p>This turning effect is called moment.</p><p>Formula: M = F × d.</p><p>F is force. d is distance from the pivot.</p>
+<div class="activity"><h3>Think and answer</h3><p>What makes moment bigger?</p><details class="answer"><summary>Show answer</summary><p>Bigger force or bigger distance from the pivot.</p></details></div>
+</section><section class="block" id="slide16">
+<span class="topic-label">Slide 16</span>
+<h2>Door Example</h2>
+<p class="lead">Distance matters.</p>
+<figure class="slide-img"><img src="assets/slides/slide_16.jpg" alt="Door Example"><div class="slide-caption">Door Example</div></figure>
+<p>Try opening a door near the hinge. It is hard.</p><p>Now push far from the hinge. It is easier.</p><p>The force can be the same, but the distance is different.</p><p>That is why the moment is different.</p>
+<div class="activity"><h3>Think and answer</h3><p>Where is it easier to push a door?</p><details class="answer"><summary>Show answer</summary><p>Far from the hinge.</p></details></div>
+</section><section class="block" id="slide17">
+<span class="topic-label">Slide 17</span>
+<h2>Seesaw Rule</h2>
+<p class="lead">Left moment equals right moment.</p>
+<figure class="slide-img"><img src="assets/slides/slide_17.jpg" alt="Seesaw Rule"><div class="slide-caption">Seesaw Rule</div></figure>
+<p>A seesaw is a simple example of moments.</p><p>One person creates a moment on the left.</p><p>The other creates a moment on the right.</p><p>For balance: W1 × d1 = W2 × d2.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the balance rule for a seesaw?</p><details class="answer"><summary>Show answer</summary><p>Left moment = right moment.</p></details></div>
+</section><section class="block" id="slide18">
+<span class="topic-label">Slide 18</span>
+<h2>Heavy and Light Person</h2>
+<p class="lead">Heavy person closer. Light person farther.</p>
+<figure class="slide-img"><img src="assets/slides/slide_18.jpg" alt="Heavy and Light Person"><div class="slide-caption">Heavy and Light Person</div></figure>
+<p>If one person is heavier, they must sit closer to the center.</p><p>If one person is lighter, they must sit farther away.</p><p>This makes the moments equal.</p><p>This is the same idea used in bed support calculations.</p>
+<div class="activity"><h3>Think and answer</h3><p>Where should the heavier person sit?</p><details class="answer"><summary>Show answer</summary><p>Closer to the fulcrum.</p></details></div>
+</section><section class="block" id="slide19">
+<span class="topic-label">Slide 19</span>
+<h2>Two Conditions for Statics</h2>
+<p class="lead">No movement and no rotation.</p>
+<figure class="slide-img"><img src="assets/slides/slide_19.jpg" alt="Two Conditions for Statics"><div class="slide-caption">Two Conditions for Statics</div></figure>
+<p>For full static equilibrium, we need two conditions.</p><p>First: sum of vertical forces is zero.</p><p>Second: sum of moments is zero.</p><p>In symbols: ΣFy = 0 and ΣM = 0.</p>
+<div class="activity"><h3>Think and answer</h3><p>What are the two statics conditions?</p><details class="answer"><summary>Show answer</summary><p>Sum of forces equals zero, and sum of moments equals zero.</p></details></div>
+</section><section class="block" id="slide20">
+<span class="topic-label">Slide 20</span>
+<h2>Take Moment About Point A</h2>
+<p class="lead">Choose a pivot to calculate.</p>
+<figure class="slide-img"><img src="assets/slides/slide_20.jpg" alt="Take Moment About Point A"><div class="slide-caption">Take Moment About Point A</div></figure>
+<p>We can take moments about point A.</p><p>A force at point A has zero distance from A, so it makes no moment about A.</p><p>This helps us remove RA from the moment equation.</p><p>Then we can find RB first.</p>
+<div class="activity"><h3>Think and answer</h3><p>Why take moments about point A?</p><details class="answer"><summary>Show answer</summary><p>Because RA has zero moment about A.</p></details></div>
+</section><section class="block" id="slide21">
+<span class="topic-label">Slide 21</span>
+<h2>Support Force Formulas</h2>
+<p class="lead">For one point load between two supports.</p>
+<figure class="slide-img"><img src="assets/slides/slide_21.jpg" alt="Support Force Formulas"><div class="slide-caption">Support Force Formulas</div></figure>
+<p>If the load W is between two supports, use distances a and b.</p><p>RA = W × b / (a + b).</p><p>RB = W × a / (a + b).</p><p>The closer support gets the bigger reaction.</p>
+<div class="activity"><h3>Think and answer</h3><p>If the patient is closer to A, which reaction is bigger?</p><details class="answer"><summary>Show answer</summary><p>RA is bigger.</p></details></div>
+</section><section class="block" id="slide22">
+<span class="topic-label">Slide 22</span>
+<h2>Example Task: Patient Off-Center</h2>
+<p class="lead">Given W, a, and b.</p>
+<figure class="slide-img"><img src="assets/slides/slide_22.jpg" alt="Example Task: Patient Off-Center"><div class="slide-caption">Example Task: Patient Off-Center</div></figure>
+<p>Patient weight is W = 700 N.</p><p>Distance from left support to patient is a = 1 m.</p><p>Distance from patient to right support is b = 2 m.</p><p>Find RA and RB.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the total distance between supports?</p><details class="answer"><summary>Show answer</summary><p>a + b = 3 m.</p></details></div>
+</section><section class="block" id="slide23">
+<span class="topic-label">Slide 23</span>
+<h2>Step 1: Weight and Total Force</h2>
+<p class="lead">Start with vertical force balance.</p>
+<figure class="slide-img"><img src="assets/slides/slide_23.jpg" alt="Step 1: Weight and Total Force"><div class="slide-caption">Step 1: Weight and Total Force</div></figure>
+<p>The total downward force is W = 700 N.</p><p>The total upward force is RA + RB.</p><p>Because the bed is balanced: RA + RB = 700 N.</p><p>This is our force check.</p>
+<div class="activity"><h3>Think and answer</h3><p>What must RA + RB equal?</p><details class="answer"><summary>Show answer</summary><p>700 N.</p></details></div>
+</section><section class="block" id="slide24">
+<span class="topic-label">Slide 24</span>
+<h2>Step 2: Moment Balance</h2>
+<p class="lead">Use the moment formula.</p>
+<figure class="slide-img"><img src="assets/slides/slide_24.jpg" alt="Step 2: Moment Balance"><div class="slide-caption">Step 2: Moment Balance</div></figure>
+<p>RA = W × b / (a + b).</p><p>RA = 700 × 2 / 3 = 467 N.</p><p>RB = W × a / (a + b).</p><p>RB = 700 × 1 / 3 = 233 N.</p><p>Check: 467 + 233 = 700 N.</p>
+<div class="activity"><h3>Think and answer</h3><p>Which support force is bigger?</p><details class="answer"><summary>Show answer</summary><p>RA, because the patient is closer to A.</p></details></div>
+</section><section class="block" id="slide25">
+<span class="topic-label">Slide 25</span>
+<h2>Formulas for One Point Load</h2>
+<p class="lead">Use only for this simple case.</p>
+<figure class="slide-img"><img src="assets/slides/slide_25.jpg" alt="Formulas for One Point Load"><div class="slide-caption">Formulas for One Point Load</div></figure>
+<p>These formulas are useful for one point load between two supports.</p><p>RA = W × b / (a + b).</p><p>RB = W × a / (a + b).</p><p>Do not use them blindly for every problem.</p><p>For more complex tasks, write force balance and moment balance.</p>
+<div class="activity"><h3>Think and answer</h3><p>Why should we not use formulas blindly?</p><details class="answer"><summary>Show answer</summary><p>Because different problems can have different force arrangements.</p></details></div>
+</section><section class="part card" id="part4"><h2>Part 4 — Practice Tasks and Summary</h2><p>Use the same ideas again and again: W = mg, ΣF = 0, M = F × d, ΣM = 0.</p></section><section class="block" id="slide26">
+<span class="topic-label">Slide 26</span>
+<h2>Practice Task 1: Centered Patient</h2>
+<p class="lead">Try a simple symmetric case.</p>
+<figure class="slide-img"><img src="assets/slides/slide_26.jpg" alt="Practice Task 1: Centered Patient"><div class="slide-caption">Practice Task 1: Centered Patient</div></figure>
+<p>A patient has mass 60 kg.</p><p>Use g = 10 m/s².</p><p>The patient is in the middle.</p><p>Find W, RA, and RB.</p>
+<div class="activity"><h3>Think and answer</h3><p>Answer?</p><details class="answer"><summary>Show answer</summary><p>W = 600 N. RA = 300 N. RB = 300 N.</p></details></div>
+</section><section class="block" id="slide27">
+<span class="topic-label">Slide 27</span>
+<h2>Practice Task 2: Off-Center Patient</h2>
+<p class="lead">Use the formulas.</p>
+<figure class="slide-img"><img src="assets/slides/slide_27.jpg" alt="Practice Task 2: Off-Center Patient"><div class="slide-caption">Practice Task 2: Off-Center Patient</div></figure>
+<p>Given W = 800 N.</p><p>a = 1 m.</p><p>b = 3 m.</p><p>Find RA and RB.</p>
+<div class="activity"><h3>Think and answer</h3><p>Answer?</p><details class="answer"><summary>Show answer</summary><p>RA = 800 × 3 / 4 = 600 N. RB = 800 × 1 / 4 = 200 N.</p></details></div>
+</section><section class="block" id="slide28">
+<span class="topic-label">Slide 28</span>
+<h2>Practice Task 3: Seesaw</h2>
+<p class="lead">Use moment balance.</p>
+<figure class="slide-img"><img src="assets/slides/slide_28.jpg" alt="Practice Task 3: Seesaw"><div class="slide-caption">Practice Task 3: Seesaw</div></figure>
+<p>Person 1: W1 = 600 N and d1 = 2 m.</p><p>Person 2: W2 = 400 N.</p><p>Find d2.</p><p>Balance rule: W1 d1 = W2 d2.</p>
+<div class="activity"><h3>Think and answer</h3><p>Answer?</p><details class="answer"><summary>Show answer</summary><p>d2 = 600 × 2 / 400 = 3 m.</p></details></div>
+</section><section class="block" id="slide29">
+<span class="topic-label">Slide 29</span>
+<h2>Practice Task 4: Bed + Equipment</h2>
+<p class="lead">Two loads on one bed.</p>
+<figure class="slide-img"><img src="assets/slides/slide_29.jpg" alt="Practice Task 4: Bed + Equipment"><div class="slide-caption">Practice Task 4: Bed + Equipment</div></figure>
+<p>A patient pushes down with 500 N.</p><p>A machine pushes down with 300 N.</p><p>Use the distances on the diagram.</p><p>Find RA and RB.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the first step?</p><details class="answer"><summary>Show answer</summary><p>Add vertical forces: RA + RB = 800 N.</p></details></div>
+</section><section class="block" id="slide30">
+<span class="topic-label">Slide 30</span>
+<h2>Practice Task 5: Will It Tip?</h2>
+<p class="lead">Compare moments around the pivot.</p>
+<figure class="slide-img"><img src="assets/slides/slide_30.jpg" alt="Practice Task 5: Will It Tip?"><div class="slide-caption">Practice Task 5: Will It Tip?</div></figure>
+<p>The bed and patient create moments around the pivot.</p><p>To know if it tips, compare clockwise and counterclockwise moments.</p><p>If the tipping moment is bigger than the stabilizing moment, the bed can tip.</p><p>This is a safety question.</p>
+<div class="activity"><h3>Think and answer</h3><p>What should we compare?</p><details class="answer"><summary>Show answer</summary><p>Moments around the pivot.</p></details></div>
+</section><section class="block" id="slide31">
+<span class="topic-label">Slide 31</span>
+<h2>Common Mistakes</h2>
+<p class="lead">Avoid these mistakes.</p>
+<figure class="slide-img"><img src="assets/slides/slide_31.jpg" alt="Common Mistakes"><div class="slide-caption">Common Mistakes</div></figure>
+<p>Do not use kg as force.</p><p>Do not forget g.</p><p>Do not ignore direction.</p><p>Do not forget moment.</p><p>Do not think supports are always equal.</p>
+<div class="activity"><h3>Think and answer</h3><p>When are support forces equal?</p><details class="answer"><summary>Show answer</summary><p>Only in symmetric cases, such as load in the middle.</p></details></div>
+</section><section class="block" id="slide32">
+<span class="topic-label">Slide 32</span>
+<h2>Summary</h2>
+<p class="lead">Statics helps us check balance and safety.</p>
+<figure class="slide-img"><img src="assets/slides/slide_32.jpg" alt="Summary"><div class="slide-caption">Summary</div></figure>
+<p>Weight: W = m g.</p><p>Equilibrium: ΣF = 0.</p><p>Moment: M = F × d.</p><p>No rotation: ΣM = 0.</p><p>Support forces can be different when the load is not in the middle.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the most important safety idea?</p><details class="answer"><summary>Show answer</summary><p>Check force balance and moment balance.</p></details></div>
+</section>
+<section class="block">
+<h2>Downloads and check file</h2>
+<p><a class="btn" href="downloads/lecture4A_statics_with_images.pptx">PowerPoint</a></p>
+<p><a class="btn" href="downloads/lecture4A_statics_with_images.pdf">PDF</a></p>
+<p><a class="btn" href="downloads/lecture4A_statics_speaker_script_en.docx">Speaker script DOCX</a></p>
+<p><a class="btn" href="assets/debug/lecture4A_slide_contact_labeled.jpg">Labeled slide contact sheet</a></p>
+</section>
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 4A · Statics for Medical Equipment.</p></footer>
+</body></html>

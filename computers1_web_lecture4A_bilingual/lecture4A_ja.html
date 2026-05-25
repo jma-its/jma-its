@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>第4A回 — 医療機器のための静力学</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header>
+<div class="header-inner">
+<div class="kicker">Computers 1 · Mechanics</div>
+<h1>第4A回 — 医療機器のための静力学</h1>
+<p class="subtitle">力・つり合い・支持力・モーメント</p>
+<p>自習用ウェブ教材です。スライド画像、読むテキスト、質問はPowerPointに対応しています。</p>
+<div class="actions">
+<a class="btn" href="#part1">授業を始める</a>
+<a class="btn secondary" href="lecture4A_en.html">English version</a>
+<a class="btn secondary" href="#slide26">練習問題</a>
+<a class="btn secondary" href="downloads/lecture4A_statics_with_images.pptx">PowerPoint</a>
+</div>
+</div>
+</header>
+<main>
+<section class="overview card">
+<p class="lead">自習用ウェブ教材です。スライド画像、読むテキスト、質問はPowerPointに対応しています。</p>
+<div class="grid">
+<div class="small"><h3>主な公式</h3><p>W = mg · M = F × d</p></div>
+<div class="small"><h3>つり合い条件</h3><p>ΣF = 0 · ΣM = 0</p></div>
+<div class="small"><h3>医療との関係</h3><p>ベッド、リフト、車いす、台、カート。</p></div>
+</div>
+</section>
+<section class="toc card"><h2>授業の流れ</h2><ol><li><a href="#slide01">1. 医療機器のための静力学</a></li><li><a href="#slide02">2. なぜ静力学が必要なのか</a></li><li><a href="#slide03">3. 材料から力学へ</a></li><li><a href="#slide04">4. 静力学とは何か</a></li><li><a href="#slide05">5. 質量と重さ</a></li><li><a href="#slide06">6. 例：患者の重さ</a></li><li><a href="#slide07">7. 力とは何か</a></li><li><a href="#slide08">8. 力の矢印</a></li><li><a href="#slide09">9. 自由物体図</a></li><li><a href="#slide10">10. つり合い：上下に動かない</a></li><li><a href="#slide11">11. 患者が中央にいる</a></li><li><a href="#slide12">12. なぜ半分ずつか</a></li><li><a href="#slide13">13. 支持反力</a></li><li><a href="#slide14">14. 患者が中央にいない</a></li><li><a href="#slide15">15. 力のモーメント</a></li><li><a href="#slide16">16. ドアの例</a></li><li><a href="#slide17">17. シーソーのルール</a></li><li><a href="#slide18">18. 重い人と軽い人</a></li><li><a href="#slide19">19. 静力学の2つの条件</a></li><li><a href="#slide20">20. 点Aまわりのモーメント</a></li><li><a href="#slide21">21. 支持力の公式</a></li><li><a href="#slide22">22. 例題：患者が中央にいない</a></li><li><a href="#slide23">23. Step 1：重さと全力</a></li><li><a href="#slide24">24. Step 2：モーメントのつり合い</a></li><li><a href="#slide25">25. 1点荷重の公式</a></li><li><a href="#slide26">26. 練習1：中央の患者</a></li><li><a href="#slide27">27. 練習2：中央でない患者</a></li><li><a href="#slide28">28. 練習3：シーソー</a></li><li><a href="#slide29">29. 練習4：ベッド + 機械</a></li><li><a href="#slide30">30. 練習5：倒れるか？</a></li><li><a href="#slide31">31. よくある間違い</a></li><li><a href="#slide32">32. まとめ</a></li></ol></section>
+<section class="part card" id="part1"><h2>Part 1 — なぜ静力学が必要なのか</h2><p>静力学は病院機器の安全とバランスを確認する助けになります。</p></section><section class="block" id="slide01">
+<span class="topic-label">スライド 1</span>
+<h2>医療機器のための静力学</h2>
+<p class="lead">力・バランス・支持力・モーメント</p>
+<figure class="slide-img"><img src="assets/slides/slide_01.jpg" alt="医療機器のための静力学"><div class="slide-caption">医療機器のための静力学</div></figure>
+<p>今日は力学の中の静力学を始めます。静力学では物体は動いていません。しかし力は働いています。</p><p>ベッド、椅子、台、リフト、車いすは安全でバランスが必要です。</p><p>今日は力を見つけ、簡単なバランスを計算します。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>静力学は何を学びますか。</p><details class="answer"><summary>答えを見る</summary><p>静止している物体と、つり合った力です。</p></details></div>
+</section><section class="block" id="slide02">
+<span class="topic-label">スライド 2</span>
+<h2>なぜ静力学が必要なのか</h2>
+<p class="lead">病院機器は安全でなければなりません。</p>
+<figure class="slide-img"><img src="assets/slides/slide_02.jpg" alt="なぜ静力学が必要なのか"><div class="slide-caption">なぜ静力学が必要なのか</div></figure>
+<p>ベッドは壊れてはいけません。車いすは倒れてはいけません。手術台は安定していなければなりません。</p><p>静力学はバランスと安全を確認する助けになります。</p><p>医療ITでも、コンピュータだけでなく実際の機器の近くで働くことがあります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>バランスが必要な病院用品を1つ言ってください。</p><details class="answer"><summary>答えを見る</summary><p>ベッド、車いす、患者リフト、手術台、カート。</p></details></div>
+</section><section class="block" id="slide03">
+<span class="topic-label">スライド 3</span>
+<h2>材料から力学へ</h2>
+<p class="lead">強い材料だけでは十分ではありません。</p>
+<figure class="slide-img"><img src="assets/slides/slide_03.jpg" alt="材料から力学へ"><div class="slide-caption">材料から力学へ</div></figure>
+<p>前回は材料を学びました。今回は材料に働く力を学びます。</p><p>強い金属でも、力が大きすぎたり位置が悪かったりすると失敗します。</p><p>どんな力がどこに働くか、バランスできるかを考えます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>なぜ材料だけでは十分ではありませんか。</p><details class="answer"><summary>答えを見る</summary><p>形、力、距離、バランスも重要だからです。</p></details></div>
+</section><section class="part card" id="part2"><h2>Part 2 — 質量、重さ、力、つり合い</h2><p>問題を解く前に、基本の言葉と式を学びます。</p></section><section class="block" id="slide04">
+<span class="topic-label">スライド 4</span>
+<h2>静力学とは何か</h2>
+<p class="lead">Statics = no movement.</p>
+<figure class="slide-img"><img src="assets/slides/slide_04.jpg" alt="静力学とは何か"><div class="slide-caption">静力学とは何か</div></figure>
+<p>物体は動いていません。しかし力がないという意味ではありません。</p><p>下向きの力、上向きの支持力があり、それでも止まっています。</p><p>静力学はこのつり合った力を学びます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>止まっている物体にも力はありますか。</p><details class="answer"><summary>答えを見る</summary><p>はい。力がつり合っていることがあります。</p></details></div>
+</section><section class="block" id="slide05">
+<span class="topic-label">スライド 5</span>
+<h2>質量と重さ</h2>
+<p class="lead">質量は kg。重さは力です。</p>
+<figure class="slide-img"><img src="assets/slides/slide_05.jpg" alt="質量と重さ"><div class="slide-caption">質量と重さ</div></figure>
+<p>質量は物質の量です。単位は kg です。</p><p>重さは重力による力です。単位は N です。</p><p>式は W = m g です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>kg は力の単位ですか。</p><details class="answer"><summary>答えを見る</summary><p>いいえ。kg は質量、N が力です。</p></details></div>
+</section><section class="block" id="slide06">
+<span class="topic-label">スライド 6</span>
+<h2>例：患者の重さ</h2>
+<p class="lead">g = 10 m/s² を使います。</p>
+<figure class="slide-img"><img src="assets/slides/slide_06.jpg" alt="例：患者の重さ"><div class="slide-caption">例：患者の重さ</div></figure>
+<p>患者の質量は 70 kg です。</p><p>重さは W = m g です。</p><p>W = 70 × 10 = 700 N。</p><p>患者は下向きに 700 N で押します。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>70 kg の患者の重さは？</p><details class="answer"><summary>答えを見る</summary><p>700 N。</p></details></div>
+</section><section class="block" id="slide07">
+<span class="topic-label">スライド 7</span>
+<h2>力とは何か</h2>
+<p class="lead">力は押す、引く、下に押すことができます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_07.jpg" alt="力とは何か"><div class="slide-caption">力とは何か</div></figure>
+<p>力はベッドを押すことができます。</p><p>力はカートを引くことができます。</p><p>重さも力です。重力により下向きに働きます。</p><p>力には向きがあります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>力の例を1つ言ってください。</p><details class="answer"><summary>答えを見る</summary><p>押す、引く、持ち上げる、重さ。</p></details></div>
+</section><section class="block" id="slide08">
+<span class="topic-label">スライド 8</span>
+<h2>力の矢印</h2>
+<p class="lead">力は矢印で描きます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_08.jpg" alt="力の矢印"><div class="slide-caption">力の矢印</div></figure>
+<p>矢印は向きを示します。</p><p>矢印は力が働く場所も示します。</p><p>長い矢印は大きい力を表せます。</p><p>静力学では矢印がとても重要です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>力の矢印は何を示しますか。</p><details class="answer"><summary>答えを見る</summary><p>向き、場所、大きさ。</p></details></div>
+</section><section class="block" id="slide09">
+<span class="topic-label">スライド 9</span>
+<h2>自由物体図</h2>
+<p class="lead">本物の物体を単純化します。</p>
+<figure class="slide-img"><img src="assets/slides/slide_09.jpg" alt="自由物体図"><div class="slide-caption">自由物体図</div></figure>
+<p>自由物体図では余分な細部を消します。</p><p>物体と力だけを残します。</p><p>これで計算しやすくなります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>なぜ自由物体図を使いますか。</p><details class="answer"><summary>答えを見る</summary><p>力だけに集中するためです。</p></details></div>
+</section><section class="block" id="slide10">
+<span class="topic-label">スライド 10</span>
+<h2>つり合い：上下に動かない</h2>
+<p class="lead">上向きの力 = 下向きの力</p>
+<figure class="slide-img"><img src="assets/slides/slide_10.jpg" alt="つり合い：上下に動かない"><div class="slide-caption">つり合い：上下に動かない</div></figure>
+<p>ベッドが上下に動かないなら、縦方向の力はつり合っています。</p><p>条件は、縦方向の力の合計がゼロです。</p><p>簡単に言うと、支持力上向き = 重さ下向きです。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>equilibrium とは何ですか。</p><details class="answer"><summary>答えを見る</summary><p>つり合い。加速度がないことです。</p></details></div>
+</section><section class="block" id="slide11">
+<span class="topic-label">スライド 11</span>
+<h2>患者が中央にいる</h2>
+<p class="lead">2つの支持点が同じ重さを持ちます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_11.jpg" alt="患者が中央にいる"><div class="slide-caption">患者が中央にいる</div></figure>
+<p>患者はベッドの真ん中にいます。</p><p>左右の支持点は対称です。</p><p>だから反力は同じです：RA = RB。</p><p>W = 700 N なら、各支持点は 350 N です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>なぜ支持力は同じですか。</p><details class="answer"><summary>答えを見る</summary><p>患者が中央にいるからです。</p></details></div>
+</section><section class="block" id="slide12">
+<span class="topic-label">スライド 12</span>
+<h2>なぜ半分ずつか</h2>
+<p class="lead">2つの簡単な式を使います。</p>
+<figure class="slide-img"><img src="assets/slides/slide_12.jpg" alt="なぜ半分ずつか"><div class="slide-caption">なぜ半分ずつか</div></figure>
+<p>上向きの力の合計は下向きの重さと同じです。</p><p>RA + RB = W。</p><p>患者が中央なら RA = RB。</p><p>だから各支持点は W / 2 です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>W = 600 N なら各支持力は？</p><details class="answer"><summary>答えを見る</summary><p>300 N と 300 N。</p></details></div>
+</section><section class="block" id="slide13">
+<span class="topic-label">スライド 13</span>
+<h2>支持反力</h2>
+<p class="lead">支持点は上向きに押します。</p>
+<figure class="slide-img"><img src="assets/slides/slide_13.jpg" alt="支持反力"><div class="slide-caption">支持反力</div></figure>
+<p>患者はベッドを下に押します。</p><p>ベッドは支持点を下に押します。</p><p>支持点はベッドを上に押します。</p><p>この上向きの力を支持反力と呼びます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>支持反力の向きは？</p><details class="answer"><summary>答えを見る</summary><p>上向き。</p></details></div>
+</section><section class="part card" id="part3"><h2>Part 3 — モーメントと支持反力</h2><p>中央でない荷重にはモーメントが必要です。近い支持点が大きな力を受けます。</p></section><section class="block" id="slide14">
+<span class="topic-label">スライド 14</span>
+<h2>患者が中央にいない</h2>
+<p class="lead">近い支持点が大きな力を受けます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_14.jpg" alt="患者が中央にいない"><div class="slide-caption">患者が中央にいない</div></figure>
+<p>患者が一方の支持点に近い場合があります。</p><p>2つの反力はもう同じではありません。</p><p>近い支持点がより大きな荷重を受けます。</p><p>これを計算するにはモーメントが必要です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>支持力はいつも同じですか。</p><details class="answer"><summary>答えを見る</summary><p>いいえ。対称な場合だけです。</p></details></div>
+</section><section class="block" id="slide15">
+<span class="topic-label">スライド 15</span>
+<h2>力のモーメント</h2>
+<p class="lead">モーメントは回そうとする働きです。</p>
+<figure class="slide-img"><img src="assets/slides/slide_15.jpg" alt="力のモーメント"><div class="slide-caption">力のモーメント</div></figure>
+<p>力は物体を回転させることがあります。</p><p>この回そうとする働きをモーメントと呼びます。</p><p>式は M = F × d。</p><p>F は力、d は支点からの距離です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>モーメントを大きくするものは？</p><details class="answer"><summary>答えを見る</summary><p>大きい力、または大きい距離。</p></details></div>
+</section><section class="block" id="slide16">
+<span class="topic-label">スライド 16</span>
+<h2>ドアの例</h2>
+<p class="lead">距離が大事です。</p>
+<figure class="slide-img"><img src="assets/slides/slide_16.jpg" alt="ドアの例"><div class="slide-caption">ドアの例</div></figure>
+<p>ドアの蝶番の近くを押すと大変です。</p><p>蝶番から遠いところを押すと楽です。</p><p>力が同じでも距離が違います。</p><p>だからモーメントが違います。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>ドアはどこを押すと楽ですか。</p><details class="answer"><summary>答えを見る</summary><p>蝶番から遠いところ。</p></details></div>
+</section><section class="block" id="slide17">
+<span class="topic-label">スライド 17</span>
+<h2>シーソーのルール</h2>
+<p class="lead">左のモーメント = 右のモーメント</p>
+<figure class="slide-img"><img src="assets/slides/slide_17.jpg" alt="シーソーのルール"><div class="slide-caption">シーソーのルール</div></figure>
+<p>シーソーはモーメントの簡単な例です。</p><p>左の人は左のモーメントを作ります。</p><p>右の人は右のモーメントを作ります。</p><p>つり合いでは W1 × d1 = W2 × d2。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>シーソーのバランスルールは？</p><details class="answer"><summary>答えを見る</summary><p>左のモーメント = 右のモーメント。</p></details></div>
+</section><section class="block" id="slide18">
+<span class="topic-label">スライド 18</span>
+<h2>重い人と軽い人</h2>
+<p class="lead">重い人は近く。軽い人は遠く。</p>
+<figure class="slide-img"><img src="assets/slides/slide_18.jpg" alt="重い人と軽い人"><div class="slide-caption">重い人と軽い人</div></figure>
+<p>重い人は中心に近く座る必要があります。</p><p>軽い人は遠くに座る必要があります。</p><p>これでモーメントが等しくなります。</p><p>同じ考えをベッドの支持力計算にも使います。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>重い人はどこに座るべきですか。</p><details class="answer"><summary>答えを見る</summary><p>支点の近く。</p></details></div>
+</section><section class="block" id="slide19">
+<span class="topic-label">スライド 19</span>
+<h2>静力学の2つの条件</h2>
+<p class="lead">動かない、回転しない。</p>
+<figure class="slide-img"><img src="assets/slides/slide_19.jpg" alt="静力学の2つの条件"><div class="slide-caption">静力学の2つの条件</div></figure>
+<p>完全な静的つり合いには2つの条件が必要です。</p><p>1つ目：縦方向の力の合計がゼロ。</p><p>2つ目：モーメントの合計がゼロ。</p><p>記号では ΣFy = 0 と ΣM = 0。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>2つの条件は？</p><details class="answer"><summary>答えを見る</summary><p>力の合計がゼロ、モーメントの合計がゼロ。</p></details></div>
+</section><section class="block" id="slide20">
+<span class="topic-label">スライド 20</span>
+<h2>点Aまわりのモーメント</h2>
+<p class="lead">支点を選んで計算します。</p>
+<figure class="slide-img"><img src="assets/slides/slide_20.jpg" alt="点Aまわりのモーメント"><div class="slide-caption">点Aまわりのモーメント</div></figure>
+<p>点Aまわりのモーメントを取ることができます。</p><p>点Aにある力は距離がゼロなので、点Aまわりのモーメントはゼロです。</p><p>これで RA を式から消せます。</p><p>先に RB を求められます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>なぜ点Aまわりで考えますか。</p><details class="answer"><summary>答えを見る</summary><p>RA のモーメントがゼロになるからです。</p></details></div>
+</section><section class="block" id="slide21">
+<span class="topic-label">スライド 21</span>
+<h2>支持力の公式</h2>
+<p class="lead">2つの支持点の間に1つの荷重がある場合。</p>
+<figure class="slide-img"><img src="assets/slides/slide_21.jpg" alt="支持力の公式"><div class="slide-caption">支持力の公式</div></figure>
+<p>荷重 W が2つの支持点の間にあるとき、距離 a と b を使います。</p><p>RA = W × b / (a + b)。</p><p>RB = W × a / (a + b)。</p><p>近い支持点が大きな反力を受けます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>患者がAに近いならどちらが大きい？</p><details class="answer"><summary>答えを見る</summary><p>RA が大きい。</p></details></div>
+</section><section class="block" id="slide22">
+<span class="topic-label">スライド 22</span>
+<h2>例題：患者が中央にいない</h2>
+<p class="lead">W, a, b が与えられています。</p>
+<figure class="slide-img"><img src="assets/slides/slide_22.jpg" alt="例題：患者が中央にいない"><div class="slide-caption">例題：患者が中央にいない</div></figure>
+<p>患者の重さは W = 700 N。</p><p>左支持点から患者まで a = 1 m。</p><p>患者から右支持点まで b = 2 m。</p><p>RA と RB を求めます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>支持点間の全距離は？</p><details class="answer"><summary>答えを見る</summary><p>a + b = 3 m。</p></details></div>
+</section><section class="block" id="slide23">
+<span class="topic-label">スライド 23</span>
+<h2>Step 1：重さと全力</h2>
+<p class="lead">まず縦方向のつり合い。</p>
+<figure class="slide-img"><img src="assets/slides/slide_23.jpg" alt="Step 1：重さと全力"><div class="slide-caption">Step 1：重さと全力</div></figure>
+<p>下向きの力は W = 700 N。</p><p>上向きの力は RA + RB。</p><p>ベッドはつり合っているので RA + RB = 700 N。</p><p>これは確認式です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>RA + RB は何に等しい？</p><details class="answer"><summary>答えを見る</summary><p>700 N。</p></details></div>
+</section><section class="block" id="slide24">
+<span class="topic-label">スライド 24</span>
+<h2>Step 2：モーメントのつり合い</h2>
+<p class="lead">モーメントの式を使います。</p>
+<figure class="slide-img"><img src="assets/slides/slide_24.jpg" alt="Step 2：モーメントのつり合い"><div class="slide-caption">Step 2：モーメントのつり合い</div></figure>
+<p>RA = W × b / (a + b)。</p><p>RA = 700 × 2 / 3 = 467 N。</p><p>RB = W × a / (a + b)。</p><p>RB = 700 × 1 / 3 = 233 N。</p><p>確認：467 + 233 = 700 N。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>どちらが大きいですか。</p><details class="answer"><summary>答えを見る</summary><p>RA。患者がAに近いからです。</p></details></div>
+</section><section class="block" id="slide25">
+<span class="topic-label">スライド 25</span>
+<h2>1点荷重の公式</h2>
+<p class="lead">この簡単な場合だけに使います。</p>
+<figure class="slide-img"><img src="assets/slides/slide_25.jpg" alt="1点荷重の公式"><div class="slide-caption">1点荷重の公式</div></figure>
+<p>この公式は、2つの支持点の間に1つの点荷重があるときに便利です。</p><p>RA = W × b / (a + b)。</p><p>RB = W × a / (a + b)。</p><p>複雑な問題では、力のつり合いとモーメントのつり合いを書きます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>なぜ公式を盲目的に使ってはいけませんか。</p><details class="answer"><summary>答えを見る</summary><p>問題によって力の配置が違うからです。</p></details></div>
+</section><section class="part card" id="part4"><h2>Part 4 — 練習問題とまとめ</h2><p>同じ考えを繰り返し使います：W = mg, ΣF = 0, M = F × d, ΣM = 0。</p></section><section class="block" id="slide26">
+<span class="topic-label">スライド 26</span>
+<h2>練習1：中央の患者</h2>
+<p class="lead">対称な簡単問題です。</p>
+<figure class="slide-img"><img src="assets/slides/slide_26.jpg" alt="練習1：中央の患者"><div class="slide-caption">練習1：中央の患者</div></figure>
+<p>患者の質量は 60 kg。</p><p>g = 10 m/s²。</p><p>患者は中央にいます。</p><p>W, RA, RB を求めます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>答えは？</p><details class="answer"><summary>答えを見る</summary><p>W = 600 N。RA = 300 N。RB = 300 N。</p></details></div>
+</section><section class="block" id="slide27">
+<span class="topic-label">スライド 27</span>
+<h2>練習2：中央でない患者</h2>
+<p class="lead">公式を使います。</p>
+<figure class="slide-img"><img src="assets/slides/slide_27.jpg" alt="練習2：中央でない患者"><div class="slide-caption">練習2：中央でない患者</div></figure>
+<p>W = 800 N。</p><p>a = 1 m。</p><p>b = 3 m。</p><p>RA と RB を求めます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>答えは？</p><details class="answer"><summary>答えを見る</summary><p>RA = 800 × 3 / 4 = 600 N。RB = 800 × 1 / 4 = 200 N。</p></details></div>
+</section><section class="block" id="slide28">
+<span class="topic-label">スライド 28</span>
+<h2>練習3：シーソー</h2>
+<p class="lead">モーメントのつり合いを使います。</p>
+<figure class="slide-img"><img src="assets/slides/slide_28.jpg" alt="練習3：シーソー"><div class="slide-caption">練習3：シーソー</div></figure>
+<p>人1：W1 = 600 N, d1 = 2 m。</p><p>人2：W2 = 400 N。</p><p>d2 を求めます。</p><p>バランスルール：W1 d1 = W2 d2。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>答えは？</p><details class="answer"><summary>答えを見る</summary><p>d2 = 600 × 2 / 400 = 3 m。</p></details></div>
+</section><section class="block" id="slide29">
+<span class="topic-label">スライド 29</span>
+<h2>練習4：ベッド + 機械</h2>
+<p class="lead">1つのベッドに2つの荷重。</p>
+<figure class="slide-img"><img src="assets/slides/slide_29.jpg" alt="練習4：ベッド + 機械"><div class="slide-caption">練習4：ベッド + 機械</div></figure>
+<p>患者は 500 N で下に押します。</p><p>機械は 300 N で下に押します。</p><p>図の距離を使います。</p><p>RA と RB を求めます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>最初のステップは？</p><details class="answer"><summary>答えを見る</summary><p>縦方向の力：RA + RB = 800 N。</p></details></div>
+</section><section class="block" id="slide30">
+<span class="topic-label">スライド 30</span>
+<h2>練習5：倒れるか？</h2>
+<p class="lead">支点まわりのモーメントを比べます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_30.jpg" alt="練習5：倒れるか？"><div class="slide-caption">練習5：倒れるか？</div></figure>
+<p>ベッドと患者は支点まわりにモーメントを作ります。</p><p>倒れるか知るには、時計回りと反時計回りのモーメントを比べます。</p><p>倒すモーメントが支えるモーメントより大きいなら、倒れる可能性があります。</p><p>これは安全の問題です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>何を比べますか。</p><details class="answer"><summary>答えを見る</summary><p>支点まわりのモーメント。</p></details></div>
+</section><section class="block" id="slide31">
+<span class="topic-label">スライド 31</span>
+<h2>よくある間違い</h2>
+<p class="lead">この間違いを避けます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_31.jpg" alt="よくある間違い"><div class="slide-caption">よくある間違い</div></figure>
+<p>kg を力として使わない。</p><p>g を忘れない。</p><p>向きを無視しない。</p><p>モーメントを忘れない。</p><p>支持力はいつも同じだと思わない。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>支持力が同じなのはいつですか。</p><details class="answer"><summary>答えを見る</summary><p>中央荷重など対称な場合だけです。</p></details></div>
+</section><section class="block" id="slide32">
+<span class="topic-label">スライド 32</span>
+<h2>まとめ</h2>
+<p class="lead">静力学はバランスと安全を確認します。</p>
+<figure class="slide-img"><img src="assets/slides/slide_32.jpg" alt="まとめ"><div class="slide-caption">まとめ</div></figure>
+<p>重さ：W = m g。</p><p>つり合い：ΣF = 0。</p><p>モーメント：M = F × d。</p><p>回転しない：ΣM = 0。</p><p>荷重が中央でないと、支持力は違います。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>一番大切な安全の考えは？</p><details class="answer"><summary>答えを見る</summary><p>力のつり合いとモーメントのつり合いを確認すること。</p></details></div>
+</section>
+<section class="block">
+<h2>ダウンロードと確認用ファイル</h2>
+<p><a class="btn" href="downloads/lecture4A_statics_with_images.pptx">PowerPoint</a></p>
+<p><a class="btn" href="downloads/lecture4A_statics_with_images.pdf">PDF</a></p>
+<p><a class="btn" href="downloads/lecture4A_statics_speaker_script_en.docx">Speaker script DOCX</a></p>
+<p><a class="btn" href="assets/debug/lecture4A_slide_contact_labeled.jpg">スライド確認用コンタクトシート</a></p>
+</section>
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 4A · Statics for Medical Equipment.</p></footer>
+</body></html>
