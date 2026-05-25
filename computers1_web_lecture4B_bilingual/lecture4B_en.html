@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Lecture 4B — Kinematics for Medical Equipment</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header>
+<div class="header-inner">
+<div class="kicker">Computers 1 · Mechanics</div>
+<h1>Lecture 4B — Kinematics for Medical Equipment</h1>
+<p class="subtitle">Position · Speed · Velocity · Acceleration · Derivatives</p>
+<p>Self-study web lesson. Each section matches one slide in the PowerPoint.</p>
+<div class="actions">
+<a class="btn" href="#part1">Start lesson</a>
+<a class="btn secondary" href="lecture4B_ja.html">日本語版</a>
+<a class="btn secondary" href="#slide26">Practice tasks</a>
+<a class="btn secondary" href="downloads/lecture4B_kinematics_with_images.pptx">PowerPoint</a>
+</div>
+</div>
+</header>
+<main>
+<section class="overview card">
+<p class="lead">Self-study web lesson. Each section matches one slide in the PowerPoint.</p>
+<div class="grid">
+<div class="small"><h3>Main formulas</h3><p>v = s/t · a = Δv/Δt · s = vt · v = at</p></div>
+<div class="small"><h3>Derivative chain</h3><p>x → v → a · v = dx/dt · a = dv/dt</p></div>
+<div class="small"><h3>Medical link</h3><p>Wheelchair, bed, lift, scanner table, cart.</p></div>
+</div>
+</section>
+<section class="toc card"><h2>Lesson map</h2><ol><li><a href="#slide01">1. Kinematics for Medical Equipment</a></li><li><a href="#slide02">2. From Statics to Kinematics</a></li><li><a href="#slide03">3. Why Kinematics Matters in Hospitals</a></li><li><a href="#slide04">4. Position</a></li><li><a href="#slide05">5. Distance</a></li><li><a href="#slide06">6. Displacement</a></li><li><a href="#slide07">7. Distance vs Displacement</a></li><li><a href="#slide08">8. Speed</a></li><li><a href="#slide09">9. Speed Example</a></li><li><a href="#slide10">10. Velocity</a></li><li><a href="#slide11">11. Speed vs Velocity</a></li><li><a href="#slide12">12. What Is Acceleration?</a></li><li><a href="#slide13">13. Acceleration Formula</a></li><li><a href="#slide14">14. Acceleration Example</a></li><li><a href="#slide15">15. Positive and Negative Acceleration</a></li><li><a href="#slide16">16. Position–Time Graph</a></li><li><a href="#slide17">17. Speed–Time Graph</a></li><li><a href="#slide18">18. Why Do We Need Derivatives?</a></li><li><a href="#slide19">19. Derivative Idea: Small Steps</a></li><li><a href="#slide20">20. Derivative Notation</a></li><li><a href="#slide21">21. Position → Velocity → Acceleration</a></li><li><a href="#slide22">22. Constant Speed</a></li><li><a href="#slide23">23. Constant Speed Example</a></li><li><a href="#slide24">24. Motion from Rest</a></li><li><a href="#slide25">25. Motion from Rest Example</a></li><li><a href="#slide26">26. Task 1: Speed</a></li><li><a href="#slide27">27. Task 2: Time</a></li><li><a href="#slide28">28. Task 3: Distance</a></li><li><a href="#slide29">29. Task 4: Acceleration</a></li><li><a href="#slide30">30. Task 5: Slowing Down</a></li><li><a href="#slide31">31. Task 6: From Rest</a></li><li><a href="#slide32">32. Task 7: Mixed Task</a></li><li><a href="#slide33">33. Common Mistakes</a></li><li><a href="#slide34">34. Summary</a></li></ol></section>
+<section class="part card" id="part1"><h2>Part 1 — What Is Kinematics?</h2><p>Kinematics describes motion. We do not study forces yet.</p></section><section class="block" id="slide01">
+<span class="topic-label">Slide 1</span>
+<h2>Kinematics for Medical Equipment</h2>
+<p class="lead">Position. Speed. Velocity. Acceleration.</p>
+<figure class="slide-img"><img src="assets/slides/slide_01.jpg" alt="Kinematics for Medical Equipment"><div class="slide-caption">Kinematics for Medical Equipment</div></figure>
+<p>Today we study kinematics. Kinematics means motion.</p><p>We describe how objects move. We do not ask why they move yet.</p><p>Forces will come in the next lecture: dynamics.</p><p>Today we use simple formulas and many small tasks.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does kinematics study?</p><details class="answer"><summary>Show answer</summary><p>Motion. It describes how objects move.</p></details></div>
+</section><section class="block" id="slide02">
+<span class="topic-label">Slide 2</span>
+<h2>From Statics to Kinematics</h2>
+<p class="lead">Statics: no movement. Kinematics: movement.</p>
+<figure class="slide-img"><img src="assets/slides/slide_02.jpg" alt="From Statics to Kinematics"><div class="slide-caption">From Statics to Kinematics</div></figure>
+<p>Last time we studied statics. The object did not move.</p><p>Today objects can move: a bed, a wheelchair, a lift, a cart, or a scanner table.</p><p>Statics asks: Is it balanced?</p><p>Kinematics asks: How does it move?</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the main difference between statics and kinematics?</p><details class="answer"><summary>Show answer</summary><p>Statics studies objects at rest. Kinematics studies motion.</p></details></div>
+</section><section class="block" id="slide03">
+<span class="topic-label">Slide 3</span>
+<h2>Why Kinematics Matters in Hospitals</h2>
+<p class="lead">Many hospital machines move.</p>
+<figure class="slide-img"><img src="assets/slides/slide_03.jpg" alt="Why Kinematics Matters in Hospitals"><div class="slide-caption">Why Kinematics Matters in Hospitals</div></figure>
+<p>A wheelchair moves along the floor.</p><p>A hospital bed can move forward, backward, up, and down.</p><p>A patient lift moves a patient slowly and safely.</p><p>A scanner table moves a patient into a machine.</p><p>We need simple words to describe this motion.</p>
+<div class="activity"><h3>Think and answer</h3><p>Name one hospital machine that moves.</p><details class="answer"><summary>Show answer</summary><p>Wheelchair, bed, patient lift, scanner table, cart, centrifuge.</p></details></div>
+</section><section class="part card" id="part2"><h2>Part 2 — Position, Distance, and Displacement</h2><p>First we describe where something is and how far it moves.</p></section><section class="block" id="slide04">
+<span class="topic-label">Slide 4</span>
+<h2>Position</h2>
+<p class="lead">Position = where something is.</p>
+<figure class="slide-img"><img src="assets/slides/slide_04.jpg" alt="Position"><div class="slide-caption">Position</div></figure>
+<p>Position tells us where an object is.</p><p>We can describe position with a number.</p><p>Example: a bed is 2 meters from the wall.</p><p>If the bed moves, the position changes.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does position mean?</p><details class="answer"><summary>Show answer</summary><p>Where something is.</p></details></div>
+</section><section class="block" id="slide05">
+<span class="topic-label">Slide 5</span>
+<h2>Distance</h2>
+<p class="lead">Distance = how much path.</p>
+<figure class="slide-img"><img src="assets/slides/slide_05.jpg" alt="Distance"><div class="slide-caption">Distance</div></figure>
+<p>Distance means the total path traveled.</p><p>Distance is always positive.</p><p>If a wheelchair moves 5 meters, the distance is 5 meters.</p><p>Distance does not tell direction.</p>
+<div class="activity"><h3>Think and answer</h3><p>Can distance be negative?</p><details class="answer"><summary>Show answer</summary><p>No. Distance is always positive.</p></details></div>
+</section><section class="block" id="slide06">
+<span class="topic-label">Slide 6</span>
+<h2>Displacement</h2>
+<p class="lead">Displacement = change in position.</p>
+<figure class="slide-img"><img src="assets/slides/slide_06.jpg" alt="Displacement"><div class="slide-caption">Displacement</div></figure>
+<p>Displacement means start position to finish position.</p><p>It has direction.</p><p>Formula: Δx = x₂ − x₁.</p><p>Displacement can be positive, negative, or zero.</p>
+<div class="activity"><h3>Think and answer</h3><p>What formula do we use for displacement?</p><details class="answer"><summary>Show answer</summary><p>Δx = x₂ − x₁.</p></details></div>
+</section><section class="block" id="slide07">
+<span class="topic-label">Slide 7</span>
+<h2>Distance vs Displacement</h2>
+<p class="lead">Distance is total path. Displacement is start to finish.</p>
+<figure class="slide-img"><img src="assets/slides/slide_07.jpg" alt="Distance vs Displacement"><div class="slide-caption">Distance vs Displacement</div></figure>
+<p>Distance and displacement can be different.</p><p>Example: move forward 3 m, then back 1 m.</p><p>Total distance is 4 m.</p><p>Displacement is 2 m forward.</p>
+<div class="activity"><h3>Think and answer</h3><p>If you move forward 3 m and back 1 m, what is the distance?</p><details class="answer"><summary>Show answer</summary><p>4 m.</p></details></div>
+</section><section class="part card" id="part3"><h2>Part 3 — Speed, Velocity, and Acceleration</h2><p>We learn the main formulas for motion.</p></section><section class="block" id="slide08">
+<span class="topic-label">Slide 8</span>
+<h2>Speed</h2>
+<p class="lead">Speed = distance / time.</p>
+<figure class="slide-img"><img src="assets/slides/slide_08.jpg" alt="Speed"><div class="slide-caption">Speed</div></figure>
+<p>Speed tells us how fast something moves.</p><p>Formula: v = s / t.</p><p>Unit: m/s.</p><p>If distance is large and time is small, speed is high.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the formula for speed?</p><details class="answer"><summary>Show answer</summary><p>v = s / t.</p></details></div>
+</section><section class="block" id="slide09">
+<span class="topic-label">Slide 9</span>
+<h2>Speed Example</h2>
+<p class="lead">A wheelchair moves 12 m in 6 s.</p>
+<figure class="slide-img"><img src="assets/slides/slide_09.jpg" alt="Speed Example"><div class="slide-caption">Speed Example</div></figure>
+<p>We calculate speed using v = s / t.</p><p>Distance is 12 meters.</p><p>Time is 6 seconds.</p><p>v = 12 / 6 = 2 m/s.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the speed?</p><details class="answer"><summary>Show answer</summary><p>2 m/s.</p></details></div>
+</section><section class="block" id="slide10">
+<span class="topic-label">Slide 10</span>
+<h2>Velocity</h2>
+<p class="lead">Velocity = speed + direction.</p>
+<figure class="slide-img"><img src="assets/slides/slide_10.jpg" alt="Velocity"><div class="slide-caption">Velocity</div></figure>
+<p>Speed only tells how fast.</p><p>Velocity tells how fast and in what direction.</p><p>Example: speed is 2 m/s.</p><p>Velocity is 2 m/s forward.</p><p>Velocity can be negative if the object moves in the opposite direction.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does velocity include that speed does not?</p><details class="answer"><summary>Show answer</summary><p>Direction.</p></details></div>
+</section><section class="block" id="slide11">
+<span class="topic-label">Slide 11</span>
+<h2>Speed vs Velocity</h2>
+<p class="lead">Speed has no direction. Velocity has direction.</p>
+<figure class="slide-img"><img src="assets/slides/slide_11.jpg" alt="Speed vs Velocity"><div class="slide-caption">Speed vs Velocity</div></figure>
+<p>Speed is a scalar.</p><p>Velocity is a vector.</p><p>For this class, remember the simple idea:</p><p>Speed = how fast.</p><p>Velocity = how fast and where.</p>
+<div class="activity"><h3>Think and answer</h3><p>Is velocity a vector?</p><details class="answer"><summary>Show answer</summary><p>Yes. It has direction.</p></details></div>
+</section><section class="block" id="slide12">
+<span class="topic-label">Slide 12</span>
+<h2>What Is Acceleration?</h2>
+<p class="lead">Acceleration = change of velocity.</p>
+<figure class="slide-img"><img src="assets/slides/slide_12.jpg" alt="What Is Acceleration?"><div class="slide-caption">What Is Acceleration?</div></figure>
+<p>Acceleration means velocity changes.</p><p>The object can speed up.</p><p>The object can slow down.</p><p>The object can change direction.</p><p>All of these are acceleration.</p>
+<div class="activity"><h3>Think and answer</h3><p>Can slowing down be acceleration?</p><details class="answer"><summary>Show answer</summary><p>Yes. It is negative acceleration.</p></details></div>
+</section><section class="block" id="slide13">
+<span class="topic-label">Slide 13</span>
+<h2>Acceleration Formula</h2>
+<p class="lead">Acceleration = change in velocity / time.</p>
+<figure class="slide-img"><img src="assets/slides/slide_13.jpg" alt="Acceleration Formula"><div class="slide-caption">Acceleration Formula</div></figure>
+<p>Formula: a = Δv / Δt.</p><p>Also: a = (v₂ − v₁) / t.</p><p>Unit: m/s².</p><p>If velocity changes a lot in a short time, acceleration is large.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the unit of acceleration?</p><details class="answer"><summary>Show answer</summary><p>m/s².</p></details></div>
+</section><section class="block" id="slide14">
+<span class="topic-label">Slide 14</span>
+<h2>Acceleration Example</h2>
+<p class="lead">A bed changes speed.</p>
+<figure class="slide-img"><img src="assets/slides/slide_14.jpg" alt="Acceleration Example"><div class="slide-caption">Acceleration Example</div></figure>
+<p>A bed starts from rest: v₁ = 0 m/s.</p><p>Later the bed moves at v₂ = 2 m/s.</p><p>Time is t = 4 s.</p><p>a = (2 − 0) / 4 = 0.5 m/s².</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the acceleration?</p><details class="answer"><summary>Show answer</summary><p>0.5 m/s².</p></details></div>
+</section><section class="block" id="slide15">
+<span class="topic-label">Slide 15</span>
+<h2>Positive and Negative Acceleration</h2>
+<p class="lead">Speed up is positive. Slow down is negative.</p>
+<figure class="slide-img"><img src="assets/slides/slide_15.jpg" alt="Positive and Negative Acceleration"><div class="slide-caption">Positive and Negative Acceleration</div></figure>
+<p>If speed increases in the positive direction, acceleration is positive.</p><p>If speed decreases in the positive direction, acceleration is negative.</p><p>In hospitals, sudden starts and stops can be dangerous.</p><p>Gentle stopping is safer for patients.</p>
+<div class="activity"><h3>Think and answer</h3><p>Why should hospital equipment stop gently?</p><details class="answer"><summary>Show answer</summary><p>Because sudden motion can be unsafe for patients.</p></details></div>
+</section><section class="part card" id="part4"><h2>Part 4 — Graphs and Derivatives</h2><p>Graphs and derivatives show change with time.</p></section><section class="block" id="slide16">
+<span class="topic-label">Slide 16</span>
+<h2>Position–Time Graph</h2>
+<p class="lead">Steeper line = faster motion.</p>
+<figure class="slide-img"><img src="assets/slides/slide_16.jpg" alt="Position–Time Graph"><div class="slide-caption">Position–Time Graph</div></figure>
+<p>A position-time graph shows where an object is at each time.</p><p>If the line is flat, the object does not move.</p><p>If the line is steep, the object moves faster.</p><p>The slope shows velocity.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does a flat position-time graph mean?</p><details class="answer"><summary>Show answer</summary><p>No movement.</p></details></div>
+</section><section class="block" id="slide17">
+<span class="topic-label">Slide 17</span>
+<h2>Speed–Time Graph</h2>
+<p class="lead">Rising line = acceleration.</p>
+<figure class="slide-img"><img src="assets/slides/slide_17.jpg" alt="Speed–Time Graph"><div class="slide-caption">Speed–Time Graph</div></figure>
+<p>A speed-time graph shows speed at each time.</p><p>A flat line means constant speed.</p><p>A rising line means speeding up.</p><p>A falling line means slowing down.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does a rising speed-time graph mean?</p><details class="answer"><summary>Show answer</summary><p>Acceleration / speeding up.</p></details></div>
+</section><section class="block" id="slide18">
+<span class="topic-label">Slide 18</span>
+<h2>Why Do We Need Derivatives?</h2>
+<p class="lead">A derivative shows change.</p>
+<figure class="slide-img"><img src="assets/slides/slide_18.jpg" alt="Why Do We Need Derivatives?"><div class="slide-caption">Why Do We Need Derivatives?</div></figure>
+<p>A derivative means rate of change.</p><p>How fast does position change? That gives velocity.</p><p>How fast does velocity change? That gives acceleration.</p><p>This is the main idea. Do not be afraid of the notation.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does a derivative show?</p><details class="answer"><summary>Show answer</summary><p>How fast something changes.</p></details></div>
+</section><section class="block" id="slide19">
+<span class="topic-label">Slide 19</span>
+<h2>Derivative Idea: Small Steps</h2>
+<p class="lead">Look at very small time.</p>
+<figure class="slide-img"><img src="assets/slides/slide_19.jpg" alt="Derivative Idea: Small Steps"><div class="slide-caption">Derivative Idea: Small Steps</div></figure>
+<p>Take a very small time interval Δt.</p><p>During this time, position changes by Δx.</p><p>Velocity is approximately Δx / Δt.</p><p>When Δt becomes very small, this idea becomes a derivative.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does Δx / Δt mean?</p><details class="answer"><summary>Show answer</summary><p>Change in position divided by change in time.</p></details></div>
+</section><section class="block" id="slide20">
+<span class="topic-label">Slide 20</span>
+<h2>Derivative Notation</h2>
+<p class="lead">v = dx/dt and a = dv/dt.</p>
+<figure class="slide-img"><img src="assets/slides/slide_20.jpg" alt="Derivative Notation"><div class="slide-caption">Derivative Notation</div></figure>
+<p>dx means a very small change in position.</p><p>dt means a very small change in time.</p><p>v = dx/dt means velocity is change of position per time.</p><p>a = dv/dt means acceleration is change of velocity per time.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does dx/dt mean in this lesson?</p><details class="answer"><summary>Show answer</summary><p>Velocity.</p></details></div>
+</section><section class="block" id="slide21">
+<span class="topic-label">Slide 21</span>
+<h2>Position → Velocity → Acceleration</h2>
+<p class="lead">x → v → a.</p>
+<figure class="slide-img"><img src="assets/slides/slide_21.jpg" alt="Position → Velocity → Acceleration"><div class="slide-caption">Position → Velocity → Acceleration</div></figure>
+<p>This is the most important chain.</p><p>Position changes with time, and we get velocity.</p><p>Velocity changes with time, and we get acceleration.</p><p>Motion means change with time.</p>
+<div class="activity"><h3>Think and answer</h3><p>What do we get when position changes with time?</p><details class="answer"><summary>Show answer</summary><p>Velocity.</p></details></div>
+</section><section class="part card" id="part5"><h2>Part 5 — Constant Speed and Motion from Rest</h2><p>Now we use formulas for simple motion.</p></section><section class="block" id="slide22">
+<span class="topic-label">Slide 22</span>
+<h2>Constant Speed</h2>
+<p class="lead">Constant speed means speed does not change.</p>
+<figure class="slide-img"><img src="assets/slides/slide_22.jpg" alt="Constant Speed"><div class="slide-caption">Constant Speed</div></figure>
+<p>At constant speed, the object moves the same distance every second.</p><p>Formula: s = v × t.</p><p>This is useful for simple cart and wheelchair movement.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the formula for distance at constant speed?</p><details class="answer"><summary>Show answer</summary><p>s = v × t.</p></details></div>
+</section><section class="block" id="slide23">
+<span class="topic-label">Slide 23</span>
+<h2>Constant Speed Example</h2>
+<p class="lead">A cart moves at 1.5 m/s for 8 s.</p>
+<figure class="slide-img"><img src="assets/slides/slide_23.jpg" alt="Constant Speed Example"><div class="slide-caption">Constant Speed Example</div></figure>
+<p>The speed is constant.</p><p>Use s = v × t.</p><p>s = 1.5 × 8.</p><p>s = 12 m.</p>
+<div class="activity"><h3>Think and answer</h3><p>How far does the cart move?</p><details class="answer"><summary>Show answer</summary><p>12 m.</p></details></div>
+</section><section class="block" id="slide24">
+<span class="topic-label">Slide 24</span>
+<h2>Motion from Rest</h2>
+<p class="lead">If object starts from rest, v = a × t.</p>
+<figure class="slide-img"><img src="assets/slides/slide_24.jpg" alt="Motion from Rest"><div class="slide-caption">Motion from Rest</div></figure>
+<p>Starts from rest means the first velocity is zero.</p><p>If acceleration is constant, final velocity is v = a × t.</p><p>Distance can be calculated by s = 1/2 a t².</p><p>This is useful for lifts and moving tables.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does &#x27;starts from rest&#x27; mean?</p><details class="answer"><summary>Show answer</summary><p>Initial velocity is zero.</p></details></div>
+</section><section class="block" id="slide25">
+<span class="topic-label">Slide 25</span>
+<h2>Motion from Rest Example</h2>
+<p class="lead">A lift starts from rest.</p>
+<figure class="slide-img"><img src="assets/slides/slide_25.jpg" alt="Motion from Rest Example"><div class="slide-caption">Motion from Rest Example</div></figure>
+<p>A patient lift starts from rest.</p><p>Acceleration is a = 0.5 m/s².</p><p>Time is t = 4 s.</p><p>Use v = a × t.</p><p>v = 0.5 × 4 = 2 m/s.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the final velocity?</p><details class="answer"><summary>Show answer</summary><p>2 m/s.</p></details></div>
+</section><section class="part card" id="part6"><h2>Part 6 — Practice Tasks and Summary</h2><p>Solve small tasks. Check units carefully.</p></section><section class="block" id="slide26">
+<span class="topic-label">Slide 26</span>
+<h2>Task 1: Speed</h2>
+<p class="lead">A wheelchair moves 10 m in 5 s.</p>
+<figure class="slide-img"><img src="assets/slides/slide_26.jpg" alt="Task 1: Speed"><div class="slide-caption">Task 1: Speed</div></figure>
+<p>This is the simplest speed task.</p><p>Use v = s / t.</p><p>Distance is 10 m.</p><p>Time is 5 s.</p><p>v = 10 / 5 = 2 m/s.</p>
+<div class="activity"><h3>Think and answer</h3><p>Find the speed.</p><details class="answer"><summary>Show answer</summary><p>2 m/s.</p></details></div>
+</section><section class="block" id="slide27">
+<span class="topic-label">Slide 27</span>
+<h2>Task 2: Time</h2>
+<p class="lead">A cart moves 18 m at 3 m/s.</p>
+<figure class="slide-img"><img src="assets/slides/slide_27.jpg" alt="Task 2: Time"><div class="slide-caption">Task 2: Time</div></figure>
+<p>Now we find time.</p><p>Use t = s / v.</p><p>Distance is 18 m.</p><p>Speed is 3 m/s.</p><p>t = 18 / 3 = 6 s.</p>
+<div class="activity"><h3>Think and answer</h3><p>Find the time.</p><details class="answer"><summary>Show answer</summary><p>6 s.</p></details></div>
+</section><section class="block" id="slide28">
+<span class="topic-label">Slide 28</span>
+<h2>Task 3: Distance</h2>
+<p class="lead">A scanner table moves at 0.4 m/s for 10 s.</p>
+<figure class="slide-img"><img src="assets/slides/slide_28.jpg" alt="Task 3: Distance"><div class="slide-caption">Task 3: Distance</div></figure>
+<p>Use s = v × t.</p><p>Speed is 0.4 m/s.</p><p>Time is 10 s.</p><p>s = 0.4 × 10 = 4 m.</p>
+<div class="activity"><h3>Think and answer</h3><p>Find the distance.</p><details class="answer"><summary>Show answer</summary><p>4 m.</p></details></div>
+</section><section class="block" id="slide29">
+<span class="topic-label">Slide 29</span>
+<h2>Task 4: Acceleration</h2>
+<p class="lead">A bed changes speed from 0 to 1.2 m/s in 3 s.</p>
+<figure class="slide-img"><img src="assets/slides/slide_29.jpg" alt="Task 4: Acceleration"><div class="slide-caption">Task 4: Acceleration</div></figure>
+<p>Use a = (v₂ − v₁) / t.</p><p>v₁ = 0 m/s.</p><p>v₂ = 1.2 m/s.</p><p>t = 3 s.</p><p>a = 1.2 / 3 = 0.4 m/s².</p>
+<div class="activity"><h3>Think and answer</h3><p>Find the acceleration.</p><details class="answer"><summary>Show answer</summary><p>0.4 m/s².</p></details></div>
+</section><section class="block" id="slide30">
+<span class="topic-label">Slide 30</span>
+<h2>Task 5: Slowing Down</h2>
+<p class="lead">A cart slows from 2 m/s to 0 m/s in 4 s.</p>
+<figure class="slide-img"><img src="assets/slides/slide_30.jpg" alt="Task 5: Slowing Down"><div class="slide-caption">Task 5: Slowing Down</div></figure>
+<p>Use a = (v₂ − v₁) / t.</p><p>v₁ = 2 m/s.</p><p>v₂ = 0 m/s.</p><p>t = 4 s.</p><p>a = (0 − 2) / 4 = −0.5 m/s².</p><p>Negative means slowing down.</p>
+<div class="activity"><h3>Think and answer</h3><p>Find the acceleration.</p><details class="answer"><summary>Show answer</summary><p>−0.5 m/s².</p></details></div>
+</section><section class="block" id="slide31">
+<span class="topic-label">Slide 31</span>
+<h2>Task 6: From Rest</h2>
+<p class="lead">A lift starts from rest.</p>
+<figure class="slide-img"><img src="assets/slides/slide_31.jpg" alt="Task 6: From Rest"><div class="slide-caption">Task 6: From Rest</div></figure>
+<p>Acceleration is a = 0.3 m/s².</p><p>Time is t = 5 s.</p><p>Use v = a × t.</p><p>v = 0.3 × 5 = 1.5 m/s.</p>
+<div class="activity"><h3>Think and answer</h3><p>Find the final velocity.</p><details class="answer"><summary>Show answer</summary><p>1.5 m/s.</p></details></div>
+</section><section class="block" id="slide32">
+<span class="topic-label">Slide 32</span>
+<h2>Task 7: Mixed Task</h2>
+<p class="lead">A wheelchair moves in two parts.</p>
+<figure class="slide-img"><img src="assets/slides/slide_32.jpg" alt="Task 7: Mixed Task"><div class="slide-caption">Task 7: Mixed Task</div></figure>
+<p>First: 6 m in 3 s.</p><p>Then: 8 m in 4 s.</p><p>Total distance is 14 m.</p><p>Total time is 7 s.</p><p>Average speed = 14 / 7 = 2 m/s.</p>
+<div class="activity"><h3>Think and answer</h3><p>Find the average speed.</p><details class="answer"><summary>Show answer</summary><p>2 m/s.</p></details></div>
+</section><section class="block" id="slide33">
+<span class="topic-label">Slide 33</span>
+<h2>Common Mistakes</h2>
+<p class="lead">Do not confuse the basic words and units.</p>
+<figure class="slide-img"><img src="assets/slides/slide_33.jpg" alt="Common Mistakes"><div class="slide-caption">Common Mistakes</div></figure>
+<p>Do not confuse distance and displacement.</p><p>Do not confuse speed and velocity.</p><p>Do not confuse speed and acceleration.</p><p>Do not confuse m/s and m/s².</p><p>These mistakes are common, so check units carefully.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the unit of speed?</p><details class="answer"><summary>Show answer</summary><p>m/s.</p></details></div>
+</section><section class="block" id="slide34">
+<span class="topic-label">Slide 34</span>
+<h2>Summary</h2>
+<p class="lead">Motion = change with time.</p>
+<figure class="slide-img"><img src="assets/slides/slide_34.jpg" alt="Summary"><div class="slide-caption">Summary</div></figure>
+<p>Today we learned position, distance, displacement, speed, velocity, acceleration, and derivatives.</p><p>Velocity is change of position with time.</p><p>Acceleration is change of velocity with time.</p><p>Next: dynamics. Dynamics asks why motion changes.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the next mechanics topic?</p><details class="answer"><summary>Show answer</summary><p>Dynamics.</p></details></div>
+</section>
+<section class="block">
+<h2>Downloads and check file</h2>
+<p><a class="btn" href="downloads/lecture4B_kinematics_with_images.pptx">PowerPoint</a></p>
+<p><a class="btn" href="downloads/lecture4B_kinematics_with_images.pdf">PDF</a></p>
+<p><a class="btn" href="downloads/lecture4B_kinematics_speaker_script_en.docx">Speaker script DOCX</a></p>
+<p><a class="btn" href="assets/debug/lecture4B_slide_contact_labeled.jpg">Labeled slide contact sheet</a></p>
+</section>
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 4B · Kinematics for Medical Equipment.</p></footer>
+</body></html>

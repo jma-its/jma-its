@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>第4B回 — 医療機器のための運動学</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header>
+<div class="header-inner">
+<div class="kicker">Computers 1 · Mechanics</div>
+<h1>第4B回 — 医療機器のための運動学</h1>
+<p class="subtitle">位置・速さ・速度・加速度・微分</p>
+<p>自習用ウェブ教材です。各セクションはPowerPointの1枚のスライドに対応しています。</p>
+<div class="actions">
+<a class="btn" href="#part1">授業を始める</a>
+<a class="btn secondary" href="lecture4B_en.html">English version</a>
+<a class="btn secondary" href="#slide26">練習問題</a>
+<a class="btn secondary" href="downloads/lecture4B_kinematics_with_images.pptx">PowerPoint</a>
+</div>
+</div>
+</header>
+<main>
+<section class="overview card">
+<p class="lead">自習用ウェブ教材です。各セクションはPowerPointの1枚のスライドに対応しています。</p>
+<div class="grid">
+<div class="small"><h3>主な公式</h3><p>v = s/t · a = Δv/Δt · s = vt · v = at</p></div>
+<div class="small"><h3>微分のチェーン</h3><p>x → v → a · v = dx/dt · a = dv/dt</p></div>
+<div class="small"><h3>医療との関係</h3><p>車いす、ベッド、リフト、検査台、カート。</p></div>
+</div>
+</section>
+<section class="toc card"><h2>授業の流れ</h2><ol><li><a href="#slide01">1. 医療機器のための運動学</a></li><li><a href="#slide02">2. 静力学から運動学へ</a></li><li><a href="#slide03">3. 病院で運動学が重要な理由</a></li><li><a href="#slide04">4. Position</a></li><li><a href="#slide05">5. Distance</a></li><li><a href="#slide06">6. Displacement</a></li><li><a href="#slide07">7. Distance vs Displacement</a></li><li><a href="#slide08">8. Speed</a></li><li><a href="#slide09">9. Speed Example</a></li><li><a href="#slide10">10. Velocity</a></li><li><a href="#slide11">11. Speed vs Velocity</a></li><li><a href="#slide12">12. Acceleration とは何か</a></li><li><a href="#slide13">13. Acceleration Formula</a></li><li><a href="#slide14">14. Acceleration Example</a></li><li><a href="#slide15">15. Positive and Negative Acceleration</a></li><li><a href="#slide16">16. Position–Time Graph</a></li><li><a href="#slide17">17. Speed–Time Graph</a></li><li><a href="#slide18">18. なぜ微分が必要か</a></li><li><a href="#slide19">19. Derivative Idea: Small Steps</a></li><li><a href="#slide20">20. Derivative Notation</a></li><li><a href="#slide21">21. Position → Velocity → Acceleration</a></li><li><a href="#slide22">22. Constant Speed</a></li><li><a href="#slide23">23. Constant Speed Example</a></li><li><a href="#slide24">24. Motion from Rest</a></li><li><a href="#slide25">25. Motion from Rest Example</a></li><li><a href="#slide26">26. Task 1: Speed</a></li><li><a href="#slide27">27. Task 2: Time</a></li><li><a href="#slide28">28. Task 3: Distance</a></li><li><a href="#slide29">29. Task 4: Acceleration</a></li><li><a href="#slide30">30. Task 5: Slowing Down</a></li><li><a href="#slide31">31. Task 6: From Rest</a></li><li><a href="#slide32">32. Task 7: Mixed Task</a></li><li><a href="#slide33">33. Common Mistakes</a></li><li><a href="#slide34">34. Summary</a></li></ol></section>
+<section class="part card" id="part1"><h2>Part 1 — 運動学とは何か</h2><p>運動学は動きを説明します。まだ力は扱いません。</p></section><section class="block" id="slide01">
+<span class="topic-label">スライド 1</span>
+<h2>医療機器のための運動学</h2>
+<p class="lead">位置・速さ・速度・加速度</p>
+<figure class="slide-img"><img src="assets/slides/slide_01.jpg" alt="医療機器のための運動学"><div class="slide-caption">医療機器のための運動学</div></figure>
+<p>今日は運動学を学びます。運動学は motion を学ぶ分野です。</p><p>物体がどのように動くかを説明します。まだ「なぜ動くか」は扱いません。</p><p>力は次の授業、Dynamics で学びます。</p><p>今日は簡単な公式と小さな問題を使います。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>運動学は何を学びますか。</p><details class="answer"><summary>答えを見る</summary><p>動きです。物体がどのように動くかを説明します。</p></details></div>
+</section><section class="block" id="slide02">
+<span class="topic-label">スライド 2</span>
+<h2>静力学から運動学へ</h2>
+<p class="lead">静力学：動かない。運動学：動く。</p>
+<figure class="slide-img"><img src="assets/slides/slide_02.jpg" alt="静力学から運動学へ"><div class="slide-caption">静力学から運動学へ</div></figure>
+<p>前回は静力学を学びました。物体は動いていませんでした。</p><p>今日は、ベッド、車いす、リフト、カート、検査台などが動きます。</p><p>静力学は「つり合っているか」を考えます。</p><p>運動学は「どのように動くか」を考えます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>静力学と運動学の違いは何ですか。</p><details class="answer"><summary>答えを見る</summary><p>静力学は静止、運動学は動きを学びます。</p></details></div>
+</section><section class="block" id="slide03">
+<span class="topic-label">スライド 3</span>
+<h2>病院で運動学が重要な理由</h2>
+<p class="lead">多くの病院機器は動きます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_03.jpg" alt="病院で運動学が重要な理由"><div class="slide-caption">病院で運動学が重要な理由</div></figure>
+<p>車いすは床の上を動きます。</p><p>病院ベッドは前後、上下に動くことがあります。</p><p>患者リフトは患者をゆっくり安全に動かします。</p><p>検査台は患者を機械の中に動かします。</p><p>この動きを説明する言葉が必要です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>動く病院機器を1つ言ってください。</p><details class="answer"><summary>答えを見る</summary><p>車いす、ベッド、患者リフト、検査台、カート、遠心機。</p></details></div>
+</section><section class="part card" id="part2"><h2>Part 2 — 位置、距離、変位</h2><p>まず、物体がどこにあり、どれだけ動くかを説明します。</p></section><section class="block" id="slide04">
+<span class="topic-label">スライド 4</span>
+<h2>Position</h2>
+<p class="lead">Position = どこにあるか。</p>
+<figure class="slide-img"><img src="assets/slides/slide_04.jpg" alt="Position"><div class="slide-caption">Position</div></figure>
+<p>Position は物体がどこにあるかを示します。</p><p>数で表すことができます。</p><p>例：ベッドは壁から2メートルの位置にあります。</p><p>ベッドが動くと position が変わります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Position とは何ですか。</p><details class="answer"><summary>答えを見る</summary><p>物体がどこにあるかです。</p></details></div>
+</section><section class="block" id="slide05">
+<span class="topic-label">スライド 5</span>
+<h2>Distance</h2>
+<p class="lead">Distance = 進んだ道の長さ。</p>
+<figure class="slide-img"><img src="assets/slides/slide_05.jpg" alt="Distance"><div class="slide-caption">Distance</div></figure>
+<p>Distance は移動した道の合計です。</p><p>Distance はいつも正の値です。</p><p>車いすが5 m動けば、distance は5 mです。</p><p>Distance は方向を示しません。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Distance は負になりますか。</p><details class="answer"><summary>答えを見る</summary><p>いいえ。distance はいつも正です。</p></details></div>
+</section><section class="block" id="slide06">
+<span class="topic-label">スライド 6</span>
+<h2>Displacement</h2>
+<p class="lead">Displacement = 位置の変化。</p>
+<figure class="slide-img"><img src="assets/slides/slide_06.jpg" alt="Displacement"><div class="slide-caption">Displacement</div></figure>
+<p>Displacement は始点から終点までの変化です。</p><p>方向があります。</p><p>公式：Δx = x₂ − x₁。</p><p>Displacement は正、負、ゼロになることがあります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Displacement の公式は？</p><details class="answer"><summary>答えを見る</summary><p>Δx = x₂ − x₁。</p></details></div>
+</section><section class="block" id="slide07">
+<span class="topic-label">スライド 7</span>
+<h2>Distance vs Displacement</h2>
+<p class="lead">Distance は全経路。Displacement は始点から終点。</p>
+<figure class="slide-img"><img src="assets/slides/slide_07.jpg" alt="Distance vs Displacement"><div class="slide-caption">Distance vs Displacement</div></figure>
+<p>Distance と displacement は違うことがあります。</p><p>例：3 m前に進み、1 m戻る。</p><p>Distance は4 mです。</p><p>Displacement は前向きに2 mです。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>3 m前に進み1 m戻ると distance は？</p><details class="answer"><summary>答えを見る</summary><p>4 m。</p></details></div>
+</section><section class="part card" id="part3"><h2>Part 3 — 速さ、速度、加速度</h2><p>運動の主な公式を学びます。</p></section><section class="block" id="slide08">
+<span class="topic-label">スライド 8</span>
+<h2>Speed</h2>
+<p class="lead">Speed = distance / time.</p>
+<figure class="slide-img"><img src="assets/slides/slide_08.jpg" alt="Speed"><div class="slide-caption">Speed</div></figure>
+<p>Speed はどれだけ速く動くかを示します。</p><p>公式：v = s / t。</p><p>単位：m/s。</p><p>距離が大きく、時間が短ければ、speed は大きいです。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Speed の公式は？</p><details class="answer"><summary>答えを見る</summary><p>v = s / t。</p></details></div>
+</section><section class="block" id="slide09">
+<span class="topic-label">スライド 9</span>
+<h2>Speed Example</h2>
+<p class="lead">車いすが12 mを6 sで動く。</p>
+<figure class="slide-img"><img src="assets/slides/slide_09.jpg" alt="Speed Example"><div class="slide-caption">Speed Example</div></figure>
+<p>v = s / t を使います。</p><p>Distance は12 m。</p><p>Time は6 s。</p><p>v = 12 / 6 = 2 m/s。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Speed はいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>2 m/s。</p></details></div>
+</section><section class="block" id="slide10">
+<span class="topic-label">スライド 10</span>
+<h2>Velocity</h2>
+<p class="lead">Velocity = speed + direction.</p>
+<figure class="slide-img"><img src="assets/slides/slide_10.jpg" alt="Velocity"><div class="slide-caption">Velocity</div></figure>
+<p>Speed は速さだけです。</p><p>Velocity は速さと方向です。</p><p>例：speed は2 m/s。</p><p>Velocity は前向きに2 m/s。</p><p>反対方向なら velocity は負になることがあります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Velocity には speed にない何がありますか。</p><details class="answer"><summary>答えを見る</summary><p>方向です。</p></details></div>
+</section><section class="block" id="slide11">
+<span class="topic-label">スライド 11</span>
+<h2>Speed vs Velocity</h2>
+<p class="lead">Speed には方向がありません。Velocity には方向があります。</p>
+<figure class="slide-img"><img src="assets/slides/slide_11.jpg" alt="Speed vs Velocity"><div class="slide-caption">Speed vs Velocity</div></figure>
+<p>Speed は scalar です。</p><p>Velocity は vector です。</p><p>この授業では簡単に覚えます。</p><p>Speed = どれだけ速いか。</p><p>Velocity = どれだけ速く、どの方向か。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Velocity は vector ですか。</p><details class="answer"><summary>答えを見る</summary><p>はい。方向があります。</p></details></div>
+</section><section class="block" id="slide12">
+<span class="topic-label">スライド 12</span>
+<h2>Acceleration とは何か</h2>
+<p class="lead">Acceleration = velocity の変化。</p>
+<figure class="slide-img"><img src="assets/slides/slide_12.jpg" alt="Acceleration とは何か"><div class="slide-caption">Acceleration とは何か</div></figure>
+<p>Acceleration は velocity が変わることです。</p><p>物体は速くなることがあります。</p><p>遅くなることがあります。</p><p>方向が変わることがあります。</p><p>これらはすべて acceleration です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>遅くなることも acceleration ですか。</p><details class="answer"><summary>答えを見る</summary><p>はい。negative acceleration です。</p></details></div>
+</section><section class="block" id="slide13">
+<span class="topic-label">スライド 13</span>
+<h2>Acceleration Formula</h2>
+<p class="lead">Acceleration = velocity の変化 / time.</p>
+<figure class="slide-img"><img src="assets/slides/slide_13.jpg" alt="Acceleration Formula"><div class="slide-caption">Acceleration Formula</div></figure>
+<p>公式：a = Δv / Δt。</p><p>または：a = (v₂ − v₁) / t。</p><p>単位：m/s²。</p><p>短い時間で velocity が大きく変わると acceleration は大きいです。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Acceleration の単位は？</p><details class="answer"><summary>答えを見る</summary><p>m/s²。</p></details></div>
+</section><section class="block" id="slide14">
+<span class="topic-label">スライド 14</span>
+<h2>Acceleration Example</h2>
+<p class="lead">ベッドの speed が変わります。</p>
+<figure class="slide-img"><img src="assets/slides/slide_14.jpg" alt="Acceleration Example"><div class="slide-caption">Acceleration Example</div></figure>
+<p>ベッドは静止から始まります：v₁ = 0 m/s。</p><p>後で v₂ = 2 m/s で動きます。</p><p>Time は t = 4 s。</p><p>a = (2 − 0) / 4 = 0.5 m/s²。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Acceleration は？</p><details class="answer"><summary>答えを見る</summary><p>0.5 m/s²。</p></details></div>
+</section><section class="block" id="slide15">
+<span class="topic-label">スライド 15</span>
+<h2>Positive and Negative Acceleration</h2>
+<p class="lead">速くなると positive。遅くなると negative。</p>
+<figure class="slide-img"><img src="assets/slides/slide_15.jpg" alt="Positive and Negative Acceleration"><div class="slide-caption">Positive and Negative Acceleration</div></figure>
+<p>正の方向で speed が増えると acceleration は positive です。</p><p>正の方向で speed が減ると acceleration は negative です。</p><p>病院では急な開始や停止は危険です。</p><p>ゆっくり止まる方が患者に安全です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>なぜ病院機器はゆっくり止まるべきですか。</p><details class="answer"><summary>答えを見る</summary><p>急な動きは患者に危険だからです。</p></details></div>
+</section><section class="part card" id="part4"><h2>Part 4 — グラフと微分</h2><p>グラフと微分は、時間による変化を示します。</p></section><section class="block" id="slide16">
+<span class="topic-label">スライド 16</span>
+<h2>Position–Time Graph</h2>
+<p class="lead">線が急なら速い。</p>
+<figure class="slide-img"><img src="assets/slides/slide_16.jpg" alt="Position–Time Graph"><div class="slide-caption">Position–Time Graph</div></figure>
+<p>Position-time graph は各時刻の位置を示します。</p><p>線が水平なら、物体は動きません。</p><p>線が急なら、物体は速く動きます。</p><p>傾きは velocity を示します。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>水平な position-time graph は何を意味しますか。</p><details class="answer"><summary>答えを見る</summary><p>動いていないことです。</p></details></div>
+</section><section class="block" id="slide17">
+<span class="topic-label">スライド 17</span>
+<h2>Speed–Time Graph</h2>
+<p class="lead">上がる線 = acceleration。</p>
+<figure class="slide-img"><img src="assets/slides/slide_17.jpg" alt="Speed–Time Graph"><div class="slide-caption">Speed–Time Graph</div></figure>
+<p>Speed-time graph は各時刻の speed を示します。</p><p>水平な線は constant speed です。</p><p>上がる線は speeding up です。</p><p>下がる線は slowing down です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>上がる speed-time graph は何を意味しますか。</p><details class="answer"><summary>答えを見る</summary><p>Acceleration / speeding up。</p></details></div>
+</section><section class="block" id="slide18">
+<span class="topic-label">スライド 18</span>
+<h2>なぜ微分が必要か</h2>
+<p class="lead">Derivative は変化を示します。</p>
+<figure class="slide-img"><img src="assets/slides/slide_18.jpg" alt="なぜ微分が必要か"><div class="slide-caption">なぜ微分が必要か</div></figure>
+<p>Derivative は rate of change です。</p><p>Position がどれだけ速く変わるか。それが velocity です。</p><p>Velocity がどれだけ速く変わるか。それが acceleration です。</p><p>記号を怖がらなくてよいです。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Derivative は何を示しますか。</p><details class="answer"><summary>答えを見る</summary><p>何かがどれだけ速く変わるかです。</p></details></div>
+</section><section class="block" id="slide19">
+<span class="topic-label">スライド 19</span>
+<h2>Derivative Idea: Small Steps</h2>
+<p class="lead">とても小さい時間を見る。</p>
+<figure class="slide-img"><img src="assets/slides/slide_19.jpg" alt="Derivative Idea: Small Steps"><div class="slide-caption">Derivative Idea: Small Steps</div></figure>
+<p>とても小さい時間 Δt を考えます。</p><p>その間に position は Δx だけ変わります。</p><p>Velocity はだいたい Δx / Δt です。</p><p>Δt をとても小さくすると、微分の考えになります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Δx / Δt は何ですか。</p><details class="answer"><summary>答えを見る</summary><p>位置の変化を時間の変化で割ったものです。</p></details></div>
+</section><section class="block" id="slide20">
+<span class="topic-label">スライド 20</span>
+<h2>Derivative Notation</h2>
+<p class="lead">v = dx/dt と a = dv/dt。</p>
+<figure class="slide-img"><img src="assets/slides/slide_20.jpg" alt="Derivative Notation"><div class="slide-caption">Derivative Notation</div></figure>
+<p>dx は position のとても小さい変化です。</p><p>dt は time のとても小さい変化です。</p><p>v = dx/dt は position の時間あたりの変化です。</p><p>a = dv/dt は velocity の時間あたりの変化です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>この授業で dx/dt は何ですか。</p><details class="answer"><summary>答えを見る</summary><p>Velocity です。</p></details></div>
+</section><section class="block" id="slide21">
+<span class="topic-label">スライド 21</span>
+<h2>Position → Velocity → Acceleration</h2>
+<p class="lead">x → v → a.</p>
+<figure class="slide-img"><img src="assets/slides/slide_21.jpg" alt="Position → Velocity → Acceleration"><div class="slide-caption">Position → Velocity → Acceleration</div></figure>
+<p>これが最も重要なチェーンです。</p><p>Position が時間で変わると velocity になります。</p><p>Velocity が時間で変わると acceleration になります。</p><p>Motion は time による change です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Position が時間で変化すると何になりますか。</p><details class="answer"><summary>答えを見る</summary><p>Velocity。</p></details></div>
+</section><section class="part card" id="part5"><h2>Part 5 — 等速運動と静止からの運動</h2><p>ここで簡単な運動の公式を使います。</p></section><section class="block" id="slide22">
+<span class="topic-label">スライド 22</span>
+<h2>Constant Speed</h2>
+<p class="lead">Constant speed は speed が変わらないこと。</p>
+<figure class="slide-img"><img src="assets/slides/slide_22.jpg" alt="Constant Speed"><div class="slide-caption">Constant Speed</div></figure>
+<p>Constant speed では、物体は毎秒同じ距離を進みます。</p><p>公式：s = v × t。</p><p>カートや車いすの簡単な運動に使えます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Constant speed の distance 公式は？</p><details class="answer"><summary>答えを見る</summary><p>s = v × t。</p></details></div>
+</section><section class="block" id="slide23">
+<span class="topic-label">スライド 23</span>
+<h2>Constant Speed Example</h2>
+<p class="lead">カートが1.5 m/sで8 s動く。</p>
+<figure class="slide-img"><img src="assets/slides/slide_23.jpg" alt="Constant Speed Example"><div class="slide-caption">Constant Speed Example</div></figure>
+<p>Speed は一定です。</p><p>s = v × t を使います。</p><p>s = 1.5 × 8。</p><p>s = 12 m。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>カートは何 m 動きますか。</p><details class="answer"><summary>答えを見る</summary><p>12 m。</p></details></div>
+</section><section class="block" id="slide24">
+<span class="topic-label">スライド 24</span>
+<h2>Motion from Rest</h2>
+<p class="lead">静止から始まるなら v = a × t。</p>
+<figure class="slide-img"><img src="assets/slides/slide_24.jpg" alt="Motion from Rest"><div class="slide-caption">Motion from Rest</div></figure>
+<p>Starts from rest は初速度がゼロという意味です。</p><p>Acceleration が一定なら final velocity は v = a × t です。</p><p>Distance は s = 1/2 a t² で求められます。</p><p>リフトや動く台に役立ちます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Starts from rest とは何ですか。</p><details class="answer"><summary>答えを見る</summary><p>初速度がゼロという意味です。</p></details></div>
+</section><section class="block" id="slide25">
+<span class="topic-label">スライド 25</span>
+<h2>Motion from Rest Example</h2>
+<p class="lead">リフトが静止から始まる。</p>
+<figure class="slide-img"><img src="assets/slides/slide_25.jpg" alt="Motion from Rest Example"><div class="slide-caption">Motion from Rest Example</div></figure>
+<p>患者リフトが静止から始まります。</p><p>Acceleration は a = 0.5 m/s²。</p><p>Time は t = 4 s。</p><p>v = a × t を使います。</p><p>v = 0.5 × 4 = 2 m/s。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Final velocity は？</p><details class="answer"><summary>答えを見る</summary><p>2 m/s。</p></details></div>
+</section><section class="part card" id="part6"><h2>Part 6 — 練習問題とまとめ</h2><p>小さな問題を解きます。単位をよく確認します。</p></section><section class="block" id="slide26">
+<span class="topic-label">スライド 26</span>
+<h2>Task 1: Speed</h2>
+<p class="lead">車いすが10 mを5 sで動く。</p>
+<figure class="slide-img"><img src="assets/slides/slide_26.jpg" alt="Task 1: Speed"><div class="slide-caption">Task 1: Speed</div></figure>
+<p>一番簡単な speed の問題です。</p><p>v = s / t を使います。</p><p>Distance は10 m。</p><p>Time は5 s。</p><p>v = 10 / 5 = 2 m/s。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Speed を求めてください。</p><details class="answer"><summary>答えを見る</summary><p>2 m/s。</p></details></div>
+</section><section class="block" id="slide27">
+<span class="topic-label">スライド 27</span>
+<h2>Task 2: Time</h2>
+<p class="lead">カートが18 mを3 m/sで動く。</p>
+<figure class="slide-img"><img src="assets/slides/slide_27.jpg" alt="Task 2: Time"><div class="slide-caption">Task 2: Time</div></figure>
+<p>今回は time を求めます。</p><p>t = s / v を使います。</p><p>Distance は18 m。</p><p>Speed は3 m/s。</p><p>t = 18 / 3 = 6 s。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Time を求めてください。</p><details class="answer"><summary>答えを見る</summary><p>6 s。</p></details></div>
+</section><section class="block" id="slide28">
+<span class="topic-label">スライド 28</span>
+<h2>Task 3: Distance</h2>
+<p class="lead">検査台が0.4 m/sで10 s動く。</p>
+<figure class="slide-img"><img src="assets/slides/slide_28.jpg" alt="Task 3: Distance"><div class="slide-caption">Task 3: Distance</div></figure>
+<p>s = v × t を使います。</p><p>Speed は0.4 m/s。</p><p>Time は10 s。</p><p>s = 0.4 × 10 = 4 m。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Distance を求めてください。</p><details class="answer"><summary>答えを見る</summary><p>4 m。</p></details></div>
+</section><section class="block" id="slide29">
+<span class="topic-label">スライド 29</span>
+<h2>Task 4: Acceleration</h2>
+<p class="lead">ベッドが0から1.2 m/sに3 sで変化。</p>
+<figure class="slide-img"><img src="assets/slides/slide_29.jpg" alt="Task 4: Acceleration"><div class="slide-caption">Task 4: Acceleration</div></figure>
+<p>a = (v₂ − v₁) / t を使います。</p><p>v₁ = 0 m/s。</p><p>v₂ = 1.2 m/s。</p><p>t = 3 s。</p><p>a = 1.2 / 3 = 0.4 m/s²。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Acceleration を求めてください。</p><details class="answer"><summary>答えを見る</summary><p>0.4 m/s²。</p></details></div>
+</section><section class="block" id="slide30">
+<span class="topic-label">スライド 30</span>
+<h2>Task 5: Slowing Down</h2>
+<p class="lead">カートが2 m/sから0 m/sに4 sで遅くなる。</p>
+<figure class="slide-img"><img src="assets/slides/slide_30.jpg" alt="Task 5: Slowing Down"><div class="slide-caption">Task 5: Slowing Down</div></figure>
+<p>a = (v₂ − v₁) / t を使います。</p><p>v₁ = 2 m/s。</p><p>v₂ = 0 m/s。</p><p>t = 4 s。</p><p>a = (0 − 2) / 4 = −0.5 m/s²。</p><p>負の値は遅くなることを意味します。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Acceleration を求めてください。</p><details class="answer"><summary>答えを見る</summary><p>−0.5 m/s²。</p></details></div>
+</section><section class="block" id="slide31">
+<span class="topic-label">スライド 31</span>
+<h2>Task 6: From Rest</h2>
+<p class="lead">リフトが静止から始まる。</p>
+<figure class="slide-img"><img src="assets/slides/slide_31.jpg" alt="Task 6: From Rest"><div class="slide-caption">Task 6: From Rest</div></figure>
+<p>Acceleration は a = 0.3 m/s²。</p><p>Time は t = 5 s。</p><p>v = a × t を使います。</p><p>v = 0.3 × 5 = 1.5 m/s。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Final velocity を求めてください。</p><details class="answer"><summary>答えを見る</summary><p>1.5 m/s。</p></details></div>
+</section><section class="block" id="slide32">
+<span class="topic-label">スライド 32</span>
+<h2>Task 7: Mixed Task</h2>
+<p class="lead">車いすが2つの部分で動く。</p>
+<figure class="slide-img"><img src="assets/slides/slide_32.jpg" alt="Task 7: Mixed Task"><div class="slide-caption">Task 7: Mixed Task</div></figure>
+<p>First: 6 m in 3 s。</p><p>Then: 8 m in 4 s。</p><p>Total distance は14 m。</p><p>Total time は7 s。</p><p>Average speed = 14 / 7 = 2 m/s。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Average speed を求めてください。</p><details class="answer"><summary>答えを見る</summary><p>2 m/s。</p></details></div>
+</section><section class="block" id="slide33">
+<span class="topic-label">スライド 33</span>
+<h2>Common Mistakes</h2>
+<p class="lead">基本の言葉と単位を混同しない。</p>
+<figure class="slide-img"><img src="assets/slides/slide_33.jpg" alt="Common Mistakes"><div class="slide-caption">Common Mistakes</div></figure>
+<p>Distance と displacement を混同しない。</p><p>Speed と velocity を混同しない。</p><p>Speed と acceleration を混同しない。</p><p>m/s と m/s² を混同しない。</p><p>単位をよく確認してください。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Speed の単位は？</p><details class="answer"><summary>答えを見る</summary><p>m/s。</p></details></div>
+</section><section class="block" id="slide34">
+<span class="topic-label">スライド 34</span>
+<h2>Summary</h2>
+<p class="lead">Motion = change with time.</p>
+<figure class="slide-img"><img src="assets/slides/slide_34.jpg" alt="Summary"><div class="slide-caption">Summary</div></figure>
+<p>今日は position, distance, displacement, speed, velocity, acceleration, derivatives を学びました。</p><p>Velocity は position の時間による変化です。</p><p>Acceleration は velocity の時間による変化です。</p><p>次は dynamics です。Dynamics はなぜ motion が変わるかを考えます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>次の力学トピックは何ですか。</p><details class="answer"><summary>答えを見る</summary><p>Dynamics。</p></details></div>
+</section>
+<section class="block">
+<h2>ダウンロードと確認用ファイル</h2>
+<p><a class="btn" href="downloads/lecture4B_kinematics_with_images.pptx">PowerPoint</a></p>
+<p><a class="btn" href="downloads/lecture4B_kinematics_with_images.pdf">PDF</a></p>
+<p><a class="btn" href="downloads/lecture4B_kinematics_speaker_script_en.docx">Speaker script DOCX</a></p>
+<p><a class="btn" href="assets/debug/lecture4B_slide_contact_labeled.jpg">スライド確認用コンタクトシート</a></p>
+</section>
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 4B · Kinematics for Medical Equipment.</p></footer>
+</body></html>
