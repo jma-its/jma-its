@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computer Fundamentals I — Course Contents</title>
+<style>
+:root{
+  --bg:#f6f8fc; --paper:#ffffff; --ink:#142033; --muted:#617086;
+  --blue:#173b78; --blue2:#2f67c5; --green:#1f8a4c; --orange:#d97706;
+  --line:#d9e2ef; --soft:#eef4ff; --soft-green:#edfdf4; --shadow:0 12px 34px rgba(17,24,39,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:20px;line-height:1.6}
+header{background:linear-gradient(135deg,#0f2c63,#275eb4);color:white;padding:46px 20px 54px}
+.header-inner{max-width:1120px;margin:0 auto}
+.kicker{text-transform:uppercase;letter-spacing:.14em;font-size:14px;font-weight:800;opacity:.9}
+h1{font-size:clamp(38px,5vw,64px);line-height:1.05;margin:14px 0}
+.subtitle{font-size:clamp(21px,2.3vw,30px);line-height:1.35;max-width:980px;opacity:.95}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-block;text-decoration:none;border-radius:999px;padding:12px 18px;font-weight:850;background:white;color:var(--blue);box-shadow:var(--shadow)}
+.btn.secondary{background:rgba(255,255,255,.14);color:white;border:1px solid rgba(255,255,255,.35)}
+main{max-width:1120px;margin:-30px auto 70px;padding:0 20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:28px;margin:22px 0}
+.notice{background:var(--soft-green);border-left:8px solid var(--green)}
+.notice h2{margin-top:0;color:var(--green)}
+.path{background:linear-gradient(135deg,#fff,#eef4ff);border-left:8px solid var(--blue2)}
+.path h2{margin-top:0;color:var(--blue)}
+.path .steps{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.path .pill{display:inline-block;background:#fff;border:1px solid #cfe0ff;border-radius:999px;padding:8px 12px;font-weight:800;color:var(--blue)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.lecture{background:white;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:22px;display:flex;gap:18px;align-items:flex-start}
+.num{flex:0 0 auto;width:72px;height:72px;border-radius:20px;background:var(--soft);border:2px solid #cfe0ff;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:26px;font-weight:900}
+.lecture h2{font-size:26px;line-height:1.25;margin:0 0 8px;color:var(--blue)}
+.lecture p{margin:0 0 14px;color:var(--ink)}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.open{display:inline-block;text-decoration:none;border-radius:999px;padding:9px 14px;font-weight:850;background:var(--blue);color:white}
+.open.alt{background:var(--green)}
+.footer{max-width:1120px;margin:0 auto 50px;padding:0 20px;color:var(--muted);font-size:16px}
+@media(max-width:860px){body{font-size:18px}main{padding:0 14px}.grid{grid-template-columns:1fr}.card,.lecture{border-radius:18px;padding:18px}.lecture{flex-direction:column}.num{width:58px;height:58px;font-size:22px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="kicker">Computers 1 · Computer Fundamentals I</div>
+    <h1>Computer Fundamentals I — Course Contents</h1>
+    <p class="subtitle">Student reading pages: from equipment principles to computers</p>
+    <div class="actions">
+      <a class="btn" href="#lessons">Open lesson list</a>
+      <a class="btn secondary" href="computer_fundamentals_ja.html">日本語版</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="card path">
+    <h2>Course direction</h2>
+    <p>This course begins not with the computer screen, but with the basic principles behind equipment, engineering, and medical machines. Students first learn how materials, forces, motion, energy, electricity, and hospital devices work. Step by step, this foundation leads to a better understanding of computer hardware, medical IT systems, and safe support work in real hospitals.</p>
+    <div class="steps"><span class="pill">Materials</span><span class="pill">Forces</span><span class="pill">Motion</span><span class="pill">Energy</span><span class="pill">Electricity</span><span class="pill">Medical equipment</span><span class="pill">Computers</span></div>
+  </section>
+
+  <section class="card notice">
+    <h2>How to use this page</h2>
+    <p>Open a lesson, read the slides and explanations, answer the questions, then check the hidden answers. Each page is designed for slow self-study with simple English and clear diagrams.</p>
+  </section>
+
+  <section class="card">
+    <h2 style="margin-top:0;color:var(--blue)">Lesson list</h2>
+    <p style="margin-bottom:0;color:var(--muted)">Choose a lesson below.</p>
+  </section>
+
+  <section class="grid" id="lessons">
+    
+    <article class="lecture">
+      <div class="num">1</div>
+      <div>
+        <h2>Lecture 1 — How Technology Really Works</h2>
+        <p>The course begins with a simple question: how do humans move from nature and basic tools to machines, electricity, and computer systems?</p>
+        <div class="links"><a class="open" href="computers1_web_lecture1_bilingual/lecture1_en.html">Open lesson</a><a class="open alt" href="computers1_web_lecture1_bilingual/lecture1_ja.html">日本語</a></div>
+      </div>
+    </article>
+    
+
+    <article class="lecture">
+      <div class="num">2</div>
+      <div>
+        <h2>Lecture 2 — Why Materials Matter</h2>
+        <p>Before we understand devices, we must understand materials: metal, plastic, rubber, glass, and why each material is chosen for a purpose.</p>
+        <div class="links"><a class="open" href="computers1_web_lecture2_bilingual/lecture2_en.html">Open lesson</a><a class="open alt" href="computers1_web_lecture2_bilingual/lecture2_ja.html">日本語</a></div>
+      </div>
+    </article>
+    
+
+    <article class="lecture">
+      <div class="num">3</div>
+      <div>
+        <h2>Lecture 3 — Properties of Materials</h2>
+        <p>We look deeper into material behavior: elastic and plastic deformation, alloys, heat treatment, hardness, strength, and toughness.</p>
+        <div class="links"><a class="open" href="computers1_web_lecture3_bilingual/lecture3_en.html">Open lesson</a><a class="open alt" href="computers1_web_lecture3_bilingual/lecture3_ja.html">日本語</a></div>
+      </div>
+    </article>
+    
+
+    <article class="lecture">
+      <div class="num">4A</div>
+      <div>
+        <h2>Lecture 4 — Basics of Mechanics, Part 1: Statics</h2>
+        <p>We begin mechanics with balance and safety: forces, weight, supports, moments, and why hospital beds and equipment must stay stable.</p>
+        <div class="links"><a class="open" href="computers1_web_lecture4A_bilingual/lecture4A_en.html">Open lesson</a><a class="open alt" href="computers1_web_lecture4A_bilingual/lecture4A_ja.html">日本語</a></div>
+      </div>
+    </article>
+    
+
+    <article class="lecture">
+      <div class="num">4B</div>
+      <div>
+        <h2>Lecture 4 — Basics of Mechanics, Part 2: Kinematics</h2>
+        <p>Next we describe motion itself: position, distance, speed, velocity, acceleration, graphs, and small changes over time.</p>
+        <div class="links"><a class="open" href="computers1_web_lecture4B_bilingual/lecture4B_en.html">Open lesson</a><a class="open alt" href="computers1_web_lecture4B_bilingual/lecture4B_ja.html">日本語</a></div>
+      </div>
+    </article>
+    
+
+    <article class="lecture">
+      <div class="num">4C</div>
+      <div>
+        <h2>Lecture 4 — Basics of Mechanics, Part 3: Dynamics</h2>
+        <p>Finally we connect force and motion: Newton’s laws, gravity and weight, friction, work, energy, and safe controlled movement.</p>
+        <div class="links"><a class="open" href="computers1_web_lecture4C_bilingual/lecture4C_en.html">Open lesson</a><a class="open alt" href="computers1_web_lecture4C_bilingual/lecture4C_ja.html">日本語</a></div>
+      </div>
+    </article>
+    
+
+    <article class="lecture">
+      <div class="num">5</div>
+      <div>
+        <h2>Lecture 5 — Levers and Simple Machines</h2>
+        <p>Simple machines show how engineering changes force and motion. This prepares us to understand mechanisms inside real equipment.</p>
+        <div class="links"><a class="open" href="computers1_web_lecture5_bilingual/lecture5_en.html">Open lesson</a><a class="open alt" href="computers1_web_lecture5_bilingual/lecture5_ja.html">日本語</a></div>
+      </div>
+    </article>
+    
+
+    <article class="lecture">
+      <div class="num">6</div>
+      <div>
+        <h2>Lecture 6 — Energy, Work, Power, Efficiency and Heat Engines</h2>
+        <p>Machines need energy. We study work, power, efficiency, heat, pressure, engines, and how useful motion is produced.</p>
+        <div class="links"><a class="open" href="computers1_web_lecture6_bilingual/lecture6_en.html">Open lesson</a><a class="open alt" href="computers1_web_lecture6_bilingual/lecture6_ja.html">日本語</a></div>
+      </div>
+    </article>
+    
+
+    <article class="lecture">
+      <div class="num">7</div>
+      <div>
+        <h2>Lecture 7 — Electricity, Magnetism, Motors and Generators</h2>
+        <p>After mechanical systems, we move toward electrical systems: charges, fields, current, motors, generators, and the machines that use them.</p>
+        <div class="links"><a class="open" href="computers1_web_lecture7_bilingual/lecture7_en.html">Open lesson</a><a class="open alt" href="computers1_web_lecture7_bilingual/lecture7_ja.html">日本語</a></div>
+      </div>
+    </article>
+    
+
+    <article class="lecture">
+      <div class="num">8</div>
+      <div>
+        <h2>Lecture 8 — Big Hospital Machines</h2>
+        <p>We connect the previous principles to hospital machines: MRI, X-ray, ultrasound, cooling, backup power, troubleshooting, and safe support work.</p>
+        <div class="links"><a class="open" href="computers1_web_lecture8_bilingual/lecture8_en.html">Open lesson</a><a class="open alt" href="computers1_web_lecture8_bilingual/lecture8_ja.html">日本語</a></div>
+      </div>
+    </article>
+    
+  </section>
+</main>
+
+<footer class="footer">
+  <p>Computers 1 · Computer Fundamentals I · Medical IT basics.</p>
+</footer>
+</body>
+</html>
