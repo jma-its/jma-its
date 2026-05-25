@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第8回 — 大きな病院機械</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="kicker">Computers 1 · Engineering Basics for Medical IT</div>
+    <h1>第8回<br>大きな病院機械</h1>
+    <p class="subtitle">MRI、X線、超音波、冷蔵庫、エアコン、非常用電源</p>
+    <p class="lang-note">このウェブ教材は学生用です。各スライドを見て、説明を読み、質問に答えてください。自分で考えてから「答えを見る」を開きます。</p>
+    <div class="header-actions">
+      <a class="button" href="#start">授業を始める</a>
+      <a class="button secondary" href="lecture8_en.html">English version</a>
+      <a class="button secondary" href="#slide32">最終活動</a>
+      <a class="button secondary" href="downloads/computers1_lecture8_big_hospital_machines_with_images_large_fonts.pptx">PowerPoint</a>
+      <a class="button secondary" href="downloads/lecture8_presentation.pdf">PDF</a>
+      <a class="button secondary" href="downloads/computers1_lecture8_big_hospital_machines_speaker_script_en.docx">講義テキスト Word</a>
+    </div>
+  </div>
+</header>
+
+<main id="start">
+<section class="overview card">
+<p class="lead">このウェブ教材は学生用です。各スライドを見て、説明を読み、質問に答えてください。自分で考えてから「答えを見る」を開きます。</p>
+<div class="grid">
+<div class="small-card"><h3>中心チェーン</h3><p>energy → interaction → signal/motion → useful output</p></div>
+<div class="small-card"><h3>Part 1</h3><p>MRI、X線、超音波。使うエネルギーは違いますが、共通パターンは energy → body interaction → receiver → computer image です。</p></div>
+<div class="small-card"><h3>Part 2</h3><p>冷蔵庫、エアコン、コンプレッサー、非常用電源、故障分類、安全。</p></div>
+</div>
+</section>
+
+<section class="toc card">
+<h2>授業の流れ</h2>
+<ol><li><a href="#slide01">Slide 1: 大きな病院機械</a></li>
+<li><a href="#slide02">Slide 2: 大きな問い：病院機械はどのように「見る・冷やす・守る」のか</a></li>
+<li><a href="#slide03">Slide 3: 考える道具：Input → Process → Output</a></li>
+<li><a href="#slide04">Slide 4: MRI：大きくて怖そうな機械</a></li>
+<li><a href="#slide05">Slide 5: MRIの基本チェーン</a></li>
+<li><a href="#slide06">Slide 6: MRI物理原理1：強い磁場</a></li>
+<li><a href="#slide07">Slide 7: MRI物理原理2：水素の整列</a></li>
+<li><a href="#slide08">Slide 8: MRI物理原理3：高周波パルスと戻り信号</a></li>
+<li><a href="#slide09">Slide 9: MRI物理原理4：コンピュータが画像を作る</a></li>
+<li><a href="#slide10">Slide 10: MRIの安全と支援システム</a></li>
+<li><a href="#slide11">Slide 11: X線：体内を見る別の方法</a></li>
+<li><a href="#slide12">Slide 12: X線物理原理：透過と吸収</a></li>
+<li><a href="#slide13">Slide 13: X線検出器と画像チェーン</a></li>
+<li><a href="#slide14">Slide 14: X線安全</a></li>
+<li><a href="#slide15">Slide 15: 超音波：音とエコー</a></li>
+<li><a href="#slide16">Slide 16: 超音波物理原理：反射とエコー時間</a></li>
+<li><a href="#slide17">Slide 17: 超音波画像チェーン</a></li>
+<li><a href="#slide18">Slide 18: 3つの大きな画像装置の比較</a></li>
+<li><a href="#slide19">Slide 19: 共通する画像化パターン</a></li>
+<li><a href="#slide20">Slide 20: 支援設備も重要</a></li>
+<li><a href="#slide21">Slide 21: 冷蔵庫の原理：中の熱を外へ移動する</a></li>
+<li><a href="#slide22">Slide 22: エアコンの原理：同じ考え方を大きな空間に使う</a></li>
+<li><a href="#slide23">Slide 23: コンプレッサーと冷媒サイクル</a></li>
+<li><a href="#slide24">Slide 24: 病院で冷却が重要な理由</a></li>
+<li><a href="#slide25">Slide 25: 非常用電源：主電源が止まったとき</a></li>
+<li><a href="#slide26">Slide 26: よくある故障タイプ</a></li>
+<li><a href="#slide27">Slide 27: 医療ITスタッフがすべきこと</a></li>
+<li><a href="#slide28">Slide 28: 練習：Input → Process → Output</a></li>
+<li><a href="#slide29">Slide 29: ミニクイズ</a></li>
+<li><a href="#slide30">Slide 30: 大きな病院機械の安全ルール</a></li>
+<li><a href="#slide31">Slide 31: まとめ：大きな機械、単純な原理</a></li>
+<li><a href="#slide32">Slide 32: 最終活動：チェーンを見つける</a></li></ol>
+</section>
+
+<section class="part-banner card">
+<h2>Part 1 — 体の中を見る機械</h2>
+<p>MRI、X線、超音波。使うエネルギーは違いますが、共通パターンは energy → body interaction → receiver → computer image です。</p>
+</section>
+
+<section class="lesson-block" id="slide01">
+<span class="slide-label">Slide 1</span>
+<h2>大きな病院機械</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_01.jpg" alt="Slide 1: 大きな病院機械"><figcaption>Slide 1 — 大きな病院機械</figcaption></figure>
+<p>この授業では、病院で使われる大きな機械を見ます。難しく、高価で、少し怖く見えるかもしれません。しかし、それらも機械です。エネルギーを受け取り、中で物理的な作用が起こり、役に立つ結果を出します。</p>
+<p>一番大切な考え方は、energy in → physical interaction → signal or motion → useful output です。画像診断装置では出力は画像です。冷却装置では出力は安全な温度です。非常用電源では出力は停電時の電気です。</p>
+<p>すべての細かい技術を覚える必要はありません。基本的な物理原理を理解し、機械を魔法ではなく、段階的なシステムとして見ます。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>タイトルの機械の中で、いちばん難しそうに見えるものはどれですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>MRIを選ぶ学生が多いでしょう。大きく、安全ルールも厳しいからです。そこで、まずMRIから始めて、段階的に単純化します。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide02">
+<span class="slide-label">Slide 2</span>
+<h2>大きな問い：病院機械はどのように「見る・冷やす・守る」のか</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_02.jpg" alt="Slide 2: 大きな問い：病院機械はどのように「見る・冷やす・守る」のか"><figcaption>Slide 2 — 大きな問い：病院機械はどのように「見る・冷やす・守る」のか</figcaption></figure>
+<p>この授業では、病院機械の3つの大きな役割を見ます。体の中を見る機械、薬品や検体や部屋やコンピュータを冷やして守る機械、停電時に病院を守る機械です。</p>
+<p>MRIは磁気、電波、体からの弱い信号、コンピュータ再構成を使います。X線は透過と吸収を使います。超音波は音波と反射を使います。冷蔵庫とエアコンは熱を別の場所へ移動させます。</p>
+<p>まず大きくて面白い機械から始め、そのあと中の物理を見ます。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>患者に直接触れないが、病院を助ける機械を1つ挙げてください。</p>
+<details class="answer"><summary>答えを見る</summary><p>例：冷蔵庫、エアコン、サーバー冷却ファン、UPS、非常用発電機。これらは病院の安全を支える重要な装置です。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide03">
+<span class="slide-label">Slide 3</span>
+<h2>考える道具：Input → Process → Output</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_03.jpg" alt="Slide 3: 考える道具：Input → Process → Output"><figcaption>Slide 3 — 考える道具：Input → Process → Output</figcaption></figure>
+<p>どの機械でも3つの質問をします。何が入るのか。中で何が起こるのか。何が出てくるのか。</p>
+<p>この考え方は、当てずっぽうを防ぎます。入力、過程、出力が分かれば、機械を段階的に理解できます。</p>
+<p>MRIでは入力は強い磁場と電波です。過程は体内の水素原子核で起こります。出力は信号、そして画像です。冷蔵庫では入力は電気、過程はコンプレッサーと冷媒、出力は冷却、つまり熱の除去です。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>扇風機で考えてください。入力、過程、出力は何ですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>入力：電気。過程：モーターが羽根を回す。出力：空気の流れと冷却のための風。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide04">
+<span class="slide-label">Slide 4</span>
+<h2>MRI：大きくて怖そうな機械</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_04.jpg" alt="Slide 4: MRI：大きくて怖そうな機械"><figcaption>Slide 4 — MRI：大きくて怖そうな機械</figcaption></figure>
+<p>MRIは大きなトンネルのように見えます。音が大きく、高価で、金属にとても厳しい機械です。しかし基本の流れは理解できます。</p>
+<p>MRIはとても強い磁石を使います。さらに電波、受信コイル、電子回路、コンピュータを使います。X線は使いません。これは重要な違いです。</p>
+<p>磁石が多くの安全ルールの理由です。金属は強く引き寄せられることがあります。冷却と安定した電源も必要です。MRIは単体の箱ではなく、システムです。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>MRIの近くで金属が危険なのはなぜですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>MRIの磁石が非常に強く、強磁性体の金属をスキャナーの方へ強く引き寄せる可能性があるからです。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide05">
+<span class="slide-label">Slide 5</span>
+<h2>MRIの基本チェーン</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_05.jpg" alt="Slide 5: MRIの基本チェーン"><figcaption>Slide 5 — MRIの基本チェーン</figcaption></figure>
+<p>MRIの基本チェーンは、strong magnet → radio wave → body signal → computer image です。短い文ですが、深い物理が入っています。</p>
+<p>人体には多くの水があります。水には水素原子があります。水素原子核は小さな磁石のようにふるまいます。強い磁場の中で、多くの水素原子核は磁場の向きにそろおうとします。</p>
+<p>次にMRIは高周波パルスを送ります。それが配列を乱します。パルスが止まると、水素原子核は元の状態へ戻ろうとし、その時に弱い信号を出します。受信コイルがそれを検出し、コンピュータが画像を作ります。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>MRIは主にX線を使いますか。</p>
+<details class="answer"><summary>答えを見る</summary><p>いいえ。MRIは強い磁場、高周波パルス、体からの信号、コンピュータ再構成を使います。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide06">
+<span class="slide-label">Slide 6</span>
+<h2>MRI物理原理1：強い磁場</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_06.jpg" alt="Slide 6: MRI物理原理1：強い磁場"><figcaption>Slide 6 — MRI物理原理1：強い磁場</figcaption></figure>
+<p>MRIは非常に強く安定した磁場を使います。この磁場は普通の磁石よりはるかに強いです。磁場は患者が入るトンネルの中だけではなく、外側にも広がることがあります。</p>
+<p>磁場は体内の水素原子核に影響を与えます。同時に、強磁性体の金属にも強く影響します。はさみ、酸素ボンベ、工具、鍵、時計、車いすなどが危険になることがあります。</p>
+<p>多くのMRI磁石は、検査中でなくても常に強い磁場を持っています。したがって安全ルールは任意ではありません。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>MRIの磁場は何をしますか。</p>
+<details class="answer"><summary>答えを見る</summary><p>体内の多くの水素原子核をそろえ、MRI信号の出発点を作ります。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide07">
+<span class="slide-label">Slide 7</span>
+<h2>MRI物理原理2：水素の整列</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_07.jpg" alt="Slide 7: MRI物理原理2：水素の整列"><figcaption>Slide 7 — MRI物理原理2：水素の整列</figcaption></figure>
+<p>人体には多くの水があります。水分子には水素が含まれます。水素原子核はMRIで使いやすい信号源です。</p>
+<p>MRI磁場がないと、小さな磁気の向きはよりばらばらです。強い磁場の中では、多くの水素原子核が磁場の向きにそろおうとします。これは体が目に見えて動くことではなく、原子核レベルの現象です。</p>
+<p>この整列状態を乱し、その戻り方を測定することで、MRIは情報を得ます。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>MRIで水が重要なのはなぜですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>水には水素原子が含まれ、水素原子核がMRIで測定できる信号を出すからです。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide08">
+<span class="slide-label">Slide 8</span>
+<h2>MRI物理原理3：高周波パルスと戻り信号</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_08.jpg" alt="Slide 8: MRI物理原理3：高周波パルスと戻り信号"><figcaption>Slide 8 — MRI物理原理3：高周波パルスと戻り信号</figcaption></figure>
+<p>水素原子核が磁場でそろったあと、MRIは高周波パルスを送ります。このパルスはエネルギーを持ち、そろった状態を乱します。</p>
+<p>パルスが止まると、原子核は元の整列状態へ戻ろうとします。この戻る過程で、とても弱い電磁信号が出ます。これはそのまま画像ではなく、生の物理信号です。</p>
+<p>組織によって戻り方や信号のパターンが違います。この違いが画像のコントラストになります。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>高周波パルスが止まったあと、何が起こりますか。</p>
+<details class="answer"><summary>答えを見る</summary><p>水素原子核が整列状態へ戻ろうとし、その時に弱い信号を出します。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide09">
+<span class="slide-label">Slide 9</span>
+<h2>MRI物理原理4：コンピュータが画像を作る</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_09.jpg" alt="Slide 9: MRI物理原理4：コンピュータが画像を作る"><figcaption>Slide 9 — MRI物理原理4：コンピュータが画像を作る</figcaption></figure>
+<p>体からの信号は非常に弱いです。受信コイルが検出し、電子回路が増幅します。その後、コンピュータが信号データから画像を再構成します。</p>
+<p>これは物理からコンピュータへの橋です。物理世界が弱い信号を出し、電子回路が変換・増幅し、コンピュータが計算して画像を作ります。</p>
+<p>MRI画像は普通のカメラ写真ではありません。信号から計算で作られた画像です。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>MRI画像は直接撮った写真ですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>いいえ。体から受信した弱い信号をコンピュータが再構成した画像です。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide10">
+<span class="slide-label">Slide 10</span>
+<h2>MRIの安全と支援システム</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_10.jpg" alt="Slide 10: MRIの安全と支援システム"><figcaption>Slide 10 — MRIの安全と支援システム</figcaption></figure>
+<p>MRIの安全は1つのルールだけではありません。金属禁止、耳の保護、冷却、安定電源、入室管理などのシステムです。</p>
+<p>撮影中はコイルが振動し、大きな音が出ることがあります。そのため耳の保護が必要なことがあります。患者や物品の確認も重要です。</p>
+<p>医療ITスタッフとしては、警告を尊重し、安全に観察し、問題を明確に報告し、危険な推測をしないことが大切です。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>MRIがうるさいことがあるのはなぜですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>撮影中にコイルが速く振動し、強いノック音やブザー音のような音を出すことがあるからです。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide11">
+<span class="slide-label">Slide 11</span>
+<h2>X線：体内を見る別の方法</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_11.jpg" alt="Slide 11: X線：体内を見る別の方法"><figcaption>Slide 11 — X線：体内を見る別の方法</figcaption></figure>
+<p>X線は体の中を見る別の方法です。MRIとは大きく違います。X線は高エネルギーの電磁放射線です。体を通過できますが、すべての組織を同じように通るわけではありません。</p>
+<p>装置はX線ビームを体に通します。組織によって一部が吸収または遮断されます。残ったX線が検出器に届き、コンピュータが画像を作ります。</p>
+<p>基本チェーンは、X-ray beam → body → detector → image です。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>体を通ったあと、X線を受け取るものは何ですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>検出器です。残ったX線を受け取り、画像作成に使います。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide12">
+<span class="slide-label">Slide 12</span>
+<h2>X線物理原理：透過と吸収</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_12.jpg" alt="Slide 12: X線物理原理：透過と吸収"><figcaption>Slide 12 — X線物理原理：透過と吸収</figcaption></figure>
+<p>X線画像の中心原理は、透過と吸収です。軟部組織は比較的多くのX線を通します。骨はより多くのX線を吸収・遮断します。</p>
+<p>そのため、検出器に届くX線の強さが場所によって変わります。骨の部分では届くX線が少なくなります。</p>
+<p>コンピュータはこの強さの違いを使って、コントラストのある画像を作ります。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>なぜ骨はX線画像ではっきり見えやすいのですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>骨が軟部組織より多くのX線を吸収・遮断するため、検出器で大きな差が出るからです。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide13">
+<span class="slide-label">Slide 13</span>
+<h2>X線検出器と画像チェーン</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_13.jpg" alt="Slide 13: X線検出器と画像チェーン"><figcaption>Slide 13 — X線検出器と画像チェーン</figcaption></figure>
+<p>古いX線装置ではフィルムを使いました。現代の装置ではデジタル検出器を使うことが多いです。</p>
+<p>デジタル検出器はX線エネルギーを電気信号に変換します。その信号を電子回路とコンピュータが処理し、画面上の画像データにします。</p>
+<p>チェーンは、radiation → detector → electrical signal → computer → image data です。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>現代のX線検出器は何をしますか。</p>
+<details class="answer"><summary>答えを見る</summary><p>X線エネルギーを電気信号に変換し、コンピュータが処理できるようにします。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide14">
+<span class="slide-label">Slide 14</span>
+<h2>X線安全</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_14.jpg" alt="Slide 14: X線安全"><figcaption>Slide 14 — X線安全</figcaption></figure>
+<p>X線は診断に役立ちますが、線量が高すぎると細胞に悪影響を与える可能性があります。そのため線量管理が必要です。</p>
+<p>簡単な安全原則は、遮へい、距離、短い照射時間です。遮へいは放射線を防ぎます。距離は被ばくを減らします。短時間は線量を減らします。</p>
+<p>訓練を受けたスタッフだけがX線装置を操作します。医療IT学生は操作しなくても、警告表示の意味を理解する必要があります。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>X線安全の原則を1つ挙げてください。</p>
+<details class="answer"><summary>答えを見る</summary><p>遮へい、距離、短い照射時間のどれかです。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide15">
+<span class="slide-label">Slide 15</span>
+<h2>超音波：音とエコー</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_15.jpg" alt="Slide 15: 超音波：音とエコー"><figcaption>Slide 15 — 超音波：音とエコー</figcaption></figure>
+<p>超音波はX線ではなく音波を使います。周波数は人間の耳に聞こえる範囲より高いため、私たちには聞こえません。</p>
+<p>プローブが音波を体内に送ります。異なる組織の境界で音の一部が反射します。この反射した音をエコーと呼びます。</p>
+<p>プローブがエコーを受け取り、システムが信号処理をして画像を作ります。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>超音波はX線のような電離放射線を使いますか。</p>
+<details class="answer"><summary>答えを見る</summary><p>いいえ。高周波の音波とエコーを使います。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide16">
+<span class="slide-label">Slide 16</span>
+<h2>超音波物理原理：反射とエコー時間</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_16.jpg" alt="Slide 16: 超音波物理原理：反射とエコー時間"><figcaption>Slide 16 — 超音波物理原理：反射とエコー時間</figcaption></figure>
+<p>音は体内組織を進みます。組織の性質が変わる境界で、一部が反射します。装置はエコーの強さと時間を測ります。</p>
+<p>エコーの強さは反射の強さを示します。エコー時間は深さを示します。短い時間なら浅い位置、長い時間なら深い位置です。</p>
+<p>なぜ2で割るのか。それは音が体内へ進み、戻ってくる往復の時間を測るからです。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>深い境界ほどエコー時間が長いのはなぜですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>音がより長い距離を進んで戻ってくる必要があるからです。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide17">
+<span class="slide-label">Slide 17</span>
+<h2>超音波画像チェーン</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_17.jpg" alt="Slide 17: 超音波画像チェーン"><figcaption>Slide 17 — 超音波画像チェーン</figcaption></figure>
+<p>超音波プローブは送信機でもあり受信機でもあります。音波を送り、戻ってきたエコーを受け取ります。</p>
+<p>電子回路がエコーを電気信号に変換します。コンピュータは時間と強さの情報を使って、動く画像を作ります。</p>
+<p>リアルタイムで画像を更新できるため、動きの観察に向いています。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>超音波が動く画像に向いているのはなぜですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>音波の送受信を速く繰り返し、画像をリアルタイムで更新できるからです。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide18">
+<span class="slide-label">Slide 18</span>
+<h2>3つの大きな画像装置の比較</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_18.jpg" alt="Slide 18: 3つの大きな画像装置の比較"><figcaption>Slide 18 — 3つの大きな画像装置の比較</figcaption></figure>
+<p>MRI、X線、超音波はすべて体内を見るための機械ですが、物理原理は違います。</p>
+<p>MRIは磁場、電波、体からの信号を使います。X線は放射線、吸収、検出器を使います。超音波は音波、反射、エコー時間を使います。</p>
+<p>それでも共通パターンがあります。エネルギーが体に入り、体が信号を変え、受信器が受け取り、コンピュータが画像を作ります。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>音のエコーを使う機械はどれですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>超音波です。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide19">
+<span class="slide-label">Slide 19</span>
+<h2>共通する画像化パターン</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_19.jpg" alt="Slide 19: 共通する画像化パターン"><figcaption>Slide 19 — 共通する画像化パターン</figcaption></figure>
+<p>共通パターンは、physical world → electrical signal → digital image です。これは医療ITにとって非常に重要です。</p>
+<p>まず物理的な作用があります。X線では吸収の違い、超音波では反射の違い、MRIでは体からの信号の違いです。</p>
+<p>次に検出器や受信器が物理的な効果を電気信号に変換します。最後にコンピュータがデータを処理し、画像として表示します。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>このスライドがコンピュータ学生に重要なのはなぜですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>物理現象が電気信号になり、さらにデジタル画像になる流れを示しているからです。</p></details>
+</div>
+</section>
+
+
+<section class="part-banner card">
+<h2>Part 2 — 病院システムを守る機械</h2>
+<p>冷蔵庫、エアコン、コンプレッサー、非常用電源、故障分類、安全。</p>
+</section>
+
+<section class="lesson-block" id="slide20">
+<span class="slide-label">Slide 20</span>
+<h2>支援設備も重要</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_20.jpg" alt="Slide 20: 支援設備も重要"><figcaption>Slide 20 — 支援設備も重要</figcaption></figure>
+<p>画像を作る機械だけが重要ではありません。病院では支援設備も非常に重要です。冷蔵庫は薬品やワクチンや検体を守ります。エアコンは部屋や機械から熱を取り除きます。非常用電源は停電時に重要なシステムを守ります。</p>
+<p>これらはMRIほど派手ではありませんが、病院はこれらなしに安全に働けません。冷蔵庫の問題は薬品を傷めます。冷却の問題はサーバーや画像室を過熱させます。</p>
+<p>つまり支援設備は贅沢ではなく、安全のためのインフラです。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>なぜ病院の冷蔵庫は安全装置とも言えますか。</p>
+<details class="answer"><summary>答えを見る</summary><p>薬品、ワクチン、検体を正しい温度で守るからです。温度が間違うと品質や安全に問題が出ます。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide21">
+<span class="slide-label">Slide 21</span>
+<h2>冷蔵庫の原理：中の熱を外へ移動する</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_21.jpg" alt="Slide 21: 冷蔵庫の原理：中の熱を外へ移動する"><figcaption>Slide 21 — 冷蔵庫の原理：中の熱を外へ移動する</figcaption></figure>
+<p>冷蔵庫は魔法のように冷たさを作るのではありません。中の熱を取り出して外へ捨てます。冷却とは熱の除去です。</p>
+<p>冷媒は冷蔵庫内で熱を吸収します。コンプレッサーは電動モーターの力で圧力を上げます。コンデンサーでは熱を外に放出します。</p>
+<p>これは以前の授業ともつながります。モーター、圧力、熱移動が一緒に働いています。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>冷蔵庫は本当は何をしていますか。</p>
+<details class="answer"><summary>答えを見る</summary><p>中の熱を取り出し、外へ放出しています。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide22">
+<span class="slide-label">Slide 22</span>
+<h2>エアコンの原理：同じ考え方を大きな空間に使う</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_22.jpg" alt="Slide 22: エアコンの原理：同じ考え方を大きな空間に使う"><figcaption>Slide 22 — エアコンの原理：同じ考え方を大きな空間に使う</figcaption></figure>
+<p>エアコンは冷蔵庫と同じ基本アイデアを使います。ただし冷やす空間が部屋になります。室内機が部屋の熱を取り出し、冷媒が熱を屋外へ運び、室外機が外へ放出します。</p>
+<p>ファンは空気を熱交換器に通します。室内ファンは部屋の空気を冷たいコイルに通し、室外ファンは外で熱を捨てるのを助けます。</p>
+<p>病院では、空調は快適さだけでなく、機器、薬品、サーバー、部屋の安全にも関係します。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>エアコンは部屋の熱をどこへ放出しますか。</p>
+<details class="answer"><summary>答えを見る</summary><p>外へ、通常は室外機から放出します。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide23">
+<span class="slide-label">Slide 23</span>
+<h2>コンプレッサーと冷媒サイクル</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_23.jpg" alt="Slide 23: コンプレッサーと冷媒サイクル"><figcaption>Slide 23 — コンプレッサーと冷媒サイクル</figcaption></figure>
+<p>モーターがコンプレッサーを回します。コンプレッサーは冷媒の圧力を上げます。圧力が変わると温度のふるまいも変わり、熱の吸収と放出が可能になります。</p>
+<p>蒸発器では冷媒が熱を吸収して蒸発します。凝縮器では冷媒が熱を放出して凝縮します。膨張弁は圧力を下げ、冷媒をまた蒸発器へ戻します。</p>
+<p>中心の流れは、motor → compressor → pressure change → refrigerant phase change → heat movement です。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>冷却サイクルでコンプレッサーは何をしますか。</p>
+<details class="answer"><summary>答えを見る</summary><p>冷媒の圧力を上げ、熱を移動させるサイクルを助けます。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide24">
+<span class="slide-label">Slide 24</span>
+<h2>病院で冷却が重要な理由</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_24.jpg" alt="Slide 24: 病院で冷却が重要な理由"><figcaption>Slide 24 — 病院で冷却が重要な理由</figcaption></figure>
+<p>冷却は快適さだけではありません。病院では正しい温度が薬品、ワクチン、検体、コンピュータ、サーバー、画像室、大型機械を守ります。</p>
+<p>薬品には適切な温度範囲が必要です。検体は冷蔵または冷凍保存が必要なことがあります。コンピュータやサーバーは空気の流れと冷却なしでは過熱します。</p>
+<p>冷却の失敗は、単なる不快さではなく、医療安全の問題になることがあります。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>サーバー室の冷却が止まると何が起きますか。</p>
+<details class="answer"><summary>答えを見る</summary><p>サーバーが過熱し、病院ITシステムが不安定になったり停止したりする可能性があります。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide25">
+<span class="slide-label">Slide 25</span>
+<h2>非常用電源：主電源が止まったとき</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_25.jpg" alt="Slide 25: 非常用電源：主電源が止まったとき"><figcaption>Slide 25 — 非常用電源：主電源が止まったとき</figcaption></figure>
+<p>病院は常に電力を必要とします。主電源が止まったとき、一部のシステムは止まってはいけません。UPSはバッテリーからすぐに短時間の電力を供給します。</p>
+<p>非常用発電機はより長いバックアップ電力を供給します。多くの場合、燃料エンジンが発電機を回し、発電機が電気を作ります。</p>
+<p>これはLecture 6とLecture 7をつなげます。熱機関が回転を作り、発電機が回転を電気に変えます。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>UPSと発電機の違いは何ですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>UPSはすぐに短時間のバッテリー電力を出します。発電機は起動後により長いバックアップ電力を出します。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide26">
+<span class="slide-label">Slide 26</span>
+<h2>よくある故障タイプ</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_26.jpg" alt="Slide 26: よくある故障タイプ"><figcaption>Slide 26 — よくある故障タイプ</figcaption></figure>
+<p>機器が動かないとき、適当に推測しないでください。物理システムで考えます。機械的問題は、ファンの詰まり、ベルト切れ、紙詰まり、動く部品の固着などです。</p>
+<p>電気的問題は、電源なし、ケーブル不良、プラグ損傷、ヒューズ切れ、接続不良などです。熱的問題は、過熱、空気の流れの不足、汚れたフィルター、冷却不良などです。</p>
+<p>信号・制御の問題は、センサー値の異常、アラーム、エラー画面、設定問題、通信問題などです。分類すると報告が明確になります。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>機器が熱く、通風口がふさがっています。どの分類ですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>熱的問題です。さらに空気の流れが止まっているので、機械的な詰まりも関係する可能性があります。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide27">
+<span class="slide-label">Slide 27</span>
+<h2>医療ITスタッフがすべきこと</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_27.jpg" alt="Slide 27: 医療ITスタッフがすべきこと"><figcaption>Slide 27 — 医療ITスタッフがすべきこと</figcaption></figure>
+<p>医療ITスタッフは大きな装置を謎の箱として扱う必要はありません。安全に観察し、アラーム、ケーブル、通気、画面表示、部屋の状態、明らかな異常を確認します。</p>
+<p>危険なカバーを開けてはいけません。高電圧部に触れてはいけません。許可なくMRIや放射線区域に入ってはいけません。重要な医療システムを安易にリセットしてはいけません。</p>
+<p>よいサポートとは、何が起きたか、いつ起きたか、どんなアラームが出たか、音や熱はあったか、安全に何を確認したかを明確に報告することです。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>原因を推測するのと、見えた事実を明確に報告するのでは、どちらが安全ですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>見えた事実を明確に報告する方が安全です。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide28">
+<span class="slide-label">Slide 28</span>
+<h2>練習：Input → Process → Output</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_28.jpg" alt="Slide 28: 練習：Input → Process → Output"><figcaption>Slide 28 — 練習：Input → Process → Output</figcaption></figure>
+<p>考える道具を使います。機械を1つ選び、入力、過程、出力、起こりうる故障を書きます。</p>
+<p>MRIなら、入力は強い磁場と高周波パルスです。過程は体が弱い信号を出すことです。出力はコンピュータ画像です。故障例は金属安全、冷却、信号、電源の問題です。</p>
+<p>冷蔵庫なら、入力は電気です。過程はコンプレッサーと冷媒が熱を移動することです。出力は冷蔵保存です。故障例は電源、コンプレッサー、汚れたコンデンサー、ドアパッキン、温度アラームです。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>超音波を選びます。入力、過程、出力は何ですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>入力：音波。過程：組織がエコーを反射し、プローブが受け取る。出力：動く画像。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide29">
+<span class="slide-label">Slide 29</span>
+<h2>ミニクイズ</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_29.jpg" alt="Slide 29: ミニクイズ"><figcaption>Slide 29 — ミニクイズ</figcaption></figure>
+<p>短く答えてください。1語または短いフレーズで大丈夫です。</p>
+<p>強い磁石を使う機械はどれですか。音のエコーを使う機械はどれですか。X線放射を使う機械はどれですか。冷蔵庫は本当は何をしますか。なぜMRIの近くで金属は危険ですか。機器が動かないとき最初に確認することは何ですか。</p>
+<p>これらは授業の中心原理を確認する質問です。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>クイズを解いてから答えを開いてください。</p>
+<details class="answer"><summary>答えを見る</summary><p>1. MRI。2. 超音波。3. X線。4. 熱を取り除く。5. 強い磁石が金属を引き寄せるから。6. 電源と安全をまず確認する。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide30">
+<span class="slide-label">Slide 30</span>
+<h2>大きな病院機械の安全ルール</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_30.jpg" alt="Slide 30: 大きな病院機械の安全ルール"><figcaption>Slide 30 — 大きな病院機械の安全ルール</figcaption></figure>
+<p>大きな病院機械には敬意が必要です。警告表示は飾りではありません。安全システムの一部です。</p>
+<p>MRIの近くに金属を持ち込まない。放射線機器では遮へいと距離を守る。冷却機器やコンピュータの通風をふさがない。高電圧部に触れない。</p>
+<p>危険な機器の操作や修理は訓練されたスタッフに任せます。学生や医療ITサポートの役割は、安全に理解し、観察し、明確に報告することです。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>通風をふさぐとなぜ危険ですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>過熱、機器停止、故障、安全問題につながる可能性があるからです。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide31">
+<span class="slide-label">Slide 31</span>
+<h2>まとめ：大きな機械、単純な原理</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_31.jpg" alt="Slide 31: まとめ：大きな機械、単純な原理"><figcaption>Slide 31 — まとめ：大きな機械、単純な原理</figcaption></figure>
+<p>今日は大きな機械を学びましたが、原理は段階的でした。MRIは強い磁場、電波、体からの信号、受信コイル、コンピュータ処理を使います。X線は透過、吸収、検出器、画像データを使います。超音波は音波、エコー、信号処理、動く画像を使います。</p>
+<p>冷却機械は熱を別の場所へ移動します。非常用電源は燃料、エンジン回転、発電機、電気をつなげます。</p>
+<p>最終チェーンは、energy → interaction → signal or motion → computer or useful output です。大きな病院機械は魔法ではなく、物理ステップの連鎖です。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>この授業の多くの機械に共通するチェーンは何ですか。</p>
+<details class="answer"><summary>答えを見る</summary><p>Energy in → physical interaction/process → signal or motion → computer image or useful output です。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide32">
+<span class="slide-label">Slide 32</span>
+<h2>最終活動：チェーンを見つける</h2>
+<p class="lead">物理原理を段階的に理解する。</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_32.jpg" alt="Slide 32: 最終活動：チェーンを見つける"><figcaption>Slide 32 — 最終活動：チェーンを見つける</figcaption></figure>
+<p>MRI、X線、超音波、冷蔵庫、発電機の中から1つ選びます。入力、物理過程、出力、起こりうる故障を書きます。</p>
+<p>これは暗記のためだけではありません。工学的に考える訓練です。推測しないでください。段階的に考え、チェーンを見つけます。</p>
+<p>チェーンを見つけられれば、機械をより明確に説明できます。将来、医療ITの現場で問題を報告するときにも役立ちます。</p>
+<div class="activity">
+<h3>考えて答えてください</h3>
+<p>発電機を選びます。入力、過程、出力、故障例を答えてください。</p>
+<details class="answer"><summary>答えを見る</summary><p>入力：燃料または回転。過程：エンジンが発電機を回す。出力：電気。故障例：燃料なし、エンジン問題、発電機問題、ケーブル問題、過負荷、アラーム。</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block">
+<h2>ダウンロード</h2>
+<p><a class="button" href="downloads/computers1_lecture8_big_hospital_machines_with_images_large_fonts.pptx">PowerPoint</a></p>
+<p><a class="button" href="downloads/lecture8_presentation.pdf">PDF</a></p>
+<p><a class="button" href="downloads/computers1_lecture8_big_hospital_machines_speaker_script_en.docx">講義テキスト Word</a></p>
+</section>
+
+</main>
+<footer class="footer"><p>Computers 1 · 第8回 · 学生用ウェブ教材。</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>

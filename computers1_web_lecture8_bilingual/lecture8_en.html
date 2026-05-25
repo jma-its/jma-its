@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 8 — Big Hospital Machines</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="kicker">Computers 1 · Engineering Basics for Medical IT</div>
+    <h1>Lecture 8<br>Big Hospital Machines</h1>
+    <p class="subtitle">MRI, X-ray, Ultrasound, Refrigerators, Air Conditioners and Backup Power</p>
+    <p class="lang-note">This web lesson is for students. Read each slide, study the explanation, and answer the question. Click “Show answer” only after you try.</p>
+    <div class="header-actions">
+      <a class="button" href="#start">Start lesson</a>
+      <a class="button secondary" href="lecture8_ja.html">日本語版</a>
+      <a class="button secondary" href="#slide32">Final activity</a>
+      <a class="button secondary" href="downloads/computers1_lecture8_big_hospital_machines_with_images_large_fonts.pptx">PowerPoint</a>
+      <a class="button secondary" href="downloads/lecture8_presentation.pdf">PDF</a>
+      <a class="button secondary" href="downloads/computers1_lecture8_big_hospital_machines_speaker_script_en.docx">Speaker script Word</a>
+    </div>
+  </div>
+</header>
+
+<main id="start">
+<section class="overview card">
+<p class="lead">This web lesson is for students. Read each slide, study the explanation, and answer the question. Click “Show answer” only after you try.</p>
+<div class="grid">
+<div class="small-card"><h3>Core chain</h3><p>energy → interaction → signal/motion → useful output</p></div>
+<div class="small-card"><h3>Part 1</h3><p>MRI, X-ray and ultrasound. Different energy, same general pattern: energy → body interaction → receiver → computer image.</p></div>
+<div class="small-card"><h3>Part 2</h3><p>Refrigerators, air conditioners, compressors, backup power, failures and safety.</p></div>
+</div>
+</section>
+
+<section class="toc card">
+<h2>Lesson map</h2>
+<ol><li><a href="#slide01">Slide 1: Big Hospital Machines</a></li>
+<li><a href="#slide02">Slide 2: Big Question: How do hospital machines see, cool, and protect?</a></li>
+<li><a href="#slide03">Slide 3: One Thinking Tool: Input → Process → Output</a></li>
+<li><a href="#slide04">Slide 4: MRI First: The Big Scary Machine</a></li>
+<li><a href="#slide05">Slide 5: MRI Basic Chain</a></li>
+<li><a href="#slide06">Slide 6: MRI Physical Principle 1: Strong Magnetic Field</a></li>
+<li><a href="#slide07">Slide 7: MRI Physical Principle 2: Hydrogen Alignment</a></li>
+<li><a href="#slide08">Slide 8: MRI Physical Principle 3: Radio Pulse and Return Signal</a></li>
+<li><a href="#slide09">Slide 9: MRI Physical Principle 4: Computer Builds the Image</a></li>
+<li><a href="#slide10">Slide 10: MRI Safety and Support Systems</a></li>
+<li><a href="#slide11">Slide 11: X-ray: Another Way to See Inside</a></li>
+<li><a href="#slide12">Slide 12: X-ray Physical Principle: Penetration and Absorption</a></li>
+<li><a href="#slide13">Slide 13: X-ray Detector and Image Chain</a></li>
+<li><a href="#slide14">Slide 14: X-ray Safety</a></li>
+<li><a href="#slide15">Slide 15: Ultrasound: Sound and Echo</a></li>
+<li><a href="#slide16">Slide 16: Ultrasound Physical Principle: Reflection and Echo Time</a></li>
+<li><a href="#slide17">Slide 17: Ultrasound Image Chain</a></li>
+<li><a href="#slide18">Slide 18: Compare the Big Three: MRI, X-ray, Ultrasound</a></li>
+<li><a href="#slide19">Slide 19: Common Imaging Pattern</a></li>
+<li><a href="#slide20">Slide 20: Support Equipment Is Also Critical</a></li>
+<li><a href="#slide21">Slide 21: Refrigerator Principle: Move Heat from Inside to Outside</a></li>
+<li><a href="#slide22">Slide 22: Air Conditioner Principle: Same Idea, Bigger Space</a></li>
+<li><a href="#slide23">Slide 23: Compressor and Refrigerant Cycle</a></li>
+<li><a href="#slide24">Slide 24: Why Cooling Matters in Hospitals</a></li>
+<li><a href="#slide25">Slide 25: Backup Power: When Main Power Fails</a></li>
+<li><a href="#slide26">Slide 26: Common Failure Types</a></li>
+<li><a href="#slide27">Slide 27: What Medical IT Staff Should Do</a></li>
+<li><a href="#slide28">Slide 28: Practice: Input → Process → Output</a></li>
+<li><a href="#slide29">Slide 29: Mini Quiz</a></li>
+<li><a href="#slide30">Slide 30: Safety Rules for Big Hospital Machines</a></li>
+<li><a href="#slide31">Slide 31: Summary: Big Machines, Simple Principles</a></li>
+<li><a href="#slide32">Slide 32: Final Activity: Find the Chain</a></li></ol>
+</section>
+
+<section class="part-banner card">
+<h2>Part 1 — Machines that see inside the body</h2>
+<p>MRI, X-ray and ultrasound. Different energy, same general pattern: energy → body interaction → receiver → computer image.</p>
+</section>
+
+<section class="lesson-block" id="slide01">
+<span class="slide-label">Slide 1</span>
+<h2>Big Hospital Machines</h2>
+<p class="lead">MRI, X-ray, ultrasound, refrigerators and air conditioners use different physical principles, but all of them follow a chain.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_01.jpg" alt="Slide 1: Big Hospital Machines"><figcaption>Slide 1 — Big Hospital Machines</figcaption></figure>
+<p>In this lesson we look at large hospital machines first. They may look difficult, expensive, and frightening, but they are still machines. They use energy. Something physical happens inside them. Then they give a useful result.</p>
+<p>The most important idea is the chain: energy in → physical interaction → signal or motion → useful output. For imaging machines, the useful output is an image. For cooling machines, the useful output is safe temperature. For backup power, the useful output is electricity when main power fails.</p>
+<p>We will not learn every technical detail. But we will learn the basic physical principles, so the machines stop looking like magic.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Look at the title slide. Which machine looks the most difficult to you: MRI, X-ray, ultrasound, refrigerator, or air conditioner?</p>
+<details class="answer"><summary>Show answer</summary><p>Many students choose MRI because it is large and strict about safety. That is fine. We will start with MRI and make it simpler step by step.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide02">
+<span class="slide-label">Slide 2</span>
+<h2>Big Question: How do hospital machines see, cool, and protect?</h2>
+<p class="lead">Large machines are understandable if we break them into physical steps.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_02.jpg" alt="Slide 2: Big Question: How do hospital machines see, cool, and protect?"><figcaption>Slide 2 — Big Question: How do hospital machines see, cool, and protect?</figcaption></figure>
+<p>Hospital machines do three big jobs in this lesson. Some machines see inside the body. Some machines cool and protect medicine, samples, rooms, computers, and large equipment. Some machines protect the hospital when power fails.</p>
+<p>The important point is that these machines are not magic. MRI uses magnetism, radio waves, weak body signals, and computer reconstruction. X-ray uses radiation penetration and absorption. Ultrasound uses sound waves and echoes. Refrigerators and air conditioners move heat from one place to another.</p>
+<p>Today we start with the big machines first, because they are interesting and real. Then we look inside them using simple physics.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What is one machine that helps a hospital but does not directly touch a patient?</p>
+<details class="answer"><summary>Show answer</summary><p>Examples: refrigerator, air conditioner, server cooling fan, UPS, backup generator. These support machines are critical for safe hospital work.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide03">
+<span class="slide-label">Slide 3</span>
+<h2>One Thinking Tool: Input → Process → Output</h2>
+<p class="lead">Use one simple thinking tool for every machine.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_03.jpg" alt="Slide 3: One Thinking Tool: Input → Process → Output"><figcaption>Slide 3 — One Thinking Tool: Input → Process → Output</figcaption></figure>
+<p>For every machine, we ask three questions. First: what goes in? This can be electricity, fuel, sound, X-rays, radio waves, heat, or motion. Second: what happens inside? This is the physical process. Third: what comes out? This is the useful output.</p>
+<p>This tool is useful because it stops us from guessing. If we know the input, the process, and the output, we can understand the machine step by step.</p>
+<p>For MRI, the input includes a strong magnetic field and radio waves. The process happens in hydrogen nuclei in the body. The output is a signal and then an image. For a refrigerator, the input is electricity. The process is compressor and refrigerant movement. The output is cold storage, actually heat removal.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Use the tool for a fan. What is the input, process, and output?</p>
+<details class="answer"><summary>Show answer</summary><p>Input: electricity. Process: motor turns blades. Output: moving air and cooling airflow.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide04">
+<span class="slide-label">Slide 4</span>
+<h2>MRI First: The Big Scary Machine</h2>
+<p class="lead">MRI is large because it uses a powerful magnet and support systems.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_04.jpg" alt="Slide 4: MRI First: The Big Scary Machine"><figcaption>Slide 4 — MRI First: The Big Scary Machine</figcaption></figure>
+<p>MRI looks like a big tunnel. It is noisy, expensive, and strict about metal. Many students may think it is the hardest machine in the hospital. But we can still understand its basic chain.</p>
+<p>MRI uses a very strong magnet. It also uses radio-frequency waves, receiver coils, electronics, and a computer. It does not use X-ray radiation. This is an important difference.</p>
+<p>The magnet is the reason for many safety rules. Metal objects can be pulled strongly. The machine also needs cooling and stable power. It is not just one device; it is a system.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Why is metal dangerous near MRI?</p>
+<details class="answer"><summary>Show answer</summary><p>Because the MRI magnet is very strong. Ferromagnetic metal can be pulled toward the scanner and become a dangerous projectile.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide05">
+<span class="slide-label">Slide 5</span>
+<h2>MRI Basic Chain</h2>
+<p class="lead">MRI image formation can be summarized as magnet → radio wave → body signal → computer image.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_05.jpg" alt="Slide 5: MRI Basic Chain"><figcaption>Slide 5 — MRI Basic Chain</figcaption></figure>
+<p>The basic MRI chain is: strong magnet → radio wave → body signal → computer image. This is a simple sentence, but it contains deep physics.</p>
+<p>The human body contains much water. Water contains hydrogen atoms. Hydrogen nuclei behave a little like tiny magnets. In a strong magnetic field, many of them tend to align with the field.</p>
+<p>Then the scanner sends a radio-frequency pulse. This pulse disturbs the alignment. When the pulse stops, hydrogen nuclei return toward alignment and send weak signals. Receiver coils detect those weak signals. The computer reconstructs the image.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Does MRI mainly use X-ray radiation?</p>
+<details class="answer"><summary>Show answer</summary><p>No. MRI uses a strong magnetic field, radio-frequency pulses, body signals, and computer reconstruction.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide06">
+<span class="slide-label">Slide 6</span>
+<h2>MRI Physical Principle 1: Strong Magnetic Field</h2>
+<p class="lead">The strong magnetic field is the foundation of MRI and also the main safety issue.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_06.jpg" alt="Slide 6: MRI Physical Principle 1: Strong Magnetic Field"><figcaption>Slide 6 — MRI Physical Principle 1: Strong Magnetic Field</figcaption></figure>
+<p>MRI uses a very strong, stable magnetic field. This field is much stronger than a normal magnet. The field is not only inside the patient tunnel. It can extend outside the scanner, so the MRI room has strict zones and warning signs.</p>
+<p>The magnetic field affects hydrogen nuclei in the body. It also affects ferromagnetic metal objects. This is why scissors, oxygen cylinders, tools, keys, watches, and some wheelchairs can be dangerous near MRI.</p>
+<p>The magnet may be important even when the scan is not running. Many MRI magnets are always on. So safety is not optional.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What does the magnetic field do in MRI?</p>
+<details class="answer"><summary>Show answer</summary><p>It aligns many hydrogen nuclei in the body and creates the starting condition for MRI signals.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide07">
+<span class="slide-label">Slide 7</span>
+<h2>MRI Physical Principle 2: Hydrogen Alignment</h2>
+<p class="lead">Hydrogen nuclei in water are the main source of MRI signals.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_07.jpg" alt="Slide 7: MRI Physical Principle 2: Hydrogen Alignment"><figcaption>Slide 7 — MRI Physical Principle 2: Hydrogen Alignment</figcaption></figure>
+<p>The human body contains a lot of water. Water molecules contain hydrogen. Hydrogen nuclei are useful for MRI because they behave like tiny magnetic particles.</p>
+<p>Without the MRI magnetic field, these tiny magnetic directions are more random. In the strong magnetic field, many hydrogen nuclei tend to align with the field. This alignment is not a visible movement of the body; it happens at the atomic/nuclear level.</p>
+<p>This alignment stores information that the scanner can disturb and then measure. This is why MRI is strongly connected to magnetism and radio waves, not to ordinary light.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Why is water important for MRI?</p>
+<details class="answer"><summary>Show answer</summary><p>Because water contains hydrogen atoms, and hydrogen nuclei create signals that MRI can measure.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide08">
+<span class="slide-label">Slide 8</span>
+<h2>MRI Physical Principle 3: Radio Pulse and Return Signal</h2>
+<p class="lead">Radio-frequency pulses disturb alignment; returning nuclei send weak signals.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_08.jpg" alt="Slide 8: MRI Physical Principle 3: Radio Pulse and Return Signal"><figcaption>Slide 8 — MRI Physical Principle 3: Radio Pulse and Return Signal</figcaption></figure>
+<p>After hydrogen nuclei are aligned by the strong magnetic field, the MRI scanner sends a radio-frequency pulse. This pulse has energy. It disturbs the aligned hydrogen nuclei.</p>
+<p>When the pulse stops, the nuclei return toward their previous alignment. During this return, they produce very weak electromagnetic signals. These signals are not pictures by themselves. They are raw physical signals.</p>
+<p>Different tissues return signals differently. Fat, water-rich tissue, muscle, and other tissues can produce different signal patterns. That difference helps the computer create contrast in the final image.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What happens after the radio pulse stops?</p>
+<details class="answer"><summary>Show answer</summary><p>Hydrogen nuclei return toward alignment and produce weak signals that the receiver coils can detect.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide09">
+<span class="slide-label">Slide 9</span>
+<h2>MRI Physical Principle 4: Computer Builds the Image</h2>
+<p class="lead">MRI needs signal detection, amplification, processing, and computer reconstruction.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_09.jpg" alt="Slide 9: MRI Physical Principle 4: Computer Builds the Image"><figcaption>Slide 9 — MRI Physical Principle 4: Computer Builds the Image</figcaption></figure>
+<p>The signal from the body is weak. Receiver coils detect it. Electronics amplify the signal so it can be processed. Then the computer reconstructs an image from the signal data.</p>
+<p>This is the bridge from physics to computers. The physical world gives weak signals. Electronics convert and amplify them. The computer calculates an image.</p>
+<p>The image is not a simple photograph. It is reconstructed from signals. This is why MRI is a powerful combination of physics, electronics, mathematics, and computing.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Is an MRI image a direct camera photo?</p>
+<details class="answer"><summary>Show answer</summary><p>No. It is reconstructed by a computer from weak signals received from the body.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide10">
+<span class="slide-label">Slide 10</span>
+<h2>MRI Safety and Support Systems</h2>
+<p class="lead">MRI needs metal safety, ear protection, cooling, stable power, and trained staff.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_10.jpg" alt="Slide 10: MRI Safety and Support Systems"><figcaption>Slide 10 — MRI Safety and Support Systems</figcaption></figure>
+<p>MRI safety is not only one rule. It is a system. No metal near MRI zones. Ear protection may be needed because gradient coils vibrate and create loud noise during scanning. Cooling and stable power are also important.</p>
+<p>The MRI room is controlled. Staff must check patients and objects before entering. Some implants and devices may be unsafe. Trained staff must operate the system.</p>
+<p>For medical IT staff, the correct attitude is: observe, respect warning signs, report problems clearly, and do not guess dangerously.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Why can MRI be noisy?</p>
+<details class="answer"><summary>Show answer</summary><p>During scanning, coils can vibrate rapidly. This creates loud knocking or buzzing sounds, so ear protection may be needed.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide11">
+<span class="slide-label">Slide 11</span>
+<h2>X-ray: Another Way to See Inside</h2>
+<p class="lead">X-ray uses high-energy radiation passing through the body to a detector.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_11.jpg" alt="Slide 11: X-ray: Another Way to See Inside"><figcaption>Slide 11 — X-ray: Another Way to See Inside</figcaption></figure>
+<p>X-ray is another way to see inside the body. It is very different from MRI. X-rays are high-energy electromagnetic radiation. They can pass through the body, but not all tissues let them pass equally.</p>
+<p>The machine sends an X-ray beam through the body. Some X-rays are absorbed or blocked by tissues. The remaining X-rays reach the detector. The detector and computer make an image.</p>
+<p>The basic chain is: X-ray beam → body → detector → image.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What receives the X-rays after they pass through the body?</p>
+<details class="answer"><summary>Show answer</summary><p>A detector receives the remaining X-rays and helps create the image.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide12">
+<span class="slide-label">Slide 12</span>
+<h2>X-ray Physical Principle: Penetration and Absorption</h2>
+<p class="lead">Different tissues absorb different amounts of X-rays.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_12.jpg" alt="Slide 12: X-ray Physical Principle: Penetration and Absorption"><figcaption>Slide 12 — X-ray Physical Principle: Penetration and Absorption</figcaption></figure>
+<p>The key physical principle of X-ray imaging is penetration and absorption. Soft tissue lets more X-rays pass. Bone absorbs or blocks more X-rays. Because of this difference, the detector receives different intensities in different places.</p>
+<p>Where more X-rays reach the detector, the detector records stronger exposure. Where bone blocks more X-rays, fewer X-rays reach the detector. The computer uses these differences to create an image with contrast.</p>
+<p>So X-ray imaging depends on differences in absorption. The body changes the X-ray beam before it reaches the detector.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Why do bones appear clearly in many X-ray images?</p>
+<details class="answer"><summary>Show answer</summary><p>Because bone absorbs or blocks more X-rays than soft tissue, creating a strong difference at the detector.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide13">
+<span class="slide-label">Slide 13</span>
+<h2>X-ray Detector and Image Chain</h2>
+<p class="lead">Modern X-ray detectors convert radiation into electrical signals and image data.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_13.jpg" alt="Slide 13: X-ray Detector and Image Chain"><figcaption>Slide 13 — X-ray Detector and Image Chain</figcaption></figure>
+<p>Old X-ray systems used film. Modern systems often use digital detectors. A digital detector converts X-ray energy into electrical signals.</p>
+<p>Then electronics and a computer process those signals. The final result is image data on a screen. This is another bridge from physical energy to computer information.</p>
+<p>The chain is: radiation → detector → electrical signal → computer → image data. Notice that the detector is not just a passive plate. It is a conversion device.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What does a modern X-ray detector do?</p>
+<details class="answer"><summary>Show answer</summary><p>It converts X-ray energy into electrical signals that the computer can process.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide14">
+<span class="slide-label">Slide 14</span>
+<h2>X-ray Safety</h2>
+<p class="lead">X-ray is useful, but radiation dose must be controlled.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_14.jpg" alt="Slide 14: X-ray Safety"><figcaption>Slide 14 — X-ray Safety</figcaption></figure>
+<p>X-ray radiation is useful for diagnosis, but it can damage cells if the dose is too high. That is why medical use must control dose carefully.</p>
+<p>Three simple safety ideas are shielding, distance, and short exposure time. Shielding blocks radiation. Distance reduces exposure. Short exposure time reduces dose.</p>
+<p>Only trained staff should operate X-ray equipment. Medical IT students do not need to operate it, but they must understand why warning signs and safety rules matter.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Name one X-ray safety principle.</p>
+<details class="answer"><summary>Show answer</summary><p>Shielding, distance, or short exposure time. All three help reduce radiation exposure.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide15">
+<span class="slide-label">Slide 15</span>
+<h2>Ultrasound: Sound and Echo</h2>
+<p class="lead">Ultrasound uses sound waves and echoes, not radiation.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_15.jpg" alt="Slide 15: Ultrasound: Sound and Echo"><figcaption>Slide 15 — Ultrasound: Sound and Echo</figcaption></figure>
+<p>Ultrasound uses sound waves, not X-ray radiation. The sound frequency is above human hearing, so we cannot hear it.</p>
+<p>The probe sends sound waves into the body. When sound meets a boundary between different tissues, part of the sound reflects back. The reflected sound is called an echo.</p>
+<p>The probe receives echoes. The system processes the echo signals and makes an image. The basic chain is: sound wave → body tissue → echo → image.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Does ultrasound use ionizing radiation like X-ray?</p>
+<details class="answer"><summary>Show answer</summary><p>No. Ultrasound uses high-frequency sound waves and echoes.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide16">
+<span class="slide-label">Slide 16</span>
+<h2>Ultrasound Physical Principle: Reflection and Echo Time</h2>
+<p class="lead">Echo time helps estimate depth; echo strength helps show tissue boundaries.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_16.jpg" alt="Slide 16: Ultrasound Physical Principle: Reflection and Echo Time"><figcaption>Slide 16 — Ultrasound Physical Principle: Reflection and Echo Time</figcaption></figure>
+<p>Sound travels through body tissue. When sound meets a boundary where tissue properties change, some sound reflects. The machine measures two important things: echo strength and echo time.</p>
+<p>Echo strength tells the machine how strong the reflection is. Echo time tells the machine how deep the boundary is. A short echo time means the boundary is shallow. A long echo time means the boundary is deeper.</p>
+<p>Why do we divide by two in the depth idea? Because the sound travels into the body and then comes back. The total time is for the round trip.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Why does a deeper tissue boundary give a longer echo time?</p>
+<details class="answer"><summary>Show answer</summary><p>Because the sound must travel farther into the body and then return to the probe.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide17">
+<span class="slide-label">Slide 17</span>
+<h2>Ultrasound Image Chain</h2>
+<p class="lead">The probe sends waves and receives echoes; the computer builds a moving image.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_17.jpg" alt="Slide 17: Ultrasound Image Chain"><figcaption>Slide 17 — Ultrasound Image Chain</figcaption></figure>
+<p>The ultrasound probe is both sender and receiver. It sends sound waves into the body. It also receives the returning echoes.</p>
+<p>Electronics convert the echoes into electrical signals. The computer uses timing and strength information to build a moving image on the screen.</p>
+<p>This moving image is useful because doctors can watch motion in real time. Ultrasound is often used for soft tissues, pregnancy, blood flow, and many bedside examinations.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Why is ultrasound good for moving images?</p>
+<details class="answer"><summary>Show answer</summary><p>Because it can send and receive sound waves quickly and update the image in real time.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide18">
+<span class="slide-label">Slide 18</span>
+<h2>Compare the Big Three: MRI, X-ray, Ultrasound</h2>
+<p class="lead">All three make images, but they use different energy and physical interactions.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_18.jpg" alt="Slide 18: Compare the Big Three: MRI, X-ray, Ultrasound"><figcaption>Slide 18 — Compare the Big Three: MRI, X-ray, Ultrasound</figcaption></figure>
+<p>MRI, X-ray, and ultrasound all help us see inside the body, but their physical principles are different.</p>
+<p>MRI uses a strong magnet, radio waves, body signals, receiver coils, and computer reconstruction. X-ray uses radiation, absorption, detectors, and computer image processing. Ultrasound uses sound waves, reflection, echo time, and computer image processing.</p>
+<p>The same general pattern is still visible: energy enters the body → the body changes the energy or signal → a receiver detects something → the computer makes an image.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Which machine uses sound echoes?</p>
+<details class="answer"><summary>Show answer</summary><p>Ultrasound uses sound waves and echoes.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide19">
+<span class="slide-label">Slide 19</span>
+<h2>Common Imaging Pattern</h2>
+<p class="lead">Imaging machines connect physical interaction to electrical signal and digital image.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_19.jpg" alt="Slide 19: Common Imaging Pattern"><figcaption>Slide 19 — Common Imaging Pattern</figcaption></figure>
+<p>The common imaging pattern is: physical world → electrical signal → digital image. This is a very important idea for medical IT.</p>
+<p>The machine first uses a physical interaction. In X-ray, radiation is absorbed differently. In ultrasound, sound reflects differently. In MRI, hydrogen nuclei produce different signals.</p>
+<p>Then a detector or receiver converts the physical effect into electrical signals. Finally, the computer processes data and displays an image. This is how physics becomes information.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Why is this slide important for computer students?</p>
+<details class="answer"><summary>Show answer</summary><p>Because it shows how physical events become electrical signals and then digital images that computers can process.</p></details>
+</div>
+</section>
+
+
+<section class="part-banner card">
+<h2>Part 2 — Machines that protect the hospital system</h2>
+<p>Refrigerators, air conditioners, compressors, backup power, failures and safety.</p>
+</section>
+
+<section class="lesson-block" id="slide20">
+<span class="slide-label">Slide 20</span>
+<h2>Support Equipment Is Also Critical</h2>
+<p class="lead">Hospital support equipment protects medicine, machines, rooms, and power.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_20.jpg" alt="Slide 20: Support Equipment Is Also Critical"><figcaption>Slide 20 — Support Equipment Is Also Critical</figcaption></figure>
+<p>Not all important hospital machines make images. Support equipment is also critical. Refrigerators protect medicines, vaccines, and samples. Air conditioners remove heat from rooms and machines. Backup power protects important systems during power failure.</p>
+<p>These machines may look less impressive than MRI, but hospitals cannot work safely without them. A refrigerator problem can damage medicine. A cooling problem can overheat servers or imaging rooms. A power problem can stop critical systems.</p>
+<p>So support equipment is not luxury. It is safety infrastructure.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Why can a refrigerator be a safety machine in a hospital?</p>
+<details class="answer"><summary>Show answer</summary><p>Because it keeps medicines, vaccines, and samples at correct temperature. Wrong temperature can damage them.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide21">
+<span class="slide-label">Slide 21</span>
+<h2>Refrigerator Principle: Move Heat from Inside to Outside</h2>
+<p class="lead">A refrigerator removes heat; it does not create cold from nothing.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_21.jpg" alt="Slide 21: Refrigerator Principle: Move Heat from Inside to Outside"><figcaption>Slide 21 — Refrigerator Principle: Move Heat from Inside to Outside</figcaption></figure>
+<p>A refrigerator does not create cold like magic. It removes heat from inside the cabinet and releases that heat outside. Cooling means heat removal.</p>
+<p>The refrigerant absorbs heat inside the cold space. It evaporates and carries heat. The compressor uses electric motor power to raise pressure. Then the refrigerant releases heat outside at the condenser.</p>
+<p>This connects to our previous lectures. The compressor uses a motor. The system uses pressure. Heat moves from one place to another. The useful result is safe cold storage.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What does a refrigerator really do?</p>
+<details class="answer"><summary>Show answer</summary><p>It removes heat from inside and releases heat outside.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide22">
+<span class="slide-label">Slide 22</span>
+<h2>Air Conditioner Principle: Same Idea, Bigger Space</h2>
+<p class="lead">An air conditioner moves heat from the room to outside.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_22.jpg" alt="Slide 22: Air Conditioner Principle: Same Idea, Bigger Space"><figcaption>Slide 22 — Air Conditioner Principle: Same Idea, Bigger Space</figcaption></figure>
+<p>An air conditioner uses the same general idea as a refrigerator, but the space is larger. The indoor unit removes heat from the room. The refrigerant carries heat to the outdoor unit. The outdoor unit releases heat outside.</p>
+<p>Fans move air across heat exchangers. The indoor fan moves room air across a cold coil. The outdoor fan helps release heat outside. The compressor drives refrigerant circulation.</p>
+<p>Air conditioning is not only comfort in hospitals. It can protect equipment, medicines, rooms, and server systems.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Where does an air conditioner release the heat from the room?</p>
+<details class="answer"><summary>Show answer</summary><p>It releases the heat outside, usually through the outdoor unit.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide23">
+<span class="slide-label">Slide 23</span>
+<h2>Compressor and Refrigerant Cycle</h2>
+<p class="lead">Compressor, pressure, temperature behavior, phase change, and heat movement work together.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_23.jpg" alt="Slide 23: Compressor and Refrigerant Cycle"><figcaption>Slide 23 — Compressor and Refrigerant Cycle</figcaption></figure>
+<p>The motor drives the compressor. The compressor raises the pressure of the refrigerant. Changing pressure changes temperature behavior and helps the refrigerant absorb and release heat.</p>
+<p>At the evaporator, refrigerant can absorb heat and evaporate. At the condenser, refrigerant can release heat and condense. The expansion valve lowers pressure before the refrigerant returns to the evaporator.</p>
+<p>The cycle is not easy, but the main idea is simple: motor → compressor → pressure change → refrigerant phase change → heat movement.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What does the compressor do in the cooling cycle?</p>
+<details class="answer"><summary>Show answer</summary><p>It raises refrigerant pressure and helps move heat through the system.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide24">
+<span class="slide-label">Slide 24</span>
+<h2>Why Cooling Matters in Hospitals</h2>
+<p class="lead">Correct temperature protects medicine, samples, machines, and data.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_24.jpg" alt="Slide 24: Why Cooling Matters in Hospitals"><figcaption>Slide 24 — Why Cooling Matters in Hospitals</figcaption></figure>
+<p>Cooling is not only comfort. In hospitals, correct temperature can protect medicine, vaccines, samples, computers, servers, imaging rooms, and large machines.</p>
+<p>Medicines may need a correct temperature range. Samples may need refrigerator or freezer storage. Computers and servers can overheat without airflow and cooling. MRI and imaging rooms may need stable environmental conditions.</p>
+<p>When cooling fails, the problem can become a medical safety problem, not just a comfort problem.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What can happen if server room cooling fails?</p>
+<details class="answer"><summary>Show answer</summary><p>Servers can overheat. Hospital IT systems can become unstable or stop working.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide25">
+<span class="slide-label">Slide 25</span>
+<h2>Backup Power: When Main Power Fails</h2>
+<p class="lead">UPS gives immediate short power; generator gives longer backup power.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_25.jpg" alt="Slide 25: Backup Power: When Main Power Fails"><figcaption>Slide 25 — Backup Power: When Main Power Fails</figcaption></figure>
+<p>Hospitals need power all the time. If main power fails, some systems must keep running. A UPS gives immediate short-term power from batteries. It covers the gap before the generator starts.</p>
+<p>A backup generator gives longer backup power. Usually a fuel engine turns the generator. The generator produces electricity. The chain is: fuel → engine → generator → electricity.</p>
+<p>This connects Lecture 6 and Lecture 7. Heat engine gives rotation. Generator changes rotation into electricity.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What is the difference between UPS and generator?</p>
+<details class="answer"><summary>Show answer</summary><p>UPS gives immediate short-term battery power. A generator gives longer backup power after it starts.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide26">
+<span class="slide-label">Slide 26</span>
+<h2>Common Failure Types</h2>
+<p class="lead">Classify problems as mechanical, electrical, thermal, signal/control, or software/control.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_26.jpg" alt="Slide 26: Common Failure Types"><figcaption>Slide 26 — Common Failure Types</figcaption></figure>
+<p>When equipment does not work, do not guess randomly. Think by physical system. A mechanical problem can be a blocked fan, broken belt, stuck door, jammed paper, or broken moving part.</p>
+<p>An electrical problem can be no power, bad cable, damaged plug, blown fuse, or loose connection. A thermal problem can be overheating, blocked airflow, dirty filter, or failed cooling.</p>
+<p>A signal or control problem can be a wrong sensor value, alarm, error screen, bad setting, or communication problem. Classification helps you report clearly.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>A device is very hot and the fan vent is blocked. What category is this?</p>
+<details class="answer"><summary>Show answer</summary><p>Thermal problem, and possibly mechanical airflow blockage too.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide27">
+<span class="slide-label">Slide 27</span>
+<h2>What Medical IT Staff Should Do</h2>
+<p class="lead">Observe safely, check simple visible things, report clearly, and do not open dangerous covers.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_27.jpg" alt="Slide 27: What Medical IT Staff Should Do"><figcaption>Slide 27 — What Medical IT Staff Should Do</figcaption></figure>
+<p>Medical IT staff should not treat big equipment like a mystery box. Observe safely. Check alarms, cables, airflow, display messages, room conditions, and obvious problems.</p>
+<p>Do not open dangerous covers. Do not touch high voltage parts. Do not enter restricted MRI or radiation areas without permission. Do not reset important medical systems casually.</p>
+<p>Good support work means clear reporting: what happened, when it happened, what alarm appeared, what sound or heat was noticed, and what was checked safely.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What is better: guessing the cause or reporting visible facts clearly?</p>
+<details class="answer"><summary>Show answer</summary><p>Reporting visible facts clearly is better and safer.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide28">
+<span class="slide-label">Slide 28</span>
+<h2>Practice: Input → Process → Output</h2>
+<p class="lead">Apply the same thinking tool to MRI, X-ray, ultrasound, refrigerator, and generator.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_28.jpg" alt="Slide 28: Practice: Input → Process → Output"><figcaption>Slide 28 — Practice: Input → Process → Output</figcaption></figure>
+<p>Now use the thinking tool. Choose one machine. Write the input, process, output, and possible failure.</p>
+<p>For MRI, input can be strong magnet and radio pulse. Process: body gives weak signal. Output: computer image. Possible failure: metal safety problem, cooling problem, signal problem, power problem.</p>
+<p>For refrigerator, input is electricity. Process: compressor and refrigerant move heat. Output: cold storage. Possible failure: power problem, compressor problem, dirty condenser, bad door seal, wrong temperature alarm.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Choose ultrasound. What are input, process, output?</p>
+<details class="answer"><summary>Show answer</summary><p>Input: sound wave. Process: tissue reflects echoes and probe receives them. Output: moving image.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide29">
+<span class="slide-label">Slide 29</span>
+<h2>Mini Quiz</h2>
+<p class="lead">Short oral review for the big principles.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_29.jpg" alt="Slide 29: Mini Quiz"><figcaption>Slide 29 — Mini Quiz</figcaption></figure>
+<p>Answer these questions using short answers. One word or one short phrase is okay.</p>
+<p>Which machine uses a strong magnet? Which machine uses sound echoes? Which machine uses X-ray radiation? What does a refrigerator really do? Why is metal dangerous near MRI? What is the first thing to check when equipment does not work?</p>
+<p>These questions check the core principles. If you can answer them, you understand the main idea of the lecture.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Open the answer key after you try the quiz.</p>
+<details class="answer"><summary>Show answer</summary><p>1. MRI. 2. Ultrasound. 3. X-ray. 4. It removes heat. 5. Strong magnet can pull metal. 6. Check power and safety first.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide30">
+<span class="slide-label">Slide 30</span>
+<h2>Safety Rules for Big Hospital Machines</h2>
+<p class="lead">Respect warnings, no metal near MRI, radiation shielding, open airflow, trained staff only.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_30.jpg" alt="Slide 30: Safety Rules for Big Hospital Machines"><figcaption>Slide 30 — Safety Rules for Big Hospital Machines</figcaption></figure>
+<p>Big hospital machines require respect. Warning signs are not decoration. They are part of the safety system.</p>
+<p>No metal near MRI. Use shielding and distance near radiation equipment. Keep airflow open around cooling machines and computers. Do not block vents. Do not touch high-voltage parts.</p>
+<p>Let trained staff operate and repair dangerous equipment. Your job is to understand, observe safely, and report clearly.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Why is blocked airflow dangerous?</p>
+<details class="answer"><summary>Show answer</summary><p>Blocked airflow can cause overheating, equipment shutdown, damage, or safety problems.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide31">
+<span class="slide-label">Slide 31</span>
+<h2>Summary: Big Machines, Simple Principles</h2>
+<p class="lead">Big hospital machines are chains of physical steps.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_31.jpg" alt="Slide 31: Summary: Big Machines, Simple Principles"><figcaption>Slide 31 — Summary: Big Machines, Simple Principles</figcaption></figure>
+<p>Today we studied big machines, but the principles were simple. MRI uses strong magnet, radio waves, body signals, receiver coils, and computer image processing. X-ray uses radiation penetration, absorption, detectors, and image data. Ultrasound uses sound waves, echoes, signal processing, and moving images.</p>
+<p>Cooling machines move heat from one place to another. Backup power connects fuel, engine rotation, generator, and electricity.</p>
+<p>The final chain is: energy → interaction → signal or motion → computer or useful output. Big hospital machines are not magic. They are chains of physical steps.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>What is the common chain for many machines in this lecture?</p>
+<details class="answer"><summary>Show answer</summary><p>Energy in → physical interaction/process → signal or motion → computer image or useful output.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block" id="slide32">
+<span class="slide-label">Slide 32</span>
+<h2>Final Activity: Find the Chain</h2>
+<p class="lead">Students practice identifying input, process, output, and possible failure.</p>
+<figure class="slide-img-wrap"><img src="assets/slides/slide_32.jpg" alt="Slide 32: Final Activity: Find the Chain"><figcaption>Slide 32 — Final Activity: Find the Chain</figcaption></figure>
+<p>Choose one machine: MRI, X-ray, ultrasound, refrigerator, or generator. Fill the table. What is the input? What is the physical process? What is the output? What possible failure can happen?</p>
+<p>This activity is not only for memory. It trains engineering thinking. Do not guess. Think step by step. Find the chain.</p>
+<p>If you can find the chain, you can explain the machine more clearly. You can also report problems more clearly in future medical IT work.</p>
+<div class="activity">
+<h3>Think and answer</h3>
+<p>Choose generator. What is input, process, output, and one possible failure?</p>
+<details class="answer"><summary>Show answer</summary><p>Input: fuel and/or rotation. Process: engine turns generator. Output: electricity. Possible failure: no fuel, engine problem, generator problem, cable problem, overload, alarm.</p></details>
+</div>
+</section>
+
+
+<section class="lesson-block">
+<h2>Downloads</h2>
+<p><a class="button" href="downloads/computers1_lecture8_big_hospital_machines_with_images_large_fonts.pptx">PowerPoint</a></p>
+<p><a class="button" href="downloads/lecture8_presentation.pdf">PDF</a></p>
+<p><a class="button" href="downloads/computers1_lecture8_big_hospital_machines_speaker_script_en.docx">Speaker script Word</a></p>
+</section>
+
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 8 · Student web lesson.</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>
