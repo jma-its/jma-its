@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Lecture 4C — Dynamics for Medical Equipment</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header>
+<div class="header-inner">
+<div class="kicker">Computers 1 · Mechanics</div>
+<h1>Lecture 4C — Dynamics for Medical Equipment</h1>
+<p class="subtitle">Forces · Newton’s Laws · Weight · Friction · Work · Energy</p>
+<p>Self-study web lesson. Each section matches one slide in the PowerPoint.</p>
+<div class="actions">
+<a class="btn" href="#part1">Start lesson</a>
+<a class="btn secondary" href="lecture4C_ja.html">日本語版</a>
+<a class="btn secondary" href="#slide25">Practice tasks</a>
+<a class="btn secondary" href="downloads/lecture4C_dynamics_with_images.pptx">PowerPoint</a>
+</div>
+</div>
+</header>
+<main>
+<section class="overview card">
+<p class="lead">Self-study web lesson. Each section matches one slide in the PowerPoint.</p>
+<div class="grid">
+<div class="small"><h3>Core formula</h3><p>F = ma · a = F/m</p></div>
+<div class="small"><h3>Weight idea</h3><p>F<sub>g</sub> = mg · W<sub>app</sub> can change</p></div>
+<div class="small"><h3>Energy formulas</h3><p>W = F×s · E<sub>k</sub> = 1/2mv² · E<sub>p</sub> = mgh</p></div>
+</div>
+</section>
+<section class="toc card"><h2>Lesson map</h2><ol><li><a href="#slide01">1. Dynamics for Medical Equipment</a></li><li><a href="#slide02">2. Three Parts of Mechanics</a></li><li><a href="#slide03">3. Why Dynamics Matters in Hospitals</a></li><li><a href="#slide04">4. Force Changes Motion</a></li><li><a href="#slide05">5. Inertia</a></li><li><a href="#slide06">6. Heavy Bed vs Light Cart</a></li><li><a href="#slide07">7. Newton’s First Law</a></li><li><a href="#slide08">8. Newton’s Second Law</a></li><li><a href="#slide09">9. Meaning of F = ma</a></li><li><a href="#slide10">10. Newton’s Third Law</a></li><li><a href="#slide11">11. Free-Body Diagram Review</a></li><li><a href="#slide12">12. Forces on a Moving Cart</a></li><li><a href="#slide13">13. Net Force</a></li><li><a href="#slide14">14. Gravity Pulls Down</a></li><li><a href="#slide15">15. What Is Weight?</a></li><li><a href="#slide16">16. At Rest: Same Size</a></li><li><a href="#slide17">17. Important Difference</a></li><li><a href="#slide18">18. Elevator Going Up</a></li><li><a href="#slide19">19. Elevator Going Down</a></li><li><a href="#slide20">20. Free Fall</a></li><li><a href="#slide21">21. Hospital Link: Patient Lift</a></li><li><a href="#slide22">22. Friction</a></li><li><a href="#slide23">23. Simple Friction Idea</a></li><li><a href="#slide24">24. Push Cart with Friction</a></li><li><a href="#slide25">25. Task 1: Find Acceleration</a></li><li><a href="#slide26">26. Task 2: Find Force</a></li><li><a href="#slide27">27. Task 3: Push and Friction</a></li><li><a href="#slide28">28. Task 4: Elevator Apparent Weight</a></li><li><a href="#slide29">29. Task 5: Elevator Going Down</a></li><li><a href="#slide30">30. Mechanical Work</a></li><li><a href="#slide31">31. Work Unit</a></li><li><a href="#slide32">32. Work Example</a></li><li><a href="#slide33">33. Kinetic Energy</a></li><li><a href="#slide34">34. Potential Energy</a></li><li><a href="#slide35">35. Energy Safety Idea</a></li><li><a href="#slide36">36. Task 6: Work</a></li><li><a href="#slide37">37. Task 7: Kinetic Energy</a></li><li><a href="#slide38">38. Task 8: Potential Energy</a></li><li><a href="#slide39">39. Mixed Task: Lift</a></li><li><a href="#slide40">40. Common Mistakes</a></li><li><a href="#slide41">41. Dynamics Summary</a></li><li><a href="#slide42">42. Final Message</a></li></ol></section>
+<section class="part card" id="part1"><h2>Part 1 — From Kinematics to Dynamics</h2><p>Dynamics explains why motion changes: forces cause acceleration.</p></section><section class="block" id="slide01">
+<span class="topic-label">Slide 1</span>
+<h2>Dynamics for Medical Equipment</h2>
+<p class="lead">Forces. Motion. Newton’s Laws. Energy.</p>
+<figure class="slide-img"><img src="assets/slides/slide_01.jpg" alt="Dynamics for Medical Equipment"><div class="slide-caption">Dynamics for Medical Equipment</div></figure>
+<p>Today we study dynamics. Dynamics connects force and motion.</p><p>In kinematics, we described motion. We asked: how does it move?</p><p>Now we ask a deeper question: why does motion change?</p><p>The answer is force. Force can create acceleration.</p>
+<div class="activity"><h3>Think and answer</h3><p>What does dynamics study?</p><details class="answer"><summary>Show answer</summary><p>Force and motion. Dynamics explains why motion changes.</p></details></div>
+</section><section class="block" id="slide02">
+<span class="topic-label">Slide 2</span>
+<h2>Three Parts of Mechanics</h2>
+<p class="lead">Statics, kinematics, dynamics.</p>
+<figure class="slide-img"><img src="assets/slides/slide_02.jpg" alt="Three Parts of Mechanics"><div class="slide-caption">Three Parts of Mechanics</div></figure>
+<p>Mechanics can be divided into three parts.</p><p>Statics: the object does not move. Forces are balanced.</p><p>Kinematics: the object moves, and we describe the motion.</p><p>Dynamics: forces cause motion to change.</p><p>This lecture is the bridge from formulas to real machines.</p>
+<div class="activity"><h3>Think and answer</h3><p>Which part studies forces that change motion?</p><details class="answer"><summary>Show answer</summary><p>Dynamics.</p></details></div>
+</section><section class="block" id="slide03">
+<span class="topic-label">Slide 3</span>
+<h2>Why Dynamics Matters in Hospitals</h2>
+<p class="lead">Safe equipment must move smoothly.</p>
+<figure class="slide-img"><img src="assets/slides/slide_03.jpg" alt="Why Dynamics Matters in Hospitals"><div class="slide-caption">Why Dynamics Matters in Hospitals</div></figure>
+<p>Many hospital devices move: beds, wheelchairs, carts, lifts, scanner tables, and centrifuges.</p><p>If the motion is sudden, a patient can be frightened or injured.</p><p>If the force is too large, equipment can be damaged.</p><p>Dynamics helps us think about safe, controlled movement.</p>
+<div class="activity"><h3>Think and answer</h3><p>Name one hospital device where smooth motion is important.</p><details class="answer"><summary>Show answer</summary><p>Patient lift, bed, wheelchair, scanner table, cart.</p></details></div>
+</section><section class="block" id="slide04">
+<span class="topic-label">Slide 4</span>
+<h2>Force Changes Motion</h2>
+<p class="lead">Force can start, stop, speed up, slow down, or change direction.</p>
+<figure class="slide-img"><img src="assets/slides/slide_04.jpg" alt="Force Changes Motion"><div class="slide-caption">Force Changes Motion</div></figure>
+<p>A force is not only a push or pull. A force can change motion.</p><p>It can start motion from rest.</p><p>It can stop a moving object.</p><p>It can make motion faster or slower.</p><p>It can also change direction.</p>
+<div class="activity"><h3>Think and answer</h3><p>What are two things a force can do to motion?</p><details class="answer"><summary>Show answer</summary><p>Start, stop, speed up, slow down, or change direction.</p></details></div>
+</section><section class="block" id="slide05">
+<span class="topic-label">Slide 5</span>
+<h2>Inertia</h2>
+<p class="lead">Inertia = resistance to change of motion.</p>
+<figure class="slide-img"><img src="assets/slides/slide_05.jpg" alt="Inertia"><div class="slide-caption">Inertia</div></figure>
+<p>Inertia means an object tends to keep its current state of motion.</p><p>If it is at rest, it tends to stay at rest.</p><p>If it is moving, it tends to keep moving.</p><p>A heavy hospital bed has more inertia than a small cart.</p>
+<div class="activity"><h3>Think and answer</h3><p>Which has more inertia: a heavy bed or a light cart?</p><details class="answer"><summary>Show answer</summary><p>A heavy bed.</p></details></div>
+</section><section class="block" id="slide06">
+<span class="topic-label">Slide 6</span>
+<h2>Heavy Bed vs Light Cart</h2>
+<p class="lead">Same push, different acceleration.</p>
+<figure class="slide-img"><img src="assets/slides/slide_06.jpg" alt="Heavy Bed vs Light Cart"><div class="slide-caption">Heavy Bed vs Light Cart</div></figure>
+<p>Imagine the same push acts on a light cart and a heavy bed.</p><p>The light cart accelerates more.</p><p>The heavy bed accelerates less.</p><p>The force is the same, but the mass is different.</p><p>This idea leads to Newton’s second law.</p>
+<div class="activity"><h3>Think and answer</h3><p>Why does the heavy bed accelerate less?</p><details class="answer"><summary>Show answer</summary><p>Because it has more mass / more inertia.</p></details></div>
+</section><section class="part card" id="part2"><h2>Part 2 — Newton’s Laws and Free-Body Diagrams</h2><p>Newton’s laws help us calculate and understand motion safely.</p></section><section class="block" id="slide07">
+<span class="topic-label">Slide 7</span>
+<h2>Newton’s First Law</h2>
+<p class="lead">If total force is zero, motion does not change.</p>
+<figure class="slide-img"><img src="assets/slides/slide_07.jpg" alt="Newton’s First Law"><div class="slide-caption">Newton’s First Law</div></figure>
+<p>Newton’s first law is the law of inertia.</p><p>If the net force is zero, there is no acceleration.</p><p>An object at rest stays at rest.</p><p>An object moving keeps moving with constant velocity.</p><p>Formula idea: ΣF = 0 → a = 0.</p>
+<div class="activity"><h3>Think and answer</h3><p>If net force is zero, what is acceleration?</p><details class="answer"><summary>Show answer</summary><p>Zero.</p></details></div>
+</section><section class="block" id="slide08">
+<span class="topic-label">Slide 8</span>
+<h2>Newton’s Second Law</h2>
+<p class="lead">Force causes acceleration.</p>
+<figure class="slide-img"><img src="assets/slides/slide_08.jpg" alt="Newton’s Second Law"><div class="slide-caption">Newton’s Second Law</div></figure>
+<p>Newton’s second law is the main formula of dynamics.</p><p>F = m × a.</p><p>If force increases, acceleration increases.</p><p>If mass increases, acceleration decreases.</p><p>We can also write a = F / m.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is Newton’s second law formula?</p><details class="answer"><summary>Show answer</summary><p>F = m × a.</p></details></div>
+</section><section class="block" id="slide09">
+<span class="topic-label">Slide 9</span>
+<h2>Meaning of F = ma</h2>
+<p class="lead">Force, mass, acceleration, and units.</p>
+<figure class="slide-img"><img src="assets/slides/slide_09.jpg" alt="Meaning of F = ma"><div class="slide-caption">Meaning of F = ma</div></figure>
+<p>F means force. Unit: newton, N.</p><p>m means mass. Unit: kilogram, kg.</p><p>a means acceleration. Unit: m/s².</p><p>One newton is the force needed to give 1 kg an acceleration of 1 m/s².</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the unit of force?</p><details class="answer"><summary>Show answer</summary><p>Newton, N.</p></details></div>
+</section><section class="block" id="slide10">
+<span class="topic-label">Slide 10</span>
+<h2>Newton’s Third Law</h2>
+<p class="lead">For every action, there is an equal and opposite reaction.</p>
+<figure class="slide-img"><img src="assets/slides/slide_10.jpg" alt="Newton’s Third Law"><div class="slide-caption">Newton’s Third Law</div></figure>
+<p>Forces come in pairs.</p><p>If a patient presses a bed down, the bed presses the patient up.</p><p>The two forces are equal in size and opposite in direction.</p><p>But they act on different objects, so they do not cancel each other on one object.</p>
+<div class="activity"><h3>Think and answer</h3><p>Do action and reaction act on the same object?</p><details class="answer"><summary>Show answer</summary><p>No. They act on different objects.</p></details></div>
+</section><section class="block" id="slide11">
+<span class="topic-label">Slide 11</span>
+<h2>Free-Body Diagram Review</h2>
+<p class="lead">Draw the object and the forces only.</p>
+<figure class="slide-img"><img src="assets/slides/slide_11.jpg" alt="Free-Body Diagram Review"><div class="slide-caption">Free-Body Diagram Review</div></figure>
+<p>A free-body diagram helps us think clearly.</p><p>Do not draw every detail of the real object.</p><p>Draw the object as a simple shape.</p><p>Draw force arrows: gravity, normal force, push, friction, tension, and so on.</p>
+<div class="activity"><h3>Think and answer</h3><p>Why do we use a free-body diagram?</p><details class="answer"><summary>Show answer</summary><p>To focus only on forces.</p></details></div>
+</section><section class="block" id="slide12">
+<span class="topic-label">Slide 12</span>
+<h2>Forces on a Moving Cart</h2>
+<p class="lead">Push, friction, gravity, and normal force.</p>
+<figure class="slide-img"><img src="assets/slides/slide_12.jpg" alt="Forces on a Moving Cart"><div class="slide-caption">Forces on a Moving Cart</div></figure>
+<p>A moving cart has several forces.</p><p>Gravity pulls down.</p><p>The floor pushes up with normal force.</p><p>A person pushes forward.</p><p>Friction acts backward.</p><p>Horizontal motion depends mainly on push force minus friction.</p>
+<div class="activity"><h3>Think and answer</h3><p>Which force usually acts opposite to motion?</p><details class="answer"><summary>Show answer</summary><p>Friction.</p></details></div>
+</section><section class="block" id="slide13">
+<span class="topic-label">Slide 13</span>
+<h2>Net Force</h2>
+<p class="lead">Net force = total force.</p>
+<figure class="slide-img"><img src="assets/slides/slide_13.jpg" alt="Net Force"><div class="slide-caption">Net Force</div></figure>
+<p>Net force means the final total force after adding forces with directions.</p><p>If forces act in opposite directions, we subtract.</p><p>Example: F_net = F_push − F_friction.</p><p>Acceleration is in the direction of the net force.</p>
+<div class="activity"><h3>Think and answer</h3><p>If push is 80 N and friction is 20 N, what is net force?</p><details class="answer"><summary>Show answer</summary><p>60 N forward.</p></details></div>
+</section><section class="part card" id="part3"><h2>Part 3 — Gravity, Weight, and Apparent Weight</h2><p>Gravity and weight are related, but they are not exactly the same idea.</p></section><section class="block" id="slide14">
+<span class="topic-label">Slide 14</span>
+<h2>Gravity Pulls Down</h2>
+<p class="lead">Gravitational force is Fg = mg.</p>
+<figure class="slide-img"><img src="assets/slides/slide_14.jpg" alt="Gravity Pulls Down"><div class="slide-caption">Gravity Pulls Down</div></figure>
+<p>Gravity is the force from Earth.</p><p>Earth pulls objects downward.</p><p>For a patient, the gravitational force is Fg = mg.</p><p>The direction is downward, toward Earth.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the formula for gravitational force?</p><details class="answer"><summary>Show answer</summary><p>Fg = mg.</p></details></div>
+</section><section class="block" id="slide15">
+<span class="topic-label">Slide 15</span>
+<h2>What Is Weight?</h2>
+<p class="lead">In physics, weight is force on a support or suspension.</p>
+<figure class="slide-img"><img src="assets/slides/slide_15.jpg" alt="What Is Weight?"><div class="slide-caption">What Is Weight?</div></figure>
+<p>In everyday language, people often say weight when they mean body mass.</p><p>In physics, weight has a more exact meaning.</p><p>Weight is the force with which a body presses on a support or pulls on a suspension.</p><p>A patient on a bed presses the bed. That pressing force is weight.</p>
+<div class="activity"><h3>Think and answer</h3><p>In physics, what is weight?</p><details class="answer"><summary>Show answer</summary><p>Force on a support or suspension.</p></details></div>
+</section><section class="block" id="slide16">
+<span class="topic-label">Slide 16</span>
+<h2>At Rest: Same Size</h2>
+<p class="lead">Fg and weight can have the same size at rest.</p>
+<figure class="slide-img"><img src="assets/slides/slide_16.jpg" alt="At Rest: Same Size"><div class="slide-caption">At Rest: Same Size</div></figure>
+<p>A patient rests on a bed.</p><p>Earth pulls the patient down: Fg = mg.</p><p>The patient presses the bed: W = mg.</p><p>In this simple case, the sizes are the same.</p><p>But the meanings are different.</p>
+<div class="activity"><h3>Think and answer</h3><p>Are gravitational force and weight always the same idea?</p><details class="answer"><summary>Show answer</summary><p>No. They can have the same size, but the meanings are different.</p></details></div>
+</section><section class="block" id="slide17">
+<span class="topic-label">Slide 17</span>
+<h2>Important Difference</h2>
+<p class="lead">Gravity pulls the body. Weight acts on support or suspension.</p>
+<figure class="slide-img"><img src="assets/slides/slide_17.jpg" alt="Important Difference"><div class="slide-caption">Important Difference</div></figure>
+<p>Gravitational force is Earth pulling the body down.</p><p>Weight is the force on the support or suspension.</p><p>These can be different when the support accelerates.</p><p>This is why you can feel heavier or lighter in an elevator.</p>
+<div class="activity"><h3>Think and answer</h3><p>When can weight change?</p><details class="answer"><summary>Show answer</summary><p>When the support or suspension accelerates.</p></details></div>
+</section><section class="block" id="slide18">
+<span class="topic-label">Slide 18</span>
+<h2>Elevator Going Up</h2>
+<p class="lead">You feel heavier.</p>
+<figure class="slide-img"><img src="assets/slides/slide_18.jpg" alt="Elevator Going Up"><div class="slide-caption">Elevator Going Up</div></figure>
+<p>If an elevator accelerates upward, the floor must push harder on the person.</p><p>The person feels heavier.</p><p>The gravitational force is still mg.</p><p>But the apparent weight is larger: W_app = m(g + a).</p>
+<div class="activity"><h3>Think and answer</h3><p>Does gravity increase when the elevator goes up?</p><details class="answer"><summary>Show answer</summary><p>No. Apparent weight increases, but gravity is still mg.</p></details></div>
+</section><section class="block" id="slide19">
+<span class="topic-label">Slide 19</span>
+<h2>Elevator Going Down</h2>
+<p class="lead">You feel lighter.</p>
+<figure class="slide-img"><img src="assets/slides/slide_19.jpg" alt="Elevator Going Down"><div class="slide-caption">Elevator Going Down</div></figure>
+<p>If an elevator accelerates downward, the floor pushes less strongly.</p><p>The person feels lighter.</p><p>The gravitational force is still mg.</p><p>The apparent weight is smaller: W_app = m(g − a).</p>
+<div class="activity"><h3>Think and answer</h3><p>Why do you feel lighter when accelerating downward?</p><details class="answer"><summary>Show answer</summary><p>The support force becomes smaller.</p></details></div>
+</section><section class="block" id="slide20">
+<span class="topic-label">Slide 20</span>
+<h2>Free Fall</h2>
+<p class="lead">Gravity acts, but apparent weight is zero.</p>
+<figure class="slide-img"><img src="assets/slides/slide_20.jpg" alt="Free Fall"><div class="slide-caption">Free Fall</div></figure>
+<p>In free fall, gravity still acts on the body.</p><p>But there is no support force from a floor or bed.</p><p>So the apparent weight is zero.</p><p>This is the idea behind weightlessness.</p>
+<div class="activity"><h3>Think and answer</h3><p>In free fall, does gravity still act?</p><details class="answer"><summary>Show answer</summary><p>Yes.</p></details></div>
+</section><section class="block" id="slide21">
+<span class="topic-label">Slide 21</span>
+<h2>Hospital Link: Patient Lift</h2>
+<p class="lead">Tension changes when acceleration changes.</p>
+<figure class="slide-img"><img src="assets/slides/slide_21.jpg" alt="Hospital Link: Patient Lift"><div class="slide-caption">Hospital Link: Patient Lift</div></figure>
+<p>A patient lift holds a patient by a sling.</p><p>The sling tension supports the patient.</p><p>If the lift starts or stops suddenly, tension changes quickly.</p><p>That can be uncomfortable or unsafe.</p><p>Start smoothly. Stop smoothly.</p>
+<div class="activity"><h3>Think and answer</h3><p>Why must a patient lift start and stop smoothly?</p><details class="answer"><summary>Show answer</summary><p>Because force/tension changes can be unsafe or uncomfortable.</p></details></div>
+</section><section class="part card" id="part4"><h2>Part 4 — Friction and Dynamics Tasks</h2><p>First find the net force. Then use F = ma.</p></section><section class="block" id="slide22">
+<span class="topic-label">Slide 22</span>
+<h2>Friction</h2>
+<p class="lead">Friction opposes motion.</p>
+<figure class="slide-img"><img src="assets/slides/slide_22.jpg" alt="Friction"><div class="slide-caption">Friction</div></figure>
+<p>Friction is a force between surfaces.</p><p>It usually acts opposite to motion.</p><p>Friction can make movement harder.</p><p>But friction can also help wheels grip the floor.</p><p>Too little friction can be dangerous.</p>
+<div class="activity"><h3>Think and answer</h3><p>Does friction always act in the same direction as motion?</p><details class="answer"><summary>Show answer</summary><p>No. It usually acts opposite to motion.</p></details></div>
+</section><section class="block" id="slide23">
+<span class="topic-label">Slide 23</span>
+<h2>Simple Friction Idea</h2>
+<p class="lead">Surface and normal force matter.</p>
+<figure class="slide-img"><img src="assets/slides/slide_23.jpg" alt="Simple Friction Idea"><div class="slide-caption">Simple Friction Idea</div></figure>
+<p>Rough surfaces usually create more friction.</p><p>Smooth surfaces usually create less friction.</p><p>More normal force often means more friction.</p><p>A heavy loaded cart can be harder to push than an empty cart.</p>
+<div class="activity"><h3>Think and answer</h3><p>Which floor gives more friction: rough or smooth?</p><details class="answer"><summary>Show answer</summary><p>Rough floor.</p></details></div>
+</section><section class="block" id="slide24">
+<span class="topic-label">Slide 24</span>
+<h2>Push Cart with Friction</h2>
+<p class="lead">Find the net force first.</p>
+<figure class="slide-img"><img src="assets/slides/slide_24.jpg" alt="Push Cart with Friction"><div class="slide-caption">Push Cart with Friction</div></figure>
+<p>A person pushes a cart with 80 N.</p><p>Friction is 20 N in the opposite direction.</p><p>Net force is F_net = 80 − 20 = 60 N.</p><p>This forward net force causes acceleration.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the net force?</p><details class="answer"><summary>Show answer</summary><p>60 N forward.</p></details></div>
+</section><section class="block" id="slide25">
+<span class="topic-label">Slide 25</span>
+<h2>Task 1: Find Acceleration</h2>
+<p class="lead">Use a = F / m.</p>
+<figure class="slide-img"><img src="assets/slides/slide_25.jpg" alt="Task 1: Find Acceleration"><div class="slide-caption">Task 1: Find Acceleration</div></figure>
+<p>Cart mass is m = 30 kg.</p><p>Net force is F = 60 N.</p><p>Find acceleration.</p><p>a = F / m = 60 / 30 = 2 m/s².</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the acceleration?</p><details class="answer"><summary>Show answer</summary><p>2 m/s².</p></details></div>
+</section><section class="block" id="slide26">
+<span class="topic-label">Slide 26</span>
+<h2>Task 2: Find Force</h2>
+<p class="lead">Use F = ma.</p>
+<figure class="slide-img"><img src="assets/slides/slide_26.jpg" alt="Task 2: Find Force"><div class="slide-caption">Task 2: Find Force</div></figure>
+<p>Hospital bed mass is m = 80 kg.</p><p>Required acceleration is a = 0.5 m/s².</p><p>Find force.</p><p>F = ma = 80 × 0.5 = 40 N.</p>
+<div class="activity"><h3>Think and answer</h3><p>What force is needed?</p><details class="answer"><summary>Show answer</summary><p>40 N.</p></details></div>
+</section><section class="block" id="slide27">
+<span class="topic-label">Slide 27</span>
+<h2>Task 3: Push and Friction</h2>
+<p class="lead">First find net force.</p>
+<figure class="slide-img"><img src="assets/slides/slide_27.jpg" alt="Task 3: Push and Friction"><div class="slide-caption">Task 3: Push and Friction</div></figure>
+<p>Push force is 100 N.</p><p>Friction is 30 N.</p><p>Mass is 35 kg.</p><p>F_net = 100 − 30 = 70 N.</p><p>a = 70 / 35 = 2 m/s².</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the acceleration?</p><details class="answer"><summary>Show answer</summary><p>2 m/s².</p></details></div>
+</section><section class="block" id="slide28">
+<span class="topic-label">Slide 28</span>
+<h2>Task 4: Elevator Apparent Weight</h2>
+<p class="lead">Elevator accelerates upward.</p>
+<figure class="slide-img"><img src="assets/slides/slide_28.jpg" alt="Task 4: Elevator Apparent Weight"><div class="slide-caption">Task 4: Elevator Apparent Weight</div></figure>
+<p>Patient mass is 70 kg.</p><p>Elevator acceleration is 2 m/s² upward.</p><p>Use g = 10 m/s².</p><p>W_app = m(g + a).</p><p>W_app = 70 × (10 + 2) = 840 N.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the apparent weight?</p><details class="answer"><summary>Show answer</summary><p>840 N.</p></details></div>
+</section><section class="block" id="slide29">
+<span class="topic-label">Slide 29</span>
+<h2>Task 5: Elevator Going Down</h2>
+<p class="lead">Elevator accelerates downward.</p>
+<figure class="slide-img"><img src="assets/slides/slide_29.jpg" alt="Task 5: Elevator Going Down"><div class="slide-caption">Task 5: Elevator Going Down</div></figure>
+<p>Patient mass is 70 kg.</p><p>Elevator acceleration is 2 m/s² downward.</p><p>Use g = 10 m/s².</p><p>W_app = m(g − a).</p><p>W_app = 70 × (10 − 2) = 560 N.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the apparent weight?</p><details class="answer"><summary>Show answer</summary><p>560 N.</p></details></div>
+</section><section class="part card" id="part5"><h2>Part 5 — Work and Energy</h2><p>Work and energy connect force, motion, speed, and height.</p></section><section class="block" id="slide30">
+<span class="topic-label">Slide 30</span>
+<h2>Mechanical Work</h2>
+<p class="lead">Work = force × distance.</p>
+<figure class="slide-img"><img src="assets/slides/slide_30.jpg" alt="Mechanical Work"><div class="slide-caption">Mechanical Work</div></figure>
+<p>Mechanical work means a force moves an object through a distance.</p><p>If you push a cart and the cart moves, you do work.</p><p>Formula: W = F × s.</p><p>Unit: joule, J.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the formula for work?</p><details class="answer"><summary>Show answer</summary><p>W = F × s.</p></details></div>
+</section><section class="block" id="slide31">
+<span class="topic-label">Slide 31</span>
+<h2>Work Unit</h2>
+<p class="lead">1 joule = 1 newton × 1 meter.</p>
+<figure class="slide-img"><img src="assets/slides/slide_31.jpg" alt="Work Unit"><div class="slide-caption">Work Unit</div></figure>
+<p>The unit of work is joule.</p><p>1 J = 1 N·m.</p><p>If a 1 N force moves an object 1 m, the work is 1 J.</p><p>Work needs both force and distance.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is 1 joule equal to?</p><details class="answer"><summary>Show answer</summary><p>1 N·m.</p></details></div>
+</section><section class="block" id="slide32">
+<span class="topic-label">Slide 32</span>
+<h2>Work Example</h2>
+<p class="lead">Push force 50 N, distance 4 m.</p>
+<figure class="slide-img"><img src="assets/slides/slide_32.jpg" alt="Work Example"><div class="slide-caption">Work Example</div></figure>
+<p>A person pushes a medical cart with 50 N.</p><p>The cart moves 4 m.</p><p>W = F × s.</p><p>W = 50 × 4 = 200 J.</p>
+<div class="activity"><h3>Think and answer</h3><p>How much work is done?</p><details class="answer"><summary>Show answer</summary><p>200 J.</p></details></div>
+</section><section class="block" id="slide33">
+<span class="topic-label">Slide 33</span>
+<h2>Kinetic Energy</h2>
+<p class="lead">Kinetic energy = energy of motion.</p>
+<figure class="slide-img"><img src="assets/slides/slide_33.jpg" alt="Kinetic Energy"><div class="slide-caption">Kinetic Energy</div></figure>
+<p>Kinetic energy is energy of motion.</p><p>Formula: E_k = 1/2 m v².</p><p>Speed is very important because it is squared.</p><p>A fast cart can be dangerous because it has more kinetic energy.</p>
+<div class="activity"><h3>Think and answer</h3><p>What happens to kinetic energy when speed increases?</p><details class="answer"><summary>Show answer</summary><p>It increases strongly because speed is squared.</p></details></div>
+</section><section class="block" id="slide34">
+<span class="topic-label">Slide 34</span>
+<h2>Potential Energy</h2>
+<p class="lead">Gravitational potential energy = energy from height.</p>
+<figure class="slide-img"><img src="assets/slides/slide_34.jpg" alt="Potential Energy"><div class="slide-caption">Potential Energy</div></figure>
+<p>Potential energy is stored energy.</p><p>Gravitational potential energy depends on height.</p><p>If a patient lift raises a patient, potential energy increases.</p><p>Formula: E_p = mgh.</p>
+<div class="activity"><h3>Think and answer</h3><p>What formula do we use for gravitational potential energy?</p><details class="answer"><summary>Show answer</summary><p>E_p = mgh.</p></details></div>
+</section><section class="block" id="slide35">
+<span class="topic-label">Slide 35</span>
+<h2>Energy Safety Idea</h2>
+<p class="lead">More speed and more height mean more energy.</p>
+<figure class="slide-img"><img src="assets/slides/slide_35.jpg" alt="Energy Safety Idea"><div class="slide-caption">Energy Safety Idea</div></figure>
+<p>Energy is important for safety.</p><p>More speed means more kinetic energy.</p><p>More height means more potential energy.</p><p>Hospital equipment should move slowly, smoothly, and safely.</p>
+<div class="activity"><h3>Think and answer</h3><p>Why should hospital equipment avoid high speed?</p><details class="answer"><summary>Show answer</summary><p>High speed means more kinetic energy and more danger.</p></details></div>
+</section><section class="part card" id="part6"><h2>Part 6 — More Practice and Summary</h2><p>Check units. Check direction. Explain the meaning, not only the answer.</p></section><section class="block" id="slide36">
+<span class="topic-label">Slide 36</span>
+<h2>Task 6: Work</h2>
+<p class="lead">A cart is pushed with 40 N for 5 m.</p>
+<figure class="slide-img"><img src="assets/slides/slide_36.jpg" alt="Task 6: Work"><div class="slide-caption">Task 6: Work</div></figure>
+<p>Use W = F × s.</p><p>Force is 40 N.</p><p>Distance is 5 m.</p><p>W = 40 × 5 = 200 J.</p>
+<div class="activity"><h3>Think and answer</h3><p>How much work is done?</p><details class="answer"><summary>Show answer</summary><p>200 J.</p></details></div>
+</section><section class="block" id="slide37">
+<span class="topic-label">Slide 37</span>
+<h2>Task 7: Kinetic Energy</h2>
+<p class="lead">m = 20 kg, v = 2 m/s.</p>
+<figure class="slide-img"><img src="assets/slides/slide_37.jpg" alt="Task 7: Kinetic Energy"><div class="slide-caption">Task 7: Kinetic Energy</div></figure>
+<p>Use E_k = 1/2 m v².</p><p>Mass is 20 kg.</p><p>Speed is 2 m/s.</p><p>v² = 4.</p><p>E_k = 1/2 × 20 × 4 = 40 J.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the kinetic energy?</p><details class="answer"><summary>Show answer</summary><p>40 J.</p></details></div>
+</section><section class="block" id="slide38">
+<span class="topic-label">Slide 38</span>
+<h2>Task 8: Potential Energy</h2>
+<p class="lead">m = 70 kg, h = 1 m.</p>
+<figure class="slide-img"><img src="assets/slides/slide_38.jpg" alt="Task 8: Potential Energy"><div class="slide-caption">Task 8: Potential Energy</div></figure>
+<p>Use E_p = mgh.</p><p>Mass is 70 kg.</p><p>g = 10 m/s².</p><p>Height is 1 m.</p><p>E_p = 70 × 10 × 1 = 700 J.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the potential energy?</p><details class="answer"><summary>Show answer</summary><p>700 J.</p></details></div>
+</section><section class="block" id="slide39">
+<span class="topic-label">Slide 39</span>
+<h2>Mixed Task: Lift</h2>
+<p class="lead">m = 60 kg, h = 1.5 m.</p>
+<figure class="slide-img"><img src="assets/slides/slide_39.jpg" alt="Mixed Task: Lift"><div class="slide-caption">Mixed Task: Lift</div></figure>
+<p>A patient lift raises a patient.</p><p>Mass is 60 kg.</p><p>Height is 1.5 m.</p><p>Use g = 10 m/s².</p><p>E_p = 60 × 10 × 1.5 = 900 J.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the potential energy increase?</p><details class="answer"><summary>Show answer</summary><p>900 J.</p></details></div>
+</section><section class="block" id="slide40">
+<span class="topic-label">Slide 40</span>
+<h2>Common Mistakes</h2>
+<p class="lead">Check units, direction, and meaning.</p>
+<figure class="slide-img"><img src="assets/slides/slide_40.jpg" alt="Common Mistakes"><div class="slide-caption">Common Mistakes</div></figure>
+<p>kg is not force. kg is mass.</p><p>Weight is not always the same as gravitational force.</p><p>Force and energy are different ideas.</p><p>Speed and acceleration are different.</p><p>Do not forget friction and direction.</p>
+<div class="activity"><h3>Think and answer</h3><p>Is kg a unit of force?</p><details class="answer"><summary>Show answer</summary><p>No. kg is a unit of mass.</p></details></div>
+</section><section class="block" id="slide41">
+<span class="topic-label">Slide 41</span>
+<h2>Dynamics Summary</h2>
+<p class="lead">Force causes acceleration. Energy is connected with motion.</p>
+<figure class="slide-img"><img src="assets/slides/slide_41.jpg" alt="Dynamics Summary"><div class="slide-caption">Dynamics Summary</div></figure>
+<p>Today we learned: F = ma.</p><p>Gravity pulls down: F_g = mg.</p><p>Apparent weight can change.</p><p>Work is force times distance: W = F × s.</p><p>Kinetic energy is energy of motion.</p><p>Potential energy is energy of height.</p>
+<div class="activity"><h3>Think and answer</h3><p>What is the most important formula in dynamics?</p><details class="answer"><summary>Show answer</summary><p>F = ma.</p></details></div>
+</section><section class="block" id="slide42">
+<span class="topic-label">Slide 42</span>
+<h2>Final Message</h2>
+<p class="lead">Safe motion is slow, smooth, controlled, and predictable.</p>
+<figure class="slide-img"><img src="assets/slides/slide_42.jpg" alt="Final Message"><div class="slide-caption">Final Message</div></figure>
+<p>Hospital equipment is not only metal and electronics.</p><p>It moves.</p><p>When it moves, forces and energy are involved.</p><p>For patient safety, motion must be slow, smooth, controlled, and predictable.</p><p>Dynamics helps us understand why.</p>
+<div class="activity"><h3>Think and answer</h3><p>Why does dynamics matter in hospitals?</p><details class="answer"><summary>Show answer</summary><p>Because forces and energy affect safety during motion.</p></details></div>
+</section>
+<section class="block">
+<h2>Downloads and check file</h2>
+<p><a class="btn" href="downloads/lecture4C_dynamics_with_images.pptx">PowerPoint</a></p>
+<p><a class="btn" href="downloads/lecture4C_dynamics_with_images.pdf">PDF</a></p>
+<p><a class="btn" href="assets/debug/lecture4C_slide_contact_labeled.jpg">Labeled slide contact sheet</a></p>
+</section>
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 4C · Dynamics for Medical Equipment.</p></footer>
+</body></html>

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>第4C回 — 医療機器のための動力学</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header>
+<div class="header-inner">
+<div class="kicker">Computers 1 · Mechanics</div>
+<h1>第4C回 — 医療機器のための動力学</h1>
+<p class="subtitle">力・ニュートンの法則・重さ・摩擦・仕事・エネルギー</p>
+<p>自習用ウェブ教材です。各セクションはPowerPointの1枚のスライドに対応しています。</p>
+<div class="actions">
+<a class="btn" href="#part1">授業を始める</a>
+<a class="btn secondary" href="lecture4C_en.html">English version</a>
+<a class="btn secondary" href="#slide25">練習問題</a>
+<a class="btn secondary" href="downloads/lecture4C_dynamics_with_images.pptx">PowerPoint</a>
+</div>
+</div>
+</header>
+<main>
+<section class="overview card">
+<p class="lead">自習用ウェブ教材です。各セクションはPowerPointの1枚のスライドに対応しています。</p>
+<div class="grid">
+<div class="small"><h3>中心公式</h3><p>F = ma · a = F/m</p></div>
+<div class="small"><h3>重さの考え</h3><p>F<sub>g</sub> = mg · W<sub>app</sub> can change</p></div>
+<div class="small"><h3>エネルギー公式</h3><p>W = F×s · E<sub>k</sub> = 1/2mv² · E<sub>p</sub> = mgh</p></div>
+</div>
+</section>
+<section class="toc card"><h2>授業の流れ</h2><ol><li><a href="#slide01">1. 医療機器のための動力学</a></li><li><a href="#slide02">2. 力学の3つの部分</a></li><li><a href="#slide03">3. 病院で動力学が重要な理由</a></li><li><a href="#slide04">4. 力は運動を変える</a></li><li><a href="#slide05">5. 慣性</a></li><li><a href="#slide06">6. 重いベッドと軽いカート</a></li><li><a href="#slide07">7. ニュートンの第1法則</a></li><li><a href="#slide08">8. ニュートンの第2法則</a></li><li><a href="#slide09">9. F = ma の意味</a></li><li><a href="#slide10">10. ニュートンの第3法則</a></li><li><a href="#slide11">11. 自由物体図の復習</a></li><li><a href="#slide12">12. 動くカートに働く力</a></li><li><a href="#slide13">13. 合力</a></li><li><a href="#slide14">14. 重力は下向きに引く</a></li><li><a href="#slide15">15. Weight とは何か</a></li><li><a href="#slide16">16. 静止時：大きさは同じ</a></li><li><a href="#slide17">17. 重要な違い</a></li><li><a href="#slide18">18. エレベーターが上に加速</a></li><li><a href="#slide19">19. エレベーターが下に加速</a></li><li><a href="#slide20">20. 自由落下</a></li><li><a href="#slide21">21. 病院との関係：患者リフト</a></li><li><a href="#slide22">22. 摩擦</a></li><li><a href="#slide23">23. 簡単な摩擦の考え</a></li><li><a href="#slide24">24. 摩擦があるカートを押す</a></li><li><a href="#slide25">25. Task 1: 加速度を求める</a></li><li><a href="#slide26">26. Task 2: 力を求める</a></li><li><a href="#slide27">27. Task 3: 押す力と摩擦</a></li><li><a href="#slide28">28. Task 4: エレベーターの見かけの重さ</a></li><li><a href="#slide29">29. Task 5: エレベーターが下に加速</a></li><li><a href="#slide30">30. 機械的仕事</a></li><li><a href="#slide31">31. 仕事の単位</a></li><li><a href="#slide32">32. 仕事の例</a></li><li><a href="#slide33">33. 運動エネルギー</a></li><li><a href="#slide34">34. 位置エネルギー</a></li><li><a href="#slide35">35. エネルギー安全の考え</a></li><li><a href="#slide36">36. Task 6: 仕事</a></li><li><a href="#slide37">37. Task 7: 運動エネルギー</a></li><li><a href="#slide38">38. Task 8: 位置エネルギー</a></li><li><a href="#slide39">39. Mixed Task: リフト</a></li><li><a href="#slide40">40. よくある間違い</a></li><li><a href="#slide41">41. 動力学のまとめ</a></li><li><a href="#slide42">42. 最後のメッセージ</a></li></ol></section>
+<section class="part card" id="part1"><h2>Part 1 — 運動学から動力学へ</h2><p>動力学は、なぜ運動が変わるかを説明します。力が加速度を作ります。</p></section><section class="block" id="slide01">
+<span class="topic-label">スライド 1</span>
+<h2>医療機器のための動力学</h2>
+<p class="lead">力・運動・ニュートンの法則・エネルギー</p>
+<figure class="slide-img"><img src="assets/slides/slide_01.jpg" alt="医療機器のための動力学"><div class="slide-caption">医療機器のための動力学</div></figure>
+<p>今日は動力学を学びます。動力学は力と運動をつなげます。</p><p>運動学では、物体がどのように動くかを説明しました。</p><p>今回は、なぜ運動が変わるのかを考えます。</p><p>答えは力です。力は加速度を作ります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>動力学は何を学びますか。</p><details class="answer"><summary>答えを見る</summary><p>力と運動です。運動がなぜ変わるかを説明します。</p></details></div>
+</section><section class="block" id="slide02">
+<span class="topic-label">スライド 2</span>
+<h2>力学の3つの部分</h2>
+<p class="lead">静力学・運動学・動力学</p>
+<figure class="slide-img"><img src="assets/slides/slide_02.jpg" alt="力学の3つの部分"><div class="slide-caption">力学の3つの部分</div></figure>
+<p>力学は3つに分けられます。</p><p>静力学：物体は動かない。力はつり合っています。</p><p>運動学：物体は動く。その運動を説明します。</p><p>動力学：力が運動を変えます。</p><p>この授業は、公式と実際の機械をつなげます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>運動を変える力を学ぶ部分は？</p><details class="answer"><summary>答えを見る</summary><p>動力学。</p></details></div>
+</section><section class="block" id="slide03">
+<span class="topic-label">スライド 3</span>
+<h2>病院で動力学が重要な理由</h2>
+<p class="lead">安全な機器は滑らかに動く必要があります。</p>
+<figure class="slide-img"><img src="assets/slides/slide_03.jpg" alt="病院で動力学が重要な理由"><div class="slide-caption">病院で動力学が重要な理由</div></figure>
+<p>多くの病院機器は動きます。ベッド、車いす、カート、リフト、検査台、遠心機などです。</p><p>急に動くと、患者が怖がったり怪我をしたりする可能性があります。</p><p>力が大きすぎると、機器が壊れることもあります。</p><p>動力学は、安全で制御された動きを考える助けになります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>滑らかな動きが大切な病院機器を1つ言ってください。</p><details class="answer"><summary>答えを見る</summary><p>患者リフト、ベッド、車いす、検査台、カート。</p></details></div>
+</section><section class="block" id="slide04">
+<span class="topic-label">スライド 4</span>
+<h2>力は運動を変える</h2>
+<p class="lead">力は開始、停止、加速、減速、方向変更を起こします。</p>
+<figure class="slide-img"><img src="assets/slides/slide_04.jpg" alt="力は運動を変える"><div class="slide-caption">力は運動を変える</div></figure>
+<p>力は単なる push や pull だけではありません。力は運動を変えます。</p><p>静止した物体を動かし始めることができます。</p><p>動いている物体を止めることができます。</p><p>速くしたり遅くしたりできます。</p><p>方向を変えることもできます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>力が運動にできることを2つ言ってください。</p><details class="answer"><summary>答えを見る</summary><p>開始、停止、加速、減速、方向変更。</p></details></div>
+</section><section class="block" id="slide05">
+<span class="topic-label">スライド 5</span>
+<h2>慣性</h2>
+<p class="lead">慣性 = 運動の変化に抵抗する性質。</p>
+<figure class="slide-img"><img src="assets/slides/slide_05.jpg" alt="慣性"><div class="slide-caption">慣性</div></figure>
+<p>慣性とは、物体が今の運動状態を保とうとする性質です。</p><p>静止していれば静止し続けようとします。</p><p>動いていれば動き続けようとします。</p><p>重い病院ベッドは、小さいカートより慣性が大きいです。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>重いベッドと軽いカート、慣性が大きいのは？</p><details class="answer"><summary>答えを見る</summary><p>重いベッド。</p></details></div>
+</section><section class="block" id="slide06">
+<span class="topic-label">スライド 6</span>
+<h2>重いベッドと軽いカート</h2>
+<p class="lead">同じ押す力、違う加速度。</p>
+<figure class="slide-img"><img src="assets/slides/slide_06.jpg" alt="重いベッドと軽いカート"><div class="slide-caption">重いベッドと軽いカート</div></figure>
+<p>同じ力で軽いカートと重いベッドを押すと考えます。</p><p>軽いカートは大きく加速します。</p><p>重いベッドはあまり加速しません。</p><p>力は同じですが、質量が違います。</p><p>この考えがニュートンの第2法則につながります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>なぜ重いベッドは加速度が小さいですか。</p><details class="answer"><summary>答えを見る</summary><p>質量が大きいからです。慣性が大きいからです。</p></details></div>
+</section><section class="part card" id="part2"><h2>Part 2 — ニュートンの法則と自由物体図</h2><p>ニュートンの法則は、安全な運動を理解し計算する助けになります。</p></section><section class="block" id="slide07">
+<span class="topic-label">スライド 7</span>
+<h2>ニュートンの第1法則</h2>
+<p class="lead">合力がゼロなら、運動は変わりません。</p>
+<figure class="slide-img"><img src="assets/slides/slide_07.jpg" alt="ニュートンの第1法則"><div class="slide-caption">ニュートンの第1法則</div></figure>
+<p>ニュートンの第1法則は慣性の法則です。</p><p>合力がゼロなら、加速度はありません。</p><p>静止している物体は静止し続けます。</p><p>動いている物体は一定速度で動き続けます。</p><p>式の考え：ΣF = 0 → a = 0。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>合力がゼロなら加速度は？</p><details class="answer"><summary>答えを見る</summary><p>ゼロ。</p></details></div>
+</section><section class="block" id="slide08">
+<span class="topic-label">スライド 8</span>
+<h2>ニュートンの第2法則</h2>
+<p class="lead">力は加速度を作ります。</p>
+<figure class="slide-img"><img src="assets/slides/slide_08.jpg" alt="ニュートンの第2法則"><div class="slide-caption">ニュートンの第2法則</div></figure>
+<p>ニュートンの第2法則は動力学の中心公式です。</p><p>F = m × a。</p><p>力が大きくなると、加速度も大きくなります。</p><p>質量が大きくなると、加速度は小さくなります。</p><p>a = F / m とも書けます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>ニュートンの第2法則の公式は？</p><details class="answer"><summary>答えを見る</summary><p>F = m × a。</p></details></div>
+</section><section class="block" id="slide09">
+<span class="topic-label">スライド 9</span>
+<h2>F = ma の意味</h2>
+<p class="lead">力、質量、加速度、単位。</p>
+<figure class="slide-img"><img src="assets/slides/slide_09.jpg" alt="F = ma の意味"><div class="slide-caption">F = ma の意味</div></figure>
+<p>F は力です。単位は N（ニュートン）です。</p><p>m は質量です。単位は kg です。</p><p>a は加速度です。単位は m/s² です。</p><p>1 N は、1 kg を 1 m/s² で加速させる力です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>力の単位は？</p><details class="answer"><summary>答えを見る</summary><p>N、ニュートン。</p></details></div>
+</section><section class="block" id="slide10">
+<span class="topic-label">スライド 10</span>
+<h2>ニュートンの第3法則</h2>
+<p class="lead">作用と反作用は同じ大きさで反対向き。</p>
+<figure class="slide-img"><img src="assets/slides/slide_10.jpg" alt="ニュートンの第3法則"><div class="slide-caption">ニュートンの第3法則</div></figure>
+<p>力はペアで現れます。</p><p>患者がベッドを下に押すと、ベッドは患者を上に押します。</p><p>2つの力は同じ大きさで反対向きです。</p><p>しかし別々の物体に働くので、1つの物体の上で打ち消し合うわけではありません。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>作用と反作用は同じ物体に働きますか。</p><details class="answer"><summary>答えを見る</summary><p>いいえ。別々の物体に働きます。</p></details></div>
+</section><section class="block" id="slide11">
+<span class="topic-label">スライド 11</span>
+<h2>自由物体図の復習</h2>
+<p class="lead">物体と力だけを描きます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_11.jpg" alt="自由物体図の復習"><div class="slide-caption">自由物体図の復習</div></figure>
+<p>自由物体図は考えを整理する助けになります。</p><p>現実の細かい部分を全部描く必要はありません。</p><p>物体を簡単な形で描きます。</p><p>重力、垂直抗力、押す力、摩擦、張力などを矢印で描きます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>なぜ自由物体図を使いますか。</p><details class="answer"><summary>答えを見る</summary><p>力だけに集中するためです。</p></details></div>
+</section><section class="block" id="slide12">
+<span class="topic-label">スライド 12</span>
+<h2>動くカートに働く力</h2>
+<p class="lead">押す力、摩擦、重力、垂直抗力。</p>
+<figure class="slide-img"><img src="assets/slides/slide_12.jpg" alt="動くカートに働く力"><div class="slide-caption">動くカートに働く力</div></figure>
+<p>動くカートにはいくつかの力が働きます。</p><p>重力は下向きです。</p><p>床は垂直抗力で上向きに押します。</p><p>人は前向きに押します。</p><p>摩擦は後ろ向きに働きます。</p><p>水平方向の運動は、主に押す力 − 摩擦で決まります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>普通、運動と反対向きに働く力は？</p><details class="answer"><summary>答えを見る</summary><p>摩擦。</p></details></div>
+</section><section class="block" id="slide13">
+<span class="topic-label">スライド 13</span>
+<h2>合力</h2>
+<p class="lead">合力 = 力の合計。</p>
+<figure class="slide-img"><img src="assets/slides/slide_13.jpg" alt="合力"><div class="slide-caption">合力</div></figure>
+<p>合力は、向きを考えて力を合計した最終的な力です。</p><p>反対向きの力なら引き算します。</p><p>例：F_net = F_push − F_friction。</p><p>物体は合力の向きに加速します。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>押す力80 N、摩擦20 Nなら合力は？</p><details class="answer"><summary>答えを見る</summary><p>前向きに60 N。</p></details></div>
+</section><section class="part card" id="part3"><h2>Part 3 — 重力、重さ、見かけの重さ</h2><p>重力と重さは関係していますが、完全に同じ考えではありません。</p></section><section class="block" id="slide14">
+<span class="topic-label">スライド 14</span>
+<h2>重力は下向きに引く</h2>
+<p class="lead">重力は Fg = mg。</p>
+<figure class="slide-img"><img src="assets/slides/slide_14.jpg" alt="重力は下向きに引く"><div class="slide-caption">重力は下向きに引く</div></figure>
+<p>重力は地球からの力です。</p><p>地球は物体を下向きに引きます。</p><p>患者に働く重力は Fg = mg です。</p><p>向きは下向き、地球の中心の方向です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>重力の公式は？</p><details class="answer"><summary>答えを見る</summary><p>Fg = mg。</p></details></div>
+</section><section class="block" id="slide15">
+<span class="topic-label">スライド 15</span>
+<h2>Weight とは何か</h2>
+<p class="lead">物理では、weight は支持物や吊り具に働く力です。</p>
+<figure class="slide-img"><img src="assets/slides/slide_15.jpg" alt="Weight とは何か"><div class="slide-caption">Weight とは何か</div></figure>
+<p>日常会話では、weight を体重や質量の意味で使うことがあります。</p><p>しかし物理では、weight はもっと正確な意味があります。</p><p>Weight は、物体が支持物を押す力、または吊り具を引く力です。</p><p>患者がベッドの上にいると、患者はベッドを押します。その力が weight です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>物理で weight とは何ですか。</p><details class="answer"><summary>答えを見る</summary><p>支持物や吊り具に働く力です。</p></details></div>
+</section><section class="block" id="slide16">
+<span class="topic-label">スライド 16</span>
+<h2>静止時：大きさは同じ</h2>
+<p class="lead">Fg と weight は静止時に同じ大きさになることがあります。</p>
+<figure class="slide-img"><img src="assets/slides/slide_16.jpg" alt="静止時：大きさは同じ"><div class="slide-caption">静止時：大きさは同じ</div></figure>
+<p>患者がベッドの上で静止しています。</p><p>地球は患者を下に引きます：Fg = mg。</p><p>患者はベッドを押します：W = mg。</p><p>この単純な場合、大きさは同じです。</p><p>しかし意味は違います。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>重力と weight はいつも同じ考えですか。</p><details class="answer"><summary>答えを見る</summary><p>いいえ。大きさが同じでも意味は違います。</p></details></div>
+</section><section class="block" id="slide17">
+<span class="topic-label">スライド 17</span>
+<h2>重要な違い</h2>
+<p class="lead">重力は体を引く。Weight は支持物や吊り具に働く。</p>
+<figure class="slide-img"><img src="assets/slides/slide_17.jpg" alt="重要な違い"><div class="slide-caption">重要な違い</div></figure>
+<p>重力は、地球が体を下に引く力です。</p><p>Weight は、支持物や吊り具に働く力です。</p><p>支持物が加速すると、これらは違う大きさになります。</p><p>だからエレベーターで重く感じたり軽く感じたりします。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>Weight はいつ変わることがありますか。</p><details class="answer"><summary>答えを見る</summary><p>支持物や吊り具が加速するとき。</p></details></div>
+</section><section class="block" id="slide18">
+<span class="topic-label">スライド 18</span>
+<h2>エレベーターが上に加速</h2>
+<p class="lead">重く感じます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_18.jpg" alt="エレベーターが上に加速"><div class="slide-caption">エレベーターが上に加速</div></figure>
+<p>エレベーターが上向きに加速すると、床は人をより強く押します。</p><p>人は重く感じます。</p><p>重力はまだ mg です。</p><p>しかし apparent weight は大きくなります：W_app = m(g + a)。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>エレベーターが上に加速すると重力が増えますか。</p><details class="answer"><summary>答えを見る</summary><p>いいえ。見かけの重さが増えますが、重力は mg のままです。</p></details></div>
+</section><section class="block" id="slide19">
+<span class="topic-label">スライド 19</span>
+<h2>エレベーターが下に加速</h2>
+<p class="lead">軽く感じます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_19.jpg" alt="エレベーターが下に加速"><div class="slide-caption">エレベーターが下に加速</div></figure>
+<p>エレベーターが下向きに加速すると、床が押す力は小さくなります。</p><p>人は軽く感じます。</p><p>重力はまだ mg です。</p><p>apparent weight は小さくなります：W_app = m(g − a)。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>下向き加速でなぜ軽く感じますか。</p><details class="answer"><summary>答えを見る</summary><p>支持力が小さくなるからです。</p></details></div>
+</section><section class="block" id="slide20">
+<span class="topic-label">スライド 20</span>
+<h2>自由落下</h2>
+<p class="lead">重力はあるが、見かけの重さはゼロ。</p>
+<figure class="slide-img"><img src="assets/slides/slide_20.jpg" alt="自由落下"><div class="slide-caption">自由落下</div></figure>
+<p>自由落下では、重力はまだ体に働いています。</p><p>しかし床やベッドからの支持力がありません。</p><p>そのため apparent weight はゼロです。</p><p>これが無重力感の基本的な考えです。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>自由落下中も重力は働きますか。</p><details class="answer"><summary>答えを見る</summary><p>はい。</p></details></div>
+</section><section class="block" id="slide21">
+<span class="topic-label">スライド 21</span>
+<h2>病院との関係：患者リフト</h2>
+<p class="lead">加速度が変わると張力も変わります。</p>
+<figure class="slide-img"><img src="assets/slides/slide_21.jpg" alt="病院との関係：患者リフト"><div class="slide-caption">病院との関係：患者リフト</div></figure>
+<p>患者リフトはスリングで患者を支えます。</p><p>スリングの張力が患者を支えます。</p><p>リフトが急に始まったり止まったりすると、張力が急に変わります。</p><p>これは不快または危険です。</p><p>滑らかに始め、滑らかに止めます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>患者リフトはなぜ滑らかに始め止める必要がありますか。</p><details class="answer"><summary>答えを見る</summary><p>力や張力の急な変化が危険だからです。</p></details></div>
+</section><section class="part card" id="part4"><h2>Part 4 — 摩擦と動力学の問題</h2><p>まず合力を求めます。それから F = ma を使います。</p></section><section class="block" id="slide22">
+<span class="topic-label">スライド 22</span>
+<h2>摩擦</h2>
+<p class="lead">摩擦は運動に逆らいます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_22.jpg" alt="摩擦"><div class="slide-caption">摩擦</div></figure>
+<p>摩擦は表面どうしの間に働く力です。</p><p>通常、運動と反対向きに働きます。</p><p>摩擦は動きを難しくすることがあります。</p><p>しかし車輪が床をつかむ助けにもなります。</p><p>摩擦が少なすぎると危険です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>摩擦はいつも運動と同じ向きですか。</p><details class="answer"><summary>答えを見る</summary><p>いいえ。普通は反対向きです。</p></details></div>
+</section><section class="block" id="slide23">
+<span class="topic-label">スライド 23</span>
+<h2>簡単な摩擦の考え</h2>
+<p class="lead">表面と垂直抗力が大切です。</p>
+<figure class="slide-img"><img src="assets/slides/slide_23.jpg" alt="簡単な摩擦の考え"><div class="slide-caption">簡単な摩擦の考え</div></figure>
+<p>粗い表面は普通、摩擦が大きいです。</p><p>滑らかな表面は普通、摩擦が小さいです。</p><p>垂直抗力が大きいと、摩擦も大きくなりやすいです。</p><p>荷物の多い重いカートは、空のカートより押しにくいことがあります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>摩擦が大きいのは粗い床ですか、滑らかな床ですか。</p><details class="answer"><summary>答えを見る</summary><p>粗い床。</p></details></div>
+</section><section class="block" id="slide24">
+<span class="topic-label">スライド 24</span>
+<h2>摩擦があるカートを押す</h2>
+<p class="lead">まず合力を求めます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_24.jpg" alt="摩擦があるカートを押す"><div class="slide-caption">摩擦があるカートを押す</div></figure>
+<p>人がカートを80 Nで押します。</p><p>摩擦は反対向きに20 Nです。</p><p>合力は F_net = 80 − 20 = 60 N です。</p><p>この前向きの合力が加速度を作ります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>合力はいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>前向きに60 N。</p></details></div>
+</section><section class="block" id="slide25">
+<span class="topic-label">スライド 25</span>
+<h2>Task 1: 加速度を求める</h2>
+<p class="lead">a = F / m を使います。</p>
+<figure class="slide-img"><img src="assets/slides/slide_25.jpg" alt="Task 1: 加速度を求める"><div class="slide-caption">Task 1: 加速度を求める</div></figure>
+<p>カートの質量は m = 30 kg。</p><p>合力は F = 60 N。</p><p>加速度を求めます。</p><p>a = F / m = 60 / 30 = 2 m/s²。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>加速度はいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>2 m/s²。</p></details></div>
+</section><section class="block" id="slide26">
+<span class="topic-label">スライド 26</span>
+<h2>Task 2: 力を求める</h2>
+<p class="lead">F = ma を使います。</p>
+<figure class="slide-img"><img src="assets/slides/slide_26.jpg" alt="Task 2: 力を求める"><div class="slide-caption">Task 2: 力を求める</div></figure>
+<p>病院ベッドの質量は m = 80 kg。</p><p>必要な加速度は a = 0.5 m/s²。</p><p>力を求めます。</p><p>F = ma = 80 × 0.5 = 40 N。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>必要な力はいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>40 N。</p></details></div>
+</section><section class="block" id="slide27">
+<span class="topic-label">スライド 27</span>
+<h2>Task 3: 押す力と摩擦</h2>
+<p class="lead">まず合力を求めます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_27.jpg" alt="Task 3: 押す力と摩擦"><div class="slide-caption">Task 3: 押す力と摩擦</div></figure>
+<p>押す力は100 N。</p><p>摩擦は30 N。</p><p>質量は35 kg。</p><p>F_net = 100 − 30 = 70 N。</p><p>a = 70 / 35 = 2 m/s²。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>加速度はいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>2 m/s²。</p></details></div>
+</section><section class="block" id="slide28">
+<span class="topic-label">スライド 28</span>
+<h2>Task 4: エレベーターの見かけの重さ</h2>
+<p class="lead">エレベーターが上向きに加速。</p>
+<figure class="slide-img"><img src="assets/slides/slide_28.jpg" alt="Task 4: エレベーターの見かけの重さ"><div class="slide-caption">Task 4: エレベーターの見かけの重さ</div></figure>
+<p>患者の質量は70 kg。</p><p>エレベーターの加速度は上向きに2 m/s²。</p><p>g = 10 m/s² を使います。</p><p>W_app = m(g + a)。</p><p>W_app = 70 × (10 + 2) = 840 N。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>見かけの重さはいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>840 N。</p></details></div>
+</section><section class="block" id="slide29">
+<span class="topic-label">スライド 29</span>
+<h2>Task 5: エレベーターが下に加速</h2>
+<p class="lead">下向きに加速します。</p>
+<figure class="slide-img"><img src="assets/slides/slide_29.jpg" alt="Task 5: エレベーターが下に加速"><div class="slide-caption">Task 5: エレベーターが下に加速</div></figure>
+<p>患者の質量は70 kg。</p><p>エレベーターの加速度は下向きに2 m/s²。</p><p>g = 10 m/s² を使います。</p><p>W_app = m(g − a)。</p><p>W_app = 70 × (10 − 2) = 560 N。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>見かけの重さはいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>560 N。</p></details></div>
+</section><section class="part card" id="part5"><h2>Part 5 — 仕事とエネルギー</h2><p>仕事とエネルギーは、力、運動、速度、高さをつなげます。</p></section><section class="block" id="slide30">
+<span class="topic-label">スライド 30</span>
+<h2>機械的仕事</h2>
+<p class="lead">仕事 = 力 × 距離。</p>
+<figure class="slide-img"><img src="assets/slides/slide_30.jpg" alt="機械的仕事"><div class="slide-caption">機械的仕事</div></figure>
+<p>機械的仕事とは、力が物体を距離だけ動かすことです。</p><p>カートを押してカートが動けば、仕事をしています。</p><p>公式：W = F × s。</p><p>単位：J（ジュール）。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>仕事の公式は？</p><details class="answer"><summary>答えを見る</summary><p>W = F × s。</p></details></div>
+</section><section class="block" id="slide31">
+<span class="topic-label">スライド 31</span>
+<h2>仕事の単位</h2>
+<p class="lead">1ジュール = 1ニュートン × 1メートル。</p>
+<figure class="slide-img"><img src="assets/slides/slide_31.jpg" alt="仕事の単位"><div class="slide-caption">仕事の単位</div></figure>
+<p>仕事の単位はジュールです。</p><p>1 J = 1 N·m。</p><p>1 N の力が物体を1 m動かすと、仕事は1 Jです。</p><p>仕事には力と距離の両方が必要です。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>1ジュールは何に等しいですか。</p><details class="answer"><summary>答えを見る</summary><p>1 N·m。</p></details></div>
+</section><section class="block" id="slide32">
+<span class="topic-label">スライド 32</span>
+<h2>仕事の例</h2>
+<p class="lead">押す力50 N、距離4 m。</p>
+<figure class="slide-img"><img src="assets/slides/slide_32.jpg" alt="仕事の例"><div class="slide-caption">仕事の例</div></figure>
+<p>人が医療カートを50 Nで押します。</p><p>カートは4 m動きます。</p><p>W = F × s。</p><p>W = 50 × 4 = 200 J。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>仕事はいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>200 J。</p></details></div>
+</section><section class="block" id="slide33">
+<span class="topic-label">スライド 33</span>
+<h2>運動エネルギー</h2>
+<p class="lead">運動エネルギー = 動きのエネルギー。</p>
+<figure class="slide-img"><img src="assets/slides/slide_33.jpg" alt="運動エネルギー"><div class="slide-caption">運動エネルギー</div></figure>
+<p>運動エネルギーは動きのエネルギーです。</p><p>公式：E_k = 1/2 m v²。</p><p>速度は二乗されるので、とても重要です。</p><p>速いカートは運動エネルギーが大きく、危険になり得ます。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>速度が増えると運動エネルギーはどうなりますか。</p><details class="answer"><summary>答えを見る</summary><p>大きく増えます。速度が二乗されるからです。</p></details></div>
+</section><section class="block" id="slide34">
+<span class="topic-label">スライド 34</span>
+<h2>位置エネルギー</h2>
+<p class="lead">重力による位置エネルギー = 高さのエネルギー。</p>
+<figure class="slide-img"><img src="assets/slides/slide_34.jpg" alt="位置エネルギー"><div class="slide-caption">位置エネルギー</div></figure>
+<p>位置エネルギーは蓄えられたエネルギーです。</p><p>重力による位置エネルギーは高さに依存します。</p><p>患者リフトが患者を上げると、位置エネルギーは増えます。</p><p>公式：E_p = mgh。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>重力による位置エネルギーの公式は？</p><details class="answer"><summary>答えを見る</summary><p>E_p = mgh。</p></details></div>
+</section><section class="block" id="slide35">
+<span class="topic-label">スライド 35</span>
+<h2>エネルギー安全の考え</h2>
+<p class="lead">速度と高さが大きいほどエネルギーも大きい。</p>
+<figure class="slide-img"><img src="assets/slides/slide_35.jpg" alt="エネルギー安全の考え"><div class="slide-caption">エネルギー安全の考え</div></figure>
+<p>エネルギーは安全に関係します。</p><p>速度が大きいほど運動エネルギーが大きいです。</p><p>高さが大きいほど位置エネルギーが大きいです。</p><p>病院機器はゆっくり、滑らかに、安全に動く必要があります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>病院機器が高速を避けるべき理由は？</p><details class="answer"><summary>答えを見る</summary><p>高速は運動エネルギーと危険を増やすからです。</p></details></div>
+</section><section class="part card" id="part6"><h2>Part 6 — 追加練習とまとめ</h2><p>単位を確認します。向きを確認します。答えだけでなく意味も説明します。</p></section><section class="block" id="slide36">
+<span class="topic-label">スライド 36</span>
+<h2>Task 6: 仕事</h2>
+<p class="lead">カートを40 Nで5 m押す。</p>
+<figure class="slide-img"><img src="assets/slides/slide_36.jpg" alt="Task 6: 仕事"><div class="slide-caption">Task 6: 仕事</div></figure>
+<p>W = F × s を使います。</p><p>力は40 N。</p><p>距離は5 m。</p><p>W = 40 × 5 = 200 J。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>仕事はいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>200 J。</p></details></div>
+</section><section class="block" id="slide37">
+<span class="topic-label">スライド 37</span>
+<h2>Task 7: 運動エネルギー</h2>
+<p class="lead">m = 20 kg, v = 2 m/s。</p>
+<figure class="slide-img"><img src="assets/slides/slide_37.jpg" alt="Task 7: 運動エネルギー"><div class="slide-caption">Task 7: 運動エネルギー</div></figure>
+<p>E_k = 1/2 m v² を使います。</p><p>質量は20 kg。</p><p>速度は2 m/s。</p><p>v² = 4。</p><p>E_k = 1/2 × 20 × 4 = 40 J。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>運動エネルギーはいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>40 J。</p></details></div>
+</section><section class="block" id="slide38">
+<span class="topic-label">スライド 38</span>
+<h2>Task 8: 位置エネルギー</h2>
+<p class="lead">m = 70 kg, h = 1 m。</p>
+<figure class="slide-img"><img src="assets/slides/slide_38.jpg" alt="Task 8: 位置エネルギー"><div class="slide-caption">Task 8: 位置エネルギー</div></figure>
+<p>E_p = mgh を使います。</p><p>質量は70 kg。</p><p>g = 10 m/s²。</p><p>高さは1 m。</p><p>E_p = 70 × 10 × 1 = 700 J。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>位置エネルギーはいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>700 J。</p></details></div>
+</section><section class="block" id="slide39">
+<span class="topic-label">スライド 39</span>
+<h2>Mixed Task: リフト</h2>
+<p class="lead">m = 60 kg, h = 1.5 m。</p>
+<figure class="slide-img"><img src="assets/slides/slide_39.jpg" alt="Mixed Task: リフト"><div class="slide-caption">Mixed Task: リフト</div></figure>
+<p>患者リフトが患者を上げます。</p><p>質量は60 kg。</p><p>高さは1.5 m。</p><p>g = 10 m/s² を使います。</p><p>E_p = 60 × 10 × 1.5 = 900 J。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>位置エネルギーの増加はいくつですか。</p><details class="answer"><summary>答えを見る</summary><p>900 J。</p></details></div>
+</section><section class="block" id="slide40">
+<span class="topic-label">スライド 40</span>
+<h2>よくある間違い</h2>
+<p class="lead">単位、向き、意味を確認します。</p>
+<figure class="slide-img"><img src="assets/slides/slide_40.jpg" alt="よくある間違い"><div class="slide-caption">よくある間違い</div></figure>
+<p>kg は力ではありません。kg は質量です。</p><p>Weight はいつも重力と同じではありません。</p><p>力とエネルギーは違う考えです。</p><p>速度と加速度は違います。</p><p>摩擦と向きを忘れないでください。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>kg は力の単位ですか。</p><details class="answer"><summary>答えを見る</summary><p>いいえ。kg は質量の単位です。</p></details></div>
+</section><section class="block" id="slide41">
+<span class="topic-label">スライド 41</span>
+<h2>動力学のまとめ</h2>
+<p class="lead">力は加速度を作ります。エネルギーは運動と関係します。</p>
+<figure class="slide-img"><img src="assets/slides/slide_41.jpg" alt="動力学のまとめ"><div class="slide-caption">動力学のまとめ</div></figure>
+<p>今日は F = ma を学びました。</p><p>重力は下向き：F_g = mg。</p><p>見かけの重さは変わることがあります。</p><p>仕事は力×距離：W = F × s。</p><p>運動エネルギーは動きのエネルギーです。</p><p>位置エネルギーは高さのエネルギーです。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>動力学で最も重要な公式は？</p><details class="answer"><summary>答えを見る</summary><p>F = ma。</p></details></div>
+</section><section class="block" id="slide42">
+<span class="topic-label">スライド 42</span>
+<h2>最後のメッセージ</h2>
+<p class="lead">安全な動きは、ゆっくり、滑らか、制御され、予測できます。</p>
+<figure class="slide-img"><img src="assets/slides/slide_42.jpg" alt="最後のメッセージ"><div class="slide-caption">最後のメッセージ</div></figure>
+<p>病院機器は金属や電子部品だけではありません。</p><p>動きます。</p><p>動くとき、力とエネルギーが関係します。</p><p>患者の安全のため、動きはゆっくり、滑らか、制御され、予測できる必要があります。</p><p>動力学はその理由を理解する助けになります。</p>
+<div class="activity"><h3>考えて答えてください</h3><p>なぜ病院で動力学が重要ですか。</p><details class="answer"><summary>答えを見る</summary><p>運動中の力とエネルギーが安全に影響するからです。</p></details></div>
+</section>
+<section class="block">
+<h2>ダウンロードと確認用ファイル</h2>
+<p><a class="btn" href="downloads/lecture4C_dynamics_with_images.pptx">PowerPoint</a></p>
+<p><a class="btn" href="downloads/lecture4C_dynamics_with_images.pdf">PDF</a></p>
+<p><a class="btn" href="assets/debug/lecture4C_slide_contact_labeled.jpg">スライド確認用コンタクトシート</a></p>
+</section>
+</main>
+<footer class="footer"><p>Computers 1 · Lecture 4C · Dynamics for Medical Equipment.</p></footer>
+</body></html>
