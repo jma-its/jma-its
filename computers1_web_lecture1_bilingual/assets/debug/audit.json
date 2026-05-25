@@ -1,0 +1,28 @@
+{
+  "used_images": [
+    "slide_03.jpg",
+    "slide_04.jpg",
+    "slide_05.jpg",
+    "slide_07.jpg",
+    "slide_08.jpg",
+    "slide_09.jpg",
+    "slide_10.jpg",
+    "slide_11.jpg",
+    "slide_12.jpg",
+    "slide_13.jpg",
+    "slide_14.jpg",
+    "slide_15.jpg",
+    "slide_16.jpg",
+    "slide_17.jpg",
+    "slide_18.jpg",
+    "slide_19.jpg",
+    "slide_20.jpg",
+    "slide_21.jpg"
+  ],
+  "teacher_slide_01_used": false,
+  "self_intro_slide_02_used": false,
+  "group_slide_06_used": false,
+  "ai_rule_slide_07_used": true,
+  "blank_slide_22_used": false,
+  "duplicates": {}
+}
