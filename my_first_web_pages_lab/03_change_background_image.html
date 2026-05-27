@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My First Background Image</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<!--
+TEACHER NOTE:
+Upload these HTML files to your website.
+Students open the page, press Ctrl+S, save it to Downloads,
+then open the saved file with Notepad and edit the STUDENT EDIT AREA.
+-->
+
+  <style>
+    /* STUDENT EDIT AREA START */
+    /*
+      Task:
+      1. Download one image.
+      2. Put the image in the same folder as this HTML file.
+      3. Write the image file name below.
+
+      Example:
+      If your image is cat.jpg, write:
+      background-image: url("cat.jpg");
+
+      If your image is mountain.png, write:
+      background-image: url("mountain.png");
+
+      Important:
+      The file name in the code must be the same as the real image file name.
+    */
+
+    body {
+      background-image: url("background.jpg");
+    }
+
+    /* STUDENT EDIT AREA END */
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+
+      background-color: #e5e7eb;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.55);
+      padding: 42px;
+      max-width: 900px;
+      border-radius: 28px;
+    }
+
+    h1 {
+      font-size: 64px;
+      margin: 0 0 24px 0;
+    }
+
+    p {
+      font-size: 26px;
+      margin: 12px 0;
+    }
+
+    .small {
+      font-size: 20px;
+      margin-top: 32px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>My background image</h1>
+    <p>I can change the picture behind this page.</p>
+    <p class="small">Put the image and this HTML file in the same folder.</p>
+  </main>
+</body>
+</html>
