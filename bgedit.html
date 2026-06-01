@@ -1,85 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>bgedit</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Edit</title>
   <style>
+
+    /* ========================================================= */
+    /* STUDENT EDIT AREA                                        */
+    /* CHANGE ONLY THIS PART.                                   */
+    /* ========================================================= */
+
     body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-      color: white;
-      background-color: #0f3d73;
-
-      /* ===================================================== */
-      /* STUDENT EDIT AREA 1                                  */
-      /* CHANGE BACKGROUND IMAGE HERE - START                  */
-      /* The image file and this HTML file must be together.    */
-      /* Change ONLY the file name inside " ".                  */
-      /* Example: url("cat.jpg") or url("mountain.png")        */
-      /* ===================================================== */
-
+      /* --------------------------------------------------------- */
+      /* BACKGROUND PICTURE: TWO VARIANTS                         */
+      /*                                                           */
+      /* Variant 1 is ON now. It uses a picture in the same folder. */
+      /* bgedit.html and background.jpg must be together.           */
+      /* Students do NOT need https:// for this variant.            */
+      /* --------------------------------------------------------- */
       background-image: url("background.jpg");
 
-      /* ===================================================== */
-      /* CHANGE BACKGROUND IMAGE HERE - END                    */
-      /* ===================================================== */
+      /* --------------------------------------------------------- */
+      /* Variant 2 is OFF now. It uses a picture from the Internet. */
+      /* To turn it ON, remove the comment marks from the next line.*/
+      /* When two background-image lines are ON, the LOWER line wins.*/
+      /* --------------------------------------------------------- */
+      /* background-image: url("https://jma-its.github.io/jma-its/background.jpg"); */
 
-      /* ===================================================== */
-      /* STUDENT EDIT AREA 2                                  */
-      /* CHANGE BACKGROUND PARAMETERS HERE - START             */
-      /* Change ONLY the words after :                          */
-      /* Keep the : and ;                                      */
-      /* ===================================================== */
-
+      /* Picture size. Try: cover / contain / auto */
       background-size: cover;
+
+      /* Picture position. Try: center / top / bottom / left / right */
       background-position: center;
+
+      /* Repeat picture? Try: no-repeat / repeat */
       background-repeat: no-repeat;
 
-      /* ===================================================== */
-      /* CHANGE BACKGROUND PARAMETERS HERE - END               */
-      /* Save the file. Refresh browser.                       */
-      /* ===================================================== */
+      /* Keep picture fixed? Try: fixed / scroll */
+      background-attachment: fixed;
     }
 
-    .card {
-      background: rgba(0,0,0,.55);
-      border: 5px solid rgba(255,255,255,.85);
+    .box {
+      /* Text box colors. Try: white / lightyellow / black */
+      background-color: white;
+
+      /* Text color. Try: darkblue / black / white / purple */
+      color: darkblue;
+    }
+
+    /* ========================================================= */
+    /* END OF STUDENT EDIT AREA                                 */
+    /* DO NOT CHANGE BELOW THIS LINE.                            */
+    /* ========================================================= */
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .box {
+      max-width: 980px;
+      margin: 60px auto;
+      border: 4px solid darkblue;
       border-radius: 28px;
-      padding: 44px;
-      max-width: 900px;
-      margin: 24px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.30);
+      padding: 38px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.30);
     }
 
     h1 {
-      font-size: 70px;
-      margin: 0 0 24px 0;
+      font-size: 56px;
+      margin: 0 0 18px;
     }
 
     p {
       font-size: 30px;
+      line-height: 1.45;
       margin: 16px 0;
     }
 
     .small {
-      font-size: 22px;
-      margin-top: 36px;
-      opacity: .9;
+      font-size: 24px;
+      color: #333333;
+    }
+
+    code {
+      background: #eeeeee;
+      padding: 3px 8px;
+      border-radius: 8px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <h1>Background Edit Page</h1>
-    <p>CSS can use a picture as the page background.</p>
-    <p>Change the image name and background parameters.</p>
-    <p class="small">File name: bgedit.html</p>
-  </main>
+  <div class="box">
+    <h1>Background Edit</h1>
+    <p><b>Variant 1:</b> use <code>background.jpg</code> in the same folder.</p>
+    <p><b>Variant 2:</b> use a full web link inside <code>url("...")</code>.</p>
+    <p>Find <b>STUDENT EDIT AREA</b> in Notepad.</p>
+    <p class="small">Save with Ctrl + S. Refresh the browser with F5.</p>
+  </div>
 </body>
 </html>
