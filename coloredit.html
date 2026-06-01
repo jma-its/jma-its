@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>coloredit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+
+      /* ===================================================== */
+      /* CHANGE COLORS HERE - START                            */
+      /* Change ONLY the words after the colon :.               */
+      /* Keep the semicolon ; at the end of each line.          */
+      /* ===================================================== */
+
+      background-color: lightblue;  /* Try: pink, yellow, lightgreen, lavender, white */
+      color: darkblue;              /* Try: black, red, green, purple, white */
+
+      /* Background picture is optional.                        */
+      /* First, put the picture file in the same folder.         */
+      /* Then change none to url("picture.jpg")                  */
+      background-image: none;
+
+      /* ===================================================== */
+      /* CHANGE COLORS HERE - END                              */
+      /* Stop editing here. Save the file. Refresh the browser. */
+      /* ===================================================== */
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 6px solid currentColor;
+      border-radius: 28px;
+      padding: 44px;
+      max-width: 900px;
+      margin: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    }
+
+    h1 {
+      font-size: 72px;
+      margin: 0 0 24px 0;
+    }
+
+    p {
+      font-size: 30px;
+      margin: 16px 0;
+    }
+
+    .small {
+      font-size: 22px;
+      margin-top: 36px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Color edit page</h1>
+    <p>I can change the background color.</p>
+    <p>I can change the text color.</p>
+    <p>I can also add a background picture.</p>
+    <p class="small">File name: coloredit.html</p>
+  </main>
+</body>
+</html>
