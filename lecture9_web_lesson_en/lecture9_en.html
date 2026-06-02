@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 9 — From Switches to Computer Memory</title>
+<style>
+:root{--blue:#1139b7;--dark:#0f172a;--muted:#475569;--line:#d8e2ff;--soft:#f6f9ff;--yellow:#fff9df;--green:#0f7a38;--red:#c51f1f;}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:var(--dark);line-height:1.65;font-size:20px}
+header{background:linear-gradient(135deg,#0b2c89,#1d4ed8);color:white;padding:34px 20px 24px;border-bottom:6px solid #facc15}
+.header-inner{max-width:1120px;margin:0 auto} .course{font-size:18px;opacity:.9;margin-bottom:10px} h1{font-size:44px;line-height:1.1;margin:0 0 10px} .subtitle{font-size:24px;margin:0 0 16px;opacity:.95}.intro{font-size:21px;max-width:980px}.top-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.top-links a{background:white;color:var(--blue);padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:bold;font-size:17px}.container{max-width:1120px;margin:0 auto;padding:24px 18px 60px}.notice,.core,.part-card{background:white;border:2px solid var(--line);border-radius:18px;padding:18px 22px;margin:18px 0;box-shadow:0 4px 16px rgba(15,23,42,.05)}.core{background:var(--yellow);border-color:#f4d95e}.chain{font-size:26px;font-weight:bold;color:var(--blue);text-align:center;margin:8px 0}.map ol{columns:2;column-gap:42px;padding-left:30px}.map li{break-inside:avoid;margin:5px 0}.map a{color:var(--blue);text-decoration:none}.map a:hover{text-decoration:underline}.part-title{font-size:31px;color:var(--blue);border-left:10px solid var(--blue);padding-left:14px;margin:38px 0 14px;background:#eef4ff;border-radius:8px;padding-top:8px;padding-bottom:8px}.slide-card{background:white;border:2px solid var(--line);border-radius:20px;margin:28px 0;padding:18px 18px 22px;box-shadow:0 6px 18px rgba(15,23,42,.07)}.slide-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}.badge{background:var(--blue);color:white;min-width:64px;text-align:center;padding:6px 10px;border-radius:14px;font-weight:bold;font-size:20px}.slide-title h2{margin:0;font-size:32px;line-height:1.18;color:#102a85}.slide-title p{margin:5px 0 0;color:var(--muted);font-size:18px}.slide-image{margin:12px 0 18px;background:#f8fafc;border-radius:14px;text-align:center;border:1px solid #e2e8f0;overflow:hidden}.slide-image img{display:block;max-width:100%;height:auto;margin:0 auto}.reading{font-size:21px}.reading p{margin:0 0 14px}.reading p:first-child{font-weight:bold;color:#1e3a8a}.think{background:#f8fbff;border-left:8px solid var(--blue);border-radius:12px;padding:14px 16px;margin-top:18px}.think h3{font-size:24px;margin:0 0 8px;color:var(--blue)}details{background:white;border:1px solid #c7d2fe;border-radius:10px;padding:8px 12px;margin-top:10px}summary{cursor:pointer;font-weight:bold;color:var(--green);font-size:20px}details p{margin:10px 0 4px}.footer-nav{text-align:right;margin-top:12px}.footer-nav a{color:var(--blue);font-weight:bold;text-decoration:none}.activity{background:#fff7ed;border-color:#fed7aa}.refs{font-size:17px;color:#334155}.small-note{font-size:17px;color:#64748b}.print-note{font-size:16px;color:#64748b;margin-top:28px}@media(max-width:800px){body{font-size:18px}h1{font-size:34px}.subtitle{font-size:21px}.slide-title h2{font-size:27px}.map ol{columns:1}.reading{font-size:19px}.chain{font-size:21px}.badge{min-width:54px}.slide-head{flex-direction:column}}
+@media print{.top-links,.map,.footer-nav,details summary{display:none}body{background:white}.slide-card{break-inside:avoid;box-shadow:none}.container{max-width:none}.slide-image img{max-height:420px;width:auto}}
+</style>
+</head>
+<body>
+<header id="top"><div class="header-inner">
+<div class="course">Computers 1 · Computer Fundamentals I</div>
+<h1>Lecture 9 — From Switches to Computer Memory</h1>
+<p class="subtitle">How electricity became logic, memory, and computers</p>
+<p class="intro">This web lesson is for students. Read each slide, study the explanation, and answer the question. Click “Show answer” only after you try.</p>
+<div class="top-links"><a href="#lesson-map">Lesson map</a><a href="#final-activity">Final activity</a><a href="assets/Lecture9.pptx">PowerPoint</a><a href="assets/Lecture9.pdf">PDF</a><a href="assets/lecture9_speaker_script.docx">Speaker script Word</a></div>
+</div></header>
+<main class="container">
+<section class="core"><h2>Core chain</h2><div class="chain">electricity → switch → 0/1 → logic → memory → computer</div><p>Today we do not begin with the screen. We begin with the physical switch. Step by step, the switch becomes binary numbers, logic, electronic devices, memory, and then the computer system.</p></section>
+<section class="notice"><h2>How to use this lesson</h2><p>Study slowly. First look at the slide image. Then read the explanation. Then answer the short question. Open the hidden answer only after you try.</p><p>This page is long on purpose. It is useful for online classes and for self-study after class.</p></section>
+<section class="notice map" id="lesson-map"><h2>Lesson map</h2><ol>
+<li><a href="#slide-1">Slide 1: Lecture 9 — From Switches to Computer Memory</a></li>
+<li><a href="#slide-2">Slide 2: Why this lecture matters</a></li>
+<li><a href="#slide-3">Slide 3: Course chain so far</a></li>
+<li><a href="#slide-4">Slide 4: Big question</a></li>
+<li><a href="#slide-5">Slide 5: Part 1 — The switch</a></li>
+<li><a href="#slide-6">Slide 6: Why computers use two states</a></li>
+<li><a href="#slide-7">Slide 7: Why Computers Use Binary Numbers</a></li>
+<li><a href="#slide-8">Slide 8: Decimal and Binary: First Examples</a></li>
+<li><a href="#slide-9">Slide 9: Binary Place Values: 1, 2, 4, 8</a></li>
+<li><a href="#slide-10">Slide 10: Binary Numbers with Switches</a></li>
+<li><a href="#slide-11">Slide 11: Simple Binary Addition with Switches</a></li>
+<li><a href="#slide-12">Slide 12: Digital does not mean perfect</a></li>
+<li><a href="#slide-13">Slide 13: From one switch to a rule</a></li>
+<li><a href="#slide-14">Slide 14: AND logic</a></li>
+<li><a href="#slide-15">Slide 15: OR logic</a></li>
+<li><a href="#slide-16">Slide 16: NOT logic</a></li>
+<li><a href="#slide-17">Slide 17: Logic gates are physical devices</a></li>
+<li><a href="#slide-18">Slide 18: Part 2 — Relay</a></li>
+<li><a href="#slide-19">Slide 19: Relay physics</a></li>
+<li><a href="#slide-20">Slide 20: Relay step by step</a></li>
+<li><a href="#slide-21">Slide 21: Why relay was revolutionary</a></li>
+<li><a href="#slide-22">Slide 22: Relay AND logic</a></li>
+<li><a href="#slide-23">Slide 23: Relay OR logic</a></li>
+<li><a href="#slide-24">Slide 24: Historical bridge: relay computers</a></li>
+<li><a href="#slide-25">Slide 25: Example: Zuse Z3</a></li>
+<li><a href="#slide-26">Slide 26: Example: Harvard Mark I</a></li>
+<li><a href="#slide-27">Slide 27: The relay problem</a></li>
+<li><a href="#slide-28">Slide 28: Relay vs Vacuum Tube vs Transistor</a></li>
+<li><a href="#slide-29">Slide 29: Part 3 — Vacuum tubes</a></li>
+<li><a href="#slide-30">Slide 30: Vacuum tube physics</a></li>
+<li><a href="#slide-31">Slide 31: Electronic computers</a></li>
+<li><a href="#slide-32">Slide 32: Example: ENIAC</a></li>
+<li><a href="#slide-33">Slide 33: Technology development pattern</a></li>
+<li><a href="#slide-34">Slide 34: Part 4 — Transistor</a></li>
+<li><a href="#slide-35">Slide 35: Transistor physics, simplified</a></li>
+<li><a href="#slide-36">Slide 36: Transistor as a Tiny Electronic Switch</a></li>
+<li><a href="#slide-37">Slide 37: Historical note: transistor invention</a></li>
+<li><a href="#slide-38">Slide 38: From transistor to integrated circuit</a></li>
+<li><a href="#slide-39">Slide 39: From Transistor to Integrated Circuit — large diagram</a></li>
+<li><a href="#slide-40">Slide 40: Historical note: integrated circuit</a></li>
+<li><a href="#slide-41">Slide 41: Inside a Microchip — Many Tiny Circuits</a></li>
+<li><a href="#slide-42">Slide 42: Main history chain</a></li>
+<li><a href="#slide-43">Slide 43: From Switches to Computer Memory — large summary</a></li>
+<li><a href="#slide-44">Slide 44: Part 5 — Calculation is not enough</a></li>
+<li><a href="#slide-45">Slide 45: Memory as physical state</a></li>
+<li><a href="#slide-46">Slide 46: Capacitor Stores Charge — large diagram</a></li>
+<li><a href="#slide-47">Slide 47: Capacitor: the needed physics</a></li>
+<li><a href="#slide-48">Slide 48: Capacitance formula</a></li>
+<li><a href="#slide-49">Slide 49: Capacitor is not a battery</a></li>
+<li><a href="#slide-50">Slide 50: DRAM: memory from tiny capacitors</a></li>
+<li><a href="#slide-51">Slide 51: Why DRAM is dynamic</a></li>
+<li><a href="#slide-52">Slide 52: RAM needs power</a></li>
+<li><a href="#slide-53">Slide 53: SSD is different</a></li>
+<li><a href="#slide-54">Slide 54: SSD Keeps Data Without Power — large diagram</a></li>
+<li><a href="#slide-55">Slide 55: CPU, RAM, SSD: three roles</a></li>
+<li><a href="#slide-56">Slide 56: Part 6 — From hardware to software</a></li>
+<li><a href="#slide-57">Slide 57: Thinking like a computer</a></li>
+<li><a href="#slide-58">Slide 58: Troubleshooting Chain — large diagram</a></li>
+<li><a href="#slide-59">Slide 59: Troubleshooting view</a></li>
+<li><a href="#slide-60">Slide 60: Practical lesson preview</a></li>
+<li><a href="#slide-61">Slide 61: Class / online activity 1</a></li>
+<li><a href="#slide-62">Slide 62: Class / online activity 2</a></li>
+<li><a href="#slide-63">Slide 63: Mini quiz</a></li>
+<li><a href="#slide-64">Slide 64: Mini quiz answers</a></li>
+<li><a href="#slide-65">Slide 65: Final summary</a></li>
+<li><a href="#slide-66">Slide 66: Source notes</a></li>
+</ol></section>
+<h2 class="part-title">Opening: from physics to computers</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">Slide 1</div><div class="slide-title"><h2>Lecture 9 — From Switches to Computer Memory</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-01.jpg" alt="Slide 1: Lecture 9 — From Switches to Computer Memory"><figcaption class="small-note">Slide 1 — Lecture 9 — From Switches to Computer Memory</figcaption></figure>
+<section class="reading">
+<p>Today we move from electricity to computers.</p>
+<p>We will not start with the screen.<br>We will not start with the keyboard.<br>We will start with a very simple physical idea: a switch.</p>
+<p>A switch can be OFF or ON.<br>A computer uses this simple idea many millions or billions of times.</p>
+<p>The main chain today is this:<br>electricity becomes a switch,<br>a switch becomes 0 and 1,<br>0 and 1 become logic,<br>logic becomes memory and calculation,<br>and all of this becomes a computer.</p>
+<p>So, today, we study how physics became computer hardware.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the main chain of this lecture?</p>
+<details><summary>Show answer</summary><p>electricity → switch → 0/1 → logic → memory → computer.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">Slide 2</div><div class="slide-title"><h2>Why this lecture matters</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-02.jpg" alt="Slide 2: Why this lecture matters"><figcaption class="small-note">Slide 2 — Why this lecture matters</figcaption></figure>
+<section class="reading">
+<p>Please look at the chain on this slide.</p>
+<p>In previous lectures, we studied many physical ideas.<br>We studied materials.<br>We studied forces and motion.<br>We studied energy, heat, electricity, and magnetism.</p>
+<p>Now we ask one big question:<br>How did these physical ideas become a computer?</p>
+<p>The answer is not magic.<br>Technology grows step by step.<br>First, there is a physical effect.<br>Then engineers make a useful device from that effect.<br>Then the device becomes smaller, faster, and more reliable.<br>Finally, many devices work together as a computer system.</p>
+<p>So this lecture is a bridge.<br>It connects physics with computer hardware.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why do we study physics before computer hardware?</p>
+<details><summary>Show answer</summary><p>Because computer hardware is built from physical effects: electricity, magnetism, heat, materials, and controlled signals.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">Slide 3</div><div class="slide-title"><h2>Course chain so far</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-03.jpg" alt="Slide 3: Course chain so far"><figcaption class="small-note">Slide 3 — Course chain so far</figcaption></figure>
+<section class="reading">
+<p>This slide shows our course story.</p>
+<p>Every lecture gave one piece of the computer story.<br>Materials answer the question: what can we build from?<br>Mechanics answers: how do parts move and stay stable?<br>Energy and power answer: how do machines do work?<br>Electricity answers: how does charge move?<br>Magnetism answers: how can current create force?<br>Hospital machines show how physical processes become useful output.</p>
+<p>Today we add the next step.<br>We ask:<br>How can electricity become logic and memory?</p>
+<p>This is important because computers are not only software.<br>Inside every computer, physical parts are working.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What question do we add today?</p>
+<details><summary>Show answer</summary><p>How can electricity become logic and memory?</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">Slide 4</div><div class="slide-title"><h2>Big question</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-04.jpg" alt="Slide 4: Big question"><figcaption class="small-note">Slide 4 — Big question</figcaption></figure>
+<section class="reading">
+<p>The big question is:<br>How can electricity “think”?</p>
+<p>But we must be careful.<br>Electricity does not think like a human.<br>A computer does not understand like a human.</p>
+<p>A computer follows rules.<br>Electricity can control switches.<br>Switches can make two clear states: 0 and 1.<br>0 and 1 can make logic.<br>Logic can calculate.<br>Memory can store information.</p>
+<p>So a computer is not a magic brain.<br>It is a huge system of controlled electrical states.</p>
+<p>This is the idea we will build today, step by step.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Does electricity really think like a human?</p>
+<details><summary>Show answer</summary><p>No. A computer follows exact rules using controlled electrical states.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 1 — Switches, 0 and 1, and binary numbers</h2>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">Slide 5</div><div class="slide-title"><h2>Part 1 — The switch</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-05.jpg" alt="Slide 5: Part 1 — The switch"><figcaption class="small-note">Slide 5 — Part 1 — The switch</figcaption></figure>
+<section class="reading">
+<p>The first important idea is the switch.</p>
+<p>A switch is simple.<br>When the switch is OFF, the circuit is open.<br>Current cannot flow.<br>We can call this state 0.</p>
+<p>When the switch is ON, the circuit is closed.<br>Current can flow.<br>We can call this state 1.</p>
+<p>This looks very simple.<br>But simple is good for machines.<br>A machine can check OFF or ON very clearly.</p>
+<p>This is the beginning of digital computers.<br>Zero and one are not only math symbols.<br>They can be real physical states in a circuit.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What are the two states of a switch?</p>
+<details><summary>Show answer</summary><p>OFF and ON. We can call OFF = 0 and ON = 1.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">Slide 6</div><div class="slide-title"><h2>Why computers use two states</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-06.jpg" alt="Slide 6: Why computers use two states"><figcaption class="small-note">Slide 6 — Why computers use two states</figcaption></figure>
+<section class="reading">
+<p>Computers use two states because machines need clear differences.</p>
+<p>Human language is rich, but it can be unclear.<br>Electrical circuits need something more exact.</p>
+<p>A low voltage can mean 0.<br>A high voltage can mean 1.<br>The exact voltage can be different in different devices.<br>But the idea is the same:<br>one range means 0,<br>and another range means 1.</p>
+<p>This makes the computer more reliable.<br>The signal does not need to be perfect.<br>It only needs to be clearly low or clearly high.</p>
+<p>That is why two states are so useful.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why are two states useful for machines?</p>
+<details><summary>Show answer</summary><p>Two states are clear and reliable: low/high, OFF/ON, 0/1.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">Slide 7</div><div class="slide-title"><h2>Why Computers Use Binary Numbers</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-07.jpg" alt="Slide 7: Why Computers Use Binary Numbers"><figcaption class="small-note">Slide 7 — Why Computers Use Binary Numbers</figcaption></figure>
+<section class="reading">
+<p>Now we connect switches with numbers.</p>
+<p>A switch has only two states: OFF and ON.<br>So a computer uses two symbols: 0 and 1.<br>This system is called binary.</p>
+<p>Binary means a number system based on two symbols.<br>Decimal uses ten symbols: 0 to 9.<br>Binary uses only two symbols: 0 and 1.</p>
+<p>Please look at the slide.<br>OFF is shown as 0.<br>ON is shown as 1.</p>
+<p>This is the natural language of switches.<br>If a computer is made from switches, then it is natural for the computer to write numbers using 0 and 1.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why is binary natural for computers?</p>
+<details><summary>Show answer</summary><p>A switch has two states, so a computer can use two symbols: 0 and 1.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">Slide 8</div><div class="slide-title"><h2>Decimal and Binary: First Examples</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-08.jpg" alt="Slide 8: Decimal and Binary: First Examples"><figcaption class="small-note">Slide 8 — Decimal and Binary: First Examples</figcaption></figure>
+<section class="reading">
+<p>This slide compares decimal and binary.</p>
+<p>Decimal is the normal number system we use every day.<br>Decimal uses ten symbols: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9.</p>
+<p>Binary uses only two symbols: 0 and 1.</p>
+<p>Look at the table.<br>Decimal 0 is binary 0.<br>Decimal 1 is binary 1.<br>Decimal 2 is binary 10.<br>Decimal 3 is binary 11.<br>Decimal 4 is binary 100.</p>
+<p>The number is the same.<br>Only the writing system is different.</p>
+<p>So binary is not a different kind of number.<br>It is a different way to write the same number.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>How do we write decimal 2 and 3 in binary?</p>
+<details><summary>Show answer</summary><p>Decimal 2 is binary 10. Decimal 3 is binary 11.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">Slide 9</div><div class="slide-title"><h2>Binary Place Values: 1, 2, 4, 8</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-09.jpg" alt="Slide 9: Binary Place Values: 1, 2, 4, 8"><figcaption class="small-note">Slide 9 — Binary Place Values: 1, 2, 4, 8</figcaption></figure>
+<section class="reading">
+<p>Now we must understand place values.</p>
+<p>In decimal, places are 1, 10, 100, and so on.<br>But in binary, places are 1, 2, 4, 8, and so on.</p>
+<p>Please look at the top of the slide.<br>The places are 8, 4, 2, and 1.<br>Each place can be 0 or 1.</p>
+<p>If the place is 0, we do not add that value.<br>If the place is 1, we add that value.</p>
+<p>For example, 0011 means:<br>0 times 8,<br>0 times 4,<br>1 times 2,<br>1 times 1.<br>So 0011 equals 3.</p>
+<p>This is the key rule.<br>Binary places grow by powers of two.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What are the first binary place values?</p>
+<details><summary>Show answer</summary><p>1, 2, 4, and 8.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">Slide 10</div><div class="slide-title"><h2>Binary Numbers with Switches</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-10.jpg" alt="Slide 10: Binary Numbers with Switches"><figcaption class="small-note">Slide 10 — Binary Numbers with Switches</figcaption></figure>
+<section class="reading">
+<p>Now the binary number becomes physical.</p>
+<p>Here we have four switches.<br>The switches have values: 8, 4, 2, and 1.</p>
+<p>If a switch is OFF, it is 0.<br>It adds nothing.<br>If a switch is ON, it is 1.<br>It adds its value.</p>
+<p>Look at the examples.<br>0001 means only the 1 switch is ON.<br>So the value is 1.</p>
+<p>0010 means only the 2 switch is ON.<br>So the value is 2.</p>
+<p>0011 means the 2 switch and the 1 switch are ON.<br>2 plus 1 equals 3.</p>
+<p>This is very important:<br>computer numbers can be shown by many ON/OFF switches.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>How can switches show the number 3?</p>
+<details><summary>Show answer</summary><p>Turn ON the 2s switch and the 1s switch: 0011 = 3.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">Slide 11</div><div class="slide-title"><h2>Simple Binary Addition with Switches</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-11.jpg" alt="Slide 11: Simple Binary Addition with Switches"><figcaption class="small-note">Slide 11 — Simple Binary Addition with Switches</figcaption></figure>
+<section class="reading">
+<p>Now we look at very simple binary addition.</p>
+<p>Example 1 is 1 plus 1.<br>In binary, 1 is written as 01.<br>So we add 01 plus 01.</p>
+<p>In the 1s place, one plus one makes two.<br>But one binary place can only show 0 or 1.<br>So two does not fit in the 1s place.<br>We write 0 in the 1s place and carry 1 to the 2s place.<br>The result is 10.<br>Binary 10 means decimal 2.</p>
+<p>Example 2 is 2 plus 2.<br>In binary, 2 is written as 010.<br>010 plus 010 gives 100.<br>Binary 100 means decimal 4.</p>
+<p>Computers add using 0 and 1.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is 1 + 1 in binary?</p>
+<details><summary>Show answer</summary><p>1 + 1 = 10 in binary. We carry to the next place.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">Slide 12</div><div class="slide-title"><h2>Digital does not mean perfect</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-12.jpg" alt="Slide 12: Digital does not mean perfect"><figcaption class="small-note">Slide 12 — Digital does not mean perfect</figcaption></figure>
+<section class="reading">
+<p>Now we return to real electricity.</p>
+<p>Digital does not mean the signal is perfect.<br>Real voltage can be messy.<br>Wires have resistance.<br>Signals can have noise.<br>Power can be unstable.</p>
+<p>A digital circuit asks a simple question:<br>Is this signal low or high?<br>If it is low, the circuit reads 0.<br>If it is high, the circuit reads 1.</p>
+<p>This is useful for real machines.<br>A computer does not need to measure every tiny difference.<br>It can choose a simple category.</p>
+<p>This is also important for troubleshooting.<br>Bad power, bad cables, heat, or weak signals can still create problems.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does digital mean when the signal is not perfect?</p>
+<details><summary>Show answer</summary><p>The circuit chooses a category: LOW means 0, HIGH means 1.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 2 — Logic from switches</h2>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">Slide 13</div><div class="slide-title"><h2>From one switch to a rule</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-13.jpg" alt="Slide 13: From one switch to a rule"><figcaption class="small-note">Slide 13 — From one switch to a rule</figcaption></figure>
+<section class="reading">
+<p>One switch gives one bit.<br>One bit can be 0 or 1.</p>
+<p>But if we use two switches, we can make a rule.</p>
+<p>For example, a lamp turns ON only when switch A is ON and switch B is ON.<br>If only one switch is ON, the lamp is still OFF.<br>If both switches are ON, the lamp turns ON.</p>
+<p>This is already computer logic.<br>The computer follows a rule exactly.</p>
+<p>This idea is very important for software too.<br>Software also uses exact rules:<br>if this happens, then do that.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What can two switches make?</p>
+<details><summary>Show answer</summary><p>Two switches can make a rule, for example AND logic.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">Slide 14</div><div class="slide-title"><h2>AND logic</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-14.jpg" alt="Slide 14: AND logic"><figcaption class="small-note">Slide 14 — AND logic</figcaption></figure>
+<section class="reading">
+<p>Now we study the first logic rule: AND.</p>
+<p>AND is a strict rule.<br>A and B must both be 1.</p>
+<p>0 AND 0 equals 0.<br>0 AND 1 equals 0.<br>1 AND 0 equals 0.<br>1 AND 1 equals 1.</p>
+<p>Only the last case gives 1.<br>Both inputs must be true.</p>
+<p>A human example:<br>the door opens only if the card is valid AND the door is not locked.<br>If one condition is missing, the door does not open.</p>
+<p>This is the beginning of computer logic.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>When is AND equal to 1?</p>
+<details><summary>Show answer</summary><p>AND is 1 only when both inputs are 1.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">Slide 15</div><div class="slide-title"><h2>OR logic</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-15.jpg" alt="Slide 15: OR logic"><figcaption class="small-note">Slide 15 — OR logic</figcaption></figure>
+<section class="reading">
+<p>The second logic rule is OR.</p>
+<p>OR is more flexible.<br>One true input is enough.</p>
+<p>0 OR 0 equals 0.<br>0 OR 1 equals 1.<br>1 OR 0 equals 1.<br>1 OR 1 equals 1.</p>
+<p>So OR means:<br>if A is 1 or B is 1, the output is 1.</p>
+<p>A hospital example:<br>if the patient has strong pain OR high fever, staff must check the patient.<br>One warning sign is enough.</p>
+<p>OR is not only math.<br>It is a rule for action.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>When is OR equal to 1?</p>
+<details><summary>Show answer</summary><p>OR is 1 when at least one input is 1.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">Slide 16</div><div class="slide-title"><h2>NOT logic</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-16.jpg" alt="Slide 16: NOT logic"><figcaption class="small-note">Slide 16 — NOT logic</figcaption></figure>
+<section class="reading">
+<p>The third logic rule is NOT.</p>
+<p>NOT reverses the signal.<br>NOT 0 becomes 1.<br>NOT 1 becomes 0.</p>
+<p>This is useful when we need the opposite condition.</p>
+<p>A human example:<br>if the test is NOT complete, do not archive the file.</p>
+<p>Computer systems use NOT all the time.<br>Not ready.<br>Not connected.<br>Not allowed.<br>Not found.</p>
+<p>Later, in software, you will see the same idea:<br>if not connected,<br>if not paid,<br>if not found.</p>
+<p>So NOT is a simple but very useful rule.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does NOT do?</p>
+<details><summary>Show answer</summary><p>NOT reverses the signal: NOT 0 = 1, NOT 1 = 0.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">Slide 17</div><div class="slide-title"><h2>Logic gates are physical devices</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-17.jpg" alt="Slide 17: Logic gates are physical devices"><figcaption class="small-note">Slide 17 — Logic gates are physical devices</figcaption></figure>
+<section class="reading">
+<p>Now we must remember something important.<br>Logic is not only an idea in a textbook.</p>
+<p>A logic gate is a physical circuit.<br>It receives electrical inputs.<br>It follows a simple rule.<br>It gives an electrical output.</p>
+<p>Input A and input B are not only letters.<br>They are real voltages in wires.<br>The output is also a real voltage.</p>
+<p>This is where physics becomes computer logic.</p>
+<p>Later, software looks abstract.<br>But at the bottom, there are physical signals.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Are logic gates only ideas?</p>
+<details><summary>Show answer</summary><p>No. A logic gate is a physical circuit that receives electrical inputs and gives an electrical output.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 3 — Relay: electricity controls electricity</h2>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">Slide 18</div><div class="slide-title"><h2>Part 2 — Relay</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-18.jpg" alt="Slide 18: Part 2 — Relay"><figcaption class="small-note">Slide 18 — Part 2 — Relay</figcaption></figure>
+<section class="reading">
+<p>Now we move to the relay.</p>
+<p>A human can press a switch with a finger.<br>But can electricity press a switch?<br>Yes.<br>A relay does this.</p>
+<p>A relay uses electromagnetism.<br>A small current in one circuit creates a magnetic field.<br>The magnetic field moves a metal part.<br>The moving metal part opens or closes another circuit.</p>
+<p>So electricity controls electricity.<br>This is a very important bridge from physics to computer logic.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the relay idea?</p>
+<details><summary>Show answer</summary><p>A small electrical current uses electromagnetism to control another circuit.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">Slide 19</div><div class="slide-title"><h2>Relay physics</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-19.jpg" alt="Slide 19: Relay physics"><figcaption class="small-note">Slide 19 — Relay physics</figcaption></figure>
+<section class="reading">
+<p>Let us follow the relay step by step.</p>
+<p>A relay has a coil of wire.<br>When current flows in the coil, the coil becomes an electromagnet.<br>The electromagnet pulls a metal armature.<br>The armature moves a contact.<br>The contact opens or closes another circuit.</p>
+<p>The chain is:<br>current,<br>magnetic field,<br>force,<br>moving contact,<br>output current.</p>
+<p>This is a perfect example of physics becoming technology.<br>A physical effect becomes a useful device.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What physical chain happens inside a relay?</p>
+<details><summary>Show answer</summary><p>current → magnetic field → force → moving contact → output current.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">Slide 20</div><div class="slide-title"><h2>Relay step by step</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-20.jpg" alt="Slide 20: Relay step by step"><figcaption class="small-note">Slide 20 — Relay step by step</figcaption></figure>
+<section class="reading">
+<p>This slide shows the relay as a machine that switches without a human finger.</p>
+<p>Step 1: input current flows in the coil.<br>Step 2: the coil creates a magnetic field.<br>Step 3: the magnetic field pulls metal.<br>Step 4: the metal contact moves.<br>Step 5: the output circuit closes.<br>Step 6: a lamp, motor, or another circuit turns ON.</p>
+<p>This is control.<br>A small signal controls another circuit.</p>
+<p>This same idea will appear again later in vacuum tubes and transistors.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What moves inside a relay?</p>
+<details><summary>Show answer</summary><p>A metal contact or armature moves when the electromagnet pulls it.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">Slide 21</div><div class="slide-title"><h2>Why relay was revolutionary</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-21.jpg" alt="Slide 21: Why relay was revolutionary"><figcaption class="small-note">Slide 21 — Why relay was revolutionary</figcaption></figure>
+<section class="reading">
+<p>The relay was revolutionary because electricity could control a decision.</p>
+<p>Before this, many machines were mainly mechanical.<br>They used gears, levers, wheels, shafts, and human operation.</p>
+<p>A relay made a new idea practical:<br>one electrical signal can control another electrical signal.</p>
+<p>That means circuits can make decisions automatically.<br>This was one road toward automatic computing.</p>
+<p>But we must be honest.<br>Relay machines worked.<br>They were not just failed machines.<br>The problem was that mechanical switching had limits.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why was relay technology important?</p>
+<details><summary>Show answer</summary><p>It allowed one electrical signal to control another electrical signal automatically.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">Slide 22</div><div class="slide-title"><h2>Relay AND logic</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-22.jpg" alt="Slide 22: Relay AND logic"><figcaption class="small-note">Slide 22 — Relay AND logic</figcaption></figure>
+<section class="reading">
+<p>Now look at relay AND logic.</p>
+<p>Imagine two relay contacts in series.<br>Series means the current must pass through one contact, then the next contact.</p>
+<p>If contact A is open, current cannot pass.<br>If contact B is open, current cannot pass.<br>Only if A and B are both closed, current can pass.</p>
+<p>This is AND logic made from metal contacts.</p>
+<p>So a truth table is not only a classroom symbol.<br>It can be built as a physical circuit.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>How can relays make AND logic?</p>
+<details><summary>Show answer</summary><p>Put two contacts in series. Current passes only when both contacts are closed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">Slide 23</div><div class="slide-title"><h2>Relay OR logic</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-23.jpg" alt="Slide 23: Relay OR logic"><figcaption class="small-note">Slide 23 — Relay OR logic</figcaption></figure>
+<section class="reading">
+<p>Now look at relay OR logic.</p>
+<p>Here we imagine two contacts in parallel.<br>Parallel means there are two possible paths.</p>
+<p>Current can pass through path A.<br>Or current can pass through path B.<br>If either path is closed, the output turns ON.</p>
+<p>This is OR logic made from metal contacts.</p>
+<p>Different wiring gives different logic.<br>In old machines, changing wiring could change what the machine did.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>How can relays make OR logic?</p>
+<details><summary>Show answer</summary><p>Put contacts in parallel. Current can pass through either path.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">Slide 24</div><div class="slide-title"><h2>Historical bridge: relay computers</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-24.jpg" alt="Slide 24: Historical bridge: relay computers"><figcaption class="small-note">Slide 24 — Historical bridge: relay computers</figcaption></figure>
+<section class="reading">
+<p>Now we connect the relay to computer history.</p>
+<p>Relay computers were slow, but they were real computers.<br>They were not a joke.<br>They were not simply machines that failed.<br>They were real steps in the history of computing.</p>
+<p>They used many relays to represent numbers and operations.<br>But they had limits.<br>Relays have mechanical movement.<br>They make noise.<br>They wear out.<br>They are slow compared with electronic switches.<br>They also make machines large.</p>
+<p>So relay computers worked, but engineers needed something faster and smaller.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Were relay computers real computers?</p>
+<details><summary>Show answer</summary><p>Yes. They worked, but mechanical switching made them slow, large, noisy, and less reliable.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">Slide 25</div><div class="slide-title"><h2>Example: Zuse Z3</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-25.jpg" alt="Slide 25: Example: Zuse Z3"><figcaption class="small-note">Slide 25 — Example: Zuse Z3</figcaption></figure>
+<section class="reading">
+<p>Here is one historical example: the Zuse Z3.</p>
+<p>Konrad Zuse built the Z3 in Germany in 1941.<br>It used thousands of relays.<br>It worked with binary arithmetic.<br>It was programmable using punched film.</p>
+<p>For our lecture, the important point is simple:<br>relay plus binary states plus program control was a real step toward modern computers.</p>
+<p>Do not memorize the date as the main point.<br>Remember the technology chain.<br>Physical switches were used to represent numbers and follow instructions.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is important about the Zuse Z3 for this lesson?</p>
+<details><summary>Show answer</summary><p>It used relays and binary arithmetic, showing a real step toward modern computers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">Slide 26</div><div class="slide-title"><h2>Example: Harvard Mark I</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-26.jpg" alt="Slide 26: Example: Harvard Mark I"><figcaption class="small-note">Slide 26 — Example: Harvard Mark I</figcaption></figure>
+<section class="reading">
+<p>Another famous electromechanical machine was the Harvard Mark I, also called the IBM ASCC.</p>
+<p>It was very large.<br>It used switches, relays, counters, rotating parts, and long wiring.<br>It could run long calculations automatically.</p>
+<p>This shows an important pattern in technology.<br>Engineers use the best physical devices they have.<br>Then they find the weak parts.<br>Then they improve the technology.</p>
+<p>Early computers were not small apps on a screen.<br>They were room-sized physical systems.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What should students remember from Harvard Mark I?</p>
+<details><summary>Show answer</summary><p>Early computers were large physical machines that automated long calculations.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">Slide 27</div><div class="slide-title"><h2>The relay problem</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-27.jpg" alt="Slide 27: The relay problem"><figcaption class="small-note">Slide 27 — The relay problem</figcaption></figure>
+<section class="reading">
+<p>The relay problem is mechanical movement.</p>
+<p>A relay must move metal.<br>Moving metal takes time.<br>Moving parts can wear out.<br>Contacts can become dirty or damaged.<br>The machine makes sound and heat.</p>
+<p>So engineers asked a new question:<br>Can we control current without moving parts?</p>
+<p>This question leads naturally to vacuum tubes.<br>If movement is slow, remove movement.<br>That is a common engineering idea.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What was the main problem with relays?</p>
+<details><summary>Show answer</summary><p>Relays had moving metal parts. Movement is slow and parts wear out.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">Slide 28</div><div class="slide-title"><h2>Relay vs Vacuum Tube vs Transistor</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-28.jpg" alt="Slide 28: Relay vs Vacuum Tube vs Transistor"><figcaption class="small-note">Slide 28 — Relay vs Vacuum Tube vs Transistor</figcaption></figure>
+<section class="reading">
+<p>This large comparison slide is very important.</p>
+<p>Look from left to right.<br>The relay is an electromechanical switch.<br>It uses magnetism to move metal contacts.<br>It is useful, but slow and mechanical.</p>
+<p>The vacuum tube is an electronic switch.<br>It controls electron flow inside a glass tube.<br>It is faster because it does not move a metal contact.<br>But it is large, hot, fragile, and uses a lot of power.</p>
+<p>The transistor is also an electronic switch.<br>It controls current in a semiconductor.<br>It is small, fast, reliable, and has no moving parts.</p>
+<p>This is the big development path:<br>same job, better physical method.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why do we move from relays to vacuum tubes?</p>
+<details><summary>Show answer</summary><p>To control current faster without slow mechanical motion.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 4 — Vacuum tubes: faster electronic switching</h2>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">Slide 29</div><div class="slide-title"><h2>Part 3 — Vacuum tubes</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-29.jpg" alt="Slide 29: Part 3 — Vacuum tubes"><figcaption class="small-note">Slide 29 — Part 3 — Vacuum tubes</figcaption></figure>
+<section class="reading">
+<p>Now we study vacuum tubes.</p>
+<p>A vacuum tube controls electrons inside a sealed glass tube.<br>It can work like a switch or an amplifier.<br>It has no moving relay contact.<br>So it can switch faster than a relay.</p>
+<p>But vacuum tubes also have problems.<br>They are large.<br>They become hot.<br>They are fragile.<br>They use a lot of power.</p>
+<p>For this lecture, you do not need every electrode name.<br>The key idea is this:<br>electrons move in vacuum, and an electric field controls their flow.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does a vacuum tube control?</p>
+<details><summary>Show answer</summary><p>It controls the flow of electrons inside a sealed tube.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">Slide 30</div><div class="slide-title"><h2>Vacuum tube physics</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-30.jpg" alt="Slide 30: Vacuum tube physics"><figcaption class="small-note">Slide 30 — Vacuum tube physics</figcaption></figure>
+<section class="reading">
+<p>Inside a vacuum tube, electrons can travel through empty space.</p>
+<p>A hot cathode can release electrons.<br>An anode can attract electrons.<br>A control grid can change the flow of electrons.</p>
+<p>A small change in the control grid can make a large change in current.<br>That means the tube can control electricity.</p>
+<p>Again, we see the same idea:<br>a small control signal changes a larger electrical output.</p>
+<p>This is why vacuum tubes were useful for early electronic computers.<br>They made faster switching possible.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What part can control electron flow in a vacuum tube?</p>
+<details><summary>Show answer</summary><p>The control grid can change the flow of electrons.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">Slide 31</div><div class="slide-title"><h2>Electronic computers</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-31.jpg" alt="Slide 31: Electronic computers"><figcaption class="small-note">Slide 31 — Electronic computers</figcaption></figure>
+<section class="reading">
+<p>When switches became electronic, computers became much faster.</p>
+<p>Electronic switching removed the slow mechanical contact.<br>The machine did not need to wait for metal parts to move.<br>This allowed more operations per second.</p>
+<p>But early electronic computers were still huge.<br>They used many vacuum tubes.<br>They used a lot of power.<br>They produced a lot of heat.<br>They needed maintenance and cooling.</p>
+<p>This connects to real IT work.<br>Large systems always need power, cooling, and safe operation.<br>Computers are still physical machines.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why were electronic computers faster?</p>
+<details><summary>Show answer</summary><p>Electronic switching removed slow mechanical contacts.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">Slide 32</div><div class="slide-title"><h2>Example: ENIAC</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-32.jpg" alt="Slide 32: Example: ENIAC"><figcaption class="small-note">Slide 32 — Example: ENIAC</figcaption></figure>
+<section class="reading">
+<p>ENIAC is a famous early electronic computer.</p>
+<p>It was built in the 1940s in the United States.<br>It used many vacuum tubes.<br>It was much faster than electromechanical machines.</p>
+<p>But it was also huge.<br>It was hot.<br>It was difficult to maintain.</p>
+<p>The lesson is important:<br>better physics gave better computing,<br>but it also created new engineering problems.</p>
+<p>Progress does not mean all problems disappear.<br>Often, progress changes the problems.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What was the big lesson from ENIAC?</p>
+<details><summary>Show answer</summary><p>Faster switching improved computing, but huge size, heat, power, and maintenance became problems.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">Slide 33</div><div class="slide-title"><h2>Technology development pattern</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-33.jpg" alt="Slide 33: Technology development pattern"><figcaption class="small-note">Slide 33 — Technology development pattern</figcaption></figure>
+<section class="reading">
+<p>This slide shows the development pattern.</p>
+<p>The relay solved automatic electrical control.<br>But relays were slow and mechanical.</p>
+<p>The vacuum tube solved fast electronic switching.<br>But vacuum tubes were big, hot, and fragile.</p>
+<p>So the next question became:<br>Can we make an electronic switch that is small, cool, and reliable?</p>
+<p>This is how technology develops.<br>Engineers solve one problem.<br>Then they see the next problem.<br>Then they build a better physical device.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What pattern appears in technology development?</p>
+<details><summary>Show answer</summary><p>Each solution solves one problem but creates the next engineering problem.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 5 — Transistors and integrated circuits</h2>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">Slide 34</div><div class="slide-title"><h2>Part 4 — Transistor</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-34.jpg" alt="Slide 34: Part 4 — Transistor"><figcaption class="small-note">Slide 34 — Part 4 — Transistor</figcaption></figure>
+<section class="reading">
+<p>Now we reach the transistor.</p>
+<p>A transistor is a tiny electronic switch.<br>It can control current in a semiconductor.<br>It can work as a switch.</p>
+<p>OFF means current is blocked.<br>We can read this as 0.<br>ON means current is allowed.<br>We can read this as 1.</p>
+<p>The transistor has no moving parts.<br>It is small, fast, and reliable compared with relays and vacuum tubes.</p>
+<p>This changed computers completely.<br>Modern CPUs, RAM, SSD controllers, and many other parts use transistors.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the transistor in this lecture?</p>
+<details><summary>Show answer</summary><p>A tiny electronic switch that controls current in a semiconductor.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">Slide 35</div><div class="slide-title"><h2>Transistor physics, simplified</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-35.jpg" alt="Slide 35: Transistor physics, simplified"><figcaption class="small-note">Slide 35 — Transistor physics, simplified</figcaption></figure>
+<section class="reading">
+<p>Now the physics, in simple words.</p>
+<p>A semiconductor is not a perfect conductor.<br>It is also not a perfect insulator.<br>It is in between.</p>
+<p>Its ability to conduct can be controlled.<br>A small signal can allow or block a larger current path.<br>That is why a transistor can work as a switch.</p>
+<p>This is the same big idea again:<br>small control signal leads to larger controlled current.</p>
+<p>We do not need deep band theory here.<br>The important point is control.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why can a transistor work as a switch?</p>
+<details><summary>Show answer</summary><p>A small signal can allow or block current through a semiconductor path.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">Slide 36</div><div class="slide-title"><h2>Transistor as a Tiny Electronic Switch</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-36.jpg" alt="Slide 36: Transistor as a Tiny Electronic Switch"><figcaption class="small-note">Slide 36 — Transistor as a Tiny Electronic Switch</figcaption></figure>
+<section class="reading">
+<p>This large diagram shows the transistor as a switch.</p>
+<p>Look at the left side.<br>There is a physical transistor device.<br>It has terminals.<br>A signal can control whether current passes or not.</p>
+<p>Look at the middle and right side.<br>The transistor can be OFF or ON.<br>OFF means current does not pass.<br>ON means current can pass.</p>
+<p>This is why the transistor is so important.<br>It does the same job as a switch, but it is tiny and electronic.</p>
+<p>A modern computer does not have one transistor.<br>It has billions of transistors working together.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the main comparison on this slide?</p>
+<details><summary>Show answer</summary><p>Relay, vacuum tube, and transistor do the same basic job, but with different physical mechanisms.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">Slide 37</div><div class="slide-title"><h2>Historical note: transistor invention</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-37.jpg" alt="Slide 37: Historical note: transistor invention"><figcaption class="small-note">Slide 37 — Historical note: transistor invention</figcaption></figure>
+<section class="reading">
+<p>The transistor was demonstrated at Bell Labs in 1947.</p>
+<p>The important idea was not only that the part was smaller.<br>It was a new physical method for controlling current.</p>
+<p>Transistors replaced many vacuum tubes because they could be smaller, cooler, and more reliable.</p>
+<p>Do not worry about memorizing the names today.<br>Remember the technological meaning.<br>A transistor made electronic switching practical on a much smaller scale.</p>
+<p>This is one of the key inventions behind modern computers.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why was the transistor important?</p>
+<details><summary>Show answer</summary><p>It gave a smaller, cooler, more reliable way to control current.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">Slide 38</div><div class="slide-title"><h2>From transistor to integrated circuit</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-38.jpg" alt="Slide 38: From transistor to integrated circuit"><figcaption class="small-note">Slide 38 — From transistor to integrated circuit</figcaption></figure>
+<section class="reading">
+<p>One transistor is useful.<br>But one transistor is not enough for a computer.</p>
+<p>Many transistors can build logic gates.<br>Many logic gates can build registers, counters, adders, and control circuits.</p>
+<p>The next great step was the integrated circuit.<br>An integrated circuit means many electronic components made together on one small piece of semiconductor material.</p>
+<p>This made computers smaller.<br>It made them faster.<br>It made them cheaper.<br>It made them more powerful.</p>
+<p>A chip is not magic.<br>It is many tiny devices built together.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is an integrated circuit?</p>
+<details><summary>Show answer</summary><p>Many electronic components made together on one small piece of semiconductor material.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">Slide 39</div><div class="slide-title"><h2>From Transistor to Integrated Circuit — large diagram</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-39.jpg" alt="Slide 39: From Transistor to Integrated Circuit — large diagram"><figcaption class="small-note">Slide 39 — From Transistor to Integrated Circuit — large diagram</figcaption></figure>
+<section class="reading">
+<p>This slide shows the miniaturization story very clearly.</p>
+<p>First, we have one transistor.<br>One transistor can act like one electronic switch.</p>
+<p>Then we put many transistors together on a chip.<br>Many transistors can make logic circuits.</p>
+<p>Finally, we get an integrated circuit.<br>That means many components and connections are made together in one small piece.</p>
+<p>This changed the world because it reduced size, cost, wiring problems, and power use.</p>
+<p>Modern computers are possible because engineers learned how to put huge numbers of tiny switches on chips.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is inside a chip?</p>
+<details><summary>Show answer</summary><p>Many tiny transistors, wires, and logic circuits built together.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">Slide 40</div><div class="slide-title"><h2>Historical note: integrated circuit</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-40.jpg" alt="Slide 40: Historical note: integrated circuit"><figcaption class="small-note">Slide 40 — Historical note: integrated circuit</figcaption></figure>
+<section class="reading">
+<p>In the late 1950s, engineers demonstrated working integrated circuits.</p>
+<p>The big idea was simple but powerful:<br>do not wire every part separately.<br>Make many parts together in one small solid piece.</p>
+<p>This reduced size.<br>It reduced wiring problems.<br>It reduced cost.<br>It helped reduce power use.</p>
+<p>Modern CPUs, RAM chips, controllers, and many other computer parts come from this road.</p>
+<p>Again, the story is physics plus engineering.<br>The physical device becomes smaller and more integrated.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why was the integrated circuit important?</p>
+<details><summary>Show answer</summary><p>It reduced size, wiring problems, cost, and power use.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">Slide 41</div><div class="slide-title"><h2>Inside a Microchip — Many Tiny Circuits</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-41.jpg" alt="Slide 41: Inside a Microchip — Many Tiny Circuits"><figcaption class="small-note">Slide 41 — Inside a Microchip — Many Tiny Circuits</figcaption></figure>
+<section class="reading">
+<p>This large slide shows what is inside a chip in a simplified way.</p>
+<p>A chip is a small object from the outside.<br>But inside it are many tiny circuits.<br>There are transistors.<br>There are logic gates.<br>There are wires called interconnects.<br>There may be memory blocks and control circuits.</p>
+<p>The important idea is this:<br>a chip is not one simple part inside.<br>It is a city of tiny electronic parts.</p>
+<p>Signals move through this city very quickly.<br>The computer uses these tiny circuits to process data and follow instructions.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>How does a CPU use transistors?</p>
+<details><summary>Show answer</summary><p>A CPU uses huge numbers of tiny switches to process 0s and 1s.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">Slide 42</div><div class="slide-title"><h2>Main history chain</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-42.jpg" alt="Slide 42: Main history chain"><figcaption class="small-note">Slide 42 — Main history chain</figcaption></figure>
+<section class="reading">
+<p>Now we summarize the history chain.</p>
+<p>A mechanical switch uses human or mechanical motion to control a circuit.<br>A relay uses an electromagnet to move a contact.<br>A vacuum tube uses an electric field to control electrons in vacuum.<br>A transistor uses a semiconductor to control current.<br>An integrated circuit puts many tiny controlled switches in one chip.</p>
+<p>The physical method changes.<br>But the main computing need stays similar:<br>control current to represent and process information.</p>
+<p>This is the central idea of the lecture.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the main history chain?</p>
+<details><summary>Show answer</summary><p>mechanical switch → relay → vacuum tube → transistor → integrated circuit.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">Slide 43</div><div class="slide-title"><h2>From Switches to Computer Memory — large summary</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-43.jpg" alt="Slide 43: From Switches to Computer Memory — large summary"><figcaption class="small-note">Slide 43 — From Switches to Computer Memory — large summary</figcaption></figure>
+<section class="reading">
+<p>This slide is a visual summary of the whole technology chain.</p>
+<p>Look from left to right.<br>First there is a relay.<br>It is a mechanical electrical switch.<br>Then there is a vacuum tube.<br>It is an electronic switch using electrons in vacuum.<br>Then there is a transistor.<br>It is a tiny switch using semiconductor physics.<br>Then there is a microchip.<br>It contains many tiny circuits.</p>
+<p>At the bottom, the main chain is also shown:<br>electricity, switch, 0 and 1, logic, memory, storage, computer system.</p>
+<p>This is the story of how simple physical control becomes modern computing.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What do motherboard signal paths do?</p>
+<details><summary>Show answer</summary><p>They connect parts and carry electrical data between CPU, RAM, storage, ports, and other devices.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 6 — Memory: storing 0 and 1</h2>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">Slide 44</div><div class="slide-title"><h2>Part 5 — Calculation is not enough</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-44.jpg" alt="Slide 44: Part 5 — Calculation is not enough"><figcaption class="small-note">Slide 44 — Part 5 — Calculation is not enough</figcaption></figure>
+<section class="reading">
+<p>Now we move from calculation to memory.</p>
+<p>Logic can calculate.<br>But a useful computer must also remember.</p>
+<p>It must remember numbers for calculation.<br>It must remember instructions of a program.<br>It must remember letters and symbols.<br>It must remember images and sound.</p>
+<p>If a computer could only calculate but not keep information, it would not be useful.</p>
+<p>So now we ask a new question:<br>How can a computer store a 0 or a 1?</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why is calculation not enough?</p>
+<details><summary>Show answer</summary><p>A useful computer must also remember instructions, numbers, text, images, and sound.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">Slide 45</div><div class="slide-title"><h2>Memory as physical state</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-45.jpg" alt="Slide 45: Memory as physical state"><figcaption class="small-note">Slide 45 — Memory as physical state</figcaption></figure>
+<section class="reading">
+<p>Remembering means keeping a physical state for later.</p>
+<p>A computer bit must be stored physically.<br>Different technologies can store a bit in different ways.</p>
+<p>Some memory stores charge or no charge.<br>Some storage uses magnetic direction.<br>Some storage traps electrons.<br>Some circuits keep a state using feedback.</p>
+<p>Today we focus on one important idea:<br>charged capacitor equals 1,<br>not charged capacitor equals 0.</p>
+<p>But be careful.<br>Not all memory is only a capacitor.<br>DRAM uses capacitors.<br>SSD stores data differently.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does it mean to store a bit physically?</p>
+<details><summary>Show answer</summary><p>A bit must be kept as a physical state, such as charge/no charge or magnetic direction.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">Slide 46</div><div class="slide-title"><h2>Capacitor Stores Charge — large diagram</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-46.jpg" alt="Slide 46: Capacitor Stores Charge — large diagram"><figcaption class="small-note">Slide 46 — Capacitor Stores Charge — large diagram</figcaption></figure>
+<section class="reading">
+<p>This slide shows the basic idea of a capacitor.</p>
+<p>A capacitor usually has two conductive plates.<br>Between the plates there is an insulator.<br>The insulator does not let current pass directly through.</p>
+<p>When voltage is applied, charge builds up on the plates.<br>The capacitor stores electrical charge.</p>
+<p>For a simple memory idea, we can say:<br>charged means 1,<br>empty or not charged means 0.</p>
+<p>This is very useful because a computer can read a physical state as information.<br>Again, physics becomes data.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>How can a capacitor show 1 or 0?</p>
+<details><summary>Show answer</summary><p>Charged capacitor = 1. Not charged capacitor = 0.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">Slide 47</div><div class="slide-title"><h2>Capacitor: the needed physics</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-47.jpg" alt="Slide 47: Capacitor: the needed physics"><figcaption class="small-note">Slide 47 — Capacitor: the needed physics</figcaption></figure>
+<section class="reading">
+<p>Now we explain why the capacitor belongs here.</p>
+<p>A capacitor is not random physics.<br>It solves the memory problem.</p>
+<p>A capacitor has two conductive plates separated by an insulator.<br>When voltage is applied, charge can build up on the plates.<br>The capacitor stores electrical energy in an electric field.</p>
+<p>The simple memory idea is:<br>charged capacitor equals 1,<br>not charged capacitor equals 0.</p>
+<p>This gives us a physical way to store a bit.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does a capacitor store?</p>
+<details><summary>Show answer</summary><p>It stores electric charge and energy in an electric field.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">Slide 48</div><div class="slide-title"><h2>Capacitance formula</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-48.jpg" alt="Slide 48: Capacitance formula"><figcaption class="small-note">Slide 48 — Capacitance formula</figcaption></figure>
+<section class="reading">
+<p>This formula is optional, but useful.</p>
+<p>Capacitance tells how much charge a capacitor can store for a given voltage.<br>The formula is:<br>C equals Q divided by V.</p>
+<p>C means capacitance.<br>Q means stored charge.<br>V means voltage.</p>
+<p>A bigger capacitance means the capacitor can store more charge at the same voltage.</p>
+<p>For this lecture, the concept is more important than calculation.<br>Please remember the main idea:<br>a capacitor stores charge,<br>and capacitance is its storage ability.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does C = Q / V describe?</p>
+<details><summary>Show answer</summary><p>Capacitance: how much charge a capacitor stores for a given voltage.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">Slide 49</div><div class="slide-title"><h2>Capacitor is not a battery</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-49.jpg" alt="Slide 49: Capacitor is not a battery"><figcaption class="small-note">Slide 49 — Capacitor is not a battery</figcaption></figure>
+<section class="reading">
+<p>A capacitor can store charge quickly.<br>It can also release charge quickly.</p>
+<p>But a capacitor usually stores much less energy than a battery.<br>So it is not the same as a laptop battery or a phone battery.</p>
+<p>A battery stores chemical energy.<br>It can power a device for a longer time.</p>
+<p>A capacitor stores electrical charge.<br>It is useful for fast charge and discharge.</p>
+<p>In computers, capacitors help with memory, filtering, timing, and stable power.</p>
+<p>So capacitor is storage, but it is not the same kind of storage as a battery.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Is a capacitor the same as a battery?</p>
+<details><summary>Show answer</summary><p>No. A capacitor stores and releases charge quickly, but it usually stores much less energy than a battery.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">Slide 50</div><div class="slide-title"><h2>DRAM: memory from tiny capacitors</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-50.jpg" alt="Slide 50: DRAM: memory from tiny capacitors"><figcaption class="small-note">Slide 50 — DRAM: memory from tiny capacitors</figcaption></figure>
+<section class="reading">
+<p>Now we connect capacitors to real computer memory.</p>
+<p>DRAM means Dynamic Random Access Memory.<br>Modern DRAM memory cells are based on a tiny capacitor and a transistor.</p>
+<p>The capacitor stores charge.<br>The transistor helps read or write the bit.</p>
+<p>Charged means 1.<br>Not charged means 0.</p>
+<p>This is a direct link between physics and computer memory.<br>The computer is not remembering by magic.<br>It is maintaining physical states in tiny electronic cells.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does DRAM mean?</p>
+<details><summary>Show answer</summary><p>Dynamic Random Access Memory.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">Slide 51</div><div class="slide-title"><h2>Why DRAM is dynamic</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-51.jpg" alt="Slide 51: Why DRAM is dynamic"><figcaption class="small-note">Slide 51 — Why DRAM is dynamic</figcaption></figure>
+<section class="reading">
+<p>DRAM is called dynamic because the stored charge does not stay forever.</p>
+<p>A capacitor slowly leaks charge.<br>If the computer does nothing, the stored 1 can become unclear or lost.</p>
+<p>So DRAM must refresh memory again and again.<br>Refresh means:<br>read the stored state,<br>and write it again before it disappears.</p>
+<p>This is a very important idea.<br>Memory is not magic.<br>It is maintenance of physical states.</p>
+<p>If power is gone, normal RAM loses data.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why must DRAM refresh?</p>
+<details><summary>Show answer</summary><p>Because charge slowly leaks away from the tiny capacitors.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">Slide 52</div><div class="slide-title"><h2>RAM needs power</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-52.jpg" alt="Slide 52: RAM needs power"><figcaption class="small-note">Slide 52 — RAM needs power</figcaption></figure>
+<section class="reading">
+<p>RAM is fast working memory.</p>
+<p>The CPU uses RAM while the computer is working.<br>Open programs use RAM.<br>Temporary data uses RAM.</p>
+<p>But normal RAM needs power.<br>When power is off, the data in RAM is lost.</p>
+<p>This is why unsaved work can disappear after shutdown, crash, or power failure.</p>
+<p>So remember:<br>RAM is fast,<br>RAM is useful for work right now,<br>but RAM is temporary.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What happens to normal RAM when power is off?</p>
+<details><summary>Show answer</summary><p>The data in RAM is lost.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">Slide 53</div><div class="slide-title"><h2>SSD is different</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-53.jpg" alt="Slide 53: SSD is different"><figcaption class="small-note">Slide 53 — SSD is different</figcaption></figure>
+<section class="reading">
+<p>SSD means Solid State Drive.</p>
+<p>An SSD stores files and programs for later.<br>It keeps data when the power is off.</p>
+<p>SSD is not the same as RAM.<br>RAM is fast working memory.<br>It is temporary and needs power.</p>
+<p>SSD is long-term storage.<br>It keeps files, Windows, programs, photos, and documents.<br>It is slower than RAM, but it is persistent.<br>Persistent means the data stays after power is off.</p>
+<p>This difference is very important for computer support work.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does SSD mean?</p>
+<details><summary>Show answer</summary><p>Solid State Drive.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-54">
+<div class="slide-head"><div class="badge">Slide 54</div><div class="slide-title"><h2>SSD Keeps Data Without Power — large diagram</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-54.jpg" alt="Slide 54: SSD Keeps Data Without Power — large diagram"><figcaption class="small-note">Slide 54 — SSD Keeps Data Without Power — large diagram</figcaption></figure>
+<section class="reading">
+<p>This slide shows SSD storage in a visual way.</p>
+<p>An SSD uses flash memory.<br>Flash memory can keep data even when power is off.</p>
+<p>This is why your files are still there after shutdown.<br>Your photos, documents, and operating system are stored in long-term storage.</p>
+<p>Compare this with RAM.<br>RAM loses data when power is off.<br>SSD keeps data when power is off.</p>
+<p>So do not confuse working memory and storage.<br>RAM is like a work table.<br>SSD is like a cabinet or long-term memory.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>How is SSD different from RAM?</p>
+<details><summary>Show answer</summary><p>SSD keeps files without power. RAM is faster working memory but needs power.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-55">
+<div class="slide-head"><div class="badge">Slide 55</div><div class="slide-title"><h2>CPU, RAM, SSD: three roles</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-55.jpg" alt="Slide 55: CPU, RAM, SSD: three roles"><figcaption class="small-note">Slide 55 — CPU, RAM, SSD: three roles</figcaption></figure>
+<section class="reading">
+<p>Now we compare three important roles.</p>
+<p>CPU calculates and controls.<br>RAM holds data while the computer is working.<br>SSD keeps files and programs when the computer is off.</p>
+<p>Imagine you open a hospital information system.<br>The program files come from the SSD.<br>The working patient data is held in RAM.<br>The CPU follows instructions and processes the data.</p>
+<p>All three are needed.<br>If one part has a problem, the computer may become slow, unstable, or unable to start.</p>
+<p>Do not mix these roles.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What are the three roles of CPU, RAM, and SSD?</p>
+<details><summary>Show answer</summary><p>CPU calculates and controls, RAM holds working data, SSD keeps files long term.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 7 — From hardware to software and troubleshooting</h2>
+<article class="slide-card" id="slide-56">
+<div class="slide-head"><div class="badge">Slide 56</div><div class="slide-title"><h2>Part 6 — From hardware to software</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-56.jpg" alt="Slide 56: Part 6 — From hardware to software"><figcaption class="small-note">Slide 56 — Part 6 — From hardware to software</figcaption></figure>
+<section class="reading">
+<p>Now we connect hardware to software.</p>
+<p>Software looks like buttons, menus, forms, and screens.<br>But under the screen there are instructions.<br>Instructions are processed by logic circuits.<br>Logic circuits are built from physical switches.</p>
+<p>So when we learn computer logic, we learn how software can follow exact rules.</p>
+<p>This helps us understand errors, settings, and troubleshooting.<br>It is not only for engineers.<br>It is useful for people who work with computer systems every day.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why does hardware logic matter for software users?</p>
+<details><summary>Show answer</summary><p>Software follows instructions that are processed by physical logic circuits.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-57">
+<div class="slide-head"><div class="badge">Slide 57</div><div class="slide-title"><h2>Thinking like a computer</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-57.jpg" alt="Slide 57: Thinking like a computer"><figcaption class="small-note">Slide 57 — Thinking like a computer</figcaption></figure>
+<section class="reading">
+<p>A computer does not guess like a human.<br>It follows exact rules.</p>
+<p>Important computer thinking includes states:<br>0 or 1,<br>ON or OFF,<br>connected or not connected.</p>
+<p>It also includes conditions:<br>IF this, THEN that.</p>
+<p>It includes sequence:<br>step 1,<br>step 2,<br>step 3.</p>
+<p>It includes memory:<br>keep data,<br>or lose data.</p>
+<p>This connects to our previous algorithm and flowchart lessons.<br>Computer logic is not only electronics.<br>It is also a way of thinking for support work.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does &#x27;thinking like a computer&#x27; mean?</p>
+<details><summary>Show answer</summary><p>Use exact states, conditions, sequence, and memory.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-58">
+<div class="slide-head"><div class="badge">Slide 58</div><div class="slide-title"><h2>Troubleshooting Chain — large diagram</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-58.jpg" alt="Slide 58: Troubleshooting Chain — large diagram"><figcaption class="small-note">Slide 58 — Troubleshooting Chain — large diagram</figcaption></figure>
+<section class="reading">
+<p>This slide shows a practical troubleshooting chain.</p>
+<p>When a computer does not work, do not guess first.<br>Check step by step.</p>
+<p>First, check power.<br>Is it plugged in?<br>Is the battery charged?</p>
+<p>Then check hardware.<br>Are the parts connected?<br>Is anything broken?</p>
+<p>Then check the operating system.<br>Does it start?<br>Are there error messages?</p>
+<p>Then check software.<br>Does the program work?<br>Does it need reinstalling or updating?</p>
+<p>Then check the network.<br>Is the internet or hospital network working?</p>
+<p>Good support means finding the broken link in the chain.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why is troubleshooting a chain?</p>
+<details><summary>Show answer</summary><p>A problem usually appears where one link fails: power, hardware, OS, software, network, or user action.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-59">
+<div class="slide-head"><div class="badge">Slide 59</div><div class="slide-title"><h2>Troubleshooting view</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-59.jpg" alt="Slide 59: Troubleshooting view"><figcaption class="small-note">Slide 59 — Troubleshooting view</figcaption></figure>
+<section class="reading">
+<p>Every computer problem is a broken chain somewhere.</p>
+<p>If a computer does not work, do not guess first.<br>Find the chain.</p>
+<p>Power leads to the motherboard.<br>The motherboard connects CPU, RAM, and SSD.<br>The operating system loads.<br>Software runs.<br>The network connects.<br>The user performs an action.</p>
+<p>A broken cable is physical.<br>Bad RAM is a memory hardware problem.<br>A wrong setting is software logic.<br>No network is a communication problem.</p>
+<p>Good IT support finds the weak link step by step.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What should IT support do first?</p>
+<details><summary>Show answer</summary><p>Find the weak link step by step; do not guess first.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-60">
+<div class="slide-head"><div class="badge">Slide 60</div><div class="slide-title"><h2>Practical lesson preview</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-60.jpg" alt="Slide 60: Practical lesson preview"><figcaption class="small-note">Slide 60 — Practical lesson preview</figcaption></figure>
+<section class="reading">
+<p>Next time, we will look inside a real laptop.</p>
+<p>We will not study only one exact laptop model.<br>We will use one old laptop as an example of how computers are built.</p>
+<p>We will identify the main parts:<br>power input or battery,<br>motherboard,<br>CPU and cooling system,<br>RAM,<br>SSD or HDD,<br>ports and cables,<br>fan and airflow.</p>
+<p>Then we will connect each part to today’s logic.<br>The goal is not only to open a laptop.<br>The goal is to understand what each part does.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What real lesson comes next?</p>
+<details><summary>Show answer</summary><p>Opening a laptop and identifying battery, motherboard, CPU/cooling, RAM, SSD, ports, cables, and airflow.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Activities and review</h2>
+<article class="slide-card activity" id="slide-61">
+<div class="slide-head"><div class="badge">Slide 61</div><div class="slide-title"><h2>Class / online activity 1</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-61.jpg" alt="Slide 61: Class / online activity 1"><figcaption class="small-note">Slide 61 — Class / online activity 1</figcaption></figure>
+<section class="reading">
+<p>Now we can check the basic ideas.</p>
+<p>Task A:<br>Write the state.<br>Switch open equals what?<br>Switch closed equals what?</p>
+<p>Task B:<br>Complete AND.<br>0 AND 0 equals what?<br>0 AND 1 equals what?<br>1 AND 0 equals what?<br>1 AND 1 equals what?</p>
+<p>Task C:<br>Complete OR and NOT.</p>
+<p>Students can answer in chat, in a notebook, or on a worksheet.<br>Short answers are enough.<br>The goal is understanding, not perfect English.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What should you practice here?</p>
+<details><summary>Show answer</summary><p>Switch states, AND, OR, and NOT truth tables.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card activity" id="slide-62">
+<div class="slide-head"><div class="badge">Slide 62</div><div class="slide-title"><h2>Class / online activity 2</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-62.jpg" alt="Slide 62: Class / online activity 2"><figcaption class="small-note">Slide 62 — Class / online activity 2</figcaption></figure>
+<section class="reading">
+<p>Now choose one device.<br>You can choose relay, vacuum tube, transistor, capacitor, RAM, or SSD.</p>
+<p>Fill the table.<br>What is the input?<br>What physical process happens?<br>What is the output?<br>Why is it useful for computers?</p>
+<p>Example:<br>Relay.<br>Input: small current.<br>Physical process: electromagnet moves a contact.<br>Output: another circuit turns ON.<br>Useful because electricity can control electricity.</p>
+<p>This activity uses the same method again:<br>input, physical process, output.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What table helps us understand a device?</p>
+<details><summary>Show answer</summary><p>Input, physical process, output, and why it is useful.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card activity" id="slide-63">
+<div class="slide-head"><div class="badge">Slide 63</div><div class="slide-title"><h2>Mini quiz</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-63.jpg" alt="Slide 63: Mini quiz"><figcaption class="small-note">Slide 63 — Mini quiz</figcaption></figure>
+<section class="reading">
+<p>Now we do a short review.</p>
+<p>Question 1:<br>What are the two states of a switch?</p>
+<p>Question 2:<br>What number can mean OFF?</p>
+<p>Question 3:<br>What number can mean ON?</p>
+<p>Question 4:<br>What device uses electromagnetism to move a contact?</p>
+<p>Question 5:<br>Why were relays too slow for later computers?</p>
+<p>Question 6:<br>What did vacuum tubes control?</p>
+<p>Question 7:<br>What replaced many vacuum tubes?</p>
+<p>Try to answer with short words first.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the quiz checking?</p>
+<details><summary>Show answer</summary><p>The full chain: switches, logic, relay, tubes, transistor, capacitor, RAM, and SSD.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card activity" id="slide-64">
+<div class="slide-head"><div class="badge">Slide 64</div><div class="slide-title"><h2>Mini quiz answers</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-64.jpg" alt="Slide 64: Mini quiz answers"><figcaption class="small-note">Slide 64 — Mini quiz answers</figcaption></figure>
+<section class="reading">
+<p>Now let us check the answers.</p>
+<p>1. The two states are OFF and ON.<br>2. OFF can mean 0.<br>3. ON can mean 1.<br>4. A relay uses electromagnetism to move a contact.<br>5. Relays were slow because they moved metal parts. Moving parts take time and wear out.<br>6. Vacuum tubes controlled electron flow.<br>7. Transistors replaced many vacuum tubes.</p>
+<p>Extra answers:<br>A capacitor stores charge.<br>DRAM refreshes because charge leaks away.<br>RAM is fast working memory and needs power.<br>SSD keeps files without power.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why should answers be short?</p>
+<details><summary>Show answer</summary><p>The goal is recall of the main chain, not perfect English.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card activity" id="slide-65">
+<div class="slide-head"><div class="badge">Slide 65</div><div class="slide-title"><h2>Final summary</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-65.jpg" alt="Slide 65: Final summary"><figcaption class="small-note">Slide 65 — Final summary</figcaption></figure>
+<section class="reading">
+<p>Let us finish with the main chains.</p>
+<p>The first chain is:<br>electricity,<br>switch,<br>0 and 1,<br>logic,<br>memory,<br>computer.</p>
+<p>The technology chain is:<br>relay,<br>vacuum tube,<br>transistor,<br>integrated circuit.</p>
+<p>The memory chain is:<br>charge,<br>capacitor,<br>bit,<br>RAM.</p>
+<p>The big idea is this:<br>computers are built from physical devices that control electrical states.</p>
+<p>So when we study computer hardware, we are still studying physics.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the final big idea?</p>
+<details><summary>Show answer</summary><p>Computers are built from physical devices that control electrical states.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card activity" id="slide-66">
+<div class="slide-head"><div class="badge">Slide 66</div><div class="slide-title"><h2>Source notes</h2><p>Read the picture first. Then read the explanation below.</p></div></div>
+<figure class="slide-image"><img src="assets/slides/slide-66.jpg" alt="Slide 66: Source notes"><figcaption class="small-note">Slide 66 — Source notes</figcaption></figure>
+<section class="reading">
+<p>This slide is for source transparency.</p>
+<p>The Zuse Z3 used relays and binary arithmetic.<br>ENIAC used many vacuum tubes and had maintenance challenges.<br>The transistor was demonstrated at Bell Labs in 1947.<br>Early integrated circuits were demonstrated in the late 1950s.<br>Robert Dennard and IBM are connected with the DRAM patent in 1968.</p>
+<p>Students do not need to memorize all sources.<br>But it is important to know that this history is based on real machines and real inventions.</p>
+<p>The lecture story is simple, but it is not fake.<br>It is a simplified version of real computer history.</p>
+<p>Quick delivery notes</p>
+<p>• For image-only slides, use the slide picture as the visual anchor. Point to the part of the picture while reading.</p>
+<p>• For binary slides, repeat slowly: binary places are 1s, 2s, 4s, 8s. Do not say tens or hundreds.</p>
+<p>• For historical slides, do not make students memorize dates. Use dates only as context.</p>
+<p>• For weak students, one-word answers are acceptable during review activities.</p>
+<p>• The practical laptop lesson should connect back to this chain: electricity → switch → 0/1 → logic → memory → computer.</p>
+</section>
+<section class="think"><h3>Think and answer</h3>
+<p>What are source notes for?</p>
+<details><summary>Show answer</summary><p>They show the historical references used to support the lecture.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<section class="slide-card activity" id="final-activity"><div class="slide-head"><div class="badge">Final</div><div class="slide-title"><h2>Final activity — Find the chain</h2><p>Use the same thinking tool for any computer part.</p></div></div>
+<div class="reading"><p>Choose one device from the lesson: switch, relay, vacuum tube, transistor, capacitor, RAM, SSD, CPU, or motherboard.</p><p>Fill this table in your notebook:</p><ul><li>Input: What goes in?</li><li>Physical process: What happens inside?</li><li>Output: What comes out?</li><li>Computer use: Why is it useful?</li></ul><p>Example: Relay. Input: small current. Physical process: electromagnet pulls a metal contact. Output: another circuit turns ON. Computer use: electricity controls electricity.</p></div>
+<section class="think"><h3>Think and answer</h3><p>Can you explain one part using input → physical process → output?</p><details><summary>Show answer</summary><p>Example answer: Capacitor. Input: voltage. Physical process: charge is stored between plates. Output: stored electrical state. Computer use: it can help represent 0 or 1 in memory.</p></details></section></section>
+<section class="notice refs"><h2>Source notes</h2><p>This web lecture was prepared from the manually reformatted Lecture 9 PowerPoint and the matched speaker script. Historical examples are used only to support the main engineering story: physical effects become useful computing devices.</p><p class="print-note">For classroom use: the slide image can be shown on screen, while the reading text can be used as slow teacher narration or online self-study text.</p></section>
+</main>
+</body></html>
