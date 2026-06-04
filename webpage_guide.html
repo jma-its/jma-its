@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How to Make Your Web Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7ff;
+      color: #1f2937;
+      line-height: 1.55;
+    }
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+      color: white;
+      padding: 42px 26px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 48px;
+      margin: 0 0 12px;
+    }
+    header p {
+      font-size: 30px;
+      margin: 0;
+    }
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+    .card {
+      background: white;
+      border-radius: 22px;
+      padding: 28px;
+      margin: 24px 0;
+      box-shadow: 0 8px 24px rgba(30, 64, 175, 0.12);
+      border: 2px solid #dbeafe;
+    }
+    h2 {
+      font-size: 38px;
+      margin-top: 0;
+      color: #1d4ed8;
+    }
+    h3 {
+      font-size: 32px;
+      color: #6d28d9;
+      margin-bottom: 10px;
+    }
+    p, li {
+      font-size: 28px;
+    }
+    .big {
+      font-size: 34px;
+      font-weight: bold;
+    }
+    .warning {
+      background: #fff7ed;
+      border-color: #fed7aa;
+    }
+    .good {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+    }
+    .bad {
+      background: #fef2f2;
+      border-color: #fecaca;
+    }
+    .idea {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      padding: 18px;
+      border-radius: 16px;
+    }
+    .code {
+      display: block;
+      background: #111827;
+      color: #e5e7eb;
+      padding: 18px;
+      border-radius: 14px;
+      font-family: Consolas, monospace;
+      font-size: 26px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+    }
+    .steps li {
+      counter-increment: step;
+      background: #eff6ff;
+      margin: 18px 0;
+      padding: 18px 18px 18px 86px;
+      border-radius: 18px;
+      position: relative;
+      border: 2px solid #bfdbfe;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      line-height: 46px;
+      font-size: 28px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+      gap: 18px;
+    }
+    a {
+      color: #1d4ed8;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #475569;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>How to Make Your Web Page</h1>
+  <p>Software I · Final Web Page Project</p>
+</header>
+
+<main>
+
+<section class="card good">
+  <h2>Goal</h2>
+  <p class="big">Make one beautiful web page.</p>
+  <p>Your page may be published on the college website as student achievement.</p>
+  <p>Write only information that you agree to publish.</p>
+</section>
+
+<section class="card">
+  <h2>You do not need one big topic</h2>
+  <p>You can write a little about many things.</p>
+  <p>Small simple sentences are OK.</p>
+  <p class="big">More text = better score.</p>
+</section>
+
+<section class="card">
+  <h2>Idea menu: what can I write?</h2>
+  <p>Choose some ideas from this menu.</p>
+  <div class="grid">
+    <div class="idea">
+      <h3>About me</h3>
+      <p>My name is ...</p>
+      <p>I am from ...</p>
+      <p>I am a student at ...</p>
+    </div>
+    <div class="idea">
+      <h3>My hometown / village</h3>
+      <p>My hometown is ...</p>
+      <p>It is beautiful because ...</p>
+      <p>There are mountains / rivers / temples.</p>
+    </div>
+    <div class="idea">
+      <h3>My country</h3>
+      <p>I am from Nepal.</p>
+      <p>My country has ...</p>
+      <p>I like my country because ...</p>
+    </div>
+    <div class="idea">
+      <h3>My hobbies</h3>
+      <p>I like football / music / games.</p>
+      <p>My hobby is ...</p>
+      <p>I do it because it is fun.</p>
+    </div>
+    <div class="idea">
+      <h3>Food and culture</h3>
+      <p>My favorite food is ...</p>
+      <p>I like Japanese food too.</p>
+      <p>I want to try ...</p>
+    </div>
+    <div class="idea">
+      <h3>Music, movies, sports</h3>
+      <p>My favorite music is ...</p>
+      <p>My favorite movie is ...</p>
+      <p>My favorite sport is ...</p>
+    </div>
+    <div class="idea">
+      <h3>Why I study here</h3>
+      <p>I came to Japan because ...</p>
+      <p>I chose this school because ...</p>
+      <p>I want to learn medical IT.</p>
+    </div>
+    <div class="idea">
+      <h3>My future plan</h3>
+      <p>In the future, I want to ...</p>
+      <p>My dream job is ...</p>
+      <p>I want to help people.</p>
+    </div>
+    <div class="idea">
+      <h3>My good memory</h3>
+      <p>My good memory is ...</p>
+      <p>I remember this because ...</p>
+      <p>It was important for me.</p>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Easy page structure</h2>
+  <p>You can use this order:</p>
+  <span class="code">1. Title
+2. Photo
+3. About me
+4. My hometown or country
+5. My hobbies and likes
+6. Why I study here
+7. My future plan</span>
+</section>
+
+<section class="card warning">
+  <h2>Public page rule</h2>
+  <p>This page can be public.</p>
+  <p>Do not write private information.</p>
+  <ul>
+    <li>No home address.</li>
+    <li>No phone number.</li>
+    <li>No passport or visa information.</li>
+    <li>No private family problems.</li>
+    <li>No photo of another person without permission.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Files for your project</h2>
+  <p>For the easiest project, use these two files:</p>
+  <span class="code">mypage.html
+photo.jpg</span>
+  <p>Put them in the same folder.</p>
+  <p>One photo is enough.</p>
+</section>
+
+<section class="card">
+  <h2>Very important: file names</h2>
+  <p>Computer needs exact names.</p>
+  <div class="grid">
+    <div class="idea good">
+      <h3>Good</h3>
+      <span class="code">mypage.html
+photo.jpg
+26hi001.html
+26hi001.jpg</span>
+    </div>
+    <div class="idea bad">
+      <h3>Bad</h3>
+      <span class="code">my photo.jpg
+My Page Final (1).html
+私の写真.jpg
+photo new!!.jpg</span>
+    </div>
+  </div>
+  <p class="big">Rule: no spaces, no Japanese, no symbols.</p>
+</section>
+
+<section class="card">
+  <h2>Open the file in two ways</h2>
+  <div class="grid">
+    <div class="idea">
+      <h3>Browser</h3>
+      <p>Double click HTML file.</p>
+      <p>Use browser to see the page.</p>
+    </div>
+    <div class="idea">
+      <h3>Notepad</h3>
+      <p>Right click → Open with → Notepad.</p>
+      <p>Use Notepad to edit code.</p>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>How to edit</h2>
+  <ol class="steps">
+    <li>Open <b>mypage.html</b> with Notepad.</li>
+    <li>Find: <b>CHANGE HERE</b>.</li>
+    <li>Write your text under the instruction.</li>
+    <li>Change colors if you want.</li>
+    <li>Press <b>Ctrl + S</b> to save.</li>
+    <li>Go to browser.</li>
+    <li>Press <b>F5</b> to refresh.</li>
+  </ol>
+</section>
+
+<section class="card">
+  <h2>Photo rule</h2>
+  <p>If your code says:</p>
+  <span class="code">&lt;img src="photo.jpg"&gt;</span>
+  <p>Then your photo file name must be exactly:</p>
+  <span class="code">photo.jpg</span>
+  <p>If the name is different, the photo will not show.</p>
+</section>
+
+<section class="card">
+  <h2>Change text</h2>
+  <p>Find this area in the code:</p>
+  <span class="code">&lt;!-- CHANGE TEXT HERE --&gt;
+
+&lt;h1&gt;My Web Page&lt;/h1&gt;
+
+&lt;p&gt;WRITE ABOUT YOURSELF HERE.&lt;/p&gt;
+&lt;p&gt;WRITE ABOUT YOUR HOMETOWN HERE.&lt;/p&gt;
+&lt;p&gt;WRITE ABOUT YOUR FUTURE HERE.&lt;/p&gt;</span>
+  <p>Write your own sentences.</p>
+</section>
+
+<section class="card">
+  <h2>Change colors</h2>
+  <p>Find this area in the code:</p>
+  <span class="code">/* CHANGE COLORS HERE */
+background-color: lightblue;
+color: darkblue;</span>
+  <p>Change only color words.</p>
+  <p>Try: pink, yellow, lightgreen, black, white, purple, blue.</p>
+</section>
+
+<section class="card">
+  <h2>For higher score</h2>
+  <ul>
+    <li>Write more English sentences.</li>
+    <li>Add more sections.</li>
+    <li>Use beautiful colors.</li>
+    <li>Use different fonts.</li>
+    <li>Use one good photo.</li>
+    <li>Make the page easy to read.</li>
+    <li>Write about your future plan.</li>
+    <li>Write why you came to Japan or chose this school.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Send to teacher</h2>
+  <p>Send your HTML file and your photo file.</p>
+  <span class="code">mypage.html
+photo.jpg</span>
+  <p>Do not send only a screenshot.</p>
+  <p>Teacher needs your real HTML file.</p>
+</section>
+
+<section class="card good">
+  <h2>Remember</h2>
+  <p class="big">Edit → Save → Refresh</p>
+  <p>If you do not save, nothing changes.</p>
+  <p>If you do not refresh, you cannot see the new page.</p>
+</section>
+
+</main>
+
+<footer>
+  Software I · Student Web Page Project
+</footer>
+</body>
+</html>
