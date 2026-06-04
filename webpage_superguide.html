@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Easy Guide: Make Your Web Page</title>
+  <style>
+    :root {
+      --blue: #1d4ed8;
+      --darkblue: #1e3a8a;
+      --purple: #6d28d9;
+      --green: #047857;
+      --orange: #c2410c;
+      --red: #b91c1c;
+      --ink: #111827;
+      --soft: #f4f7ff;
+      --card: #ffffff;
+      --line: #bfdbfe;
+      --yellow: #fef3c7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--soft);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+      color: white;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 56px;
+      margin: 0 0 14px;
+      line-height: 1.1;
+    }
+
+    header p {
+      font-size: 34px;
+      margin: 8px 0;
+    }
+
+    main {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    section {
+      background: white;
+      border: 3px solid var(--line);
+      border-radius: 26px;
+      padding: 32px;
+      margin: 30px 0;
+      box-shadow: 0 10px 26px rgba(30,64,175,0.12);
+    }
+
+    h2 {
+      font-size: 44px;
+      color: var(--blue);
+      margin: 0 0 18px;
+      line-height: 1.15;
+    }
+
+    h3 {
+      font-size: 36px;
+      color: var(--purple);
+      margin: 22px 0 12px;
+    }
+
+    p, li, td, th {
+      font-size: 30px;
+    }
+
+    .big {
+      font-size: 38px;
+      font-weight: bold;
+    }
+
+    .small {
+      font-size: 25px;
+      color: #475569;
+    }
+
+    .good { background: #ecfdf5; border-color: #a7f3d0; }
+    .warn { background: #fff7ed; border-color: #fed7aa; }
+    .danger { background: #fef2f2; border-color: #fecaca; }
+    .practice { background: #eef2ff; border-color: #c7d2fe; }
+    .yellow { background: var(--yellow); border-color: #fde68a; }
+
+    .code {
+      display: block;
+      background: #111827;
+      color: #e5e7eb;
+      padding: 22px;
+      border-radius: 18px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 28px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    .code .change {
+      color: #fef08a;
+      font-weight: bold;
+    }
+
+    .inline {
+      font-family: Consolas, "Courier New", monospace;
+      background: #e5e7eb;
+      padding: 4px 10px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    .button {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e3a8a;
+      text-decoration: none;
+      font-size: 30px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      margin: 8px 8px 8px 0;
+      font-weight: bold;
+      border: 2px solid #93c5fd;
+    }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .steps > li {
+      counter-increment: step;
+      position: relative;
+      padding: 22px 22px 22px 94px;
+      margin: 20px 0;
+      background: #eff6ff;
+      border: 3px solid #bfdbfe;
+      border-radius: 22px;
+      font-size: 30px;
+    }
+
+    .steps > li::before {
+      content: counter(step);
+      position: absolute;
+      left: 22px;
+      top: 22px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 52px;
+    }
+
+    .mouse {
+      display: inline-block;
+      background: #fee2e2;
+      border: 2px solid #fecaca;
+      color: #991b1b;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    .keyboard {
+      display: inline-block;
+      background: #dcfce7;
+      border: 2px solid #86efac;
+      color: #065f46;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+      gap: 20px;
+    }
+
+    .box {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .box p, .box li {
+      font-size: 28px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    th, td {
+      border: 2px solid #dbeafe;
+      padding: 16px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #dbeafe;
+      color: #1e3a8a;
+      font-weight: bold;
+    }
+
+    .do {
+      color: #065f46;
+      font-weight: bold;
+    }
+
+    .dont {
+      color: #991b1b;
+      font-weight: bold;
+    }
+
+    details {
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-radius: 18px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    summary {
+      font-size: 32px;
+      font-weight: bold;
+      color: var(--blue);
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      color: #475569;
+      padding: 35px 20px 55px;
+      font-size: 26px;
+    }
+
+    @media print {
+      header { display: none; }
+      section { box-shadow: none; break-inside: avoid; }
+      body { background: white; }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <h1>Super Easy Guide</h1>
+  <p>How to Make Your Web Page</p>
+  <p>Software I · Step by Step</p>
+</header>
+
+<main>
+
+<section class="good">
+  <h2>What will you make?</h2>
+  <p class="big">You will make one web page.</p>
+  <p>Your page may be published on the college website as your student achievement.</p>
+  <p>You can write about yourself, your hometown, your village, your country, your hobby, or your future plan.</p>
+  <p>Write only information that you agree to publish.</p>
+</section>
+
+<section class="yellow">
+  <h2>Before you start</h2>
+  <ol class="steps">
+    <li>Use a computer, not only a phone.</li>
+    <li>Connect a mouse to the USB port if you have one.</li>
+    <li>Use the mouse. It is easier than the touchpad.</li>
+    <li>Check that you can open Microsoft Edge.</li>
+    <li>Check that you can find the keyboard keys: <span class="keyboard">Ctrl</span>, <span class="keyboard">S</span>, <span class="keyboard">F5</span>, <span class="keyboard">Enter</span>.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Mouse words</h2>
+  <table>
+    <tr>
+      <th>English</th>
+      <th>Meaning</th>
+      <th>What to do</th>
+    </tr>
+    <tr>
+      <td><span class="mouse">Left click</span></td>
+      <td>Normal click</td>
+      <td>Use the left mouse button one time.</td>
+    </tr>
+    <tr>
+      <td><span class="mouse">Double click</span></td>
+      <td>Open a file</td>
+      <td>Left click two times fast.</td>
+    </tr>
+    <tr>
+      <td><span class="mouse">Right click</span></td>
+      <td>Open a menu</td>
+      <td>Use the right mouse button one time.</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2>Japanese Windows words</h2>
+  <p>If your Windows is Japanese, these words can help you.</p>
+  <table>
+    <tr>
+      <th>English</th>
+      <th>Japanese</th>
+    </tr>
+    <tr>
+      <td>Downloads</td>
+      <td>ダウンロード</td>
+    </tr>
+    <tr>
+      <td>Save</td>
+      <td>保存</td>
+    </tr>
+    <tr>
+      <td>Save as</td>
+      <td>名前を付けて保存</td>
+    </tr>
+    <tr>
+      <td>File name</td>
+      <td>ファイル名</td>
+    </tr>
+    <tr>
+      <td>Open with</td>
+      <td>プログラムから開く</td>
+    </tr>
+    <tr>
+      <td>Notepad</td>
+      <td>メモ帳</td>
+    </tr>
+    <tr>
+      <td>File Explorer</td>
+      <td>エクスプローラー</td>
+    </tr>
+  </table>
+</section>
+
+<section class="practice">
+  <h2>Part 1: Open the template page</h2>
+  <ol class="steps">
+    <li>Open <b>Microsoft Edge</b>.</li>
+    <li>Click the address bar at the top of Edge.</li>
+    <li>Type this address:</li>
+  </ol>
+
+  <span class="code">jma-its.github.io/jma-its/mypage.html</span>
+
+  <ol class="steps" start="4">
+    <li>Press <span class="keyboard">Enter</span>.</li>
+    <li>You should see the web page template.</li>
+  </ol>
+
+  <p class="big">Lifehack: you do not need to type <span class="inline">https://</span> at the beginning.</p>
+</section>
+
+<section class="practice">
+  <h2>Part 2: Save the page to Downloads</h2>
+  <p>Now you need your own copy of the page.</p>
+  <ol class="steps">
+    <li>On the page, press <span class="keyboard">Ctrl</span> + <span class="keyboard">S</span>.</li>
+    <li>A save window will open.</li>
+    <li>Choose <b>Downloads</b> / <b>ダウンロード</b>.</li>
+    <li>File name: write your student file name if teacher gives it. For practice, use:</li>
+  </ol>
+
+  <span class="code">mypage.html</span>
+
+  <ol class="steps" start="5">
+    <li>If you can choose file type, choose <b>Webpage, HTML only</b>.</li>
+    <li>Click <b>Save</b> / <b>保存</b>.</li>
+  </ol>
+
+  <p class="big">Now the file is on your computer.</p>
+</section>
+
+<section class="warn">
+  <h2>If Edge makes an extra folder</h2>
+  <p>Sometimes Edge saves like this:</p>
+  <span class="code">mypage.html
+mypage_files</span>
+  <p>This is not dangerous, but it can confuse you.</p>
+  <p>For this lesson, the important file is:</p>
+  <span class="code">mypage.html</span>
+</section>
+
+<section class="practice">
+  <h2>Part 3: Open Downloads folder</h2>
+  <ol class="steps">
+    <li>Open <b>File Explorer</b> / <b>エクスプローラー</b>.</li>
+    <li>On the left side, click <b>Downloads</b> / <b>ダウンロード</b>.</li>
+    <li>Find your file:</li>
+  </ol>
+
+  <span class="code">mypage.html</span>
+
+  <ol class="steps" start="4">
+    <li>If you cannot find it, look at the top of the file list.</li>
+    <li>If you still cannot find it, ask teacher before editing the wrong file.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Part 4: Open the same file in two ways</h2>
+  <div class="grid">
+    <div class="box good">
+      <h3>Open in Edge</h3>
+      <p><b>Double click</b> <span class="inline">mypage.html</span>.</p>
+      <p>This shows the web page.</p>
+    </div>
+    <div class="box good">
+      <h3>Open in Notepad</h3>
+      <p><b>Right click</b> <span class="inline">mypage.html</span>.</p>
+      <p>Choose <b>Open with</b> → <b>Notepad</b>.</p>
+      <p>This edits the code.</p>
+    </div>
+  </div>
+  <p class="big">Same file. Two different uses.</p>
+</section>
+
+<section class="practice">
+  <h2>Part 5: Open with Notepad</h2>
+  <ol class="steps">
+    <li>In Downloads, find <span class="inline">mypage.html</span>.</li>
+    <li><span class="mouse">Right click</span> the file.</li>
+    <li>Choose <b>Open with</b> / <b>プログラムから開く</b>.</li>
+    <li>Choose <b>Notepad</b> / <b>メモ帳</b>.</li>
+    <li>If you cannot see Notepad, choose <b>Choose another app</b>.</li>
+    <li>If needed, click <b>More apps</b>.</li>
+    <li>Choose <b>Notepad</b>.</li>
+  </ol>
+
+  <p class="big">Do not open with Word. Use Notepad.</p>
+</section>
+
+<section class="yellow">
+  <h2>What you see in Notepad</h2>
+  <p>In Notepad, you see the code.</p>
+  <p>Do not be afraid. You do not need to understand everything.</p>
+  <p>You only need to find the edit areas.</p>
+
+  <span class="code">STUDENT EDIT AREA 1
+CHANGE COLORS AND BACKGROUND HERE
+
+STUDENT EDIT AREA 2
+CHANGE TEXT HERE</span>
+</section>
+
+<section>
+  <h2>Page has two big parts</h2>
+  <div class="grid">
+    <div class="box">
+      <h3>1. Settings and style</h3>
+      <p>This is near the top.</p>
+      <p>It changes colors, fonts, background, size.</p>
+      <span class="code">&lt;style&gt;
+  CSS design is here
+&lt;/style&gt;</span>
+    </div>
+    <div class="box">
+      <h3>2. Visible page</h3>
+      <p>This is lower in the file.</p>
+      <p>It has the text and photo.</p>
+      <span class="code">&lt;body&gt;
+  Your text is here
+&lt;/body&gt;</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Very important: do not delete code symbols</h2>
+  <p>HTML and CSS need special symbols.</p>
+  <p>If you delete them, the page can break.</p>
+
+  <table>
+    <tr>
+      <th>Do not delete</th>
+      <th>Why?</th>
+    </tr>
+    <tr>
+      <td><span class="inline">&lt;</span> and <span class="inline">&gt;</span></td>
+      <td>Start and end of an HTML tag</td>
+    </tr>
+    <tr>
+      <td><span class="inline">/</span></td>
+      <td>End tag, for example <span class="inline">&lt;/p&gt;</span></td>
+    </tr>
+    <tr>
+      <td><span class="inline">"</span></td>
+      <td>Text around file names, for example <span class="inline">"photo.jpg"</span></td>
+    </tr>
+    <tr>
+      <td><span class="inline">:</span> and <span class="inline">;</span></td>
+      <td>CSS needs them</td>
+    </tr>
+    <tr>
+      <td><span class="inline">{</span> and <span class="inline">}</span></td>
+      <td>Start and end of CSS block</td>
+    </tr>
+  </table>
+</section>
+
+<section class="practice">
+  <h2>Part 6: Change text safely</h2>
+  <p>Change only the words between the start tag and end tag.</p>
+
+  <h3>Before</h3>
+  <span class="code">&lt;h1&gt;<span class="change">My Web Page</span>&lt;/h1&gt;
+
+&lt;p&gt;<span class="change">WRITE YOUR NAME OR NICKNAME HERE.</span>&lt;/p&gt;</span>
+
+  <h3>After</h3>
+  <span class="code">&lt;h1&gt;<span class="change">My Personal Page</span>&lt;/h1&gt;
+
+&lt;p&gt;<span class="change">My name is Ram.</span>&lt;/p&gt;</span>
+
+  <p class="big">Do not delete <span class="inline">&lt;h1&gt;</span>, <span class="inline">&lt;/h1&gt;</span>, <span class="inline">&lt;p&gt;</span>, or <span class="inline">&lt;/p&gt;</span>.</p>
+</section>
+
+<section class="practice">
+  <h2>Part 7: Change colors safely</h2>
+  <p>In CSS, change only color words first.</p>
+
+  <h3>Before</h3>
+  <span class="code">background-color: <span class="change">lightblue</span>;
+color: <span class="change">darkblue</span>;</span>
+
+  <h3>After</h3>
+  <span class="code">background-color: <span class="change">pink</span>;
+color: <span class="change">black</span>;</span>
+
+  <p class="big">Do not delete <span class="inline">:</span> or <span class="inline">;</span>.</p>
+  <p>Easy color words: <span class="inline">white</span>, <span class="inline">black</span>, <span class="inline">pink</span>, <span class="inline">yellow</span>, <span class="inline">lightgreen</span>, <span class="inline">purple</span>.</p>
+</section>
+
+<section class="practice">
+  <h2>Part 8: Add your photo</h2>
+  <p>For the easiest way, rename your photo to:</p>
+  <span class="code">photo.jpg</span>
+
+  <ol class="steps">
+    <li>Put your photo in the same Downloads folder.</li>
+    <li>Make sure the photo file name is exactly <span class="inline">photo.jpg</span>.</li>
+    <li>In the HTML file, keep this line:</li>
+  </ol>
+
+  <span class="code">&lt;img src="photo.jpg" alt="My photo"&gt;</span>
+
+  <p class="big">If the photo name is different, the photo will not show.</p>
+</section>
+
+<section class="warn">
+  <h2>If teacher gives you a student number</h2>
+  <p>Teacher may ask you to name your files like this:</p>
+  <span class="code">26hi001.html
+26hi001.jpg</span>
+
+  <p>Then your image code must use the same photo name:</p>
+  <span class="code">&lt;img src="26hi001.jpg" alt="My photo"&gt;</span>
+
+  <p class="big">File name in code = real photo file name.</p>
+</section>
+
+<section>
+  <h2>What can you write?</h2>
+  <p>You can write a little about many things.</p>
+  <div class="grid">
+    <div class="box">
+      <h3>About me</h3>
+      <p>My name is ...</p>
+      <p>I am from ...</p>
+      <p>I am a student.</p>
+    </div>
+    <div class="box">
+      <h3>My hometown / village</h3>
+      <p>My hometown is ...</p>
+      <p>It is beautiful because ...</p>
+    </div>
+    <div class="box">
+      <h3>Hobbies</h3>
+      <p>I like football / music / games.</p>
+      <p>My hobby is ...</p>
+    </div>
+    <div class="box">
+      <h3>Why I study here</h3>
+      <p>I came to Japan because ...</p>
+      <p>I chose this school because ...</p>
+    </div>
+    <div class="box">
+      <h3>Future plan</h3>
+      <p>In the future, I want to ...</p>
+      <p>My dream job is ...</p>
+    </div>
+    <div class="box">
+      <h3>Favorite things</h3>
+      <p>My favorite food is ...</p>
+      <p>My favorite place is ...</p>
+    </div>
+  </div>
+</section>
+
+<section class="practice">
+  <h2>Part 9: Save in Notepad</h2>
+  <ol class="steps">
+    <li>After editing, click inside Notepad.</li>
+    <li>Press <span class="keyboard">Ctrl</span> + <span class="keyboard">S</span>.</li>
+    <li>This saves the file.</li>
+    <li>Do not close Notepad yet.</li>
+  </ol>
+
+  <p class="big">If you do not save, your web page will not change.</p>
+</section>
+
+<section class="practice">
+  <h2>Part 10: Open your saved file in Edge</h2>
+  <ol class="steps">
+    <li>Go back to Downloads folder.</li>
+    <li>Find your saved HTML file.</li>
+    <li><span class="mouse">Double click</span> the HTML file.</li>
+    <li>It should open in Edge.</li>
+    <li>If Edge is already open, press <span class="keyboard">F5</span> to refresh.</li>
+  </ol>
+
+  <p class="big">Remember: Edit → Save → Refresh.</p>
+</section>
+
+<section class="danger">
+  <h2>Common mistakes</h2>
+  <table>
+    <tr>
+      <th>Problem</th>
+      <th>Check this</th>
+    </tr>
+    <tr>
+      <td>Text did not change</td>
+      <td>Did you press <span class="keyboard">Ctrl</span> + <span class="keyboard">S</span> in Notepad?</td>
+    </tr>
+    <tr>
+      <td>Browser shows old page</td>
+      <td>Did you press <span class="keyboard">F5</span> in Edge?</td>
+    </tr>
+    <tr>
+      <td>Photo does not show</td>
+      <td>Is photo file name exactly the same as in <span class="inline">src=""</span>?</td>
+    </tr>
+    <tr>
+      <td>Page looks broken</td>
+      <td>Did you delete <span class="inline">&lt;</span>, <span class="inline">&gt;</span>, <span class="inline">"</span>, <span class="inline">;</span>, or <span class="inline">{ }</span>?</td>
+    </tr>
+    <tr>
+      <td>You edited, but wrong file opens</td>
+      <td>Maybe you edited one file and opened another file. Check Downloads.</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2>Final check before sending</h2>
+  <ul>
+    <li>My page opens in Edge.</li>
+    <li>My text is changed.</li>
+    <li>My photo is visible.</li>
+    <li>My colors are changed.</li>
+    <li>I saved the file.</li>
+    <li>I refreshed the browser.</li>
+    <li>I did not write private information.</li>
+  </ul>
+</section>
+
+<section class="good">
+  <h2>What to send to teacher</h2>
+  <p>Send the real files. Do not send only a screenshot.</p>
+  <span class="code">your_page.html
+your_photo.jpg</span>
+  <p>If teacher gives special file names, use teacher's file names.</p>
+</section>
+
+<footer>
+  Software I · Super Easy Web Page Guide
+</footer>
+
+</main>
+</body>
+</html>
