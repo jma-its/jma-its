@@ -1,0 +1,60 @@
+
+:root{
+  --bg:#f5f7fb; --card:#ffffff; --ink:#111827; --muted:#667085; --line:#d8e0ec;
+  --blue:#2563eb; --blue2:#1d4ed8; --green:#059669; --red:#dc2626; --gray:#94a3b8;
+  --pink:#f9a8d4; --boy:#93c5fd; --shadow:0 8px 24px rgba(15,23,42,.07);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+body.lang-en .ja{display:none} body.lang-ja .en{display:none}
+a{text-decoration:none;color:inherit}
+.page{max-width:1180px;margin:0 auto;padding:18px}
+.topline{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.navbtn{display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:800;color:#334155;box-shadow:0 3px 10px rgba(15,23,42,.04)}
+.navbtn.primary{background:#eff6ff;border-color:#bfdbfe;color:#1d4ed8}
+.lang-switch{margin-left:auto;display:flex;gap:4px;background:#e9eef6;border:1px solid var(--line);border-radius:999px;padding:4px}
+.lang-switch button{border:0;background:transparent;border-radius:999px;padding:8px 13px;font-weight:900;color:#475569;cursor:pointer}
+body.lang-en .lang-switch button[data-lang="en"],body.lang-ja .lang-switch button[data-lang="ja"]{background:#fff;color:var(--blue2);box-shadow:0 2px 8px rgba(15,23,42,.10)}
+.header{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
+h1{font-size:34px;margin:0 0 4px;letter-spacing:-.02em;line-height:1.1}
+.subtitle{color:var(--muted);font-size:15px;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:10px;margin-top:14px}
+.stat{border:1px solid var(--line);border-radius:16px;background:#f8fafc;padding:10px 12px}
+.stat span{display:block;color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.03em}
+.stat b{font-size:26px;display:block;margin-top:2px}
+.search{width:100%;border:1px solid var(--line);border-radius:999px;padding:13px 16px;background:#fff;font-size:16px;box-shadow:0 3px 10px rgba(15,23,42,.04);margin:12px 0}
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:12px}
+table{width:100%;border-collapse:separate;border-spacing:0}
+th,td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{background:#f8fafc;color:#475569;font-size:12px;text-transform:uppercase;letter-spacing:.04em;font-weight:1000}
+tr:last-child td{border-bottom:0}
+th:first-child{border-top-left-radius:12px} th:last-child{border-top-right-radius:12px}
+.student{display:grid;grid-template-columns:48px 1fr;gap:10px;align-items:center;min-width:250px}
+.photo{width:48px;height:60px;object-fit:cover;object-position:center 25%;border-radius:10px;background:#e5e7eb}
+.photo.missing{object-fit:contain;padding:8px}
+.photo.female{border:3px solid var(--pink)}
+.photo.male{border:3px solid var(--boy)}
+.id{font-size:12px;color:var(--muted);font-weight:900;letter-spacing:.05em}
+.name{font-weight:1000;font-size:16px;line-height:1.2}
+.kana{font-size:13px;color:#64748b;font-weight:800;margin-top:2px}
+.scorebox{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.score{font-size:34px;line-height:1;font-weight:1000;letter-spacing:-.04em}
+.score.missing{color:var(--gray)}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:32px;border-radius:999px;background:var(--blue);color:#fff;font-weight:1000;font-size:15px}
+.badge.S,.badge.A{background:var(--green)} .badge.F{background:var(--red)} .badge.NA{background:var(--gray)}
+.att{font-weight:900;color:#334155;white-space:nowrap}
+.bar{height:9px;min-width:130px;border-radius:999px;background:#e5e7eb;overflow:hidden;margin-top:5px}
+.bar i{display:block;height:100%;border-radius:999px;background:var(--blue)}
+.actions{white-space:nowrap}
+.grade-col{min-width:130px}
+@media(max-width:860px){
+  .stats{grid-template-columns:1fr 1fr}
+  .lang-switch{margin-left:0}
+  table,thead,tbody,tr,th,td{display:block}
+  thead{display:none}
+  tr{border:1px solid var(--line);border-radius:16px;padding:10px;margin-bottom:10px;background:#fff}
+  td{border-bottom:0;padding:7px}
+  .student{min-width:0}
+  .scorebox{justify-content:flex-start}
+  .actions{white-space:normal}
+}

@@ -1,6 +1,6 @@
-AA26 progress folder only.
+AA26 subjects folder only.
 
-Replace aa26/progress.
+Replace aa26/subjects.
 
 Corrections applied:
 - BANIYA, Sajina Computer Fundamentals: 60 / C

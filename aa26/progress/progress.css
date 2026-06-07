@@ -35,7 +35,8 @@ h1{font-size:34px;line-height:1.1;margin:4px 0 4px;letter-spacing:-.02em}
 .subject.grade-NA:before{background:var(--gray)}
 .subject h2{font-size:17px;line-height:1.2;margin:0 0 12px;min-height:42px}
 .scoreline{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-.score{font-size:48px;line-height:.95;font-weight:1000;letter-spacing:-.04em}
+.score{font-size:48px;line-height:.95;font-weight:1000;letter-spacing:-.04em;color:var(--ink)}
+.score.missing-score{color:var(--gray)}
 .grade{display:inline-flex;align-items:center;justify-content:center;min-width:45px;height:45px;border-radius:999px;background:var(--blue);color:#fff;font-size:20px;font-weight:1000}
 .grade.S,.grade.A{background:var(--green)} .grade.F{background:var(--red)} .grade.NA{background:var(--gray)}
 .att{font-size:14px;font-weight:800;color:#475569;margin-top:8px}
