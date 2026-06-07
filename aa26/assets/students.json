@@ -1,0 +1,1607 @@
+[
+  {
+    "id": "26HI001",
+    "name": "BANIYA, Sajina",
+    "att": 11,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 51,
+    "gender": "female",
+    "has_photo": false,
+    "key": "26hi001 baniya, sajina",
+    "self_page": "self/26hi001.html",
+    "progress_page": "progress/26hi001.html",
+    "attendance20": 15.7,
+    "class_final": 35.4,
+    "final40": 0.0,
+    "software_final": 51,
+    "subject_att": {
+      "Software I": {
+        "present": 11,
+        "sessions": 14,
+        "percent": 78.6
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 9,
+        "sessions": 11,
+        "percent": 81.8
+      }
+    },
+    "avg_attendance": 78.1
+  },
+  {
+    "id": "26HI002",
+    "name": "BASNET, Amrit",
+    "att": 14,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 60,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi002 basnet, amrit",
+    "self_page": "self/26hi002.html",
+    "progress_page": "progress/26hi002.html",
+    "attendance20": 20.0,
+    "class_final": 40.0,
+    "final40": 0.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 14,
+        "sessions": 14,
+        "percent": 100.0
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 100.0
+  },
+  {
+    "id": "26HI003",
+    "name": "BHANDARI, Sujan",
+    "att": 8,
+    "html_score": 6.5,
+    "status": "HTML accepted",
+    "final": 60,
+    "gender": "male",
+    "has_photo": false,
+    "key": "26hi003 bhandari, sujan",
+    "self_page": "self/26hi003.html",
+    "progress_page": "progress/26hi003.html",
+    "attendance20": 11.4,
+    "class_final": 22.9,
+    "final40": 26.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 8,
+        "sessions": 14,
+        "percent": 57.1
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 4,
+        "sessions": 11,
+        "percent": 36.4
+      }
+    },
+    "avg_attendance": 53.1
+  },
+  {
+    "id": "26HI004",
+    "name": "BHUJEL, Sagar",
+    "att": 0,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 0,
+    "gender": "male",
+    "has_photo": false,
+    "key": "26hi004 bhujel, sagar",
+    "self_page": "self/26hi004.html",
+    "progress_page": "progress/26hi004.html",
+    "attendance20": 0.0,
+    "class_final": 0.0,
+    "final40": 0.0,
+    "software_final": 0,
+    "subject_att": {
+      "Software I": {
+        "present": 0,
+        "sessions": 14,
+        "percent": 0.0
+      },
+      "Computer Fundamentals I": {
+        "present": 0,
+        "sessions": 7,
+        "percent": 0.0
+      },
+      "Hospital Information Systems I": {
+        "present": 0,
+        "sessions": 11,
+        "percent": 0.0
+      }
+    },
+    "avg_attendance": 0.0
+  },
+  {
+    "id": "26HI005",
+    "name": "BK, Gokarna",
+    "att": 14,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 60,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi005 bk, gokarna",
+    "self_page": "self/26hi005.html",
+    "progress_page": "progress/26hi005.html",
+    "attendance20": 20.0,
+    "class_final": 40.0,
+    "final40": 0.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 14,
+        "sessions": 14,
+        "percent": 100.0
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 100.0
+  },
+  {
+    "id": "26HI006",
+    "name": "BK, Shiv",
+    "att": 14,
+    "html_score": 8,
+    "status": "HTML accepted",
+    "final": 92,
+    "gender": "male",
+    "has_photo": false,
+    "key": "26hi006 bk, shiv",
+    "self_page": "self/26hi006.html",
+    "progress_page": "progress/26hi006.html",
+    "attendance20": 20.0,
+    "class_final": 40.0,
+    "final40": 32.0,
+    "software_final": 92,
+    "subject_att": {
+      "Software I": {
+        "present": 14,
+        "sessions": 14,
+        "percent": 100.0
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 100.0
+  },
+  {
+    "id": "26HI007",
+    "name": "BOHARA, Ammar Bahadur",
+    "att": 0,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 0,
+    "gender": "male",
+    "has_photo": false,
+    "key": "26hi007 bohara, ammar bahadur",
+    "self_page": "self/26hi007.html",
+    "progress_page": "progress/26hi007.html",
+    "attendance20": 0.0,
+    "class_final": 0.0,
+    "final40": 0.0,
+    "software_final": 0,
+    "subject_att": {
+      "Software I": {
+        "present": 0,
+        "sessions": 14,
+        "percent": 0.0
+      },
+      "Computer Fundamentals I": {
+        "present": 0,
+        "sessions": 7,
+        "percent": 0.0
+      },
+      "Hospital Information Systems I": {
+        "present": 0,
+        "sessions": 11,
+        "percent": 0.0
+      }
+    },
+    "avg_attendance": 0.0
+  },
+  {
+    "id": "26HI008",
+    "name": "BUDHATHOKI, Jamuna",
+    "att": 11,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 51,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi008 budhathoki, jamuna",
+    "self_page": "self/26hi008.html",
+    "progress_page": "progress/26hi008.html",
+    "attendance20": 15.7,
+    "class_final": 35.4,
+    "final40": 0.0,
+    "software_final": 51,
+    "subject_att": {
+      "Software I": {
+        "present": 11,
+        "sessions": 14,
+        "percent": 78.6
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 8,
+        "sessions": 11,
+        "percent": 72.7
+      }
+    },
+    "avg_attendance": 75.0
+  },
+  {
+    "id": "26HI009",
+    "name": "CHAND, Durga",
+    "att": 8,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 37,
+    "gender": "male",
+    "has_photo": false,
+    "key": "26hi009 chand, durga",
+    "self_page": "self/26hi009.html",
+    "progress_page": "progress/26hi009.html",
+    "attendance20": 11.4,
+    "class_final": 25.9,
+    "final40": 0.0,
+    "software_final": 37,
+    "subject_att": {
+      "Software I": {
+        "present": 8,
+        "sessions": 14,
+        "percent": 57.1
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 8,
+        "sessions": 11,
+        "percent": 72.7
+      }
+    },
+    "avg_attendance": 65.6
+  },
+  {
+    "id": "26HI010",
+    "name": "DHENGA, Pramila",
+    "att": 13,
+    "html_score": 0,
+    "status": "PDF only",
+    "final": 60,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi010 dhenga, pramila",
+    "self_page": "self/26hi010.html",
+    "progress_page": "progress/26hi010.html",
+    "attendance20": 18.6,
+    "class_final": 40.0,
+    "final40": 0.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 13,
+        "sessions": 14,
+        "percent": 92.9
+      },
+      "Computer Fundamentals I": {
+        "present": 6,
+        "sessions": 7,
+        "percent": 85.7
+      },
+      "Hospital Information Systems I": {
+        "present": 10,
+        "sessions": 11,
+        "percent": 90.9
+      }
+    },
+    "avg_attendance": 90.6
+  },
+  {
+    "id": "26HI011",
+    "name": "DONG, Diwas",
+    "att": 14,
+    "html_score": 5.5,
+    "status": "HTML accepted",
+    "final": 82,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi011 dong, diwas",
+    "self_page": "self/26hi011.html",
+    "progress_page": "progress/26hi011.html",
+    "attendance20": 20.0,
+    "class_final": 40.0,
+    "final40": 22.0,
+    "software_final": 82,
+    "subject_att": {
+      "Software I": {
+        "present": 14,
+        "sessions": 14,
+        "percent": 100.0
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 100.0
+  },
+  {
+    "id": "26HI012",
+    "name": "GAHA THAPA, Ramesh",
+    "att": 14,
+    "html_score": 6,
+    "status": "HTML accepted",
+    "final": 84,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi012 gaha thapa, ramesh",
+    "self_page": "self/26hi012.html",
+    "progress_page": "progress/26hi012.html",
+    "attendance20": 20.0,
+    "class_final": 40.0,
+    "final40": 24.0,
+    "software_final": 84,
+    "subject_att": {
+      "Software I": {
+        "present": 14,
+        "sessions": 14,
+        "percent": 100.0
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 100.0
+  },
+  {
+    "id": "26HI013",
+    "name": "GHIMIRE, Bibek",
+    "att": 13,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 60,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi013 ghimire, bibek",
+    "self_page": "self/26hi013.html",
+    "progress_page": "progress/26hi013.html",
+    "attendance20": 18.6,
+    "class_final": 40.0,
+    "final40": 0.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 13,
+        "sessions": 14,
+        "percent": 92.9
+      },
+      "Computer Fundamentals I": {
+        "present": 6,
+        "sessions": 7,
+        "percent": 85.7
+      },
+      "Hospital Information Systems I": {
+        "present": 8,
+        "sessions": 11,
+        "percent": 72.7
+      }
+    },
+    "avg_attendance": 84.4
+  },
+  {
+    "id": "26HI014",
+    "name": "GURUNG, Arman",
+    "att": 6,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 29,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi014 gurung, arman",
+    "self_page": "self/26hi014.html",
+    "progress_page": "progress/26hi014.html",
+    "attendance20": 8.6,
+    "class_final": 20.1,
+    "final40": 0.0,
+    "software_final": 29,
+    "subject_att": {
+      "Software I": {
+        "present": 6,
+        "sessions": 14,
+        "percent": 42.9
+      },
+      "Computer Fundamentals I": {
+        "present": 3,
+        "sessions": 7,
+        "percent": 42.9
+      },
+      "Hospital Information Systems I": {
+        "present": 7,
+        "sessions": 11,
+        "percent": 63.6
+      }
+    },
+    "avg_attendance": 50.0
+  },
+  {
+    "id": "26HI015",
+    "name": "GURUNG, Roji",
+    "att": 14,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 60,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi015 gurung, roji",
+    "self_page": "self/26hi015.html",
+    "progress_page": "progress/26hi015.html",
+    "attendance20": 20.0,
+    "class_final": 40.0,
+    "final40": 0.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 14,
+        "sessions": 14,
+        "percent": 100.0
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 100.0
+  },
+  {
+    "id": "26HI016",
+    "name": "GURUNG, Sangina",
+    "att": 13,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 60,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi016 gurung, sangina",
+    "self_page": "self/26hi016.html",
+    "progress_page": "progress/26hi016.html",
+    "attendance20": 18.6,
+    "class_final": 40.0,
+    "final40": 0.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 13,
+        "sessions": 14,
+        "percent": 92.9
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 96.9
+  },
+  {
+    "id": "26HI017",
+    "name": "HASAN, Nishan Nahid",
+    "att": 8,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 37,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi017 hasan, nishan nahid",
+    "self_page": "self/26hi017.html",
+    "progress_page": "progress/26hi017.html",
+    "attendance20": 11.4,
+    "class_final": 25.9,
+    "final40": 0.0,
+    "software_final": 37,
+    "subject_att": {
+      "Software I": {
+        "present": 8,
+        "sessions": 14,
+        "percent": 57.1
+      },
+      "Computer Fundamentals I": {
+        "present": 3,
+        "sessions": 7,
+        "percent": 42.9
+      },
+      "Hospital Information Systems I": {
+        "present": 6,
+        "sessions": 11,
+        "percent": 54.5
+      }
+    },
+    "avg_attendance": 53.1
+  },
+  {
+    "id": "26HI018",
+    "name": "HASSAN, Muhammad",
+    "att": 3,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 16,
+    "gender": "male",
+    "has_photo": false,
+    "key": "26hi018 hassan, muhammad",
+    "self_page": "self/26hi018.html",
+    "progress_page": "progress/26hi018.html",
+    "attendance20": 4.3,
+    "class_final": 11.6,
+    "final40": 0.0,
+    "software_final": 16,
+    "subject_att": {
+      "Software I": {
+        "present": 3,
+        "sessions": 14,
+        "percent": 21.4
+      },
+      "Computer Fundamentals I": {
+        "present": 1,
+        "sessions": 7,
+        "percent": 14.3
+      },
+      "Hospital Information Systems I": {
+        "present": 3,
+        "sessions": 11,
+        "percent": 27.3
+      }
+    },
+    "avg_attendance": 21.9
+  },
+  {
+    "id": "26HI019",
+    "name": "JAHAN, Mim Iffat",
+    "att": 10,
+    "html_score": 7,
+    "status": "HTML accepted",
+    "final": 71,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi019 jahan, mim iffat",
+    "self_page": "self/26hi019.html",
+    "progress_page": "progress/26hi019.html",
+    "attendance20": 14.3,
+    "class_final": 28.6,
+    "final40": 28.0,
+    "software_final": 71,
+    "subject_att": {
+      "Software I": {
+        "present": 10,
+        "sessions": 14,
+        "percent": 71.4
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 9,
+        "sessions": 11,
+        "percent": 81.8
+      }
+    },
+    "avg_attendance": 75.0
+  },
+  {
+    "id": "26HI020",
+    "name": "KHATRI, Ishwor",
+    "att": 12,
+    "html_score": 0,
+    "status": "PDF only",
+    "final": 56,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi020 khatri, ishwor",
+    "self_page": "self/26hi020.html",
+    "progress_page": "progress/26hi020.html",
+    "attendance20": 17.1,
+    "class_final": 39.3,
+    "final40": 0.0,
+    "software_final": 56,
+    "subject_att": {
+      "Software I": {
+        "present": 12,
+        "sessions": 14,
+        "percent": 85.7
+      },
+      "Computer Fundamentals I": {
+        "present": 6,
+        "sessions": 7,
+        "percent": 85.7
+      },
+      "Hospital Information Systems I": {
+        "present": 10,
+        "sessions": 11,
+        "percent": 90.9
+      }
+    },
+    "avg_attendance": 87.5
+  },
+  {
+    "id": "26HI021",
+    "name": "KUSWAR, Sunil",
+    "att": 11,
+    "html_score": 0,
+    "status": "PDF only",
+    "final": 51,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi021 kuswar, sunil",
+    "self_page": "self/26hi021.html",
+    "progress_page": "progress/26hi021.html",
+    "attendance20": 15.7,
+    "class_final": 35.4,
+    "final40": 0.0,
+    "software_final": 51,
+    "subject_att": {
+      "Software I": {
+        "present": 11,
+        "sessions": 14,
+        "percent": 78.6
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 9,
+        "sessions": 11,
+        "percent": 81.8
+      }
+    },
+    "avg_attendance": 78.1
+  },
+  {
+    "id": "26HI022",
+    "name": "LAMICHHANE, Sachin",
+    "att": 13,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 60,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi022 lamichhane, sachin",
+    "self_page": "self/26hi022.html",
+    "progress_page": "progress/26hi022.html",
+    "attendance20": 18.6,
+    "class_final": 40.0,
+    "final40": 0.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 13,
+        "sessions": 14,
+        "percent": 92.9
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 7,
+        "sessions": 11,
+        "percent": 63.6
+      }
+    },
+    "avg_attendance": 84.4
+  },
+  {
+    "id": "26HI023",
+    "name": "MAI, Ngoc Chuyen",
+    "att": 12,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 56,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi023 mai, ngoc chuyen",
+    "self_page": "self/26hi023.html",
+    "progress_page": "progress/26hi023.html",
+    "attendance20": 17.1,
+    "class_final": 39.3,
+    "final40": 0.0,
+    "software_final": 56,
+    "subject_att": {
+      "Software I": {
+        "present": 12,
+        "sessions": 14,
+        "percent": 85.7
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 87.5
+  },
+  {
+    "id": "26HI024",
+    "name": "MAJHI, Prabina",
+    "att": 12,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 56,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi024 majhi, prabina",
+    "self_page": "self/26hi024.html",
+    "progress_page": "progress/26hi024.html",
+    "attendance20": 17.1,
+    "class_final": 39.3,
+    "final40": 0.0,
+    "software_final": 56,
+    "subject_att": {
+      "Software I": {
+        "present": 12,
+        "sessions": 14,
+        "percent": 85.7
+      },
+      "Computer Fundamentals I": {
+        "present": 6,
+        "sessions": 7,
+        "percent": 85.7
+      },
+      "Hospital Information Systems I": {
+        "present": 9,
+        "sessions": 11,
+        "percent": 81.8
+      }
+    },
+    "avg_attendance": 84.4
+  },
+  {
+    "id": "26HI025",
+    "name": "MALLA, Rajeev",
+    "att": 3,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 16,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi025 malla, rajeev",
+    "self_page": "self/26hi025.html",
+    "progress_page": "progress/26hi025.html",
+    "attendance20": 4.3,
+    "class_final": 11.6,
+    "final40": 0.0,
+    "software_final": 16,
+    "subject_att": {
+      "Software I": {
+        "present": 3,
+        "sessions": 14,
+        "percent": 21.4
+      },
+      "Computer Fundamentals I": {
+        "present": 1,
+        "sessions": 7,
+        "percent": 14.3
+      },
+      "Hospital Information Systems I": {
+        "present": 4,
+        "sessions": 11,
+        "percent": 36.4
+      }
+    },
+    "avg_attendance": 25.0
+  },
+  {
+    "id": "26HI026",
+    "name": "MEHTA, Rajaram",
+    "att": 9,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 42,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi026 mehta, rajaram",
+    "self_page": "self/26hi026.html",
+    "progress_page": "progress/26hi026.html",
+    "attendance20": 12.9,
+    "class_final": 28.7,
+    "final40": 0.0,
+    "software_final": 42,
+    "subject_att": {
+      "Software I": {
+        "present": 9,
+        "sessions": 14,
+        "percent": 64.3
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 6,
+        "sessions": 11,
+        "percent": 54.5
+      }
+    },
+    "avg_attendance": 62.5
+  },
+  {
+    "id": "26HI027",
+    "name": "MOKTAN, Rabin",
+    "att": 10,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 47,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi027 moktan, rabin",
+    "self_page": "self/26hi027.html",
+    "progress_page": "progress/26hi027.html",
+    "attendance20": 14.3,
+    "class_final": 32.6,
+    "final40": 0.0,
+    "software_final": 47,
+    "subject_att": {
+      "Software I": {
+        "present": 10,
+        "sessions": 14,
+        "percent": 71.4
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 6,
+        "sessions": 11,
+        "percent": 54.5
+      }
+    },
+    "avg_attendance": 65.6
+  },
+  {
+    "id": "26HI028",
+    "name": "NEUPANE, Mamata",
+    "att": 5,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 24,
+    "gender": "female",
+    "has_photo": false,
+    "key": "26hi028 neupane, mamata",
+    "self_page": "self/26hi028.html",
+    "progress_page": "progress/26hi028.html",
+    "attendance20": 7.1,
+    "class_final": 17.3,
+    "final40": 0.0,
+    "software_final": 24,
+    "subject_att": {
+      "Software I": {
+        "present": 5,
+        "sessions": 14,
+        "percent": 35.7
+      },
+      "Computer Fundamentals I": {
+        "present": 3,
+        "sessions": 7,
+        "percent": 42.9
+      },
+      "Hospital Information Systems I": {
+        "present": 7,
+        "sessions": 11,
+        "percent": 63.6
+      }
+    },
+    "avg_attendance": 46.9
+  },
+  {
+    "id": "26HI029",
+    "name": "NGUYEN, Thi Nhu Quynh",
+    "att": 0,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 0,
+    "gender": "female",
+    "has_photo": false,
+    "key": "26hi029 nguyen, thi nhu quynh",
+    "self_page": "self/26hi029.html",
+    "progress_page": "progress/26hi029.html",
+    "attendance20": 0.0,
+    "class_final": 0.0,
+    "final40": 0.0,
+    "software_final": 0,
+    "subject_att": {
+      "Software I": {
+        "present": 0,
+        "sessions": 14,
+        "percent": 0.0
+      },
+      "Computer Fundamentals I": {
+        "present": 0,
+        "sessions": 7,
+        "percent": 0.0
+      },
+      "Hospital Information Systems I": {
+        "present": 0,
+        "sessions": 11,
+        "percent": 0.0
+      }
+    },
+    "avg_attendance": 0.0
+  },
+  {
+    "id": "26HI030",
+    "name": "PAIJA PUN, Bhawana",
+    "att": 13,
+    "html_score": 7.5,
+    "status": "HTML accepted",
+    "final": 86,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi030 paija pun, bhawana",
+    "self_page": "self/26hi030.html",
+    "progress_page": "progress/26hi030.html",
+    "attendance20": 18.6,
+    "class_final": 37.1,
+    "final40": 30.0,
+    "software_final": 86,
+    "subject_att": {
+      "Software I": {
+        "present": 13,
+        "sessions": 14,
+        "percent": 92.9
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 8,
+        "sessions": 11,
+        "percent": 72.7
+      }
+    },
+    "avg_attendance": 87.5
+  },
+  {
+    "id": "26HI031",
+    "name": "PANDEY, Samuna",
+    "att": 11,
+    "html_score": 7,
+    "status": "HTML accepted",
+    "final": 75,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi031 pandey, samuna",
+    "self_page": "self/26hi031.html",
+    "progress_page": "progress/26hi031.html",
+    "attendance20": 15.7,
+    "class_final": 31.4,
+    "final40": 28.0,
+    "software_final": 75,
+    "subject_att": {
+      "Software I": {
+        "present": 11,
+        "sessions": 14,
+        "percent": 78.6
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 9,
+        "sessions": 11,
+        "percent": 81.8
+      }
+    },
+    "avg_attendance": 78.1
+  },
+  {
+    "id": "26HI032",
+    "name": "POUDEL, Shrliti",
+    "att": 12,
+    "html_score": 2,
+    "status": "HTML accepted",
+    "final": 60,
+    "gender": "female",
+    "has_photo": false,
+    "key": "26hi032 poudel, shrliti",
+    "self_page": "self/26hi032.html",
+    "progress_page": "progress/26hi032.html",
+    "attendance20": 17.1,
+    "class_final": 34.9,
+    "final40": 8.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 12,
+        "sessions": 14,
+        "percent": 85.7
+      },
+      "Computer Fundamentals I": {
+        "present": 6,
+        "sessions": 7,
+        "percent": 85.7
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 90.6
+  },
+  {
+    "id": "26HI033",
+    "name": "POUDEL, Sita",
+    "att": 10,
+    "html_score": 8,
+    "status": "HTML accepted",
+    "final": 75,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi033 poudel, sita",
+    "self_page": "self/26hi033.html",
+    "progress_page": "progress/26hi033.html",
+    "attendance20": 14.3,
+    "class_final": 28.6,
+    "final40": 32.0,
+    "software_final": 75,
+    "subject_att": {
+      "Software I": {
+        "present": 10,
+        "sessions": 14,
+        "percent": 71.4
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 81.2
+  },
+  {
+    "id": "26HI034",
+    "name": "RAI, Anisha",
+    "att": 11,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 51,
+    "gender": "female",
+    "has_photo": false,
+    "key": "26hi034 rai, anisha",
+    "self_page": "self/26hi034.html",
+    "progress_page": "progress/26hi034.html",
+    "attendance20": 15.7,
+    "class_final": 35.4,
+    "final40": 0.0,
+    "software_final": 51,
+    "subject_att": {
+      "Software I": {
+        "present": 11,
+        "sessions": 14,
+        "percent": 78.6
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 9,
+        "sessions": 11,
+        "percent": 81.8
+      }
+    },
+    "avg_attendance": 78.1
+  },
+  {
+    "id": "26HI035",
+    "name": "SHAH, Anju",
+    "att": 9,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 42,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi035 shah, anju",
+    "self_page": "self/26hi035.html",
+    "progress_page": "progress/26hi035.html",
+    "attendance20": 12.9,
+    "class_final": 28.7,
+    "final40": 0.0,
+    "software_final": 42,
+    "subject_att": {
+      "Software I": {
+        "present": 9,
+        "sessions": 14,
+        "percent": 64.3
+      },
+      "Computer Fundamentals I": {
+        "present": 4,
+        "sessions": 7,
+        "percent": 57.1
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 75.0
+  },
+  {
+    "id": "26HI036",
+    "name": "SIGDEL, Sagar",
+    "att": 12,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 56,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi036 sigdel, sagar",
+    "self_page": "self/26hi036.html",
+    "progress_page": "progress/26hi036.html",
+    "attendance20": 17.1,
+    "class_final": 39.3,
+    "final40": 0.0,
+    "software_final": 56,
+    "subject_att": {
+      "Software I": {
+        "present": 12,
+        "sessions": 14,
+        "percent": 85.7
+      },
+      "Computer Fundamentals I": {
+        "present": 6,
+        "sessions": 7,
+        "percent": 85.7
+      },
+      "Hospital Information Systems I": {
+        "present": 9,
+        "sessions": 11,
+        "percent": 81.8
+      }
+    },
+    "avg_attendance": 84.4
+  },
+  {
+    "id": "26HI037",
+    "name": "SUBEDI, Bimal",
+    "att": 13,
+    "html_score": 7,
+    "status": "HTML accepted",
+    "final": 84,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi037 subedi, bimal",
+    "self_page": "self/26hi037.html",
+    "progress_page": "progress/26hi037.html",
+    "attendance20": 18.6,
+    "class_final": 37.1,
+    "final40": 28.0,
+    "software_final": 84,
+    "subject_att": {
+      "Software I": {
+        "present": 13,
+        "sessions": 14,
+        "percent": 92.9
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 10,
+        "sessions": 11,
+        "percent": 90.9
+      }
+    },
+    "avg_attendance": 93.8
+  },
+  {
+    "id": "26HI038",
+    "name": "SUN, Yuheng",
+    "att": 10,
+    "html_score": 10,
+    "status": "HTML + photo accepted",
+    "final": 93,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi038 sun, yuheng",
+    "self_page": "self/26hi038.html",
+    "progress_page": "progress/26hi038.html",
+    "attendance20": 14.3,
+    "class_final": 38.6,
+    "final40": 40.0,
+    "software_final": 93,
+    "subject_att": {
+      "Software I": {
+        "present": 10,
+        "sessions": 14,
+        "percent": 71.4
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      },
+      "Hospital Information Systems I": {
+        "present": 8,
+        "sessions": 11,
+        "percent": 72.7
+      }
+    },
+    "avg_attendance": 71.9
+  },
+  {
+    "id": "26HI039",
+    "name": "TAMANG, Bibek",
+    "att": 13,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 60,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi039 tamang, bibek",
+    "self_page": "self/26hi039.html",
+    "progress_page": "progress/26hi039.html",
+    "attendance20": 18.6,
+    "class_final": 40.0,
+    "final40": 0.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 13,
+        "sessions": 14,
+        "percent": 92.9
+      },
+      "Computer Fundamentals I": {
+        "present": 6,
+        "sessions": 7,
+        "percent": 85.7
+      },
+      "Hospital Information Systems I": {
+        "present": 10,
+        "sessions": 11,
+        "percent": 90.9
+      }
+    },
+    "avg_attendance": 90.6
+  },
+  {
+    "id": "26HI040",
+    "name": "TAMANG, Dingung Santos",
+    "att": 13,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 60,
+    "gender": "male",
+    "has_photo": true,
+    "key": "26hi040 tamang, dingung santos",
+    "self_page": "self/26hi040.html",
+    "progress_page": "progress/26hi040.html",
+    "attendance20": 18.6,
+    "class_final": 40.0,
+    "final40": 0.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 13,
+        "sessions": 14,
+        "percent": 92.9
+      },
+      "Computer Fundamentals I": {
+        "present": 6,
+        "sessions": 7,
+        "percent": 85.7
+      },
+      "Hospital Information Systems I": {
+        "present": 10,
+        "sessions": 11,
+        "percent": 90.9
+      }
+    },
+    "avg_attendance": 90.6
+  },
+  {
+    "id": "26HI041",
+    "name": "THAPA MAGAR, Sakun",
+    "att": 4,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 20,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi041 thapa magar, sakun",
+    "self_page": "self/26hi041.html",
+    "progress_page": "progress/26hi041.html",
+    "attendance20": 5.7,
+    "class_final": 14.4,
+    "final40": 0.0,
+    "software_final": 20,
+    "subject_att": {
+      "Software I": {
+        "present": 4,
+        "sessions": 14,
+        "percent": 28.6
+      },
+      "Computer Fundamentals I": {
+        "present": 2,
+        "sessions": 7,
+        "percent": 28.6
+      },
+      "Hospital Information Systems I": {
+        "present": 5,
+        "sessions": 11,
+        "percent": 45.5
+      }
+    },
+    "avg_attendance": 34.4
+  },
+  {
+    "id": "26HI042",
+    "name": "THAPA, Asmita",
+    "att": 9,
+    "html_score": 8,
+    "status": "HTML accepted",
+    "final": 71,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi042 thapa, asmita",
+    "self_page": "self/26hi042.html",
+    "progress_page": "progress/26hi042.html",
+    "attendance20": 12.9,
+    "class_final": 25.7,
+    "final40": 32.0,
+    "software_final": 71,
+    "subject_att": {
+      "Software I": {
+        "present": 9,
+        "sessions": 14,
+        "percent": 64.3
+      },
+      "Computer Fundamentals I": {
+        "present": 4,
+        "sessions": 7,
+        "percent": 57.1
+      },
+      "Hospital Information Systems I": {
+        "present": 9,
+        "sessions": 11,
+        "percent": 81.8
+      }
+    },
+    "avg_attendance": 68.8
+  },
+  {
+    "id": "26HI043",
+    "name": "THAPA, Bipana",
+    "att": 14,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 60,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi043 thapa, bipana",
+    "self_page": "self/26hi043.html",
+    "progress_page": "progress/26hi043.html",
+    "attendance20": 20.0,
+    "class_final": 40.0,
+    "final40": 0.0,
+    "software_final": 60,
+    "subject_att": {
+      "Software I": {
+        "present": 14,
+        "sessions": 14,
+        "percent": 100.0
+      },
+      "Computer Fundamentals I": {
+        "present": 7,
+        "sessions": 7,
+        "percent": 100.0
+      },
+      "Hospital Information Systems I": {
+        "present": 11,
+        "sessions": 11,
+        "percent": 100.0
+      }
+    },
+    "avg_attendance": 100.0
+  },
+  {
+    "id": "26HI044",
+    "name": "THAPA, Susan",
+    "att": 11,
+    "html_score": 7,
+    "status": "HTML accepted",
+    "final": 84,
+    "gender": "female",
+    "has_photo": true,
+    "key": "26hi044 thapa, susan",
+    "self_page": "self/26hi044.html",
+    "progress_page": "progress/26hi044.html",
+    "attendance20": 15.7,
+    "class_final": 40.0,
+    "final40": 28.0,
+    "software_final": 84,
+    "subject_att": {
+      "Software I": {
+        "present": 11,
+        "sessions": 14,
+        "percent": 78.6
+      },
+      "Computer Fundamentals I": {
+        "present": 5,
+        "sessions": 7,
+        "percent": 71.4
+      }
+    },
+    "avg_attendance": 76.2
+  },
+  {
+    "id": "26HI045",
+    "name": "THING, Binita",
+    "att": 0,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 0,
+    "gender": "female",
+    "has_photo": false,
+    "key": "26hi045 thing, binita",
+    "self_page": "self/26hi045.html",
+    "progress_page": "progress/26hi045.html",
+    "attendance20": 0.0,
+    "class_final": 0.0,
+    "final40": 0.0,
+    "software_final": 0,
+    "subject_att": {
+      "Software I": {
+        "present": 0,
+        "sessions": 14,
+        "percent": 0.0
+      },
+      "Computer Fundamentals I": {
+        "present": 0,
+        "sessions": 7,
+        "percent": 0.0
+      },
+      "Hospital Information Systems I": {
+        "present": 0,
+        "sessions": 11,
+        "percent": 0.0
+      }
+    },
+    "avg_attendance": 0.0
+  },
+  {
+    "id": "26HI046",
+    "name": "UPADHAYA, Madan Prasad",
+    "att": 0,
+    "html_score": 0,
+    "status": "No HTML yet",
+    "final": 0,
+    "gender": "male",
+    "has_photo": false,
+    "key": "26hi046 upadhaya, madan prasad",
+    "self_page": "self/26hi046.html",
+    "progress_page": "progress/26hi046.html",
+    "attendance20": 0.0,
+    "class_final": 0.0,
+    "final40": 0.0,
+    "software_final": 0,
+    "subject_att": {
+      "Software I": {
+        "present": 0,
+        "sessions": 14,
+        "percent": 0.0
+      },
+      "Computer Fundamentals I": {
+        "present": 0,
+        "sessions": 7,
+        "percent": 0.0
+      },
+      "Hospital Information Systems I": {
+        "present": 0,
+        "sessions": 11,
+        "percent": 0.0
+      }
+    },
+    "avg_attendance": 0.0
+  }
+]

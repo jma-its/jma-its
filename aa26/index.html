@@ -1,0 +1,1698 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>AA26 Teacher Page</title>
+<style>
+:root {
+  --bg1:#f8fbff;
+  --bg2:#eef3f9;
+  --card:#ffffff;
+  --ink:#111827;
+  --muted:#667085;
+  --line:#d7deea;
+  --blue:#2563eb;
+  --blue-dark:#1d4ed8;
+  --pink:#f9a8d4;
+  --blue-frame:#93c5fd;
+  --shadow:0 12px 28px rgba(15,23,42,.08);
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--ink);
+}
+body.lang-en .ja { display:none; }
+body.lang-ja .en { display:none; }
+a { color:inherit; text-decoration:none; }
+.wrap { max-width:1280px; margin:0 auto; padding:22px; }
+.topbar {
+  position:sticky; top:0; z-index:20;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  flex-wrap:wrap;
+}
+h1 { font-size:32px; margin:0 0 8px; }
+.subtitle { color:var(--muted); font-size:15px; line-height:1.45; }
+.lang-switch {
+  display:flex;
+  gap:8px;
+  background:#f1f5f9;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:5px;
+}
+.lang-switch button {
+  border:0;
+  border-radius:999px;
+  padding:9px 16px;
+  font-weight:800;
+  cursor:pointer;
+  background:transparent;
+  color:#334155;
+}
+body.lang-en button[data-lang="en"],
+body.lang-ja button[data-lang="ja"] {
+  background:#ffffff;
+  color:var(--blue-dark);
+  box-shadow:0 3px 10px rgba(15,23,42,.10);
+}
+.warning {
+  display:inline-block;
+  margin-top:10px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  border-radius:999px;
+  padding:8px 12px;
+  font-weight:bold;
+  font-size:13px;
+}
+.stats {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(140px,1fr));
+  gap:12px;
+  margin:18px 0;
+}
+.stat {
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+.stat b { font-size:27px; display:block; }
+.stat span { color:var(--muted); font-size:13px; }
+.controls {
+  margin:18px 0 10px;
+  display:flex;
+  gap:10px;
+}
+#q {
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:14px 18px;
+  background:#fff;
+  font-size:16px;
+  box-shadow:0 6px 16px rgba(15,23,42,.04);
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:18px;
+  margin-top:16px;
+}
+.card {
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.card:hover {
+  transform:translateY(-2px);
+  box-shadow:0 18px 34px rgba(15,23,42,.12);
+}
+.photo-shell { padding:12px; background:#fff; }
+.photo {
+  width:100%;
+  height:310px;
+  object-fit:cover;
+  object-position:center 25%;
+  border-radius:18px;
+  display:block;
+  background:#e5e7eb;
+}
+.photo.missing {
+  object-fit:contain;
+  padding:42px;
+}
+.frame-female { border:5px solid var(--pink); }
+.frame-male { border:5px solid var(--blue-frame); }
+.card-body { padding:16px 18px 10px; }
+.id {
+  font-weight:900;
+  color:var(--muted);
+  font-size:13px;
+  letter-spacing:.05em;
+}
+.name {
+  font-weight:900;
+  font-size:21px;
+  margin:5px 0 14px;
+  min-height:52px;
+  line-height:1.22;
+}
+.mini-stat {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:11px 12px;
+}
+.mini-stat .label {
+  color:#475569;
+  font-weight:700;
+  font-size:13px;
+}
+.mini-stat b {
+  font-size:22px;
+  color:#0f172a;
+}
+.actions {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:14px 18px 18px;
+  margin-top:auto;
+}
+.btn {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  border-radius:999px;
+  padding:10px 14px;
+  font-weight:900;
+  text-align:center;
+  border:1px solid transparent;
+  box-shadow:0 6px 14px rgba(15,23,42,.07);
+  transition:transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.btn:hover {
+  transform:translateY(-1px);
+  box-shadow:0 10px 18px rgba(15,23,42,.12);
+  filter:saturate(1.05);
+}
+.btn.primary {
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:white;
+}
+.btn.secondary {
+  background:linear-gradient(135deg,#ffffff,#eef2ff);
+  color:#1e3a8a;
+  border-color:#c7d2fe;
+}
+.btn.muted {
+  background:#f1f5f9;
+  color:#64748b;
+  border-color:#d7deea;
+  box-shadow:none;
+}
+.footer {
+  color:var(--muted);
+  font-size:13px;
+  margin:30px 0;
+}
+@media(max-width:760px) {
+  .stats { grid-template-columns:1fr 1fr; }
+  .photo { height:280px; }
+}
+</style>
+</head>
+<body class="lang-en">
+<div class="topbar">
+  <div class="wrap header">
+    <div>
+      <h1>
+        <span class="en">AA26 Teacher Page</span>
+        <span class="ja">AA26 教員用ページ</span>
+      </h1>
+      <div class="subtitle">
+        <span class="en">Photos, self-introductions, and progress pages for teachers.</span>
+        <span class="ja">教員用：写真、自己紹介、成績・出席ページ。</span>
+      </div>
+      <div class="warning">
+        <span class="en">Teacher only · noindex · no public link</span>
+        <span class="ja">教員用・検索非表示・公開リンクなし</span>
+      </div>
+    </div>
+    <div class="lang-switch" aria-label="Language switch">
+      <button type="button" data-lang="en">English</button>
+      <button type="button" data-lang="ja">日本語</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="stats">
+    <div class="stat"><b>46</b><span><span class="en">students</span><span class="ja">学生</span></span></div>
+    <div class="stat"><b>33</b><span><span class="en">photos loaded</span><span class="ja">写真あり</span></span></div>
+    <div class="stat"><b>13</b><span><span class="en">self-introductions</span><span class="ja">自己紹介あり</span></span></div>
+    <div class="stat"><b>68.8%</b><span><span class="en">average attendance</span><span class="ja">平均出席率</span></span></div>
+  </section>
+
+  <div class="controls">
+    <input id="q"
+      data-placeholder-en="Search by ID, English name, or katakana..."
+      data-placeholder-ja="ID・英語名・カタカナで検索..."
+      placeholder="Search by ID, English name, or katakana..."
+      autocomplete="off">
+  </div>
+  <div class="subtitle">
+    <span class="en">Showing</span><span class="ja">表示中</span>
+    <b id="shown">46</b> / 46
+  </div>
+
+  <section class="grid">
+    
+<article class="card" data-key="26hi001 baniya, sajina バニヤ, サジナ">
+  <div class="photo-shell">
+    <img class="photo frame-female missing" src="assets/no_photo.svg" alt="26HI001 BANIYA, Sajina">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI001</div>
+    <div class="name">
+      <span class="en">BANIYA, Sajina</span>
+      <span class="ja">バニヤ, サジナ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>78.1%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi001.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi001.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi002 basnet, amrit バスネト, アムリット">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi002.jpg" alt="26HI002 BASNET, Amrit">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI002</div>
+    <div class="name">
+      <span class="en">BASNET, Amrit</span>
+      <span class="ja">バスネト, アムリット</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>100.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi002.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi002.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi003 bhandari, sujan バンダリ　スジャン">
+  <div class="photo-shell">
+    <img class="photo frame-male missing" src="assets/no_photo.svg" alt="26HI003 BHANDARI, Sujan">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI003</div>
+    <div class="name">
+      <span class="en">BHANDARI, Sujan</span>
+      <span class="ja">バンダリ　スジャン</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>53.1%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi003.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi003.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi004 bhujel, sagar ブジェル, サガル">
+  <div class="photo-shell">
+    <img class="photo frame-male missing" src="assets/no_photo.svg" alt="26HI004 BHUJEL, Sagar">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI004</div>
+    <div class="name">
+      <span class="en">BHUJEL, Sagar</span>
+      <span class="ja">ブジェル, サガル</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>0.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi004.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi004.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi005 bk, gokarna ビーケー, ゴカルナ">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi005.jpg" alt="26HI005 BK, Gokarna">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI005</div>
+    <div class="name">
+      <span class="en">BK, Gokarna</span>
+      <span class="ja">ビーケー, ゴカルナ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>100.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi005.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi005.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi006 bk, shiv ビーケー　シバ">
+  <div class="photo-shell">
+    <img class="photo frame-male missing" src="assets/no_photo.svg" alt="26HI006 BK, Shiv">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI006</div>
+    <div class="name">
+      <span class="en">BK, Shiv</span>
+      <span class="ja">ビーケー　シバ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>100.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi006.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi006.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi007 bohara, ammar bahadur ボハラ　アマル　バハドゥル">
+  <div class="photo-shell">
+    <img class="photo frame-male missing" src="assets/no_photo.svg" alt="26HI007 BOHARA, Ammar Bahadur">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI007</div>
+    <div class="name">
+      <span class="en">BOHARA, Ammar Bahadur</span>
+      <span class="ja">ボハラ　アマル　バハドゥル</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>0.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi007.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi007.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi008 budhathoki, jamuna ブダトキ, ジャムナ">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi008.jpg" alt="26HI008 BUDHATHOKI, Jamuna">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI008</div>
+    <div class="name">
+      <span class="en">BUDHATHOKI, Jamuna</span>
+      <span class="ja">ブダトキ, ジャムナ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>75.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi008.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi008.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi009 chand, durga チャンド, ドルガ">
+  <div class="photo-shell">
+    <img class="photo frame-male missing" src="assets/no_photo.svg" alt="26HI009 CHAND, Durga">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI009</div>
+    <div class="name">
+      <span class="en">CHAND, Durga</span>
+      <span class="ja">チャンド, ドルガ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>65.6%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi009.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi009.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi010 dhenga, pramila デンガ, パラミラ">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi010.jpg" alt="26HI010 DHENGA, Pramila">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI010</div>
+    <div class="name">
+      <span class="en">DHENGA, Pramila</span>
+      <span class="ja">デンガ, パラミラ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>90.6%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi010.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi010.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi011 dong, diwas ドン, ディワス">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi011.jpg" alt="26HI011 DONG, Diwas">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI011</div>
+    <div class="name">
+      <span class="en">DONG, Diwas</span>
+      <span class="ja">ドン, ディワス</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>100.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi011.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi011.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi012 gaha thapa, ramesh ガハタパ, ラメシュ">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi012.jpg" alt="26HI012 GAHA THAPA, Ramesh">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI012</div>
+    <div class="name">
+      <span class="en">GAHA THAPA, Ramesh</span>
+      <span class="ja">ガハタパ, ラメシュ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>100.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi012.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi012.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi013 ghimire, bibek ギミレ, ビベク">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi013.jpg" alt="26HI013 GHIMIRE, Bibek">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI013</div>
+    <div class="name">
+      <span class="en">GHIMIRE, Bibek</span>
+      <span class="ja">ギミレ, ビベク</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>84.4%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi013.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi013.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi014 gurung, arman グルン, アルマン">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi014.jpg" alt="26HI014 GURUNG, Arman">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI014</div>
+    <div class="name">
+      <span class="en">GURUNG, Arman</span>
+      <span class="ja">グルン, アルマン</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>50.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi014.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi014.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi015 gurung, roji グルン, ロジ">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi015.jpg" alt="26HI015 GURUNG, Roji">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI015</div>
+    <div class="name">
+      <span class="en">GURUNG, Roji</span>
+      <span class="ja">グルン, ロジ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>100.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi015.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi015.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi016 gurung, sangina グルン, サンギナ">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi016.jpg" alt="26HI016 GURUNG, Sangina">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI016</div>
+    <div class="name">
+      <span class="en">GURUNG, Sangina</span>
+      <span class="ja">グルン, サンギナ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>96.9%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi016.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi016.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi017 hasan, nishan nahid ハサン, ニシャン ナヒド">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi017.jpg" alt="26HI017 HASAN, Nishan Nahid">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI017</div>
+    <div class="name">
+      <span class="en">HASAN, Nishan Nahid</span>
+      <span class="ja">ハサン, ニシャン ナヒド</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>53.1%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi017.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi017.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi018 hassan, muhammad ハッサン, ムハッマド">
+  <div class="photo-shell">
+    <img class="photo frame-male missing" src="assets/no_photo.svg" alt="26HI018 HASSAN, Muhammad">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI018</div>
+    <div class="name">
+      <span class="en">HASSAN, Muhammad</span>
+      <span class="ja">ハッサン, ムハッマド</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>21.9%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi018.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi018.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi019 jahan, mim iffat ジャハン, ミム イッファト">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi019.jpg" alt="26HI019 JAHAN, Mim Iffat">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI019</div>
+    <div class="name">
+      <span class="en">JAHAN, Mim Iffat</span>
+      <span class="ja">ジャハン, ミム イッファト</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>75.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi019.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi019.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi020 khatri, ishwor カトリ, イシュウオル">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi020.jpg" alt="26HI020 KHATRI, Ishwor">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI020</div>
+    <div class="name">
+      <span class="en">KHATRI, Ishwor</span>
+      <span class="ja">カトリ, イシュウオル</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>87.5%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi020.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi020.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi021 kuswar, sunil クスワル, スニル">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi021.jpg" alt="26HI021 KUSWAR, Sunil">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI021</div>
+    <div class="name">
+      <span class="en">KUSWAR, Sunil</span>
+      <span class="ja">クスワル, スニル</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>78.1%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi021.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi021.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi022 lamichhane, sachin ラミチャネ, サチン">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi022.jpg" alt="26HI022 LAMICHHANE, Sachin">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI022</div>
+    <div class="name">
+      <span class="en">LAMICHHANE, Sachin</span>
+      <span class="ja">ラミチャネ, サチン</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>84.4%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi022.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi022.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi023 mai, ngoc chuyen マイ, ゴック チュエン">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi023.jpg" alt="26HI023 MAI, Ngoc Chuyen">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI023</div>
+    <div class="name">
+      <span class="en">MAI, Ngoc Chuyen</span>
+      <span class="ja">マイ, ゴック チュエン</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>87.5%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi023.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi023.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi024 majhi, prabina マジ, プラビナ">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi024.jpg" alt="26HI024 MAJHI, Prabina">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI024</div>
+    <div class="name">
+      <span class="en">MAJHI, Prabina</span>
+      <span class="ja">マジ, プラビナ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>84.4%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi024.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi024.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi025 malla, rajeev マッラ, ラジブ">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi025.jpg" alt="26HI025 MALLA, Rajeev">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI025</div>
+    <div class="name">
+      <span class="en">MALLA, Rajeev</span>
+      <span class="ja">マッラ, ラジブ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>25.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi025.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi025.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi026 mehta, rajaram メハタ, ラジャラム">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi026.jpg" alt="26HI026 MEHTA, Rajaram">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI026</div>
+    <div class="name">
+      <span class="en">MEHTA, Rajaram</span>
+      <span class="ja">メハタ, ラジャラム</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>62.5%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi026.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi026.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi027 moktan, rabin モクタン, ラビン">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi027.jpg" alt="26HI027 MOKTAN, Rabin">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI027</div>
+    <div class="name">
+      <span class="en">MOKTAN, Rabin</span>
+      <span class="ja">モクタン, ラビン</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>65.6%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi027.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi027.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi028 neupane, mamata ネウパネ, ママタ">
+  <div class="photo-shell">
+    <img class="photo frame-female missing" src="assets/no_photo.svg" alt="26HI028 NEUPANE, Mamata">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI028</div>
+    <div class="name">
+      <span class="en">NEUPANE, Mamata</span>
+      <span class="ja">ネウパネ, ママタ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>46.9%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi028.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi028.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi029 nguyen, thi nhu quynh グエン, ティ ニュ クイン">
+  <div class="photo-shell">
+    <img class="photo frame-female missing" src="assets/no_photo.svg" alt="26HI029 NGUYEN, Thi Nhu Quynh">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI029</div>
+    <div class="name">
+      <span class="en">NGUYEN, Thi Nhu Quynh</span>
+      <span class="ja">グエン, ティ ニュ クイン</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>0.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi029.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi029.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi030 paija pun, bhawana パイザプン, バワナ">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi030.jpg" alt="26HI030 PAIJA PUN, Bhawana">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI030</div>
+    <div class="name">
+      <span class="en">PAIJA PUN, Bhawana</span>
+      <span class="ja">パイザプン, バワナ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>87.5%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi030.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi030.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi031 pandey, samuna パンディ, サムナ">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi031.jpg" alt="26HI031 PANDEY, Samuna">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI031</div>
+    <div class="name">
+      <span class="en">PANDEY, Samuna</span>
+      <span class="ja">パンディ, サムナ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>78.1%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi031.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi031.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi032 poudel, shrliti ポウデル, シュルティ">
+  <div class="photo-shell">
+    <img class="photo frame-female missing" src="assets/no_photo.svg" alt="26HI032 POUDEL, Shrliti">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI032</div>
+    <div class="name">
+      <span class="en">POUDEL, Shrliti</span>
+      <span class="ja">ポウデル, シュルティ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>90.6%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi032.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi032.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi033 poudel, sita パウデル, シタ">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi033.jpg" alt="26HI033 POUDEL, Sita">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI033</div>
+    <div class="name">
+      <span class="en">POUDEL, Sita</span>
+      <span class="ja">パウデル, シタ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>81.2%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi033.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi033.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi034 rai, anisha ライ, アニシャ">
+  <div class="photo-shell">
+    <img class="photo frame-female missing" src="assets/no_photo.svg" alt="26HI034 RAI, Anisha">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI034</div>
+    <div class="name">
+      <span class="en">RAI, Anisha</span>
+      <span class="ja">ライ, アニシャ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>78.1%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi034.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi034.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi035 shah, anju シャハ, アンズ">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi035.jpg" alt="26HI035 SHAH, Anju">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI035</div>
+    <div class="name">
+      <span class="en">SHAH, Anju</span>
+      <span class="ja">シャハ, アンズ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>75.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi035.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi035.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi036 sigdel, sagar シグデル, サガル">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi036.jpg" alt="26HI036 SIGDEL, Sagar">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI036</div>
+    <div class="name">
+      <span class="en">SIGDEL, Sagar</span>
+      <span class="ja">シグデル, サガル</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>84.4%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi036.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi036.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi037 subedi, bimal スベディ, ビマル">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi037.jpg" alt="26HI037 SUBEDI, Bimal">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI037</div>
+    <div class="name">
+      <span class="en">SUBEDI, Bimal</span>
+      <span class="ja">スベディ, ビマル</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>93.8%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi037.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi037.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi038 sun, yuheng ソン, イクコウ">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi038.jpg" alt="26HI038 SUN, Yuheng">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI038</div>
+    <div class="name">
+      <span class="en">SUN, Yuheng</span>
+      <span class="ja">ソン, イクコウ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>71.9%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi038.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi038.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi039 tamang, bibek タマン, ビベク">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi039.jpg" alt="26HI039 TAMANG, Bibek">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI039</div>
+    <div class="name">
+      <span class="en">TAMANG, Bibek</span>
+      <span class="ja">タマン, ビベク</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>90.6%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi039.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi039.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi040 tamang, dingung santos タマン, ディムドゥンサントス">
+  <div class="photo-shell">
+    <img class="photo frame-male" src="photos/thumbs/26hi040.jpg" alt="26HI040 TAMANG, Dingung Santos">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI040</div>
+    <div class="name">
+      <span class="en">TAMANG, Dingung Santos</span>
+      <span class="ja">タマン, ディムドゥンサントス</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>90.6%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi040.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi040.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi041 thapa magar, sakun タパマガル, サクン">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi041.jpg" alt="26HI041 THAPA MAGAR, Sakun">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI041</div>
+    <div class="name">
+      <span class="en">THAPA MAGAR, Sakun</span>
+      <span class="ja">タパマガル, サクン</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>34.4%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi041.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi041.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi042 thapa, asmita タパ, アスミタ">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi042.jpg" alt="26HI042 THAPA, Asmita">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI042</div>
+    <div class="name">
+      <span class="en">THAPA, Asmita</span>
+      <span class="ja">タパ, アスミタ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>68.8%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi042.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi042.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi043 thapa, bipana タパ, ビパナ">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi043.jpg" alt="26HI043 THAPA, Bipana">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI043</div>
+    <div class="name">
+      <span class="en">THAPA, Bipana</span>
+      <span class="ja">タパ, ビパナ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>100.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi043.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi043.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi044 thapa, susan タパ, スサン">
+  <div class="photo-shell">
+    <img class="photo frame-female" src="photos/thumbs/26hi044.jpg" alt="26HI044 THAPA, Susan">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI044</div>
+    <div class="name">
+      <span class="en">THAPA, Susan</span>
+      <span class="ja">タパ, スサン</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>76.2%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="self/26hi044.html">
+      <span class="en">Self Introduction</span>
+      <span class="ja">自己紹介</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi044.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi045 thing, binita ティン, ビニタ">
+  <div class="photo-shell">
+    <img class="photo frame-female missing" src="assets/no_photo.svg" alt="26HI045 THING, Binita">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI045</div>
+    <div class="name">
+      <span class="en">THING, Binita</span>
+      <span class="ja">ティン, ビニタ</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>0.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi045.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi045.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+<article class="card" data-key="26hi046 upadhaya, madan prasad ウパディヤ　マダン　プラサド">
+  <div class="photo-shell">
+    <img class="photo frame-male missing" src="assets/no_photo.svg" alt="26HI046 UPADHAYA, Madan Prasad">
+  </div>
+  <div class="card-body">
+    <div class="id">26HI046</div>
+    <div class="name">
+      <span class="en">UPADHAYA, Madan Prasad</span>
+      <span class="ja">ウパディヤ　マダン　プラサド</span>
+    </div>
+    <div class="mini-stat">
+      <span class="label">
+        <span class="en">Average attendance</span>
+        <span class="ja">平均出席率</span>
+      </span>
+      <b>0.0%</b>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn muted" href="self/26hi046.html">
+      <span class="en">No Self Intro Yet</span>
+      <span class="ja">自己紹介なし</span>
+    </a>
+    <a class="btn secondary" href="progress/26hi046.html">
+      <span class="en">Progress</span>
+      <span class="ja">成績・出席</span>
+    </a>
+  </div>
+</article>
+
+  </section>
+
+  <div class="footer">
+    <span class="en">Generated 2026-06-07 05:17. Replace only <b>aa26/index.html</b> with this file.</span>
+    <span class="ja">2026-06-07 05:17 作成。このファイルを <b>aa26/index.html</b> として置き換えてください。</span>
+  </div>
+</main>
+
+<script>
+const body = document.body;
+const q = document.getElementById("q");
+const cards = [...document.querySelectorAll(".card[data-key]")];
+
+function setLang(lang) {
+  body.classList.toggle("lang-en", lang === "en");
+  body.classList.toggle("lang-ja", lang === "ja");
+  document.documentElement.lang = lang === "ja" ? "ja" : "en";
+  q.placeholder = lang === "ja" ? q.dataset.placeholderJa : q.dataset.placeholderEn;
+  localStorage.setItem("aa26-lang", lang);
+}
+
+document.querySelectorAll("[data-lang]").forEach(btn => {
+  btn.addEventListener("click", () => setLang(btn.dataset.lang));
+});
+
+function filterCards() {
+  const text = (q.value || "").toLowerCase().trim();
+  let shown = 0;
+  for (const card of cards) {
+    const ok = !text || card.dataset.key.includes(text);
+    card.style.display = ok ? "" : "none";
+    if (ok) shown++;
+  }
+  document.getElementById("shown").textContent = shown;
+}
+
+q.addEventListener("input", filterCards);
+setLang(localStorage.getItem("aa26-lang") || "en");
+filterCards();
+</script>
+</body>
+</html>
