@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第4講 — 病院ワークステーションのハードウェア</title>
+<link rel="stylesheet" href="assets/style.css">
+<script defer src="assets/interactive.js"></script>
+<style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head>
+<body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture03/index.html">← 3</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture05/index.html">5 →</a></nav>
+<header><div class="header-inner">
+<div class="course">Computer Fundamentals 2 · 今学期 · ウェブ講義 4</div>
+<h1>病院ワークステーションのハードウェア</h1>
+<p class="subtitle">元のプレゼンテーションスライドを、見やすい日英ウェブ講義に変換しました。</p>
+<p class="intro">この講義では、病院のワークステーションの周りで使われるハードウェアを学びます。入力装置、出力装置、識別機器、プリンター、スキャナー、保存装置、よくあるトラブルを扱います。</p>
+<div class="lang-switch"><a href="lecture_en.html">English</a><a class="current" href="lecture_ja.html">日本語</a></div>
+</div></header>
+<main class="container">
+<section class="core"><h2>中心の考え</h2><div class="core-chain">入力装置 → コンピュータ／ネットワーク → 出力装置 → より安全な病院業務</div></section>
+<section class="progress-box"><strong>読書の進み具合</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span></section>
+<section class="notice"><h2>この講義の使い方</h2><p>各オリジナルスライド画像を見て、その下の短い説明を読み、チェック問題に答え、最後に対話型復習を行ってください。</p></section>
+<section class="notice map" id="lesson-map"><h2>講義マップ — 96枚のスライド</h2><ol>
+<li><a href="#slide-1">スライド 1: 病院ワークステーションのハードウェア</a></li>
+<li><a href="#slide-2">スライド 2: 病院ワークステーションのハードウェア</a></li>
+<li><a href="#slide-3">スライド 3: ハードウェアとは</a></li>
+<li><a href="#slide-4">スライド 4: 病院のハードウェア</a></li>
+<li><a href="#slide-5">スライド 5: 入力 → 処理 → 出力</a></li>
+<li><a href="#slide-6">スライド 6: 病院内の情報の流れ</a></li>
+<li><a href="#slide-7">スライド 7: モニターとは</a></li>
+<li><a href="#slide-8">スライド 8: モニターの種類</a></li>
+<li><a href="#slide-9">スライド 9: LCDモニター</a></li>
+<li><a href="#slide-10">スライド 10: LEDモニター</a></li>
+<li><a href="#slide-11">スライド 11: タッチスクリーンモニター</a></li>
+<li><a href="#slide-12">スライド 12: 医療用ディスプレイ</a></li>
+<li><a href="#slide-13">スライド 13: LCDモニターの内部</a></li>
+<li><a href="#slide-14">スライド 14: バックライト</a></li>
+<li><a href="#slide-15">スライド 15: 液晶層</a></li>
+<li><a href="#slide-16">スライド 16: カラーフィルター</a></li>
+<li><a href="#slide-17">スライド 17: デッドピクセル</a></li>
+<li><a href="#slide-18">スライド 18: 壊れた画面</a></li>
+<li><a href="#slide-19">スライド 19: キーボードとは</a></li>
+<li><a href="#slide-20">スライド 20: キーボードの種類</a></li>
+<li><a href="#slide-21">スライド 21: メンブレンキーボード</a></li>
+<li><a href="#slide-22">スライド 22: メカニカルキーボード</a></li>
+<li><a href="#slide-23">スライド 23: ノートPCキーボード</a></li>
+<li><a href="#slide-24">スライド 24: 医療用キーボード</a></li>
+<li><a href="#slide-25">スライド 25: キーボードマトリクス</a></li>
+<li><a href="#slide-26">スライド 26: 行と列</a></li>
+<li><a href="#slide-27">スライド 27: キー入力の検出</a></li>
+<li><a href="#slide-28">スライド 28: キーボードの問題</a></li>
+<li><a href="#slide-29">スライド 29: 液体による損傷</a></li>
+<li><a href="#slide-30">スライド 30: マウスとは</a></li>
+<li><a href="#slide-31">スライド 31: マウスの種類</a></li>
+<li><a href="#slide-32">スライド 32: 光学式マウス</a></li>
+<li><a href="#slide-33">スライド 33: マウス内のLED光</a></li>
+<li><a href="#slide-34">スライド 34: イメージセンサー</a></li>
+<li><a href="#slide-35">スライド 35: 汚れたマウスセンサー</a></li>
+<li><a href="#slide-36">スライド 36: マウスのトラブルシューティング</a></li>
+<li><a href="#slide-37">スライド 37: 病院でプリンターが必要な理由</a></li>
+<li><a href="#slide-38">スライド 38: プリンターの種類</a></li>
+<li><a href="#slide-39">スライド 39: インクジェットプリンター</a></li>
+<li><a href="#slide-40">スライド 40: インクジェットの仕組み</a></li>
+<li><a href="#slide-41">スライド 41: インクの微小滴</a></li>
+<li><a href="#slide-42">スライド 42: レーザープリンター</a></li>
+<li><a href="#slide-43">スライド 43: レーザープリンターの部品</a></li>
+<li><a href="#slide-44">スライド 44: トナー</a></li>
+<li><a href="#slide-45">スライド 45: ドラム</a></li>
+<li><a href="#slide-46">スライド 46: 定着器</a></li>
+<li><a href="#slide-47">スライド 47: サーマルプリンター</a></li>
+<li><a href="#slide-48">スライド 48: ドットマトリクスプリンター</a></li>
+<li><a href="#slide-49">スライド 49: プリンターの問題</a></li>
+<li><a href="#slide-50">スライド 50: 紙詰まり</a></li>
+<li><a href="#slide-51">スライド 51: 用紙なし／トナーなし</a></li>
+<li><a href="#slide-52">スライド 52: スキャナーとは</a></li>
+<li><a href="#slide-53">スライド 53: スキャナーの種類</a></li>
+<li><a href="#slide-54">スライド 54: フラットベッドスキャナー</a></li>
+<li><a href="#slide-55">スライド 55: シートフィードスキャナー</a></li>
+<li><a href="#slide-56">スライド 56: スキャナーの仕組み</a></li>
+<li><a href="#slide-57">スライド 57: ランプと反射</a></li>
+<li><a href="#slide-58">スライド 58: スキャナーセンサー</a></li>
+<li><a href="#slide-59">スライド 59: 汚れたスキャナーガラス</a></li>
+<li><a href="#slide-60">スライド 60: 病院でバーコードを使う理由</a></li>
+<li><a href="#slide-61">スライド 61: バーコードの種類</a></li>
+<li><a href="#slide-62">スライド 62: 1次元バーコード</a></li>
+<li><a href="#slide-63">スライド 63: QRコード</a></li>
+<li><a href="#slide-64">スライド 64: DataMatrix</a></li>
+<li><a href="#slide-65">スライド 65: PDF417</a></li>
+<li><a href="#slide-66">スライド 66: バーコードリーダー</a></li>
+<li><a href="#slide-67">スライド 67: バーコードリーダーの仕組み</a></li>
+<li><a href="#slide-68">スライド 68: 患者リストバンド</a></li>
+<li><a href="#slide-69">スライド 69: バーコードのトラブルシューティング</a></li>
+<li><a href="#slide-70">スライド 70: コンピュータにネットワークが必要な理由</a></li>
+<li><a href="#slide-71">スライド 71: ルーター</a></li>
+<li><a href="#slide-72">スライド 72: スイッチ</a></li>
+<li><a href="#slide-73">スライド 73: イーサネットケーブル</a></li>
+<li><a href="#slide-74">スライド 74: RJ45コネクタ</a></li>
+<li><a href="#slide-75">スライド 75: 一般的なポート</a></li>
+<li><a href="#slide-76">スライド 76: USB</a></li>
+<li><a href="#slide-77">スライド 77: HDMI</a></li>
+<li><a href="#slide-78">スライド 78: 電源ケーブル</a></li>
+<li><a href="#slide-79">スライド 79: 間違った接続</a></li>
+<li><a href="#slide-80">スライド 80: トラブルシューティングとは</a></li>
+<li><a href="#slide-81">スライド 81: 一般的な問題</a></li>
+<li><a href="#slide-82">スライド 82: 最初に電源を確認</a></li>
+<li><a href="#slide-83">スライド 83: ケーブルを確認</a></li>
+<li><a href="#slide-84">スライド 84: 機器を確認</a></li>
+<li><a href="#slide-85">スライド 85: 再起動</a></li>
+<li><a href="#slide-86">スライド 86: エラーメッセージを読む</a></li>
+<li><a href="#slide-87">スライド 87: USBが認識されない</a></li>
+<li><a href="#slide-88">スライド 88: インターネットに接続できない</a></li>
+<li><a href="#slide-89">スライド 89: プリンターエラー</a></li>
+<li><a href="#slide-90">スライド 90: 入力 → 処理 → 出力の方法</a></li>
+<li><a href="#slide-91">スライド 91: 病院でのトラブルシューティング例</a></li>
+<li><a href="#slide-92">スライド 92: 復習：入力装置</a></li>
+<li><a href="#slide-93">スライド 93: 復習：出力装置</a></li>
+<li><a href="#slide-94">スライド 94: 復習：ネットワーク</a></li>
+<li><a href="#slide-95">スライド 95: 復習：トラブルシューティング</a></li>
+<li><a href="#slide-96">スライド 96: 最終問題</a></li>
+</ol></section>
+
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">スライド 1</div><div class="slide-title"><h2>病院ワークステーションのハードウェア</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="病院ワークステーションのハードウェア"></button><figcaption>タップして拡大 · 1/96</figcaption></figure>
+<section class="reading"><p>病院のワークステーションは、コンピュータ本体だけでなく、モニター、入力装置、プリンター、スキャナー、ネットワーク機器を含むシステムです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>病院のワークステーションは、コンピュータ本体だけでなく、モニター、入力装置、プリンター、スキャナー、ネットワーク機器を含むシステムです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">スライド 2</div><div class="slide-title"><h2>病院ワークステーションのハードウェア</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="病院ワークステーションのハードウェア"></button><figcaption>タップして拡大 · 2/96</figcaption></figure>
+<section class="reading"><p>病院のワークステーションは、コンピュータ本体だけでなく、モニター、入力装置、プリンター、スキャナー、ネットワーク機器を含むシステムです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>病院のワークステーションは、コンピュータ本体だけでなく、モニター、入力装置、プリンター、スキャナー、ネットワーク機器を含むシステムです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">スライド 3</div><div class="slide-title"><h2>ハードウェアとは</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="ハードウェアとは"></button><figcaption>タップして拡大 · 3/96</figcaption></figure>
+<section class="reading"><p>ハードウェアは触れることができる物理的な機器です。ソフトウェアがハードウェアを制御します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ハードウェアは触れることができる物理的な機器です。ソフトウェアがハードウェアを制御します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">スライド 4</div><div class="slide-title"><h2>病院のハードウェア</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="病院のハードウェア"></button><figcaption>タップして拡大 · 4/96</figcaption></figure>
+<section class="reading"><p>病院ではプリンター、スキャナー、バーコードリーダーなどが患者業務を支えています。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>病院ではプリンター、スキャナー、バーコードリーダーなどが患者業務を支えています。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">スライド 5</div><div class="slide-title"><h2>入力 → 処理 → 出力</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="入力 → 処理 → 出力"></button><figcaption>タップして拡大 · 5/96</figcaption></figure>
+<section class="reading"><p>入力装置が情報を送り、コンピュータが処理し、出力装置が結果を表示または印刷します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>入力装置が情報を送り、コンピュータが処理し、出力装置が結果を表示または印刷します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">スライド 6</div><div class="slide-title"><h2>病院内の情報の流れ</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="病院内の情報の流れ"></button><figcaption>タップして拡大 · 6/96</figcaption></figure>
+<section class="reading"><p>患者情報は入力装置、コンピュータ、ネットワーク、データベース、出力装置を通って移動します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>患者情報は入力装置、コンピュータ、ネットワーク、データベース、出力装置を通って移動します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">スライド 7</div><div class="slide-title"><h2>モニターとは</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="モニターとは"></button><figcaption>タップして拡大 · 7/96</figcaption></figure>
+<section class="reading"><p>モニターは文字、画像、動画を表示する出力装置です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>モニターは文字、画像、動画を表示する出力装置です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">スライド 8</div><div class="slide-title"><h2>モニターの種類</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="モニターの種類"></button><figcaption>タップして拡大 · 8/96</figcaption></figure>
+<section class="reading"><p>LCD、LED、タッチスクリーン、医療用ディスプレイは用途と画質が異なります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>LCD、LED、タッチスクリーン、医療用ディスプレイは用途と画質が異なります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">スライド 9</div><div class="slide-title"><h2>LCDモニター</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="LCDモニター"></button><figcaption>タップして拡大 · 9/96</figcaption></figure>
+<section class="reading"><p>LCDは液晶で光を制御して画像を作る一般的な表示装置です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>LCDは液晶で光を制御して画像を作る一般的な表示装置です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">スライド 10</div><div class="slide-title"><h2>LEDモニター</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="LEDモニター"></button><figcaption>タップして拡大 · 10/96</figcaption></figure>
+<section class="reading"><p>LEDモニターはLEDバックライトを使う省電力で明るいLCDです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>LEDモニターはLEDバックライトを使う省電力で明るいLCDです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">スライド 11</div><div class="slide-title"><h2>タッチスクリーンモニター</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="タッチスクリーンモニター"></button><figcaption>タップして拡大 · 11/96</figcaption></figure>
+<section class="reading"><p>タッチスクリーンは表示する出力装置であり、タップを受け取る入力装置でもあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>タッチスクリーンは表示する出力装置であり、タップを受け取る入力装置でもあります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">スライド 12</div><div class="slide-title"><h2>医療用ディスプレイ</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="医療用ディスプレイ"></button><figcaption>タップして拡大 · 12/96</figcaption></figure>
+<section class="reading"><p>医療用ディスプレイでは細部、明るさ、コントラスト、正確さが重要です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>医療用ディスプレイでは細部、明るさ、コントラスト、正確さが重要です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">スライド 13</div><div class="slide-title"><h2>LCDモニターの内部</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="LCDモニターの内部"></button><figcaption>タップして拡大 · 13/96</figcaption></figure>
+<section class="reading"><p>LCDはバックライト、液晶層、カラーフィルターなどで画像を作ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>LCDはバックライト、液晶層、カラーフィルターなどで画像を作ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">スライド 14</div><div class="slide-title"><h2>バックライト</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="バックライト"></button><figcaption>タップして拡大 · 14/96</figcaption></figure>
+<section class="reading"><p>バックライトが画面の光を作ります。故障すると画像が暗く見えます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックライトが画面の光を作ります。故障すると画像が暗く見えます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">スライド 15</div><div class="slide-title"><h2>液晶層</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="液晶層"></button><figcaption>タップして拡大 · 15/96</figcaption></figure>
+<section class="reading"><p>液晶層は光を通したり遮ったりして明暗を作ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>液晶層は光を通したり遮ったりして明暗を作ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">スライド 16</div><div class="slide-title"><h2>カラーフィルター</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="カラーフィルター"></button><figcaption>タップして拡大 · 16/96</figcaption></figure>
+<section class="reading"><p>赤・緑・青の小さな要素を組み合わせて多くの色を作ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>赤・緑・青の小さな要素を組み合わせて多くの色を作ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">スライド 17</div><div class="slide-title"><h2>デッドピクセル</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="デッドピクセル"></button><figcaption>タップして拡大 · 17/96</figcaption></figure>
+<section class="reading"><p>デッドピクセルは黒、白、または特定の色のまま変化しない画素です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デッドピクセルは黒、白、または特定の色のまま変化しない画素です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">スライド 18</div><div class="slide-title"><h2>壊れた画面</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="壊れた画面"></button><figcaption>タップして拡大 · 18/96</figcaption></figure>
+<section class="reading"><p>衝撃や圧力で画面が割れると、通常はパネル交換が必要です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>衝撃や圧力で画面が割れると、通常はパネル交換が必要です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">スライド 19</div><div class="slide-title"><h2>キーボードとは</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="キーボードとは"></button><figcaption>タップして拡大 · 19/96</figcaption></figure>
+<section class="reading"><p>キーボードは文字や数字を入力するための入力装置です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>キーボードは文字や数字を入力するための入力装置です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">スライド 20</div><div class="slide-title"><h2>キーボードの種類</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="キーボードの種類"></button><figcaption>タップして拡大 · 20/96</figcaption></figure>
+<section class="reading"><p>メンブレン、メカニカル、ノートPC用、医療用など、用途により設計が異なります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>メンブレン、メカニカル、ノートPC用、医療用など、用途により設計が異なります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">スライド 21</div><div class="slide-title"><h2>メンブレンキーボード</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="メンブレンキーボード"></button><figcaption>タップして拡大 · 21/96</figcaption></figure>
+<section class="reading"><p>メンブレンキーボードは静かで安価ですが、内部の層や接点が劣化することがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>メンブレンキーボードは静かで安価ですが、内部の層や接点が劣化することがあります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">スライド 22</div><div class="slide-title"><h2>メカニカルキーボード</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="メカニカルキーボード"></button><figcaption>タップして拡大 · 22/96</figcaption></figure>
+<section class="reading"><p>メカニカルキーボードは各キーに独立したスイッチがあり、耐久性と正確さがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>メカニカルキーボードは各キーに独立したスイッチがあり、耐久性と正確さがあります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">スライド 23</div><div class="slide-title"><h2>ノートPCキーボード</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="ノートPCキーボード"></button><figcaption>タップして拡大 · 23/96</figcaption></figure>
+<section class="reading"><p>ノートPCキーボードは薄く、交換が難しく、液体損傷の影響を受けやすいです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ノートPCキーボードは薄く、交換が難しく、液体損傷の影響を受けやすいです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">スライド 24</div><div class="slide-title"><h2>医療用キーボード</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="医療用キーボード"></button><figcaption>タップして拡大 · 24/96</figcaption></figure>
+<section class="reading"><p>医療用キーボードは清掃しやすく、密閉や防水設計で感染対策に役立ちます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>医療用キーボードは清掃しやすく、密閉や防水設計で感染対策に役立ちます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">スライド 25</div><div class="slide-title"><h2>キーボードマトリクス</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="キーボードマトリクス"></button><figcaption>タップして拡大 · 25/96</figcaption></figure>
+<section class="reading"><p>キーボードは行と列のマトリクスで少ない配線から多くのキーを検出します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>キーボードは行と列のマトリクスで少ない配線から多くのキーを検出します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">スライド 26</div><div class="slide-title"><h2>行と列</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="行と列"></button><figcaption>タップして拡大 · 26/96</figcaption></figure>
+<section class="reading"><p>キーを押すと1つの行と1つの列が接続され、コントローラが位置を判断します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>キーを押すと1つの行と1つの列が接続され、コントローラが位置を判断します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">スライド 27</div><div class="slide-title"><h2>キー入力の検出</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="キー入力の検出"></button><figcaption>タップして拡大 · 27/96</figcaption></figure>
+<section class="reading"><p>キーが下がり、接点が閉じ、コントローラが検出し、コンピュータへコードを送ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>キーが下がり、接点が閉じ、コントローラが検出し、コンピュータへコードを送ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">スライド 28</div><div class="slide-title"><h2>キーボードの問題</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="キーボードの問題"></button><figcaption>タップして拡大 · 28/96</figcaption></figure>
+<section class="reading"><p>ほこり、壊れたキー、ケーブル損傷、液体が入力不良の原因になります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ほこり、壊れたキー、ケーブル損傷、液体が入力不良の原因になります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">スライド 29</div><div class="slide-title"><h2>液体による損傷</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="液体による損傷"></button><figcaption>タップして拡大 · 29/96</figcaption></figure>
+<section class="reading"><p>液体は短絡や腐食を起こします。安全に電源を切り、接続を外して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>液体は短絡や腐食を起こします。安全に電源を切り、接続を外して報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">スライド 30</div><div class="slide-title"><h2>マウスとは</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="マウスとは"></button><figcaption>タップして拡大 · 30/96</figcaption></figure>
+<section class="reading"><p>マウスは画面上のポインタを操作する入力装置です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マウスは画面上のポインタを操作する入力装置です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">スライド 31</div><div class="slide-title"><h2>マウスの種類</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="マウスの種類"></button><figcaption>タップして拡大 · 31/96</figcaption></figure>
+<section class="reading"><p>有線、無線、タッチパッド、トラックボールなどの種類があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>有線、無線、タッチパッド、トラックボールなどの種類があります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">スライド 32</div><div class="slide-title"><h2>光学式マウス</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="光学式マウス"></button><figcaption>タップして拡大 · 32/96</figcaption></figure>
+<section class="reading"><p>光学式マウスは光とセンサーで表面の変化を読み、移動を検出します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>光学式マウスは光とセンサーで表面の変化を読み、移動を検出します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">スライド 33</div><div class="slide-title"><h2>マウス内のLED光</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="マウス内のLED光"></button><figcaption>タップして拡大 · 33/96</figcaption></figure>
+<section class="reading"><p>LEDが表面を照らし、反射した光をセンサーが読み取ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>LEDが表面を照らし、反射した光をセンサーが読み取ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">スライド 34</div><div class="slide-title"><h2>イメージセンサー</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="イメージセンサー"></button><figcaption>タップして拡大 · 34/96</figcaption></figure>
+<section class="reading"><p>センサーは連続画像の小さな差を比較し、移動をデジタルデータに変えます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>センサーは連続画像の小さな差を比較し、移動をデジタルデータに変えます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">スライド 35</div><div class="slide-title"><h2>汚れたマウスセンサー</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="汚れたマウスセンサー"></button><figcaption>タップして拡大 · 35/96</figcaption></figure>
+<section class="reading"><p>センサーのほこりでポインタが飛んだり止まったりします。安全に清掃します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>センサーのほこりでポインタが飛んだり止まったりします。安全に清掃します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">スライド 36</div><div class="slide-title"><h2>マウスのトラブルシューティング</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="マウスのトラブルシューティング"></button><figcaption>タップして拡大 · 36/96</figcaption></figure>
+<section class="reading"><p>ケーブル、電池、USB受信機、センサー、使用面を順番に確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ケーブル、電池、USB受信機、センサー、使用面を順番に確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">スライド 37</div><div class="slide-title"><h2>病院でプリンターが必要な理由</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="病院でプリンターが必要な理由"></button><figcaption>タップして拡大 · 37/96</figcaption></figure>
+<section class="reading"><p>病院では帳票、報告書、ラベル、処方箋などの印刷が業務を支えています。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>病院では帳票、報告書、ラベル、処方箋などの印刷が業務を支えています。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">スライド 38</div><div class="slide-title"><h2>プリンターの種類</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="プリンターの種類"></button><figcaption>タップして拡大 · 38/96</figcaption></figure>
+<section class="reading"><p>インクジェット、レーザー、サーマル、ドットマトリクスは異なる物理原理を使います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>インクジェット、レーザー、サーマル、ドットマトリクスは異なる物理原理を使います。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">スライド 39</div><div class="slide-title"><h2>インクジェットプリンター</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="インクジェットプリンター"></button><figcaption>タップして拡大 · 39/96</figcaption></figure>
+<section class="reading"><p>インクジェットは液体インクを使い、カラー画像に向いています。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>インクジェットは液体インクを使い、カラー画像に向いています。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">スライド 40</div><div class="slide-title"><h2>インクジェットの仕組み</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="インクジェットの仕組み"></button><figcaption>タップして拡大 · 40/96</figcaption></figure>
+<section class="reading"><p>プリントヘッドが紙へ微小なインク滴を正確に置き、文字と画像を作ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>プリントヘッドが紙へ微小なインク滴を正確に置き、文字と画像を作ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">スライド 41</div><div class="slide-title"><h2>インクの微小滴</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="インクの微小滴"></button><figcaption>タップして拡大 · 41/96</figcaption></figure>
+<section class="reading"><p>ノズル詰まりは線抜けや色不足の原因になります。適切なクリーニングを行います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ノズル詰まりは線抜けや色不足の原因になります。適切なクリーニングを行います。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">スライド 42</div><div class="slide-title"><h2>レーザープリンター</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="レーザープリンター"></button><figcaption>タップして拡大 · 42/96</figcaption></figure>
+<section class="reading"><p>レーザープリンターはトナー粉末を使い、高速で文字印刷に向いています。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>レーザープリンターはトナー粉末を使い、高速で文字印刷に向いています。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">スライド 43</div><div class="slide-title"><h2>レーザープリンターの部品</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="レーザープリンターの部品"></button><figcaption>タップして拡大 · 43/96</figcaption></figure>
+<section class="reading"><p>レーザー、感光ドラム、トナー、定着器が協力して印刷します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>レーザー、感光ドラム、トナー、定着器が協力して印刷します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">スライド 44</div><div class="slide-title"><h2>トナー</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="トナー"></button><figcaption>タップして拡大 · 44/96</figcaption></figure>
+<section class="reading"><p>トナーは液体ではなく微細な粉末で、電気的な力でドラムの画像部分へ付着します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>トナーは液体ではなく微細な粉末で、電気的な力でドラムの画像部分へ付着します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">スライド 45</div><div class="slide-title"><h2>ドラム</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="ドラム"></button><figcaption>タップして拡大 · 45/96</figcaption></figure>
+<section class="reading"><p>感光ドラムは電荷パターンで画像を作ります。損傷すると繰り返し汚れが出ます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>感光ドラムは電荷パターンで画像を作ります。損傷すると繰り返し汚れが出ます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">スライド 46</div><div class="slide-title"><h2>定着器</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="定着器"></button><figcaption>タップして拡大 · 46/96</figcaption></figure>
+<section class="reading"><p>定着器は熱と圧力でトナーを紙に固定します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>定着器は熱と圧力でトナーを紙に固定します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">スライド 47</div><div class="slide-title"><h2>サーマルプリンター</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="サーマルプリンター"></button><figcaption>タップして拡大 · 47/96</figcaption></figure>
+<section class="reading"><p>サーマルプリンターは熱で印刷し、ラベルやレシートに多く使われます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>サーマルプリンターは熱で印刷し、ラベルやレシートに多く使われます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">スライド 48</div><div class="slide-title"><h2>ドットマトリクスプリンター</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="ドットマトリクスプリンター"></button><figcaption>タップして拡大 · 48/96</figcaption></figure>
+<section class="reading"><p>ドットマトリクスはピンでリボンを打ち、多層用紙にも印刷できます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドットマトリクスはピンでリボンを打ち、多層用紙にも印刷できます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">スライド 49</div><div class="slide-title"><h2>プリンターの問題</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="プリンターの問題"></button><figcaption>タップして拡大 · 49/96</figcaption></figure>
+<section class="reading"><p>用紙、紙詰まり、インク、トナー、選択されたプリンター、接続を確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>用紙、紙詰まり、インク、トナー、選択されたプリンター、接続を確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">スライド 50</div><div class="slide-title"><h2>紙詰まり</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg"><img src="assets/slides/slide-50.jpg" alt="紙詰まり"></button><figcaption>タップして拡大 · 50/96</figcaption></figure>
+<section class="reading"><p>紙詰まりは無理に引かず、機器の手順に従ってゆっくり取り除きます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>紙詰まりは無理に引かず、機器の手順に従ってゆっくり取り除きます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">スライド 51</div><div class="slide-title"><h2>用紙なし／トナーなし</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg"><img src="assets/slides/slide-51.jpg" alt="用紙なし／トナーなし"></button><figcaption>タップして拡大 · 51/96</figcaption></figure>
+<section class="reading"><p>用紙やトナー不足は単純ですがよくある停止原因です。消耗品を最初に確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>用紙やトナー不足は単純ですがよくある停止原因です。消耗品を最初に確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">スライド 52</div><div class="slide-title"><h2>スキャナーとは</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg"><img src="assets/slides/slide-52.jpg" alt="スキャナーとは"></button><figcaption>タップして拡大 · 52/96</figcaption></figure>
+<section class="reading"><p>スキャナーは紙の情報をデジタル画像へ変える入力装置です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>スキャナーは紙の情報をデジタル画像へ変える入力装置です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">スライド 53</div><div class="slide-title"><h2>スキャナーの種類</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-53.jpg"><img src="assets/slides/slide-53.jpg" alt="スキャナーの種類"></button><figcaption>タップして拡大 · 53/96</figcaption></figure>
+<section class="reading"><p>フラットベッド、シートフィード、文書スキャナーは用紙量と形により使い分けます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>フラットベッド、シートフィード、文書スキャナーは用紙量と形により使い分けます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-54">
+<div class="slide-head"><div class="badge">スライド 54</div><div class="slide-title"><h2>フラットベッドスキャナー</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-54.jpg"><img src="assets/slides/slide-54.jpg" alt="フラットベッドスキャナー"></button><figcaption>タップして拡大 · 54/96</figcaption></figure>
+<section class="reading"><p>紙をガラス上に置き、読み取り部が下を移動します。ガラスの汚れは画像に出ます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>紙をガラス上に置き、読み取り部が下を移動します。ガラスの汚れは画像に出ます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-55">
+<div class="slide-head"><div class="badge">スライド 55</div><div class="slide-title"><h2>シートフィードスキャナー</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-55.jpg"><img src="assets/slides/slide-55.jpg" alt="シートフィードスキャナー"></button><figcaption>タップして拡大 · 55/96</figcaption></figure>
+<section class="reading"><p>ローラーが紙を内部へ送り、多数の文書を速く読み取ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ローラーが紙を内部へ送り、多数の文書を速く読み取ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-56">
+<div class="slide-head"><div class="badge">スライド 56</div><div class="slide-title"><h2>スキャナーの仕組み</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-56.jpg"><img src="assets/slides/slide-56.jpg" alt="スキャナーの仕組み"></button><figcaption>タップして拡大 · 56/96</figcaption></figure>
+<section class="reading"><p>光を紙に当て、反射光をセンサーが読み、コンピュータが画像を作ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>光を紙に当て、反射光をセンサーが読み、コンピュータが画像を作ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-57">
+<div class="slide-head"><div class="badge">スライド 57</div><div class="slide-title"><h2>ランプと反射</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-57.jpg"><img src="assets/slides/slide-57.jpg" alt="ランプと反射"></button><figcaption>タップして拡大 · 57/96</figcaption></figure>
+<section class="reading"><p>白い部分は多く反射し、暗いインク部分は少なく反射します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>白い部分は多く反射し、暗いインク部分は少なく反射します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-58">
+<div class="slide-head"><div class="badge">スライド 58</div><div class="slide-title"><h2>スキャナーセンサー</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-58.jpg"><img src="assets/slides/slide-58.jpg" alt="スキャナーセンサー"></button><figcaption>タップして拡大 · 58/96</figcaption></figure>
+<section class="reading"><p>センサーは反射光の強さを細かく測定し、画像の画素を作ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>センサーは反射光の強さを細かく測定し、画像の画素を作ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-59">
+<div class="slide-head"><div class="badge">スライド 59</div><div class="slide-title"><h2>汚れたスキャナーガラス</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-59.jpg"><img src="assets/slides/slide-59.jpg" alt="汚れたスキャナーガラス"></button><figcaption>タップして拡大 · 59/96</figcaption></figure>
+<section class="reading"><p>ガラスのほこりや汚れはスキャンに線や点として現れます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ガラスのほこりや汚れはスキャンに線や点として現れます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-60">
+<div class="slide-head"><div class="badge">スライド 60</div><div class="slide-title"><h2>病院でバーコードを使う理由</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-60.jpg"><img src="assets/slides/slide-60.jpg" alt="病院でバーコードを使う理由"></button><figcaption>タップして拡大 · 60/96</figcaption></figure>
+<section class="reading"><p>バーコードは患者や物品を速く正確に識別し、入力ミスを減らします。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バーコードは患者や物品を速く正確に識別し、入力ミスを減らします。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-61">
+<div class="slide-head"><div class="badge">スライド 61</div><div class="slide-title"><h2>バーコードの種類</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-61.jpg"><img src="assets/slides/slide-61.jpg" alt="バーコードの種類"></button><figcaption>タップして拡大 · 61/96</figcaption></figure>
+<section class="reading"><p>1D、QR、DataMatrix、PDF417は保存できる情報量と形が異なります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>1D、QR、DataMatrix、PDF417は保存できる情報量と形が異なります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-62">
+<div class="slide-head"><div class="badge">スライド 62</div><div class="slide-title"><h2>1次元バーコード</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-62.jpg"><img src="assets/slides/slide-62.jpg" alt="1次元バーコード"></button><figcaption>タップして拡大 · 62/96</figcaption></figure>
+<section class="reading"><p>1Dバーコードは黒白の線パターンで番号などを表します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>1Dバーコードは黒白の線パターンで番号などを表します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-63">
+<div class="slide-head"><div class="badge">スライド 63</div><div class="slide-title"><h2>QRコード</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-63.jpg"><img src="assets/slides/slide-63.jpg" alt="QRコード"></button><figcaption>タップして拡大 · 63/96</figcaption></figure>
+<section class="reading"><p>QRコードは2次元で、1Dより多くの情報を保存できます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>QRコードは2次元で、1Dより多くの情報を保存できます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-64">
+<div class="slide-head"><div class="badge">スライド 64</div><div class="slide-title"><h2>DataMatrix</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-64.jpg"><img src="assets/slides/slide-64.jpg" alt="DataMatrix"></button><figcaption>タップして拡大 · 64/96</figcaption></figure>
+<section class="reading"><p>DataMatrixは小さな面積に情報を保存でき、医療用品にも使われます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>DataMatrixは小さな面積に情報を保存でき、医療用品にも使われます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-65">
+<div class="slide-head"><div class="badge">スライド 65</div><div class="slide-title"><h2>PDF417</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-65.jpg"><img src="assets/slides/slide-65.jpg" alt="PDF417"></button><figcaption>タップして拡大 · 65/96</figcaption></figure>
+<section class="reading"><p>PDF417は積み重ね型のバーコードで、文書やカードに多くの情報を保存できます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>PDF417は積み重ね型のバーコードで、文書やカードに多くの情報を保存できます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-66">
+<div class="slide-head"><div class="badge">スライド 66</div><div class="slide-title"><h2>バーコードリーダー</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-66.jpg"><img src="assets/slides/slide-66.jpg" alt="バーコードリーダー"></button><figcaption>タップして拡大 · 66/96</figcaption></figure>
+<section class="reading"><p>バーコードリーダーはコードを読み、データをコンピュータへ送る入力装置です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バーコードリーダーはコードを読み、データをコンピュータへ送る入力装置です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-67">
+<div class="slide-head"><div class="badge">スライド 67</div><div class="slide-title"><h2>バーコードリーダーの仕組み</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-67.jpg"><img src="assets/slides/slide-67.jpg" alt="バーコードリーダーの仕組み"></button><figcaption>タップして拡大 · 67/96</figcaption></figure>
+<section class="reading"><p>光の反射差から黒白パターンを読み取り、コードをデータへ変換します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>光の反射差から黒白パターンを読み取り、コードをデータへ変換します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-68">
+<div class="slide-head"><div class="badge">スライド 68</div><div class="slide-title"><h2>患者リストバンド</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-68.jpg"><img src="assets/slides/slide-68.jpg" alt="患者リストバンド"></button><figcaption>タップして拡大 · 68/96</figcaption></figure>
+<section class="reading"><p>患者リストバンドのバーコードは正しい患者確認に役立ちます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>患者リストバンドのバーコードは正しい患者確認に役立ちます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-69">
+<div class="slide-head"><div class="badge">スライド 69</div><div class="slide-title"><h2>バーコードのトラブルシューティング</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-69.jpg"><img src="assets/slides/slide-69.jpg" alt="バーコードのトラブルシューティング"></button><figcaption>タップして拡大 · 69/96</figcaption></figure>
+<section class="reading"><p>コードの汚れ、リーダーの光、USB接続、入力欄の選択を確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>コードの汚れ、リーダーの光、USB接続、入力欄の選択を確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-70">
+<div class="slide-head"><div class="badge">スライド 70</div><div class="slide-title"><h2>コンピュータにネットワークが必要な理由</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-70.jpg"><img src="assets/slides/slide-70.jpg" alt="コンピュータにネットワークが必要な理由"></button><figcaption>タップして拡大 · 70/96</figcaption></figure>
+<section class="reading"><p>ネットワークはコンピュータ、サーバー、共有機器を接続し、情報を共有します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ネットワークはコンピュータ、サーバー、共有機器を接続し、情報を共有します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-71">
+<div class="slide-head"><div class="badge">スライド 71</div><div class="slide-title"><h2>ルーター</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-71.jpg"><img src="assets/slides/slide-71.jpg" alt="ルーター"></button><figcaption>タップして拡大 · 71/96</figcaption></figure>
+<section class="reading"><p>ルーターは異なるネットワーク間でデータを送ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ルーターは異なるネットワーク間でデータを送ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-72">
+<div class="slide-head"><div class="badge">スライド 72</div><div class="slide-title"><h2>スイッチ</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-72.jpg"><img src="assets/slides/slide-72.jpg" alt="スイッチ"></button><figcaption>タップして拡大 · 72/96</figcaption></figure>
+<section class="reading"><p>スイッチは同じローカルネットワーク内の複数機器を接続します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>スイッチは同じローカルネットワーク内の複数機器を接続します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-73">
+<div class="slide-head"><div class="badge">スライド 73</div><div class="slide-title"><h2>イーサネットケーブル</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-73.jpg"><img src="assets/slides/slide-73.jpg" alt="イーサネットケーブル"></button><figcaption>タップして拡大 · 73/96</figcaption></figure>
+<section class="reading"><p>イーサネットケーブルは有線ネットワークデータを運びます。緩みや損傷を確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>イーサネットケーブルは有線ネットワークデータを運びます。緩みや損傷を確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-74">
+<div class="slide-head"><div class="badge">スライド 74</div><div class="slide-title"><h2>RJ45コネクタ</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-74.jpg"><img src="assets/slides/slide-74.jpg" alt="RJ45コネクタ"></button><figcaption>タップして拡大 · 74/96</figcaption></figure>
+<section class="reading"><p>RJ45は一般的なイーサネット端子です。爪が壊れると接続が緩くなります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>RJ45は一般的なイーサネット端子です。爪が壊れると接続が緩くなります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-75">
+<div class="slide-head"><div class="badge">スライド 75</div><div class="slide-title"><h2>一般的なポート</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-75.jpg"><img src="assets/slides/slide-75.jpg" alt="一般的なポート"></button><figcaption>タップして拡大 · 75/96</figcaption></figure>
+<section class="reading"><p>USB、HDMI、LAN、音声、電源などは形と役割が異なります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>USB、HDMI、LAN、音声、電源などは形と役割が異なります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-76">
+<div class="slide-head"><div class="badge">スライド 76</div><div class="slide-title"><h2>USB</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-76.jpg"><img src="assets/slides/slide-76.jpg" alt="USB"></button><figcaption>タップして拡大 · 76/96</figcaption></figure>
+<section class="reading"><p>USBはデータと電力を運び、キーボード、マウス、スキャナーなどを接続します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>USBはデータと電力を運び、キーボード、マウス、スキャナーなどを接続します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-77">
+<div class="slide-head"><div class="badge">スライド 77</div><div class="slide-title"><h2>HDMI</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-77.jpg"><img src="assets/slides/slide-77.jpg" alt="HDMI"></button><figcaption>タップして拡大 · 77/96</figcaption></figure>
+<section class="reading"><p>HDMIは映像と音声をモニターやプロジェクターへ送ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>HDMIは映像と音声をモニターやプロジェクターへ送ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-78">
+<div class="slide-head"><div class="badge">スライド 78</div><div class="slide-title"><h2>電源ケーブル</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-78.jpg"><img src="assets/slides/slide-78.jpg" alt="電源ケーブル"></button><figcaption>タップして拡大 · 78/96</figcaption></figure>
+<section class="reading"><p>電源ケーブルは機器へエネルギーを供給します。損傷したケーブルは危険です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>電源ケーブルは機器へエネルギーを供給します。損傷したケーブルは危険です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-79">
+<div class="slide-head"><div class="badge">スライド 79</div><div class="slide-title"><h2>間違った接続</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-79.jpg"><img src="assets/slides/slide-79.jpg" alt="間違った接続"></button><figcaption>タップして拡大 · 79/96</figcaption></figure>
+<section class="reading"><p>端子を無理に押すとポートやピンが壊れます。形と向きを確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>端子を無理に押すとポートやピンが壊れます。形と向きを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-80">
+<div class="slide-head"><div class="badge">スライド 80</div><div class="slide-title"><h2>トラブルシューティングとは</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-80.jpg"><img src="assets/slides/slide-80.jpg" alt="トラブルシューティングとは"></button><figcaption>タップして拡大 · 80/96</figcaption></figure>
+<section class="reading"><p>トラブルシューティングは原因を推測せず、証拠を集めて順番に確認する方法です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>トラブルシューティングは原因を推測せず、証拠を集めて順番に確認する方法です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-81">
+<div class="slide-head"><div class="badge">スライド 81</div><div class="slide-title"><h2>一般的な問題</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-81.jpg"><img src="assets/slides/slide-81.jpg" alt="一般的な問題"></button><figcaption>タップして拡大 · 81/96</figcaption></figure>
+<section class="reading"><p>電源、ケーブル、機器、ソフトウェア、ユーザー操作など複数の原因を考えます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>電源、ケーブル、機器、ソフトウェア、ユーザー操作など複数の原因を考えます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-82">
+<div class="slide-head"><div class="badge">スライド 82</div><div class="slide-title"><h2>最初に電源を確認</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-82.jpg"><img src="assets/slides/slide-82.jpg" alt="最初に電源を確認"></button><figcaption>タップして拡大 · 82/96</figcaption></figure>
+<section class="reading"><p>電源スイッチ、ケーブル、ランプ、アダプタを最初に確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>電源スイッチ、ケーブル、ランプ、アダプタを最初に確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-83">
+<div class="slide-head"><div class="badge">スライド 83</div><div class="slide-title"><h2>ケーブルを確認</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-83.jpg"><img src="assets/slides/slide-83.jpg" alt="ケーブルを確認"></button><figcaption>タップして拡大 · 83/96</figcaption></figure>
+<section class="reading"><p>正しいポート、接続の緩み、損傷、交換ケーブルでのテストを確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>正しいポート、接続の緩み、損傷、交換ケーブルでのテストを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-84">
+<div class="slide-head"><div class="badge">スライド 84</div><div class="slide-title"><h2>機器を確認</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-84.jpg"><img src="assets/slides/slide-84.jpg" alt="機器を確認"></button><figcaption>タップして拡大 · 84/96</figcaption></figure>
+<section class="reading"><p>選択された機器、エラーランプ、消耗品、別機器での動作を確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>選択された機器、エラーランプ、消耗品、別機器での動作を確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-85">
+<div class="slide-head"><div class="badge">スライド 85</div><div class="slide-title"><h2>再起動</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-85.jpg"><img src="assets/slides/slide-85.jpg" alt="再起動"></button><figcaption>タップして拡大 · 85/96</figcaption></figure>
+<section class="reading"><p>再起動は一時的なエラーを解消できますが、重要な医療機器は許可なく再起動しません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>再起動は一時的なエラーを解消できますが、重要な医療機器は許可なく再起動しません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-86">
+<div class="slide-head"><div class="badge">スライド 86</div><div class="slide-title"><h2>エラーメッセージを読む</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-86.jpg"><img src="assets/slides/slide-86.jpg" alt="エラーメッセージを読む"></button><figcaption>タップして拡大 · 86/96</figcaption></figure>
+<section class="reading"><p>正確なエラーメッセージを記録し、必要ならスクリーンショットを取ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>正確なエラーメッセージを記録し、必要ならスクリーンショットを取ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-87">
+<div class="slide-head"><div class="badge">スライド 87</div><div class="slide-title"><h2>USBが認識されない</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-87.jpg"><img src="assets/slides/slide-87.jpg" alt="USBが認識されない"></button><figcaption>タップして拡大 · 87/96</figcaption></figure>
+<section class="reading"><p>別のUSBポート、ケーブル、別のコンピュータで確認して原因を切り分けます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>別のUSBポート、ケーブル、別のコンピュータで確認して原因を切り分けます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-88">
+<div class="slide-head"><div class="badge">スライド 88</div><div class="slide-title"><h2>インターネットに接続できない</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-88.jpg"><img src="assets/slides/slide-88.jpg" alt="インターネットに接続できない"></button><figcaption>タップして拡大 · 88/96</figcaption></figure>
+<section class="reading"><p>1台だけか複数台かを確認し、LANケーブル、Wi-Fi、ネットワーク機器を調べます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>1台だけか複数台かを確認し、LANケーブル、Wi-Fi、ネットワーク機器を調べます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-89">
+<div class="slide-head"><div class="badge">スライド 89</div><div class="slide-title"><h2>プリンターエラー</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-89.jpg"><img src="assets/slides/slide-89.jpg" alt="プリンターエラー"></button><figcaption>タップして拡大 · 89/96</figcaption></figure>
+<section class="reading"><p>用紙、トナー、ケーブル、ネットワーク、画面のエラー表示を確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>用紙、トナー、ケーブル、ネットワーク、画面のエラー表示を確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-90">
+<div class="slide-head"><div class="badge">スライド 90</div><div class="slide-title"><h2>入力 → 処理 → 出力の方法</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-90.jpg"><img src="assets/slides/slide-90.jpg" alt="入力 → 処理 → 出力の方法"></button><figcaption>タップして拡大 · 90/96</figcaption></figure>
+<section class="reading"><p>入力、処理、出力の順に確認すると、問題の場所を絞り込めます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>入力、処理、出力の順に確認すると、問題の場所を絞り込めます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-91">
+<div class="slide-head"><div class="badge">スライド 91</div><div class="slide-title"><h2>病院でのトラブルシューティング例</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-91.jpg"><img src="assets/slides/slide-91.jpg" alt="病院でのトラブルシューティング例"></button><figcaption>タップして拡大 · 91/96</figcaption></figure>
+<section class="reading"><p>スキャナー停止では電源、USB、文書、ソフトウェアを確認し、結果を明確に報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>スキャナー停止では電源、USB、文書、ソフトウェアを確認し、結果を明確に報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-92">
+<div class="slide-head"><div class="badge">スライド 92</div><div class="slide-title"><h2>復習：入力装置</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-92.jpg"><img src="assets/slides/slide-92.jpg" alt="復習：入力装置"></button><figcaption>タップして拡大 · 92/96</figcaption></figure>
+<section class="reading"><p>キーボード、マウス、スキャナー、バーコードリーダーはコンピュータへデータを送ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>キーボード、マウス、スキャナー、バーコードリーダーはコンピュータへデータを送ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-93">
+<div class="slide-head"><div class="badge">スライド 93</div><div class="slide-title"><h2>復習：出力装置</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-93.jpg"><img src="assets/slides/slide-93.jpg" alt="復習：出力装置"></button><figcaption>タップして拡大 · 93/96</figcaption></figure>
+<section class="reading"><p>モニター、プリンター、スピーカーは処理結果をユーザーへ示します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>モニター、プリンター、スピーカーは処理結果をユーザーへ示します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-94">
+<div class="slide-head"><div class="badge">スライド 94</div><div class="slide-title"><h2>復習：ネットワーク</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-94.jpg"><img src="assets/slides/slide-94.jpg" alt="復習：ネットワーク"></button><figcaption>タップして拡大 · 94/96</figcaption></figure>
+<section class="reading"><p>ケーブル、スイッチ、ルーターはコンピュータとサーバーを接続します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ケーブル、スイッチ、ルーターはコンピュータとサーバーを接続します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-95">
+<div class="slide-head"><div class="badge">スライド 95</div><div class="slide-title"><h2>復習：トラブルシューティング</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-95.jpg"><img src="assets/slides/slide-95.jpg" alt="復習：トラブルシューティング"></button><figcaption>タップして拡大 · 95/96</figcaption></figure>
+<section class="reading"><p>推測せず、電源、ケーブル、機器、エラーメッセージを順番に確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>推測せず、電源、ケーブル、機器、エラーメッセージを順番に確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-96">
+<div class="slide-head"><div class="badge">スライド 96</div><div class="slide-title"><h2>最終問題</h2><p>元のスライドを最初に見てください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-96.jpg"><img src="assets/slides/slide-96.jpg" alt="最終問題"></button><figcaption>タップして拡大 · 96/96</figcaption></figure>
+<section class="reading"><p>患者バーコードが読めない場合、コード、リーダー、USB、入力欄を入力→処理→出力で確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの重要なポイントは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>患者バーコードが読めない場合、コード、リーダー、USB、入力欄を入力→処理→出力で確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<section class="interactive-section" id="review">
+<h2>対話型復習</h2>
+<p>下の課題を使って、機器と基本的なトラブルシューティングの考え方を復習してください。</p>
+<h2>対話型復習</h2>
+<h3>1. 入力・出力を分類</h3>
+<p>カードをタップすると分類が表示されます。</p>
+<div class="classifier">
+<button class="classify-card" data-type="output">モニター</button>
+<button class="classify-card" data-type="input">キーボード</button>
+<button class="classify-card" data-type="input">スキャナー</button>
+<button class="classify-card" data-type="output">プリンター</button>
+<button class="classify-card" data-type="input">バーコードリーダー</button>
+<button class="classify-card" data-type="both">タッチスクリーン</button></div>
+<h3>2. 機器エクスプローラー</h3>
+<div class="device-tabs"><button data-device="monitor">Monitor</button><button data-device="keyboard">Keyboard</button><button data-device="printer">Printer</button><button data-device="scanner">Scanner</button><button data-device="barcode">Barcode</button><button data-device="touchscreen">Touchscreen</button></div><div class="device-panel" id="device-panel"></div>
+<h3>3. 病院の情報フロー</h3>
+<div class="flow"><span>患者</span><b>→</b><span>入力装置</span><b>→</b><span>コンピュータ</span><b>→</b><span>ネットワーク／DB</span><b>→</b><span>出力装置</span></div>
+<h3>4. トラブルシューティング練習</h3>
+<div class="trouble-lab"><select id="problem-select"><option value="monitor">Monitor</option><option value="keyboard">Keyboard</option><option value="mouse">Mouse</option><option value="printer">Printer</option><option value="scanner">Scanner</option><option value="barcode">Barcode reader</option><option value="network">Network</option></select><div class="trouble-result" id="trouble-result"></div></div>
+<h3>5. 最終クイズ</h3><form id="quiz-form"><fieldset class="quiz-card" data-answer="1"><legend>1. モニターは主に何ですか。</legend><label><input name="q1" type="radio" value="0"/> 入力</label><label><input name="q1" type="radio" value="1"/> 出力</label><label><input name="q1" type="radio" value="2"/> 記憶装置</label><label><input name="q1" type="radio" value="3"/> ネットワーク</label></fieldset><fieldset class="quiz-card" data-answer="2"><legend>2. タッチスクリーンは何になれますか。</legend><label><input name="q2" type="radio" value="0"/> 入力だけ</label><label><input name="q2" type="radio" value="1"/> 出力だけ</label><label><input name="q2" type="radio" value="2"/> 入力と出力</label><label><input name="q2" type="radio" value="3"/> どちらでもない</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>3. LCDバックライトが作るものは何ですか。</legend><label><input name="q3" type="radio" value="0"/> ネットワーク</label><label><input name="q3" type="radio" value="1"/> 光</label><label><input name="q3" type="radio" value="2"/> インク</label><label><input name="q3" type="radio" value="3"/> 音</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. キーボードマトリクスは何を使いますか。</legend><label><input name="q4" type="radio" value="0"/> 行と列</label><label><input name="q4" type="radio" value="1"/> トナーとドラム</label><label><input name="q4" type="radio" value="2"/> パケット</label><label><input name="q4" type="radio" value="3"/> Wi-Fi</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>5. 光学式マウスは何を使いますか。</legend><label><input name="q5" type="radio" value="0"/> 熱</label><label><input name="q5" type="radio" value="1"/> 光とセンサー</label><label><input name="q5" type="radio" value="2"/> インク</label><label><input name="q5" type="radio" value="3"/> 磁石だけ</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. レーザープリンターは何を使いますか。</legend><label><input name="q6" type="radio" value="0"/> 液体インクだけ</label><label><input name="q6" type="radio" value="1"/> トナー粉末</label><label><input name="q6" type="radio" value="2"/> 感熱紙だけ</label><label><input name="q6" type="radio" value="3"/> 熱を使わない</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>7. 定着器は何を使いますか。</legend><label><input name="q7" type="radio" value="0"/> 熱と圧力</label><label><input name="q7" type="radio" value="1"/> Wi-Fi</label><label><input name="q7" type="radio" value="2"/> 液晶</label><label><input name="q7" type="radio" value="3"/> USB電力だけ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. スキャナーは何装置ですか。</legend><label><input name="q8" type="radio" value="0"/> 入力装置</label><label><input name="q8" type="radio" value="1"/> 出力装置</label><label><input name="q8" type="radio" value="2"/> ルーター</label><label><input name="q8" type="radio" value="3"/> バッテリー</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>9. バーコード読取は何を減らしますか。</legend><label><input name="q9" type="radio" value="0"/> 画面サイズ</label><label><input name="q9" type="radio" value="1"/> 入力ミス</label><label><input name="q9" type="radio" value="2"/> 電力使用</label><label><input name="q9" type="radio" value="3"/> RAM</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>10. スイッチはどこで機器を接続しますか。</legend><label><input name="q10" type="radio" value="0"/> 同じネットワーク内</label><label><input name="q10" type="radio" value="1"/> 壁電源だけ</label><label><input name="q10" type="radio" value="2"/> プリンターだけ</label><label><input name="q10" type="radio" value="3"/> ケーブルなし</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>11. RJ45は一般に何に使いますか。</legend><label><input name="q11" type="radio" value="0"/> HDMI</label><label><input name="q11" type="radio" value="1"/> イーサネット</label><label><input name="q11" type="radio" value="2"/> 音声</label><label><input name="q11" type="radio" value="3"/> バッテリー</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>12. 最初のトラブル確認は何ですか。</legend><label><input name="q12" type="radio" value="0"/> 原因を推測</label><label><input name="q12" type="radio" value="1"/> 電源を確認</label><label><input name="q12" type="radio" value="2"/> マザーボード交換</label><label><input name="q12" type="radio" value="3"/> すべて再インストール</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>13. 紙詰まりはどう取り除きますか。</legend><label><input name="q13" type="radio" value="0"/> 強く引く</label><label><input name="q13" type="radio" value="1"/> 手順に従い慎重に</label><label><input name="q13" type="radio" value="2"/> 水を使う</label><label><input name="q13" type="radio" value="3"/> 振る</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>14. 多くのPCでネットワーク停止なら何を疑いますか。</legend><label><input name="q14" type="radio" value="0"/> 1つのマウス</label><label><input name="q14" type="radio" value="1"/> 共有ネットワーク機器</label><label><input name="q14" type="radio" value="2"/> 1つのキーボード</label><label><input name="q14" type="radio" value="3"/> 1画素</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. バーコード不良で確認するものは何ですか。</legend><label><input name="q15" type="radio" value="0"/> コード、リーダー、USB、入力欄</label><label><input name="q15" type="radio" value="1"/> 壁紙</label><label><input name="q15" type="radio" value="2"/> CPUファンだけ</label><label><input name="q15" type="radio" value="3"/> 音量</label></fieldset><div class="actions"><button class="primary" data-action="check" type="button">答えを確認</button><button class="secondary" data-action="reset" type="button">リセット</button></div><div class="result" data-label="得点" data-review="赤い問題を復習してください。" id="quiz-result"></div></form>
+
+</section>
+</main>
+<div class="modal" id="image-modal" role="dialog" aria-modal="true">
+<div class="modal-inner"><button id="modal-close" type="button" aria-label="Close">×</button><img id="modal-image" alt=""></div>
+</div>
+<footer>Computer Fundamentals 2 · Lecture 4 · Hospital Workstation Hardware</footer>
+</body></html>

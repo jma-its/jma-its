@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 4 — Hospital Workstation Hardware</title>
+<link rel="stylesheet" href="assets/style.css">
+<script defer src="assets/interactive.js"></script>
+<style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head>
+<body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture03/index.html">← 3</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture05/index.html">5 →</a></nav>
+<header><div class="header-inner">
+<div class="course">Computer Fundamentals 2 · Current Quarter · Lecture 4</div>
+<h1>Hospital Workstation Hardware</h1>
+<p class="subtitle">Original presentation slides turned into a clean bilingual web lecture.</p>
+<p class="intro">This lecture studies the hardware used around a hospital workstation: input devices, output devices, identification tools, printers, scanners, storage, and common trouble points.</p>
+<div class="lang-switch"><a class="current" href="lecture_en.html">English</a><a href="lecture_ja.html">日本語</a></div>
+</div></header>
+<main class="container">
+<section class="core"><h2>Core idea</h2><div class="core-chain">Input device → computer / network → output device → safer hospital work</div></section>
+<section class="progress-box"><strong>Reading progress</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span></section>
+<section class="notice"><h2>How to use this lecture</h2><p>Study each original slide image, read the short explanation below it, answer the checkpoint question, and use the interactive review at the end.</p></section>
+<section class="notice map" id="lesson-map"><h2>Lesson map — 96 slides</h2><ol>
+<li><a href="#slide-1">Slide 1: Lecture 4 — Hospital Workstation Hardware</a></li>
+<li><a href="#slide-2">Slide 2: Hospital Workstation Hardware</a></li>
+<li><a href="#slide-3">Slide 3: What Is Hardware?</a></li>
+<li><a href="#slide-4">Slide 4: Hardware in Hospitals</a></li>
+<li><a href="#slide-5">Slide 5: Input → Process → Output</a></li>
+<li><a href="#slide-6">Slide 6: Information Flow in a Hospital</a></li>
+<li><a href="#slide-7">Slide 7: What Is a Monitor?</a></li>
+<li><a href="#slide-8">Slide 8: Monitor Types Overview</a></li>
+<li><a href="#slide-9">Slide 9: LCD Monitor</a></li>
+<li><a href="#slide-10">Slide 10: LED Monitor</a></li>
+<li><a href="#slide-11">Slide 11: Touchscreen Monitor</a></li>
+<li><a href="#slide-12">Slide 12: Medical Display</a></li>
+<li><a href="#slide-13">Slide 13: Inside an LCD Monitor</a></li>
+<li><a href="#slide-14">Slide 14: Backlight</a></li>
+<li><a href="#slide-15">Slide 15: Liquid Crystal Layer</a></li>
+<li><a href="#slide-16">Slide 16: Color Filters</a></li>
+<li><a href="#slide-17">Slide 17: Dead Pixels</a></li>
+<li><a href="#slide-18">Slide 18: Broken Screen</a></li>
+<li><a href="#slide-19">Slide 19: What Is a Keyboard?</a></li>
+<li><a href="#slide-20">Slide 20: Keyboard Types</a></li>
+<li><a href="#slide-21">Slide 21: Membrane Keyboard</a></li>
+<li><a href="#slide-22">Slide 22: Mechanical Keyboard</a></li>
+<li><a href="#slide-23">Slide 23: Laptop Keyboard</a></li>
+<li><a href="#slide-24">Slide 24: Medical Keyboard</a></li>
+<li><a href="#slide-25">Slide 25: Keyboard Matrix</a></li>
+<li><a href="#slide-26">Slide 26: Rows and Columns</a></li>
+<li><a href="#slide-27">Slide 27: Detecting a Key Press</a></li>
+<li><a href="#slide-28">Slide 28: Keyboard Problems</a></li>
+<li><a href="#slide-29">Slide 29: Liquid Damage</a></li>
+<li><a href="#slide-30">Slide 30: What Is a Mouse?</a></li>
+<li><a href="#slide-31">Slide 31: Mouse Types</a></li>
+<li><a href="#slide-32">Slide 32: Optical Mouse</a></li>
+<li><a href="#slide-33">Slide 33: LED Light in a Mouse</a></li>
+<li><a href="#slide-34">Slide 34: Image Sensor</a></li>
+<li><a href="#slide-35">Slide 35: Dirty Mouse Sensor</a></li>
+<li><a href="#slide-36">Slide 36: Mouse Troubleshooting</a></li>
+<li><a href="#slide-37">Slide 37: Why Hospitals Need Printers</a></li>
+<li><a href="#slide-38">Slide 38: Printer Types Overview</a></li>
+<li><a href="#slide-39">Slide 39: Inkjet Printer</a></li>
+<li><a href="#slide-40">Slide 40: Inkjet Working Principle</a></li>
+<li><a href="#slide-41">Slide 41: Ink Droplets</a></li>
+<li><a href="#slide-42">Slide 42: Laser Printer</a></li>
+<li><a href="#slide-43">Slide 43: Laser Printer Parts</a></li>
+<li><a href="#slide-44">Slide 44: Toner</a></li>
+<li><a href="#slide-45">Slide 45: Drum</a></li>
+<li><a href="#slide-46">Slide 46: Fuser</a></li>
+<li><a href="#slide-47">Slide 47: Thermal Printer</a></li>
+<li><a href="#slide-48">Slide 48: Dot Matrix Printer</a></li>
+<li><a href="#slide-49">Slide 49: Printer Problems</a></li>
+<li><a href="#slide-50">Slide 50: Paper Jam</a></li>
+<li><a href="#slide-51">Slide 51: No Paper / No Toner</a></li>
+<li><a href="#slide-52">Slide 52: What Is a Scanner?</a></li>
+<li><a href="#slide-53">Slide 53: Scanner Types</a></li>
+<li><a href="#slide-54">Slide 54: Flatbed Scanner</a></li>
+<li><a href="#slide-55">Slide 55: Sheet-fed Scanner</a></li>
+<li><a href="#slide-56">Slide 56: How a Scanner Works</a></li>
+<li><a href="#slide-57">Slide 57: Lamp and Reflection</a></li>
+<li><a href="#slide-58">Slide 58: Scanner Sensor</a></li>
+<li><a href="#slide-59">Slide 59: Dirty Scanner Glass</a></li>
+<li><a href="#slide-60">Slide 60: Why Hospitals Use Barcodes</a></li>
+<li><a href="#slide-61">Slide 61: Barcode Types</a></li>
+<li><a href="#slide-62">Slide 62: 1D Barcode</a></li>
+<li><a href="#slide-63">Slide 63: QR Code</a></li>
+<li><a href="#slide-64">Slide 64: DataMatrix</a></li>
+<li><a href="#slide-65">Slide 65: PDF417</a></li>
+<li><a href="#slide-66">Slide 66: Barcode Reader</a></li>
+<li><a href="#slide-67">Slide 67: How Barcode Readers Work</a></li>
+<li><a href="#slide-68">Slide 68: Patient Wristband</a></li>
+<li><a href="#slide-69">Slide 69: Barcode Troubleshooting</a></li>
+<li><a href="#slide-70">Slide 70: Why Computers Need Networks</a></li>
+<li><a href="#slide-71">Slide 71: Router</a></li>
+<li><a href="#slide-72">Slide 72: Switch</a></li>
+<li><a href="#slide-73">Slide 73: Ethernet Cable</a></li>
+<li><a href="#slide-74">Slide 74: RJ45 Connector</a></li>
+<li><a href="#slide-75">Slide 75: Common Ports</a></li>
+<li><a href="#slide-76">Slide 76: USB</a></li>
+<li><a href="#slide-77">Slide 77: HDMI</a></li>
+<li><a href="#slide-78">Slide 78: Power Cable</a></li>
+<li><a href="#slide-79">Slide 79: Wrong Connections</a></li>
+<li><a href="#slide-80">Slide 80: What Is Troubleshooting?</a></li>
+<li><a href="#slide-81">Slide 81: Common Problems</a></li>
+<li><a href="#slide-82">Slide 82: Check Power First</a></li>
+<li><a href="#slide-83">Slide 83: Check Cables</a></li>
+<li><a href="#slide-84">Slide 84: Check Device</a></li>
+<li><a href="#slide-85">Slide 85: Restart</a></li>
+<li><a href="#slide-86">Slide 86: Read Error Messages</a></li>
+<li><a href="#slide-87">Slide 87: USB Not Recognized</a></li>
+<li><a href="#slide-88">Slide 88: No Internet</a></li>
+<li><a href="#slide-89">Slide 89: Printer Error</a></li>
+<li><a href="#slide-90">Slide 90: Input → Process → Output Method</a></li>
+<li><a href="#slide-91">Slide 91: Hospital Troubleshooting Example</a></li>
+<li><a href="#slide-92">Slide 92: Review: Input Devices</a></li>
+<li><a href="#slide-93">Slide 93: Review: Output Devices</a></li>
+<li><a href="#slide-94">Slide 94: Review: Networks</a></li>
+<li><a href="#slide-95">Slide 95: Review: Troubleshooting</a></li>
+<li><a href="#slide-96">Slide 96: Final Question</a></li>
+</ol></section>
+
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">Slide 1</div><div class="slide-title"><h2>Lecture 4 — Hospital Workstation Hardware</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="Lecture 4 — Hospital Workstation Hardware"></button><figcaption>Click to enlarge · 1/96</figcaption></figure>
+<section class="reading"><p>Computer hardware in real workplaces Input and output devices Common problems and first checks</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Computer hardware in real workplaces Input and output devices Common problems and first checks</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">Slide 2</div><div class="slide-title"><h2>Hospital Workstation Hardware</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="Hospital Workstation Hardware"></button><figcaption>Click to enlarge · 2/96</figcaption></figure>
+<section class="reading"><p>A computer is only one part of a larger system. Many devices work together in hospitals. If one device fails, work may stop. Today we study devices, principles, and troubleshooting.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>A computer is only one part of a larger system.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">Slide 3</div><div class="slide-title"><h2>What Is Hardware?</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="What Is Hardware?"></button><figcaption>Click to enlarge · 3/96</figcaption></figure>
+<section class="reading"><p>Hardware means physical equipment. Hardware can be touched. Examples: monitor, keyboard, mouse, printer, scanner. Software controls hardware.</p></section>
+<section class="think"><h3>Think and answer</h3><p>How would you define hardware?</p><details data-checkpoint><summary>Show answer</summary><p>Hardware means physical equipment.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">Slide 4</div><div class="slide-title"><h2>Hardware in Hospitals</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="Hardware in Hospitals"></button><figcaption>Click to enlarge · 4/96</figcaption></figure>
+<section class="reading"><p>Hospitals use many computer devices. Examples: printers, scanners, barcode readers, card readers. These devices support patient care. Hardware problems can delay work.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Hospitals use many computer devices.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">Slide 5</div><div class="slide-title"><h2>Input → Process → Output</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="Input → Process → Output"></button><figcaption>Click to enlarge · 5/96</figcaption></figure>
+<section class="reading"><p>Input devices send information to the computer. The computer processes information. Output devices show or print results. Input → Process → Output is the basic model.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Input devices send information to the computer.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">Slide 6</div><div class="slide-title"><h2>Information Flow in a Hospital</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="Information Flow in a Hospital"></button><figcaption>Click to enlarge · 6/96</figcaption></figure>
+<section class="reading"><p>Patient → Input device → Computer. Computer → Network → Database. Database → Output device. Information moves through many devices.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Patient → Input device → Computer.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">Slide 7</div><div class="slide-title"><h2>What Is a Monitor?</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="What Is a Monitor?"></button><figcaption>Click to enlarge · 7/96</figcaption></figure>
+<section class="reading"><p>A monitor is an output device. It shows text, images, and video. Users need it to see computer information. Hospitals need clear displays.</p></section>
+<section class="think"><h3>Think and answer</h3><p>How would you define a monitor?</p><details data-checkpoint><summary>Show answer</summary><p>A monitor is an output device.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">Slide 8</div><div class="slide-title"><h2>Monitor Types Overview</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="Monitor Types Overview"></button><figcaption>Click to enlarge · 8/96</figcaption></figure>
+<section class="reading"><p>Common types: LCD, LED, touchscreen, medical display. Different jobs need different monitors. Screen size and image quality matter. Touchscreens can work as input and output.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Common types: LCD, LED, touchscreen, medical display.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">Slide 9</div><div class="slide-title"><h2>LCD Monitor</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="LCD Monitor"></button><figcaption>Click to enlarge · 9/96</figcaption></figure>
+<section class="reading"><p>LCD means Liquid Crystal Display. LCD monitors are very common. They control light to create images. They are used in offices and laptops.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>LCD means Liquid Crystal Display.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">Slide 10</div><div class="slide-title"><h2>LED Monitor</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="LED Monitor"></button><figcaption>Click to enlarge · 10/96</figcaption></figure>
+<section class="reading"><p>LED monitors use LED backlight. They are bright and efficient. They use less power than older displays. Most modern monitors are LED-based LCD monitors.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>LED monitors use LED backlight.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">Slide 11</div><div class="slide-title"><h2>Touchscreen Monitor</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="Touchscreen Monitor"></button><figcaption>Click to enlarge · 11/96</figcaption></figure>
+<section class="reading"><p>A touchscreen detects touch. Users can tap, swipe, and select. It works as output and input. Kiosks often use touchscreens.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>A touchscreen detects touch.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">Slide 12</div><div class="slide-title"><h2>Medical Display</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="Medical Display"></button><figcaption>Click to enlarge · 12/96</figcaption></figure>
+<section class="reading"><p>Medical displays need high quality. Images must be clear. Detail and contrast are important. Medical monitors may cost more.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Medical displays need high quality.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">Slide 13</div><div class="slide-title"><h2>Inside an LCD Monitor</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="Inside an LCD Monitor"></button><figcaption>Click to enlarge · 13/96</figcaption></figure>
+<section class="reading"><p>Main parts: backlight, LCD layer, color filters. The backlight provides light. The LCD layer controls light. Color filters create colors.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Main parts: backlight, LCD layer, color filters.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">Slide 14</div><div class="slide-title"><h2>Backlight</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="Backlight"></button><figcaption>Click to enlarge · 14/96</figcaption></figure>
+<section class="reading"><p>The backlight produces light. Without light, the image is not visible. LED backlights are common. Backlight failure can make the screen dark.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>The backlight produces light.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">Slide 15</div><div class="slide-title"><h2>Liquid Crystal Layer</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="Liquid Crystal Layer"></button><figcaption>Click to enlarge · 15/96</figcaption></figure>
+<section class="reading"><p>Liquid crystals control light. They can block or allow light. This creates dark and bright areas. The image changes very quickly.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Liquid crystals control light.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">Slide 16</div><div class="slide-title"><h2>Color Filters</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="Color Filters"></button><figcaption>Click to enlarge · 16/96</figcaption></figure>
+<section class="reading"><p>Displays use red, green, and blue. RGB colors mix together. Many colors come from three basic colors. Each pixel has tiny color parts.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Displays use red, green, and blue.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">Slide 17</div><div class="slide-title"><h2>Dead Pixels</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="Dead Pixels"></button><figcaption>Click to enlarge · 17/96</figcaption></figure>
+<section class="reading"><p>A dead pixel does not work correctly. It may stay black, white, or colored. One dead pixel is usually small. Many bad pixels reduce image quality.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>A dead pixel does not work correctly.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">Slide 18</div><div class="slide-title"><h2>Broken Screen</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="Broken Screen"></button><figcaption>Click to enlarge · 18/96</figcaption></figure>
+<section class="reading"><p>Screens can break from impact or pressure. A cracked screen may still show some image. Damage often spreads over time. Broken screens usually need replacement.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Screens can break from impact or pressure.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">Slide 19</div><div class="slide-title"><h2>What Is a Keyboard?</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="What Is a Keyboard?"></button><figcaption>Click to enlarge · 19/96</figcaption></figure>
+<section class="reading"><p>A keyboard is an input device. Users type names, numbers, and text. It is essential for office work. Hospitals enter many records by keyboard.</p></section>
+<section class="think"><h3>Think and answer</h3><p>How would you define a keyboard?</p><details data-checkpoint><summary>Show answer</summary><p>A keyboard is an input device.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">Slide 20</div><div class="slide-title"><h2>Keyboard Types</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="Keyboard Types"></button><figcaption>Click to enlarge · 20/96</figcaption></figure>
+<section class="reading"><p>Common types: membrane, mechanical, laptop, medical. Different designs feel different. Some are cheap and quiet. Some are durable and easy to clean.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Common types: membrane, mechanical, laptop, medical.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">Slide 21</div><div class="slide-title"><h2>Membrane Keyboard</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="Membrane Keyboard"></button><figcaption>Click to enlarge · 21/96</figcaption></figure>
+<section class="reading"><p>Membrane keyboards are common. They are cheap and quiet. They use layers under the keys. They are common in offices.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Membrane keyboards are common.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">Slide 22</div><div class="slide-title"><h2>Mechanical Keyboard</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="Mechanical Keyboard"></button><figcaption>Click to enlarge · 22/96</figcaption></figure>
+<section class="reading"><p>Mechanical keyboards use switches. They are durable and precise. Each key has its own mechanism. They can be louder and more expensive.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Mechanical keyboards use switches.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">Slide 23</div><div class="slide-title"><h2>Laptop Keyboard</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="Laptop Keyboard"></button><figcaption>Click to enlarge · 23/96</figcaption></figure>
+<section class="reading"><p>Laptop keyboards are thin. They must fit inside the laptop body. They are harder to replace. Liquid damage can be serious.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Laptop keyboards are thin.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">Slide 24</div><div class="slide-title"><h2>Medical Keyboard</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="Medical Keyboard"></button><figcaption>Click to enlarge · 24/96</figcaption></figure>
+<section class="reading"><p>Medical keyboards are easy to clean. Some are waterproof or sealed. They help reduce contamination. Hospitals need hygienic equipment.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Medical keyboards are easy to clean.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">Slide 25</div><div class="slide-title"><h2>Keyboard Matrix</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="Keyboard Matrix"></button><figcaption>Click to enlarge · 25/96</figcaption></figure>
+<section class="reading"><p>A keyboard uses rows and columns. Keys are arranged in a matrix. The controller detects the pressed key. This reduces the number of wires.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>A keyboard uses rows and columns.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">Slide 26</div><div class="slide-title"><h2>Rows and Columns</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="Rows and Columns"></button><figcaption>Click to enlarge · 26/96</figcaption></figure>
+<section class="reading"><p>Each key belongs to one row and one column. Pressing a key closes a small circuit. The keyboard finds the location. Then it sends a code to the computer.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Each key belongs to one row and one column.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">Slide 27</div><div class="slide-title"><h2>Detecting a Key Press</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="Detecting a Key Press"></button><figcaption>Click to enlarge · 27/96</figcaption></figure>
+<section class="reading"><p>1. Key moves down. 2. Electrical contact closes. 3. Controller detects the key. 4. Computer receives input.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>1.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">Slide 28</div><div class="slide-title"><h2>Keyboard Problems</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="Keyboard Problems"></button><figcaption>Click to enlarge · 28/96</figcaption></figure>
+<section class="reading"><p>Common problems: dust, broken keys, cable damage, liquid spills. Some keys may stop working. Typing may become unreliable. Cleaning and care are important.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Common problems: dust, broken keys, cable damage, liquid spills.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">Slide 29</div><div class="slide-title"><h2>Liquid Damage</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="Liquid Damage"></button><figcaption>Click to enlarge · 29/96</figcaption></figure>
+<section class="reading"><p>Tea, coffee, and water can damage keyboards. Liquid may cause short circuits. Sugar can leave sticky residue. Disconnect power immediately.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Tea, coffee, and water can damage keyboards.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">Slide 30</div><div class="slide-title"><h2>What Is a Mouse?</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="What Is a Mouse?"></button><figcaption>Click to enlarge · 30/96</figcaption></figure>
+<section class="reading"><p>A mouse is an input device. It controls the pointer on the screen. Users click, select, and drag. It helps users control software.</p></section>
+<section class="think"><h3>Think and answer</h3><p>How would you define a mouse?</p><details data-checkpoint><summary>Show answer</summary><p>A mouse is an input device.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">Slide 31</div><div class="slide-title"><h2>Mouse Types</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="Mouse Types"></button><figcaption>Click to enlarge · 31/96</figcaption></figure>
+<section class="reading"><p>Common types: wired, wireless, touchpad, trackball. Different users prefer different devices. Wireless devices need batteries. Touchpads are built into laptops.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Common types: wired, wireless, touchpad, trackball.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">Slide 32</div><div class="slide-title"><h2>Optical Mouse</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="Optical Mouse"></button><figcaption>Click to enlarge · 32/96</figcaption></figure>
+<section class="reading"><p>An optical mouse uses light. It shines light on the surface. A sensor watches movement. The computer moves the pointer.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>An optical mouse uses light.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">Slide 33</div><div class="slide-title"><h2>LED Light in a Mouse</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="LED Light in a Mouse"></button><figcaption>Click to enlarge · 33/96</figcaption></figure>
+<section class="reading"><p>The LED lights the surface. The surface reflects light. The sensor receives the image. Bad surfaces can cause problems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>The LED lights the surface.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">Slide 34</div><div class="slide-title"><h2>Image Sensor</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="Image Sensor"></button><figcaption>Click to enlarge · 34/96</figcaption></figure>
+<section class="reading"><p>The sensor detects small changes. It compares images very quickly. Movement becomes digital data. The pointer moves on screen.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>The sensor detects small changes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">Slide 35</div><div class="slide-title"><h2>Dirty Mouse Sensor</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="Dirty Mouse Sensor"></button><figcaption>Click to enlarge · 35/96</figcaption></figure>
+<section class="reading"><p>Dust can block the sensor. The pointer may jump or stop. Clean the sensor carefully. Check the battery for wireless mice.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Dust can block the sensor.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">Slide 36</div><div class="slide-title"><h2>Mouse Troubleshooting</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="Mouse Troubleshooting"></button><figcaption>Click to enlarge · 36/96</figcaption></figure>
+<section class="reading"><p>Check the cable or battery. Check the USB receiver. Clean the sensor. Try another surface or another mouse.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Check the cable or battery.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">Slide 37</div><div class="slide-title"><h2>Why Hospitals Need Printers</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="Why Hospitals Need Printers"></button><figcaption>Click to enlarge · 37/96</figcaption></figure>
+<section class="reading"><p>Hospitals still print many documents. Examples: forms, reports, labels, prescriptions. Printed information is still important. Printer problems can stop workflow.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why is this important in a hospital workstation?</p><details data-checkpoint><summary>Show answer</summary><p>Hospitals still print many documents.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">Slide 38</div><div class="slide-title"><h2>Printer Types Overview</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="Printer Types Overview"></button><figcaption>Click to enlarge · 38/96</figcaption></figure>
+<section class="reading"><p>Common printer types: inkjet, laser, thermal, dot matrix. Each type uses a different physical principle. Different tasks need different printers. Hospitals may use several types.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Common printer types: inkjet, laser, thermal, dot matrix.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">Slide 39</div><div class="slide-title"><h2>Inkjet Printer</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="Inkjet Printer"></button><figcaption>Click to enlarge · 39/96</figcaption></figure>
+<section class="reading"><p>Inkjet printers use liquid ink. They can print good color images. They are common at home and small offices. Ink can dry or run out.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Inkjet printers use liquid ink.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">Slide 40</div><div class="slide-title"><h2>Inkjet Working Principle</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="Inkjet Working Principle"></button><figcaption>Click to enlarge · 40/96</figcaption></figure>
+<section class="reading"><p>Tiny droplets of ink are placed on paper. Many droplets create letters and images. Color printing mixes different inks. The print head must stay clean.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Tiny droplets of ink are placed on paper.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">Slide 41</div><div class="slide-title"><h2>Ink Droplets</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="Ink Droplets"></button><figcaption>Click to enlarge · 41/96</figcaption></figure>
+<section class="reading"><p>Ink droplets are very small. Droplet position must be precise. Blocked nozzles cause missing lines. Cleaning may improve print quality.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Ink droplets are very small.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">Slide 42</div><div class="slide-title"><h2>Laser Printer</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="Laser Printer"></button><figcaption>Click to enlarge · 42/96</figcaption></figure>
+<section class="reading"><p>Laser printers use toner powder. They are fast and good for text. They are common in offices. They use heat to fix toner.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Laser printers use toner powder.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">Slide 43</div><div class="slide-title"><h2>Laser Printer Parts</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="Laser Printer Parts"></button><figcaption>Click to enlarge · 43/96</figcaption></figure>
+<section class="reading"><p>Main parts: laser, drum, toner, fuser. The drum receives an electrical image. Toner sticks to the image area. The fuser uses heat and pressure.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Main parts: laser, drum, toner, fuser.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">Slide 44</div><div class="slide-title"><h2>Toner</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="Toner"></button><figcaption>Click to enlarge · 44/96</figcaption></figure>
+<section class="reading"><p>Toner is fine powder. It is not liquid ink. Toner sticks using electrical charge. Empty toner causes light or missing print.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Toner is fine powder.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">Slide 45</div><div class="slide-title"><h2>Drum</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="Drum"></button><figcaption>Click to enlarge · 45/96</figcaption></figure>
+<section class="reading"><p>The drum helps form the image. It uses electrical charge. Toner follows the charged pattern. A damaged drum can create repeated marks.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>The drum helps form the image.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">Slide 46</div><div class="slide-title"><h2>Fuser</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="Fuser"></button><figcaption>Click to enlarge · 46/96</figcaption></figure>
+<section class="reading"><p>The fuser uses heat and pressure. It fixes toner to paper. The paper may come out warm. Fuser problems can cause poor fixing.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>The fuser uses heat and pressure.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">Slide 47</div><div class="slide-title"><h2>Thermal Printer</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="Thermal Printer"></button><figcaption>Click to enlarge · 47/96</figcaption></figure>
+<section class="reading"><p>Thermal printers use heat. They often use special paper. They are fast and quiet. They are common for labels and receipts.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Thermal printers use heat.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">Slide 48</div><div class="slide-title"><h2>Dot Matrix Printer</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="Dot Matrix Printer"></button><figcaption>Click to enlarge · 48/96</figcaption></figure>
+<section class="reading"><p>Dot matrix printers use pins and ribbon. Pins strike the ribbon onto paper. They are old but still used. They can print on multi-part forms.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Dot matrix printers use pins and ribbon.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">Slide 49</div><div class="slide-title"><h2>Printer Problems</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="Printer Problems"></button><figcaption>Click to enlarge · 49/96</figcaption></figure>
+<section class="reading"><p>Common problems: no paper, paper jam, no toner, empty ink. Wrong printer selection can also stop work. Check simple things first. Read the printer message.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Common problems: no paper, paper jam, no toner, empty ink.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">Slide 50</div><div class="slide-title"><h2>Paper Jam</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg"><img src="assets/slides/slide-50.jpg" alt="Paper Jam"></button><figcaption>Click to enlarge · 50/96</figcaption></figure>
+<section class="reading"><p>Paper jam means paper is stuck. Do not pull violently. Follow printer instructions. Remove paper carefully.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Paper jam means paper is stuck.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">Slide 51</div><div class="slide-title"><h2>No Paper / No Toner</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg"><img src="assets/slides/slide-51.jpg" alt="No Paper / No Toner"></button><figcaption>Click to enlarge · 51/96</figcaption></figure>
+<section class="reading"><p>No paper means the printer cannot continue. No toner means print becomes weak or impossible. Check supplies before calling repair. Many problems are simple supply problems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>No paper means the printer cannot continue.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">Slide 52</div><div class="slide-title"><h2>What Is a Scanner?</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg"><img src="assets/slides/slide-52.jpg" alt="What Is a Scanner?"></button><figcaption>Click to enlarge · 52/96</figcaption></figure>
+<section class="reading"><p>A scanner is an input device. It changes paper into a digital image. Hospitals scan forms and documents. Scanning helps store records.</p></section>
+<section class="think"><h3>Think and answer</h3><p>How would you define a scanner?</p><details data-checkpoint><summary>Show answer</summary><p>A scanner is an input device.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">Slide 53</div><div class="slide-title"><h2>Scanner Types</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-53.jpg"><img src="assets/slides/slide-53.jpg" alt="Scanner Types"></button><figcaption>Click to enlarge · 53/96</figcaption></figure>
+<section class="reading"><p>Common types: flatbed, sheet-fed, document scanner. Different scanners handle different paper. Some scan one page. Some scan many pages quickly.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Common types: flatbed, sheet-fed, document scanner.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-54">
+<div class="slide-head"><div class="badge">Slide 54</div><div class="slide-title"><h2>Flatbed Scanner</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-54.jpg"><img src="assets/slides/slide-54.jpg" alt="Flatbed Scanner"></button><figcaption>Click to enlarge · 54/96</figcaption></figure>
+<section class="reading"><p>Paper lies on glass. The scanner moves under the paper. Good for single documents and books. Dirty glass makes dirty scans.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Paper lies on glass.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-55">
+<div class="slide-head"><div class="badge">Slide 55</div><div class="slide-title"><h2>Sheet-fed Scanner</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-55.jpg"><img src="assets/slides/slide-55.jpg" alt="Sheet-fed Scanner"></button><figcaption>Click to enlarge · 55/96</figcaption></figure>
+<section class="reading"><p>Paper moves through the scanner. Good for many pages. Rollers pull paper inside. Paper jams can happen.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Paper moves through the scanner.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-56">
+<div class="slide-head"><div class="badge">Slide 56</div><div class="slide-title"><h2>How a Scanner Works</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-56.jpg"><img src="assets/slides/slide-56.jpg" alt="How a Scanner Works"></button><figcaption>Click to enlarge · 56/96</figcaption></figure>
+<section class="reading"><p>Light shines on paper. Paper reflects light. A sensor detects reflected light. The computer creates an image.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Light shines on paper.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-57">
+<div class="slide-head"><div class="badge">Slide 57</div><div class="slide-title"><h2>Lamp and Reflection</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-57.jpg"><img src="assets/slides/slide-57.jpg" alt="Lamp and Reflection"></button><figcaption>Click to enlarge · 57/96</figcaption></figure>
+<section class="reading"><p>The lamp provides light. White paper reflects much light. Dark ink reflects less light. The sensor measures the difference.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>The lamp provides light.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-58">
+<div class="slide-head"><div class="badge">Slide 58</div><div class="slide-title"><h2>Scanner Sensor</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-58.jpg"><img src="assets/slides/slide-58.jpg" alt="Scanner Sensor"></button><figcaption>Click to enlarge · 58/96</figcaption></figure>
+<section class="reading"><p>The sensor detects light intensity. Many measurements create an image. Resolution depends on sensor detail. Bad sensors create poor images.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>The sensor detects light intensity.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-59">
+<div class="slide-head"><div class="badge">Slide 59</div><div class="slide-title"><h2>Dirty Scanner Glass</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-59.jpg"><img src="assets/slides/slide-59.jpg" alt="Dirty Scanner Glass"></button><figcaption>Click to enlarge · 59/96</figcaption></figure>
+<section class="reading"><p>Dirty glass causes lines or spots. Dust appears in the scan. Clean glass carefully. Do not scratch the scanner glass.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Dirty glass causes lines or spots.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-60">
+<div class="slide-head"><div class="badge">Slide 60</div><div class="slide-title"><h2>Why Hospitals Use Barcodes</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-60.jpg"><img src="assets/slides/slide-60.jpg" alt="Why Hospitals Use Barcodes"></button><figcaption>Click to enlarge · 60/96</figcaption></figure>
+<section class="reading"><p>Barcodes help identify patients and items. Scanning is faster than typing. Scanning reduces human error. Correct identification improves safety.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why is this important in a hospital workstation?</p><details data-checkpoint><summary>Show answer</summary><p>Barcodes help identify patients and items.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-61">
+<div class="slide-head"><div class="badge">Slide 61</div><div class="slide-title"><h2>Barcode Types</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-61.jpg"><img src="assets/slides/slide-61.jpg" alt="Barcode Types"></button><figcaption>Click to enlarge · 61/96</figcaption></figure>
+<section class="reading"><p>Common codes: 1D barcode, QR code, DataMatrix, PDF417. Different codes store different amounts of data. Some are simple lines. Some are two-dimensional patterns.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Common codes: 1D barcode, QR code, DataMatrix, PDF417.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-62">
+<div class="slide-head"><div class="badge">Slide 62</div><div class="slide-title"><h2>1D Barcode</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-62.jpg"><img src="assets/slides/slide-62.jpg" alt="1D Barcode"></button><figcaption>Click to enlarge · 62/96</figcaption></figure>
+<section class="reading"><p>1D barcodes use lines. Black and white bars form a pattern. The scanner reads the pattern. Common on products and labels.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>1D barcodes use lines.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-63">
+<div class="slide-head"><div class="badge">Slide 63</div><div class="slide-title"><h2>QR Code</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-63.jpg"><img src="assets/slides/slide-63.jpg" alt="QR Code"></button><figcaption>Click to enlarge · 63/96</figcaption></figure>
+<section class="reading"><p>QR codes are two-dimensional. They store more information than simple barcodes. Phones can read QR codes. They are common in modern systems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>QR codes are two-dimensional.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-64">
+<div class="slide-head"><div class="badge">Slide 64</div><div class="slide-title"><h2>DataMatrix</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-64.jpg"><img src="assets/slides/slide-64.jpg" alt="DataMatrix"></button><figcaption>Click to enlarge · 64/96</figcaption></figure>
+<section class="reading"><p>DataMatrix is a small 2D code. It can fit on small items. It is used in industry and medicine. Small codes still need clear printing.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>DataMatrix is a small 2D code.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-65">
+<div class="slide-head"><div class="badge">Slide 65</div><div class="slide-title"><h2>PDF417</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-65.jpg"><img src="assets/slides/slide-65.jpg" alt="PDF417"></button><figcaption>Click to enlarge · 65/96</figcaption></figure>
+<section class="reading"><p>PDF417 is a stacked barcode. It can store more data than simple lines. It is used on documents and cards. It needs a compatible reader.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>PDF417 is a stacked barcode.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-66">
+<div class="slide-head"><div class="badge">Slide 66</div><div class="slide-title"><h2>Barcode Reader</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-66.jpg"><img src="assets/slides/slide-66.jpg" alt="Barcode Reader"></button><figcaption>Click to enlarge · 66/96</figcaption></figure>
+<section class="reading"><p>A barcode reader is an input device. It reads machine-readable codes. It sends data to the computer. It helps avoid typing errors.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>A barcode reader is an input device.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-67">
+<div class="slide-head"><div class="badge">Slide 67</div><div class="slide-title"><h2>How Barcode Readers Work</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-67.jpg"><img src="assets/slides/slide-67.jpg" alt="How Barcode Readers Work"></button><figcaption>Click to enlarge · 67/96</figcaption></figure>
+<section class="reading"><p>Light shines on the code. White areas reflect more light. Black areas reflect less light. The sensor reads the pattern.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Light shines on the code.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-68">
+<div class="slide-head"><div class="badge">Slide 68</div><div class="slide-title"><h2>Patient Wristband</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-68.jpg"><img src="assets/slides/slide-68.jpg" alt="Patient Wristband"></button><figcaption>Click to enlarge · 68/96</figcaption></figure>
+<section class="reading"><p>Patient wristbands often have barcodes. They help identify the correct patient. Scanning is faster than typing. Correct scanning improves safety.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Patient wristbands often have barcodes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-69">
+<div class="slide-head"><div class="badge">Slide 69</div><div class="slide-title"><h2>Barcode Troubleshooting</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-69.jpg"><img src="assets/slides/slide-69.jpg" alt="Barcode Troubleshooting"></button><figcaption>Click to enlarge · 69/96</figcaption></figure>
+<section class="reading"><p>Check the barcode condition. Check the scanner light. Check the USB connection. Check the cursor input box.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Check the barcode condition.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-70">
+<div class="slide-head"><div class="badge">Slide 70</div><div class="slide-title"><h2>Why Computers Need Networks</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-70.jpg"><img src="assets/slides/slide-70.jpg" alt="Why Computers Need Networks"></button><figcaption>Click to enlarge · 70/96</figcaption></figure>
+<section class="reading"><p>Networks connect computers. Hospitals share information through networks. Many systems need server access. No network can stop work.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why is this important in a hospital workstation?</p><details data-checkpoint><summary>Show answer</summary><p>Networks connect computers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-71">
+<div class="slide-head"><div class="badge">Slide 71</div><div class="slide-title"><h2>Router</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-71.jpg"><img src="assets/slides/slide-71.jpg" alt="Router"></button><figcaption>Click to enlarge · 71/96</figcaption></figure>
+<section class="reading"><p>A router connects networks. It helps data move between network areas. Home networks and office networks use routers. Router failure can affect many users.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>A router connects networks.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-72">
+<div class="slide-head"><div class="badge">Slide 72</div><div class="slide-title"><h2>Switch</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-72.jpg"><img src="assets/slides/slide-72.jpg" alt="Switch"></button><figcaption>Click to enlarge · 72/96</figcaption></figure>
+<section class="reading"><p>A switch connects devices in one network. Many computers can connect to a switch. Switches are common in offices. One switch problem can affect a room.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>A switch connects devices in one network.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-73">
+<div class="slide-head"><div class="badge">Slide 73</div><div class="slide-title"><h2>Ethernet Cable</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-73.jpg"><img src="assets/slides/slide-73.jpg" alt="Ethernet Cable"></button><figcaption>Click to enlarge · 73/96</figcaption></figure>
+<section class="reading"><p>Ethernet cables carry network data. They often use RJ45 connectors. Wired networks are reliable. Loose cables cause network problems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Ethernet cables carry network data.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-74">
+<div class="slide-head"><div class="badge">Slide 74</div><div class="slide-title"><h2>RJ45 Connector</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-74.jpg"><img src="assets/slides/slide-74.jpg" alt="RJ45 Connector"></button><figcaption>Click to enlarge · 74/96</figcaption></figure>
+<section class="reading"><p>RJ45 is the common Ethernet connector. It clicks into the port. A broken clip makes it loose. Loose connection can disconnect the network.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>RJ45 is the common Ethernet connector.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-75">
+<div class="slide-head"><div class="badge">Slide 75</div><div class="slide-title"><h2>Common Ports</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-75.jpg"><img src="assets/slides/slide-75.jpg" alt="Common Ports"></button><figcaption>Click to enlarge · 75/96</figcaption></figure>
+<section class="reading"><p>Ports connect devices to computers. Common ports: USB, HDMI, LAN, audio, power. Each port has a different shape. Wrong port means no connection.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Ports connect devices to computers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-76">
+<div class="slide-head"><div class="badge">Slide 76</div><div class="slide-title"><h2>USB</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-76.jpg"><img src="assets/slides/slide-76.jpg" alt="USB"></button><figcaption>Click to enlarge · 76/96</figcaption></figure>
+<section class="reading"><p>USB connects many devices. Examples: keyboard, mouse, scanner, flash drive. USB can carry data and power. USB-C can do even more.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>USB connects many devices.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-77">
+<div class="slide-head"><div class="badge">Slide 77</div><div class="slide-title"><h2>HDMI</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-77.jpg"><img src="assets/slides/slide-77.jpg" alt="HDMI"></button><figcaption>Click to enlarge · 77/96</figcaption></figure>
+<section class="reading"><p>HDMI sends video and audio. It connects computers to monitors and projectors. No HDMI signal means no image. Check cable and input source.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>HDMI sends video and audio.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-78">
+<div class="slide-head"><div class="badge">Slide 78</div><div class="slide-title"><h2>Power Cable</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-78.jpg"><img src="assets/slides/slide-78.jpg" alt="Power Cable"></button><figcaption>Click to enlarge · 78/96</figcaption></figure>
+<section class="reading"><p>Power cables supply energy. No power means no device operation. Damaged power cables are dangerous. Check power safely.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Power cables supply energy.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-79">
+<div class="slide-head"><div class="badge">Slide 79</div><div class="slide-title"><h2>Wrong Connections</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-79.jpg"><img src="assets/slides/slide-79.jpg" alt="Wrong Connections"></button><figcaption>Click to enlarge · 79/96</figcaption></figure>
+<section class="reading"><p>Forcing a connector can damage a port. Loose connections cause unstable problems. Bent pins can stop communication. Check carefully before pushing.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Forcing a connector can damage a port.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-80">
+<div class="slide-head"><div class="badge">Slide 80</div><div class="slide-title"><h2>What Is Troubleshooting?</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-80.jpg"><img src="assets/slides/slide-80.jpg" alt="What Is Troubleshooting?"></button><figcaption>Click to enlarge · 80/96</figcaption></figure>
+<section class="reading"><p>Troubleshooting means finding the cause of a problem. Good technicians do not guess. They check step by step. Simple checks often solve problems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>How would you define troubleshooting?</p><details data-checkpoint><summary>Show answer</summary><p>Troubleshooting means finding the cause of a problem.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-81">
+<div class="slide-head"><div class="badge">Slide 81</div><div class="slide-title"><h2>Common Problems</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-81.jpg"><img src="assets/slides/slide-81.jpg" alt="Common Problems"></button><figcaption>Click to enlarge · 81/96</figcaption></figure>
+<section class="reading"><p>Common causes: power, cable, device, software, user action. One symptom can have many causes. Do not decide too quickly. Collect information first.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Common causes: power, cable, device, software, user action.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-82">
+<div class="slide-head"><div class="badge">Slide 82</div><div class="slide-title"><h2>Check Power First</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-82.jpg"><img src="assets/slides/slide-82.jpg" alt="Check Power First"></button><figcaption>Click to enlarge · 82/96</figcaption></figure>
+<section class="reading"><p>Is the device turned on? Is the power cable connected? Is the power light on? Is the adapter working?</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Is the device turned on?</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-83">
+<div class="slide-head"><div class="badge">Slide 83</div><div class="slide-title"><h2>Check Cables</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-83.jpg"><img src="assets/slides/slide-83.jpg" alt="Check Cables"></button><figcaption>Click to enlarge · 83/96</figcaption></figure>
+<section class="reading"><p>Is the cable connected? Is it in the correct port? Is the cable damaged? Can another cable be tested?</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Is the cable connected?</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-84">
+<div class="slide-head"><div class="badge">Slide 84</div><div class="slide-title"><h2>Check Device</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-84.jpg"><img src="assets/slides/slide-84.jpg" alt="Check Device"></button><figcaption>Click to enlarge · 84/96</figcaption></figure>
+<section class="reading"><p>Is the device selected? Does another device work? Is there an error light? Does the device need paper, ink, or toner?</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Is the device selected?</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-85">
+<div class="slide-head"><div class="badge">Slide 85</div><div class="slide-title"><h2>Restart</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-85.jpg"><img src="assets/slides/slide-85.jpg" alt="Restart"></button><figcaption>Click to enlarge · 85/96</figcaption></figure>
+<section class="reading"><p>Restarting can clear temporary errors. Restart the device safely. Do not restart critical hospital equipment without permission. After restart, test again.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Restarting can clear temporary errors.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-86">
+<div class="slide-head"><div class="badge">Slide 86</div><div class="slide-title"><h2>Read Error Messages</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-86.jpg"><img src="assets/slides/slide-86.jpg" alt="Read Error Messages"></button><figcaption>Click to enlarge · 86/96</figcaption></figure>
+<section class="reading"><p>Error messages give useful information. Do not ignore them. Write down the exact message. A screenshot can help support.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Error messages give useful information.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-87">
+<div class="slide-head"><div class="badge">Slide 87</div><div class="slide-title"><h2>USB Not Recognized</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-87.jpg"><img src="assets/slides/slide-87.jpg" alt="USB Not Recognized"></button><figcaption>Click to enlarge · 87/96</figcaption></figure>
+<section class="reading"><p>The computer may not detect a USB device. Check the port and cable. Try another USB port. Try another computer if possible.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>The computer may not detect a USB device.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-88">
+<div class="slide-head"><div class="badge">Slide 88</div><div class="slide-title"><h2>No Internet</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-88.jpg"><img src="assets/slides/slide-88.jpg" alt="No Internet"></button><figcaption>Click to enlarge · 88/96</figcaption></figure>
+<section class="reading"><p>No internet may be a network problem. Check LAN cable or Wi-Fi. Check other computers. One PC problem is different from whole-room problem.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>No internet may be a network problem.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-89">
+<div class="slide-head"><div class="badge">Slide 89</div><div class="slide-title"><h2>Printer Error</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-89.jpg"><img src="assets/slides/slide-89.jpg" alt="Printer Error"></button><figcaption>Click to enlarge · 89/96</figcaption></figure>
+<section class="reading"><p>Printer errors can be physical or software-related. Check paper, toner, cable, and network. Read the printer display. Try a test page if possible.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Printer errors can be physical or software-related.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-90">
+<div class="slide-head"><div class="badge">Slide 90</div><div class="slide-title"><h2>Input → Process → Output Method</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-90.jpg"><img src="assets/slides/slide-90.jpg" alt="Input → Process → Output Method"></button><figcaption>Click to enlarge · 90/96</figcaption></figure>
+<section class="reading"><p>Check input first. Then check process. Then check output. This method works for many systems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main job or principle shown on this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Check input first.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-91">
+<div class="slide-head"><div class="badge">Slide 91</div><div class="slide-title"><h2>Hospital Troubleshooting Example</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-91.jpg"><img src="assets/slides/slide-91.jpg" alt="Hospital Troubleshooting Example"></button><figcaption>Click to enlarge · 91/96</figcaption></figure>
+<section class="reading"><p>A scanner stops working. Check power and USB cable. Check the document and software. Report the problem clearly.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>A scanner stops working.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-92">
+<div class="slide-head"><div class="badge">Slide 92</div><div class="slide-title"><h2>Review: Input Devices</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-92.jpg"><img src="assets/slides/slide-92.jpg" alt="Review: Input Devices"></button><figcaption>Click to enlarge · 92/96</figcaption></figure>
+<section class="reading"><p>Input devices send data to the computer. Examples: keyboard, mouse, scanner, barcode reader. Input problems stop data entry. Check input devices first when data does not appear.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main rule to remember?</p><details data-checkpoint><summary>Show answer</summary><p>Input devices send data to the computer.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-93">
+<div class="slide-head"><div class="badge">Slide 93</div><div class="slide-title"><h2>Review: Output Devices</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-93.jpg"><img src="assets/slides/slide-93.jpg" alt="Review: Output Devices"></button><figcaption>Click to enlarge · 93/96</figcaption></figure>
+<section class="reading"><p>Output devices show or print results. Examples: monitor, printer, speaker. Output problems hide information from users. Check output devices when results are missing.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main rule to remember?</p><details data-checkpoint><summary>Show answer</summary><p>Output devices show or print results.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-94">
+<div class="slide-head"><div class="badge">Slide 94</div><div class="slide-title"><h2>Review: Networks</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-94.jpg"><img src="assets/slides/slide-94.jpg" alt="Review: Networks"></button><figcaption>Click to enlarge · 94/96</figcaption></figure>
+<section class="reading"><p>Networks connect computers and servers. Cables, switches, and routers are hardware. Network problems can stop hospital systems. Check one computer vs many computers.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main rule to remember?</p><details data-checkpoint><summary>Show answer</summary><p>Networks connect computers and servers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-95">
+<div class="slide-head"><div class="badge">Slide 95</div><div class="slide-title"><h2>Review: Troubleshooting</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-95.jpg"><img src="assets/slides/slide-95.jpg" alt="Review: Troubleshooting"></button><figcaption>Click to enlarge · 95/96</figcaption></figure>
+<section class="reading"><p>Do not guess. Check power. Check cables. Check device. Read error messages.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check or do first?</p><details data-checkpoint><summary>Show answer</summary><p>Do not guess.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-96">
+<div class="slide-head"><div class="badge">Slide 96</div><div class="slide-title"><h2>Final Question</h2><p>Study the original slide first.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-96.jpg"><img src="assets/slides/slide-96.jpg" alt="Final Question"></button><figcaption>Click to enlarge · 96/96</figcaption></figure>
+<section class="reading"><p>A patient barcode does not scan. What should you check first? Barcode condition? Scanner? USB cable? Input field? Use Input → Process → Output.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which parts of the input chain should be checked?</p><details data-checkpoint><summary>Show answer</summary><p>A patient barcode does not scan.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<section class="interactive-section" id="review">
+<h2>Interactive review</h2>
+<p>Use the tasks below to review the devices and basic troubleshooting ideas.</p>
+<h2>Interactive review</h2>
+<h3>1. Classify input and output</h3>
+<p>Tap each card to reveal its category.</p>
+<div class="classifier">
+<button class="classify-card" data-type="output">Monitor</button>
+<button class="classify-card" data-type="input">Keyboard</button>
+<button class="classify-card" data-type="input">Scanner</button>
+<button class="classify-card" data-type="output">Printer</button>
+<button class="classify-card" data-type="input">Barcode reader</button>
+<button class="classify-card" data-type="both">Touchscreen</button></div>
+<h3>2. Device explorer</h3>
+<div class="device-tabs"><button data-device="monitor">Monitor</button><button data-device="keyboard">Keyboard</button><button data-device="printer">Printer</button><button data-device="scanner">Scanner</button><button data-device="barcode">Barcode</button><button data-device="touchscreen">Touchscreen</button></div><div class="device-panel" id="device-panel"></div>
+<h3>3. Hospital information flow</h3>
+<div class="flow"><span>Patient</span><b>→</b><span>Input device</span><b>→</b><span>Computer</span><b>→</b><span>Network / DB</span><b>→</b><span>Output device</span></div>
+<h3>4. Troubleshooting practice</h3>
+<div class="trouble-lab"><select id="problem-select"><option value="monitor">Monitor</option><option value="keyboard">Keyboard</option><option value="mouse">Mouse</option><option value="printer">Printer</option><option value="scanner">Scanner</option><option value="barcode">Barcode reader</option><option value="network">Network</option></select><div class="trouble-result" id="trouble-result"></div></div>
+<h3>5. Final quiz</h3><form id="quiz-form"><fieldset class="quiz-card" data-answer="1"><legend>1. A monitor is mainly:</legend><label><input name="q1" type="radio" value="0"/> Input</label><label><input name="q1" type="radio" value="1"/> Output</label><label><input name="q1" type="radio" value="2"/> Storage</label><label><input name="q1" type="radio" value="3"/> Network</label></fieldset><fieldset class="quiz-card" data-answer="2"><legend>2. A touchscreen can be:</legend><label><input name="q2" type="radio" value="0"/> Input only</label><label><input name="q2" type="radio" value="1"/> Output only</label><label><input name="q2" type="radio" value="2"/> Input and output</label><label><input name="q2" type="radio" value="3"/> Neither</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>3. The LCD backlight provides:</legend><label><input name="q3" type="radio" value="0"/> Network</label><label><input name="q3" type="radio" value="1"/> Light</label><label><input name="q3" type="radio" value="2"/> Ink</label><label><input name="q3" type="radio" value="3"/> Sound</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. A keyboard matrix uses:</legend><label><input name="q4" type="radio" value="0"/> Rows and columns</label><label><input name="q4" type="radio" value="1"/> Toner and drum</label><label><input name="q4" type="radio" value="2"/> Packets</label><label><input name="q4" type="radio" value="3"/> Wi-Fi</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>5. An optical mouse uses:</legend><label><input name="q5" type="radio" value="0"/> Heat</label><label><input name="q5" type="radio" value="1"/> Light and sensor</label><label><input name="q5" type="radio" value="2"/> Ink</label><label><input name="q5" type="radio" value="3"/> Magnet only</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. A laser printer uses:</legend><label><input name="q6" type="radio" value="0"/> Liquid ink only</label><label><input name="q6" type="radio" value="1"/> Toner powder</label><label><input name="q6" type="radio" value="2"/> Thermal paper only</label><label><input name="q6" type="radio" value="3"/> No heat</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>7. The fuser uses:</legend><label><input name="q7" type="radio" value="0"/> Heat and pressure</label><label><input name="q7" type="radio" value="1"/> Wi-Fi</label><label><input name="q7" type="radio" value="2"/> Liquid crystal</label><label><input name="q7" type="radio" value="3"/> USB power only</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. A scanner is an:</legend><label><input name="q8" type="radio" value="0"/> Input device</label><label><input name="q8" type="radio" value="1"/> Output device</label><label><input name="q8" type="radio" value="2"/> Router</label><label><input name="q8" type="radio" value="3"/> Battery</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>9. Barcode scanning helps reduce:</legend><label><input name="q9" type="radio" value="0"/> Screen size</label><label><input name="q9" type="radio" value="1"/> Typing errors</label><label><input name="q9" type="radio" value="2"/> Power use</label><label><input name="q9" type="radio" value="3"/> RAM</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>10. A switch connects devices:</legend><label><input name="q10" type="radio" value="0"/> Inside one network</label><label><input name="q10" type="radio" value="1"/> Only to wall power</label><label><input name="q10" type="radio" value="2"/> Only to printers</label><label><input name="q10" type="radio" value="3"/> Without cables</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>11. RJ45 is commonly used for:</legend><label><input name="q11" type="radio" value="0"/> HDMI</label><label><input name="q11" type="radio" value="1"/> Ethernet</label><label><input name="q11" type="radio" value="2"/> Audio</label><label><input name="q11" type="radio" value="3"/> Battery</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>12. First troubleshooting check:</legend><label><input name="q12" type="radio" value="0"/> Guess the cause</label><label><input name="q12" type="radio" value="1"/> Check power</label><label><input name="q12" type="radio" value="2"/> Replace motherboard</label><label><input name="q12" type="radio" value="3"/> Reinstall everything</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>13. A paper jam should be removed:</legend><label><input name="q13" type="radio" value="0"/> Violently</label><label><input name="q13" type="radio" value="1"/> Carefully using instructions</label><label><input name="q13" type="radio" value="2"/> With water</label><label><input name="q13" type="radio" value="3"/> By shaking</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>14. If many PCs lose network, suspect:</legend><label><input name="q14" type="radio" value="0"/> One mouse</label><label><input name="q14" type="radio" value="1"/> Shared network equipment</label><label><input name="q14" type="radio" value="2"/> One keyboard</label><label><input name="q14" type="radio" value="3"/> One pixel</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. For barcode failure check:</legend><label><input name="q15" type="radio" value="0"/> Code, reader, USB, input field</label><label><input name="q15" type="radio" value="1"/> Wallpaper</label><label><input name="q15" type="radio" value="2"/> CPU fan only</label><label><input name="q15" type="radio" value="3"/> Speaker volume</label></fieldset><div class="actions"><button class="primary" data-action="check" type="button">Check answers</button><button class="secondary" data-action="reset" type="button">Reset</button></div><div class="result" data-label="Score" data-review="Review red questions." id="quiz-result"></div></form>
+
+</section>
+</main>
+<div class="modal" id="image-modal" role="dialog" aria-modal="true">
+<div class="modal-inner"><button id="modal-close" type="button" aria-label="Close">×</button><img id="modal-image" alt=""></div>
+</div>
+<footer>Computer Fundamentals 2 · Lecture 4 · Hospital Workstation Hardware</footer>
+</body></html>
