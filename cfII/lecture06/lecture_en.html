@@ -1,0 +1,470 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 6 — Computer Performance and Bottlenecks</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script><style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head><body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture05/index.html">← 5</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture07/index.html">7 →</a></nav>
+<header id="top"><div class="header-inner"><div class="course">Computer Fundamentals 2 · Current Quarter · Lecture 6</div><div class="archive-note">The old Lecture 11 labels inside the original slide artwork are preserved.</div><h1>Computer Performance and Bottlenecks</h1><p class="subtitle">The original 53-slide visual lecture, adapted for independent web study.</p><p class="intro">Find the slow part—CPU, RAM, disk, network, server, heat, or application—from evidence and choose the correct fix.</p><div class="lang-switch"><a class="current" href="lecture_en.html">English</a><a href="lecture_ja.html">日本語</a></div></div></header>
+<main class="container"><section class="core"><h2>Core workflow</h2><div class="core-chain">symptom → measurement → bottleneck → targeted fix → retest</div></section>
+<section class="progress-box"><strong>Reading progress</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>Open answers only after thinking.</span></section>
+<section class="notice"><h2>How to use this lecture</h2><p>Study each original slide, read the explanation, think before opening the hidden answer, and complete the diagnostic practice.</p></section>
+<section class="notice map" id="lesson-map"><h2>Lesson map — 53 original slides</h2><ol><li><a href="#slide-1">Slide 1: Lecture 6 — Computer Performance and Bottlenecks</a></li><li><a href="#slide-2">Slide 2: Why this lecture matters</a></li><li><a href="#slide-3">Slide 3: Learning goals</a></li><li><a href="#slide-4">Slide 4: Part 1 — The Big Idea</a></li><li><a href="#slide-5">Slide 5: The whole system is limited by the slowest part</a></li><li><a href="#slide-6">Slide 6: Find the slow lane</a></li><li><a href="#slide-7">Slide 7: Bottleneck = narrow point</a></li><li><a href="#slide-8">Slide 8: CPU communication with the system</a></li><li><a href="#slide-9">Slide 9: More cores help only when work can be divided</a></li><li><a href="#slide-10">Slide 10: Heavy tasks stress several parts</a></li><li><a href="#slide-11">Slide 11: Part 2 — Common Bottlenecks</a></li><li><a href="#slide-12">Slide 12: CPU near 100%</a></li><li><a href="#slide-13">Slide 13: Too many tasks overload CPU and RAM</a></li><li><a href="#slide-14">Slide 14: One heavy program uses almost all CPU</a></li><li><a href="#slide-15">Slide 15: GPU bottleneck</a></li><li><a href="#slide-16">Slide 16: RAM almost full</a></li><li><a href="#slide-17">Slide 17: Virtual memory is slower than RAM</a></li><li><a href="#slide-18">Slide 18: HDD vs SSD</a></li><li><a href="#slide-19">Slide 19: Disk at 100%</a></li><li><a href="#slide-20">Slide 20: Low free disk space</a></li><li><a href="#slide-21">Slide 21: Network bottleneck</a></li><li><a href="#slide-22">Slide 22: Bandwidth vs latency</a></li><li><a href="#slide-23">Slide 23: Shared Wi‑Fi</a></li><li><a href="#slide-24">Slide 24: Thermal throttling</a></li><li><a href="#slide-25">Slide 25: Dust and airflow</a></li><li><a href="#slide-26">Slide 26: Browser tabs and web apps</a></li><li><a href="#slide-27">Slide 27: Too many startup apps</a></li><li><a href="#slide-28">Slide 28: Updates and scans</a></li><li><a href="#slide-29">Slide 29: Part 3 — Workplace Bottlenecks</a></li><li><a href="#slide-30">Slide 30: Printer queue bottleneck</a></li><li><a href="#slide-31">Slide 31: Server or database overload</a></li><li><a href="#slide-32">Slide 32: Patient service is a chain</a></li><li><a href="#slide-33">Slide 33: Slow login has several possible causes</a></li><li><a href="#slide-34">Slide 34: One computer or all computers?</a></li><li><a href="#slide-35">Slide 35: Part 4 — Finding the Bottleneck</a></li><li><a href="#slide-36">Slide 36: Task Manager evidence</a></li><li><a href="#slide-37">Slide 37: Sort by usage</a></li><li><a href="#slide-38">Slide 38: Symptoms guide the first check</a></li><li><a href="#slide-39">Slide 39: Local PC, network, or server?</a></li><li><a href="#slide-40">Slide 40: Check step by step</a></li><li><a href="#slide-41">Slide 41: Restart is useful, but not magic</a></li><li><a href="#slide-42">Slide 42: Measure, compare, decide, fix, test</a></li><li><a href="#slide-43">Slide 43: Part 5 — Choosing the Fix</a></li><li><a href="#slide-44">Slide 44: Upgrade the bottleneck</a></li><li><a href="#slide-45">Slide 45: Choose the upgrade from the symptom</a></li><li><a href="#slide-46">Slide 46: Cheap targeted fixes</a></li><li><a href="#slide-47">Slide 47: Maintenance and good habits</a></li><li><a href="#slide-48">Slide 48: Part 6 — Practice</a></li><li><a href="#slide-49">Slide 49: Choose the most likely bottleneck</a></li><li><a href="#slide-50">Slide 50: Practice setup</a></li><li><a href="#slide-51">Slide 51: Mini support report</a></li><li><a href="#slide-52">Slide 52: Final performance checklist</a></li><li><a href="#slide-53">Slide 53: Lesson summary</a></li></ol></section>
+<h2 class="part-title">Opening — Slow is a symptom</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">Slide 1</div><div class="slide-title"><h2>Lecture 6 — Computer Performance and Bottlenecks</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="Lecture 6 — Computer Performance and Bottlenecks" loading="lazy"></button><figcaption>Original presentation slide 1 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A computer feels slow when one part of the whole chain cannot keep up. The goal is to measure the busy part, identify the bottleneck, and choose the correct fix.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main goal of performance troubleshooting?</p><details data-checkpoint><summary>Show answer</summary><p>Find the limiting part with evidence and choose the correct fix.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">Slide 2</div><div class="slide-title"><h2>Why this lecture matters</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="Why this lecture matters" loading="lazy"></button><figcaption>Original presentation slide 2 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Students often say: “The computer is slow.” But this is only a symptom. A slow computer may have a CPU problem, RAM problem, storage problem, network problem, server problem, printer queue, or overheating. Good support does not guess randomly. Good support checks the chain, finds the slow part, and fixes the correct problem. Key idea: Slow is a symptom, not a cause.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Is “the computer is slow” a cause?</p><details data-checkpoint><summary>Show answer</summary><p>No. It is a symptom.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">Slide 3</div><div class="slide-title"><h2>Learning goals</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="Learning goals" loading="lazy"></button><figcaption>Original presentation slide 3 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Explain what a bottleneck is. Find common bottlenecks: CPU, RAM, disk, network, server, printer, heat, and background apps. Use Task Manager ideas: CPU %, memory %, disk %, network activity. Choose a reasonable fix or upgrade for a real problem. Describe a slow-computer problem in simple support English. Key idea: Measure first. Then decide.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What rule comes before choosing a fix?</p><details data-checkpoint><summary>Show answer</summary><p>Measure first, then decide.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 1 — The Big Idea</h2>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">Slide 4</div><div class="slide-title"><h2>Part 1 — The Big Idea</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="Part 1 — The Big Idea" loading="lazy"></button><figcaption>Original presentation slide 4 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A computer system is a chain. The slowest part limits the whole system.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What limits a chain of components?</p><details data-checkpoint><summary>Show answer</summary><p>Its slowest part.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">Slide 5</div><div class="slide-title"><h2>The whole system is limited by the slowest part</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="The whole system is limited by the slowest part" loading="lazy"></button><figcaption>Original presentation slide 5 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Even fast components must wait when one stage is slower than the others.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Can fast components remove every bottleneck?</p><details data-checkpoint><summary>Show answer</summary><p>No. They still wait for the slowest stage.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">Slide 6</div><div class="slide-title"><h2>Find the slow lane</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="Find the slow lane" loading="lazy"></button><figcaption>Original presentation slide 6 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The slow part may be CPU, RAM, storage, network, server, heat, or an output queue.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Name three possible slow lanes.</p><details data-checkpoint><summary>Show answer</summary><p>For example CPU, RAM, storage, network, server, heat, or output.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">Slide 7</div><div class="slide-title"><h2>Bottleneck = narrow point</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="Bottleneck = narrow point" loading="lazy"></button><figcaption>Original presentation slide 7 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Imagine water moving through pipes. One narrow pipe limits the whole flow. In a computer, data also moves through parts: CPU, RAM, disk, network, server, and output devices. If one part is too slow, other parts wait. The user only sees the result: “It is slow.” Key idea: A bottleneck is the part that limits the whole system.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a bottleneck?</p><details data-checkpoint><summary>Show answer</summary><p>The part that limits the whole system.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">Slide 8</div><div class="slide-title"><h2>CPU communication with the system</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="CPU communication with the system" loading="lazy"></button><figcaption>Original presentation slide 8 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The CPU depends on RAM, storage, network, and devices. Performance is a system property, not only a CPU number.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why is CPU speed alone not enough?</p><details data-checkpoint><summary>Show answer</summary><p>The CPU depends on RAM, storage, network, and devices.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">Slide 9</div><div class="slide-title"><h2>More cores help only when work can be divided</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="More cores help only when work can be divided" loading="lazy"></button><figcaption>Original presentation slide 9 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Extra CPU cores help only when software can divide the work into parallel tasks.</p></section>
+<section class="think"><h3>Think and answer</h3><p>When do more CPU cores help?</p><details data-checkpoint><summary>Show answer</summary><p>When the workload can be divided into parallel tasks.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">Slide 10</div><div class="slide-title"><h2>Heavy tasks stress several parts</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="Heavy tasks stress several parts" loading="lazy"></button><figcaption>Original presentation slide 10 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Heavy work can use CPU, RAM, storage, GPU, and network at the same time.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Can one heavy task stress several resources?</p><details data-checkpoint><summary>Show answer</summary><p>Yes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 2 — Common Bottlenecks</h2>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">Slide 11</div><div class="slide-title"><h2>Part 2 — Common Bottlenecks</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="Part 2 — Common Bottlenecks" loading="lazy"></button><figcaption>Original presentation slide 11 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Different slow parts create different symptoms.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why should symptoms be measured?</p><details data-checkpoint><summary>Show answer</summary><p>Different bottlenecks can look similar.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">Slide 12</div><div class="slide-title"><h2>CPU near 100%</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="CPU near 100%" loading="lazy"></button><figcaption>Original presentation slide 12 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Sustained CPU usage near 90–100% suggests processing demand is limiting the task.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does sustained CPU near 100% suggest?</p><details data-checkpoint><summary>Show answer</summary><p>A CPU or processing bottleneck.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">Slide 13</div><div class="slide-title"><h2>Too many tasks overload CPU and RAM</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="Too many tasks overload CPU and RAM" loading="lazy"></button><figcaption>Original presentation slide 13 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Many open tasks can compete for CPU time and fill RAM.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What can many open tasks overload?</p><details data-checkpoint><summary>Show answer</summary><p>CPU and RAM.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">Slide 14</div><div class="slide-title"><h2>One heavy program uses almost all CPU</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="One heavy program uses almost all CPU" loading="lazy"></button><figcaption>Original presentation slide 14 — click to enlarge</figcaption></figure>
+<section class="reading"><p>One process may consume most CPU resources and slow everything else.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you inspect if one process uses nearly all CPU?</p><details data-checkpoint><summary>Show answer</summary><p>That process and the work it is performing.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">Slide 15</div><div class="slide-title"><h2>GPU bottleneck</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="GPU bottleneck" loading="lazy"></button><figcaption>Original presentation slide 15 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Graphics, video, and image workloads may be limited by the GPU.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which resource may limit graphics-heavy work?</p><details data-checkpoint><summary>Show answer</summary><p>The GPU.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">Slide 16</div><div class="slide-title"><h2>RAM almost full</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="RAM almost full" loading="lazy"></button><figcaption>Original presentation slide 16 — click to enlarge</figcaption></figure>
+<section class="reading"><p>When RAM is nearly full, Windows moves more data to slower storage.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What happens when RAM is almost full?</p><details data-checkpoint><summary>Show answer</summary><p>The system uses slower storage more often.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">Slide 17</div><div class="slide-title"><h2>Virtual memory is slower than RAM</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="Virtual memory is slower than RAM" loading="lazy"></button><figcaption>Original presentation slide 17 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Virtual memory prevents immediate failure, but it is far slower than physical RAM.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Is virtual memory as fast as RAM?</p><details data-checkpoint><summary>Show answer</summary><p>No, it is much slower.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">Slide 18</div><div class="slide-title"><h2>HDD vs SSD</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="HDD vs SSD" loading="lazy"></button><figcaption>Original presentation slide 18 — click to enlarge</figcaption></figure>
+<section class="reading"><p>An HDD has mechanical delays. An SSD usually improves startup and file loading.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which upgrade usually improves an old HDD bottleneck?</p><details data-checkpoint><summary>Show answer</summary><p>An SSD.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">Slide 19</div><div class="slide-title"><h2>Disk at 100%</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="Disk at 100%" loading="lazy"></button><figcaption>Original presentation slide 19 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Sustained disk usage at 100% often indicates a storage bottleneck.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does sustained disk usage at 100% suggest?</p><details data-checkpoint><summary>Show answer</summary><p>A storage bottleneck.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">Slide 20</div><div class="slide-title"><h2>Low free disk space</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="Low free disk space" loading="lazy"></button><figcaption>Original presentation slide 20 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Very low free space can slow updates, temporary files, saves, and applications.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why keep free disk space?</p><details data-checkpoint><summary>Show answer</summary><p>Updates, temporary files, saves, and apps need working space.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">Slide 21</div><div class="slide-title"><h2>Network bottleneck</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="Network bottleneck" loading="lazy"></button><figcaption>Original presentation slide 21 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The local PC can be healthy while a slow network delays cloud or server work.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Can a healthy PC still feel slow because of the network?</p><details data-checkpoint><summary>Show answer</summary><p>Yes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">Slide 22</div><div class="slide-title"><h2>Bandwidth vs latency</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="Bandwidth vs latency" loading="lazy"></button><figcaption>Original presentation slide 22 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Bandwidth is how much data can move; latency is how long each response takes.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the difference between bandwidth and latency?</p><details data-checkpoint><summary>Show answer</summary><p>Bandwidth is amount; latency is delay.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">Slide 23</div><div class="slide-title"><h2>Shared Wi‑Fi</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="Shared Wi‑Fi" loading="lazy"></button><figcaption>Original presentation slide 23 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Many users share access-point capacity and Internet bandwidth.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What happens when many users share Wi‑Fi?</p><details data-checkpoint><summary>Show answer</summary><p>They share the same radio and bandwidth capacity.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">Slide 24</div><div class="slide-title"><h2>Thermal throttling</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="Thermal throttling" loading="lazy"></button><figcaption>Original presentation slide 24 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A hot CPU may reduce its clock speed automatically to protect itself.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why does a hot CPU slow down?</p><details data-checkpoint><summary>Show answer</summary><p>It throttles itself for safety.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">Slide 25</div><div class="slide-title"><h2>Dust and airflow</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="Dust and airflow" loading="lazy"></button><figcaption>Original presentation slide 25 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Dust blocks airflow, raises temperature, and can cause throttling or shutdown.</p></section>
+<section class="think"><h3>Think and answer</h3><p>How can dust reduce performance?</p><details data-checkpoint><summary>Show answer</summary><p>It blocks airflow and increases temperature.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">Slide 26</div><div class="slide-title"><h2>Browser tabs and web apps</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="Browser tabs and web apps" loading="lazy"></button><figcaption>Original presentation slide 26 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Browser tabs and web applications can consume large amounts of memory and CPU.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which resources can many browser tabs use?</p><details data-checkpoint><summary>Show answer</summary><p>RAM and CPU.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">Slide 27</div><div class="slide-title"><h2>Too many startup apps</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="Too many startup apps" loading="lazy"></button><figcaption>Original presentation slide 27 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Too many startup applications compete for resources immediately after login.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can startup be slow?</p><details data-checkpoint><summary>Show answer</summary><p>Too many apps start automatically.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">Slide 28</div><div class="slide-title"><h2>Updates and scans</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="Updates and scans" loading="lazy"></button><figcaption>Original presentation slide 28 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Updates and security scans are necessary but can temporarily increase CPU and disk use.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Are updates always a permanent bottleneck?</p><details data-checkpoint><summary>Show answer</summary><p>No. They often cause temporary load.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 3 — Workplace Bottlenecks</h2>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">Slide 29</div><div class="slide-title"><h2>Part 3 — Workplace Bottlenecks</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="Part 3 — Workplace Bottlenecks" loading="lazy"></button><figcaption>Original presentation slide 29 — click to enlarge</figcaption></figure>
+<section class="reading"><p>In hospital and office work, one slow step can delay many people.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Name one shared workplace bottleneck.</p><details data-checkpoint><summary>Show answer</summary><p>Printer queue, server, database, or network.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">Slide 30</div><div class="slide-title"><h2>Printer queue bottleneck</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="Printer queue bottleneck" loading="lazy"></button><figcaption>Original presentation slide 30 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A printer may be working normally while a long queue delays every job.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Can a printer queue be slow when the printer is not broken?</p><details data-checkpoint><summary>Show answer</summary><p>Yes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">Slide 31</div><div class="slide-title"><h2>Server or database overload</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="Server or database overload" loading="lazy"></button><figcaption>Original presentation slide 31 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A shared server or database can become slow when too many users request work at once.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What can overload a shared server?</p><details data-checkpoint><summary>Show answer</summary><p>Too many users or requests.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">Slide 32</div><div class="slide-title"><h2>Patient service is a chain</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="Patient service is a chain" loading="lazy"></button><figcaption>Original presentation slide 32 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Patient service depends on a chain. One slow step can delay the final clinical or administrative result.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why does one slow step matter in patient service?</p><details data-checkpoint><summary>Show answer</summary><p>It delays the final result and real work.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">Slide 33</div><div class="slide-title"><h2>Slow login has several possible causes</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="Slow login has several possible causes" loading="lazy"></button><figcaption>Original presentation slide 33 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Slow login can come from the PC, network, authentication server, profile, or database.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What systems may cause slow login?</p><details data-checkpoint><summary>Show answer</summary><p>PC, network, authentication server, profile, or database.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">Slide 34</div><div class="slide-title"><h2>One computer or all computers?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="One computer or all computers?" loading="lazy"></button><figcaption>Original presentation slide 34 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Scope is the first clue: one slow PC usually suggests local causes; many slow PCs suggest shared causes.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the first scope question?</p><details data-checkpoint><summary>Show answer</summary><p>Is one computer slow, or are many computers slow?</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 4 — Finding the Bottleneck</h2>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">Slide 35</div><div class="slide-title"><h2>Part 4 — Finding the Bottleneck</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="Part 4 — Finding the Bottleneck" loading="lazy"></button><figcaption>Original presentation slide 35 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Good support checks evidence instead of guessing.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should replace guessing?</p><details data-checkpoint><summary>Show answer</summary><p>Evidence and measurements.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">Slide 36</div><div class="slide-title"><h2>Task Manager evidence</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="Task Manager evidence" loading="lazy"></button><figcaption>Original presentation slide 36 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Task Manager shows CPU, memory, disk, and network activity and helps locate a busy resource.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What four resources does Task Manager commonly show?</p><details data-checkpoint><summary>Show answer</summary><p>CPU, memory, disk, and network.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">Slide 37</div><div class="slide-title"><h2>Sort by usage</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="Sort by usage" loading="lazy"></button><figcaption>Original presentation slide 37 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Sorting processes by usage reveals which program is consuming the resource.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why sort processes by usage?</p><details data-checkpoint><summary>Show answer</summary><p>To find the program consuming the busy resource.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">Slide 38</div><div class="slide-title"><h2>Symptoms guide the first check</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="Symptoms guide the first check" loading="lazy"></button><figcaption>Original presentation slide 38 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Symptoms point toward the first useful measurement.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should guide the first check?</p><details data-checkpoint><summary>Show answer</summary><p>The symptom.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">Slide 39</div><div class="slide-title"><h2>Local PC, network, or server?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="Local PC, network, or server?" loading="lazy"></button><figcaption>Original presentation slide 39 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Separate local hardware and software from network or shared-service problems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What three broad areas should be separated?</p><details data-checkpoint><summary>Show answer</summary><p>Local PC, network, and server/service.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">Slide 40</div><div class="slide-title"><h2>Check step by step</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="Check step by step" loading="lazy"></button><figcaption>Original presentation slide 40 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Change one thing at a time, observe the result, and keep notes.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why change one thing at a time?</p><details data-checkpoint><summary>Show answer</summary><p>So the effect of each change is clear.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">Slide 41</div><div class="slide-title"><h2>Restart is useful, but not magic</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="Restart is useful, but not magic" loading="lazy"></button><figcaption>Original presentation slide 41 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Restart can clear temporary software states, but it cannot repair weak hardware or a shared outage.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What can restart fix?</p><details data-checkpoint><summary>Show answer</summary><p>Temporary software states, not weak hardware.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">Slide 42</div><div class="slide-title"><h2>Measure, compare, decide, fix, test</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="Measure, compare, decide, fix, test" loading="lazy"></button><figcaption>Original presentation slide 42 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Measure before and after the fix to confirm that the real bottleneck improved.</p></section>
+<section class="think"><h3>Think and answer</h3><p>How do you confirm a fix?</p><details data-checkpoint><summary>Show answer</summary><p>Measure and test again.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 5 — Choosing the Fix</h2>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">Slide 43</div><div class="slide-title"><h2>Part 5 — Choosing the Fix</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="Part 5 — Choosing the Fix" loading="lazy"></button><figcaption>Original presentation slide 43 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The right upgrade fixes the slow part. A random upgrade wastes money.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why avoid random upgrades?</p><details data-checkpoint><summary>Show answer</summary><p>They may not improve the real bottleneck.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">Slide 44</div><div class="slide-title"><h2>Upgrade the bottleneck</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="Upgrade the bottleneck" loading="lazy"></button><figcaption>Original presentation slide 44 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Add or replace the component that actually limits the workload.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should be upgraded?</p><details data-checkpoint><summary>Show answer</summary><p>The limiting component or service.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">Slide 45</div><div class="slide-title"><h2>Choose the upgrade from the symptom</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="Choose the upgrade from the symptom" loading="lazy"></button><figcaption>Original presentation slide 45 — click to enlarge</figcaption></figure>
+<section class="reading"><p>More RAM helps memory pressure; SSD helps storage delay; better networking helps network limits.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What upgrade fits memory pressure?</p><details data-checkpoint><summary>Show answer</summary><p>More RAM, if memory is truly the bottleneck.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">Slide 46</div><div class="slide-title"><h2>Cheap targeted fixes</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="Cheap targeted fixes" loading="lazy"></button><figcaption>Original presentation slide 46 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Cleaning dust, closing unused apps, freeing disk space, or changing startup settings can be inexpensive and effective.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Name one cheap targeted fix.</p><details data-checkpoint><summary>Show answer</summary><p>Clean dust, close unused apps, free disk space, or reduce startup apps.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">Slide 47</div><div class="slide-title"><h2>Maintenance and good habits</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="Maintenance and good habits" loading="lazy"></button><figcaption>Original presentation slide 47 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Regular maintenance and sensible habits prevent many performance problems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What prevents many performance problems?</p><details data-checkpoint><summary>Show answer</summary><p>Maintenance and good habits.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 6 — Practice</h2>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">Slide 48</div><div class="slide-title"><h2>Part 6 — Practice</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="Part 6 — Practice" loading="lazy"></button><figcaption>Original presentation slide 48 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Students diagnose bottlenecks from symptoms.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What skill is being practised?</p><details data-checkpoint><summary>Show answer</summary><p>Evidence-based bottleneck diagnosis.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">Slide 49</div><div class="slide-title"><h2>Choose the most likely bottleneck</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="Choose the most likely bottleneck" loading="lazy"></button><figcaption>Original presentation slide 49 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Choose among CPU, RAM, disk, network, server, printer, heat, or application problems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What categories can students choose from?</p><details data-checkpoint><summary>Show answer</summary><p>CPU, RAM, disk, network, server, printer, heat, or app.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">Slide 50</div><div class="slide-title"><h2>Practice setup</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg"><img src="assets/slides/slide-50.jpg" alt="Practice setup" loading="lazy"></button><figcaption>Original presentation slide 50 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Student task Read each problem card. Underline the symptom. Choose: CPU, RAM, disk, network, server, printer, heat, or app problem. Write the first thing to check. Teacher flow Let students answer first. Ask: “What evidence do you see?” Show the likely answer. Repeat with a similar case. Do not reward random guessing. Reward evidence and clear reasoning.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What evidence should students explain?</p><details data-checkpoint><summary>Show answer</summary><p>The symptom and the first useful measurement.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">Slide 51</div><div class="slide-title"><h2>Mini support report</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg"><img src="assets/slides/slide-51.jpg" alt="Mini support report" loading="lazy"></button><figcaption>Original presentation slide 51 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Use this simple English pattern. Device: Reception PC 2 Symptom: The computer starts slowly and files open slowly. First check: Task Manager → Disk usage. Result: Disk was near 100% for a long time. Possible cause: Storage bottleneck / old HDD. Next action: Report it and consider SSD upgrade. Key idea: A clear report is part of good IT support.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What makes a support report useful?</p><details data-checkpoint><summary>Show answer</summary><p>It states device, symptom, evidence, likely cause, and next action.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">Slide 52</div><div class="slide-title"><h2>Final performance checklist</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg"><img src="assets/slides/slide-52.jpg" alt="Final performance checklist" loading="lazy"></button><figcaption>Original presentation slide 52 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Check CPU, RAM, disk, network, heat, free space, startup apps, and shared services.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Name four final checks.</p><details data-checkpoint><summary>Show answer</summary><p>CPU, RAM, disk, network, heat, free space, startup apps, or shared services.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">Slide 53</div><div class="slide-title"><h2>Lesson summary</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-53.jpg"><img src="assets/slides/slide-53.jpg" alt="Lesson summary" loading="lazy"></button><figcaption>Original presentation slide 53 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A bottleneck is the slowest part that limits the system. Different bottlenecks create different symptoms. Task Manager helps measure the load. One PC slow is usually local; all PCs slow may be network or server. Fix the bottleneck, not a random part. In hospital IT, slow systems delay real work and real people. Key idea: Measure first. Guess later.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the final rule?</p><details data-checkpoint><summary>Show answer</summary><p>Measure first and fix the bottleneck, not a random part.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<section class="interactive-section" id="interactive-review">
+<h2>Extended interactive review</h2>
+<p>Diagnose bottlenecks from Task Manager values, symptoms, and the scope of the problem.</p>
+
+<div class="lab-grid">
+<article class="lab">
+<h3>1. Virtual Task Manager</h3>
+<div class="meter-grid">
+<label>CPU <input class="meter" id="cpu-meter" type="range" min="0" max="100" value="35"><strong id="cpu-value">35%</strong></label>
+<label>RAM <input class="meter" id="ram-meter" type="range" min="0" max="100" value="55"><strong id="ram-value">55%</strong></label>
+<label>Disk <input class="meter" id="disk-meter" type="range" min="0" max="100" value="25"><strong id="disk-value">25%</strong></label>
+<label>Network <input class="meter" id="net-meter" type="range" min="0" max="100" value="20"><strong id="net-value">20%</strong></label>
+</div>
+<div class="diagnosis" id="meter-diagnosis"></div>
+</article>
+
+<article class="lab">
+<h3>2. Symptom-to-bottleneck diagnosis</h3>
+<select id="symptom-select">
+<option value="startup">Startup and file loading are very slow</option>
+<option value="tabs">Many browser tabs make the PC unresponsive</option>
+<option value="video">Only video or graphics work is slow</option>
+<option value="wifi">Only cloud/network work is slow</option>
+<option value="loginmany">Everyone has slow login</option>
+<option value="printer">Print jobs wait for a long time</option>
+<option value="heat">Fast at first, then slows down</option>
+</select>
+<div class="diagnosis" id="symptom-diagnosis"></div>
+</article>
+
+<article class="lab">
+<h3>3. One PC or many PCs?</h3>
+<div class="scope-grid">
+<div class="scope-card" data-answer="one">Only one PC has disk at 100%<strong></strong></div>
+<div class="scope-card" data-answer="many">Everyone in the department has slow login<strong></strong></div>
+<div class="scope-card" data-answer="one">One PC is hot and dusty<strong></strong></div>
+<div class="scope-card" data-answer="many">Everyone is slow in the same database<strong></strong></div>
+<div class="scope-card" data-answer="one">One user has many browser tabs<strong></strong></div>
+<div class="scope-card" data-answer="many">The shared printer queue is long<strong></strong></div>
+</div>
+<div class="actions"><button class="primary" id="check-scope" type="button">Check classifications</button></div>
+<div class="feedback" id="scope-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>4. Choose the targeted fix</h3>
+<div class="fix-grid">
+<button class="fix-card" data-case="ram">RAM 96%, heavy paging</button>
+<button class="fix-card" data-case="disk">Old HDD, disk 100%</button>
+<button class="fix-card" data-case="heat">Hot CPU, slows after time</button>
+<button class="fix-card" data-case="startup">Too many startup apps</button>
+<button class="fix-card" data-case="network">Shared Wi‑Fi slow for many users</button>
+<button class="fix-card" data-case="printer">Shared print queue is blocked</button>
+</div>
+<div class="fix-info" id="fix-info"></div>
+</article>
+
+<article class="lab">
+<h3>5. Heat and throttling</h3>
+<label class="field-label">CPU temperature <input id="temp-slider" type="range" min="35" max="105" value="55"><strong id="temp-value">55°C</strong></label>
+<div class="thermo"><div id="thermo-fill"></div></div>
+<div class="diagnosis" id="temp-diagnosis"></div>
+</article>
+
+<article class="lab">
+<h3>6. Performance support report</h3>
+<div class="report-builder">
+<select id="report-device"><option>Reception PC 2</option><option>Lab PC 04</option><option>Network printer</option><option>Patient database</option></select>
+<select id="report-symptom"><option value="disk">Slow startup and file loading</option><option value="ram">Unresponsive with many apps</option><option value="network">Cloud service is slow</option><option value="server">Many users have slow login</option></select>
+<button class="primary" id="build-report" type="button">Build report</button>
+</div>
+<pre class="report-output" id="report-output"></pre>
+</article>
+</div>
+
+<article class="lab" style="margin-top:18px">
+<h3>7. Final knowledge check</h3>
+<form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. A bottleneck is:</legend><label><input type="radio" name="q1" value="0"> The fastest part</label><label><input type="radio" name="q1" value="1"> The limiting slow part</label><label><input type="radio" name="q1" value="2"> A type of cable</label><label><input type="radio" name="q1" value="3"> A password</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>2. CPU at 100% for a long time suggests:</legend><label><input type="radio" name="q2" value="0"> CPU bottleneck</label><label><input type="radio" name="q2" value="1"> More disk space</label><label><input type="radio" name="q2" value="2"> Printer paper</label><label><input type="radio" name="q2" value="3"> Low latency</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>3. RAM almost full can cause:</legend><label><input type="radio" name="q3" value="0"> Faster storage</label><label><input type="radio" name="q3" value="1"> More paging to disk</label><label><input type="radio" name="q3" value="2"> Better Wi‑Fi</label><label><input type="radio" name="q3" value="3"> Less heat</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>4. Which upgrade often improves an old HDD?</legend><label><input type="radio" name="q4" value="0"> More speakers</label><label><input type="radio" name="q4" value="1"> SSD</label><label><input type="radio" name="q4" value="2"> New mouse</label><label><input type="radio" name="q4" value="3"> More browser tabs</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>5. Bandwidth means:</legend><label><input type="radio" name="q5" value="0"> Amount of data capacity</label><label><input type="radio" name="q5" value="1"> Response delay only</label><label><input type="radio" name="q5" value="2"> CPU heat</label><label><input type="radio" name="q5" value="3"> Disk space</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. Latency means:</legend><label><input type="radio" name="q6" value="0"> Amount of RAM</label><label><input type="radio" name="q6" value="1"> Response delay</label><label><input type="radio" name="q6" value="2"> Printer queue size</label><label><input type="radio" name="q6" value="3"> CPU cores</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>7. A hot CPU may:</legend><label><input type="radio" name="q7" value="0"> Speed up forever</label><label><input type="radio" name="q7" value="1"> Throttle for safety</label><label><input type="radio" name="q7" value="2"> Create more RAM</label><label><input type="radio" name="q7" value="3"> Fix Wi‑Fi</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>8. Many slow PCs suggest:</legend><label><input type="radio" name="q8" value="0"> Only one local cable</label><label><input type="radio" name="q8" value="1"> Shared network/server issue</label><label><input type="radio" name="q8" value="2"> One user&#x27;s browser tab</label><label><input type="radio" name="q8" value="3"> One keyboard</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>9. Task Manager helps show:</legend><label><input type="radio" name="q9" value="0"> CPU, memory, disk, network</label><label><input type="radio" name="q9" value="1"> Only screen color</label><label><input type="radio" name="q9" value="2"> Only files</label><label><input type="radio" name="q9" value="3"> Only passwords</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>10. Restart can fix:</legend><label><input type="radio" name="q10" value="0"> Every hardware weakness</label><label><input type="radio" name="q10" value="1"> Temporary software states</label><label><input type="radio" name="q10" value="2"> A broken fan</label><label><input type="radio" name="q10" value="3"> A full server</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>11. Random upgrades are bad because:</legend><label><input type="radio" name="q11" value="0"> They may miss the bottleneck</label><label><input type="radio" name="q11" value="1"> They always cost zero</label><label><input type="radio" name="q11" value="2"> They remove evidence</label><label><input type="radio" name="q11" value="3"> They improve every problem</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. Low free disk space can slow:</legend><label><input type="radio" name="q12" value="0"> Updates and saves</label><label><input type="radio" name="q12" value="1"> Mouse movement only</label><label><input type="radio" name="q12" value="2"> Monitor brightness only</label><label><input type="radio" name="q12" value="3"> Network address</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>13. A printer queue is:</legend><label><input type="radio" name="q13" value="0"> A shared output bottleneck</label><label><input type="radio" name="q13" value="1"> A CPU core</label><label><input type="radio" name="q13" value="2"> An IP address</label><label><input type="radio" name="q13" value="3"> A cooling fan</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>14. The first scope question is:</legend><label><input type="radio" name="q14" value="0"> What wallpaper is used?</label><label><input type="radio" name="q14" value="1"> One PC or many PCs?</label><label><input type="radio" name="q14" value="2"> Which keyboard color?</label><label><input type="radio" name="q14" value="3"> How old is the desk?</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>15. Best final rule:</legend><label><input type="radio" name="q15" value="0"> Guess quickly</label><label><input type="radio" name="q15" value="1"> Measure first, then fix the bottleneck</label><label><input type="radio" name="q15" value="2"> Replace everything</label><label><input type="radio" name="q15" value="3"> Restart every server</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">Check final quiz</button><button class="secondary" id="reset-quiz" type="reset">Reset</button></div><div class="score" id="quiz-score" data-label="Final score"></div></form>
+</article>
+</section>
+</main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · Lecture 6 · Computer Performance and Bottlenecks · Original 53-slide sequence preserved.</footer></body></html>

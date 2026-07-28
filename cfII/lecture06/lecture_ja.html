@@ -1,0 +1,470 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第6講 — コンピュータ性能とボトルネック</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script><style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head><body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture05/index.html">← 5</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture07/index.html">7 →</a></nav>
+<header id="top"><div class="header-inner"><div class="course">Computer Fundamentals 2 · 今学期 · ウェブ講義 6</div><div class="archive-note">元のスライド内部の古い Lecture 11 表記は画像として保存されています。</div><h1>コンピュータ性能とボトルネック</h1><p class="subtitle">元の53枚のスライドを、そのまま学べるウェブ講義にしました。</p><p class="intro">CPU、RAM、ディスク、ネットワーク、サーバー、熱などの遅い部分を証拠から見つけ、正しい修正を選びます。</p><div class="lang-switch"><a href="lecture_en.html">English</a><a class="current" href="lecture_ja.html">日本語</a></div></div></header>
+<main class="container"><section class="core"><h2>中心の流れ</h2><div class="core-chain">症状 → 測定 → ボトルネック → 的確な修正 → 再テスト</div></section>
+<section class="progress-box"><strong>学習進行</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>考えた後で答えを開いてください。</span></section>
+<section class="notice"><h2>この講義の使い方</h2><p>元のスライドを見て、説明を読み、隠れた答えを開く前に考え、最後に診断練習を行ってください。</p></section>
+<section class="notice map" id="lesson-map"><h2>講義マップ — 元の53枚のスライド</h2><ol><li><a href="#slide-1">スライド 1: 第6講 — コンピュータ性能とボトルネック</a></li><li><a href="#slide-2">スライド 2: この講義が重要な理由</a></li><li><a href="#slide-3">スライド 3: 学習目標</a></li><li><a href="#slide-4">スライド 4: 第1部 — 大きな考え方</a></li><li><a href="#slide-5">スライド 5: システム全体は最も遅い部分に制限される</a></li><li><a href="#slide-6">スライド 6: 遅いレーンを見つける</a></li><li><a href="#slide-7">スライド 7: ボトルネック = 狭い部分</a></li><li><a href="#slide-8">スライド 8: CPUとシステムの通信</a></li><li><a href="#slide-9">スライド 9: 作業を分割できるときだけコア数が役立つ</a></li><li><a href="#slide-10">スライド 10: 重い作業は複数部品へ負荷をかける</a></li><li><a href="#slide-11">スライド 11: 第2部 — 一般的なボトルネック</a></li><li><a href="#slide-12">スライド 12: CPU使用率が100%近い</a></li><li><a href="#slide-13">スライド 13: 多数の作業がCPUとRAMを圧迫</a></li><li><a href="#slide-14">スライド 14: 1つの重いプログラムがCPUを占有</a></li><li><a href="#slide-15">スライド 15: GPUボトルネック</a></li><li><a href="#slide-16">スライド 16: RAMがほぼ満杯</a></li><li><a href="#slide-17">スライド 17: 仮想メモリはRAMより遅い</a></li><li><a href="#slide-18">スライド 18: HDDとSSD</a></li><li><a href="#slide-19">スライド 19: ディスク使用率100%</a></li><li><a href="#slide-20">スライド 20: 空き容量不足</a></li><li><a href="#slide-21">スライド 21: ネットワークボトルネック</a></li><li><a href="#slide-22">スライド 22: 帯域幅と遅延</a></li><li><a href="#slide-23">スライド 23: 共有Wi‑Fi</a></li><li><a href="#slide-24">スライド 24: サーマルスロットリング</a></li><li><a href="#slide-25">スライド 25: ほこりとエアフロー</a></li><li><a href="#slide-26">スライド 26: ブラウザタブとウェブアプリ</a></li><li><a href="#slide-27">スライド 27: 自動起動アプリが多すぎる</a></li><li><a href="#slide-28">スライド 28: 更新とスキャン</a></li><li><a href="#slide-29">スライド 29: 第3部 — 職場のボトルネック</a></li><li><a href="#slide-30">スライド 30: プリンターキューのボトルネック</a></li><li><a href="#slide-31">スライド 31: サーバー／データベース過負荷</a></li><li><a href="#slide-32">スライド 32: 患者サービスもチェーン</a></li><li><a href="#slide-33">スライド 33: 遅いログインには複数の原因</a></li><li><a href="#slide-34">スライド 34: 1台だけか、全部か</a></li><li><a href="#slide-35">スライド 35: 第4部 — ボトルネックを見つける</a></li><li><a href="#slide-36">スライド 36: タスクマネージャーの証拠</a></li><li><a href="#slide-37">スライド 37: 使用率で並べ替える</a></li><li><a href="#slide-38">スライド 38: 症状から最初の確認を選ぶ</a></li><li><a href="#slide-39">スライド 39: ローカルPC、ネットワーク、サーバー</a></li><li><a href="#slide-40">スライド 40: 順番に確認する</a></li><li><a href="#slide-41">スライド 41: 再起動は便利だが魔法ではない</a></li><li><a href="#slide-42">スライド 42: 測定・比較・判断・修正・再テスト</a></li><li><a href="#slide-43">スライド 43: 第5部 — 修正を選ぶ</a></li><li><a href="#slide-44">スライド 44: ボトルネックをアップグレードする</a></li><li><a href="#slide-45">スライド 45: 症状からアップグレードを選ぶ</a></li><li><a href="#slide-46">スライド 46: 安価でも的確な修正</a></li><li><a href="#slide-47">スライド 47: 保守と良い習慣</a></li><li><a href="#slide-48">スライド 48: 第6部 — 練習</a></li><li><a href="#slide-49">スライド 49: 最も可能性の高いボトルネックを選ぶ</a></li><li><a href="#slide-50">スライド 50: 練習の進め方</a></li><li><a href="#slide-51">スライド 51: 短いサポート報告</a></li><li><a href="#slide-52">スライド 52: 最終性能チェックリスト</a></li><li><a href="#slide-53">スライド 53: 講義まとめ</a></li></ol></section>
+<h2 class="part-title">導入 — 「遅い」は症状</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">スライド 1</div><div class="slide-title"><h2>第6講 — コンピュータ性能とボトルネック</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="第6講 — コンピュータ性能とボトルネック" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 1 — タップして拡大</figcaption></figure>
+<section class="reading"><p>コンピュータが遅く感じるのは、システム全体のどこか1つが処理に追いつかないときです。使用率を測定し、ボトルネックを特定し、正しい修正を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>性能トラブルシューティングの主な目標は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>証拠で制限部分を見つけ、正しい修正を選ぶことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">スライド 2</div><div class="slide-title"><h2>この講義が重要な理由</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="この講義が重要な理由" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 2 — タップして拡大</figcaption></figure>
+<section class="reading"><p>「遅い」は症状であり原因ではありません。CPU、RAM、ディスク、ネットワーク、サーバー、プリンター、熱など複数の原因があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>「コンピュータが遅い」は原因ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ、症状です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">スライド 3</div><div class="slide-title"><h2>学習目標</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="学習目標" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 3 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ボトルネックの説明、CPU・RAM・ディスク・ネットワークの測定、適切な修正選択、簡単な報告が目標です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>修正を選ぶ前のルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最初に測定し、その後で判断します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第1部 — 大きな考え方</h2>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">スライド 4</div><div class="slide-title"><h2>第1部 — 大きな考え方</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="第1部 — 大きな考え方" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 4 — タップして拡大</figcaption></figure>
+<section class="reading"><p>コンピュータは1本のチェーンです。最も遅い部分がシステム全体を制限します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>部品チェーンを制限するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最も遅い部分です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">スライド 5</div><div class="slide-title"><h2>システム全体は最も遅い部分に制限される</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="システム全体は最も遅い部分に制限される" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 5 — タップして拡大</figcaption></figure>
+<section class="reading"><p>他の部品が高速でも、1つの段階が遅ければ全体が待たされます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>高速な部品がすべてのボトルネックを消しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。最も遅い段階を待ちます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">スライド 6</div><div class="slide-title"><h2>遅いレーンを見つける</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="遅いレーンを見つける" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 6 — タップして拡大</figcaption></figure>
+<section class="reading"><p>CPU、RAM、ストレージ、ネットワーク、サーバー、出力装置のどこが遅いかを見つけます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>遅いレーンを3つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>CPU、RAM、ストレージ、ネットワーク、サーバー、熱、出力などです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">スライド 7</div><div class="slide-title"><h2>ボトルネック = 狭い部分</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="ボトルネック = 狭い部分" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 7 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ボトルネックは流れを制限する狭い部分です。利用者には単に「遅い」と見えます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ボトルネックとは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>システム全体を制限する部分です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">スライド 8</div><div class="slide-title"><h2>CPUとシステムの通信</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="CPUとシステムの通信" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 8 — タップして拡大</figcaption></figure>
+<section class="reading"><p>CPUはRAM、ストレージ、ネットワーク、周辺機器に依存します。性能はCPUだけの数字ではありません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>CPU速度だけでは不十分なのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>CPUはRAM、ストレージ、ネットワーク、機器に依存するからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">スライド 9</div><div class="slide-title"><h2>作業を分割できるときだけコア数が役立つ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="作業を分割できるときだけコア数が役立つ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 9 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ソフトウェアが作業を並列に分割できる場合にだけ、複数コアが大きく役立ちます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>CPUコア数が役立つのはいつですか。</p><details data-checkpoint><summary>答えを見る</summary><p>作業を並列タスクへ分割できるときです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">スライド 10</div><div class="slide-title"><h2>重い作業は複数部品へ負荷をかける</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="重い作業は複数部品へ負荷をかける" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 10 — タップして拡大</figcaption></figure>
+<section class="reading"><p>重い作業はCPU、RAM、ストレージ、GPU、ネットワークを同時に使うことがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>1つの重い作業が複数資源を使いますか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第2部 — 一般的なボトルネック</h2>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">スライド 11</div><div class="slide-title"><h2>第2部 — 一般的なボトルネック</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="第2部 — 一般的なボトルネック" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 11 — タップして拡大</figcaption></figure>
+<section class="reading"><p>異なるボトルネックは異なる症状を作ります。推測ではなく証拠を使います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>なぜ症状を測定する必要がありますか。</p><details data-checkpoint><summary>答えを見る</summary><p>異なるボトルネックが似た症状を作るからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">スライド 12</div><div class="slide-title"><h2>CPU使用率が100%近い</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="CPU使用率が100%近い" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 12 — タップして拡大</figcaption></figure>
+<section class="reading"><p>CPU使用率が長時間90〜100%なら、処理能力が制限要因の可能性があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>CPUが長時間100%近い場合、何を示しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>CPU／処理ボトルネックの可能性です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">スライド 13</div><div class="slide-title"><h2>多数の作業がCPUとRAMを圧迫</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="多数の作業がCPUとRAMを圧迫" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 13 — タップして拡大</figcaption></figure>
+<section class="reading"><p>多数の作業がCPU時間を奪い合い、RAMも満杯にします。</p></section>
+<section class="think"><h3>考えて答える</h3><p>多数の作業が過負荷にするものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>CPUとRAMです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">スライド 14</div><div class="slide-title"><h2>1つの重いプログラムがCPUを占有</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="1つの重いプログラムがCPUを占有" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 14 — タップして拡大</figcaption></figure>
+<section class="reading"><p>1つのプロセスがCPUの大部分を使い、他の作業を遅くすることがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>1つのプロセスがCPUを占有するとき何を確認しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>そのプロセスと実行中の作業です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">スライド 15</div><div class="slide-title"><h2>GPUボトルネック</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="GPUボトルネック" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 15 — タップして拡大</figcaption></figure>
+<section class="reading"><p>画像、動画、3DなどはGPU性能に制限されることがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>グラフィックス作業を制限する資源は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>GPUです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">スライド 16</div><div class="slide-title"><h2>RAMがほぼ満杯</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="RAMがほぼ満杯" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 16 — タップして拡大</figcaption></figure>
+<section class="reading"><p>RAMがほぼ満杯になると、Windowsは遅いストレージをより多く使います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>RAMがほぼ満杯になると何が起きますか。</p><details data-checkpoint><summary>答えを見る</summary><p>遅いストレージをより多く使います。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">スライド 17</div><div class="slide-title"><h2>仮想メモリはRAMより遅い</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="仮想メモリはRAMより遅い" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 17 — タップして拡大</figcaption></figure>
+<section class="reading"><p>仮想メモリは停止を防ぎますが、物理RAMより大幅に遅いです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>仮想メモリはRAMと同じ速さですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ、大幅に遅いです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">スライド 18</div><div class="slide-title"><h2>HDDとSSD</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="HDDとSSD" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 18 — タップして拡大</figcaption></figure>
+<section class="reading"><p>HDDには機械的な遅延があります。SSDは起動やファイル読み込みを改善することが多いです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>古いHDDボトルネックを改善しやすいものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>SSDです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">スライド 19</div><div class="slide-title"><h2>ディスク使用率100%</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="ディスク使用率100%" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 19 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ディスク使用率が長時間100%なら、ストレージボトルネックの可能性があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ディスク使用率が長時間100%なら何を示しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>ストレージボトルネックです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">スライド 20</div><div class="slide-title"><h2>空き容量不足</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="空き容量不足" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 20 — タップして拡大</figcaption></figure>
+<section class="reading"><p>空き容量が少なすぎると、更新、一時ファイル、保存、アプリ動作が遅くなります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>空き容量が必要なのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>更新、一時ファイル、保存、アプリ動作に必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">スライド 21</div><div class="slide-title"><h2>ネットワークボトルネック</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="ネットワークボトルネック" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 21 — タップして拡大</figcaption></figure>
+<section class="reading"><p>PC自体が正常でも、遅いネットワークがクラウドやサーバー作業を遅らせます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>PCが正常でもネットワークで遅くなりますか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">スライド 22</div><div class="slide-title"><h2>帯域幅と遅延</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="帯域幅と遅延" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 22 — タップして拡大</figcaption></figure>
+<section class="reading"><p>帯域幅は一度に運べる量、遅延は応答までの時間です。両方が体感速度に影響します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>帯域幅と遅延の違いは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>帯域幅は量、遅延は待ち時間です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">スライド 23</div><div class="slide-title"><h2>共有Wi‑Fi</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="共有Wi‑Fi" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 23 — タップして拡大</figcaption></figure>
+<section class="reading"><p>多数の利用者がアクセスポイントとインターネット帯域を共有します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>多数利用者がWi‑Fiを共有すると何が起きますか。</p><details data-checkpoint><summary>答えを見る</summary><p>無線と帯域の容量を共有します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">スライド 24</div><div class="slide-title"><h2>サーマルスロットリング</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="サーマルスロットリング" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 24 — タップして拡大</figcaption></figure>
+<section class="reading"><p>CPUが高温になると、安全のため自動的に速度を下げることがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>高温CPUが遅くなるのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>安全のため速度を下げるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">スライド 25</div><div class="slide-title"><h2>ほこりとエアフロー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="ほこりとエアフロー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 25 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ほこりは空気の流れを妨げ、温度上昇、速度低下、停止の原因になります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ほこりはどう性能を下げますか。</p><details data-checkpoint><summary>答えを見る</summary><p>空気の流れを止め、温度を上げます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">スライド 26</div><div class="slide-title"><h2>ブラウザタブとウェブアプリ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="ブラウザタブとウェブアプリ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 26 — タップして拡大</figcaption></figure>
+<section class="reading"><p>多数のブラウザタブやウェブアプリはRAMとCPUを大量に使います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>多数のブラウザタブが使う資源は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>RAMとCPUです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">スライド 27</div><div class="slide-title"><h2>自動起動アプリが多すぎる</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="自動起動アプリが多すぎる" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 27 — タップして拡大</figcaption></figure>
+<section class="reading"><p>自動起動アプリが多いと、ログイン直後から資源を奪い合います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動が遅くなる理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>多数のアプリが自動起動するからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">スライド 28</div><div class="slide-title"><h2>更新とスキャン</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="更新とスキャン" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 28 — タップして拡大</figcaption></figure>
+<section class="reading"><p>更新とセキュリティスキャンは重要ですが、一時的にCPUやディスク使用率を上げます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>更新は常に永久的なボトルネックですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。一時的な負荷の場合があります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第3部 — 職場のボトルネック</h2>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">スライド 29</div><div class="slide-title"><h2>第3部 — 職場のボトルネック</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="第3部 — 職場のボトルネック" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 29 — タップして拡大</figcaption></figure>
+<section class="reading"><p>職場の性能には共有プリンター、サーバー、データベース、ネットワーク、待ち行列も含まれます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>共有職場ボトルネックを1つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>プリンターキュー、サーバー、データベース、ネットワークなどです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">スライド 30</div><div class="slide-title"><h2>プリンターキューのボトルネック</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="プリンターキューのボトルネック" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 30 — タップして拡大</figcaption></figure>
+<section class="reading"><p>プリンター本体が正常でも、長い印刷キューがすべてのジョブを遅らせます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>プリンターが壊れていなくてもキューで遅くなりますか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">スライド 31</div><div class="slide-title"><h2>サーバー／データベース過負荷</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="サーバー／データベース過負荷" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 31 — タップして拡大</figcaption></figure>
+<section class="reading"><p>多数の利用者が同時に要求すると、共有サーバーやデータベースが過負荷になります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>共有サーバーを過負荷にするものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>多数の利用者または要求です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">スライド 32</div><div class="slide-title"><h2>患者サービスもチェーン</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="患者サービスもチェーン" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 32 — タップして拡大</figcaption></figure>
+<section class="reading"><p>患者サービスもチェーンです。1つの遅い段階が診療・事務結果を遅らせます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>患者サービスで1つの遅い段階が重要なのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最終結果と実際の業務を遅らせるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">スライド 33</div><div class="slide-title"><h2>遅いログインには複数の原因</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="遅いログインには複数の原因" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 33 — タップして拡大</figcaption></figure>
+<section class="reading"><p>遅いログインはPC、ネットワーク、認証サーバー、プロファイル、データベースが原因になり得ます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>遅いログインの原因候補は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>PC、ネットワーク、認証サーバー、プロファイル、データベースです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">スライド 34</div><div class="slide-title"><h2>1台だけか、全部か</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="1台だけか、全部か" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 34 — タップして拡大</figcaption></figure>
+<section class="reading"><p>1台だけ遅いならローカル原因、多数が遅いなら共有原因を最初に考えます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>最初の範囲質問は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>1台だけか、多数のPCかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第4部 — ボトルネックを見つける</h2>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">スライド 35</div><div class="slide-title"><h2>第4部 — ボトルネックを見つける</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="第4部 — ボトルネックを見つける" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 35 — タップして拡大</figcaption></figure>
+<section class="reading"><p>良いサポートは推測せず、証拠から制限資源を見つけます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>推測の代わりに使うものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>証拠と測定です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">スライド 36</div><div class="slide-title"><h2>タスクマネージャーの証拠</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="タスクマネージャーの証拠" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 36 — タップして拡大</figcaption></figure>
+<section class="reading"><p>タスクマネージャーはCPU、メモリ、ディスク、ネットワークの活動を表示します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>タスクマネージャーの主な4資源は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>CPU、メモリ、ディスク、ネットワークです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">スライド 37</div><div class="slide-title"><h2>使用率で並べ替える</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="使用率で並べ替える" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 37 — タップして拡大</figcaption></figure>
+<section class="reading"><p>使用率でプロセスを並べ替えると、どのアプリが資源を使っているか分かります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>使用率で並べ替える理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>忙しい資源を使うプログラムを見つけるためです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">スライド 38</div><div class="slide-title"><h2>症状から最初の確認を選ぶ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="症状から最初の確認を選ぶ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 38 — タップして拡大</figcaption></figure>
+<section class="reading"><p>症状から最初に測定すべき資源を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>最初の確認を導くものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>症状です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">スライド 39</div><div class="slide-title"><h2>ローカルPC、ネットワーク、サーバー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="ローカルPC、ネットワーク、サーバー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 39 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ローカルPCの問題と、ネットワーク・共有サービスの問題を分けます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>分けるべき3つの領域は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ローカルPC、ネットワーク、サーバー／サービスです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">スライド 40</div><div class="slide-title"><h2>順番に確認する</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="順番に確認する" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 40 — タップして拡大</figcaption></figure>
+<section class="reading"><p>1つずつ変更し、結果を観察し、記録します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>1つずつ変更する理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>各変更の効果を明確にするためです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">スライド 41</div><div class="slide-title"><h2>再起動は便利だが魔法ではない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="再起動は便利だが魔法ではない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 41 — タップして拡大</figcaption></figure>
+<section class="reading"><p>再起動は一時的なソフトウェア状態を解消できますが、弱いハードウェアや共有障害は直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再起動が直せるものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>一時的なソフトウェア状態です。弱いハードウェアは直せません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">スライド 42</div><div class="slide-title"><h2>測定・比較・判断・修正・再テスト</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="測定・比較・判断・修正・再テスト" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 42 — タップして拡大</figcaption></figure>
+<section class="reading"><p>修正前後を測定し、本当のボトルネックが改善したか確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>修正を確認する方法は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>再測定して再テストします。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第5部 — 修正を選ぶ</h2>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">スライド 43</div><div class="slide-title"><h2>第5部 — 修正を選ぶ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="第5部 — 修正を選ぶ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 43 — タップして拡大</figcaption></figure>
+<section class="reading"><p>無関係なアップグレードは費用を無駄にします。制限している部分に合わせます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ランダムなアップグレードを避ける理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>本当のボトルネックを改善しない可能性があるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">スライド 44</div><div class="slide-title"><h2>ボトルネックをアップグレードする</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="ボトルネックをアップグレードする" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 44 — タップして拡大</figcaption></figure>
+<section class="reading"><p>実際に作業を制限している部品を追加・交換します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>何をアップグレードしますか。</p><details data-checkpoint><summary>答えを見る</summary><p>制限している部品またはサービスです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">スライド 45</div><div class="slide-title"><h2>症状からアップグレードを選ぶ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="症状からアップグレードを選ぶ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 45 — タップして拡大</figcaption></figure>
+<section class="reading"><p>RAM不足にはRAM、ストレージ遅延にはSSD、ネットワーク制限にはネットワーク改善を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>メモリ不足に合うアップグレードは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>RAMが本当にボトルネックならRAM増設です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">スライド 46</div><div class="slide-title"><h2>安価でも的確な修正</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="安価でも的確な修正" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 46 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ほこり清掃、未使用アプリ終了、空き容量確保、自動起動整理は安価でも効果的です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安価な的確な修正を1つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>ほこり清掃、未使用アプリ終了、空き容量確保、自動起動整理などです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">スライド 47</div><div class="slide-title"><h2>保守と良い習慣</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="保守と良い習慣" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 47 — タップして拡大</figcaption></figure>
+<section class="reading"><p>定期保守と良い利用習慣が多くの性能問題を予防します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>多くの性能問題を予防するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>保守と良い利用習慣です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第6部 — 練習</h2>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">スライド 48</div><div class="slide-title"><h2>第6部 — 練習</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="第6部 — 練習" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 48 — タップして拡大</figcaption></figure>
+<section class="reading"><p>練習により、症状を証拠に基づく診断へ変えます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この練習で身につける技能は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>証拠に基づくボトルネック診断です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">スライド 49</div><div class="slide-title"><h2>最も可能性の高いボトルネックを選ぶ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="最も可能性の高いボトルネックを選ぶ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 49 — タップして拡大</figcaption></figure>
+<section class="reading"><p>CPU、RAM、ディスク、ネットワーク、サーバー、プリンター、熱、アプリから最も可能性の高い原因を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>学生が選ぶ原因カテゴリは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>CPU、RAM、ディスク、ネットワーク、サーバー、プリンター、熱、アプリです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">スライド 50</div><div class="slide-title"><h2>練習の進め方</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg"><img src="assets/slides/slide-50.jpg" alt="練習の進め方" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 50 — タップして拡大</figcaption></figure>
+<section class="reading"><p>問題カードを読み、症状を見つけ、ボトルネックと最初の確認を選びます。ランダムな推測ではなく根拠を示します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>学生が説明すべき証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>症状と最初の有用な測定です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">スライド 51</div><div class="slide-title"><h2>短いサポート報告</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg"><img src="assets/slides/slide-51.jpg" alt="短いサポート報告" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 51 — タップして拡大</figcaption></figure>
+<section class="reading"><p>報告には機器、症状、最初の確認、結果、可能な原因、次の行動を短く記載します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>有用なサポート報告に必要なものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>機器、症状、証拠、可能な原因、次の行動です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">スライド 52</div><div class="slide-title"><h2>最終性能チェックリスト</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg"><img src="assets/slides/slide-52.jpg" alt="最終性能チェックリスト" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 52 — タップして拡大</figcaption></figure>
+<section class="reading"><p>CPU、RAM、ディスク、ネットワーク、熱、空き容量、自動起動、共有サービスを確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>最終確認を4つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>CPU、RAM、ディスク、ネットワーク、熱、空き容量、自動起動、共有サービスなどです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">スライド 53</div><div class="slide-title"><h2>講義まとめ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-53.jpg"><img src="assets/slides/slide-53.jpg" alt="講義まとめ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 53 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ボトルネックはシステムを制限する最も遅い部分です。測定してから判断し、正しい部分を修正します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>最後のルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最初に測定し、ランダムな部分ではなくボトルネックを修正します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<section class="interactive-section" id="interactive-review">
+<h2>拡張インタラクティブ復習</h2>
+<p>タスクマネージャーの値、症状、範囲からボトルネックを診断してください。</p>
+
+<div class="lab-grid">
+<article class="lab">
+<h3>1. 仮想タスクマネージャー</h3>
+<div class="meter-grid">
+<label>CPU <input class="meter" id="cpu-meter" type="range" min="0" max="100" value="35"><strong id="cpu-value">35%</strong></label>
+<label>RAM <input class="meter" id="ram-meter" type="range" min="0" max="100" value="55"><strong id="ram-value">55%</strong></label>
+<label>Disk <input class="meter" id="disk-meter" type="range" min="0" max="100" value="25"><strong id="disk-value">25%</strong></label>
+<label>Network <input class="meter" id="net-meter" type="range" min="0" max="100" value="20"><strong id="net-value">20%</strong></label>
+</div>
+<div class="diagnosis" id="meter-diagnosis"></div>
+</article>
+
+<article class="lab">
+<h3>2. 症状から原因を選ぶ</h3>
+<select id="symptom-select">
+<option value="startup">起動とファイル読み込みが非常に遅い</option>
+<option value="tabs">多数のタブでPC全体が重い</option>
+<option value="video">動画・画像処理だけ遅い</option>
+<option value="wifi">クラウド作業だけ遅い</option>
+<option value="loginmany">全員のログインが遅い</option>
+<option value="printer">印刷ジョブが長く待つ</option>
+<option value="heat">最初は速いが後で遅くなる</option>
+</select>
+<div class="diagnosis" id="symptom-diagnosis"></div>
+</article>
+
+<article class="lab">
+<h3>3. 1台か多数か</h3>
+<div class="scope-grid">
+<div class="scope-card" data-answer="one">1台だけディスク使用率100%<strong></strong></div>
+<div class="scope-card" data-answer="many">部門全員のログインが遅い<strong></strong></div>
+<div class="scope-card" data-answer="one">1台だけほこりで高温<strong></strong></div>
+<div class="scope-card" data-answer="many">全員が同じデータベースで遅い<strong></strong></div>
+<div class="scope-card" data-answer="one">1人だけ多数のブラウザタブ<strong></strong></div>
+<div class="scope-card" data-answer="many">共有プリンターキューが長い<strong></strong></div>
+</div>
+<div class="actions"><button class="primary" id="check-scope" type="button">分類を確認</button></div>
+<div class="feedback" id="scope-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>4. 正しい修正を選ぶ</h3>
+<div class="fix-grid">
+<button class="fix-card" data-case="ram">RAM 96%、ディスクページング</button>
+<button class="fix-card" data-case="disk">古いHDD、ディスク100%</button>
+<button class="fix-card" data-case="heat">CPU高温、後で速度低下</button>
+<button class="fix-card" data-case="startup">自動起動アプリが多い</button>
+<button class="fix-card" data-case="network">多数の利用者でWi‑Fi遅い</button>
+<button class="fix-card" data-case="printer">共有印刷キューが停止</button>
+</div>
+<div class="fix-info" id="fix-info"></div>
+</article>
+
+<article class="lab">
+<h3>5. 熱とスロットリング</h3>
+<label class="field-label">CPU温度 <input id="temp-slider" type="range" min="35" max="105" value="55"><strong id="temp-value">55°C</strong></label>
+<div class="thermo"><div id="thermo-fill"></div></div>
+<div class="diagnosis" id="temp-diagnosis"></div>
+</article>
+
+<article class="lab">
+<h3>6. 性能サポート報告</h3>
+<div class="report-builder">
+<select id="report-device"><option>Reception PC 2</option><option>Lab PC 04</option><option>Network printer</option><option>Patient database</option></select>
+<select id="report-symptom"><option value="disk">起動とファイルが遅い</option><option value="ram">多数アプリで反応しない</option><option value="network">クラウドサービスが遅い</option><option value="server">多数利用者のログインが遅い</option></select>
+<button class="primary" id="build-report" type="button">報告を作成</button>
+</div>
+<pre class="report-output" id="report-output"></pre>
+</article>
+</div>
+
+<article class="lab" style="margin-top:18px">
+<h3>7. 最終知識チェック</h3>
+<form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. ボトルネックとは何ですか。</legend><label><input type="radio" name="q1" value="0"> 最速の部分</label><label><input type="radio" name="q1" value="1"> 制限する遅い部分</label><label><input type="radio" name="q1" value="2"> ケーブルの種類</label><label><input type="radio" name="q1" value="3"> パスワード</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>2. CPUが長時間100%なら何を示しますか。</legend><label><input type="radio" name="q2" value="0"> CPUボトルネック</label><label><input type="radio" name="q2" value="1"> 空き容量増加</label><label><input type="radio" name="q2" value="2"> 用紙不足</label><label><input type="radio" name="q2" value="3"> 低遅延</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>3. RAMがほぼ満杯になると何が起きますか。</legend><label><input type="radio" name="q3" value="0"> ストレージ高速化</label><label><input type="radio" name="q3" value="1"> ディスクへのページング増加</label><label><input type="radio" name="q3" value="2"> Wi‑Fi改善</label><label><input type="radio" name="q3" value="3"> 熱低下</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>4. 古いHDDを改善しやすいものは何ですか。</legend><label><input type="radio" name="q4" value="0"> スピーカー</label><label><input type="radio" name="q4" value="1"> SSD</label><label><input type="radio" name="q4" value="2"> マウス</label><label><input type="radio" name="q4" value="3"> ブラウザタブ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>5. 帯域幅とは何ですか。</legend><label><input type="radio" name="q5" value="0"> データ容量</label><label><input type="radio" name="q5" value="1"> 応答遅延だけ</label><label><input type="radio" name="q5" value="2"> CPU温度</label><label><input type="radio" name="q5" value="3"> 空き容量</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. 遅延とは何ですか。</legend><label><input type="radio" name="q6" value="0"> RAM量</label><label><input type="radio" name="q6" value="1"> 応答までの時間</label><label><input type="radio" name="q6" value="2"> キューサイズ</label><label><input type="radio" name="q6" value="3"> CPUコア</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>7. 高温CPUはどうしますか。</legend><label><input type="radio" name="q7" value="0"> 永遠に高速化</label><label><input type="radio" name="q7" value="1"> 安全のため速度低下</label><label><input type="radio" name="q7" value="2"> RAM作成</label><label><input type="radio" name="q7" value="3"> Wi‑Fi修復</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>8. 多数のPCが遅い場合に疑うものは何ですか。</legend><label><input type="radio" name="q8" value="0"> 1本のケーブルだけ</label><label><input type="radio" name="q8" value="1"> 共有ネットワーク／サーバー</label><label><input type="radio" name="q8" value="2"> 1人のタブ</label><label><input type="radio" name="q8" value="3"> 1つのキーボード</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>9. タスクマネージャーが示すものは何ですか。</legend><label><input type="radio" name="q9" value="0"> CPU、メモリ、ディスク、ネットワーク</label><label><input type="radio" name="q9" value="1"> 画面色だけ</label><label><input type="radio" name="q9" value="2"> ファイルだけ</label><label><input type="radio" name="q9" value="3"> パスワードだけ</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>10. 再起動が直しやすいものは何ですか。</legend><label><input type="radio" name="q10" value="0"> すべての弱いハードウェア</label><label><input type="radio" name="q10" value="1"> 一時的なソフトウェア状態</label><label><input type="radio" name="q10" value="2"> 壊れたファン</label><label><input type="radio" name="q10" value="3"> 満杯サーバー</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>11. ランダムなアップグレードが悪い理由は何ですか。</legend><label><input type="radio" name="q11" value="0"> ボトルネックを外す可能性</label><label><input type="radio" name="q11" value="1"> 必ず無料</label><label><input type="radio" name="q11" value="2"> 証拠を削除</label><label><input type="radio" name="q11" value="3"> 全問題を改善</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. 空き容量不足で遅くなるものは何ですか。</legend><label><input type="radio" name="q12" value="0"> 更新と保存</label><label><input type="radio" name="q12" value="1"> マウスだけ</label><label><input type="radio" name="q12" value="2"> 明るさだけ</label><label><input type="radio" name="q12" value="3"> IPアドレス</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>13. プリンターキューは何ですか。</legend><label><input type="radio" name="q13" value="0"> 共有出力ボトルネック</label><label><input type="radio" name="q13" value="1"> CPUコア</label><label><input type="radio" name="q13" value="2"> IPアドレス</label><label><input type="radio" name="q13" value="3"> 冷却ファン</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>14. 最初の範囲質問は何ですか。</legend><label><input type="radio" name="q14" value="0"> 壁紙は何か</label><label><input type="radio" name="q14" value="1"> 1台か多数か</label><label><input type="radio" name="q14" value="2"> キーボード色</label><label><input type="radio" name="q14" value="3"> 机の年齢</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>15. 最終ルールは何ですか。</legend><label><input type="radio" name="q15" value="0"> すぐ推測</label><label><input type="radio" name="q15" value="1"> 最初に測定しボトルネックを修正</label><label><input type="radio" name="q15" value="2"> 全部交換</label><label><input type="radio" name="q15" value="3"> 全サーバー再起動</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">最終クイズを確認</button><button class="secondary" id="reset-quiz" type="reset">リセット</button></div><div class="score" id="quiz-score" data-label="最終スコア"></div></form>
+</article>
+</section>
+</main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · Lecture 6 · Computer Performance and Bottlenecks · Original 53-slide sequence preserved.</footer></body></html>
