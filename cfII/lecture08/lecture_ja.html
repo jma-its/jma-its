@@ -1,0 +1,505 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第8講 — ドライバーとDevice Manager</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script><style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head><body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture07/index.html">← 7</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture09/index.html">9 →</a></nav>
+<header id="top"><div class="header-inner"><div class="course">Computer Fundamentals 2 · 今学期 · ウェブ講義 8</div><div class="archive-note">Device Managerの授業練習は観察のみです。変更操作はしません。</div><h1>ドライバーとDevice Manager</h1><p class="subtitle">元の55枚のスライドを、そのまま学べるウェブ講義にしました。</p><p class="intro">Windowsがハードウェアと通信する仕組み、ドライバーの役割、Device Managerで安全に証拠を読む方法を学びます。</p><div class="lang-switch"><a href="lecture_en.html">English</a><a class="current" href="lecture_ja.html">日本語</a></div></div></header>
+<main class="container"><section class="core"><h2>中心の流れ</h2><div class="core-chain">Windows → Driver → Hardware → Result</div></section>
+<section class="progress-box"><strong>学習進行</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>考えた後で答えを開いてください。</span></section>
+<section class="notice"><h2>この講義の使い方</h2><p>元のスライドを見て、説明を読み、隠れた答えを開く前に考え、最後にDevice Managerの安全練習を行ってください。</p></section>
+<section class="notice map" id="lesson-map"><h2>講義マップ — 元の55枚のスライド</h2><ol><li><a href="#slide-1">スライド 1: 第8講 — ドライバーとデバイスマネージャー</a></li><li><a href="#slide-2">スライド 2: デバイスは接続されている。なぜ動かないのか</a></li><li><a href="#slide-3">スライド 3: ハードウェアは物理的なもの</a></li><li><a href="#slide-4">スライド 4: Windowsには指示が必要</a></li><li><a href="#slide-5">スライド 5: 第1部 — ドライバーとは何か</a></li><li><a href="#slide-6">スライド 6: ドライバー = 翻訳者</a></li><li><a href="#slide-7">スライド 7: ドライバーは普通のアプリではない</a></li><li><a href="#slide-8">スライド 8: 単純な通信チェーン</a></li><li><a href="#slide-9">スライド 9: キーボード例：キー入力から文字へ</a></li><li><a href="#slide-10">スライド 10: プリンター例：印刷クリックから紙へ</a></li><li><a href="#slide-11">スライド 11: 音声例：ファイルから音波へ</a></li><li><a href="#slide-12">スライド 12: 第2部 — Windowsがハードウェアを認識する方法</a></li><li><a href="#slide-13">スライド 13: Plug and Play認識の流れ</a></li><li><a href="#slide-14">スライド 14: Device ID：「あなたは誰ですか？」</a></li><li><a href="#slide-15">スライド 15: Windowsは一致するドライバーを探す</a></li><li><a href="#slide-16">スライド 16: すぐ動くデバイスがある理由</a></li><li><a href="#slide-17">スライド 17: USBメモリの認識</a></li><li><a href="#slide-18">スライド 18: ドライバーがないと何が起きるか</a></li><li><a href="#slide-19">スライド 19: ドライバー不足の流れ</a></li><li><a href="#slide-20">スライド 20: 正しいドライバー：正常に動く</a></li><li><a href="#slide-21">スライド 21: 第3部 — コンピュータ内部</a></li><li><a href="#slide-22">スライド 22: マザーボードはコントローラの街</a></li><li><a href="#slide-23">スライド 23: ハードウェアコントローラ：隠れた中間層</a></li><li><a href="#slide-24">スライド 24: Windows内部：ドライバーとハードウェア</a></li><li><a href="#slide-25">スライド 25: ドライバーはどこにあるか</a></li><li><a href="#slide-26">スライド 26: 1つのドライバーは全デバイスに合わない</a></li><li><a href="#slide-27">スライド 27: 汎用ドライバーと専用ドライバー</a></li><li><a href="#slide-28">スライド 28: ドライバーインストールの流れ</a></li><li><a href="#slide-29">スライド 29: 更新後のドライバー衝突</a></li><li><a href="#slide-30">スライド 30: 第4部 — デバイスマネージャー</a></li><li><a href="#slide-31">スライド 31: Device Managerとは何か</a></li><li><a href="#slide-32">スライド 32: Device Managerのツリー構造</a></li><li><a href="#slide-33">スライド 33: 問題別のDevice Managerカテゴリ</a></li><li><a href="#slide-34">スライド 34: プロパティのデバイス状態</a></li><li><a href="#slide-35">スライド 35: 黄色い警告アイコン</a></li><li><a href="#slide-36">スライド 36: 不明なデバイス</a></li><li><a href="#slide-37">スライド 37: 無効なデバイスとドライバー不足</a></li><li><a href="#slide-38">スライド 38: ドライバープロパティ画面</a></li><li><a href="#slide-39">スライド 39: 安全な観察と危険な操作</a></li><li><a href="#slide-40">スライド 40: Device Managerを開く方法</a></li><li><a href="#slide-41">スライド 41: Device Managerが表示するもの</a></li><li><a href="#slide-42">スライド 42: 第5部 — サポートケース</a></li><li><a href="#slide-43">スライド 43: ケース：Wi‑Fiがない</a></li><li><a href="#slide-44">スライド 44: ケース：音が出ない</a></li><li><a href="#slide-45">スライド 45: ケース：低解像度</a></li><li><a href="#slide-46">スライド 46: ケース：USBデバイスが認識されない</a></li><li><a href="#slide-47">スライド 47: Driver UpdateとRoll Back</a></li><li><a href="#slide-48">スライド 48: 良いドライバー = 安定したシステム</a></li><li><a href="#slide-49">スライド 49: ドライバー問題を安全に修正する方法</a></li><li><a href="#slide-50">スライド 50: 第6部 — 教室練習</a></li><li><a href="#slide-51">スライド 51: 安全なDevice Manager練習</a></li><li><a href="#slide-52">スライド 52: 短いドライバー問題報告</a></li><li><a href="#slide-53">スライド 53: ミニケース練習</a></li><li><a href="#slide-54">スライド 54: 覚えるべき5つのこと</a></li><li><a href="#slide-55">スライド 55: 最終まとめ：Windows → Driver → Hardware → Result</a></li></ol></section>
+<h2 class="part-title">導入 — 接続だけでは十分ではない</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">スライド 1</div><div class="slide-title"><h2>第8講 — ドライバーとデバイスマネージャー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="第8講 — ドライバーとデバイスマネージャー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 1 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ハードウェアは接続されていても、まだ使えないことがあります。Windowsが正しいドライバーでハードウェアと通信し、Device Managerで安全な証拠を確認してから対応します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーの主な仕事は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Windowsの要求を、デバイス専用のハードウェア命令へ翻訳することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">スライド 2</div><div class="slide-title"><h2>デバイスは接続されている。なぜ動かないのか</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="デバイスは接続されている。なぜ動かないのか" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 2 — タップして拡大</figcaption></figure>
+<section class="reading"><p>接続は物理的な部分だけです。Windowsがデバイスを識別し、合うドライバーを使えなければ、正常な機器でも壊れて見えることがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーの主な仕事は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Windowsの要求を、デバイス専用のハードウェア命令へ翻訳することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">スライド 3</div><div class="slide-title"><h2>ハードウェアは物理的なもの</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="ハードウェアは物理的なもの" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 3 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ハードウェアは電気信号を送る物理部品です。Windowsは生の信号をそのまま使えないため、ドライバーという通信層が必要です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーの主な仕事は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Windowsの要求を、デバイス専用のハードウェア命令へ翻訳することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">スライド 4</div><div class="slide-title"><h2>Windowsには指示が必要</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="Windowsには指示が必要" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 4 — タップして拡大</figcaption></figure>
+<section class="reading"><p>プリンター、Webカメラ、Wi‑Fiアダプタ、サウンドカードは同じ方法では動きません。各デバイスに合う指示が必要です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーの主な仕事は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Windowsの要求を、デバイス専用のハードウェア命令へ翻訳することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第1部 — ドライバーとは何か</h2>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">スライド 5</div><div class="slide-title"><h2>第1部 — ドライバーとは何か</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="第1部 — ドライバーとは何か" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 5 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ドライバーは普通のアプリではなく、Windowsとハードウェアの間にある橋です。要求をデバイス専用の命令へ変換します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーの主な仕事は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Windowsの要求を、デバイス専用のハードウェア命令へ翻訳することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">スライド 6</div><div class="slide-title"><h2>ドライバー = 翻訳者</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="ドライバー = 翻訳者" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 6 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windowsの印刷、スキャン、接続、音声再生などの要求を、ドライバーがデバイスの理解できる命令へ変換します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーの主な仕事は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Windowsの要求を、デバイス専用のハードウェア命令へ翻訳することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">スライド 7</div><div class="slide-title"><h2>ドライバーは普通のアプリではない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="ドライバーは普通のアプリではない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 7 — タップして拡大</figcaption></figure>
+<section class="reading"><p>アプリはユーザーが直接開いて使います。ドライバーは通常裏側で動き、Windowsがハードウェアを制御するのを助けます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーの主な仕事は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Windowsの要求を、デバイス専用のハードウェア命令へ翻訳することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">スライド 8</div><div class="slide-title"><h2>単純な通信チェーン</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="単純な通信チェーン" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 8 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ユーザー操作はWindows、ドライバー、コントローラ、ハードウェアを通ります。どこか1つが失敗すると結果が出ません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーの主な仕事は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Windowsの要求を、デバイス専用のハードウェア命令へ翻訳することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">スライド 9</div><div class="slide-title"><h2>キーボード例：キー入力から文字へ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="キーボード例：キー入力から文字へ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 9 — タップして拡大</figcaption></figure>
+<section class="reading"><p>キー入力は物理動作から始まり、キーボード電子回路、USB、ドライバー、Windows、アプリへ進みます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>結果が見える前に働く隠れたチェーンは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ユーザー操作 → Windows → ドライバー → ハードウェア → 物理的結果です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">スライド 10</div><div class="slide-title"><h2>プリンター例：印刷クリックから紙へ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="プリンター例：印刷クリックから紙へ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 10 — タップして拡大</figcaption></figure>
+<section class="reading"><p>印刷ではアプリの要求をWindowsが受け取り、プリンタードライバーがプリンター用命令へ変換し、紙の出力になります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>結果が見える前に働く隠れたチェーンは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ユーザー操作 → Windows → ドライバー → ハードウェア → 物理的結果です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">スライド 11</div><div class="slide-title"><h2>音声例：ファイルから音波へ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="音声例：ファイルから音波へ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 11 — タップして拡大</figcaption></figure>
+<section class="reading"><p>音声ファイルはまだ音波ではありません。Windows、オーディオドライバー、音声ハードウェア、スピーカーを通って物理振動になります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>結果が見える前に働く隠れたチェーンは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ユーザー操作 → Windows → ドライバー → ハードウェア → 物理的結果です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第2部 — Windowsがハードウェアを認識する方法</h2>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">スライド 12</div><div class="slide-title"><h2>第2部 — Windowsがハードウェアを認識する方法</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="第2部 — Windowsがハードウェアを認識する方法" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 12 — タップして拡大</figcaption></figure>
+<section class="reading"><p>新しいハードウェアが現れると、Windowsは識別し、合うドライバーを選ぼうとします。これがPlug and Playの考え方です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windowsがデバイスを安定して使う前に必要なことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイスを識別し、一致するドライバーを読み込むことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">スライド 13</div><div class="slide-title"><h2>Plug and Play認識の流れ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="Plug and Play認識の流れ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 13 — タップして拡大</figcaption></figure>
+<section class="reading"><p>認識は、接続、検出、ID読み取り、ドライバー検索、読み込み、利用可能という段階で進みます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windowsがデバイスを安定して使う前に必要なことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイスを識別し、一致するドライバーを読み込むことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">スライド 14</div><div class="slide-title"><h2>Device ID：「あなたは誰ですか？」</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="Device ID：「あなたは誰ですか？」" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 14 — タップして拡大</figcaption></figure>
+<section class="reading"><p>デバイスIDはハードウェアの身分証のようなものです。WindowsはIDからメーカーやモデルを判断します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windowsがデバイスを安定して使う前に必要なことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイスを識別し、一致するドライバーを読み込むことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">スライド 15</div><div class="slide-title"><h2>Windowsは一致するドライバーを探す</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="Windowsは一致するドライバーを探す" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 15 — タップして拡大</figcaption></figure>
+<section class="reading"><p>WindowsはデバイスIDに合うドライバーを探します。合わないと、警告や不明なデバイスになることがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windowsがデバイスを安定して使う前に必要なことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイスを識別し、一致するドライバーを読み込むことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">スライド 16</div><div class="slide-title"><h2>すぐ動くデバイスがある理由</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="すぐ動くデバイスがある理由" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 16 — タップして拡大</figcaption></figure>
+<section class="reading"><p>標準的なキーボード、マウス、USBメモリなどは、Windows内蔵の汎用ドライバーで動くことが多いです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windowsがデバイスを安定して使う前に必要なことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイスを識別し、一致するドライバーを読み込むことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">スライド 17</div><div class="slide-title"><h2>USBメモリの認識</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="USBメモリの認識" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 17 — タップして拡大</figcaption></figure>
+<section class="reading"><p>USBメモリは接続後、USBコントローラが検出し、WindowsがIDを読み、ストレージドライバーを読み込んだ後で表示されます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windowsがデバイスを安定して使う前に必要なことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイスを識別し、一致するドライバーを読み込むことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">スライド 18</div><div class="slide-title"><h2>ドライバーがないと何が起きるか</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="ドライバーがないと何が起きるか" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 18 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ドライバーがないと、Wi‑Fiがない、音が出ない、低解像度、カメラが見つからないなどの症状が出ます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windowsがデバイスを安定して使う前に必要なことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイスを識別し、一致するドライバーを読み込むことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">スライド 19</div><div class="slide-title"><h2>ドライバー不足の流れ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="ドライバー不足の流れ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 19 — タップして拡大</figcaption></figure>
+<section class="reading"><p>物理的には存在していても、Windowsが正しく使えない場合があります。名前、警告アイコン、状態メッセージが証拠です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windowsがデバイスを安定して使う前に必要なことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイスを識別し、一致するドライバーを読み込むことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">スライド 20</div><div class="slide-title"><h2>正しいドライバー：正常に動く</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="正しいドライバー：正常に動く" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 20 — タップして拡大</figcaption></figure>
+<section class="reading"><p>正しいドライバーではデバイス名が正しく表示され、状態は正常になり、Wi‑Fi、音声、カメラ、表示が安定します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windowsがデバイスを安定して使う前に必要なことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイスを識別し、一致するドライバーを読み込むことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第3部 — コンピュータ内部</h2>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">スライド 21</div><div class="slide-title"><h2>第3部 — コンピュータ内部</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="第3部 — コンピュータ内部" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 21 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ドライバーは画面上のアイコンだけでなく、マザーボード上のコントローラやバスと関係しています。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバー問題がマザーボードと関係するのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マザーボード上のコントローラやバスにも正しいドライバーが必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">スライド 22</div><div class="slide-title"><h2>マザーボードはコントローラの街</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="マザーボードはコントローラの街" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 22 — タップして拡大</figcaption></figure>
+<section class="reading"><p>マザーボードにはUSB、ネットワーク、音声、ストレージ、PCIeなどを管理する多数のコントローラがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバー問題がマザーボードと関係するのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マザーボード上のコントローラやバスにも正しいドライバーが必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">スライド 23</div><div class="slide-title"><h2>ハードウェアコントローラ：隠れた中間層</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="ハードウェアコントローラ：隠れた中間層" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 23 — タップして拡大</figcaption></figure>
+<section class="reading"><p>キーボードはアプリへ直接話しません。信号は電子回路、USB、コントローラ、Windows、ドライバーを通ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバー問題がマザーボードと関係するのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マザーボード上のコントローラやバスにも正しいドライバーが必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">スライド 24</div><div class="slide-title"><h2>Windows内部：ドライバーとハードウェア</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="Windows内部：ドライバーとハードウェア" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 24 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windowsはドライバーへハードウェア作業を依頼し、ドライバーがハードウェアの理解できる命令を送ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバー問題がマザーボードと関係するのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マザーボード上のコントローラやバスにも正しいドライバーが必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">スライド 25</div><div class="slide-title"><h2>ドライバーはどこにあるか</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="ドライバーはどこにあるか" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 25 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ファームウェアは基本命令、ドライバーはディスクに保存されWindowsが読み込み、Kernelがアクセスを管理します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバー問題がマザーボードと関係するのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マザーボード上のコントローラやバスにも正しいドライバーが必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">スライド 26</div><div class="slide-title"><h2>1つのドライバーは全デバイスに合わない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="1つのドライバーは全デバイスに合わない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 26 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ドライバーはデバイスのモデルとメーカーに合う必要があります。ランダムなドライバーは不安定やクラッシュの原因です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバー問題がマザーボードと関係するのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マザーボード上のコントローラやバスにも正しいドライバーが必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">スライド 27</div><div class="slide-title"><h2>汎用ドライバーと専用ドライバー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="汎用ドライバーと専用ドライバー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 27 — タップして拡大</figcaption></figure>
+<section class="reading"><p>汎用ドライバーは標準機器に使えますが、特殊な医療・業務機器はメーカー専用ドライバーが必要な場合があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバー問題がマザーボードと関係するのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マザーボード上のコントローラやバスにも正しいドライバーが必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">スライド 28</div><div class="slide-title"><h2>ドライバーインストールの流れ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="ドライバーインストールの流れ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 28 — タップして拡大</figcaption></figure>
+<section class="reading"><p>インストールでは検出、ID読み取り、検索、読み込みが行われます。どこかで失敗すると警告やエラーになります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバー問題がマザーボードと関係するのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マザーボード上のコントローラやバスにも正しいドライバーが必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">スライド 29</div><div class="slide-title"><h2>更新後のドライバー衝突</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="更新後のドライバー衝突" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 29 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ドライバー更新は修正になることもありますが、新しい問題を作ることもあります。問題発生時期を明確に報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバー問題がマザーボードと関係するのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マザーボード上のコントローラやバスにも正しいドライバーが必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第4部 — Device Manager</h2>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">スライド 30</div><div class="slide-title"><h2>第4部 — デバイスマネージャー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="第4部 — デバイスマネージャー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 30 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Device ManagerはWindows内のハードウェア地図です。カテゴリ、名前、警告、状態を表示します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">スライド 31</div><div class="slide-title"><h2>Device Managerとは何か</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="Device Managerとは何か" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 31 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Device ManagerはWindowsが知っているハードウェアと状態を表示する道具です。最初の安全な使い方は観察です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">スライド 32</div><div class="slide-title"><h2>Device Managerのツリー構造</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="Device Managerのツリー構造" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 32 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ツリー構造ではカテゴリを開くと具体的なデバイスが見えます。問題に合うカテゴリを選ぶことが重要です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">スライド 33</div><div class="slide-title"><h2>問題別のDevice Managerカテゴリ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="問題別のDevice Managerカテゴリ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 33 — タップして拡大</figcaption></figure>
+<section class="reading"><p>表示、ネットワーク、カメラ、サウンド、USBなど、症状に合わせて見るカテゴリが変わります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">スライド 34</div><div class="slide-title"><h2>プロパティのデバイス状態</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="プロパティのデバイス状態" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 34 — タップして拡大</figcaption></figure>
+<section class="reading"><p>プロパティのデバイス状態は、正常、警告、無効、不明などの重要な手掛かりを示します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">スライド 35</div><div class="slide-title"><h2>黄色い警告アイコン</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="黄色い警告アイコン" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 35 — タップして拡大</figcaption></figure>
+<section class="reading"><p>黄色い警告アイコンは問題の手掛かりです。原因はドライバー、設定、ケーブル、ハードウェアなどです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">スライド 36</div><div class="slide-title"><h2>不明なデバイス</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="不明なデバイス" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 36 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Unknown deviceはWindowsが何かを検出したが、正体を正しく判断できない状態です。推測でインストールしません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">スライド 37</div><div class="slide-title"><h2>無効なデバイスとドライバー不足</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="無効なデバイスとドライバー不足" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 37 — タップして拡大</figcaption></figure>
+<section class="reading"><p>無効なデバイスはWindowsが知っているがOFFになっています。ドライバー不足は通信できない状態で、対応が異なります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">スライド 38</div><div class="slide-title"><h2>ドライバープロパティ画面</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="ドライバープロパティ画面" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 38 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Driver Provider、Date、Version、Digital Signerは証拠になります。UpdateやUninstallなどはシステムを変更します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">スライド 39</div><div class="slide-title"><h2>安全な観察と危険な操作</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="安全な観察と危険な操作" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 39 — タップして拡大</figcaption></figure>
+<section class="reading"><p>安全な操作は開く、見る、読む、スクリーンショット、報告です。更新、無効化、削除、ロールバックは危険側です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">スライド 40</div><div class="slide-title"><h2>Device Managerを開く方法</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="Device Managerを開く方法" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 40 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Device Managerはクイックメニュー、検索、Runコマンドから開けます。開くだけなら安全ですが、変更はしません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">スライド 41</div><div class="slide-title"><h2>Device Managerが表示するもの</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="Device Managerが表示するもの" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 41 — タップして拡大</figcaption></figure>
+<section class="reading"><p>正常デバイス、警告、Other devices、デバイス名、カテゴリ、状態情報を読み取ります。これは報告の証拠です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者にとって安全なDevice Managerの使い方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開く、読む、証拠を取る、スクリーンショット、報告です。設定変更はしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第5部 — サポートケース</h2>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">スライド 42</div><div class="slide-title"><h2>第5部 — サポートケース</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="第5部 — サポートケース" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 42 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ドライバー問題は壊れたハードウェアのように見えることがあります。何が変わったか、状態表示は何かを確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーを変更する前に集めるべき証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイス名、カテゴリ、警告や状態メッセージ、症状、変更点です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">スライド 43</div><div class="slide-title"><h2>ケース：Wi‑Fiがない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="ケース：Wi‑Fiがない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 43 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Wi‑Fiが出ない場合はNetwork adaptersを見ます。警告、デバイス名、最近の更新、1台か多数かを報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーを変更する前に集めるべき証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイス名、カテゴリ、警告や状態メッセージ、症状、変更点です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">スライド 44</div><div class="slide-title"><h2>ケース：音が出ない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="ケース：音が出ない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 44 — タップして拡大</figcaption></figure>
+<section class="reading"><p>音が出ない場合はSound devicesと出力先を確認します。ミュート、出力デバイス、接続、Device Manager状態を確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーを変更する前に集めるべき証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイス名、カテゴリ、警告や状態メッセージ、症状、変更点です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">スライド 45</div><div class="slide-title"><h2>ケース：低解像度</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="ケース：低解像度" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 45 — タップして拡大</figcaption></figure>
+<section class="reading"><p>低解像度ではDisplay adaptersを確認します。基本表示ドライバーだけの場合、グラフィックスドライバーが原因の可能性があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーを変更する前に集めるべき証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイス名、カテゴリ、警告や状態メッセージ、症状、変更点です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">スライド 46</div><div class="slide-title"><h2>ケース：USBデバイスが認識されない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="ケース：USBデバイスが認識されない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 46 — タップして拡大</figcaption></figure>
+<section class="reading"><p>USBデバイス未認識ではケーブル、ポート、USBコントローラ、デバイス本体、必要な電源を順番に確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーを変更する前に集めるべき証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイス名、カテゴリ、警告や状態メッセージ、症状、変更点です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">スライド 47</div><div class="slide-title"><h2>Driver UpdateとRoll Back</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="Driver UpdateとRoll Back" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 47 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Update Driverは新しいドライバーを試し、Roll Backは以前のバージョンへ戻します。どちらも許可または専門家の指示で行います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーを変更する前に集めるべき証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイス名、カテゴリ、警告や状態メッセージ、症状、変更点です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">スライド 48</div><div class="slide-title"><h2>良いドライバー = 安定したシステム</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="良いドライバー = 安定したシステム" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 48 — タップして拡大</figcaption></figure>
+<section class="reading"><p>正しい信頼できるドライバーは、エラー、クラッシュ、デバイス不調を減らし、安定した作業環境を支えます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーを変更する前に集めるべき証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイス名、カテゴリ、警告や状態メッセージ、症状、変更点です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">スライド 49</div><div class="slide-title"><h2>ドライバー問題を安全に修正する方法</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="ドライバー問題を安全に修正する方法" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 49 — タップして拡大</figcaption></figure>
+<section class="reading"><p>症状と見える証拠を集め、カテゴリと状態を確認し、変更前に報告または計画します。修正後はテストします。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ドライバーを変更する前に集めるべき証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>デバイス名、カテゴリ、警告や状態メッセージ、症状、変更点です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第6部 — 安全な教室練習</h2>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">スライド 50</div><div class="slide-title"><h2>第6部 — 教室練習</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg"><img src="assets/slides/slide-50.jpg" alt="第6部 — 教室練習" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 50 — タップして拡大</figcaption></figure>
+<section class="reading"><p>教室練習は安全な観察です。デバイス名と状態を読み、スクリーンショットを取り、変更操作は行いません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの安全なサポートルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>先に証拠を読み、明確に報告し、許可または専門家の指示がある時だけ変更します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">スライド 51</div><div class="slide-title"><h2>安全なDevice Manager練習</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg"><img src="assets/slides/slide-51.jpg" alt="安全なDevice Manager練習" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 51 — タップして拡大</figcaption></figure>
+<section class="reading"><p>カテゴリを開き、ネットワーク、表示、キーボード、マウス、音声、USB、カメラの名前と状態を記録します。変更は禁止です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの安全なサポートルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>先に証拠を読み、明確に報告し、許可または専門家の指示がある時だけ変更します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">スライド 52</div><div class="slide-title"><h2>短いドライバー問題報告</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg"><img src="assets/slides/slide-52.jpg" alt="短いドライバー問題報告" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 52 — タップして拡大</figcaption></figure>
+<section class="reading"><p>短い報告にはデバイス、場所、症状、Device Manager状態、変更点、確認内容、必要な支援を含めます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの安全なサポートルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>先に証拠を読み、明確に報告し、許可または専門家の指示がある時だけ変更します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">スライド 53</div><div class="slide-title"><h2>ミニケース練習</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-53.jpg"><img src="assets/slides/slide-53.jpg" alt="ミニケース練習" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 53 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ケースごとにDevice Managerカテゴリを選び、短い報告文を書きます。Wi‑Fi、表示、カメラ、USBなどを区別します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの安全なサポートルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>先に証拠を読み、明確に報告し、許可または専門家の指示がある時だけ変更します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-54">
+<div class="slide-head"><div class="badge">スライド 54</div><div class="slide-title"><h2>覚えるべき5つのこと</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-54.jpg"><img src="assets/slides/slide-54.jpg" alt="覚えるべき5つのこと" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 54 — タップして拡大</figcaption></figure>
+<section class="reading"><p>覚えるべきことは、接続だけでは十分でない、ドライバーは翻訳層、Device Managerは状態地図、変更前に読む、報告が安全にする、です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの安全なサポートルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>先に証拠を読み、明確に報告し、許可または専門家の指示がある時だけ変更します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-55">
+<div class="slide-head"><div class="badge">スライド 55</div><div class="slide-title"><h2>最終まとめ：Windows → Driver → Hardware → Result</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-55.jpg"><img src="assets/slides/slide-55.jpg" alt="最終まとめ：Windows → Driver → Hardware → Result" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 55 — タップして拡大</figcaption></figure>
+<section class="reading"><p>最終的な流れはWindows → Driver → Hardware → Resultです。ドライバーが失敗すると、デバイスは止まるか不安定になります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの安全なサポートルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>先に証拠を読み、明確に報告し、許可または専門家の指示がある時だけ変更します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<section class="interactive-section" id="interactive-review">
+<h2>拡張インタラクティブ復習</h2>
+<p>Device Managerでは、初心者の仕事は変更ではなく観察、記録、報告です。</p>
+
+<div class="lab-grid">
+<article class="lab">
+<h3>1. 通信チェーン</h3>
+<div class="chain-builder" id="chain-builder">
+<button class="chain-step" data-key="user">User action</button>
+<button class="chain-step" data-key="windows">Windows</button>
+<button class="chain-step" data-key="driver">Driver</button>
+<button class="chain-step" data-key="hardware">Hardware</button>
+<button class="chain-step" data-key="result">Result</button>
+</div>
+<div class="actions"><button class="primary" id="check-chain" type="button">順序を確認</button></div>
+<div class="feedback" id="chain-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>2. 問題別カテゴリ選択</h3>
+<select id="category-case">
+<option value="wifi">Wi‑Fiネットワークが出ない</option>
+<option value="sound">音が出ない</option>
+<option value="display">解像度が低い</option>
+<option value="camera">Webカメラが見つからない</option>
+<option value="usb">USBバーコードリーダーが反応しない</option>
+</select>
+<div class="choice-grid" id="category-choices">
+<button data-choice="Network adapters">Network adapters</button>
+<button data-choice="Sound devices">Sound devices</button>
+<button data-choice="Display adapters">Display adapters</button>
+<button data-choice="Cameras">Cameras</button>
+<button data-choice="USB controllers / HID">USB controllers / HID</button>
+</div>
+<div class="feedback" id="category-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>3. 状態アイコンを読む</h3>
+<div class="status-grid">
+<button class="status-card" data-kind="normal">✓ 正常</button>
+<button class="status-card" data-kind="warning">⚠ 黄色警告</button>
+<button class="status-card" data-kind="unknown">? 不明なデバイス</button>
+<button class="status-card" data-kind="disabled">↓ 無効</button>
+</div>
+<div class="status-info" id="status-info"></div>
+</article>
+
+<article class="lab">
+<h3>4. 安全か危険か</h3>
+<div class="safety-grid">
+<div class="safety-card" data-answer="safe">デバイス名を読む<strong></strong></div>
+<div class="safety-card" data-answer="safe">状態メッセージをスクリーンショット<strong></strong></div>
+<div class="safety-card" data-answer="risky">ランダムにUpdate Driver<strong></strong></div>
+<div class="safety-card" data-answer="risky">USB controllerを削除<strong></strong></div>
+<div class="safety-card" data-answer="safe">警告アイコンを報告<strong></strong></div>
+<div class="safety-card" data-answer="risky">driver boosterを使う<strong></strong></div>
+</div>
+<div class="actions"><button class="primary" id="check-safety" type="button">分類を確認</button></div>
+<div class="feedback" id="safety-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>5. Driver UpdateかRoll Backか</h3>
+<select id="update-case">
+<option value="afterupdate">Windows Update後にWi‑Fiが消えた</option>
+<option value="newdevice">新しい専用スキャナーを追加した</option>
+<option value="random">理由なく最新版を入れたい</option>
+<option value="observe">授業の観察練習中</option>
+</select>
+<div class="feedback" id="update-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>6. ドライバー問題報告</h3>
+<div class="report-builder">
+<select id="report-device"><option>Wi‑Fi adapter</option><option>Audio device</option><option>Display adapter</option><option>USB barcode reader</option><option>Webcam</option></select>
+<select id="report-status"><option>Yellow warning icon</option><option>Unknown device</option><option>Working properly</option><option>Disabled</option><option>Device not visible</option></select>
+<select id="report-change"><option>After Windows Update</option><option>After moving desk</option><option>After connecting new device</option><option>No known change</option></select>
+<button class="primary" id="build-report" type="button">報告を作成</button>
+</div>
+<pre class="report-output" id="report-output"></pre>
+</article>
+</div>
+
+<article class="lab" style="margin-top:18px">
+<h3>7. ミニケース練習</h3>
+<div class="case-grid">
+<button class="case-card" data-case="wifi">更新後、Wi‑Fiネットワークが表示されない</button>
+<button class="case-card" data-case="display">Windows再インストール後、解像度が低い</button>
+<button class="case-card" data-case="camera">会議アプリでWebカメラが見つからない</button>
+<button class="case-card" data-case="usb">USBバーコードリーダーが接続済みだが入力しない</button>
+</div>
+<div class="case-info" id="case-info"></div>
+</article>
+
+<article class="lab" style="margin-top:18px">
+<h3>8. 最終知識チェック</h3>
+<form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. ドライバーの主な役割は何ですか。</legend><label><input type="radio" name="q1" value="0"> CPUを冷却</label><label><input type="radio" name="q1" value="1"> Windowsとハードウェアの翻訳</label><label><input type="radio" name="q1" value="2"> 写真を保存</label><label><input type="radio" name="q1" value="3"> 画面色変更</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>2. 接続済みデバイスが動かない理由は何ですか。</legend><label><input type="radio" name="q2" value="0"> 一致するドライバーが必要</label><label><input type="radio" name="q2" value="1"> 入力が速すぎる</label><label><input type="radio" name="q2" value="2"> 全ケーブルが悪い</label><label><input type="radio" name="q2" value="3"> Windowsはハードウェアを使わない</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>3. Device Managerとは何ですか。</legend><label><input type="radio" name="q3" value="0"> ゲーム</label><label><input type="radio" name="q3" value="1"> ハードウェア地図と状態ツール</label><label><input type="radio" name="q3" value="2"> ブラウザ</label><label><input type="radio" name="q3" value="3"> 印刷キュー</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. 初心者に安全な操作はどれですか。</legend><label><input type="radio" name="q4" value="0"> 状態を読みスクリーンショット</label><label><input type="radio" name="q4" value="1"> ランダムに削除</label><label><input type="radio" name="q4" value="2"> ネットワークを無効化</label><label><input type="radio" name="q4" value="3"> driver booster使用</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>5. 黄色い警告アイコンは何ですか。</legend><label><input type="radio" name="q5" value="0"> デバイス問題の手掛かり</label><label><input type="radio" name="q5" value="1"> 完全正常</label><label><input type="radio" name="q5" value="2"> バッテリー満タン</label><label><input type="radio" name="q5" value="3"> 画面が明るい</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>6. Unknown deviceとは通常何ですか。</legend><label><input type="radio" name="q6" value="0"> Windowsは何かを見つけたが識別できない</label><label><input type="radio" name="q6" value="1"> 必ず故障</label><label><input type="radio" name="q6" value="2"> ウイルス</label><label><input type="radio" name="q6" value="3"> ケーブルなし</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>7. Plug and PlayでWindowsが試すことは何ですか。</legend><label><input type="radio" name="q7" value="0"> ハードウェア識別とドライバー読み込み</label><label><input type="radio" name="q7" value="1"> 全ファイル印刷</label><label><input type="radio" name="q7" value="2"> ディスク初期化</label><label><input type="radio" name="q7" value="3"> 全ポートOFF</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. ドライバーが普通のアプリでない理由は何ですか。</legend><label><input type="radio" name="q8" value="0"> OSとハードウェアに近い場所で動く</label><label><input type="radio" name="q8" value="1"> 常に見える</label><label><input type="radio" name="q8" value="2"> 写真だけ保存</label><label><input type="radio" name="q8" value="3"> デバイス不要</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>9. Wi‑Fiなしで最初に見るカテゴリは何ですか。</legend><label><input type="radio" name="q9" value="0"> Network adapters</label><label><input type="radio" name="q9" value="1"> Printers</label><label><input type="radio" name="q9" value="2"> Batteries</label><label><input type="radio" name="q9" value="3"> Fonts</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>10. 低解像度で見るカテゴリは何ですか。</legend><label><input type="radio" name="q10" value="0"> Display adapters</label><label><input type="radio" name="q10" value="1"> Keyboards</label><label><input type="radio" name="q10" value="2"> Audio inputs</label><label><input type="radio" name="q10" value="3"> Time zone</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>11. ドライバー変更前に集めるものは何ですか。</legend><label><input type="radio" name="q11" value="0"> デバイス名、状態、スクリーンショット</label><label><input type="radio" name="q11" value="1"> 推測だけ</label><label><input type="radio" name="q11" value="2"> 証拠なし</label><label><input type="radio" name="q11" value="3"> ランダムサイト</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. Update DriverとRoll Backはいつ行いますか。</legend><label><input type="radio" name="q12" value="0"> 許可または指示がある時だけ</label><label><input type="radio" name="q12" value="1"> 授業でランダムに</label><label><input type="radio" name="q12" value="2"> 状態を読む前</label><label><input type="radio" name="q12" value="3"> 全PCで</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>13. 汎用ドライバーが多い標準機器は何ですか。</legend><label><input type="radio" name="q13" value="0"> キーボードとマウス</label><label><input type="radio" name="q13" value="1"> 全医療機器</label><label><input type="radio" name="q13" value="2"> 全プリンター</label><label><input type="radio" name="q13" value="3"> 全GPU</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>14. ドライバー問題は何のように見えますか。</legend><label><input type="radio" name="q14" value="0"> ハードウェア問題</label><label><input type="radio" name="q14" value="1"> 天気問題</label><label><input type="radio" name="q14" value="2"> 食べ物問題</label><label><input type="radio" name="q14" value="3"> 絶対に問題なし</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. 最終チェーンはどれですか。</legend><label><input type="radio" name="q15" value="0"> Windows → Driver → Hardware → Result</label><label><input type="radio" name="q15" value="1"> User → Paper → Fan → Result</label><label><input type="radio" name="q15" value="2"> Driver → Wall outlet → Ink</label><label><input type="radio" name="q15" value="3"> GPU → Keyboard → Patient</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">最終クイズを確認</button><button class="secondary" id="reset-quiz" type="reset">リセット</button></div><div class="score" id="quiz-score" data-label="最終スコア"></div></form>
+</article>
+</section>
+</main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · Lecture 8 · Drivers and Device Manager · Original 55-slide sequence preserved.</footer></body></html>

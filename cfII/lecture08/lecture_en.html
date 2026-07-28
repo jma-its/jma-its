@@ -1,0 +1,505 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 8 — Drivers and Device Manager</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script><style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head><body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture07/index.html">← 7</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture09/index.html">9 →</a></nav>
+<header id="top"><div class="header-inner"><div class="course">Computer Fundamentals 2 · Current Quarter · Lecture 8</div><div class="archive-note">Classroom Device Manager practice is observation only. No changing settings.</div><h1>Drivers and Device Manager</h1><p class="subtitle">The original 55-slide visual lecture, adapted for independent web study.</p><p class="intro">Learn how Windows talks to hardware, what drivers do, and how to read safe evidence in Device Manager.</p><div class="lang-switch"><a class="current" href="lecture_en.html">English</a><a href="lecture_ja.html">日本語</a></div></div></header>
+<main class="container"><section class="core"><h2>Core chain</h2><div class="core-chain">Windows → Driver → Hardware → Result</div></section>
+<section class="progress-box"><strong>Reading progress</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>Open answers only after thinking.</span></section>
+<section class="notice"><h2>How to use this lecture</h2><p>Study each original slide, read the explanation, think before opening the hidden answer, and complete the safe Device Manager practice.</p></section>
+<section class="notice map" id="lesson-map"><h2>Lesson map — 55 original slides</h2><ol><li><a href="#slide-1">Slide 1: Lecture 8 — Drivers and Device Manager</a></li><li><a href="#slide-2">Slide 2: The device is connected. Why doesn’t it work?</a></li><li><a href="#slide-3">Slide 3: Hardware is physical</a></li><li><a href="#slide-4">Slide 4: Windows needs instructions</a></li><li><a href="#slide-5">Slide 5: What is a Driver?</a></li><li><a href="#slide-6">Slide 6: Driver = translator</a></li><li><a href="#slide-7">Slide 7: Driver is not an ordinary app</a></li><li><a href="#slide-8">Slide 8: Simple communication chain</a></li><li><a href="#slide-9">Slide 9: Keyboard example: key press to letter</a></li><li><a href="#slide-10">Slide 10: Printer example: click Print to paper</a></li><li><a href="#slide-11">Slide 11: Audio example: file to sound waves</a></li><li><a href="#slide-12">Slide 12: PART 2</a></li><li><a href="#slide-13">Slide 13: Plug and Play recognition path</a></li><li><a href="#slide-14">Slide 14: Device ID: “Who are you?”</a></li><li><a href="#slide-15">Slide 15: Windows searches for a matching driver</a></li><li><a href="#slide-16">Slide 16: Why some devices work immediately</a></li><li><a href="#slide-17">Slide 17: USB flash drive recognition</a></li><li><a href="#slide-18">Slide 18: What happens without a driver?</a></li><li><a href="#slide-19">Slide 19: Missing driver flow</a></li><li><a href="#slide-20">Slide 20: Correct driver: devices work normally</a></li><li><a href="#slide-21">Slide 21: PART 3</a></li><li><a href="#slide-22">Slide 22: The motherboard is a city of controllers</a></li><li><a href="#slide-23">Slide 23: Hardware controllers: the hidden middle layer</a></li><li><a href="#slide-24">Slide 24: Inside Windows: drivers and hardware</a></li><li><a href="#slide-25">Slide 25: Where does the driver live?</a></li><li><a href="#slide-26">Slide 26: One driver does not fit every device</a></li><li><a href="#slide-27">Slide 27: Generic drivers vs. special drivers</a></li><li><a href="#slide-28">Slide 28: Driver installation process</a></li><li><a href="#slide-29">Slide 29: Driver conflict after update</a></li><li><a href="#slide-30">Slide 30: PART 4</a></li><li><a href="#slide-31">Slide 31: What is Device Manager?</a></li><li><a href="#slide-32">Slide 32: Device Manager tree structure</a></li><li><a href="#slide-33">Slide 33: Device Manager categories by problem</a></li><li><a href="#slide-34">Slide 34: Device status in Properties</a></li><li><a href="#slide-35">Slide 35: Yellow warning icon</a></li><li><a href="#slide-36">Slide 36: Unknown device</a></li><li><a href="#slide-37">Slide 37: Disabled device vs. missing driver</a></li><li><a href="#slide-38">Slide 38: Driver properties window</a></li><li><a href="#slide-39">Slide 39: Safe observation vs. dangerous actions</a></li><li><a href="#slide-40">Slide 40: How to open Device Manager</a></li><li><a href="#slide-41">Slide 41: Device Manager: what it shows</a></li><li><a href="#slide-42">Slide 42: PART 5</a></li><li><a href="#slide-43">Slide 43: Case: No Wi‑Fi</a></li><li><a href="#slide-44">Slide 44: Case: No Sound</a></li><li><a href="#slide-45">Slide 45: Case: Low Resolution</a></li><li><a href="#slide-46">Slide 46: Case: USB Device Not Recognized</a></li><li><a href="#slide-47">Slide 47: Driver Update vs. Roll Back</a></li><li><a href="#slide-48">Slide 48: Good driver = stable system</a></li><li><a href="#slide-49">Slide 49: How to fix driver problems safely</a></li><li><a href="#slide-50">Slide 50: PART 6</a></li><li><a href="#slide-51">Slide 51: Safe Device Manager Practice</a></li><li><a href="#slide-52">Slide 52: Simple Driver Problem Report</a></li><li><a href="#slide-53">Slide 53: Mini Case Practice</a></li><li><a href="#slide-54">Slide 54: Five Things to Remember</a></li><li><a href="#slide-55">Slide 55: Final summary: Windows → Driver → Hardware → Result</a></li></ol></section>
+<h2 class="part-title">Opening — Connected is not enough</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">Slide 1</div><div class="slide-title"><h2>Lecture 8 — Drivers and Device Manager</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="Lecture 8 — Drivers and Device Manager" loading="lazy"></button><figcaption>Original presentation slide 1 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Hardware can be connected but still unusable. Windows needs a correct driver to communicate with hardware, and Device Manager gives safe evidence before support workers change anything.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a driver’s main job?</p><details data-checkpoint><summary>Show answer</summary><p>It translates between Windows requests and device-specific hardware commands.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">Slide 2</div><div class="slide-title"><h2>The device is connected. Why doesn’t it work?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="The device is connected. Why doesn’t it work?" loading="lazy"></button><figcaption>Original presentation slide 2 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Connection is only the physical part of the problem. Windows must identify the device before it can use it. A matching driver is needed for commands and data. A missing or wrong driver can make good hardware look broken. Device Manager gives the first safe clues.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a driver’s main job?</p><details data-checkpoint><summary>Show answer</summary><p>It translates between Windows requests and device-specific hardware commands.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">Slide 3</div><div class="slide-title"><h2>Hardware is physical</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="Hardware is physical" loading="lazy"></button><figcaption>Original presentation slide 3 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Hardware devices are physical parts that send electrical signals. Each device uses a controller, port, cable, or adapter path. Windows cannot use raw signals without the correct communication layer. Drivers connect software control to physical device behavior. This topic belongs to Computer Fundamentals, not only Software.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a driver’s main job?</p><details data-checkpoint><summary>Show answer</summary><p>It translates between Windows requests and device-specific hardware commands.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">Slide 4</div><div class="slide-title"><h2>Windows needs instructions</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="Windows needs instructions" loading="lazy"></button><figcaption>Original presentation slide 4 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Different devices need different instructions. A printer, webcam, Wi‑Fi adapter, and sound card do not work the same way. Windows needs a driver to send correct commands. The device also sends data back through the driver. No correct driver means no reliable communication.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a driver’s main job?</p><details data-checkpoint><summary>Show answer</summary><p>It translates between Windows requests and device-specific hardware commands.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 1 — What is a driver?</h2>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">Slide 5</div><div class="slide-title"><h2>What is a Driver?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="What is a Driver?" loading="lazy"></button><figcaption>Original presentation slide 5 — click to enlarge</figcaption></figure>
+<section class="reading"><p>What is a Driver? A driver is not just another program. It is the bridge between Windows and hardware. Driver means communication layer, not normal user app. A driver works close to hardware and the operating system. It translates Windows requests into device-specific commands. A correct driver allows the device to work normally. A wrong driver can create new hardware problems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a driver’s main job?</p><details data-checkpoint><summary>Show answer</summary><p>It translates between Windows requests and device-specific hardware commands.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">Slide 6</div><div class="slide-title"><h2>Driver = translator</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="Driver = translator" loading="lazy"></button><figcaption>Original presentation slide 6 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Windows sends a request, such as print, scan, connect, or play sound. The driver translates the request into commands the device understands. The device answers through the same communication path. The driver makes two-way communication possible. This is why a connected device may still need a driver.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a driver’s main job?</p><details data-checkpoint><summary>Show answer</summary><p>It translates between Windows requests and device-specific hardware commands.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">Slide 7</div><div class="slide-title"><h2>Driver is not an ordinary app</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="Driver is not an ordinary app" loading="lazy"></button><figcaption>Original presentation slide 7 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Apps are opened and used directly by the user. Drivers usually work quietly in the background. Apps help the user do work; drivers help Windows control hardware. A browser is an app; a network adapter driver is not a normal app. Driver problems often appear as hardware problems.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a driver’s main job?</p><details data-checkpoint><summary>Show answer</summary><p>It translates between Windows requests and device-specific hardware commands.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">Slide 8</div><div class="slide-title"><h2>Simple communication chain</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="Simple communication chain" loading="lazy"></button><figcaption>Original presentation slide 8 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A user action travels through several hidden steps. Windows receives the action and sends it to the correct driver. The driver communicates with the hardware device or controller. The hardware performs the physical work. If one link breaks, the final result may not happen.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a driver’s main job?</p><details data-checkpoint><summary>Show answer</summary><p>It translates between Windows requests and device-specific hardware commands.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">Slide 9</div><div class="slide-title"><h2>Keyboard example: key press to letter</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="Keyboard example: key press to letter" loading="lazy"></button><figcaption>Original presentation slide 9 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A key press begins as a physical action. Keyboard electronics convert the press into a signal. The signal travels through USB or another connection. The keyboard driver helps Windows understand the signal. The application receives a letter only after the chain works.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What hidden chain must work before the user sees a result?</p><details data-checkpoint><summary>Show answer</summary><p>User action → Windows → driver → hardware → physical result.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">Slide 10</div><div class="slide-title"><h2>Printer example: click Print to paper</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="Printer example: click Print to paper" loading="lazy"></button><figcaption>Original presentation slide 10 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The user clicks Print inside an application. Windows receives the print request. The printer driver converts document data into printer commands. Data travels by USB cable or network. The printer produces paper output only if the chain is correct.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What hidden chain must work before the user sees a result?</p><details data-checkpoint><summary>Show answer</summary><p>User action → Windows → driver → hardware → physical result.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">Slide 11</div><div class="slide-title"><h2>Audio example: file to sound waves</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="Audio example: file to sound waves" loading="lazy"></button><figcaption>Original presentation slide 11 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A music file is digital data, not sound waves yet. Windows sends audio data to the audio driver. The driver controls the sound hardware. Sound hardware and speakers turn data into physical vibration. No correct audio path can mean no sound.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What hidden chain must work before the user sees a result?</p><details data-checkpoint><summary>Show answer</summary><p>User action → Windows → driver → hardware → physical result.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 2 — How Windows recognizes hardware</h2>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">Slide 12</div><div class="slide-title"><h2>PART 2</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="PART 2" loading="lazy"></button><figcaption>Original presentation slide 12 — click to enlarge</figcaption></figure>
+<section class="reading"><p>How Windows Recognizes Hardware When hardware appears, Windows tries to identify it and choose the right driver. Windows must identify new hardware before using it. A device gives Windows identification information. Windows searches for a driver that matches the device. Automatic recognition is called Plug and Play. Recognition can fail if no correct driver is available.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does Windows need before it can use a device reliably?</p><details data-checkpoint><summary>Show answer</summary><p>It must identify the device and load a matching driver.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">Slide 13</div><div class="slide-title"><h2>Plug and Play recognition path</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="Plug and Play recognition path" loading="lazy"></button><figcaption>Original presentation slide 13 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Study the original slide and identify how Windows, drivers, hardware, and safe evidence fit together.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does Windows need before it can use a device reliably?</p><details data-checkpoint><summary>Show answer</summary><p>It must identify the device and load a matching driver.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">Slide 14</div><div class="slide-title"><h2>Device ID: “Who are you?”</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="Device ID: “Who are you?”" loading="lazy"></button><figcaption>Original presentation slide 14 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Study the original slide and identify how Windows, drivers, hardware, and safe evidence fit together.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does Windows need before it can use a device reliably?</p><details data-checkpoint><summary>Show answer</summary><p>It must identify the device and load a matching driver.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">Slide 15</div><div class="slide-title"><h2>Windows searches for a matching driver</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="Windows searches for a matching driver" loading="lazy"></button><figcaption>Original presentation slide 15 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Study the original slide and identify how Windows, drivers, hardware, and safe evidence fit together.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does Windows need before it can use a device reliably?</p><details data-checkpoint><summary>Show answer</summary><p>It must identify the device and load a matching driver.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">Slide 16</div><div class="slide-title"><h2>Why some devices work immediately</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="Why some devices work immediately" loading="lazy"></button><figcaption>Original presentation slide 16 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Study the original slide and identify how Windows, drivers, hardware, and safe evidence fit together.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does Windows need before it can use a device reliably?</p><details data-checkpoint><summary>Show answer</summary><p>It must identify the device and load a matching driver.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">Slide 17</div><div class="slide-title"><h2>USB flash drive recognition</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="USB flash drive recognition" loading="lazy"></button><figcaption>Original presentation slide 17 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A USB flash drive becomes usable only after several steps. The USB controller detects the device. Windows reads the device ID and loads a storage driver. File Explorer shows the drive only after recognition succeeds. The visible drive icon is the final result, not the first step.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does Windows need before it can use a device reliably?</p><details data-checkpoint><summary>Show answer</summary><p>It must identify the device and load a matching driver.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">Slide 18</div><div class="slide-title"><h2>What happens without a driver?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="What happens without a driver?" loading="lazy"></button><figcaption>Original presentation slide 18 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Windows may detect a device but still not know how to use it. Symptoms can include no Wi‑Fi, no sound, low resolution, or camera not found. The same symptom can come from driver, cable, setting, or hardware causes. Device status should be checked before assuming physical damage. A screenshot of the warning is useful for support.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does Windows need before it can use a device reliably?</p><details data-checkpoint><summary>Show answer</summary><p>It must identify the device and load a matching driver.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">Slide 19</div><div class="slide-title"><h2>Missing driver flow</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="Missing driver flow" loading="lazy"></button><figcaption>Original presentation slide 19 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A device can be physically present but still appear as Unknown device. This often means Windows lacks the correct driver information. The correct response is identification, screenshot, and report. Random driver installation can make the problem worse. The device name, warning icon, and status message are evidence.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does Windows need before it can use a device reliably?</p><details data-checkpoint><summary>Show answer</summary><p>It must identify the device and load a matching driver.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">Slide 20</div><div class="slide-title"><h2>Correct driver: devices work normally</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="Correct driver: devices work normally" loading="lazy"></button><figcaption>Original presentation slide 20 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Correct drivers allow devices to appear with correct names. Device status should show that the hardware is working properly. Wi‑Fi, sound, camera, and display functions become available. The goal is stable communication, not only physical connection. A trusted correct driver is more important than a random new driver.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does Windows need before it can use a device reliably?</p><details data-checkpoint><summary>Show answer</summary><p>It must identify the device and load a matching driver.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 3 — Inside the computer</h2>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">Slide 21</div><div class="slide-title"><h2>PART 3</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="PART 3" loading="lazy"></button><figcaption>Original presentation slide 21 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Inside the Computer Drivers are connected to physical controllers and buses, not only to icons on the screen. Drivers connect Windows to physical controllers and buses. The motherboard contains many hardware controllers. USB, audio, network, SATA, and PCIe paths are controlled separately. Windows uses drivers to control these hardware paths. This is the Computer Fundamentals view of drivers.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can a driver problem be connected to the motherboard?</p><details data-checkpoint><summary>Show answer</summary><p>Controllers and buses on the motherboard also need correct drivers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">Slide 22</div><div class="slide-title"><h2>The motherboard is a city of controllers</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="The motherboard is a city of controllers" loading="lazy"></button><figcaption>Original presentation slide 22 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The CPU is important, but it does not work alone. Controllers manage specific hardware paths on the motherboard. USB, network, audio, storage, and PCIe are different systems. Each controller may need a correct driver. A driver problem may be related to a controller, not the visible device.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can a driver problem be connected to the motherboard?</p><details data-checkpoint><summary>Show answer</summary><p>Controllers and buses on the motherboard also need correct drivers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">Slide 23</div><div class="slide-title"><h2>Hardware controllers: the hidden middle layer</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="Hardware controllers: the hidden middle layer" loading="lazy"></button><figcaption>Original presentation slide 23 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Key ideas A keyboard does not talk directly to an application. Signals pass through electronics, USB, controller, bus, CPU, Windows, and driver. The driver gives Windows the correct way to control the device. A problem can appear at several points in the chain. Support should consider the whole path, not only the visible device.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can a driver problem be connected to the motherboard?</p><details data-checkpoint><summary>Show answer</summary><p>Controllers and buses on the motherboard also need correct drivers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">Slide 24</div><div class="slide-title"><h2>Inside Windows: drivers and hardware</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="Inside Windows: drivers and hardware" loading="lazy"></button><figcaption>Original presentation slide 24 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Windows asks the driver to perform hardware-related work. The driver sends commands that the hardware understands. Hardware performs the real physical action: sound, printing, network signals, or display output. Applications are far above this hardware layer. This explains why driver problems can affect real devices.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can a driver problem be connected to the motherboard?</p><details data-checkpoint><summary>Show answer</summary><p>Controllers and buses on the motherboard also need correct drivers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">Slide 25</div><div class="slide-title"><h2>Where does the driver live?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="Where does the driver live?" loading="lazy"></button><figcaption>Original presentation slide 25 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Firmware gives very basic instructions stored in hardware. Driver software is stored on disk and loaded by Windows. The Windows Kernel controls drivers and access to hardware. Applications usually use Windows services, not hardware directly. The driver sits between the operating system and the physical device.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can a driver problem be connected to the motherboard?</p><details data-checkpoint><summary>Show answer</summary><p>Controllers and buses on the motherboard also need correct drivers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">Slide 26</div><div class="slide-title"><h2>One driver does not fit every device</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="One driver does not fit every device" loading="lazy"></button><figcaption>Original presentation slide 26 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Drivers must match the device model and manufacturer. A network driver cannot control a printer, camera, or sound card. Wrong drivers can create errors, crashes, or unstable hardware behavior. Device names and IDs matter for correct driver selection. Random driver websites are unsafe for school or hospital computers.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can a driver problem be connected to the motherboard?</p><details data-checkpoint><summary>Show answer</summary><p>Controllers and buses on the motherboard also need correct drivers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">Slide 27</div><div class="slide-title"><h2>Generic drivers vs. special drivers</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="Generic drivers vs. special drivers" loading="lazy"></button><figcaption>Original presentation slide 27 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Generic drivers support common standard devices. Keyboards, mice, and many USB drives often work with built-in drivers. Special devices need manufacturer-specific drivers. Medical scanners and special office equipment should be handled carefully. Special equipment should not be treated like a normal home device.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can a driver problem be connected to the motherboard?</p><details data-checkpoint><summary>Show answer</summary><p>Controllers and buses on the motherboard also need correct drivers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">Slide 28</div><div class="slide-title"><h2>Driver installation process</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="Driver installation process" loading="lazy"></button><figcaption>Original presentation slide 28 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Driver installation has several hidden steps. Windows detects the device, reads its ID, and searches for a match. The driver must load successfully before the device is ready. Failure at any step can produce an error or warning icon. The user usually sees only the final result.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can a driver problem be connected to the motherboard?</p><details data-checkpoint><summary>Show answer</summary><p>Controllers and buses on the motherboard also need correct drivers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">Slide 29</div><div class="slide-title"><h2>Driver conflict after update</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="Driver conflict after update" loading="lazy"></button><figcaption>Original presentation slide 29 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A driver update can fix bugs or improve compatibility. A new driver can also cause a conflict with existing hardware or Windows. Problems that begin after an update should be reported clearly. Roll Back Driver returns to a previous driver version. Rollback is a controlled support action, not a beginner classroom task.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can a driver problem be connected to the motherboard?</p><details data-checkpoint><summary>Show answer</summary><p>Controllers and buses on the motherboard also need correct drivers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 4 — Device Manager</h2>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">Slide 30</div><div class="slide-title"><h2>PART 4</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="PART 4" loading="lazy"></button><figcaption>Original presentation slide 30 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Device Manager Device Manager is the hardware map inside Windows. Device Manager is the hardware map inside Windows. It shows categories, device names, warning icons, and status clues. It also contains buttons that can change the system. Beginner practice must be observation only. Safe rule: open, read, screenshot, report — do not change.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">Slide 31</div><div class="slide-title"><h2>What is Device Manager?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="What is Device Manager?" loading="lazy"></button><figcaption>Original presentation slide 31 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Device Manager is a hardware status tool, not a game or normal app. It shows what hardware Windows knows about. It can show whether devices are normal, warning, disabled, or unknown. It helps collect evidence for support reports. The safest first use is observation.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">Slide 32</div><div class="slide-title"><h2>Device Manager tree structure</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="Device Manager tree structure" loading="lazy"></button><figcaption>Original presentation slide 32 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Device Manager uses categories like a tree. A category can be opened to show specific devices. Display adapters, Network adapters, Cameras, Sound devices, and USB controllers show different hardware areas. Choosing the right category saves time. The category points toward where to inspect first.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">Slide 33</div><div class="slide-title"><h2>Device Manager categories by problem</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="Device Manager categories by problem" loading="lazy"></button><figcaption>Original presentation slide 33 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Study the original slide and identify how Windows, drivers, hardware, and safe evidence fit together.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">Slide 34</div><div class="slide-title"><h2>Device status in Properties</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="Device status in Properties" loading="lazy"></button><figcaption>Original presentation slide 34 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Study the original slide and identify how Windows, drivers, hardware, and safe evidence fit together.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">Slide 35</div><div class="slide-title"><h2>Yellow warning icon</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="Yellow warning icon" loading="lazy"></button><figcaption>Original presentation slide 35 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A yellow warning icon means Windows found a device problem. The cause may be driver, configuration, cable, or hardware. The icon is a clue, not a complete diagnosis. The next step is to read device status. The status message and screenshot should be included in a report.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">Slide 36</div><div class="slide-title"><h2>Unknown device</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="Unknown device" loading="lazy"></button><figcaption>Original presentation slide 36 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Unknown device means Windows sees something connected. Windows does not know exactly what the device is. This often happens when driver information is missing. The safe response is to record the status and take a screenshot. Do not guess the driver or install random tools.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">Slide 37</div><div class="slide-title"><h2>Disabled device vs. missing driver</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="Disabled device vs. missing driver" loading="lazy"></button><figcaption>Original presentation slide 37 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Disabled device and missing driver are different problems. Disabled device: Windows knows the device but it is turned off in Windows. Missing driver: Windows cannot communicate with the device correctly. The support action depends on the exact status. Read the message before deciding what to report.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">Slide 38</div><div class="slide-title"><h2>Driver properties window</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="Driver properties window" loading="lazy"></button><figcaption>Original presentation slide 38 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Driver Provider shows who made the driver. Driver Date and Version help identify changes. Digital Signer can show whether the driver is officially signed. Update, Roll Back, Disable, and Uninstall change the system. Beginner support should read this tab and report, not experiment.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">Slide 39</div><div class="slide-title"><h2>Safe observation vs. dangerous actions</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="Safe observation vs. dangerous actions" loading="lazy"></button><figcaption>Original presentation slide 39 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Safe actions are observation actions: open, look, read, screenshot, report. Risky actions change the computer: update, disable, uninstall, roll back. Driver booster and unknown driver tools should not be used. Changing drivers without understanding can create new problems. Class practice must stay in the safe observation zone.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">Slide 40</div><div class="slide-title"><h2>How to open Device Manager</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="How to open Device Manager" loading="lazy"></button><figcaption>Original presentation slide 40 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Device Manager can be opened from the quick menu, search, or Run command. Opening the tool is safe if no settings are changed. The important skill is reading categories and device names. A screenshot is useful for a support report. Driver settings should not be changed during basic practice.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">Slide 41</div><div class="slide-title"><h2>Device Manager: what it shows</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="Device Manager: what it shows" loading="lazy"></button><figcaption>Original presentation slide 41 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Normal devices usually appear without a warning icon. Problem devices may show yellow warning marks or appear under Other devices. Device Manager gives device names, categories, and status information. These details are evidence for support work. Evidence helps another person continue the repair safely.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe beginner use of Device Manager?</p><details data-checkpoint><summary>Show answer</summary><p>Open, read, take evidence, screenshot, and report—do not change settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 5 — Support cases</h2>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">Slide 42</div><div class="slide-title"><h2>PART 5</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="PART 5" loading="lazy"></button><figcaption>Original presentation slide 42 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Support Cases Apply the driver idea to real workplace problems. Driver problems can look like broken hardware. Wrong or missing drivers can affect Wi‑Fi, sound, display, camera, and USB devices. A support worker should ask what changed before the problem started. Device Manager gives evidence but not always the whole answer. Report evidence before changing drivers.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should be collected before changing a driver?</p><details data-checkpoint><summary>Show answer</summary><p>Device name, category, warning/status message, symptom, and what changed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">Slide 43</div><div class="slide-title"><h2>Case: No Wi‑Fi</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="Case: No Wi‑Fi" loading="lazy"></button><figcaption>Original presentation slide 43 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Driver-related clues Open Network adapters category. Look for Wi‑Fi adapter name. Check for yellow warning icon. Ask if problem started after Windows update. Airplane mode and Wi‑Fi settings still matter. Support report includes Device name, if visible. Warning icon or status message. One PC or many PCs affected. Screenshot of Device Manager. Recent change: update, move, new device, or unknown.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should be collected before changing a driver?</p><details data-checkpoint><summary>Show answer</summary><p>Device name, category, warning/status message, symptom, and what changed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">Slide 44</div><div class="slide-title"><h2>Case: No Sound</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="Case: No Sound" loading="lazy"></button><figcaption>Original presentation slide 44 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Possible driver area Open Sound devices category. Check if audio device is visible. Look for warning icon or disabled status. Wrong output device can also cause silence. A driver issue is only one possible cause. First checks Volume is not muted. Correct output device is selected. Headphones are not accidentally connected. Device is visible in Device Manager. Take screenshot before changing anything.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should be collected before changing a driver?</p><details data-checkpoint><summary>Show answer</summary><p>Device name, category, warning/status message, symptom, and what changed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">Slide 45</div><div class="slide-title"><h2>Case: Low Resolution</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="Case: Low Resolution" loading="lazy"></button><figcaption>Original presentation slide 45 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Possible driver area Open Display adapters category. Check if only a basic display driver is loaded. Graphics driver may be missing, wrong, or old. Problem may start after Windows install or update. Report the adapter name and status. What the user sees Large icons and wrong scale. Blurry image or poor picture quality. Wrong screen size or limited resolution. Poor video performance. External monitor may not be detected correctly.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should be collected before changing a driver?</p><details data-checkpoint><summary>Show answer</summary><p>Device name, category, warning/status message, symptom, and what changed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">Slide 46</div><div class="slide-title"><h2>Case: USB Device Not Recognized</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="Case: USB Device Not Recognized" loading="lazy"></button><figcaption>Original presentation slide 46 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Possible areas USB cable or port. USB controller. Device driver. The USB device itself. Power supply for the device, if needed. Safe support action Try another USB port. Try another cable if possible. Check Device Manager status. Record exact error message. Do not uninstall USB controllers in class.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should be collected before changing a driver?</p><details data-checkpoint><summary>Show answer</summary><p>Device name, category, warning/status message, symptom, and what changed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">Slide 47</div><div class="slide-title"><h2>Driver Update vs. Roll Back</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="Driver Update vs. Roll Back" loading="lazy"></button><figcaption>Original presentation slide 47 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Update Driver tries to use a newer driver. A newer driver can fix bugs or add support. Roll Back Driver returns to a previous driver version. Rollback can help when a new driver creates a problem. Both actions should be done only with permission or expert guidance.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should be collected before changing a driver?</p><details data-checkpoint><summary>Show answer</summary><p>Device name, category, warning/status message, symptom, and what changed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">Slide 48</div><div class="slide-title"><h2>Good driver = stable system</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="Good driver = stable system" loading="lazy"></button><figcaption>Original presentation slide 48 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A good driver supports stable hardware communication. Correct drivers can reduce errors, crashes, and device failures. Stable drivers help users work smoothly. Newest is not always best; correct and trusted is more important. Driver quality affects the whole workstation.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should be collected before changing a driver?</p><details data-checkpoint><summary>Show answer</summary><p>Device name, category, warning/status message, symptom, and what changed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">Slide 49</div><div class="slide-title"><h2>How to fix driver problems safely</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="How to fix driver problems safely" loading="lazy"></button><figcaption>Original presentation slide 49 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Check the symptom and collect visible clues. Find the likely device category and status message. Report or plan before changing driver settings. Fix only when the action is safe and permitted. Test the result after any change.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should be collected before changing a driver?</p><details data-checkpoint><summary>Show answer</summary><p>Device name, category, warning/status message, symptom, and what changed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 6 — Safe classroom practice</h2>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">Slide 50</div><div class="slide-title"><h2>PART 6</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg"><img src="assets/slides/slide-50.jpg" alt="PART 6" loading="lazy"></button><figcaption>Original presentation slide 50 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Classroom Practice The practice is safe observation: find devices, read names, take screenshots, report. The practice is safe observation, not driver repair. Students open Device Manager and find categories. Students write device names and status information. Students take screenshots for reports. No update, disable, uninstall, or rollback actions are allowed.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe support rule for this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Read evidence first, report clearly, and only change drivers with permission or expert guidance.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">Slide 51</div><div class="slide-title"><h2>Safe Device Manager Practice</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg"><img src="assets/slides/slide-51.jpg" alt="Safe Device Manager Practice" loading="lazy"></button><figcaption>Original presentation slide 51 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Open Device Manager. Find these categories. Do not change anything. Find this Category What to write Do not do Network adapter Network adapters Device name + status Update / Disable Graphics adapter Display adapters Device name + status Uninstall / Roll Back Keyboard / Mouse Keyboards / Mice Device name Change settings Audio device Sound devices Output device name Random driver install USB controller Universal Serial Bus controllers Controller name Uninstall controller Camera Cameras Camera device name Enable/disable randomly</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe support rule for this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Read evidence first, report clearly, and only change drivers with permission or expert guidance.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">Slide 52</div><div class="slide-title"><h2>Simple Driver Problem Report</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg"><img src="assets/slides/slide-52.jpg" alt="Simple Driver Problem Report" loading="lazy"></button><figcaption>Original presentation slide 52 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Use short English. The report must help another person understand the hardware problem. Device Wi‑Fi adapter / camera / printer / audio device Place Lab 2 / classroom / office desk Symptom No Wi‑Fi / no sound / device not recognized Device Manager status Working properly / warning icon / unknown device What changed After update / after moving desk / unknown Checked Cable / settings / other computer / screenshot taken Need help Please check driver or hardware safely</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe support rule for this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Read evidence first, report clearly, and only change drivers with permission or expert guidance.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">Slide 53</div><div class="slide-title"><h2>Mini Case Practice</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-53.jpg"><img src="assets/slides/slide-53.jpg" alt="Mini Case Practice" loading="lazy"></button><figcaption>Original presentation slide 53 — click to enlarge</figcaption></figure>
+<section class="reading"><p>For each case, choose the Device Manager category and write one report sentence. Case A After Windows Update, Wi‑Fi networks do not appear. Category: Network adapters Case B The screen is blurry and resolution is very low. Category: Display adapters Case C The webcam is not found in the meeting app. Category: Cameras Case D A USB barcode reader is connected but sends no data. Category: USB controllers / HID</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe support rule for this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Read evidence first, report clearly, and only change drivers with permission or expert guidance.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-54">
+<div class="slide-head"><div class="badge">Slide 54</div><div class="slide-title"><h2>Five Things to Remember</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-54.jpg"><img src="assets/slides/slide-54.jpg" alt="Five Things to Remember" loading="lazy"></button><figcaption>Original presentation slide 54 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Key ideas Hardware may be connected but still unusable without the correct driver. Drivers translate between Windows and physical devices. Device Manager is a hardware map and status tool. Read status and warning messages before changing anything. Clear reports and screenshots make support safer.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe support rule for this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Read evidence first, report clearly, and only change drivers with permission or expert guidance.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-55">
+<div class="slide-head"><div class="badge">Slide 55</div><div class="slide-title"><h2>Final summary: Windows → Driver → Hardware → Result</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-55.jpg"><img src="assets/slides/slide-55.jpg" alt="Final summary: Windows → Driver → Hardware → Result" loading="lazy"></button><figcaption>Original presentation slide 55 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The driver is one important link in the communication path. Windows uses drivers to control hardware. Hardware performs real physical work. When the driver link fails, the device may stop working or behave badly. Correct drivers help turn the computer into a stable workplace tool.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe support rule for this slide?</p><details data-checkpoint><summary>Show answer</summary><p>Read evidence first, report clearly, and only change drivers with permission or expert guidance.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<section class="interactive-section" id="interactive-review">
+<h2>Extended interactive review</h2>
+<p>In Device Manager, beginner support work is observation, recording, and reporting—not random changes.</p>
+
+<div class="lab-grid">
+<article class="lab">
+<h3>1. Communication chain</h3>
+<div class="chain-builder" id="chain-builder">
+<button class="chain-step" data-key="user">User action</button>
+<button class="chain-step" data-key="windows">Windows</button>
+<button class="chain-step" data-key="driver">Driver</button>
+<button class="chain-step" data-key="hardware">Hardware</button>
+<button class="chain-step" data-key="result">Result</button>
+</div>
+<div class="actions"><button class="primary" id="check-chain" type="button">Check order</button></div>
+<div class="feedback" id="chain-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>2. Choose the Device Manager category</h3>
+<select id="category-case">
+<option value="wifi">Wi‑Fi networks do not appear</option>
+<option value="sound">No sound</option>
+<option value="display">Low resolution</option>
+<option value="camera">Webcam not found</option>
+<option value="usb">USB barcode reader sends nothing</option>
+</select>
+<div class="choice-grid" id="category-choices">
+<button data-choice="Network adapters">Network adapters</button>
+<button data-choice="Sound devices">Sound devices</button>
+<button data-choice="Display adapters">Display adapters</button>
+<button data-choice="Cameras">Cameras</button>
+<button data-choice="USB controllers / HID">USB controllers / HID</button>
+</div>
+<div class="feedback" id="category-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>3. Read the status clue</h3>
+<div class="status-grid">
+<button class="status-card" data-kind="normal">✓ Normal</button>
+<button class="status-card" data-kind="warning">⚠ Yellow warning</button>
+<button class="status-card" data-kind="unknown">? Unknown device</button>
+<button class="status-card" data-kind="disabled">↓ Disabled</button>
+</div>
+<div class="status-info" id="status-info"></div>
+</article>
+
+<article class="lab">
+<h3>4. Safe or risky action</h3>
+<div class="safety-grid">
+<div class="safety-card" data-answer="safe">Read the device name<strong></strong></div>
+<div class="safety-card" data-answer="safe">Screenshot the status message<strong></strong></div>
+<div class="safety-card" data-answer="risky">Randomly click Update Driver<strong></strong></div>
+<div class="safety-card" data-answer="risky">Uninstall USB controller<strong></strong></div>
+<div class="safety-card" data-answer="safe">Report the warning icon<strong></strong></div>
+<div class="safety-card" data-answer="risky">Use a driver booster tool<strong></strong></div>
+</div>
+<div class="actions"><button class="primary" id="check-safety" type="button">Check classifications</button></div>
+<div class="feedback" id="safety-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>5. Update or Roll Back?</h3>
+<select id="update-case">
+<option value="afterupdate">Wi‑Fi disappeared after Windows Update</option>
+<option value="newdevice">A new special scanner was added</option>
+<option value="random">User wants newest driver for no reason</option>
+<option value="observe">Classroom observation practice</option>
+</select>
+<div class="feedback" id="update-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>6. Driver problem report</h3>
+<div class="report-builder">
+<select id="report-device"><option>Wi‑Fi adapter</option><option>Audio device</option><option>Display adapter</option><option>USB barcode reader</option><option>Webcam</option></select>
+<select id="report-status"><option>Yellow warning icon</option><option>Unknown device</option><option>Working properly</option><option>Disabled</option><option>Device not visible</option></select>
+<select id="report-change"><option>After Windows Update</option><option>After moving desk</option><option>After connecting new device</option><option>No known change</option></select>
+<button class="primary" id="build-report" type="button">Build report</button>
+</div>
+<pre class="report-output" id="report-output"></pre>
+</article>
+</div>
+
+<article class="lab" style="margin-top:18px">
+<h3>7. Mini case practice</h3>
+<div class="case-grid">
+<button class="case-card" data-case="wifi">After update, Wi‑Fi networks do not appear</button>
+<button class="case-card" data-case="display">After Windows reinstall, resolution is very low</button>
+<button class="case-card" data-case="camera">Meeting app cannot find webcam</button>
+<button class="case-card" data-case="usb">USB barcode reader is connected but sends no text</button>
+</div>
+<div class="case-info" id="case-info"></div>
+</article>
+
+<article class="lab" style="margin-top:18px">
+<h3>8. Final knowledge check</h3>
+<form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. A driver mainly:</legend><label><input type="radio" name="q1" value="0"> Cools the CPU</label><label><input type="radio" name="q1" value="1"> Translates between Windows and hardware</label><label><input type="radio" name="q1" value="2"> Stores photos</label><label><input type="radio" name="q1" value="3"> Changes screen color</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>2. A connected device may not work because:</legend><label><input type="radio" name="q2" value="0"> It needs a matching driver</label><label><input type="radio" name="q2" value="1"> The user typed too fast</label><label><input type="radio" name="q2" value="2"> Every cable is bad</label><label><input type="radio" name="q2" value="3"> Windows never uses hardware</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>3. Device Manager is best described as:</legend><label><input type="radio" name="q3" value="0"> A game</label><label><input type="radio" name="q3" value="1"> A hardware map and status tool</label><label><input type="radio" name="q3" value="2"> A web browser</label><label><input type="radio" name="q3" value="3"> A printer queue</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. Safe beginner action:</legend><label><input type="radio" name="q4" value="0"> Read status and screenshot</label><label><input type="radio" name="q4" value="1"> Uninstall random driver</label><label><input type="radio" name="q4" value="2"> Disable network adapter</label><label><input type="radio" name="q4" value="3"> Use driver booster</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>5. A yellow warning icon means:</legend><label><input type="radio" name="q5" value="0"> A clue to a device problem</label><label><input type="radio" name="q5" value="1"> Everything is perfect</label><label><input type="radio" name="q5" value="2"> Battery is full</label><label><input type="radio" name="q5" value="3"> The monitor is bright</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>6. Unknown device usually means:</legend><label><input type="radio" name="q6" value="0"> Windows sees something but cannot identify it</label><label><input type="radio" name="q6" value="1"> The device is guaranteed broken</label><label><input type="radio" name="q6" value="2"> The device is a virus</label><label><input type="radio" name="q6" value="3"> No cable exists</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>7. Plug and Play means Windows tries to:</legend><label><input type="radio" name="q7" value="0"> Identify hardware and load a driver</label><label><input type="radio" name="q7" value="1"> Print every file</label><label><input type="radio" name="q7" value="2"> Format the disk</label><label><input type="radio" name="q7" value="3"> Turn off all ports</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. A driver is not a normal app because it:</legend><label><input type="radio" name="q8" value="0"> Works close to OS and hardware</label><label><input type="radio" name="q8" value="1"> Is always visible to the user</label><label><input type="radio" name="q8" value="2"> Stores only pictures</label><label><input type="radio" name="q8" value="3"> Needs no device</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>9. For no Wi‑Fi, first Device Manager category:</legend><label><input type="radio" name="q9" value="0"> Network adapters</label><label><input type="radio" name="q9" value="1"> Printers</label><label><input type="radio" name="q9" value="2"> Batteries</label><label><input type="radio" name="q9" value="3"> Fonts</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>10. For low resolution, check:</legend><label><input type="radio" name="q10" value="0"> Display adapters</label><label><input type="radio" name="q10" value="1"> Keyboards</label><label><input type="radio" name="q10" value="2"> Audio inputs</label><label><input type="radio" name="q10" value="3"> Time zone</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>11. Before driver changes, collect:</legend><label><input type="radio" name="q11" value="0"> Device name, status, screenshot</label><label><input type="radio" name="q11" value="1"> Only a guess</label><label><input type="radio" name="q11" value="2"> No evidence</label><label><input type="radio" name="q11" value="3"> A random website</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. Update Driver and Roll Back should be done:</legend><label><input type="radio" name="q12" value="0"> Only with permission or guidance</label><label><input type="radio" name="q12" value="1"> Randomly in class</label><label><input type="radio" name="q12" value="2"> Before reading status</label><label><input type="radio" name="q12" value="3"> On every PC</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>13. Generic drivers are common for:</legend><label><input type="radio" name="q13" value="0"> Standard keyboards and mice</label><label><input type="radio" name="q13" value="1"> Every medical device</label><label><input type="radio" name="q13" value="2"> Every printer model</label><label><input type="radio" name="q13" value="3"> All GPUs</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>14. Driver problems can look like:</legend><label><input type="radio" name="q14" value="0"> Hardware problems</label><label><input type="radio" name="q14" value="1"> Weather problems</label><label><input type="radio" name="q14" value="2"> Food problems</label><label><input type="radio" name="q14" value="3"> No problem ever</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. Final chain:</legend><label><input type="radio" name="q15" value="0"> Windows → Driver → Hardware → Result</label><label><input type="radio" name="q15" value="1"> User → Paper → Fan → Result</label><label><input type="radio" name="q15" value="2"> Driver → Wall outlet → Ink</label><label><input type="radio" name="q15" value="3"> GPU → Keyboard → Patient</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">Check final quiz</button><button class="secondary" id="reset-quiz" type="reset">Reset</button></div><div class="score" id="quiz-score" data-label="Final score"></div></form>
+</article>
+</section>
+</main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · Lecture 8 · Drivers and Device Manager · Original 55-slide sequence preserved.</footer></body></html>
