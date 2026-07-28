@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第5講 — ネットワークとインターネット</title>
+<meta name="description" content="第5講 — ネットワークとインターネット — original slides, bilingual reading, checkpoints, and interactive review.">
+<link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script>
+<style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head>
+<body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture04/index.html">← 4</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture06/index.html">6 →</a></nav>
+<header id="top"><div class="header-inner">
+<div class="course">Computer Fundamentals 2 · 今学期 · ウェブ講義 5</div>
+<div class="archive-note">元のスライド画像を保存し、スライド内部の古い表記もそのまま残しています。</div>
+<h1>ネットワークとインターネット</h1>
+<p class="subtitle">元の68枚のスライドを、そのまま学べるウェブ講義にしました。</p>
+<p class="intro">通信信号からLAN、パケット、インターネットサービス、病院システム、実践的トラブルシューティングまでを学びます。</p>
+<div class="lang-switch"><a href="lecture_en.html">English</a><a class="current" href="lecture_ja.html">日本語</a></div>
+</div></header>
+<main class="container">
+<section class="core"><h2>中心の流れ</h2><div class="core-chain">データ → 物理信号 → パケット → アドレス → スイッチ／ルーター → サーバー → 病院サービス</div></section>
+<section class="progress-box"><strong>学習進行</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>考えた後で答えを開いてください。</span></section>
+<section class="notice"><h2>この講義の使い方</h2><p>各オリジナルスライドを見て、説明を読み、答えを開く前に考え、最後に拡張インタラクティブ復習を行ってください。</p></section>
+<section class="notice map" id="lesson-map"><h2>講義マップ — 元の68枚のスライド</h2><ol><li><a href="#slide-1">スライド 1: 第5講 — ネットワークとインターネット</a></li>
+<li><a href="#slide-2">スライド 2: 今日のストーリー</a></li>
+<li><a href="#slide-3">スライド 3: 第1部 — 通信の歴史とデジタル信号</a></li>
+<li><a href="#slide-4">スライド 4: 通信のタイムライン</a></li>
+<li><a href="#slide-5">スライド 5: メッセージには伝送手段が必要</a></li>
+<li><a href="#slide-6">スライド 6: 電信とモールス信号</a></li>
+<li><a href="#slide-7">スライド 7: ON/OFF信号 = 0/1ビット</a></li>
+<li><a href="#slide-8">スライド 8: 第2部 — 信号、ケーブル、ローカルネットワーク</a></li>
+<li><a href="#slide-9">スライド 9: 電話：音声から電気信号へ</a></li>
+<li><a href="#slide-10">スライド 10: 無線通信</a></li>
+<li><a href="#slide-11">スライド 11: データが信号になる</a></li>
+<li><a href="#slide-12">スライド 12: データを運ぶ方法</a></li>
+<li><a href="#slide-13">スライド 13: 1台のコンピュータとネットワーク</a></li>
+<li><a href="#slide-14">スライド 14: ネットワーク（LAN）とは</a></li>
+<li><a href="#slide-15">スライド 15: イーサネットケーブルとRJ45コネクタ</a></li>
+<li><a href="#slide-16">スライド 16: ツイストペアケーブルの内部</a></li>
+<li><a href="#slide-17">スライド 17: 第3部 — スイッチ、ルーター、ネットワーク構造</a></li>
+<li><a href="#slide-18">スライド 18: スイッチは正しい機器へデータを送る</a></li>
+<li><a href="#slide-19">スライド 19: スイッチを使う理由</a></li>
+<li><a href="#slide-20">スライド 20: ルーターはネットワークを接続する</a></li>
+<li><a href="#slide-21">スライド 21: スイッチとルーター</a></li>
+<li><a href="#slide-22">スライド 22: インターネット回線 → モデム／ONU → ルーター</a></li>
+<li><a href="#slide-23">スライド 23: 家庭ネットワークの例</a></li>
+<li><a href="#slide-24">スライド 24: 病院ネットワークの全体像</a></li>
+<li><a href="#slide-25">スライド 25: 大きなメッセージ → 小さなパケット</a></li>
+<li><a href="#slide-26">スライド 26: 第4部 — パケットとIPアドレス</a></li>
+<li><a href="#slide-27">スライド 27: 封筒としてのパケット</a></li>
+<li><a href="#slide-28">スライド 28: パケットはルーターを通る</a></li>
+<li><a href="#slide-29">スライド 29: すべてのネットワーク機器にIPアドレスがある</a></li>
+<li><a href="#slide-30">スライド 30: プライベートIPとパブリックIP</a></li>
+<li><a href="#slide-31">スライド 31: 第5部 — インターネット、サーバー、DNS、ウェブサイト</a></li>
+<li><a href="#slide-32">スライド 32: 初期コンピュータネットワークの考え方</a></li>
+<li><a href="#slide-33">スライド 33: インターネット = ネットワークのネットワーク</a></li>
+<li><a href="#slide-34">スライド 34: クライアントとサーバー</a></li>
+<li><a href="#slide-35">スライド 35: DNS：名前 → IPアドレス</a></li>
+<li><a href="#slide-36">スライド 36: ウェブサイトを開く</a></li>
+<li><a href="#slide-37">スライド 37: ウェブサイトのファイル</a></li>
+<li><a href="#slide-38">スライド 38: HTTPとHTTPS</a></li>
+<li><a href="#slide-39">スライド 39: 病院データを保護する</a></li>
+<li><a href="#slide-40">スライド 40: 第6部 — Wi‑Fiとモバイルインターネット</a></li>
+<li><a href="#slide-41">スライド 41: Wi‑Fiアクセスポイント</a></li>
+<li><a href="#slide-42">スライド 42: SSIDとWi‑Fiパスワード</a></li>
+<li><a href="#slide-43">スライド 43: 弱いWi‑Fi信号</a></li>
+<li><a href="#slide-44">スライド 44: Wi‑Fi接続済み、しかしインターネットなし</a></li>
+<li><a href="#slide-45">スライド 45: モバイルホットスポット</a></li>
+<li><a href="#slide-46">スライド 46: 第7部 — 病院ネットワーク</a></li>
+<li><a href="#slide-47">スライド 47: 患者データベースサーバー</a></li>
+<li><a href="#slide-48">スライド 48: バーコードスキャナー → データベース</a></li>
+<li><a href="#slide-49">スライド 49: ネットワークプリンター</a></li>
+<li><a href="#slide-50">スライド 50: 検査結果がネットワークを通る</a></li>
+<li><a href="#slide-51">スライド 51: 1台のPCか、多数のPCか</a></li>
+<li><a href="#slide-52">スライド 52: 第8部 — ネットワークトラブルシューティング</a></li>
+<li><a href="#slide-53">スライド 53: ネットワークケーブルを確認</a></li>
+<li><a href="#slide-54">スライド 54: Wi‑Fiを確認</a></li>
+<li><a href="#slide-55">スライド 55: DNS問題</a></li>
+<li><a href="#slide-56">スライド 56: サーバーダウン</a></li>
+<li><a href="#slide-57">スライド 57: ネットワーク確認チェックリスト</a></li>
+<li><a href="#slide-58">スライド 58: 問題を明確に報告する</a></li>
+<li><a href="#slide-59">スライド 59: 第9部 — 活動と復習</a></li>
+<li><a href="#slide-60">スライド 60: 活動：人間パケットネットワーク</a></li>
+<li><a href="#slide-61">スライド 61: 活動：DNS教室ゲーム</a></li>
+<li><a href="#slide-62">スライド 62: トラブルシューティング決定木</a></li>
+<li><a href="#slide-63">スライド 63: 最終復習マップ</a></li>
+<li><a href="#slide-64">スライド 64: クイズ：1台か多数か</a></li>
+<li><a href="#slide-65">スライド 65: 病院ネットワーク問題シナリオ</a></li>
+<li><a href="#slide-66">スライド 66: 活動：ネットワーク役割カード</a></li>
+<li><a href="#slide-67">スライド 67: 最終実践チェックリスト</a></li>
+<li><a href="#slide-68">スライド 68: 最後の考え</a></li></ol></section>
+<h2 class="part-title">導入 — なぜネットワークが重要か</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">スライド 1</div>
+<div class="slide-title"><h2>第5講 — ネットワークとインターネット</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg">
+<img src="assets/slides/slide-01.jpg" alt="第5講 — ネットワークとインターネット" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 1 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ネットワークはコンピュータ同士が情報を交換し、サービスを共有するための仕組みです。この講義では通信の歴史から、信号、LAN、パケット、インターネット、Wi‑Fi、病院ネットワーク、トラブルシューティングまでを学びます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>コンピュータネットワークの主な目的は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>接続された機器同士でデータを交換し、サービスを共有することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">スライド 2</div>
+<div class="slide-title"><h2>今日のストーリー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg">
+<img src="assets/slides/slide-02.jpg" alt="今日のストーリー" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 2 — タップして拡大</figcaption></figure>
+<section class="reading"><p>通信は物理的な手紙から電気信号、そしてデジタルネットワークへ発展しました。現代の病院システムにも、メッセージ、伝送手段、アドレス、宛先という基本があります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>古い通信と現代通信に共通する4つの要素は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>メッセージ、伝送手段、アドレス、宛先です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第1部 — 通信の歴史とデジタル信号</h2>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">スライド 3</div>
+<div class="slide-title"><h2>第1部 — 通信の歴史とデジタル信号</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg">
+<img src="assets/slides/slide-03.jpg" alt="第1部 — 通信の歴史とデジタル信号" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 3 — タップして拡大</figcaption></figure>
+<section class="reading"><p>この部分では通信の歴史とコンピュータネットワークをつなげます。電信はON/OFFの電気信号を使い、これはデジタルの0と1の考え方に似ています。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>電信がコンピュータネットワークの学習に関係するのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>情報を電気信号のパターンとして表せることを示すからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">スライド 4</div>
+<div class="slide-title"><h2>通信のタイムライン</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg">
+<img src="assets/slides/slide-04.jpg" alt="通信のタイムライン" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 4 — タップして拡大</figcaption></figure>
+<section class="reading"><p>通信は使者、郵便、電信、電話、ラジオ、コンピュータネットワーク、モバイルインターネットへ発展しました。各段階で速度、距離、情報量が向上しました。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>通信の歴史で一般に向上したものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>速度、距離、送れる情報量です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">スライド 5</div>
+<div class="slide-title"><h2>メッセージには伝送手段が必要</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg">
+<img src="assets/slides/slide-05.jpg" alt="メッセージには伝送手段が必要" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 5 — タップして拡大</figcaption></figure>
+<section class="reading"><p>情報だけでは移動できません。紙、音波、電流、光ファイバー内の光、電波などの物理的な伝送手段が必要です。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>デジタルネットワークで使う伝送手段を1つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>電気信号、光、または電波です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">スライド 6</div>
+<div class="slide-title"><h2>電信とモールス信号</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg">
+<img src="assets/slides/slide-06.jpg" alt="電信とモールス信号" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 6 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電信は電線上に電気パルスを送りました。モールス信号は文字を短い信号と長い信号の組み合わせに変換しました。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>モールス信号の役割は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>文字を電気信号のパターンに符号化することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">スライド 7</div>
+<div class="slide-title"><h2>ON/OFF信号 = 0/1ビット</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg">
+<img src="assets/slides/slide-07.jpg" alt="ON/OFF信号 = 0/1ビット" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 7 — タップして拡大</figcaption></figure>
+<section class="reading"><p>デジタルシステムは2つの状態で情報を表します。ON/OFF、高電圧/低電圧、光あり/なしで0と1を表せます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>2状態の信号が便利なのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>2進数の0と1を安定して表せるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第2部 — 信号、ケーブル、ローカルネットワーク</h2>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">スライド 8</div>
+<div class="slide-title"><h2>第2部 — 信号、ケーブル、ローカルネットワーク</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg">
+<img src="assets/slides/slide-08.jpg" alt="第2部 — 信号、ケーブル、ローカルネットワーク" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 8 — タップして拡大</figcaption></figure>
+<section class="reading"><p>コンピュータはデータを物理信号へ変換します。銅線は電気、光ファイバーは光、Wi‑Fiは電波を使います。LANは限られた場所の機器を接続します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>LANは何の略ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Local Area Networkです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">スライド 9</div>
+<div class="slide-title"><h2>電話：音声から電気信号へ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg">
+<img src="assets/slides/slide-09.jpg" alt="電話：音声から電気信号へ" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 9 — タップして拡大</figcaption></figure>
+<section class="reading"><p>マイクは音の振動を電気信号へ変換します。受信側のスピーカーは電気信号を音へ戻します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>電話のマイクでは何が変換されますか。</p><details data-checkpoint><summary>答えを見る</summary><p>音が電気信号へ変換されます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">スライド 10</div>
+<div class="slide-title"><h2>無線通信</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg">
+<img src="assets/slides/slide-10.jpg" alt="無線通信" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 10 — タップして拡大</figcaption></figure>
+<section class="reading"><p>無線通信はケーブルを使わず、電磁波で情報を送ります。Wi‑Fiや携帯通信も同じ広い原理を使います。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>送信者と受信者の間にケーブルは必要ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。空間を通る電磁波を使います。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">スライド 11</div>
+<div class="slide-title"><h2>データが信号になる</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg">
+<img src="assets/slides/slide-11.jpg" alt="データが信号になる" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 11 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ファイルやメッセージはデジタルデータです。ネットワーク機器はそれを電気、光、電波の信号へ変換して送ります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>データがケーブルやWi‑Fiを通る前に何が必要ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>物理信号へ変換する必要があります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">スライド 12</div>
+<div class="slide-title"><h2>データを運ぶ方法</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg">
+<img src="assets/slides/slide-12.jpg" alt="データを運ぶ方法" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 12 — タップして拡大</figcaption></figure>
+<section class="reading"><p>銅線は一般的で安価、光ファイバーは高速で電気的ノイズに強く、Wi‑Fiは移動性があります。それぞれ長所と制限があります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>データを光として運ぶものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>光ファイバーです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">スライド 13</div>
+<div class="slide-title"><h2>1台のコンピュータとネットワーク</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg">
+<img src="assets/slides/slide-13.jpg" alt="1台のコンピュータとネットワーク" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 13 — タップして拡大</figcaption></figure>
+<section class="reading"><p>1台だけでもローカル作業はできますが、ネットワークによりファイル、プリンター、データベース、インターネットなどを共有できます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>ネットワーク接続後に可能になることは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>データ交換と資源・サービスの共有です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">スライド 14</div>
+<div class="slide-title"><h2>ネットワーク（LAN）とは</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg">
+<img src="assets/slides/slide-14.jpg" alt="ネットワーク（LAN）とは" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 14 — タップして拡大</figcaption></figure>
+<section class="reading"><p>LANは家庭、教室、オフィス、病院部門など、限られた場所にある接続機器のグループです。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>インターネット全体は1つのLANですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。LANは限られた地域のネットワークです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">スライド 15</div>
+<div class="slide-title"><h2>イーサネットケーブルとRJ45コネクタ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg">
+<img src="assets/slides/slide-15.jpg" alt="イーサネットケーブルとRJ45コネクタ" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 15 — タップして拡大</figcaption></figure>
+<section class="reading"><p>イーサネットでは一般にツイストペア銅線とRJ45型コネクタを使います。コネクタが確実に固定されることが重要です。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>イーサネットのツイストペアで一般的なコネクタは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>RJ45です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">スライド 16</div>
+<div class="slide-title"><h2>ツイストペアケーブルの内部</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg">
+<img src="assets/slides/slide-16.jpg" alt="ツイストペアケーブルの内部" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 16 — タップして拡大</figcaption></figure>
+<section class="reading"><p>銅線のペアをねじることで電気的干渉とノイズを減らします。線や端子の損傷は速度低下や不安定な接続の原因になります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>線をねじる理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>干渉とノイズを減らすためです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第3部 — スイッチ、ルーター、ネットワーク構造</h2>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">スライド 17</div>
+<div class="slide-title"><h2>第3部 — スイッチ、ルーター、ネットワーク構造</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg">
+<img src="assets/slides/slide-17.jpg" alt="第3部 — スイッチ、ルーター、ネットワーク構造" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 17 — タップして拡大</figcaption></figure>
+<section class="reading"><p>スイッチは1つのLAN内の機器を接続し、ルーターは異なるネットワークを接続します。モデム、ONU、アクセスポイントも別の役割を持ちます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>スイッチとルーターの基本的な違いは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>スイッチはLAN内、ルーターは異なるネットワーク間を接続します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">スライド 18</div>
+<div class="slide-title"><h2>スイッチは正しい機器へデータを送る</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg">
+<img src="assets/slides/slide-18.jpg" alt="スイッチは正しい機器へデータを送る" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 18 — タップして拡大</figcaption></figure>
+<section class="reading"><p>スイッチは各ポートに接続された機器を学習し、ローカルフレームを適切な宛先へ送ります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>スイッチが解決する問題は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ローカル通信を正しい接続機器へ転送することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">スライド 19</div>
+<div class="slide-title"><h2>スイッチを使う理由</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg">
+<img src="assets/slides/slide-19.jpg" alt="スイッチを使う理由" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 19 — タップして拡大</figcaption></figure>
+<section class="reading"><p>スイッチはイーサネットポートを増やし、PC、プリンター、サーバー、アクセスポイントなどを1つのLANに接続します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>病院部門でスイッチが必要な理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>多数のローカル機器を同じLANへ接続するためです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">スライド 20</div>
+<div class="slide-title"><h2>ルーターはネットワークを接続する</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg">
+<img src="assets/slides/slide-20.jpg" alt="ルーターはネットワークを接続する" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 20 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ルーターはネットワークアドレスを読み、病院LANとインターネット事業者など、異なるネットワーク間でパケットを移動します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>ルーターは何を接続しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>異なるネットワークです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">スライド 21</div>
+<div class="slide-title"><h2>スイッチとルーター</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg">
+<img src="assets/slides/slide-21.jpg" alt="スイッチとルーター" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 21 — タップして拡大</figcaption></figure>
+<section class="reading"><p>スイッチは主にLAN内の通信を扱います。ルーターはネットワーク間の経路を選び、ゲートウェイやファイアウォール機能を持つこともあります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>別のネットワークへのゲートウェイになる機器は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ルーターです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">スライド 22</div>
+<div class="slide-title"><h2>インターネット回線 → モデム／ONU → ルーター</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg">
+<img src="assets/slides/slide-22.jpg" alt="インターネット回線 → モデム／ONU → ルーター" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 22 — タップして拡大</figcaption></figure>
+<section class="reading"><p>事業者の回線は最初にモデムまたはONUへ入ります。そこで物理信号を変換し、ルーターがローカルネットワークを事業者網へ接続します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>ルーターの事業者側には何が接続されますか。</p><details data-checkpoint><summary>答えを見る</summary><p>モデムまたはONUです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">スライド 23</div>
+<div class="slide-title"><h2>家庭ネットワークの例</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg">
+<img src="assets/slides/slide-23.jpg" alt="家庭ネットワークの例" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 23 — タップして拡大</figcaption></figure>
+<section class="reading"><p>一般的な家庭ネットワークにはモデム／ONU、ルーター、Wi‑Fiアクセスポイント、有線機器、スマートフォン、ノートPCがあります。1台の箱に複数機能が入ることもあります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>家庭用ルーターの箱に複数の機能が入ることはありますか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。ルーティング、スイッチ、Wi‑Fi、モデム機能を組み合わせることがあります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">スライド 24</div>
+<div class="slide-title"><h2>病院ネットワークの全体像</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg">
+<img src="assets/slides/slide-24.jpg" alt="病院ネットワークの全体像" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 24 — タップして拡大</figcaption></figure>
+<section class="reading"><p>病院ネットワークはワークステーション、プリンター、バーコードリーダー、データベース、サーバー、検査システムを接続します。信頼性とアクセス制御が重要です。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>病院でネットワークの信頼性が重要なのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>診療・事務サービスがタイムリーなデータアクセスに依存するからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">スライド 25</div>
+<div class="slide-title"><h2>大きなメッセージ → 小さなパケット</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg">
+<img src="assets/slides/slide-25.jpg" alt="大きなメッセージ → 小さなパケット" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 25 — タップして拡大</figcaption></figure>
+<section class="reading"><p>大きなデータは小さなパケットへ分割されます。リンクを効率よく共有でき、失われた部分だけを再送できます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>大きなメッセージをパケットに分ける理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>効率的に送信し、エラー時に一部だけ再送できるためです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第4部 — パケットとIPアドレス</h2>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">スライド 26</div>
+<div class="slide-title"><h2>第4部 — パケットとIPアドレス</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg">
+<img src="assets/slides/slide-26.jpg" alt="第4部 — パケットとIPアドレス" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 26 — タップして拡大</figcaption></figure>
+<section class="reading"><p>パケットはデータの一部と制御情報を運びます。IPアドレスは機器のネットワークインターフェースを識別し、ルーターの経路選択を助けます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>この部分の中心となる2つは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>パケットとIPアドレスです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">スライド 27</div>
+<div class="slide-title"><h2>封筒としてのパケット</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg">
+<img src="assets/slides/slide-27.jpg" alt="封筒としてのパケット" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 27 — タップして拡大</figcaption></figure>
+<section class="reading"><p>パケットは封筒に似ています。中にデータがあり、外側に送信元や宛先などの情報があります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>パケットのペイロードとは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>運ばれる実際のユーザーまたはアプリケーションデータです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">スライド 28</div>
+<div class="slide-title"><h2>パケットはルーターを通る</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg">
+<img src="assets/slides/slide-28.jpg" alt="パケットはルーターを通る" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 28 — タップして拡大</figcaption></figure>
+<section class="reading"><p>パケットは複数のルーターを通ることがあります。各ルーターは宛先を確認し、次の適切なネットワークへ送ります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>各ルーターは最終経路全体を事前に知る必要がありますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。宛先へ向かう次の適切な段階を選びます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">スライド 29</div>
+<div class="slide-title"><h2>すべてのネットワーク機器にIPアドレスがある</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg">
+<img src="assets/slides/slide-29.jpg" alt="すべてのネットワーク機器にIPアドレスがある" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 29 — タップして拡大</figcaption></figure>
+<section class="reading"><p>IPアドレスはIPネットワーク上のインターフェースを識別します。正しいアドレスにより、宛先がローカルかルーター経由かを判断できます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>IPアドレスの主な目的は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ネットワークインターフェースを識別し、パケット配送を支えることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">スライド 30</div>
+<div class="slide-title"><h2>プライベートIPとパブリックIP</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg">
+<img src="assets/slides/slide-30.jpg" alt="プライベートIPとパブリックIP" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 30 — タップして拡大</figcaption></figure>
+<section class="reading"><p>プライベートIPはローカルネットワーク内で使い、通常は公共インターネットへ直接ルーティングされません。パブリックIPはインターネット側の接続を識別します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>病院LAN内で一般に使うIPはどちらですか。</p><details data-checkpoint><summary>答えを見る</summary><p>プライベートIPです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第5部 — インターネット、サーバー、DNS、ウェブサイト</h2>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">スライド 31</div>
+<div class="slide-title"><h2>第5部 — インターネット、サーバー、DNS、ウェブサイト</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg">
+<img src="assets/slides/slide-31.jpg" alt="第5部 — インターネット、サーバー、DNS、ウェブサイト" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 31 — タップして拡大</figcaption></figure>
+<section class="reading"><p>インターネットはネットワークの集合です。クライアントが要求し、サーバーが応答し、DNSが名前をアドレスへ変換し、HTTPSが通信を保護します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>DNSは何を変換しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドメイン名をIPアドレスへ変換します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">スライド 32</div>
+<div class="slide-title"><h2>初期コンピュータネットワークの考え方</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg">
+<img src="assets/slides/slide-32.jpg" alt="初期コンピュータネットワークの考え方" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 32 — タップして拡大</figcaption></figure>
+<section class="reading"><p>初期ネットワークは複数のコンピュータが通信回線を共有し、データを交換できることを示しました。これがパケット交換と現代インターネットにつながりました。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>初期ネットワークが示した重要な考えは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>コンピュータが共有回線でデータ交換できることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">スライド 33</div>
+<div class="slide-title"><h2>インターネット = ネットワークのネットワーク</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg">
+<img src="assets/slides/slide-33.jpg" alt="インターネット = ネットワークのネットワーク" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 33 — タップして拡大</figcaption></figure>
+<section class="reading"><p>インターネットは1台の機械や1本のケーブルではありません。多くの独立ネットワークがルーターと共通プロトコルで接続されています。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>なぜネットワークのネットワークと呼ばれますか。</p><details data-checkpoint><summary>答えを見る</summary><p>多くの別々のネットワークが相互接続されているからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">スライド 34</div>
+<div class="slide-title"><h2>クライアントとサーバー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg">
+<img src="assets/slides/slide-34.jpg" alt="クライアントとサーバー" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 34 — タップして拡大</figcaption></figure>
+<section class="reading"><p>クライアントはウェブページや患者記録などを要求します。サーバーは要求を受け、権限を確認し、処理して応答します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>通常、ウェブ要求を開始するのはどちらですか。</p><details data-checkpoint><summary>答えを見る</summary><p>クライアントです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">スライド 35</div>
+<div class="slide-title"><h2>DNS：名前 → IPアドレス</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg">
+<img src="assets/slides/slide-35.jpg" alt="DNS：名前 → IPアドレス" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 35 — タップして拡大</figcaption></figure>
+<section class="reading"><p>人は数値アドレスよりドメイン名を覚えやすいです。DNSはドメイン名に対応するIPアドレスを検索します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>ネットワーク経路が正常でもDNSが故障すると何が起きますか。</p><details data-checkpoint><summary>答えを見る</summary><p>名前での接続が失敗し、IP直接通信は動く場合があります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">スライド 36</div>
+<div class="slide-title"><h2>ウェブサイトを開く</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg">
+<img src="assets/slides/slide-36.jpg" alt="ウェブサイトを開く" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 36 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ブラウザはDNSで名前を解決し、サーバーへ接続し、コンテンツを要求し、ファイルを受け取り、ページを表示します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>名前でサーバーへ接続する前に通常何が起きますか。</p><details data-checkpoint><summary>答えを見る</summary><p>DNSがドメイン名をIPアドレスへ変換します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">スライド 37</div>
+<div class="slide-title"><h2>ウェブサイトのファイル</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg">
+<img src="assets/slides/slide-37.jpg" alt="ウェブサイトのファイル" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 37 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ウェブサイトには構造のHTML、見た目のCSS、動作のJavaScript、画像やメディアがあります。ブラウザがそれらを受信して組み合わせます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>ページ構造を主に記述するファイルは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>HTMLです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">スライド 38</div>
+<div class="slide-title"><h2>HTTPとHTTPS</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg">
+<img src="assets/slides/slide-38.jpg" alt="HTTPとHTTPS" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 38 — タップして拡大</figcaption></figure>
+<section class="reading"><p>HTTPはウェブ要求と応答を送ります。HTTPSはTLSによる暗号化とサーバー認証を追加し、盗聴や改ざんから守ります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>病院のウェブシステムでHTTPSが重要なのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>通信を暗号化し、サーバー確認を助けるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">スライド 39</div>
+<div class="slide-title"><h2>病院データを保護する</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg">
+<img src="assets/slides/slide-39.jpg" alt="病院データを保護する" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 39 — タップして拡大</figcaption></figure>
+<section class="reading"><p>患者情報にはアクセス制御、暗号化、安全な機器、監査記録、慎重な取り扱いが必要です。便利さよりプライバシー保護が優先されます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>病院データの保護方法を1つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>アクセス制御、暗号化、監査、安全な取り扱いなどです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第6部 — Wi‑Fiとモバイルインターネット</h2>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">スライド 40</div>
+<div class="slide-title"><h2>第6部 — Wi‑Fiとモバイルインターネット</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg">
+<img src="assets/slides/slide-40.jpg" alt="第6部 — Wi‑Fiとモバイルインターネット" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 40 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Wi‑Fiは電波で機器をアクセスポイントへ接続します。Wi‑Fiへの接続とインターネットへの到達は別の段階です。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>Wi‑Fi接続済みでもインターネットがないことはありますか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">スライド 41</div>
+<div class="slide-title"><h2>Wi‑Fiアクセスポイント</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg">
+<img src="assets/slides/slide-41.jpg" alt="Wi‑Fiアクセスポイント" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 41 — タップして拡大</figcaption></figure>
+<section class="reading"><p>アクセスポイントは無線機器を有線LANへ接続します。無線フレームを送受信し、ローカルネットワークへ橋渡しします。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>アクセスポイントは何を接続しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>無線機器とローカルネットワークです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">スライド 42</div>
+<div class="slide-title"><h2>SSIDとWi‑Fiパスワード</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg">
+<img src="assets/slides/slide-42.jpg" alt="SSIDとWi‑Fiパスワード" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 42 — タップして拡大</figcaption></figure>
+<section class="reading"><p>SSIDは表示されるネットワーク名です。パスワードまたは企業認証は接続を許可する利用者を制御します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>SSIDとパスワードは同じものですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。SSIDはネットワーク名です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">スライド 43</div>
+<div class="slide-title"><h2>弱いWi‑Fi信号</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg">
+<img src="assets/slides/slide-43.jpg" alt="弱いWi‑Fi信号" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 43 — タップして拡大</figcaption></figure>
+<section class="reading"><p>距離、壁、金属、干渉、アクセスポイント位置が信号強度に影響します。弱い信号は低速、遅延、切断の原因になります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>弱いWi‑Fiの原因を1つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>距離、壁、金属、干渉、設置位置などです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">スライド 44</div>
+<div class="slide-title"><h2>Wi‑Fi接続済み、しかしインターネットなし</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg">
+<img src="assets/slides/slide-44.jpg" alt="Wi‑Fi接続済み、しかしインターネットなし" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 44 — タップして拡大</figcaption></figure>
+<section class="reading"><p>アクセスポイントへの無線リンクは動いていても、ルーター、DNS、事業者回線、インターネットサービスが故障している場合があります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>Wi‑Fiアイコンが証明することは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>無線接続があることだけで、インターネット動作は証明しません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">スライド 45</div>
+<div class="slide-title"><h2>モバイルホットスポット</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg">
+<img src="assets/slides/slide-45.jpg" alt="モバイルホットスポット" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 45 — タップして拡大</figcaption></figure>
+<section class="reading"><p>モバイルホットスポットは携帯回線をWi‑Fiで共有します。一時的に便利ですが、セキュリティ、通信量、組織方針、患者データ規則を考える必要があります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>個人ホットスポットを病院データに自動的に使ってよいですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。組織の方針とセキュリティ規則に従います。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第7部 — 病院ネットワーク</h2>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">スライド 46</div>
+<div class="slide-title"><h2>第7部 — 病院ネットワーク</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg">
+<img src="assets/slides/slide-46.jpg" alt="第7部 — 病院ネットワーク" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 46 — タップして拡大</figcaption></figure>
+<section class="reading"><p>病院ネットワークはデータベース、バーコードシステム、プリンター、検査システム、認可されたワークステーションを接続します。共有サービスには依存関係もあります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>共有病院サービスのリスクを1つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>1つの障害が多数の利用者や診療業務に影響することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">スライド 47</div>
+<div class="slide-title"><h2>患者データベースサーバー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg">
+<img src="assets/slides/slide-47.jpg" alt="患者データベースサーバー" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 47 — タップして拡大</figcaption></figure>
+<section class="reading"><p>患者データベースサーバーは認可された患者情報を保存・処理します。ワークステーションはクライアントとして認証後に記録へアクセスします。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>クライアント・サーバー方式で主な患者データはどこにありますか。</p><details data-checkpoint><summary>答えを見る</summary><p>認可されたデータベースサーバーです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">スライド 48</div>
+<div class="slide-title"><h2>バーコードスキャナー → データベース</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg">
+<img src="assets/slides/slide-48.jpg" alt="バーコードスキャナー → データベース" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 48 — タップして拡大</figcaption></figure>
+<section class="reading"><p>スキャナーが識別子を読み、ワークステーションがネットワーク経由で送り、サーバーが対応する認可済み記録や作業を返します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>バーコード自体に患者記録全体が入っていますか。</p><details data-checkpoint><summary>答えを見る</summary><p>通常はいいえ。記録検索用の識別子が入っています。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">スライド 49</div>
+<div class="slide-title"><h2>ネットワークプリンター</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg">
+<img src="assets/slides/slide-49.jpg" alt="ネットワークプリンター" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 49 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ネットワークプリンターは複数の認可PCから印刷ジョブを受けます。キュー、プリンター状態、ドライバ、ネットワーク到達性が印刷に影響します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>複数PCから同じプリンターへ印刷できない場合、何を確認しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>プリンター本体、ネットワーク接続、印刷サービスです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">スライド 50</div>
+<div class="slide-title"><h2>検査結果がネットワークを通る</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg">
+<img src="assets/slides/slide-50.jpg" alt="検査結果がネットワークを通る" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 50 — タップして拡大</figcaption></figure>
+<section class="reading"><p>検査機器やシステムは結果をサーバーへ送り、認可された利用者が閲覧します。患者照合と確実な配送が重要です。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>検査結果の患者照合が重要なのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>正しい患者へ結果を関連付けるためです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">スライド 51</div>
+<div class="slide-title"><h2>1台のPCか、多数のPCか</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg">
+<img src="assets/slides/slide-51.jpg" alt="1台のPCか、多数のPCか" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 51 — タップして拡大</figcaption></figure>
+<section class="reading"><p>障害範囲は重要な手掛かりです。1台だけならローカルケーブル、Wi‑Fi、設定、ハードウェアを疑い、多数なら共有設備やサービスを疑います。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>1台か多数かを聞く理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ローカル障害と共有障害を分けるためです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第8部 — ネットワークトラブルシューティング</h2>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">スライド 52</div>
+<div class="slide-title"><h2>第8部 — ネットワークトラブルシューティング</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg">
+<img src="assets/slides/slide-52.jpg" alt="第8部 — ネットワークトラブルシューティング" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 52 — タップして拡大</figcaption></figure>
+<section class="reading"><p>良いトラブルシューティングは推測ではなく証拠を使います。範囲、物理接続、Wi‑Fi/IP、DNS、サーバーを順番に確認し、明確に報告します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>機器交換の前に何をすべきですか。</p><details data-checkpoint><summary>答えを見る</summary><p>簡単で証拠に基づく確認です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">スライド 53</div>
+<div class="slide-title"><h2>ネットワークケーブルを確認</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-53.jpg">
+<img src="assets/slides/slide-53.jpg" alt="ネットワークケーブルを確認" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 53 — タップして拡大</figcaption></figure>
+<section class="reading"><p>イーサネットケーブル、コネクタ爪、リンクランプ、壁ポート、スイッチポートを確認します。正常なケーブルとの交換試験も有効です。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>不良ケーブルを確認する簡単な方法は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>正常なケーブルで試すことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-54">
+<div class="slide-head"><div class="badge">スライド 54</div>
+<div class="slide-title"><h2>Wi‑Fiを確認</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-54.jpg">
+<img src="assets/slides/slide-54.jpg" alt="Wi‑Fiを確認" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 54 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Wi‑Fiが有効か、正しいSSIDか、認証に成功したか、信号が十分かを確認します。可能なら別の機器と比較します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>事業者を疑う前に何を確認しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>ローカルWi‑Fi、SSID、認証、信号です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-55">
+<div class="slide-head"><div class="badge">スライド 55</div>
+<div class="slide-title"><h2>DNS問題</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-55.jpg">
+<img src="assets/slides/slide-55.jpg" alt="DNS問題" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 55 — タップして拡大</figcaption></figure>
+<section class="reading"><p>IP接続は動くが名前が動かない場合、DNS障害の可能性があります。名前での試験とIP直接試験を比較します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>DNS問題を示す典型的な症状は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>IPアドレスでは動くがドメイン名では動かないことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-56">
+<div class="slide-head"><div class="badge">スライド 56</div>
+<div class="slide-title"><h2>サーバーダウン</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-56.jpg">
+<img src="assets/slides/slide-56.jpg" alt="サーバーダウン" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 56 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ネットワークが正常でもサーバーやサービスだけ停止することがあります。他サービスが動くか、複数利用者が同じ問題かを確認します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>インターネットが動いていてもサーバー障害は起こりますか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-57">
+<div class="slide-head"><div class="badge">スライド 57</div>
+<div class="slide-title"><h2>ネットワーク確認チェックリスト</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-57.jpg">
+<img src="assets/slides/slide-57.jpg" alt="ネットワーク確認チェックリスト" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 57 — タップして拡大</figcaption></figure>
+<section class="reading"><p>問題定義、範囲、電源と物理リンク、接続とアドレス、DNSとサービス、結果記録の順で確認します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>チェックリストを使う理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>基本確認の漏れを防ぎ、手順を一定にするためです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-58">
+<div class="slide-head"><div class="badge">スライド 58</div>
+<div class="slide-title"><h2>問題を明確に報告する</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-58.jpg">
+<img src="assets/slides/slide-58.jpg" alt="問題を明確に報告する" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 58 — タップして拡大</figcaption></figure>
+<section class="reading"><p>有用な報告には対象機器・サービス、時刻、影響利用者、正確なエラー、実施した試験、現在状態を含めます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>ネットワーク障害報告に必要な情報を2つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>時刻、影響者、エラー、機器、試験、現在状態などです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第9部 — 活動と復習</h2>
+<article class="slide-card" id="slide-59">
+<div class="slide-head"><div class="badge">スライド 59</div>
+<div class="slide-title"><h2>第9部 — 活動と復習</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-59.jpg">
+<img src="assets/slides/slide-59.jpg" alt="第9部 — 活動と復習" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 59 — タップして拡大</figcaption></figure>
+<section class="reading"><p>最後の部分ではロールプレイとシナリオを使い、信号、パケット、アドレス、機器、サービス、トラブル対応を1つのモデルへまとめます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>最終活動の目的は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>すべてのネットワーク概念を実践的な1つのモデルへつなぐことです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-60">
+<div class="slide-head"><div class="badge">スライド 60</div>
+<div class="slide-title"><h2>活動：人間パケットネットワーク</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-60.jpg">
+<img src="assets/slides/slide-60.jpg" alt="活動：人間パケットネットワーク" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 60 — タップして拡大</figcaption></figure>
+<section class="reading"><p>学生がクライアント、スイッチ、ルーター、サーバー役になり、メッセージカードをパケットとして転送します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>ルーター役は何を決めますか。</p><details data-checkpoint><summary>答えを見る</summary><p>パケットを次にどこへ送るかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-61">
+<div class="slide-head"><div class="badge">スライド 61</div>
+<div class="slide-title"><h2>活動：DNS教室ゲーム</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-61.jpg">
+<img src="assets/slides/slide-61.jpg" alt="活動：DNS教室ゲーム" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 61 — タップして拡大</figcaption></figure>
+<section class="reading"><p>一方のグループがドメイン名、別のグループがIPアドレスを持ち、DNS役が正しい対応を探します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>名前による接続の前に何が必要ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドメイン名をIPアドレスへ解決することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-62">
+<div class="slide-head"><div class="badge">スライド 62</div>
+<div class="slide-title"><h2>トラブルシューティング決定木</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-62.jpg">
+<img src="assets/slides/slide-62.jpg" alt="トラブルシューティング決定木" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 62 — タップして拡大</figcaption></figure>
+<section class="reading"><p>決定木は1台か多数かから始まり、物理接続、ローカルネットワーク、DNS、サーバーを論理的な順序で確認します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>決定木の強い最初の分岐は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>1台だけか多数の機器かです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-63">
+<div class="slide-head"><div class="badge">スライド 63</div>
+<div class="slide-title"><h2>最終復習マップ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-63.jpg">
+<img src="assets/slides/slide-63.jpg" alt="最終復習マップ" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 63 — タップして拡大</figcaption></figure>
+<section class="reading"><p>全体の流れは、情報が信号になり、信号がパケットを運び、パケットがアドレスを使い、スイッチとルーターが転送し、サーバーがサービスを提供することです。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>パケットは何を使いますか。</p><details data-checkpoint><summary>答えを見る</summary><p>アドレスです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-64">
+<div class="slide-head"><div class="badge">スライド 64</div>
+<div class="slide-title"><h2>クイズ：1台か多数か</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-64.jpg">
+<img src="assets/slides/slide-64.jpg" alt="クイズ：1台か多数か" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 64 — タップして拡大</figcaption></figure>
+<section class="reading"><p>障害範囲を分類すると不要な作業を減らせます。1台ならローカル確認、多数なら共有設備・サービスを中心に調べます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>スイッチやルーター障害を強く示すのはどちらですか。</p><details data-checkpoint><summary>答えを見る</summary><p>多数の機器が同時に失敗する場合です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-65">
+<div class="slide-head"><div class="badge">スライド 65</div>
+<div class="slide-title"><h2>病院ネットワーク問題シナリオ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-65.jpg">
+<img src="assets/slides/slide-65.jpg" alt="病院ネットワーク問題シナリオ" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 65 — タップして拡大</figcaption></figure>
+<section class="reading"><p>現実的な障害では、影響利用者を確認し、患者業務を守り、無許可変更を避け、簡単な原因を試験し、証拠を添えてエスカレーションします。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>病院ネットワーク障害で最優先するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>患者サービスの安全な継続とデータ保護です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-66">
+<div class="slide-head"><div class="badge">スライド 66</div>
+<div class="slide-title"><h2>活動：ネットワーク役割カード</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-66.jpg">
+<img src="assets/slides/slide-66.jpg" alt="活動：ネットワーク役割カード" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 66 — タップして拡大</figcaption></figure>
+<section class="reading"><p>役割カードでクライアント、サーバー、スイッチ、ルーター、アクセスポイント、DNS、事業者の違いを学びます。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>名前をIPアドレスへ変換する役割は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>DNSです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-67">
+<div class="slide-head"><div class="badge">スライド 67</div>
+<div class="slide-title"><h2>最終実践チェックリスト</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-67.jpg">
+<img src="assets/slides/slide-67.jpg" alt="最終実践チェックリスト" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 67 — タップして拡大</figcaption></figure>
+<section class="reading"><p>サポート担当者は範囲、物理接続、Wi‑Fi、IP設定、DNS、サーバー状態、セキュリティ規則、記録を確認してから解決と判断します。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>修復成功後の最終段階は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>サービス確認、結果記録、明確な連絡です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-68">
+<div class="slide-head"><div class="badge">スライド 68</div>
+<div class="slide-title"><h2>最後の考え</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-68.jpg">
+<img src="assets/slides/slide-68.jpg" alt="最後の考え" loading="lazy"></button>
+<figcaption>元のプレゼンテーション スライド 68 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ネットワークは魔法ではありません。データが信号になり、信号がパケットを運び、パケットがアドレスを使い、機器とサーバーが協力してサービスを届けます。病院ではこの知識が時間、データ、患者ケアを守ります。</p></section>
+<section class="think"><h3>考えて答える</h3>
+<p>この講義の主な専門的メッセージは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>経路を段階的に理解し、安全で論理的にサービスを支援することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<section class="interactive-section" id="interactive-review">
+<h2>拡張インタラクティブ復習</h2>
+<p>68枚のスライドを学んだ後、ネットワークの役割と障害切り分けを練習してください。</p>
+
+<div class="lab-grid">
+<article class="lab">
+<h3>1. 伝送媒体を分類</h3>
+<p>カードをタップして、信号の種類を確認してください。</p>
+<div class="media-grid">
+<button class="media-card" data-kind="electrical">ツイストペア銅線</button>
+<button class="media-card" data-kind="optical">光ファイバー</button>
+<button class="media-card" data-kind="radio">Wi‑Fi</button>
+<button class="media-card" data-kind="radio">モバイル通信</button>
+</div>
+<div class="feedback" id="media-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>2. ネットワーク役割エクスプローラー</h3>
+<div class="role-grid">
+<button class="role-card" data-role="switch">Switch</button>
+<button class="role-card" data-role="router">Router</button>
+<button class="role-card" data-role="ap">Access point</button>
+<button class="role-card" data-role="dns">DNS</button>
+<button class="role-card" data-role="server">Server</button>
+<button class="role-card" data-role="onu">Modem / ONU</button>
+</div>
+<div class="role-info" id="role-info"></div>
+</article>
+
+<article class="lab">
+<h3>3. パケット経路シミュレーション</h3>
+<div class="packet-path" id="packet-path">
+<div class="path-node">Client</div><div class="path-arrow">→</div>
+<div class="path-node">Switch</div><div class="path-arrow">→</div>
+<div class="path-node">Router</div><div class="path-arrow">→</div>
+<div class="path-node">Internet</div><div class="path-arrow">→</div>
+<div class="path-node">Server</div>
+</div>
+<div class="packet-status" id="packet-status"></div>
+<div class="actions"><button class="primary" id="packet-next" type="button">次の段階</button><button class="secondary" id="packet-reset" type="button">リセット</button></div>
+</article>
+
+<article class="lab">
+<h3>4. IPアドレス確認</h3>
+<label class="field-label">IPv4アドレスを入力<input id="ip-input" value="192.168.1.25"></label>
+<div class="actions"><button class="primary" id="check-ip" type="button">確認</button></div>
+<div class="feedback" id="ip-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>5. DNSルックアップ</h3>
+<label class="field-label">ドメイン名<input id="dns-input" value="hospital.example"></label>
+<div class="actions"><button class="primary" id="dns-lookup" type="button">IPを検索</button></div>
+<div class="dns-result" id="dns-result"></div>
+</article>
+
+<article class="lab">
+<h3>6. Wi‑Fiトラブルシューティング</h3>
+<select id="wifi-problem">
+<option value="weak">信号が弱い</option>
+<option value="auth">パスワード／認証失敗</option>
+<option value="nointernet">接続済みだがインターネットなし</option>
+<option value="one">1台だけ接続できない</option>
+<option value="many">多数の機器が接続できない</option>
+</select>
+<div class="wifi-advice" id="wifi-advice"></div>
+</article>
+</div>
+
+<article class="lab" style="margin-top:18px">
+<h3>7. 1台の問題か、共有問題か</h3>
+<p>各ケースをタップして分類してください。</p>
+<div class="scope-grid">
+<div class="scope-card" data-answer="one">1台のPCだけLANランプが消えている<strong></strong></div>
+<div class="scope-card" data-answer="many">部門全体でネットワークプリンターが使えない<strong></strong></div>
+<div class="scope-card" data-answer="one">1台だけ間違ったSSIDへ接続している<strong></strong></div>
+<div class="scope-card" data-answer="many">多数のPCで同じサーバーに接続できない<strong></strong></div>
+<div class="scope-card" data-answer="one">1本のイーサネットケーブルが損傷<strong></strong></div>
+<div class="scope-card" data-answer="many">フロアのスイッチが停止<strong></strong></div>
+</div>
+<div class="actions"><button class="primary" id="check-scope" type="button">分類を確認</button></div>
+<div class="feedback" id="scope-feedback"></div>
+</article>
+
+<article class="lab" style="margin-top:18px">
+<h3>8. 病院ネットワークの流れ</h3>
+<div class="hospital-flow">
+<span>患者リストバンド</span><b>→</b>
+<span>バーコードリーダー</span><b>→</b>
+<span>ワークステーション</span><b>→</b>
+<span>スイッチ／ルーター</span><b>→</b>
+<span>認可サーバー</span>
+</div>
+<p>この経路のどこかが失敗すると、患者業務に影響する可能性があります。まず範囲を確認し、無許可の変更を避けてください。</p>
+</article>
+
+<article class="lab" style="margin-top:18px">
+<h3>9. 最終知識チェック</h3>
+<form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. LANは何の略ですか。</legend><label><input type="radio" name="q1" value="0"> Long Access Node</label><label><input type="radio" name="q1" value="1"> Local Area Network</label><label><input type="radio" name="q1" value="2"> Large Address Number</label><label><input type="radio" name="q1" value="3"> Linked Analog Network</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. データを光で運ぶものは何ですか。</legend><label><input type="radio" name="q2" value="0"> 銅線</label><label><input type="radio" name="q2" value="1"> 光ファイバー</label><label><input type="radio" name="q2" value="2"> Wi‑Fiパスワード</label><label><input type="radio" name="q2" value="3"> RJ45のプラスチック</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>3. スイッチが主に接続するものは何ですか。</legend><label><input type="radio" name="q3" value="0"> 1つのLAN内の機器</label><label><input type="radio" name="q3" value="1"> 2つの事業者だけ</label><label><input type="radio" name="q3" value="2"> バッテリーとCPU</label><label><input type="radio" name="q3" value="3"> 名前とIP</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>4. ルーターが主に接続するものは何ですか。</legend><label><input type="radio" name="q4" value="0"> キーボードのキー</label><label><input type="radio" name="q4" value="1"> 異なるネットワーク</label><label><input type="radio" name="q4" value="2"> 画面の画素</label><label><input type="radio" name="q4" value="3"> RAM内ファイル</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>5. データをパケットに分ける理由は何ですか。</legend><label><input type="radio" name="q5" value="0"> 重くするため</label><label><input type="radio" name="q5" value="1"> 共有回線で効率よく送るため</label><label><input type="radio" name="q5" value="2"> アドレスを消すため</label><label><input type="radio" name="q5" value="3"> ルーターを避けるため</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. IPネットワークのインターフェースを識別するものは何ですか。</legend><label><input type="radio" name="q6" value="0"> SSIDだけ</label><label><input type="radio" name="q6" value="1"> IPアドレス</label><label><input type="radio" name="q6" value="2"> 用紙</label><label><input type="radio" name="q6" value="3"> モールス信号</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>7. DNSが変換するものは何ですか。</legend><label><input type="radio" name="q7" value="0"> ドメイン名をIPアドレスへ</label><label><input type="radio" name="q7" value="1"> ACをDCへ</label><label><input type="radio" name="q7" value="2"> 画像を音へ</label><label><input type="radio" name="q7" value="3"> プライベートIPをパスワードへ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. HTTPSが追加するものは何ですか。</legend><label><input type="radio" name="q8" value="0"> 暗号化と認証</label><label><input type="radio" name="q8" value="1"> キーボードキー</label><label><input type="radio" name="q8" value="2"> 強いWi‑Fi</label><label><input type="radio" name="q8" value="3"> 新しいIPケーブル</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>9. Wi‑Fiアイコンが証明することは何ですか。</legend><label><input type="radio" name="q9" value="0"> インターネット全体が動く</label><label><input type="radio" name="q9" value="1"> 無線リンクがある</label><label><input type="radio" name="q9" value="2"> DNSが動く</label><label><input type="radio" name="q9" value="3"> サーバーが正常</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>10. 患者バーコードに通常入るものは何ですか。</legend><label><input type="radio" name="q10" value="0"> 全医療履歴</label><label><input type="radio" name="q10" value="1"> 記録検索用識別子</label><label><input type="radio" name="q10" value="2"> Wi‑Fiパスワード</label><label><input type="radio" name="q10" value="3"> パブリックIP</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>11. 1台のPCだけ失敗した場合、最初に疑うものは何ですか。</legend><label><input type="radio" name="q11" value="0"> 世界全体の障害</label><label><input type="radio" name="q11" value="1"> ローカル問題</label><label><input type="radio" name="q11" value="2"> 全サーバー同時障害</label><label><input type="radio" name="q11" value="3"> 全スイッチ</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>12. 多数PCが同時失敗した場合、最初に疑うものは何ですか。</legend><label><input type="radio" name="q12" value="0"> 1つのマウス</label><label><input type="radio" name="q12" value="1"> 共有設備またはサービス</label><label><input type="radio" name="q12" value="2"> 1本のローカルケーブルだけ</label><label><input type="radio" name="q12" value="3"> 1つのタブ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>13. IPでは動くが名前で失敗します。何を疑いますか。</legend><label><input type="radio" name="q13" value="0"> DNS</label><label><input type="radio" name="q13" value="1"> モニター</label><label><input type="radio" name="q13" value="2"> バッテリー</label><label><input type="radio" name="q13" value="3"> トナー</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>14. 有用な報告情報はどれですか。</legend><label><input type="radio" name="q14" value="0"> 正確なエラーと時刻</label><label><input type="radio" name="q14" value="1"> 推測だけ</label><label><input type="radio" name="q14" value="2"> 機器名なし</label><label><input type="radio" name="q14" value="3"> 実施試験なし</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. 正しい流れはどれですか。</legend><label><input type="radio" name="q15" value="0"> データ → 信号 → パケット → アドレス → サービス</label><label><input type="radio" name="q15" value="1"> データ → 紙 → バッテリー → 音</label><label><input type="radio" name="q15" value="2"> Wi‑Fi → トナー → RAM → プリンター</label><label><input type="radio" name="q15" value="3"> DNS → ファン → HDMI → ファイル</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">最終クイズを確認</button><button class="secondary" id="reset-quiz" type="reset">リセット</button></div><div class="score" id="quiz-score" data-label="最終スコア"></div></form>
+</article>
+</section>
+
+</main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · Lecture 5 · Networks and the Internet · Original 68-slide sequence preserved.</footer>
+</body></html>

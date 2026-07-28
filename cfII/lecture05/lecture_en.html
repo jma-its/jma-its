@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 5 — Networks and the Internet</title>
+<meta name="description" content="Lecture 5 — Networks and the Internet — original slides, bilingual reading, checkpoints, and interactive review.">
+<link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script>
+<style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head>
+<body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture04/index.html">← 4</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture06/index.html">6 →</a></nav>
+<header id="top"><div class="header-inner">
+<div class="course">Computer Fundamentals 2 · Current Quarter · Lecture 5</div>
+<div class="archive-note">The original slide artwork is preserved, including historical labels inside the slides.</div>
+<h1>Networks and the Internet</h1>
+<p class="subtitle">The original 68-slide visual lecture, adapted for independent web study.</p>
+<p class="intro">Follow the full path from communication signals to LANs, packets, Internet services, hospital systems, and practical troubleshooting.</p>
+<div class="lang-switch"><a class="current" href="lecture_en.html">English</a><a href="lecture_ja.html">日本語</a></div>
+</div></header>
+<main class="container">
+<section class="core"><h2>Core chain</h2><div class="core-chain">data → physical signal → packets → addresses → switches / routers → servers → hospital services</div></section>
+<section class="progress-box"><strong>Reading progress</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>Open answers only after thinking.</span></section>
+<section class="notice"><h2>How to use this lecture</h2><p>Study each original slide, read the explanation, answer before opening the hidden answer, and complete the extended interactive review.</p></section>
+<section class="notice map" id="lesson-map"><h2>Lesson map — 68 original slides</h2><ol><li><a href="#slide-1">Slide 1: Lecture 5 — Networks and the Internet</a></li>
+<li><a href="#slide-2">Slide 2: Today’s story</a></li>
+<li><a href="#slide-3">Slide 3: Part 1 — Communication history and digital signals</a></li>
+<li><a href="#slide-4">Slide 4: Communication timeline</a></li>
+<li><a href="#slide-5">Slide 5: A message needs a carrier</a></li>
+<li><a href="#slide-6">Slide 6: Telegraph and Morse code</a></li>
+<li><a href="#slide-7">Slide 7: ON / OFF signal = 0 / 1 bits</a></li>
+<li><a href="#slide-8">Slide 8: Part 2 — Signals, cables, and local networks</a></li>
+<li><a href="#slide-9">Slide 9: Telephone: voice to electrical signal</a></li>
+<li><a href="#slide-10">Slide 10: Radio communication</a></li>
+<li><a href="#slide-11">Slide 11: Data becomes signal</a></li>
+<li><a href="#slide-12">Slide 12: Ways to carry data</a></li>
+<li><a href="#slide-13">Slide 13: One computer vs network</a></li>
+<li><a href="#slide-14">Slide 14: What is a network (LAN)?</a></li>
+<li><a href="#slide-15">Slide 15: Ethernet cable and RJ45 connector</a></li>
+<li><a href="#slide-16">Slide 16: Inside twisted-pair cable</a></li>
+<li><a href="#slide-17">Slide 17: Part 3 — Switches, routers, and network structure</a></li>
+<li><a href="#slide-18">Slide 18: Switch sends data to the correct device</a></li>
+<li><a href="#slide-19">Slide 19: Why use a switch?</a></li>
+<li><a href="#slide-20">Slide 20: Router connects networks</a></li>
+<li><a href="#slide-21">Slide 21: Switch vs router</a></li>
+<li><a href="#slide-22">Slide 22: Internet line → modem / ONU → router</a></li>
+<li><a href="#slide-23">Slide 23: Home network example</a></li>
+<li><a href="#slide-24">Slide 24: Hospital network overview</a></li>
+<li><a href="#slide-25">Slide 25: Big message → small packets</a></li>
+<li><a href="#slide-26">Slide 26: Part 4 — Packets and IP addresses</a></li>
+<li><a href="#slide-27">Slide 27: Packet as an envelope</a></li>
+<li><a href="#slide-28">Slide 28: Packets travel through routers</a></li>
+<li><a href="#slide-29">Slide 29: Every network device has an IP address</a></li>
+<li><a href="#slide-30">Slide 30: Private IP vs public IP</a></li>
+<li><a href="#slide-31">Slide 31: Part 5 — Internet, servers, DNS, and websites</a></li>
+<li><a href="#slide-32">Slide 32: Early computer network idea</a></li>
+<li><a href="#slide-33">Slide 33: Internet = network of networks</a></li>
+<li><a href="#slide-34">Slide 34: Client and server</a></li>
+<li><a href="#slide-35">Slide 35: DNS: name → IP address</a></li>
+<li><a href="#slide-36">Slide 36: Opening a website</a></li>
+<li><a href="#slide-37">Slide 37: Website files</a></li>
+<li><a href="#slide-38">Slide 38: HTTP vs HTTPS</a></li>
+<li><a href="#slide-39">Slide 39: Hospital data must be protected</a></li>
+<li><a href="#slide-40">Slide 40: Part 6 — Wi‑Fi and mobile Internet</a></li>
+<li><a href="#slide-41">Slide 41: Wi‑Fi access point</a></li>
+<li><a href="#slide-42">Slide 42: SSID and Wi‑Fi password</a></li>
+<li><a href="#slide-43">Slide 43: Weak Wi‑Fi signal</a></li>
+<li><a href="#slide-44">Slide 44: Wi‑Fi connected, but no Internet</a></li>
+<li><a href="#slide-45">Slide 45: Mobile hotspot</a></li>
+<li><a href="#slide-46">Slide 46: Part 7 — Hospital networks</a></li>
+<li><a href="#slide-47">Slide 47: Patient database server</a></li>
+<li><a href="#slide-48">Slide 48: Barcode scanner → database</a></li>
+<li><a href="#slide-49">Slide 49: Network printer</a></li>
+<li><a href="#slide-50">Slide 50: Lab results through the network</a></li>
+<li><a href="#slide-51">Slide 51: One PC problem or many PCs problem?</a></li>
+<li><a href="#slide-52">Slide 52: Part 8 — Network troubleshooting</a></li>
+<li><a href="#slide-53">Slide 53: Check the network cable</a></li>
+<li><a href="#slide-54">Slide 54: Check Wi‑Fi</a></li>
+<li><a href="#slide-55">Slide 55: DNS problem</a></li>
+<li><a href="#slide-56">Slide 56: Server down</a></li>
+<li><a href="#slide-57">Slide 57: Network troubleshooting checklist</a></li>
+<li><a href="#slide-58">Slide 58: Report the problem clearly</a></li>
+<li><a href="#slide-59">Slide 59: Part 9 — Activities and review</a></li>
+<li><a href="#slide-60">Slide 60: Activity: human packet network</a></li>
+<li><a href="#slide-61">Slide 61: Activity: DNS classroom game</a></li>
+<li><a href="#slide-62">Slide 62: Troubleshooting decision tree</a></li>
+<li><a href="#slide-63">Slide 63: Final review map</a></li>
+<li><a href="#slide-64">Slide 64: Quiz: one device or many devices?</a></li>
+<li><a href="#slide-65">Slide 65: Hospital network problem scenario</a></li>
+<li><a href="#slide-66">Slide 66: Activity: network role cards</a></li>
+<li><a href="#slide-67">Slide 67: Final practical checklist</a></li>
+<li><a href="#slide-68">Slide 68: Final idea</a></li></ol></section>
+<h2 class="part-title">Opening — Why networks matter</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">Slide 1</div>
+<div class="slide-title"><h2>Lecture 5 — Networks and the Internet</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg">
+<img src="assets/slides/slide-01.jpg" alt="Lecture 5 — Networks and the Internet" loading="lazy"></button>
+<figcaption>Original presentation slide 1 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Networks let computers exchange information and share services. This lecture follows the full path from old communication systems to signals, LANs, packets, Internet services, Wi‑Fi, hospital networks, and troubleshooting.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the main purpose of a computer network?</p><details data-checkpoint><summary>Show answer</summary><p>To exchange data and share services between connected devices.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">Slide 2</div>
+<div class="slide-title"><h2>Today’s story</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg">
+<img src="assets/slides/slide-02.jpg" alt="Today’s story" loading="lazy"></button>
+<figcaption>Original presentation slide 2 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Communication developed from physical messages to electrical signals and then digital networks. Modern hospital systems still depend on the same basic ideas: a message, a carrier, an address, and a destination.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What four ideas appear in both old and modern communication?</p><details data-checkpoint><summary>Show answer</summary><p>A message, a carrier, an address, and a destination.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 1 — Communication history and digital signals</h2>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">Slide 3</div>
+<div class="slide-title"><h2>Part 1 — Communication history and digital signals</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg">
+<img src="assets/slides/slide-03.jpg" alt="Part 1 — Communication history and digital signals" loading="lazy"></button>
+<figcaption>Original presentation slide 3 — click to enlarge</figcaption></figure>
+<section class="reading"><p>This section connects communication history with computer networking. Telegraph systems used controlled ON/OFF electrical signals, which is conceptually similar to digital 0 and 1.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why is the telegraph relevant to computer networking?</p><details data-checkpoint><summary>Show answer</summary><p>It shows how information can be encoded with controlled electrical signals.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">Slide 4</div>
+<div class="slide-title"><h2>Communication timeline</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg">
+<img src="assets/slides/slide-04.jpg" alt="Communication timeline" loading="lazy"></button>
+<figcaption>Original presentation slide 4 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Human communication moved from messengers and written mail to telegraph, telephone, radio, computer networks, and mobile Internet. Each step increased speed, range, or capacity.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What generally improved across the communication timeline?</p><details data-checkpoint><summary>Show answer</summary><p>Speed, distance, and the amount of information that could be sent.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">Slide 5</div>
+<div class="slide-title"><h2>A message needs a carrier</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg">
+<img src="assets/slides/slide-05.jpg" alt="A message needs a carrier" loading="lazy"></button>
+<figcaption>Original presentation slide 5 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Information cannot travel by itself. A physical carrier moves it: paper, sound waves, electrical current, light in fiber, or radio waves.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Give one carrier used by digital networks.</p><details data-checkpoint><summary>Show answer</summary><p>Electrical signals, light in fiber, or radio waves.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">Slide 6</div>
+<div class="slide-title"><h2>Telegraph and Morse code</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg">
+<img src="assets/slides/slide-06.jpg" alt="Telegraph and Morse code" loading="lazy"></button>
+<figcaption>Original presentation slide 6 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The telegraph sent electrical pulses over wires. Morse code converted letters into patterns of short and long signals, so a human message could travel as an electrical code.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What did Morse code do?</p><details data-checkpoint><summary>Show answer</summary><p>It encoded letters as patterns of electrical signals.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">Slide 7</div>
+<div class="slide-title"><h2>ON / OFF signal = 0 / 1 bits</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg">
+<img src="assets/slides/slide-07.jpg" alt="ON / OFF signal = 0 / 1 bits" loading="lazy"></button>
+<figcaption>Original presentation slide 7 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Digital systems represent information with two states. ON/OFF, high/low voltage, or light/no light can represent binary 1 and 0.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why are two-state signals useful?</p><details data-checkpoint><summary>Show answer</summary><p>They can reliably represent binary 0 and 1.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 2 — Signals, cables, and local networks</h2>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">Slide 8</div>
+<div class="slide-title"><h2>Part 2 — Signals, cables, and local networks</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg">
+<img src="assets/slides/slide-08.jpg" alt="Part 2 — Signals, cables, and local networks" loading="lazy"></button>
+<figcaption>Original presentation slide 8 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Computers convert data into physical signals. Copper cables carry electrical changes, fiber carries light, and Wi‑Fi carries radio waves. A LAN connects devices in one local area.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does LAN mean?</p><details data-checkpoint><summary>Show answer</summary><p>Local Area Network.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">Slide 9</div>
+<div class="slide-title"><h2>Telephone: voice to electrical signal</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg">
+<img src="assets/slides/slide-09.jpg" alt="Telephone: voice to electrical signal" loading="lazy"></button>
+<figcaption>Original presentation slide 9 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A microphone converts sound vibrations into an electrical signal. At the other end, a speaker converts the electrical signal back into sound.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What conversion happens inside a telephone microphone?</p><details data-checkpoint><summary>Show answer</summary><p>Sound becomes an electrical signal.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">Slide 10</div>
+<div class="slide-title"><h2>Radio communication</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg">
+<img src="assets/slides/slide-10.jpg" alt="Radio communication" loading="lazy"></button>
+<figcaption>Original presentation slide 10 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Radio sends information through electromagnetic waves without a physical cable. Wi‑Fi and mobile communication use the same broad principle.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Does radio communication require a cable between sender and receiver?</p><details data-checkpoint><summary>Show answer</summary><p>No. It uses electromagnetic waves through space.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">Slide 11</div>
+<div class="slide-title"><h2>Data becomes signal</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg">
+<img src="assets/slides/slide-11.jpg" alt="Data becomes signal" loading="lazy"></button>
+<figcaption>Original presentation slide 11 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Files and messages are digital data. Network hardware converts that data into electrical, optical, or radio signals for transmission.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What must happen before data can travel through a cable or Wi‑Fi?</p><details data-checkpoint><summary>Show answer</summary><p>It must be converted into a physical signal.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">Slide 12</div>
+<div class="slide-title"><h2>Ways to carry data</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg">
+<img src="assets/slides/slide-12.jpg" alt="Ways to carry data" loading="lazy"></button>
+<figcaption>Original presentation slide 12 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Copper is common and inexpensive, fiber is fast and resistant to electrical interference, and Wi‑Fi provides mobility. Each medium has strengths and limits.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Which medium carries data as light?</p><details data-checkpoint><summary>Show answer</summary><p>Fiber-optic cable.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">Slide 13</div>
+<div class="slide-title"><h2>One computer vs network</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg">
+<img src="assets/slides/slide-13.jpg" alt="One computer vs network" loading="lazy"></button>
+<figcaption>Original presentation slide 13 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A single computer can work locally, but a network allows devices to share files, printers, databases, Internet access, and other services.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What becomes possible after computers are networked?</p><details data-checkpoint><summary>Show answer</summary><p>They can exchange data and share resources and services.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">Slide 14</div>
+<div class="slide-title"><h2>What is a network (LAN)?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg">
+<img src="assets/slides/slide-14.jpg" alt="What is a network (LAN)?" loading="lazy"></button>
+<figcaption>Original presentation slide 14 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A LAN is a group of connected devices in a limited place such as a home, classroom, office, or hospital department.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Is the entire Internet one LAN?</p><details data-checkpoint><summary>Show answer</summary><p>No. A LAN covers a limited local area.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">Slide 15</div>
+<div class="slide-title"><h2>Ethernet cable and RJ45 connector</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg">
+<img src="assets/slides/slide-15.jpg" alt="Ethernet cable and RJ45 connector" loading="lazy"></button>
+<figcaption>Original presentation slide 15 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Ethernet commonly uses twisted-pair copper cable with an RJ45-style connector. A secure click helps keep the physical connection stable.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What connector is commonly used with Ethernet twisted-pair cable?</p><details data-checkpoint><summary>Show answer</summary><p>RJ45.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">Slide 16</div>
+<div class="slide-title"><h2>Inside twisted-pair cable</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg">
+<img src="assets/slides/slide-16.jpg" alt="Inside twisted-pair cable" loading="lazy"></button>
+<figcaption>Original presentation slide 16 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Pairs of copper wires are twisted together to reduce electrical interference and signal noise. Damaged pairs or connectors can cause slow or unstable links.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why are the wires twisted?</p><details data-checkpoint><summary>Show answer</summary><p>To reduce interference and noise.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 3 — Switches, routers, and network structure</h2>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">Slide 17</div>
+<div class="slide-title"><h2>Part 3 — Switches, routers, and network structure</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg">
+<img src="assets/slides/slide-17.jpg" alt="Part 3 — Switches, routers, and network structure" loading="lazy"></button>
+<figcaption>Original presentation slide 17 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A switch connects devices inside one LAN. A router connects different networks. Modems, optical network units, and access points provide additional links.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the basic difference between a switch and a router?</p><details data-checkpoint><summary>Show answer</summary><p>A switch connects devices in one LAN; a router connects different networks.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">Slide 18</div>
+<div class="slide-title"><h2>Switch sends data to the correct device</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg">
+<img src="assets/slides/slide-18.jpg" alt="Switch sends data to the correct device" loading="lazy"></button>
+<figcaption>Original presentation slide 18 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A switch learns which device is connected to each port and forwards local frames toward the correct destination instead of sending everything everywhere.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What problem does a switch solve?</p><details data-checkpoint><summary>Show answer</summary><p>It forwards local traffic toward the correct connected device.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">Slide 19</div>
+<div class="slide-title"><h2>Why use a switch?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg">
+<img src="assets/slides/slide-19.jpg" alt="Why use a switch?" loading="lazy"></button>
+<figcaption>Original presentation slide 19 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A switch adds Ethernet ports and organizes communication among many local devices such as PCs, printers, servers, and access points.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why might a hospital department need a switch?</p><details data-checkpoint><summary>Show answer</summary><p>To connect many local devices to the same LAN.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">Slide 20</div>
+<div class="slide-title"><h2>Router connects networks</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg">
+<img src="assets/slides/slide-20.jpg" alt="Router connects networks" loading="lazy"></button>
+<figcaption>Original presentation slide 20 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A router reads network addresses and moves packets between different networks, such as a hospital LAN and an Internet service provider.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does a router connect?</p><details data-checkpoint><summary>Show answer</summary><p>Different networks.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">Slide 21</div>
+<div class="slide-title"><h2>Switch vs router</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg">
+<img src="assets/slides/slide-21.jpg" alt="Switch vs router" loading="lazy"></button>
+<figcaption>Original presentation slide 21 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Switches mainly handle local traffic inside a LAN. Routers choose paths between networks and often provide gateway, firewall, or address-translation functions.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Which device normally acts as the gateway to another network?</p><details data-checkpoint><summary>Show answer</summary><p>A router.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">Slide 22</div>
+<div class="slide-title"><h2>Internet line → modem / ONU → router</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg">
+<img src="assets/slides/slide-22.jpg" alt="Internet line → modem / ONU → router" loading="lazy"></button>
+<figcaption>Original presentation slide 22 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The provider&#x27;s line first reaches a modem or optical network unit. That device converts the provider&#x27;s physical signal, and the router then connects the local network to the provider network.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the router connected to on the provider side?</p><details data-checkpoint><summary>Show answer</summary><p>A modem or optical network unit.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">Slide 23</div>
+<div class="slide-title"><h2>Home network example</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg">
+<img src="assets/slides/slide-23.jpg" alt="Home network example" loading="lazy"></button>
+<figcaption>Original presentation slide 23 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A typical home network includes a modem or ONU, router, Wi‑Fi access point, Ethernet devices, phones, and laptops. Some functions may be combined in one box.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Can one home router box contain several network functions?</p><details data-checkpoint><summary>Show answer</summary><p>Yes. It may combine routing, switching, Wi‑Fi, and modem functions.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">Slide 24</div>
+<div class="slide-title"><h2>Hospital network overview</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg">
+<img src="assets/slides/slide-24.jpg" alt="Hospital network overview" loading="lazy"></button>
+<figcaption>Original presentation slide 24 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Hospital networks connect workstations, printers, barcode scanners, databases, servers, laboratory systems, and other authorized devices. Reliability and access control are essential.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why is network reliability important in a hospital?</p><details data-checkpoint><summary>Show answer</summary><p>Because clinical and administrative services depend on timely access to data.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">Slide 25</div>
+<div class="slide-title"><h2>Big message → small packets</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg">
+<img src="assets/slides/slide-25.jpg" alt="Big message → small packets" loading="lazy"></button>
+<figcaption>Original presentation slide 25 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Large data is divided into smaller packets. Packetization allows networks to share links efficiently and resend only missing or damaged pieces.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why divide a large message into packets?</p><details data-checkpoint><summary>Show answer</summary><p>For efficient transmission and easier recovery from errors.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 4 — Packets and IP addresses</h2>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">Slide 26</div>
+<div class="slide-title"><h2>Part 4 — Packets and IP addresses</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg">
+<img src="assets/slides/slide-26.jpg" alt="Part 4 — Packets and IP addresses" loading="lazy"></button>
+<figcaption>Original presentation slide 26 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Packets carry small pieces of data plus control information. IP addresses identify network interfaces and help routers choose where packets should go.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What two things are central in this section?</p><details data-checkpoint><summary>Show answer</summary><p>Packets and IP addresses.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">Slide 27</div>
+<div class="slide-title"><h2>Packet as an envelope</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg">
+<img src="assets/slides/slide-27.jpg" alt="Packet as an envelope" loading="lazy"></button>
+<figcaption>Original presentation slide 27 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A packet is like an envelope: it contains payload data and addressing information. Network devices use the address fields without needing to understand the entire message.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the payload of a packet?</p><details data-checkpoint><summary>Show answer</summary><p>The actual piece of user or application data being carried.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">Slide 28</div>
+<div class="slide-title"><h2>Packets travel through routers</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg">
+<img src="assets/slides/slide-28.jpg" alt="Packets travel through routers" loading="lazy"></button>
+<figcaption>Original presentation slide 28 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A packet may pass through several routers. Each router examines the destination and sends the packet to the next appropriate network path.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Does every router need to know the complete final route in advance?</p><details data-checkpoint><summary>Show answer</summary><p>No. It chooses the next suitable step toward the destination.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">Slide 29</div>
+<div class="slide-title"><h2>Every network device has an IP address</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg">
+<img src="assets/slides/slide-29.jpg" alt="Every network device has an IP address" loading="lazy"></button>
+<figcaption>Original presentation slide 29 — click to enlarge</figcaption></figure>
+<section class="reading"><p>An IP address identifies a device interface on an IP network. Correct addressing lets devices know whether a destination is local or must be reached through a router.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the main purpose of an IP address?</p><details data-checkpoint><summary>Show answer</summary><p>To identify a network interface and support packet delivery.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">Slide 30</div>
+<div class="slide-title"><h2>Private IP vs public IP</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg">
+<img src="assets/slides/slide-30.jpg" alt="Private IP vs public IP" loading="lazy"></button>
+<figcaption>Original presentation slide 30 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Private IP addresses are used inside local networks and are not directly routed across the public Internet. A public IP identifies an Internet-facing connection.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Which type of IP address is commonly used inside a hospital LAN?</p><details data-checkpoint><summary>Show answer</summary><p>A private IP address.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 5 — Internet, servers, DNS, and websites</h2>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">Slide 31</div>
+<div class="slide-title"><h2>Part 5 — Internet, servers, DNS, and websites</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg">
+<img src="assets/slides/slide-31.jpg" alt="Part 5 — Internet, servers, DNS, and websites" loading="lazy"></button>
+<figcaption>Original presentation slide 31 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The Internet is a network of networks. Clients request services, servers respond, DNS changes names into addresses, and HTTPS protects web traffic.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does DNS translate?</p><details data-checkpoint><summary>Show answer</summary><p>A domain name into an IP address.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">Slide 32</div>
+<div class="slide-title"><h2>Early computer network idea</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg">
+<img src="assets/slides/slide-32.jpg" alt="Early computer network idea" loading="lazy"></button>
+<figcaption>Original presentation slide 32 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Early networks showed that multiple computers could share communication links and exchange data. This led to packet-switched networks and the modern Internet.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What important idea did early computer networks demonstrate?</p><details data-checkpoint><summary>Show answer</summary><p>Computers could exchange data over shared communication links.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">Slide 33</div>
+<div class="slide-title"><h2>Internet = network of networks</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg">
+<img src="assets/slides/slide-33.jpg" alt="Internet = network of networks" loading="lazy"></button>
+<figcaption>Original presentation slide 33 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The Internet is not one machine or one cable. It is many independent networks connected by routers and common protocols.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why is the Internet called a network of networks?</p><details data-checkpoint><summary>Show answer</summary><p>Because many separate networks are interconnected.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">Slide 34</div>
+<div class="slide-title"><h2>Client and server</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg">
+<img src="assets/slides/slide-34.jpg" alt="Client and server" loading="lazy"></button>
+<figcaption>Original presentation slide 34 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A client starts a request, such as asking for a webpage or patient record. A server receives the request, checks permissions, processes it, and returns a response.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Which side usually starts a web request?</p><details data-checkpoint><summary>Show answer</summary><p>The client.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">Slide 35</div>
+<div class="slide-title"><h2>DNS: name → IP address</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg">
+<img src="assets/slides/slide-35.jpg" alt="DNS: name → IP address" loading="lazy"></button>
+<figcaption>Original presentation slide 35 — click to enlarge</figcaption></figure>
+<section class="reading"><p>People remember names such as example.org more easily than numeric addresses. DNS looks up the IP address associated with a domain name.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What happens if DNS fails but the network path still works?</p><details data-checkpoint><summary>Show answer</summary><p>Names may fail even though direct IP communication can still work.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">Slide 36</div>
+<div class="slide-title"><h2>Opening a website</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg">
+<img src="assets/slides/slide-36.jpg" alt="Opening a website" loading="lazy"></button>
+<figcaption>Original presentation slide 36 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The browser resolves the name with DNS, connects to the server, requests content, receives files, and renders the page. Several network steps happen before the user sees the result.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What usually happens before the browser contacts the web server by name?</p><details data-checkpoint><summary>Show answer</summary><p>DNS resolves the domain name to an IP address.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">Slide 37</div>
+<div class="slide-title"><h2>Website files</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg">
+<img src="assets/slides/slide-37.jpg" alt="Website files" loading="lazy"></button>
+<figcaption>Original presentation slide 37 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A website may include HTML for structure, CSS for appearance, JavaScript for behavior, and images or media. The browser downloads and combines these resources.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Which file type mainly describes webpage structure?</p><details data-checkpoint><summary>Show answer</summary><p>HTML.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">Slide 38</div>
+<div class="slide-title"><h2>HTTP vs HTTPS</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg">
+<img src="assets/slides/slide-38.jpg" alt="HTTP vs HTTPS" loading="lazy"></button>
+<figcaption>Original presentation slide 38 — click to enlarge</figcaption></figure>
+<section class="reading"><p>HTTP transfers web requests and responses. HTTPS adds encryption and server authentication using TLS, helping protect data from interception and modification.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why is HTTPS preferred for hospital web systems?</p><details data-checkpoint><summary>Show answer</summary><p>It encrypts traffic and helps verify the server.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">Slide 39</div>
+<div class="slide-title"><h2>Hospital data must be protected</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg">
+<img src="assets/slides/slide-39.jpg" alt="Hospital data must be protected" loading="lazy"></button>
+<figcaption>Original presentation slide 39 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Patient information requires access control, encryption, secure devices, audit records, and careful handling. Network convenience never removes the duty to protect privacy.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Name one protection needed for hospital data.</p><details data-checkpoint><summary>Show answer</summary><p>Access control, encryption, auditing, or secure handling.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 6 — Wi‑Fi and mobile Internet</h2>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">Slide 40</div>
+<div class="slide-title"><h2>Part 6 — Wi‑Fi and mobile Internet</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg">
+<img src="assets/slides/slide-40.jpg" alt="Part 6 — Wi‑Fi and mobile Internet" loading="lazy"></button>
+<figcaption>Original presentation slide 40 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Wi‑Fi uses radio communication to connect devices to an access point. Joining Wi‑Fi and reaching the Internet are related but different steps.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Can a device be connected to Wi‑Fi but still have no Internet?</p><details data-checkpoint><summary>Show answer</summary><p>Yes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">Slide 41</div>
+<div class="slide-title"><h2>Wi‑Fi access point</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg">
+<img src="assets/slides/slide-41.jpg" alt="Wi‑Fi access point" loading="lazy"></button>
+<figcaption>Original presentation slide 41 — click to enlarge</figcaption></figure>
+<section class="reading"><p>An access point connects wireless devices to the wired LAN. It sends and receives radio frames and bridges them to the network.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does a Wi‑Fi access point connect?</p><details data-checkpoint><summary>Show answer</summary><p>Wireless devices to the local network.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">Slide 42</div>
+<div class="slide-title"><h2>SSID and Wi‑Fi password</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg">
+<img src="assets/slides/slide-42.jpg" alt="SSID and Wi‑Fi password" loading="lazy"></button>
+<figcaption>Original presentation slide 42 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The SSID is the visible network name. The security password or enterprise authentication controls who may join the wireless network.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Is an SSID the same thing as a password?</p><details data-checkpoint><summary>Show answer</summary><p>No. The SSID is the network name.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">Slide 43</div>
+<div class="slide-title"><h2>Weak Wi‑Fi signal</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg">
+<img src="assets/slides/slide-43.jpg" alt="Weak Wi‑Fi signal" loading="lazy"></button>
+<figcaption>Original presentation slide 43 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Distance, walls, metal, interference, and access-point placement affect signal strength. A weak signal can cause low speed, delay, or disconnection.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Name one cause of weak Wi‑Fi.</p><details data-checkpoint><summary>Show answer</summary><p>Distance, walls, metal, interference, or poor access-point placement.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">Slide 44</div>
+<div class="slide-title"><h2>Wi‑Fi connected, but no Internet</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg">
+<img src="assets/slides/slide-44.jpg" alt="Wi‑Fi connected, but no Internet" loading="lazy"></button>
+<figcaption>Original presentation slide 44 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The radio link to the access point may work while the router, DNS, provider line, or Internet service is failing. The Wi‑Fi icon alone does not prove end-to-end connectivity.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does a Wi‑Fi icon prove?</p><details data-checkpoint><summary>Show answer</summary><p>Only that a wireless connection exists, not that the Internet works.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">Slide 45</div>
+<div class="slide-title"><h2>Mobile hotspot</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg">
+<img src="assets/slides/slide-45.jpg" alt="Mobile hotspot" loading="lazy"></button>
+<figcaption>Original presentation slide 45 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A mobile hotspot shares a phone&#x27;s cellular connection over Wi‑Fi. It can be useful temporarily, but security, data limits, policy, and patient-data rules must be considered.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Should a personal hotspot automatically be used for hospital data?</p><details data-checkpoint><summary>Show answer</summary><p>No. Organization policy and security rules must be followed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 7 — Hospital networks</h2>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">Slide 46</div>
+<div class="slide-title"><h2>Part 7 — Hospital networks</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg">
+<img src="assets/slides/slide-46.jpg" alt="Part 7 — Hospital networks" loading="lazy"></button>
+<figcaption>Original presentation slide 46 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Hospital networks connect databases, barcode systems, printers, laboratory systems, and authorized workstations. Shared services make work efficient but also create dependencies.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is one risk of shared hospital network services?</p><details data-checkpoint><summary>Show answer</summary><p>One failure can affect many users or clinical workflows.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">Slide 47</div>
+<div class="slide-title"><h2>Patient database server</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg">
+<img src="assets/slides/slide-47.jpg" alt="Patient database server" loading="lazy"></button>
+<figcaption>Original presentation slide 47 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A patient database server stores and processes authorized patient information. Workstations act as clients and must authenticate before accessing records.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Where is the main patient data normally stored in a client-server system?</p><details data-checkpoint><summary>Show answer</summary><p>On the authorized database server.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">Slide 48</div>
+<div class="slide-title"><h2>Barcode scanner → database</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg">
+<img src="assets/slides/slide-48.jpg" alt="Barcode scanner → database" loading="lazy"></button>
+<figcaption>Original presentation slide 48 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A barcode scanner captures an identifier, the workstation sends it through the network, and the server returns the matching authorized record or task.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Does the barcode itself contain the entire patient record?</p><details data-checkpoint><summary>Show answer</summary><p>Usually no. It normally contains an identifier used to find the record.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">Slide 49</div>
+<div class="slide-title"><h2>Network printer</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg">
+<img src="assets/slides/slide-49.jpg" alt="Network printer" loading="lazy"></button>
+<figcaption>Original presentation slide 49 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A network printer has a network connection and can receive jobs from many authorized computers. Queues, printer status, drivers, and network reachability can all affect printing.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>If several PCs cannot print to one printer, what shared component should be checked?</p><details data-checkpoint><summary>Show answer</summary><p>The printer, its network connection, or the print service.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">Slide 50</div>
+<div class="slide-title"><h2>Lab results through the network</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg">
+<img src="assets/slides/slide-50.jpg" alt="Lab results through the network" loading="lazy"></button>
+<figcaption>Original presentation slide 50 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Laboratory instruments or systems send results to servers, where authorized users can view them. Correct patient matching and reliable delivery are critical.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why must lab results be matched carefully?</p><details data-checkpoint><summary>Show answer</summary><p>To ensure the result is linked to the correct patient.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">Slide 51</div>
+<div class="slide-title"><h2>One PC problem or many PCs problem?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg">
+<img src="assets/slides/slide-51.jpg" alt="One PC problem or many PCs problem?" loading="lazy"></button>
+<figcaption>Original presentation slide 51 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The scope of failure is an important clue. One affected device suggests a local cable, Wi‑Fi, settings, or hardware issue. Many affected devices suggest shared infrastructure or service failure.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why ask whether one or many devices are affected?</p><details data-checkpoint><summary>Show answer</summary><p>It helps separate local problems from shared network problems.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 8 — Network troubleshooting</h2>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">Slide 52</div>
+<div class="slide-title"><h2>Part 8 — Network troubleshooting</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg">
+<img src="assets/slides/slide-52.jpg" alt="Part 8 — Network troubleshooting" loading="lazy"></button>
+<figcaption>Original presentation slide 52 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Good troubleshooting uses evidence, not guessing. Define the scope, check the physical link, verify Wi‑Fi or IP settings, test DNS and servers, and report clearly.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What should come before replacing equipment?</p><details data-checkpoint><summary>Show answer</summary><p>Simple evidence-based checks.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">Slide 53</div>
+<div class="slide-title"><h2>Check the network cable</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-53.jpg">
+<img src="assets/slides/slide-53.jpg" alt="Check the network cable" loading="lazy"></button>
+<figcaption>Original presentation slide 53 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Inspect the Ethernet cable, connector latch, link lights, wall port, and switch port. A known-good cable can help isolate a physical problem.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What simple test can help confirm a bad Ethernet cable?</p><details data-checkpoint><summary>Show answer</summary><p>Try a known-good cable.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-54">
+<div class="slide-head"><div class="badge">Slide 54</div>
+<div class="slide-title"><h2>Check Wi‑Fi</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-54.jpg">
+<img src="assets/slides/slide-54.jpg" alt="Check Wi‑Fi" loading="lazy"></button>
+<figcaption>Original presentation slide 54 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Confirm Wi‑Fi is enabled, the correct SSID is selected, authentication succeeds, and signal strength is reasonable. Compare with another device when possible.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What should be checked before blaming the Internet provider?</p><details data-checkpoint><summary>Show answer</summary><p>Local Wi‑Fi connection, SSID, authentication, and signal.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-55">
+<div class="slide-head"><div class="badge">Slide 55</div>
+<div class="slide-title"><h2>DNS problem</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-55.jpg">
+<img src="assets/slides/slide-55.jpg" alt="DNS problem" loading="lazy"></button>
+<figcaption>Original presentation slide 55 — click to enlarge</figcaption></figure>
+<section class="reading"><p>If IP connectivity works but names do not, DNS may be failing. Comparing a name-based test with a direct IP test helps identify the difference.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What symptom often suggests a DNS problem?</p><details data-checkpoint><summary>Show answer</summary><p>IP addresses work, but domain names do not.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-56">
+<div class="slide-head"><div class="badge">Slide 56</div>
+<div class="slide-title"><h2>Server down</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-56.jpg">
+<img src="assets/slides/slide-56.jpg" alt="Server down" loading="lazy"></button>
+<figcaption>Original presentation slide 56 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A server or service can be unavailable even when the network is healthy. Check whether other services work and whether multiple users have the same server-specific problem.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Can a server failure occur while the Internet still works?</p><details data-checkpoint><summary>Show answer</summary><p>Yes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-57">
+<div class="slide-head"><div class="badge">Slide 57</div>
+<div class="slide-title"><h2>Network troubleshooting checklist</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-57.jpg">
+<img src="assets/slides/slide-57.jpg" alt="Network troubleshooting checklist" loading="lazy"></button>
+<figcaption>Original presentation slide 57 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Use a repeatable order: define the problem, identify the scope, check power and physical links, verify connection and addresses, test name resolution and services, then document results.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Why use a checklist?</p><details data-checkpoint><summary>Show answer</summary><p>To avoid missing basic checks and to make troubleshooting consistent.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-58">
+<div class="slide-head"><div class="badge">Slide 58</div>
+<div class="slide-title"><h2>Report the problem clearly</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-58.jpg">
+<img src="assets/slides/slide-58.jpg" alt="Report the problem clearly" loading="lazy"></button>
+<figcaption>Original presentation slide 58 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A useful report includes the affected device or service, time, users affected, exact error, tests already performed, and current status.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Name two facts that belong in a network incident report.</p><details data-checkpoint><summary>Show answer</summary><p>For example: time, affected users, exact error, device, tests, or current status.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 9 — Activities and review</h2>
+<article class="slide-card" id="slide-59">
+<div class="slide-head"><div class="badge">Slide 59</div>
+<div class="slide-title"><h2>Part 9 — Activities and review</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-59.jpg">
+<img src="assets/slides/slide-59.jpg" alt="Part 9 — Activities and review" loading="lazy"></button>
+<figcaption>Original presentation slide 59 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The final section uses role-play and scenarios to connect signals, packets, addresses, devices, services, and troubleshooting into one complete model.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the goal of the final activities?</p><details data-checkpoint><summary>Show answer</summary><p>To connect all networking concepts into one practical model.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-60">
+<div class="slide-head"><div class="badge">Slide 60</div>
+<div class="slide-title"><h2>Activity: human packet network</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-60.jpg">
+<img src="assets/slides/slide-60.jpg" alt="Activity: human packet network" loading="lazy"></button>
+<figcaption>Original presentation slide 60 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Students can act as clients, switches, routers, and servers while message cards act as packets. This makes forwarding and addressing visible.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What does a student acting as a router decide?</p><details data-checkpoint><summary>Show answer</summary><p>Where to send the packet next.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-61">
+<div class="slide-head"><div class="badge">Slide 61</div>
+<div class="slide-title"><h2>Activity: DNS classroom game</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-61.jpg">
+<img src="assets/slides/slide-61.jpg" alt="Activity: DNS classroom game" loading="lazy"></button>
+<figcaption>Original presentation slide 61 — click to enlarge</figcaption></figure>
+<section class="reading"><p>One group holds domain names and another holds IP addresses. A DNS role matches the name to the correct address before the client can contact the server.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What must happen before a name-based connection can begin?</p><details data-checkpoint><summary>Show answer</summary><p>The domain name must be resolved to an IP address.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-62">
+<div class="slide-head"><div class="badge">Slide 62</div>
+<div class="slide-title"><h2>Troubleshooting decision tree</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-62.jpg">
+<img src="assets/slides/slide-62.jpg" alt="Troubleshooting decision tree" loading="lazy"></button>
+<figcaption>Original presentation slide 62 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A decision tree begins with scope: one device or many. It then checks physical connection, local network, DNS, and server availability in a logical order.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is a strong first branch in a network decision tree?</p><details data-checkpoint><summary>Show answer</summary><p>Whether one device or many devices are affected.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-63">
+<div class="slide-head"><div class="badge">Slide 63</div>
+<div class="slide-title"><h2>Final review map</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-63.jpg">
+<img src="assets/slides/slide-63.jpg" alt="Final review map" loading="lazy"></button>
+<figcaption>Original presentation slide 63 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The complete chain is: information becomes a signal, signals carry packets, packets use addresses, switches and routers forward them, and servers provide services.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Complete the chain after packets: packets use what?</p><details data-checkpoint><summary>Show answer</summary><p>Addresses.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-64">
+<div class="slide-head"><div class="badge">Slide 64</div>
+<div class="slide-title"><h2>Quiz: one device or many devices?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-64.jpg">
+<img src="assets/slides/slide-64.jpg" alt="Quiz: one device or many devices?" loading="lazy"></button>
+<figcaption>Original presentation slide 64 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Classifying the scope prevents unnecessary work. A single-device problem often needs local checks, while a many-device problem should focus on shared equipment or services.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Which case more strongly suggests a switch or router problem?</p><details data-checkpoint><summary>Show answer</summary><p>Many devices failing at the same time.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-65">
+<div class="slide-head"><div class="badge">Slide 65</div>
+<div class="slide-title"><h2>Hospital network problem scenario</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-65.jpg">
+<img src="assets/slides/slide-65.jpg" alt="Hospital network problem scenario" loading="lazy"></button>
+<figcaption>Original presentation slide 65 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A realistic scenario should be handled safely: identify affected users, preserve patient care, avoid unauthorized changes, test simple causes, and escalate with clear evidence.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What must remain the priority during a hospital network incident?</p><details data-checkpoint><summary>Show answer</summary><p>Safe continuity of patient service and protection of data.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-66">
+<div class="slide-head"><div class="badge">Slide 66</div>
+<div class="slide-title"><h2>Activity: network role cards</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-66.jpg">
+<img src="assets/slides/slide-66.jpg" alt="Activity: network role cards" loading="lazy"></button>
+<figcaption>Original presentation slide 66 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Role cards help students distinguish client, server, switch, router, access point, DNS, and Internet provider. Each role performs a different job.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>Which role translates names into IP addresses?</p><details data-checkpoint><summary>Show answer</summary><p>DNS.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-67">
+<div class="slide-head"><div class="badge">Slide 67</div>
+<div class="slide-title"><h2>Final practical checklist</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-67.jpg">
+<img src="assets/slides/slide-67.jpg" alt="Final practical checklist" loading="lazy"></button>
+<figcaption>Original presentation slide 67 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A practical support worker checks scope, physical connection, Wi‑Fi, IP settings, DNS, server status, security rules, and documentation before declaring the issue solved.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What final step should follow a successful repair?</p><details data-checkpoint><summary>Show answer</summary><p>Confirm service, document the result, and communicate clearly.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-68">
+<div class="slide-head"><div class="badge">Slide 68</div>
+<div class="slide-title"><h2>Final idea</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-68.jpg">
+<img src="assets/slides/slide-68.jpg" alt="Final idea" loading="lazy"></button>
+<figcaption>Original presentation slide 68 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Networks are not magic. Data becomes signals, signals carry packets, packets use addresses, and devices and servers cooperate to deliver services. In hospitals, this knowledge protects time, data, and patient care.</p></section>
+<section class="think"><h3>Think and answer</h3>
+<p>What is the main professional message of the lecture?</p><details data-checkpoint><summary>Show answer</summary><p>Understand the path step by step so you can support services safely and logically.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<section class="interactive-section" id="interactive-review">
+<h2>Extended interactive review</h2>
+<p>After studying all 68 slides, practise network roles, packet flow, addressing, and troubleshooting.</p>
+
+<div class="lab-grid">
+<article class="lab">
+<h3>1. Classify transmission media</h3>
+<p>Tap each card to reveal the physical signal.</p>
+<div class="media-grid">
+<button class="media-card" data-kind="electrical">Twisted-pair copper</button>
+<button class="media-card" data-kind="optical">Fiber optic</button>
+<button class="media-card" data-kind="radio">Wi‑Fi</button>
+<button class="media-card" data-kind="radio">Mobile network</button>
+</div>
+<div class="feedback" id="media-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>2. Network role explorer</h3>
+<div class="role-grid">
+<button class="role-card" data-role="switch">Switch</button>
+<button class="role-card" data-role="router">Router</button>
+<button class="role-card" data-role="ap">Access point</button>
+<button class="role-card" data-role="dns">DNS</button>
+<button class="role-card" data-role="server">Server</button>
+<button class="role-card" data-role="onu">Modem / ONU</button>
+</div>
+<div class="role-info" id="role-info"></div>
+</article>
+
+<article class="lab">
+<h3>3. Packet route simulation</h3>
+<div class="packet-path" id="packet-path">
+<div class="path-node">Client</div><div class="path-arrow">→</div>
+<div class="path-node">Switch</div><div class="path-arrow">→</div>
+<div class="path-node">Router</div><div class="path-arrow">→</div>
+<div class="path-node">Internet</div><div class="path-arrow">→</div>
+<div class="path-node">Server</div>
+</div>
+<div class="packet-status" id="packet-status"></div>
+<div class="actions"><button class="primary" id="packet-next" type="button">Next step</button><button class="secondary" id="packet-reset" type="button">Reset</button></div>
+</article>
+
+<article class="lab">
+<h3>4. IP address checker</h3>
+<label class="field-label">Enter an IPv4 address<input id="ip-input" value="192.168.1.25"></label>
+<div class="actions"><button class="primary" id="check-ip" type="button">Check address</button></div>
+<div class="feedback" id="ip-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>5. DNS lookup</h3>
+<label class="field-label">Domain name<input id="dns-input" value="hospital.example"></label>
+<div class="actions"><button class="primary" id="dns-lookup" type="button">Find IP</button></div>
+<div class="dns-result" id="dns-result"></div>
+</article>
+
+<article class="lab">
+<h3>6. Wi‑Fi troubleshooting</h3>
+<select id="wifi-problem">
+<option value="weak">Weak signal</option>
+<option value="auth">Password / authentication failure</option>
+<option value="nointernet">Connected, but no Internet</option>
+<option value="one">Only one device cannot connect</option>
+<option value="many">Many devices cannot connect</option>
+</select>
+<div class="wifi-advice" id="wifi-advice"></div>
+</article>
+</div>
+
+<article class="lab" style="margin-top:18px">
+<h3>7. One-device problem or shared problem</h3>
+<p>Tap each case to classify it.</p>
+<div class="scope-grid">
+<div class="scope-card" data-answer="one">Only one PC has no Ethernet link light<strong></strong></div>
+<div class="scope-card" data-answer="many">The whole department cannot use the network printer<strong></strong></div>
+<div class="scope-card" data-answer="one">One laptop joined the wrong SSID<strong></strong></div>
+<div class="scope-card" data-answer="many">Many PCs cannot reach the same server<strong></strong></div>
+<div class="scope-card" data-answer="one">One Ethernet cable is damaged<strong></strong></div>
+<div class="scope-card" data-answer="many">The floor switch has stopped<strong></strong></div>
+</div>
+<div class="actions"><button class="primary" id="check-scope" type="button">Check classifications</button></div>
+<div class="feedback" id="scope-feedback"></div>
+</article>
+
+<article class="lab" style="margin-top:18px">
+<h3>8. Hospital network flow</h3>
+<div class="hospital-flow">
+<span>Patient wristband</span><b>→</b>
+<span>Barcode scanner</span><b>→</b>
+<span>Workstation</span><b>→</b>
+<span>Switch / router</span><b>→</b>
+<span>Authorized server</span>
+</div>
+<p>A failure anywhere in this path can affect patient work. Define the scope first and avoid unauthorized changes.</p>
+</article>
+
+<article class="lab" style="margin-top:18px">
+<h3>9. Final knowledge check</h3>
+<form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. What does LAN mean?</legend><label><input type="radio" name="q1" value="0"> Long Access Node</label><label><input type="radio" name="q1" value="1"> Local Area Network</label><label><input type="radio" name="q1" value="2"> Large Address Number</label><label><input type="radio" name="q1" value="3"> Linked Analog Network</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. Which medium carries data as light?</legend><label><input type="radio" name="q2" value="0"> Copper</label><label><input type="radio" name="q2" value="1"> Fiber optic</label><label><input type="radio" name="q2" value="2"> Wi‑Fi password</label><label><input type="radio" name="q2" value="3"> RJ45 plastic</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>3. What does a switch mainly connect?</legend><label><input type="radio" name="q3" value="0"> Devices inside one LAN</label><label><input type="radio" name="q3" value="1"> Only two Internet providers</label><label><input type="radio" name="q3" value="2"> A battery to a CPU</label><label><input type="radio" name="q3" value="3"> Names to IP addresses</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>4. What does a router mainly connect?</legend><label><input type="radio" name="q4" value="0"> Keys on a keyboard</label><label><input type="radio" name="q4" value="1"> Different networks</label><label><input type="radio" name="q4" value="2"> Pixels on a screen</label><label><input type="radio" name="q4" value="3"> Files in RAM</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>5. Why divide data into packets?</legend><label><input type="radio" name="q5" value="0"> To make it heavier</label><label><input type="radio" name="q5" value="1"> For efficient shared transmission</label><label><input type="radio" name="q5" value="2"> To remove addresses</label><label><input type="radio" name="q5" value="3"> To avoid all routers</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. What identifies an IP network interface?</legend><label><input type="radio" name="q6" value="0"> SSID only</label><label><input type="radio" name="q6" value="1"> IP address</label><label><input type="radio" name="q6" value="2"> Printer paper</label><label><input type="radio" name="q6" value="3"> Morse code</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>7. DNS changes:</legend><label><input type="radio" name="q7" value="0"> Domain name to IP address</label><label><input type="radio" name="q7" value="1"> AC to DC</label><label><input type="radio" name="q7" value="2"> Image to sound</label><label><input type="radio" name="q7" value="3"> Private IP to password</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. HTTPS adds:</legend><label><input type="radio" name="q8" value="0"> Encryption and authentication</label><label><input type="radio" name="q8" value="1"> More keyboard keys</label><label><input type="radio" name="q8" value="2"> A stronger Wi‑Fi signal</label><label><input type="radio" name="q8" value="3"> A new IP cable</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>9. A Wi‑Fi icon proves:</legend><label><input type="radio" name="q9" value="0"> The entire Internet works</label><label><input type="radio" name="q9" value="1"> A wireless link exists</label><label><input type="radio" name="q9" value="2"> DNS is working</label><label><input type="radio" name="q9" value="3"> The server is healthy</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>10. A patient barcode usually contains:</legend><label><input type="radio" name="q10" value="0"> The entire medical history</label><label><input type="radio" name="q10" value="1"> An identifier used to find a record</label><label><input type="radio" name="q10" value="2"> The Wi‑Fi password</label><label><input type="radio" name="q10" value="3"> A public IP address</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>11. If only one PC fails, first suspect:</legend><label><input type="radio" name="q11" value="0"> A worldwide Internet failure</label><label><input type="radio" name="q11" value="1"> A local issue</label><label><input type="radio" name="q11" value="2"> Every server at once</label><label><input type="radio" name="q11" value="3"> All switches</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>12. If many PCs fail together, first suspect:</legend><label><input type="radio" name="q12" value="0"> One mouse</label><label><input type="radio" name="q12" value="1"> Shared infrastructure or service</label><label><input type="radio" name="q12" value="2"> One local cable only</label><label><input type="radio" name="q12" value="3"> One browser tab</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>13. IP works but names fail. Suspect:</legend><label><input type="radio" name="q13" value="0"> DNS</label><label><input type="radio" name="q13" value="1"> Monitor</label><label><input type="radio" name="q13" value="2"> Battery</label><label><input type="radio" name="q13" value="3"> Printer toner</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>14. Which report detail is useful?</legend><label><input type="radio" name="q14" value="0"> Exact error and time</label><label><input type="radio" name="q14" value="1"> A guess only</label><label><input type="radio" name="q14" value="2"> No device name</label><label><input type="radio" name="q14" value="3"> Nothing already tested</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. Complete the chain:</legend><label><input type="radio" name="q15" value="0"> Data → signal → packets → addresses → services</label><label><input type="radio" name="q15" value="1"> Data → paper → battery → sound</label><label><input type="radio" name="q15" value="2"> Wi‑Fi → toner → RAM → printer</label><label><input type="radio" name="q15" value="3"> DNS → fan → HDMI → files</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">Check final quiz</button><button class="secondary" id="reset-quiz" type="reset">Reset</button></div><div class="score" id="quiz-score" data-label="Final score"></div></form>
+</article>
+</section>
+
+</main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · Lecture 5 · Networks and the Internet · Original 68-slide sequence preserved.</footer>
+</body></html>
