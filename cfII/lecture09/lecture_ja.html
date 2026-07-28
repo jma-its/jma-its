@@ -1,0 +1,422 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第9講 — システム情報とハードウェア状態</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script>
+<style id="cfii-course-home-style">
+.cfii-course-home{
+ position:fixed;right:18px;bottom:18px;z-index:10000;
+ display:inline-flex;align-items:center;gap:7px;
+ padding:11px 15px;border-radius:999px;
+ background:#172033;color:#fff!important;text-decoration:none!important;
+ border:2px solid rgba(255,255,255,.78);
+ box-shadow:0 10px 30px rgba(17,31,52,.28);
+ font:850 15px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif;
+}
+.cfii-course-home:hover{transform:translateY(-2px);background:#2869c7}
+@media(max-width:650px){.cfii-course-home{right:10px;bottom:10px;padding:10px 13px;font-size:14px}}
+@media print{.cfii-course-home{display:none!important}}
+</style>
+
+</head><body>
+<a class="cfii-course-home" href="../index.html" aria-label="Return to course home">← Course Home / コースホーム</a>
+<header id="top"><div class="header-inner"><div class="course">Computer Fundamentals 2 · 今学期 · ウェブ講義 9</div><div class="archive-note">Lecture 9 のオリジナル49枚のスライドを保持しています。</div><h1>システム情報とハードウェア状態</h1><p class="subtitle">元の49枚のスライドを、そのまま学べるウェブ講義にしました。</p><p class="intro">修理の前にコンピュータを識別し、システム情報と証拠を安全に集め、短く正確に報告します。</p><div class="lang-switch"><a href="lecture_en.html">English</a><a class="current" href="lecture_ja.html">日本語</a></div></div></header>
+<main class="container"><section class="core"><h2>中心の流れ</h2><div class="core-chain">識別 → 読む → スクリーンショット → 保護 → 報告</div></section>
+<section class="progress-box"><strong>学習進行</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>考えた後で答えを開いてください。</span></section>
+<section class="notice"><h2>この講義の使い方</h2><p>スライドパネルを見て、説明を読み、隠れた答えを開く前に考え、最後に実践練習を行ってください。</p></section>
+<section class="notice map" id="lesson-map"><h2>講義マップ — 49枚</h2><ol><li><a href="#slide-1">スライド 1: 第9講 — システム情報とハードウェア状態</a></li><li><a href="#slide-2">スライド 2: 今日の課題</a></li><li><a href="#slide-3">スライド 3: なぜComputer Fundamentalsなのか</a></li><li><a href="#slide-4">スライド 4: すべてのコンピュータにはIDカードがある</a></li><li><a href="#slide-5">スライド 5: 悪い報告と役に立つ報告</a></li><li><a href="#slide-6">スライド 6: システム情報マップ</a></li><li><a href="#slide-7">スライド 7: システム情報ツールマップ</a></li><li><a href="#slide-8">スライド 8: コンピュータ名：正確な機械</a></li><li><a href="#slide-9">スライド 9: メーカーとモデル</a></li><li><a href="#slide-10">スライド 10: Windowsバージョンとビルド</a></li><li><a href="#slide-11">スライド 11: CPU・RAM・ストレージ</a></li><li><a href="#slide-12">スライド 12: WindowsでSystem Informationを見つける</a></li><li><a href="#slide-13">スライド 13: Settings → System → Aboutページ</a></li><li><a href="#slide-14">スライド 14: Task Manager → Performance</a></li><li><a href="#slide-15">スライド 15: File Explorer → This PC</a></li><li><a href="#slide-16">スライド 16: 空き容量不足</a></li><li><a href="#slide-17">スライド 17: ネットワークアダプタ情報</a></li><li><a href="#slide-18">スライド 18: ネットワーク状態情報</a></li><li><a href="#slide-19">スライド 19: 表示状態</a></li><li><a href="#slide-20">スライド 20: 音声状態</a></li><li><a href="#slide-21">スライド 21: ノートPCのバッテリー状態</a></li><li><a href="#slide-22">スライド 22: サポートの証拠</a></li><li><a href="#slide-23">スライド 23: スクリーンショットは証拠</a></li><li><a href="#slide-24">スライド 24: スクリーンショット = 証拠</a></li><li><a href="#slide-25">スライド 25: 重要情報を切り取らない</a></li><li><a href="#slide-26">スライド 26: 悪いスクリーンショットと良いスクリーンショット</a></li><li><a href="#slide-27">スライド 27: 簡単なサポート報告</a></li><li><a href="#slide-28">スライド 28: 良いSystem Reportテンプレート</a></li><li><a href="#slide-29">スライド 29: サポート報告の例</a></li><li><a href="#slide-30">スライド 30: 例：Wi‑Fiなし</a></li><li><a href="#slide-31">スライド 31: 例：空き容量不足</a></li><li><a href="#slide-32">スライド 32: 例：オンライン会議が止まる</a></li><li><a href="#slide-33">スライド 33: 例：プロジェクター表示問題</a></li><li><a href="#slide-34">スライド 34: 情報をどこに入れるか</a></li><li><a href="#slide-35">スライド 35: Windows Update履歴を証拠にする</a></li><li><a href="#slide-36">スライド 36: 安全ルール</a></li><li><a href="#slide-37">スライド 37: 個人情報を共有しない</a></li><li><a href="#slide-38">スライド 38: 個人情報を共有しない — 報告視点</a></li><li><a href="#slide-39">スライド 39: ランダムに設定を変えない</a></li><li><a href="#slide-40">スライド 40: ランダムにファイルを削除しない</a></li><li><a href="#slide-41">スライド 41: 教室練習</a></li><li><a href="#slide-42">スライド 42: 練習：System Informationを見つける</a></li><li><a href="#slide-43">スライド 43: 練習：有用なスクリーンショットを取る</a></li><li><a href="#slide-44">スライド 44: ペアワーク：画面を読む、報告を書く</a></li><li><a href="#slide-45">スライド 45: 最終課題ワークフロー</a></li><li><a href="#slide-46">スライド 46: ミニ評価：PC‑04でWi‑Fiなし</a></li><li><a href="#slide-47">スライド 47: 最終復習マップ</a></li><li><a href="#slide-48">スライド 48: 覚える5つのこと</a></li><li><a href="#slide-49">スライド 49: 宿題／次回</a></li></ol></section>
+<h2 class="part-title">導入 — 修理より先に事実</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">スライド 1</div><div class="slide-title"><h2>第9講 — システム情報とハードウェア状態</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="第9講 — システム情報とハードウェア状態" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 1 — タップして拡大</figcaption></figure>
+<section class="reading"><p>修理の前に事実を集めます。役に立つ報告には、コンピュータ名、モデル、Windowsバージョン、CPU、RAM、ストレージ、ネットワーク状態、スクリーンショット、問題内容が入ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ランダムな修理の前に何をしますか。</p><details data-checkpoint><summary>答えを見る</summary><p>システム情報と証拠を集めます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">スライド 2</div><div class="slide-title"><h2>今日の課題</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="今日の課題" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 2 — タップして拡大</figcaption></figure>
+<section class="reading"><p>今日の課題は3つです。コンピュータを識別する、重要な情報を読む、証拠付きで問題を報告する。</p></section>
+<section class="think"><h3>考えて答える</h3><p>3つの動詞は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>識別する、読む、報告する。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">スライド 3</div><div class="slide-title"><h2>なぜComputer Fundamentalsなのか</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="なぜComputer Fundamentalsなのか" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 3 — タップして拡大</figcaption></figure>
+<section class="reading"><p>これは普通のアプリ練習ではありません。CPU、RAM、ストレージ、アダプタ、Windowsバージョン、デバイス状態はコンピュータそのものを説明します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>なぜComputer Fundamentalsですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Windows情報と実際のハードウェアをつなぐからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">スライド 4</div><div class="slide-title"><h2>すべてのコンピュータにはIDカードがある</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="すべてのコンピュータにはIDカードがある" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 4 — タップして拡大</figcaption></figure>
+<section class="reading"><p>コンピュータもIDカードのように説明できます。名前、モデル、Windows、CPU、RAM、ストレージ、ネットワーク状態、問題が必要です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>コンピュータIDカードの考え方は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>サポート前に対象のコンピュータを特定することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">スライド 5</div><div class="slide-title"><h2>悪い報告と役に立つ報告</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="悪い報告と役に立つ報告" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 5 — タップして拡大</figcaption></figure>
+<section class="reading"><p>悪い報告は「コンピュータが壊れた」だけです。役に立つ報告は、デバイス名、OS、メモリ、問題、詳細、スクリーンショットを含みます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>なぜ「壊れた」だけでは弱いですか。</p><details data-checkpoint><summary>答えを見る</summary><p>機器の特定、詳細、証拠がないからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">スライド 6</div><div class="slide-title"><h2>システム情報マップ</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="システム情報マップ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 6 — タップして拡大</figcaption></figure>
+<section class="reading"><p>役に立つ情報には、デバイス名、モデル、Windows、CPU、RAM、ストレージ、ネットワーク、表示、音声、バッテリー、スクリーンショットがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>情報領域を3つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>識別情報、ハードウェア情報、状態・証拠です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第1部 — 情報はどこにあるか</h2>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">スライド 7</div><div class="slide-title"><h2>システム情報ツールマップ</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="システム情報ツールマップ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 7 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windowsの各ツールは違う情報を示します。About、Task Manager、Device Manager、This PC、Network settings、msinfo32です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>基本識別の安全な最初の場所は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Settings → System → Aboutです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">スライド 8</div><div class="slide-title"><h2>コンピュータ名：正確な機械</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="コンピュータ名：正確な機械" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 8 — タップして拡大</figcaption></figure>
+<section class="reading"><p>コンピュータ名は正確な機械を特定します。「黒いノートPC」よりLAB2-PC-06の方が有用です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>正確な名前が有用な理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>問題のある機械を特定できるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">スライド 9</div><div class="slide-title"><h2>メーカーとモデル</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="メーカーとモデル" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 9 — タップして拡大</figcaption></figure>
+<section class="reading"><p>メーカーとモデルはドライバー、部品、マニュアルを探す時に重要です。見た目が似ても中身は違うことがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>モデルが重要な理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライバーや部品がモデル専用の場合があるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">スライド 10</div><div class="slide-title"><h2>Windowsバージョンとビルド</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="Windowsバージョンとビルド" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 10 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windowsのedition、version、OS build、system typeをコピーします。推測しません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windowsだけより有用な情報は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>edition、version、OS build、system typeです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">スライド 11</div><div class="slide-title"><h2>CPU・RAM・ストレージ</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="CPU・RAM・ストレージ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 11 — タップして拡大</figcaption></figure>
+<section class="reading"><p>CPUは処理、RAMは一時作業場所、ストレージは長期保存です。RAMとストレージは同じではありません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>RAMとストレージの違いは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>RAMは一時、ストレージは長期保存です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">スライド 12</div><div class="slide-title"><h2>WindowsでSystem Informationを見つける</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="WindowsでSystem Informationを見つける" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 12 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Aboutページは安全な出発点です。Start → Settings → System → Aboutで開きます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Aboutページのパスは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Start → Settings → System → Aboutです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">スライド 13</div><div class="slide-title"><h2>Settings → System → Aboutページ</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="Settings → System → Aboutページ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 13 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Device specificationsは機械、Windows specificationsはOSを説明します。初心者は正確にコピーすれば十分です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Aboutページの2つのグループは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Device specificationsとWindows specificationsです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">スライド 14</div><div class="slide-title"><h2>Task Manager → Performance</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="Task Manager → Performance" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 14 — タップして拡大</figcaption></figure>
+<section class="reading"><p>PerformanceタブはCPU、メモリ、ディスク、ネットワーク、GPU情報を示します。ここでは識別が目的です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>何を識別できますか。</p><details data-checkpoint><summary>答えを見る</summary><p>CPU、メモリ、ディスク、ネットワーク、GPUです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">スライド 15</div><div class="slide-title"><h2>File Explorer → This PC</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="File Explorer → This PC" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 15 — タップして拡大</figcaption></figure>
+<section class="reading"><p>This PCはドライブ、総容量、空き容量を示します。数字は「たぶん満杯」より強い証拠です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>報告に必要な保存情報は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブ文字、総容量、空き容量です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">スライド 16</div><div class="slide-title"><h2>空き容量不足</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="空き容量不足" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 16 — タップして拡大</figcaption></figure>
+<section class="reading"><p>空き容量不足は更新失敗や保存不可を起こします。ランダムにシステムファイルを削除してはいけません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>何が危険ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Windowsや不明ファイルのランダム削除です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">スライド 17</div><div class="slide-title"><h2>ネットワークアダプタ情報</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="ネットワークアダプタ情報" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 17 — タップして拡大</figcaption></figure>
+<section class="reading"><p>インターネット問題では、Wi‑Fi/Ethernetアダプタ名、接続状態、Wi‑Fi名、IP、ドライバー情報が役立ちます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ネットワーク報告に役立つ事実は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>アダプタ名と接続状態です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">スライド 18</div><div class="slide-title"><h2>ネットワーク状態情報</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="ネットワーク状態情報" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 18 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Wi‑Fi接続済みはインターネット正常を必ず意味しません。Wi‑Fi、Ethernet、名前、正確なメッセージを分けます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Wi‑Fi接続は必ずInternet正常ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">スライド 19</div><div class="slide-title"><h2>表示状態</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="表示状態" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 19 — タップして拡大</figcaption></figure>
+<section class="reading"><p>画面やプロジェクター問題では、解像度、拡大率、表示アダプタ、検出状態を記録します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>プロジェクター問題に役立つ証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Display settingsとdisplay adapter情報です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">スライド 20</div><div class="slide-title"><h2>音声状態</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="音声状態" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 20 — タップして拡大</figcaption></figure>
+<section class="reading"><p>音声ではinputとoutputを分けます。Outputはスピーカー、inputはマイクです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>inputとoutputの違いは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>inputはマイク、outputはスピーカーです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">スライド 21</div><div class="slide-title"><h2>ノートPCのバッテリー状態</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="ノートPCのバッテリー状態" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 21 — タップして拡大</figcaption></figure>
+<section class="reading"><p>バッテリー％、充電状態、アダプタ接続、症状を報告します。損傷・膨張バッテリーは触りません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>バッテリー安全ルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>状態を報告し、損傷品には触れません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第2部 — 証拠とスクリーンショット</h2>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">スライド 22</div><div class="slide-title"><h2>サポートの証拠</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="サポートの証拠" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 22 — タップして拡大</figcaption></figure>
+<section class="reading"><p>役に立つ報告には、別の人が確認できる情報が必要です。スクリーンショット、数字、文脈、時刻などです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>記憶より強いものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>確認できる証拠です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">スライド 23</div><div class="slide-title"><h2>スクリーンショットは証拠</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="スクリーンショットは証拠" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 23 — タップして拡大</figcaption></figure>
+<section class="reading"><p>スクリーンショットは正確なメッセージ、デバイス名、時刻、状態を記録します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>なぜスクリーンショットが役に立ちますか。</p><details data-checkpoint><summary>答えを見る</summary><p>正確な状況を示すからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">スライド 24</div><div class="slide-title"><h2>スクリーンショット = 証拠</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="スクリーンショット = 証拠" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 24 — タップして拡大</figcaption></figure>
+<section class="reading"><p>スクリーンショットは問題を証明するために、メッセージ、デバイス、状態、文脈を含めます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>目的は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>飾りではなく証拠です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">スライド 25</div><div class="slide-title"><h2>重要情報を切り取らない</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="重要情報を切り取らない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 25 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ウィンドウ名、デバイス名、全文エラーを切ると証拠が弱くなります。十分な文脈を残します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>切り取ってはいけないものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ウィンドウ名、デバイス名、エラー全文です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">スライド 26</div><div class="slide-title"><h2>悪いスクリーンショットと良いスクリーンショット</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="悪いスクリーンショットと良いスクリーンショット" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 26 — タップして拡大</figcaption></figure>
+<section class="reading"><p>悪いものは小さい、ぼやける、切りすぎです。良いものは読みやすく、関連する全体が見えます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>良いスクリーンショットの条件は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>読めること、必要な文脈があることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">スライド 27</div><div class="slide-title"><h2>簡単なサポート報告</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="簡単なサポート報告" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 27 — タップして拡大</figcaption></figure>
+<section class="reading"><p>報告には device name、model、Windows、CPU、RAM、storage、problem、checked、screenshot、need help があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>報告項目を3つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>device name、problem、evidenceなどです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">スライド 28</div><div class="slide-title"><h2>良いSystem Reportテンプレート</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="良いSystem Reportテンプレート" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 28 — タップして拡大</figcaption></figure>
+<section class="reading"><p>長くて推測が多い報告より、短くて正確な報告が有用です。画面から事実をコピーします。</p></section>
+<section class="think"><h3>考えて答える</h3><p>長い推測より良いものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>短く正確な事実の報告です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第3部 — 報告例</h2>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">スライド 29</div><div class="slide-title"><h2>サポート報告の例</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="サポート報告の例" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 29 — タップして拡大</figcaption></figure>
+<section class="reading"><p>問題によって必要な証拠が違います。Wi‑Fi、空き容量、表示、会議では見る情報が変わります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>なぜ例ごとに証拠が違いますか。</p><details data-checkpoint><summary>答えを見る</summary><p>症状が別の情報領域を示すからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">スライド 30</div><div class="slide-title"><h2>例：Wi‑Fiなし</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="例：Wi‑Fiなし" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 30 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Wi‑Fi報告には、コンピュータ名、Windows、アダプタ名、状態、確認内容、範囲、証拠を入れます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>範囲を書く理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>1台か多数かを判断できるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">スライド 31</div><div class="slide-title"><h2>例：空き容量不足</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="例：空き容量不足" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 31 — タップして拡大</figcaption></figure>
+<section class="reading"><p>容量不足では、ドライブ文字、総容量、空き容量、警告、確認内容が重要です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>最重要証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>総容量と空き容量です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">スライド 32</div><div class="slide-title"><h2>例：オンライン会議が止まる</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="例：オンライン会議が止まる" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 32 — タップして拡大</figcaption></figure>
+<section class="reading"><p>会議問題はネットワーク、メモリ、CPU、マイク、カメラ、アプリなど複数原因があります。先に証拠を集めます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>なぜすぐ1つに決めませんか。</p><details data-checkpoint><summary>答えを見る</summary><p>原因候補が複数あるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">スライド 33</div><div class="slide-title"><h2>例：プロジェクター表示問題</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="例：プロジェクター表示問題" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 33 — タップして拡大</figcaption></figure>
+<section class="reading"><p>プロジェクター報告には、PC名、表示アダプタ、症状、HDMI/Display設定確認、スクリーンショットを含めます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>どの設定が役立ちますか。</p><details data-checkpoint><summary>答えを見る</summary><p>Display settingsです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">スライド 34</div><div class="slide-title"><h2>情報をどこに入れるか</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="情報をどこに入れるか" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 34 — タップして拡大</figcaption></figure>
+<section class="reading"><p>報告は、コンピュータ識別、Windows情報、ハードウェア情報、症状、ネットワーク状態、スクリーンショットを整理します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>computer identityは何を示しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>どの機械かです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">スライド 35</div><div class="slide-title"><h2>Windows Update履歴を証拠にする</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="Windows Update履歴を証拠にする" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 35 — タップして拡大</figcaption></figure>
+<section class="reading"><p>更新後に問題が始まった場合は、更新日と名前を記録します。原因の証明ではなく手掛かりです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Update履歴は証明ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ、手掛かりです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第4部 — 安全ルール</h2>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">スライド 36</div><div class="slide-title"><h2>安全ルール</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="安全ルール" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 36 — タップして拡大</figcaption></figure>
+<section class="reading"><p>情報ツールは読むだけなら安全です。設定変更、削除、共有は危険になることがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>初心者の安全ルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>まず読む、データを守る、変更前に聞く。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">スライド 37</div><div class="slide-title"><h2>個人情報を共有しない</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="個人情報を共有しない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 37 — タップして拡大</figcaption></figure>
+<section class="reading"><p>パスワード、患者情報、私的ファイル、個人アカウントを共有しません。スクリーンショットにも注意します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>送信前に何を確認しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>個人情報や患者情報が見えていないかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">スライド 38</div><div class="slide-title"><h2>個人情報を共有しない — 報告視点</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="個人情報を共有しない — 報告視点" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 38 — タップして拡大</figcaption></figure>
+<section class="reading"><p>問題解決に必要な情報だけ共有します。個人情報が見えるなら隠すか別のスクリーンショットを取ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>迷ったらどうしますか。</p><details data-checkpoint><summary>答えを見る</summary><p>入れずに質問します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">スライド 39</div><div class="slide-title"><h2>ランダムに設定を変えない</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="ランダムに設定を変えない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 39 — タップして拡大</figcaption></figure>
+<section class="reading"><p>安全：開く、読む、スクリーンショット、報告。危険：無効化、削除、ファイル削除、不明設定変更。</p></section>
+<section class="think"><h3>考えて答える</h3><p>授業の練習は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察と報告であり、修理ではありません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">スライド 40</div><div class="slide-title"><h2>ランダムにファイルを削除しない</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="ランダムにファイルを削除しない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 40 — タップして拡大</figcaption></figure>
+<section class="reading"><p>空き容量不足でも何でも削除してよいわけではありません。Windows、Program Files、他人のファイル、不明ファイルは削除しません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全な最初の行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>証拠を報告して、削除前に確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第5部 — 教室練習</h2>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">スライド 41</div><div class="slide-title"><h2>教室練習</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="教室練習" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 41 — タップして拡大</figcaption></figure>
+<section class="reading"><p>システム情報を見つけ、有用なスクリーンショットを取り、証拠付きの短い報告を提出します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>これは修理課題ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ、情報収集と報告です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">スライド 42</div><div class="slide-title"><h2>練習：System Informationを見つける</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="練習：System Informationを見つける" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 42 — タップして拡大</figcaption></figure>
+<section class="reading"><p>device name、Windows version、CPU、RAM、storage、network adapterを見つけます。About、This PC、Device Managerなどを使います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>答えはどこから取りますか。</p><details data-checkpoint><summary>答えを見る</summary><p>画面からです。記憶ではありません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">スライド 43</div><div class="slide-title"><h2>練習：有用なスクリーンショットを取る</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="練習：有用なスクリーンショットを取る" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 43 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Settings About、This PC、Device Manager、Network statusを読みやすく撮ります。ファイル名も明確にします。</p></section>
+<section class="think"><h3>考えて答える</h3><p>明確なファイル名が役立つ理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>確認しやすくなるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">スライド 44</div><div class="slide-title"><h2>ペアワーク：画面を読む、報告を書く</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="ペアワーク：画面を読む、報告を書く" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 44 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Aさんが画面から事実を読み、Bさんが報告を書きます。その後交代します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ペアワークの理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>サポートには明確なコミュニケーションが必要だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">スライド 45</div><div class="slide-title"><h2>最終課題ワークフロー</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="最終課題ワークフロー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 45 — タップして拡大</figcaption></figure>
+<section class="reading"><p>システム情報を見つけ、問題を確認し、スクリーンショットを取り、報告を記入し、提出します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>順番が重要な理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>事実を集める前に書くと推測になるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">スライド 46</div><div class="slide-title"><h2>ミニ評価：PC‑04でWi‑Fiなし</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="ミニ評価：PC‑04でWi‑Fiなし" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 46 — タップして拡大</figcaption></figure>
+<section class="reading"><p>PC‑04のWi‑Fi問題について、コンピュータ名、問題、ネットワーク状態、スクリーンショット、可能性、行動を記入します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>自信ある推測より良いものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>弱くても事実に基づく報告です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">スライド 47</div><div class="slide-title"><h2>最終復習マップ</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="最終復習マップ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 47 — タップして拡大</figcaption></figure>
+<section class="reading"><p>報告は、コンピュータ識別、ハードウェア情報、システム状態、症状、証拠、スクリーンショットから作ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>役に立つ報告になる要素は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>識別、ハードウェア、状態、症状、証拠です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">スライド 48</div><div class="slide-title"><h2>覚える5つのこと</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="覚える5つのこと" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 48 — タップして拡大</figcaption></figure>
+<section class="reading"><p>identify、check、prove、protect、report。コンピュータを特定し、状態を確認し、証拠を取り、データを守り、事実を報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>5つの動詞は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>identify, check, prove, protect, reportです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">スライド 49</div><div class="slide-title"><h2>宿題／次回</h2><p>最初にスライドパネルを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="宿題／次回" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 49 — タップして拡大</figcaption></figure>
+<section class="reading"><p>No Wi‑Fi on PC‑04の架空報告を作ります。コンピュータ名、Windows、アダプタ、症状、証拠を入れ、個人情報とランダム修理を避けます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>宿題の目標は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>コンピュータと問題を明確に説明することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<section class="interactive-section" id="interactive-review">
+<h2>拡張インタラクティブ復習</h2>
+<p>目的は修理ではなく、安全に情報を読み、証拠付きで報告することです。</p>
+<div class="lab-grid">
+<article class="lab">
+<h3>1. どのツールを見るか</h3>
+<div class="tool-grid">
+<button class="tool-card" data-tool="about">Settings → About</button>
+<button class="tool-card" data-tool="thispc">This PC</button>
+<button class="tool-card" data-tool="task">Task Manager</button>
+<button class="tool-card" data-tool="device">Device Manager</button>
+<button class="tool-card" data-tool="network">Network Settings</button>
+<button class="tool-card" data-tool="update">Windows Update History</button>
+</div><div class="tool-info" id="tool-info"></div></article>
+<article class="lab"><h3>2. 良い証拠か悪い証拠か</h3>
+<div class="evidence-grid">
+<div class="evidence-card" data-answer="good">PC-04, Windows 11, Wi‑Fi warning screenshot<strong></strong></div>
+<div class="evidence-card" data-answer="bad">なんか壊れた<strong></strong></div>
+<div class="evidence-card" data-answer="good">C: 237GB total, 5GB free<strong></strong></div>
+<div class="evidence-card" data-answer="bad">多分ストレージが悪い<strong></strong></div>
+</div><div class="actions"><button class="primary" id="check-evidence" type="button">確認</button></div><div class="feedback" id="evidence-feedback"></div></article>
+<article class="lab"><h3>3. 安全か危険か</h3>
+<div class="safety-grid">
+<div class="safety-card" data-answer="safe">Aboutページを読む<strong></strong></div>
+<div class="safety-card" data-answer="risky">Program Filesを削除<strong></strong></div>
+<div class="safety-card" data-answer="safe">状態メッセージをスクリーンショット<strong></strong></div>
+<div class="safety-card" data-answer="risky">不明な設定を変更<strong></strong></div>
+<div class="safety-card" data-answer="safe">個人情報を隠して報告<strong></strong></div>
+<div class="safety-card" data-answer="risky">パスワードを共有<strong></strong></div>
+</div><div class="actions"><button class="primary" id="check-safety" type="button">分類を確認</button></div><div class="feedback" id="safety-feedback"></div></article>
+<article class="lab"><h3>4. 報告ジェネレーター</h3>
+<div class="report-builder">
+<input id="rep-computer" value="PC-04"><input id="rep-windows" value="Windows 11">
+<select id="rep-problem"><option value="wifi">No Wi‑Fi</option><option value="storage">Low storage</option><option value="display">Projector not detected</option><option value="meeting">Online meeting freezes</option></select>
+<input id="rep-evidence" value="Screenshot taken">
+<button class="primary" id="build-report" type="button">報告を作成</button>
+</div><pre class="report-output" id="report-output"></pre></article>
+<article class="lab"><h3>5. IDカードチェックリスト</h3>
+<div class="checklist-grid">
+<div class="checkitem">Device name</div><div class="checkitem">Model</div><div class="checkitem">Windows version</div><div class="checkitem">CPU</div><div class="checkitem">RAM</div><div class="checkitem">Storage</div><div class="checkitem">Network adapter</div><div class="checkitem">Screenshot</div><div class="checkitem">Problem symptom</div>
+</div></article>
+<article class="lab"><h3>6. ケース練習</h3>
+<div class="case-grid">
+<button class="case-card" data-case="wifi">PC‑04でWi‑Fiなし</button>
+<button class="case-card" data-case="storage">Cドライブ残り5GB</button>
+<button class="case-card" data-case="projector">プロジェクター未検出</button>
+<button class="case-card" data-case="private">患者情報がスクリーンショットに見える</button>
+</div><div class="case-info" id="case-info"></div></article>
+</div>
+<article class="lab" style="margin-top:18px"><h3>7. 最終知識チェック</h3><form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. 最初のサポート手順は何ですか。</legend><label><input type="radio" name="q1" value="0"> 推測</label><label><input type="radio" name="q1" value="1"> コンピュータを識別</label><label><input type="radio" name="q1" value="2"> ファイル削除</label><label><input type="radio" name="q1" value="3"> 設定変更</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. 良い報告はどれですか。</legend><label><input type="radio" name="q2" value="0"> 壊れた</label><label><input type="radio" name="q2" value="1"> LAB2-PC-06、Windows、症状、スクリーンショット</label><label><input type="radio" name="q2" value="2"> 悪い</label><label><input type="radio" name="q2" value="3"> たぶんネット</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>3. Aboutページが示すものは何ですか。</legend><label><input type="radio" name="q3" value="0"> デバイス名とWindows</label><label><input type="radio" name="q3" value="1"> 印刷キューだけ</label><label><input type="radio" name="q3" value="2"> 天気</label><label><input type="radio" name="q3" value="3"> パスワード</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. This PCで報告できるものは何ですか。</legend><label><input type="radio" name="q4" value="0"> 容量と空き容量</label><label><input type="radio" name="q4" value="1"> マイク音量だけ</label><label><input type="radio" name="q4" value="2"> 色</label><label><input type="radio" name="q4" value="3"> パスワード</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>5. ここでDevice Managerを使う目的は何ですか。</legend><label><input type="radio" name="q5" value="0"> 名前と状態を読む</label><label><input type="radio" name="q5" value="1"> ランダム削除</label><label><input type="radio" name="q5" value="2"> 初期化</label><label><input type="radio" name="q5" value="3"> 証拠を隠す</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. Wi‑Fi接続済みの意味は何ですか。</legend><label><input type="radio" name="q6" value="0"> Internet必ず正常</label><label><input type="radio" name="q6" value="1"> 無線リンクはあるがInternetは別</label><label><input type="radio" name="q6" value="2"> プリンター正常</label><label><input type="radio" name="q6" value="3"> 容量不足</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>7. 良いスクリーンショットは何ですか。</legend><label><input type="radio" name="q7" value="0"> 読みやすく文脈あり</label><label><input type="radio" name="q7" value="1"> 小さすぎる</label><label><input type="radio" name="q7" value="2"> 個人情報あり</label><label><input type="radio" name="q7" value="3"> 読めない</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>8. Program Filesを削除してよいですか。</legend><label><input type="radio" name="q8" value="0"> はい</label><label><input type="radio" name="q8" value="1"> いいえ</label><label><input type="radio" name="q8" value="2"> 急いでなら</label><label><input type="radio" name="q8" value="3"> 常に</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>9. Update履歴は何ですか。</legend><label><input type="radio" name="q9" value="0"> 手掛かりであり証明ではない</label><label><input type="radio" name="q9" value="1"> 必ず原因</label><label><input type="radio" name="q9" value="2"> 無意味</label><label><input type="radio" name="q9" value="3"> パスワード</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>10. 共有してはいけないものは何ですか。</legend><label><input type="radio" name="q10" value="0"> パスワードと患者情報</label><label><input type="radio" name="q10" value="1"> デバイス名</label><label><input type="radio" name="q10" value="2"> Windowsバージョン</label><label><input type="radio" name="q10" value="3"> 関連状態</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>11. 空き容量不足の報告に必要なものは何ですか。</legend><label><input type="radio" name="q11" value="0"> 総容量と空き容量</label><label><input type="radio" name="q11" value="1"> 気持ちだけ</label><label><input type="radio" name="q11" value="2"> キーボード色</label><label><input type="radio" name="q11" value="3"> 証拠なし</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. プロジェクター問題の証拠は何ですか。</legend><label><input type="radio" name="q12" value="0"> Display設定スクリーンショット</label><label><input type="radio" name="q12" value="1"> ごみ箱だけ</label><label><input type="radio" name="q12" value="2"> バッテリーだけ</label><label><input type="radio" name="q12" value="3"> 履歴</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>13. 報告は何を使いますか。</legend><label><input type="radio" name="q13" value="0"> 画面の事実</label><label><input type="radio" name="q13" value="1"> 記憶の推測</label><label><input type="radio" name="q13" value="2"> 個人情報</label><label><input type="radio" name="q13" value="3"> ランダム修理</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>14. 5つの動詞は何ですか。</legend><label><input type="radio" name="q14" value="0"> identify, check, prove, protect, report</label><label><input type="radio" name="q14" value="1"> delete, guess, hide, panic, click</label><label><input type="radio" name="q14" value="2"> play, browse, save, sleep, print</label><label><input type="radio" name="q14" value="3"> charge, fold, unplug, erase, shout</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. 宿題の目標は何ですか。</legend><label><input type="radio" name="q15" value="0"> PC‑04 Wi‑Fi問題の明確な報告</label><label><input type="radio" name="q15" value="1"> ランダムドライバー</label><label><input type="radio" name="q15" value="2"> 不明ファイル削除</label><label><input type="radio" name="q15" value="3"> パスワード共有</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">最終クイズを確認</button><button class="secondary" id="reset-quiz" type="reset">リセット</button></div><div class="score" id="quiz-score" data-label="最終スコア"></div></form></article>
+</section>
+</main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · Lecture 9 · System Information and Hardware Status · 49-slide sequence.</footer></body></html>

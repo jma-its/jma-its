@@ -1,0 +1,422 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 9 — System Information and Hardware Status</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script>
+<style id="cfii-course-home-style">
+.cfii-course-home{
+ position:fixed;right:18px;bottom:18px;z-index:10000;
+ display:inline-flex;align-items:center;gap:7px;
+ padding:11px 15px;border-radius:999px;
+ background:#172033;color:#fff!important;text-decoration:none!important;
+ border:2px solid rgba(255,255,255,.78);
+ box-shadow:0 10px 30px rgba(17,31,52,.28);
+ font:850 15px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif;
+}
+.cfii-course-home:hover{transform:translateY(-2px);background:#2869c7}
+@media(max-width:650px){.cfii-course-home{right:10px;bottom:10px;padding:10px 13px;font-size:14px}}
+@media print{.cfii-course-home{display:none!important}}
+</style>
+
+</head><body>
+<a class="cfii-course-home" href="../index.html" aria-label="Return to course home">← Course Home / コースホーム</a>
+<header id="top"><div class="header-inner"><div class="course">Computer Fundamentals 2 · Current Quarter · Lecture 9</div><div class="archive-note">Original 49-slide presentation preserved for Lecture 9.</div><h1>System Information and Hardware Status</h1><p class="subtitle">The original 49-slide visual lecture, adapted for independent web study.</p><p class="intro">Identify the computer before support, collect safe system evidence, and report facts clearly before changing anything.</p><div class="lang-switch"><a class="current" href="lecture_en.html">English</a><a href="lecture_ja.html">日本語</a></div></div></header>
+<main class="container"><section class="core"><h2>Core workflow</h2><div class="core-chain">Identify → Read → Screenshot → Protect → Report</div></section>
+<section class="progress-box"><strong>Reading progress</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>Open answers only after thinking.</span></section>
+<section class="notice"><h2>How to use this lecture</h2><p>Study each slide panel, read the explanation, think before opening the answer, and complete the practical review.</p></section>
+<section class="notice map" id="lesson-map"><h2>Lesson map — 49 slides</h2><ol><li><a href="#slide-1">Slide 1: Lecture 9 — System Information and Hardware Status</a></li><li><a href="#slide-2">Slide 2: Today’s task</a></li><li><a href="#slide-3">Slide 3: Why this is Computer Fundamentals</a></li><li><a href="#slide-4">Slide 4: Every computer has an ID card</a></li><li><a href="#slide-5">Slide 5: Bad Report vs Useful Report</a></li><li><a href="#slide-6">Slide 6: System Information Map</a></li><li><a href="#slide-7">Slide 7: System Information Tools Map</a></li><li><a href="#slide-8">Slide 8: Computer name: exact machine</a></li><li><a href="#slide-9">Slide 9: Manufacturer and model</a></li><li><a href="#slide-10">Slide 10: Windows version and build</a></li><li><a href="#slide-11">Slide 11: CPU vs RAM vs Storage</a></li><li><a href="#slide-12">Slide 12: Where to find System Information in Windows</a></li><li><a href="#slide-13">Slide 13: Settings → System → About page</a></li><li><a href="#slide-14">Slide 14: Task Manager → Performance</a></li><li><a href="#slide-15">Slide 15: File Explorer → This PC</a></li><li><a href="#slide-16">Slide 16: Low Disk Space</a></li><li><a href="#slide-17">Slide 17: Network Adapter Information</a></li><li><a href="#slide-18">Slide 18: Network Status Information</a></li><li><a href="#slide-19">Slide 19: Display Status</a></li><li><a href="#slide-20">Slide 20: Sound Status</a></li><li><a href="#slide-21">Slide 21: Laptop Battery Status</a></li><li><a href="#slide-22">Slide 22: Evidence for support</a></li><li><a href="#slide-23">Slide 23: A Screenshot is Evidence</a></li><li><a href="#slide-24">Slide 24: Screenshot = Evidence</a></li><li><a href="#slide-25">Slide 25: Do not crop away important information</a></li><li><a href="#slide-26">Slide 26: Bad Screenshot vs Good Screenshot</a></li><li><a href="#slide-27">Slide 27: Simple Support Report</a></li><li><a href="#slide-28">Slide 28: Good System Report Template</a></li><li><a href="#slide-29">Slide 29: Example support reports</a></li><li><a href="#slide-30">Slide 30: Example Report: No Wi‑Fi</a></li><li><a href="#slide-31">Slide 31: Example Report: Low Storage</a></li><li><a href="#slide-32">Slide 32: Example Report: Online Meeting Freezes</a></li><li><a href="#slide-33">Slide 33: Example Report: Projector Display Problem</a></li><li><a href="#slide-34">Slide 34: What Information Goes Where</a></li><li><a href="#slide-35">Slide 35: Windows Update History as Evidence</a></li><li><a href="#slide-36">Slide 36: Safety rules</a></li><li><a href="#slide-37">Slide 37: Do Not Share Private Information</a></li><li><a href="#slide-38">Slide 38: Do not share private information — report view</a></li><li><a href="#slide-39">Slide 39: Do Not Change Settings Randomly</a></li><li><a href="#slide-40">Slide 40: Do Not Delete Random Files</a></li><li><a href="#slide-41">Slide 41: Classroom practice</a></li><li><a href="#slide-42">Slide 42: Practice: Find System Information</a></li><li><a href="#slide-43">Slide 43: Practice: Take Useful Screenshots</a></li><li><a href="#slide-44">Slide 44: Pair Work: Read the Screen, Write the Report</a></li><li><a href="#slide-45">Slide 45: Student Final Task Workflow</a></li><li><a href="#slide-46">Slide 46: Mini Assessment: No Wi‑Fi on PC‑04</a></li><li><a href="#slide-47">Slide 47: Final Review Map</a></li><li><a href="#slide-48">Slide 48: Five things to remember</a></li><li><a href="#slide-49">Slide 49: Homework / next class</a></li></ol></section>
+<h2 class="part-title">Opening — Facts before fixes</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">Slide 1</div><div class="slide-title"><h2>Lecture 9 — System Information and Hardware Status</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="Lecture 9 — System Information and Hardware Status" loading="lazy"></button><figcaption>Original presentation slide 1 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Collect facts before fixing. A useful report gives computer name, model, Windows version, CPU, RAM, storage, network status, screenshots, and the problem.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should come before trying random fixes?</p><details data-checkpoint><summary>Show answer</summary><p>Collect system information and evidence.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">Slide 2</div><div class="slide-title"><h2>Today’s task</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="Today’s task" loading="lazy"></button><figcaption>Original presentation slide 2 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Today’s task has three parts: identify the computer, read important system information, and report the problem with evidence.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What are the three task verbs?</p><details data-checkpoint><summary>Show answer</summary><p>Identify, read, and report.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">Slide 3</div><div class="slide-title"><h2>Why this is Computer Fundamentals</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="Why this is Computer Fundamentals" loading="lazy"></button><figcaption>Original presentation slide 3 — click to enlarge</figcaption></figure>
+<section class="reading"><p>This is not ordinary app training. CPU, RAM, storage, adapters, Windows version, and device status describe the machine itself. Good support begins with facts, not guesses.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why does this belong to Computer Fundamentals?</p><details data-checkpoint><summary>Show answer</summary><p>It connects Windows information to real hardware identity and status.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">Slide 4</div><div class="slide-title"><h2>Every computer has an ID card</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="Every computer has an ID card" loading="lazy"></button><figcaption>Original presentation slide 4 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A computer can be described like an ID card. Device name, model, Windows version, CPU, RAM, storage, network status, and the problem help support understand the machine.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the computer ID-card idea?</p><details data-checkpoint><summary>Show answer</summary><p>Identify the computer before support, like identifying a patient before treatment.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">Slide 5</div><div class="slide-title"><h2>Bad Report vs Useful Report</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="Bad Report vs Useful Report" loading="lazy"></button><figcaption>Original presentation slide 5 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A bad report says only “computer broken.” A useful report gives device name, operating system, memory, issue, details, and screenshot evidence.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why is “computer broken” a weak report?</p><details data-checkpoint><summary>Show answer</summary><p>It gives no machine identity, system details, or evidence.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">Slide 6</div><div class="slide-title"><h2>System Information Map</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="System Information Map" loading="lazy"></button><figcaption>Original presentation slide 6 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Useful information includes device name, model, Windows version, CPU, RAM, storage, network adapter, display adapter, audio device, battery status, and screenshots.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Name three useful information areas.</p><details data-checkpoint><summary>Show answer</summary><p>Identity, hardware information, and current status/evidence.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 1 — Where information lives</h2>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">Slide 7</div><div class="slide-title"><h2>System Information Tools Map</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="System Information Tools Map" loading="lazy"></button><figcaption>Original presentation slide 7 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Different Windows tools show different facts: Settings About, Task Manager, Device Manager, This PC, Network settings, and msinfo32.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which tool is a safe first place for basic identity?</p><details data-checkpoint><summary>Show answer</summary><p>Settings → System → About.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">Slide 8</div><div class="slide-title"><h2>Computer name: exact machine</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="Computer name: exact machine" loading="lazy"></button><figcaption>Original presentation slide 8 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A computer name identifies the exact machine. “The black laptop” is vague; LAB2-PC-06 is useful.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why is an exact computer name useful?</p><details data-checkpoint><summary>Show answer</summary><p>It tells support which machine has the problem.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">Slide 9</div><div class="slide-title"><h2>Manufacturer and model</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="Manufacturer and model" loading="lazy"></button><figcaption>Original presentation slide 9 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Manufacturer and model help find drivers, parts, and manuals. Two laptops may look similar but have different internal hardware.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why does model matter?</p><details data-checkpoint><summary>Show answer</summary><p>Drivers, parts, manuals, and chargers may be model-specific.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">Slide 10</div><div class="slide-title"><h2>Windows version and build</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="Windows version and build" loading="lazy"></button><figcaption>Original presentation slide 10 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Support may need Windows edition, version, OS build, and system type. Copy what Windows shows; do not guess.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is more useful than just saying “Windows”?</p><details data-checkpoint><summary>Show answer</summary><p>Edition, version, OS build, and system type.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">Slide 11</div><div class="slide-title"><h2>CPU vs RAM vs Storage</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="CPU vs RAM vs Storage" loading="lazy"></button><figcaption>Original presentation slide 11 — click to enlarge</figcaption></figure>
+<section class="reading"><p>CPU processes work, RAM is temporary workspace, and storage keeps Windows, programs, and files long-term. RAM and storage are not the same.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the difference between RAM and storage?</p><details data-checkpoint><summary>Show answer</summary><p>RAM is temporary working memory; storage is long-term.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">Slide 12</div><div class="slide-title"><h2>Where to find System Information in Windows</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="Where to find System Information in Windows" loading="lazy"></button><figcaption>Original presentation slide 12 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The About page is a safe place to begin: Start → Settings → System → About. It shows device name, processor, RAM, system type, Windows edition, and version.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What path opens the About page?</p><details data-checkpoint><summary>Show answer</summary><p>Start → Settings → System → About.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">Slide 13</div><div class="slide-title"><h2>Settings → System → About page</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="Settings → System → About page" loading="lazy"></button><figcaption>Original presentation slide 13 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Device specifications describe the machine; Windows specifications describe the operating system. Copying exact text is enough for a beginner report.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What two groups are visible on the About page?</p><details data-checkpoint><summary>Show answer</summary><p>Device specifications and Windows specifications.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">Slide 14</div><div class="slide-title"><h2>Task Manager → Performance</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="Task Manager → Performance" loading="lazy"></button><figcaption>Original presentation slide 14 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Task Manager Performance shows CPU, memory, disk, network, and GPU information. Here we use it mainly for identification, not deep performance diagnosis.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What can Task Manager Performance help identify?</p><details data-checkpoint><summary>Show answer</summary><p>CPU, memory, disk, network, and graphics information.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">Slide 15</div><div class="slide-title"><h2>File Explorer → This PC</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="File Explorer → This PC" loading="lazy"></button><figcaption>Original presentation slide 15 — click to enlarge</figcaption></figure>
+<section class="reading"><p>This PC shows storage drives, total capacity, and free space. Numbers are better than feelings like “maybe storage is full.”</p></section>
+<section class="think"><h3>Think and answer</h3><p>What storage numbers belong in a report?</p><details data-checkpoint><summary>Show answer</summary><p>Drive letter, total capacity, and free space.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">Slide 16</div><div class="slide-title"><h2>Low Disk Space</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="Low Disk Space" loading="lazy"></button><figcaption>Original presentation slide 16 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Low disk space can slow updates, block saving files, and break installations. Do not delete random system files; report drive capacity and free space.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is unsafe when storage is low?</p><details data-checkpoint><summary>Show answer</summary><p>Deleting random Windows or unknown files.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">Slide 17</div><div class="slide-title"><h2>Network Adapter Information</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="Network Adapter Information" loading="lazy"></button><figcaption>Original presentation slide 17 — click to enlarge</figcaption></figure>
+<section class="reading"><p>For Internet problems, include Wi‑Fi or Ethernet adapter name, connection status, Wi‑Fi name, IP address, and driver version if visible.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What network fact helps support?</p><details data-checkpoint><summary>Show answer</summary><p>Adapter name and connection status.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">Slide 18</div><div class="slide-title"><h2>Network Status Information</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="Network Status Information" loading="lazy"></button><figcaption>Original presentation slide 18 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Wi‑Fi connected does not always mean Internet works. A report should separate Wi‑Fi status, Ethernet status, adapter names, and exact messages.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Does Wi‑Fi connected always prove Internet works?</p><details data-checkpoint><summary>Show answer</summary><p>No.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">Slide 19</div><div class="slide-title"><h2>Display Status</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="Display Status" loading="lazy"></button><figcaption>Original presentation slide 19 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Display settings help with screen and projector problems. Record resolution, scale, display adapter, and whether a display is detected.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What evidence helps a projector problem?</p><details data-checkpoint><summary>Show answer</summary><p>Display settings and display adapter information.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">Slide 20</div><div class="slide-title"><h2>Sound Status</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="Sound Status" loading="lazy"></button><figcaption>Original presentation slide 20 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Sound problems need input/output detail. Output is speakers or headphones; input is microphone. A good report says what device is selected and what fails.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the difference between sound input and output?</p><details data-checkpoint><summary>Show answer</summary><p>Input is microphone; output is speakers or headphones.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">Slide 21</div><div class="slide-title"><h2>Laptop Battery Status</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="Laptop Battery Status" loading="lazy"></button><figcaption>Original presentation slide 21 — click to enlarge</figcaption></figure>
+<section class="reading"><p>For laptops, report battery percentage, charging status, adapter connection, and symptoms. Do not open or touch damaged or swollen batteries.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What battery safety rule matters?</p><details data-checkpoint><summary>Show answer</summary><p>Report status; do not touch damaged or swollen batteries.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 2 — Evidence and screenshots</h2>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">Slide 22</div><div class="slide-title"><h2>Evidence for support</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="Evidence for support" loading="lazy"></button><figcaption>Original presentation slide 22 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A useful report contains information another person can check: screenshots, numbers, context, window title, time, and affected machine.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What makes a report stronger than memory?</p><details data-checkpoint><summary>Show answer</summary><p>Evidence that another person can check.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">Slide 23</div><div class="slide-title"><h2>A Screenshot is Evidence</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="A Screenshot is Evidence" loading="lazy"></button><figcaption>Original presentation slide 23 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A screenshot captures exact messages, device names, time, and status. It helps weak English reports become useful.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why is a screenshot useful?</p><details data-checkpoint><summary>Show answer</summary><p>It shows the exact situation instead of relying on memory.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">Slide 24</div><div class="slide-title"><h2>Screenshot = Evidence</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="Screenshot = Evidence" loading="lazy"></button><figcaption>Original presentation slide 24 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A screenshot should show enough information to prove the problem: exact message, exact device or window, status, and context.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the purpose of a screenshot?</p><details data-checkpoint><summary>Show answer</summary><p>Proof, not decoration.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">Slide 25</div><div class="slide-title"><h2>Do not crop away important information</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="Do not crop away important information" loading="lazy"></button><figcaption>Original presentation slide 25 — click to enlarge</figcaption></figure>
+<section class="reading"><p>If a screenshot removes the window title, device name, or full error text, the evidence becomes weak. Keep enough context visible.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should not be cropped away?</p><details data-checkpoint><summary>Show answer</summary><p>Window title, device name, full error message, and useful context.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">Slide 26</div><div class="slide-title"><h2>Bad Screenshot vs Good Screenshot</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="Bad Screenshot vs Good Screenshot" loading="lazy"></button><figcaption>Original presentation slide 26 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Bad screenshots are tiny, blurry, cropped, or missing context. Good screenshots are readable and show the full relevant message.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What makes a good screenshot?</p><details data-checkpoint><summary>Show answer</summary><p>Readable text, full relevant window, and enough context.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">Slide 27</div><div class="slide-title"><h2>Simple Support Report</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="Simple Support Report" loading="lazy"></button><figcaption>Original presentation slide 27 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A useful report has fields: device name, model, Windows version, CPU, RAM, storage, problem, checked, screenshot, and need help.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Name three report fields.</p><details data-checkpoint><summary>Show answer</summary><p>Device name, problem, evidence; plus model, Windows, CPU/RAM/storage if needed.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">Slide 28</div><div class="slide-title"><h2>Good System Report Template</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="Good System Report Template" loading="lazy"></button><figcaption>Original presentation slide 28 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Short and correct is better than long and unclear. Copy facts from the screen and add a screenshot.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is better than long guessing?</p><details data-checkpoint><summary>Show answer</summary><p>A short report with correct facts.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 3 — Example reports</h2>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">Slide 29</div><div class="slide-title"><h2>Example support reports</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="Example support reports" loading="lazy"></button><figcaption>Original presentation slide 29 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Different problems need different evidence. Wi‑Fi needs adapter/status; low storage needs capacity/free space; display or meeting problems need hardware facts and screenshots.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why do examples use different evidence?</p><details data-checkpoint><summary>Show answer</summary><p>Different symptoms point to different information areas.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">Slide 30</div><div class="slide-title"><h2>Example Report: No Wi‑Fi</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="Example Report: No Wi‑Fi" loading="lazy"></button><figcaption>Original presentation slide 30 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A No Wi‑Fi report should identify the computer, Windows version, adapter name and status, what was checked, scope, and evidence.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why include scope in a Wi‑Fi report?</p><details data-checkpoint><summary>Show answer</summary><p>It helps decide whether the issue is one computer or many computers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">Slide 31</div><div class="slide-title"><h2>Example Report: Low Storage</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="Example Report: Low Storage" loading="lazy"></button><figcaption>Original presentation slide 31 — click to enlarge</figcaption></figure>
+<section class="reading"><p>For low storage, numbers are key: drive letter, total capacity, free space, warning message, and safe checks. Do not delete system or other people’s files.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What evidence matters most for low storage?</p><details data-checkpoint><summary>Show answer</summary><p>Total capacity and free space.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">Slide 32</div><div class="slide-title"><h2>Example Report: Online Meeting Freezes</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="Example Report: Online Meeting Freezes" loading="lazy"></button><figcaption>Original presentation slide 32 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Online meeting problems can involve network, memory, CPU, microphone, camera, or the app. Collect system facts and screenshot evidence before guessing.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why not guess one cause immediately?</p><details data-checkpoint><summary>Show answer</summary><p>Meeting problems can have several different causes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">Slide 33</div><div class="slide-title"><h2>Example Report: Projector Display Problem</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="Example Report: Projector Display Problem" loading="lazy"></button><figcaption>Original presentation slide 33 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A projector report should include computer name, display adapter, symptom, HDMI or display settings checked, and screenshot evidence.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What setting area helps with projector problems?</p><details data-checkpoint><summary>Show answer</summary><p>Display settings.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">Slide 34</div><div class="slide-title"><h2>What Information Goes Where</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="What Information Goes Where" loading="lazy"></button><figcaption>Original presentation slide 34 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A report organizes computer identity, Windows information, hardware information, symptom, network status, and screenshot evidence into one clear support message.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does computer identity tell support?</p><details data-checkpoint><summary>Show answer</summary><p>Which machine has the problem.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">Slide 35</div><div class="slide-title"><h2>Windows Update History as Evidence</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="Windows Update History as Evidence" loading="lazy"></button><figcaption>Original presentation slide 35 — click to enlarge</figcaption></figure>
+<section class="reading"><p>If a problem starts after an update, record the update date and name. Treat it as a clue, not proof.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Is update history proof of cause?</p><details data-checkpoint><summary>Show answer</summary><p>No. It is a useful clue.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 4 — Safety rules</h2>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">Slide 36</div><div class="slide-title"><h2>Safety rules</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="Safety rules" loading="lazy"></button><figcaption>Original presentation slide 36 — click to enlarge</figcaption></figure>
+<section class="reading"><p>System information tools are safe when used for reading. They become risky when students change settings, delete files, or share private data.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the beginner safety rule?</p><details data-checkpoint><summary>Show answer</summary><p>Read first, protect data, and ask before changing anything.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">Slide 37</div><div class="slide-title"><h2>Do Not Share Private Information</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="Do Not Share Private Information" loading="lazy"></button><figcaption>Original presentation slide 37 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Do not share passwords, patient data, private files, or personal account details. Screenshots may accidentally reveal private information.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should be checked before sending a screenshot?</p><details data-checkpoint><summary>Show answer</summary><p>Whether private or patient data is visible.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">Slide 38</div><div class="slide-title"><h2>Do not share private information — report view</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="Do not share private information — report view" loading="lazy"></button><figcaption>Original presentation slide 38 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Only share information needed to solve the computer problem. If private data is visible, hide it or take a better screenshot.</p></section>
+<section class="think"><h3>Think and answer</h3><p>When in doubt about private data, what should students do?</p><details data-checkpoint><summary>Show answer</summary><p>Leave it out and ask.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">Slide 39</div><div class="slide-title"><h2>Do Not Change Settings Randomly</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="Do Not Change Settings Randomly" loading="lazy"></button><figcaption>Original presentation slide 39 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Safe actions: open information windows, read names/status, take screenshots, write reports. Dangerous actions: disable devices, uninstall drivers, delete files, change unknown settings.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the classroom practice task?</p><details data-checkpoint><summary>Show answer</summary><p>Observation and reporting, not repair.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">Slide 40</div><div class="slide-title"><h2>Do Not Delete Random Files</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="Do Not Delete Random Files" loading="lazy"></button><figcaption>Original presentation slide 40 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Low storage does not mean delete anything you see. Do not delete Windows folders, Program Files, other people’s files, or unknown system files.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a safer first storage action?</p><details data-checkpoint><summary>Show answer</summary><p>Report low space and ask before deleting important data.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 5 — Classroom practice</h2>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">Slide 41</div><div class="slide-title"><h2>Classroom practice</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="Classroom practice" loading="lazy"></button><figcaption>Original presentation slide 41 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The practice task is to find system information, capture useful screenshots, and submit a short support report with evidence.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Is this practice a repair task?</p><details data-checkpoint><summary>Show answer</summary><p>No. It is information gathering and reporting.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">Slide 42</div><div class="slide-title"><h2>Practice: Find System Information</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="Practice: Find System Information" loading="lazy"></button><figcaption>Original presentation slide 42 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Fill a computer ID card: device name, Windows version, CPU, RAM, storage, and network adapter information. Use About, This PC, Device Manager, and Network settings.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Where should answers come from?</p><details data-checkpoint><summary>Show answer</summary><p>From the computer screen, not memory.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">Slide 43</div><div class="slide-title"><h2>Practice: Take Useful Screenshots</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="Practice: Take Useful Screenshots" loading="lazy"></button><figcaption>Original presentation slide 43 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Take readable screenshots of Settings About, This PC, Device Manager category, and Network status. Use clear filenames such as about_pc06.png.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why are clear filenames useful?</p><details data-checkpoint><summary>Show answer</summary><p>They make the report easier to check.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">Slide 44</div><div class="slide-title"><h2>Pair Work: Read the Screen, Write the Report</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="Pair Work: Read the Screen, Write the Report" loading="lazy"></button><figcaption>Original presentation slide 44 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Student A reads information from the screen. Student B writes the report. Then they switch roles.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why use pair work?</p><details data-checkpoint><summary>Show answer</summary><p>Support work often requires clear communication between people.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">Slide 45</div><div class="slide-title"><h2>Student Final Task Workflow</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="Student Final Task Workflow" loading="lazy"></button><figcaption>Original presentation slide 45 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Find system information, check the problem, take screenshots, fill the support report, and submit work. Evidence first, report second.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why does the order matter?</p><details data-checkpoint><summary>Show answer</summary><p>Writing before collecting facts leads to guessing.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">Slide 46</div><div class="slide-title"><h2>Mini Assessment: No Wi‑Fi on PC‑04</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="Mini Assessment: No Wi‑Fi on PC‑04" loading="lazy"></button><figcaption>Original presentation slide 46 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Students complete report fields for a No Wi‑Fi case: computer name, problem, network status, screenshot, possible cause, and action taken.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is better than a confident guess?</p><details data-checkpoint><summary>Show answer</summary><p>A weak but factual report.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">Slide 47</div><div class="slide-title"><h2>Final Review Map</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="Final Review Map" loading="lazy"></button><figcaption>Original presentation slide 47 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A useful support report begins with computer identity, then adds hardware information, system status, symptom, evidence, and screenshot.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What pieces become one useful report?</p><details data-checkpoint><summary>Show answer</summary><p>Identity, hardware, status, symptom, evidence, screenshot.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">Slide 48</div><div class="slide-title"><h2>Five things to remember</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="Five things to remember" loading="lazy"></button><figcaption>Original presentation slide 48 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Identify the computer, check CPU/RAM/storage/network/device status, prove with screenshot, protect data, and report facts not guesses.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What are the five verbs?</p><details data-checkpoint><summary>Show answer</summary><p>Identify, check, prove, protect, report.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">Slide 49</div><div class="slide-title"><h2>Homework / next class</h2><p>Study the slide panel first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="Homework / next class" loading="lazy"></button><figcaption>Original presentation slide 49 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Prepare an imaginary support report: No Wi‑Fi on PC‑04. Include computer name, Windows version, network adapter, symptom, evidence; avoid private data and random fixes.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the homework goal?</p><details data-checkpoint><summary>Show answer</summary><p>Describe the computer and problem clearly.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<section class="interactive-section" id="interactive-review">
+<h2>Extended interactive review</h2>
+<p>The goal is not repair. The goal is safe reading, evidence, and clear reporting.</p>
+<div class="lab-grid">
+<article class="lab">
+<h3>1. Which tool should you check?</h3>
+<div class="tool-grid">
+<button class="tool-card" data-tool="about">Settings → About</button>
+<button class="tool-card" data-tool="thispc">This PC</button>
+<button class="tool-card" data-tool="task">Task Manager</button>
+<button class="tool-card" data-tool="device">Device Manager</button>
+<button class="tool-card" data-tool="network">Network Settings</button>
+<button class="tool-card" data-tool="update">Windows Update History</button>
+</div><div class="tool-info" id="tool-info"></div></article>
+<article class="lab"><h3>2. Good evidence or weak evidence?</h3>
+<div class="evidence-grid">
+<div class="evidence-card" data-answer="good">PC-04, Windows 11, Wi‑Fi warning screenshot<strong></strong></div>
+<div class="evidence-card" data-answer="bad">Something is broken<strong></strong></div>
+<div class="evidence-card" data-answer="good">C: 237GB total, 5GB free<strong></strong></div>
+<div class="evidence-card" data-answer="bad">Maybe storage is bad<strong></strong></div>
+</div><div class="actions"><button class="primary" id="check-evidence" type="button">Check</button></div><div class="feedback" id="evidence-feedback"></div></article>
+<article class="lab"><h3>3. Safe or risky?</h3>
+<div class="safety-grid">
+<div class="safety-card" data-answer="safe">Read the About page<strong></strong></div>
+<div class="safety-card" data-answer="risky">Delete Program Files<strong></strong></div>
+<div class="safety-card" data-answer="safe">Screenshot the status message<strong></strong></div>
+<div class="safety-card" data-answer="risky">Change unknown settings<strong></strong></div>
+<div class="safety-card" data-answer="safe">Hide private data before reporting<strong></strong></div>
+<div class="safety-card" data-answer="risky">Share a password<strong></strong></div>
+</div><div class="actions"><button class="primary" id="check-safety" type="button">Check classifications</button></div><div class="feedback" id="safety-feedback"></div></article>
+<article class="lab"><h3>4. Support report builder</h3>
+<div class="report-builder">
+<input id="rep-computer" value="PC-04"><input id="rep-windows" value="Windows 11">
+<select id="rep-problem"><option value="wifi">No Wi‑Fi</option><option value="storage">Low storage</option><option value="display">Projector not detected</option><option value="meeting">Online meeting freezes</option></select>
+<input id="rep-evidence" value="Screenshot taken">
+<button class="primary" id="build-report" type="button">Build report</button>
+</div><pre class="report-output" id="report-output"></pre></article>
+<article class="lab"><h3>5. Computer ID-card checklist</h3>
+<div class="checklist-grid">
+<div class="checkitem">Device name</div><div class="checkitem">Model</div><div class="checkitem">Windows version</div><div class="checkitem">CPU</div><div class="checkitem">RAM</div><div class="checkitem">Storage</div><div class="checkitem">Network adapter</div><div class="checkitem">Screenshot</div><div class="checkitem">Problem symptom</div>
+</div></article>
+<article class="lab"><h3>6. Case practice</h3>
+<div class="case-grid">
+<button class="case-card" data-case="wifi">No Wi‑Fi on PC‑04</button>
+<button class="case-card" data-case="storage">C drive has only 5GB free</button>
+<button class="case-card" data-case="projector">Projector not detected</button>
+<button class="case-card" data-case="private">Patient data visible in screenshot</button>
+</div><div class="case-info" id="case-info"></div></article>
+</div>
+<article class="lab" style="margin-top:18px"><h3>7. Final knowledge check</h3><form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. First support step:</legend><label><input type="radio" name="q1" value="0"> Guess the fix</label><label><input type="radio" name="q1" value="1"> Identify the computer</label><label><input type="radio" name="q1" value="2"> Delete files</label><label><input type="radio" name="q1" value="3"> Change settings</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. Best report:</legend><label><input type="radio" name="q2" value="0"> Computer broken</label><label><input type="radio" name="q2" value="1"> LAB2-PC-06, Windows version, symptom, screenshot</label><label><input type="radio" name="q2" value="2"> It is bad</label><label><input type="radio" name="q2" value="3"> Maybe internet</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>3. About page shows:</legend><label><input type="radio" name="q3" value="0"> Device name and Windows version</label><label><input type="radio" name="q3" value="1"> Only printer queue</label><label><input type="radio" name="q3" value="2"> Only weather</label><label><input type="radio" name="q3" value="3"> Only passwords</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. This PC helps report:</legend><label><input type="radio" name="q4" value="0"> Storage capacity and free space</label><label><input type="radio" name="q4" value="1"> Microphone volume only</label><label><input type="radio" name="q4" value="2"> Website color</label><label><input type="radio" name="q4" value="3"> Account password</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>5. Device Manager is used here mainly to:</legend><label><input type="radio" name="q5" value="0"> Read device names/status</label><label><input type="radio" name="q5" value="1"> Uninstall random drivers</label><label><input type="radio" name="q5" value="2"> Format disk</label><label><input type="radio" name="q5" value="3"> Hide evidence</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. Wi‑Fi connected means:</legend><label><input type="radio" name="q6" value="0"> Internet definitely works</label><label><input type="radio" name="q6" value="1"> Wireless link exists, but Internet may still fail</label><label><input type="radio" name="q6" value="2"> The printer works</label><label><input type="radio" name="q6" value="3"> Storage is full</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>7. Good screenshot:</legend><label><input type="radio" name="q7" value="0"> Readable with context</label><label><input type="radio" name="q7" value="1"> Tiny crop only</label><label><input type="radio" name="q7" value="2"> Private data exposed</label><label><input type="radio" name="q7" value="3"> Unreadable photo</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>8. Should students delete Program Files to free space?</legend><label><input type="radio" name="q8" value="0"> Yes</label><label><input type="radio" name="q8" value="1"> No</label><label><input type="radio" name="q8" value="2"> Only quickly</label><label><input type="radio" name="q8" value="3"> Always</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>9. Update history is:</legend><label><input type="radio" name="q9" value="0"> A clue, not proof</label><label><input type="radio" name="q9" value="1"> Always the cause</label><label><input type="radio" name="q9" value="2"> Useless</label><label><input type="radio" name="q9" value="3"> A password</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>10. Do not share:</legend><label><input type="radio" name="q10" value="0"> Passwords and patient data</label><label><input type="radio" name="q10" value="1"> Device name</label><label><input type="radio" name="q10" value="2"> Windows version</label><label><input type="radio" name="q10" value="3"> Relevant hardware status</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>11. Low storage report needs:</legend><label><input type="radio" name="q11" value="0"> Total capacity and free space</label><label><input type="radio" name="q11" value="1"> Only feelings</label><label><input type="radio" name="q11" value="2"> Keyboard color</label><label><input type="radio" name="q11" value="3"> No evidence</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. Projector problem evidence:</legend><label><input type="radio" name="q12" value="0"> Display settings screenshot</label><label><input type="radio" name="q12" value="1"> Recycle Bin only</label><label><input type="radio" name="q12" value="2"> Battery percent only</label><label><input type="radio" name="q12" value="3"> Browser history</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>13. Report should use:</legend><label><input type="radio" name="q13" value="0"> Facts from screen</label><label><input type="radio" name="q13" value="1"> Memory guesses</label><label><input type="radio" name="q13" value="2"> Hidden private data</label><label><input type="radio" name="q13" value="3"> Random fixes</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>14. Five verbs:</legend><label><input type="radio" name="q14" value="0"> Identify, check, prove, protect, report</label><label><input type="radio" name="q14" value="1"> Delete, guess, hide, panic, click</label><label><input type="radio" name="q14" value="2"> Play, browse, save, sleep, print</label><label><input type="radio" name="q14" value="3"> Charge, fold, unplug, erase, shout</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. Homework goal:</legend><label><input type="radio" name="q15" value="0"> Clear system report for No Wi‑Fi on PC‑04</label><label><input type="radio" name="q15" value="1"> Install random driver</label><label><input type="radio" name="q15" value="2"> Delete unknown files</label><label><input type="radio" name="q15" value="3"> Share passwords</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">Check final quiz</button><button class="secondary" id="reset-quiz" type="reset">Reset</button></div><div class="score" id="quiz-score" data-label="Final score"></div></form></article>
+</section>
+</main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · Lecture 9 · System Information and Hardware Status · 49-slide sequence.</footer></body></html>
