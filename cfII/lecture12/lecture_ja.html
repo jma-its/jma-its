@@ -1,0 +1,407 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第12講 — 起動、UEFI、Windows回復、再インストール</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script><style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head><body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture11/index.html">← 11</a><a href="../index.html">⌂ Course Home / コースホーム</a></nav>
+<header id="top"><div class="header-inner"><div class="course">Computer Fundamentals 2 · 今学期 · ウェブ講義 12</div><div class="archive-note">元画像内の古い表記は保持。ウェブ講義では現在の順番に合わせて Lecture 12 と表示します。</div><h1>起動、UEFI、Windows回復、再インストール</h1><p class="subtitle">元の76枚のスライドを、そのまま学べるウェブ講義にしました。</p><p class="intro">電源からWindowsまでの起動段階、UEFI、Boot Menu、WinRE、修復・リセット・再インストールの安全な判断を学びます。</p><div class="lang-switch"><a href="lecture_en.html">English</a><a class="current" href="lecture_ja.html">日本語</a></div></div></header>
+<main class="container"><section class="core"><h2>中心の流れ</h2><div class="core-chain">電源 → UEFI → POST → 起動デバイス → Windows → WinRE / 回復</div></section>
+<section class="progress-box"><strong>学習進行</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>考えた後で答えを開いてください。</span></section>
+<section class="notice"><h2>この講義の使い方</h2><p>元のスライドを見て、説明を読み、隠れた答えを開く前に考え、最後に安全な回復判断の練習を行ってください。</p></section>
+<section class="notice map" id="lesson-map"><h2>講義マップ — 元の76枚のスライド</h2><ol><li><a href="#slide-1">スライド 1: 第12講 — 起動、UEFI、Windows回復、再インストール</a></li><li><a href="#slide-2">スライド 2: このテーマが重要な理由</a></li><li><a href="#slide-3">スライド 3: 完全な起動チェーン</a></li><li><a href="#slide-4">スライド 4: 1つの症状、複数の段階</a></li><li><a href="#slide-5">スライド 5: 導入ケース：受付PCが正しく起動しない</a></li><li><a href="#slide-6">スライド 6: 電源ボタンは直接Windowsを起動しない</a></li><li><a href="#slide-7">スライド 7: UEFI/BIOSとは</a></li><li><a href="#slide-8">スライド 8: BIOSとUEFI</a></li><li><a href="#slide-9">スライド 9: POST：ハードウェア初期化</a></li><li><a href="#slide-10">スライド 10: ビープ音・LED・エラー表示</a></li><li><a href="#slide-11">スライド 11: UEFI設定画面で見えるもの</a></li><li><a href="#slide-12">スライド 12: UEFIで変更してはいけないもの</a></li><li><a href="#slide-13">スライド 13: UEFIに入る公式キー</a></li><li><a href="#slide-14">スライド 14: メーカーごとにキーが違う</a></li><li><a href="#slide-15">スライド 15: 高速起動と入れない問題</a></li><li><a href="#slide-16">スライド 16: WindowsからUEFIへ入る</a></li><li><a href="#slide-17">スライド 17: One-Time Boot Menuとは</a></li><li><a href="#slide-18">スライド 18: Boot orderとOne-Time Boot Menu</a></li><li><a href="#slide-19">スライド 19: USBが2回表示される理由</a></li><li><a href="#slide-20">スライド 20: UEFIモードとLegacyモード</a></li><li><a href="#slide-21">スライド 21: Secure Bootとは</a></li><li><a href="#slide-22">スライド 22: Secure Bootを切る危険</a></li><li><a href="#slide-23">スライド 23: TPMとは</a></li><li><a href="#slide-24">スライド 24: BitLocker回復キー</a></li><li><a href="#slide-25">スライド 25: Storage mode / RAID / AHCI / VMD</a></li><li><a href="#slide-26">スライド 26: ストレージが見えない場合</a></li><li><a href="#slide-27">スライド 27: Boot device not found</a></li><li><a href="#slide-28">スライド 28: Windows Boot Manager</a></li><li><a href="#slide-29">スライド 29: BCDとboot files</a></li><li><a href="#slide-30">スライド 30: Windowsが読み込み始める段階</a></li><li><a href="#slide-31">スライド 31: 青い画面・再起動ループ</a></li><li><a href="#slide-32">スライド 32: 自動修復</a></li><li><a href="#slide-33">スライド 33: Windows Recovery Environment</a></li><li><a href="#slide-34">スライド 34: WinREでできること</a></li><li><a href="#slide-35">スライド 35: Startup Repair</a></li><li><a href="#slide-36">スライド 36: System Restore</a></li><li><a href="#slide-37">スライド 37: Uninstall Updates</a></li><li><a href="#slide-38">スライド 38: Command Prompt</a></li><li><a href="#slide-39">スライド 39: SFCとDISM</a></li><li><a href="#slide-40">スライド 40: CHKDSK</a></li><li><a href="#slide-41">スライド 41: Safe Mode</a></li><li><a href="#slide-42">スライド 42: Reset this PC</a></li><li><a href="#slide-43">スライド 43: Keep my files と Remove everything</a></li><li><a href="#slide-44">スライド 44: Cloud download と Local reinstall</a></li><li><a href="#slide-45">スライド 45: Windows再インストールとは</a></li><li><a href="#slide-46">スライド 46: 修復・リセット・再インストールの違い</a></li><li><a href="#slide-47">スライド 47: 最小破壊の順序</a></li><li><a href="#slide-48">スライド 48: バックアップが最初</a></li><li><a href="#slide-49">スライド 49: インストールUSBを作る</a></li><li><a href="#slide-50">スライド 50: Media Creation Tool</a></li><li><a href="#slide-51">スライド 51: Windows Setupの最初の画面</a></li><li><a href="#slide-52">スライド 52: パーティション画面は危険</a></li><li><a href="#slide-53">スライド 53: ドライブを消す前に確認</a></li><li><a href="#slide-54">スライド 54: ドライバーが必要な場合</a></li><li><a href="#slide-55">スライド 55: 回復キーとアカウント</a></li><li><a href="#slide-56">スライド 56: 病院・学校PCでのルール</a></li><li><a href="#slide-57">スライド 57: 仮想マシンで練習する理由</a></li><li><a href="#slide-58">スライド 58: 安全な教室練習</a></li><li><a href="#slide-59">スライド 59: ケースに戻る：No bootable device</a></li><li><a href="#slide-60">スライド 60: 証拠から考える</a></li><li><a href="#slide-61">スライド 61: UEFIでストレージを確認</a></li><li><a href="#slide-62">スライド 62: Boot orderを確認</a></li><li><a href="#slide-63">スライド 63: WinREで修復を試す</a></li><li><a href="#slide-64">スライド 64: いつエスカレーションするか</a></li><li><a href="#slide-65">スライド 65: 報告テンプレート</a></li><li><a href="#slide-66">スライド 66: 安全なUEFI報告</a></li><li><a href="#slide-67">スライド 67: 安全な回復報告</a></li><li><a href="#slide-68">スライド 68: 危険な行動チェック</a></li><li><a href="#slide-69">スライド 69: 判断練習：修復かリセットか再インストールか</a></li><li><a href="#slide-70">スライド 70: ケース：BitLocker回復キー要求</a></li><li><a href="#slide-71">スライド 71: ケース：Windows Setupにドライブがない</a></li><li><a href="#slide-72">スライド 72: ケース：UEFIとSetupの両方でドライブなし</a></li><li><a href="#slide-73">スライド 73: ケース：Safe Modeでだけ動く</a></li><li><a href="#slide-74">スライド 74: ケース：誤ってfirmware設定を変えた</a></li><li><a href="#slide-75">スライド 75: 最終復習マップ</a></li><li><a href="#slide-76">スライド 76: 最終課題</a></li></ol></section>
+<h2 class="part-title">導入 — 電源ボタンからWindowsまで</h2><article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">スライド 1</div><div class="slide-title"><h2>第12講 — 起動、UEFI、Windows回復、再インストール</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="第12講 — 起動、UEFI、Windows回復、再インストール" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 1 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源ボタンからWindowsまでの流れ、UEFI/BIOS、起動デバイス、Windows回復、再インストールの判断を安全に学びます。目的はランダムな実験ではなく、安全な診断です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>まず特定すべきことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>どの起動段階まで成功し、どこで止まっているかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">スライド 2</div><div class="slide-title"><h2>このテーマが重要な理由</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="このテーマが重要な理由" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 2 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>まず特定すべきことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>どの起動段階まで成功し、どこで止まっているかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">スライド 3</div><div class="slide-title"><h2>完全な起動チェーン</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="完全な起動チェーン" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 3 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>まず特定すべきことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>どの起動段階まで成功し、どこで止まっているかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">スライド 4</div><div class="slide-title"><h2>1つの症状、複数の段階</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="1つの症状、複数の段階" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 4 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>まず特定すべきことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>どの起動段階まで成功し、どこで止まっているかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">スライド 5</div><div class="slide-title"><h2>導入ケース：受付PCが正しく起動しない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="導入ケース：受付PCが正しく起動しない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 5 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>まず特定すべきことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>どの起動段階まで成功し、どこで止まっているかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><h2 class="part-title">第1部 — 電源、firmware、POST</h2><article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">スライド 6</div><div class="slide-title"><h2>電源ボタンは直接Windowsを起動しない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="電源ボタンは直接Windowsを起動しない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 6 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>まず特定すべきことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>どの起動段階まで成功し、どこで止まっているかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">スライド 7</div><div class="slide-title"><h2>UEFI/BIOSとは</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="UEFI/BIOSとは" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 7 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UEFI/BIOSで初心者に安全な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>設定を変えず、情報を読み、スクリーンショットを取り、報告することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">スライド 8</div><div class="slide-title"><h2>BIOSとUEFI</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="BIOSとUEFI" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 8 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UEFI/BIOSで初心者に安全な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>設定を変えず、情報を読み、スクリーンショットを取り、報告することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">スライド 9</div><div class="slide-title"><h2>POST：ハードウェア初期化</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="POST：ハードウェア初期化" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 9 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UEFI/BIOSで初心者に安全な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>設定を変えず、情報を読み、スクリーンショットを取り、報告することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">スライド 10</div><div class="slide-title"><h2>ビープ音・LED・エラー表示</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="ビープ音・LED・エラー表示" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 10 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UEFI/BIOSで初心者に安全な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>設定を変えず、情報を読み、スクリーンショットを取り、報告することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">スライド 11</div><div class="slide-title"><h2>UEFI設定画面で見えるもの</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="UEFI設定画面で見えるもの" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 11 — タップして拡大</figcaption></figure>
+<section class="reading"><p>POSTはハードウェア初期化と簡易チェックです。ビープ音、LED、エラー表示は起動段階を特定する重要な証拠になります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UEFI/BIOSで初心者に安全な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>設定を変えず、情報を読み、スクリーンショットを取り、報告することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">スライド 12</div><div class="slide-title"><h2>UEFIで変更してはいけないもの</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="UEFIで変更してはいけないもの" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 12 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UEFI/BIOSで初心者に安全な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>設定を変えず、情報を読み、スクリーンショットを取り、報告することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">スライド 13</div><div class="slide-title"><h2>UEFIに入る公式キー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="UEFIに入る公式キー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 13 — タップして拡大</figcaption></figure>
+<section class="reading"><p>起動デバイス段階では、UEFIがどのドライブやUSBから起動するかを選びます。One-Time Boot Menuは一回だけの起動先選択、Boot orderは継続的な順序です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UEFI/BIOSで初心者に安全な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>設定を変えず、情報を読み、スクリーンショットを取り、報告することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">スライド 14</div><div class="slide-title"><h2>メーカーごとにキーが違う</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="メーカーごとにキーが違う" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 14 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UEFI/BIOSで初心者に安全な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>設定を変えず、情報を読み、スクリーンショットを取り、報告することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">スライド 15</div><div class="slide-title"><h2>高速起動と入れない問題</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="高速起動と入れない問題" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 15 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ストレージ関連では、ドライブがUEFIやWindows Setupに見えるかが重要です。設定変更や削除はデータ損失につながるため、証拠を取り安全に判断します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UEFI/BIOSで初心者に安全な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>設定を変えず、情報を読み、スクリーンショットを取り、報告することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">スライド 16</div><div class="slide-title"><h2>WindowsからUEFIへ入る</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="WindowsからUEFIへ入る" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 16 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UEFI/BIOSで初心者に安全な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>設定を変えず、情報を読み、スクリーンショットを取り、報告することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><h2 class="part-title">第2部 — 起動デバイスと順序</h2><article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">スライド 17</div><div class="slide-title"><h2>One-Time Boot Menuとは</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="One-Time Boot Menuとは" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 17 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">スライド 18</div><div class="slide-title"><h2>Boot orderとOne-Time Boot Menu</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="Boot orderとOne-Time Boot Menu" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 18 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">スライド 19</div><div class="slide-title"><h2>USBが2回表示される理由</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="USBが2回表示される理由" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 19 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">スライド 20</div><div class="slide-title"><h2>UEFIモードとLegacyモード</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="UEFIモードとLegacyモード" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 20 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">スライド 21</div><div class="slide-title"><h2>Secure Bootとは</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="Secure Bootとは" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 21 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">スライド 22</div><div class="slide-title"><h2>Secure Bootを切る危険</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="Secure Bootを切る危険" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 22 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">スライド 23</div><div class="slide-title"><h2>TPMとは</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="TPMとは" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 23 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">スライド 24</div><div class="slide-title"><h2>BitLocker回復キー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="BitLocker回復キー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 24 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">スライド 25</div><div class="slide-title"><h2>Storage mode / RAID / AHCI / VMD</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="Storage mode / RAID / AHCI / VMD" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 25 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">スライド 26</div><div class="slide-title"><h2>ストレージが見えない場合</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="ストレージが見えない場合" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 26 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">スライド 27</div><div class="slide-title"><h2>Boot device not found</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="Boot device not found" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 27 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">スライド 28</div><div class="slide-title"><h2>Windows Boot Manager</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="Windows Boot Manager" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 28 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Resetや再インストールは強い操作です。先にバックアップ、回復キー、アカウント、データ、パーティションを確認し、最小破壊の順序を守ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">スライド 29</div><div class="slide-title"><h2>BCDとboot files</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="BCDとboot files" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 29 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">スライド 30</div><div class="slide-title"><h2>Windowsが読み込み始める段階</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="Windowsが読み込み始める段階" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 30 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>起動デバイス問題で重要な証拠は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ドライブが見えるか、Boot order、Windows Boot Manager、表示メッセージです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><h2 class="part-title">第3部 — Windows起動と回復</h2><article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">スライド 31</div><div class="slide-title"><h2>青い画面・再起動ループ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="青い画面・再起動ループ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 31 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Secure Bootは信頼できるboot codeだけを起動させる保護です。無効化はリスクがあり、授業や職場PCで勝手に変更してはいけません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">スライド 32</div><div class="slide-title"><h2>自動修復</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="自動修復" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 32 — タップして拡大</figcaption></figure>
+<section class="reading"><p>TPMとBitLockerは暗号化と回復キーに関係します。回復キー要求が出たら、TPMを消さず、データを守り、権限ある手順で対応します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">スライド 33</div><div class="slide-title"><h2>Windows Recovery Environment</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="Windows Recovery Environment" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 33 — タップして拡大</figcaption></figure>
+<section class="reading"><p>起動デバイス段階では、UEFIがどのドライブやUSBから起動するかを選びます。One-Time Boot Menuは一回だけの起動先選択、Boot orderは継続的な順序です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">スライド 34</div><div class="slide-title"><h2>WinREでできること</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="WinREでできること" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 34 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">スライド 35</div><div class="slide-title"><h2>Startup Repair</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="Startup Repair" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 35 — タップして拡大</figcaption></figure>
+<section class="reading"><p>このスライドでは、起動・UEFI・Windows回復の安全な診断手順を確認します。まず観察し、証拠を残し、データを守ってから次の操作を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">スライド 36</div><div class="slide-title"><h2>System Restore</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="System Restore" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 36 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">スライド 37</div><div class="slide-title"><h2>Uninstall Updates</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="Uninstall Updates" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 37 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Resetや再インストールは強い操作です。先にバックアップ、回復キー、アカウント、データ、パーティションを確認し、最小破壊の順序を守ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">スライド 38</div><div class="slide-title"><h2>Command Prompt</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="Command Prompt" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 38 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">スライド 39</div><div class="slide-title"><h2>SFCとDISM</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="SFCとDISM" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 39 — タップして拡大</figcaption></figure>
+<section class="reading"><p>このスライドでは、起動・UEFI・Windows回復の安全な診断手順を確認します。まず観察し、証拠を残し、データを守ってから次の操作を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">スライド 40</div><div class="slide-title"><h2>CHKDSK</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="CHKDSK" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 40 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">スライド 41</div><div class="slide-title"><h2>Safe Mode</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="Safe Mode" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 41 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">スライド 42</div><div class="slide-title"><h2>Reset this PC</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="Reset this PC" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 42 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">スライド 43</div><div class="slide-title"><h2>Keep my files と Remove everything</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="Keep my files と Remove everything" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 43 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Safe Modeで起動できる場合、基本的な起動チェーンは動いています。最近のドライバー、アプリ、更新などを疑います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">スライド 44</div><div class="slide-title"><h2>Cloud download と Local reinstall</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="Cloud download と Local reinstall" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 44 — タップして拡大</figcaption></figure>
+<section class="reading"><p>このスライドでは、起動・UEFI・Windows回復の安全な診断手順を確認します。まず観察し、証拠を残し、データを守ってから次の操作を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>Windows回復で守るべき原則は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>最小破壊の方法から試し、データと回復キーを守ります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><h2 class="part-title">第4部 — リセット、再インストール、データリスク</h2><article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">スライド 45</div><div class="slide-title"><h2>Windows再インストールとは</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="Windows再インストールとは" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 45 — タップして拡大</figcaption></figure>
+<section class="reading"><p>このスライドでは、起動・UEFI・Windows回復の安全な診断手順を確認します。まず観察し、証拠を残し、データを守ってから次の操作を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">スライド 46</div><div class="slide-title"><h2>修復・リセット・再インストールの違い</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="修復・リセット・再インストールの違い" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 46 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">スライド 47</div><div class="slide-title"><h2>最小破壊の順序</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="最小破壊の順序" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 47 — タップして拡大</figcaption></figure>
+<section class="reading"><p>TPMとBitLockerは暗号化と回復キーに関係します。回復キー要求が出たら、TPMを消さず、データを守り、権限ある手順で対応します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">スライド 48</div><div class="slide-title"><h2>バックアップが最初</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="バックアップが最初" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 48 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ストレージ関連では、ドライブがUEFIやWindows Setupに見えるかが重要です。設定変更や削除はデータ損失につながるため、証拠を取り安全に判断します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">スライド 49</div><div class="slide-title"><h2>インストールUSBを作る</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="インストールUSBを作る" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 49 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ストレージ関連では、ドライブがUEFIやWindows Setupに見えるかが重要です。設定変更や削除はデータ損失につながるため、証拠を取り安全に判断します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">スライド 50</div><div class="slide-title"><h2>Media Creation Tool</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg"><img src="assets/slides/slide-50.jpg" alt="Media Creation Tool" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 50 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">スライド 51</div><div class="slide-title"><h2>Windows Setupの最初の画面</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg"><img src="assets/slides/slide-51.jpg" alt="Windows Setupの最初の画面" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 51 — タップして拡大</figcaption></figure>
+<section class="reading"><p>このスライドでは、起動・UEFI・Windows回復の安全な診断手順を確認します。まず観察し、証拠を残し、データを守ってから次の操作を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">スライド 52</div><div class="slide-title"><h2>パーティション画面は危険</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg"><img src="assets/slides/slide-52.jpg" alt="パーティション画面は危険" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 52 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">スライド 53</div><div class="slide-title"><h2>ドライブを消す前に確認</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-53.jpg"><img src="assets/slides/slide-53.jpg" alt="ドライブを消す前に確認" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 53 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-54">
+<div class="slide-head"><div class="badge">スライド 54</div><div class="slide-title"><h2>ドライバーが必要な場合</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-54.jpg"><img src="assets/slides/slide-54.jpg" alt="ドライバーが必要な場合" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 54 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-55">
+<div class="slide-head"><div class="badge">スライド 55</div><div class="slide-title"><h2>回復キーとアカウント</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-55.jpg"><img src="assets/slides/slide-55.jpg" alt="回復キーとアカウント" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 55 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-56">
+<div class="slide-head"><div class="badge">スライド 56</div><div class="slide-title"><h2>病院・学校PCでのルール</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-56.jpg"><img src="assets/slides/slide-56.jpg" alt="病院・学校PCでのルール" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 56 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-57">
+<div class="slide-head"><div class="badge">スライド 57</div><div class="slide-title"><h2>仮想マシンで練習する理由</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-57.jpg"><img src="assets/slides/slide-57.jpg" alt="仮想マシンで練習する理由" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 57 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>再インストール前に確認するものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バックアップ、BitLockerキー、アカウント、ドライブとパーティションです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><h2 class="part-title">第5部 — ケースと判断</h2><article class="slide-card" id="slide-58">
+<div class="slide-head"><div class="badge">スライド 58</div><div class="slide-title"><h2>安全な教室練習</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-58.jpg"><img src="assets/slides/slide-58.jpg" alt="安全な教室練習" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 58 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windows Recovery Environmentでは、Startup Repair、System Restore、更新削除、Command Promptなどを使えます。症状に合う最小破壊の方法を選びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-59">
+<div class="slide-head"><div class="badge">スライド 59</div><div class="slide-title"><h2>ケースに戻る：No bootable device</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-59.jpg"><img src="assets/slides/slide-59.jpg" alt="ケースに戻る：No bootable device" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 59 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-60">
+<div class="slide-head"><div class="badge">スライド 60</div><div class="slide-title"><h2>証拠から考える</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-60.jpg"><img src="assets/slides/slide-60.jpg" alt="証拠から考える" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 60 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ストレージ関連では、ドライブがUEFIやWindows Setupに見えるかが重要です。設定変更や削除はデータ損失につながるため、証拠を取り安全に判断します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-61">
+<div class="slide-head"><div class="badge">スライド 61</div><div class="slide-title"><h2>UEFIでストレージを確認</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-61.jpg"><img src="assets/slides/slide-61.jpg" alt="UEFIでストレージを確認" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 61 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ストレージ関連では、ドライブがUEFIやWindows Setupに見えるかが重要です。設定変更や削除はデータ損失につながるため、証拠を取り安全に判断します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-62">
+<div class="slide-head"><div class="badge">スライド 62</div><div class="slide-title"><h2>Boot orderを確認</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-62.jpg"><img src="assets/slides/slide-62.jpg" alt="Boot orderを確認" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 62 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-63">
+<div class="slide-head"><div class="badge">スライド 63</div><div class="slide-title"><h2>WinREで修復を試す</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-63.jpg"><img src="assets/slides/slide-63.jpg" alt="WinREで修復を試す" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 63 — タップして拡大</figcaption></figure>
+<section class="reading"><p>POSTはハードウェア初期化と簡易チェックです。ビープ音、LED、エラー表示は起動段階を特定する重要な証拠になります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-64">
+<div class="slide-head"><div class="badge">スライド 64</div><div class="slide-title"><h2>いつエスカレーションするか</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-64.jpg"><img src="assets/slides/slide-64.jpg" alt="いつエスカレーションするか" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 64 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-65">
+<div class="slide-head"><div class="badge">スライド 65</div><div class="slide-title"><h2>報告テンプレート</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-65.jpg"><img src="assets/slides/slide-65.jpg" alt="報告テンプレート" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 65 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-66">
+<div class="slide-head"><div class="badge">スライド 66</div><div class="slide-title"><h2>安全なUEFI報告</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-66.jpg"><img src="assets/slides/slide-66.jpg" alt="安全なUEFI報告" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 66 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-67">
+<div class="slide-head"><div class="badge">スライド 67</div><div class="slide-title"><h2>安全な回復報告</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-67.jpg"><img src="assets/slides/slide-67.jpg" alt="安全な回復報告" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 67 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-68">
+<div class="slide-head"><div class="badge">スライド 68</div><div class="slide-title"><h2>危険な行動チェック</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-68.jpg"><img src="assets/slides/slide-68.jpg" alt="危険な行動チェック" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 68 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-69">
+<div class="slide-head"><div class="badge">スライド 69</div><div class="slide-title"><h2>判断練習：修復かリセットか再インストールか</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-69.jpg"><img src="assets/slides/slide-69.jpg" alt="判断練習：修復かリセットか再インストールか" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 69 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-70">
+<div class="slide-head"><div class="badge">スライド 70</div><div class="slide-title"><h2>ケース：BitLocker回復キー要求</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-70.jpg"><img src="assets/slides/slide-70.jpg" alt="ケース：BitLocker回復キー要求" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 70 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ストレージ関連では、ドライブがUEFIやWindows Setupに見えるかが重要です。設定変更や削除はデータ損失につながるため、証拠を取り安全に判断します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-71">
+<div class="slide-head"><div class="badge">スライド 71</div><div class="slide-title"><h2>ケース：Windows Setupにドライブがない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-71.jpg"><img src="assets/slides/slide-71.jpg" alt="ケース：Windows Setupにドライブがない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 71 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-72">
+<div class="slide-head"><div class="badge">スライド 72</div><div class="slide-title"><h2>ケース：UEFIとSetupの両方でドライブなし</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-72.jpg"><img src="assets/slides/slide-72.jpg" alt="ケース：UEFIとSetupの両方でドライブなし" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 72 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-73">
+<div class="slide-head"><div class="badge">スライド 73</div><div class="slide-title"><h2>ケース：Safe Modeでだけ動く</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-73.jpg"><img src="assets/slides/slide-73.jpg" alt="ケース：Safe Modeでだけ動く" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 73 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-74">
+<div class="slide-head"><div class="badge">スライド 74</div><div class="slide-title"><h2>ケース：誤ってfirmware設定を変えた</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-74.jpg"><img src="assets/slides/slide-74.jpg" alt="ケース：誤ってfirmware設定を変えた" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 74 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-75">
+<div class="slide-head"><div class="badge">スライド 75</div><div class="slide-title"><h2>最終復習マップ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-75.jpg"><img src="assets/slides/slide-75.jpg" alt="最終復習マップ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 75 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源段階では、Windowsの前に電源、ACアダプタ、バッテリー、LED、ファン、表示を確認します。ここで止まる問題はWindows修復では直せません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article><article class="slide-card" id="slide-76">
+<div class="slide-head"><div class="badge">スライド 76</div><div class="slide-title"><h2>最終課題</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-76.jpg"><img src="assets/slides/slide-76.jpg" alt="最終課題" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 76 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UEFI/BIOSはWindowsより前に動くfirmwareです。ハードウェア検出、起動順序、Secure Boot、TPMなどを扱いますが、設定変更は危険です。まず観察して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>安全なサポートの基本は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>観察し、証拠を取り、危険な変更の前に報告・エスカレーションすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div></article>
+<section class="interactive-section" id="interactive-review">
+<h2>拡張インタラクティブ復習</h2>
+<p>目的は危険な設定変更ではなく、起動段階を見分け、安全な回復順序を選ぶことです。</p>
+<div class="lab-grid">
+<article class="lab"><h3>1. 起動チェーン explorer</h3><div class="chain-grid"><button data-step="power">Power</button><button data-step="uefi">UEFI</button><button data-step="post">POST</button><button data-step="boot">Boot device</button><button data-step="win">Windows</button><button data-step="recovery">WinRE</button></div><div class="chain-info" id="chain-info"></div></article>
+<article class="lab"><h3>2. Boot Menu と Boot Order</h3><div class="classify-grid"><div class="classify-card" data-answer="once">USBから一回だけ起動<strong></strong></div><div class="classify-card" data-answer="permanent">毎回USBを先に試す設定<strong></strong></div><div class="classify-card" data-answer="once">One-Time Boot Menu<strong></strong></div><div class="classify-card" data-answer="permanent">UEFI内のBoot order変更<strong></strong></div></div><div class="actions"><button class="primary" id="check-classify" type="button">分類を確認</button></div><div class="feedback" id="classify-feedback"></div></article>
+<article class="lab"><h3>3. 症状から段階を選ぶ</h3><select id="symptom-select"><option value="power">No lights, no fan, no charge LED</option><option value="uefi">Logo appears, then No bootable device</option><option value="windows">Windows logo appears, then blue screen</option><option value="safe">Works only in Safe Mode</option><option value="setup">Windows Setup shows no drive</option></select><div class="symptom-info" id="symptom-info"></div></article>
+<article class="lab"><h3>4. 最小破壊の回復順序</h3><div class="order-list"><div>1. Observe and collect evidence</div><div>2. Startup Repair / Safe Mode / uninstall update when suitable</div><div>3. System Restore or targeted rollback</div><div>4. Reset only after backup/key check</div><div>5. Reinstall only when justified</div></div></article>
+<article class="lab"><h3>5. 危険なfirmware操作</h3><div class="risk-grid"><div class="risk-card" data-answer="safe">モデル名を読む<strong></strong></div><div class="risk-card" data-answer="risky">TPMをクリア<strong></strong></div><div class="risk-card" data-answer="risky">RAID/VMD/AHCIを変更<strong></strong></div><div class="risk-card" data-answer="safe">Boot orderを記録<strong></strong></div><div class="risk-card" data-answer="risky">Secure Bootを無効化<strong></strong></div><div class="risk-card" data-answer="safe">スクリーンショットを撮る<strong></strong></div></div><div class="actions"><button class="primary" id="check-risk" type="button">分類を確認</button></div><div class="feedback" id="risk-feedback"></div></article>
+<article class="lab"><h3>6. 起動・回復報告ジェネレーター</h3><div class="report-builder"><input id="rep-model" value="Model: unknown"><select id="rep-stage"><option>Power stage</option><option>UEFI / POST</option><option>Boot device</option><option>Windows loading</option><option>WinRE / recovery</option></select><input id="rep-message" value="Exact message here"><button class="primary" id="build-report" type="button">報告を作成</button></div><pre class="report-output" id="report-output"></pre></article>
+</div><article class="lab" style="margin-top:18px"><h3>7. 最終知識チェック</h3><form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. 電源ボタンは直接Windowsを起動しますか。</legend><label><input type="radio" name="q1" value="0"> はい</label><label><input type="radio" name="q1" value="1"> いいえ、先にfirmwareとhardware段階があります</label><label><input type="radio" name="q1" value="2"> ノートPCだけ</label><label><input type="radio" name="q1" value="3"> 再インストール後だけ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>2. UEFI/BIOSはいつ動きますか。</legend><label><input type="radio" name="q2" value="0"> Windowsより前</label><label><input type="radio" name="q2" value="1"> ログイン後だけ</label><label><input type="radio" name="q2" value="2"> Word内</label><label><input type="radio" name="q2" value="3"> オンライン時だけ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>3. POSTが確認するものは何ですか。</legend><label><input type="radio" name="q3" value="0"> 基本ハードウェア初期化</label><label><input type="radio" name="q3" value="1"> 印刷キュー</label><label><input type="radio" name="q3" value="2"> Webパスワード</label><label><input type="radio" name="q3" value="3"> ブラウザキャッシュ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. One-Time Boot Menuが変えるものは何ですか。</legend><label><input type="radio" name="q4" value="0"> 1回だけの起動先</label><label><input type="radio" name="q4" value="1"> 永続順序だけ</label><label><input type="radio" name="q4" value="2"> Windowsパスワード</label><label><input type="radio" name="q4" value="3"> ディスク初期化</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>5. Boot orderとは何ですか。</legend><label><input type="radio" name="q5" value="0"> 継続的な優先起動順序</label><label><input type="radio" name="q5" value="1"> 何もしない</label><label><input type="radio" name="q5" value="2"> 画面色</label><label><input type="radio" name="q5" value="3"> Wi-Fiだけ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>6. Secure Bootが守るものは何ですか。</legend><label><input type="radio" name="q6" value="0"> 起動の信頼チェーン</label><label><input type="radio" name="q6" value="1"> RAM容量</label><label><input type="radio" name="q6" value="2"> キーボード配列</label><label><input type="radio" name="q6" value="3"> ファン速度だけ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>7. BitLocker回復キーはどう扱いますか。</legend><label><input type="radio" name="q7" value="0"> 保護し権限ある手順で使う</label><label><input type="radio" name="q7" value="1"> チャットで共有</label><label><input type="radio" name="q7" value="2"> TPMクリアで消す</label><label><input type="radio" name="q7" value="3"> 無視</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. No bootable deviceは何を示しますか。</legend><label><input type="radio" name="q8" value="0"> 起動段階の問題であり原因は1つとは限らない</label><label><input type="radio" name="q8" value="1"> 必ず電源なし</label><label><input type="radio" name="q8" value="2"> 必ずモニター故障</label><label><input type="radio" name="q8" value="3"> マウスだけ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>9. WinREとは何ですか。</legend><label><input type="radio" name="q9" value="0"> Windows Recovery Environment</label><label><input type="radio" name="q9" value="1"> Wireless Network Repair Engine</label><label><input type="radio" name="q9" value="2"> Windows Runtime Editor</label><label><input type="radio" name="q9" value="3"> Web Recovery Email</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>10. Startup Repairの用途は何ですか。</legend><label><input type="radio" name="q10" value="0"> 起動問題</label><label><input type="radio" name="q10" value="1"> 常に全データ削除</label><label><input type="radio" name="q10" value="2"> UEFIランダム変更</label><label><input type="radio" name="q10" value="3"> バッテリー交換</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>11. Safe Modeが役立つ場合は何ですか。</legend><label><input type="radio" name="q11" value="0"> 基本起動は動くが通常モードに問題</label><label><input type="radio" name="q11" value="1"> 電源がない</label><label><input type="radio" name="q11" value="2"> UEFIにドライブなし</label><label><input type="radio" name="q11" value="3"> 画面ケーブル切断</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. 再インストール前に必要なものは何ですか。</legend><label><input type="radio" name="q12" value="0"> バックアップと回復キー確認</label><label><input type="radio" name="q12" value="1"> すぐパーティション削除</label><label><input type="radio" name="q12" value="2"> 問題を隠す</label><label><input type="radio" name="q12" value="3"> TPM変更</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>13. Windows Setupのパーティション画面は何ですか。</legend><label><input type="radio" name="q13" value="0"> 不用意に使うと危険</label><label><input type="radio" name="q13" value="1"> 飾り</label><label><input type="radio" name="q13" value="2"> 常に削除してよい</label><label><input type="radio" name="q13" value="3"> ゲーム</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>14. UEFIとSetupの両方でドライブがない場合は何をしますか。</legend><label><input type="radio" name="q14" value="0"> 破壊的修復を止め、hardware/configurationを確認</label><label><input type="radio" name="q14" value="1"> 早く再インストール</label><label><input type="radio" name="q14" value="2"> Cドライブ削除</label><label><input type="radio" name="q14" value="3"> TPMクリア</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. 最後の安全ルールは何ですか。</legend><label><input type="radio" name="q15" value="0"> 証拠に基づき最小破壊の方法を選ぶ</label><label><input type="radio" name="q15" value="1"> ランダム実験</label><label><input type="radio" name="q15" value="2"> 動くまで設定変更</label><label><input type="radio" name="q15" value="3"> 報告しない</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">最終クイズを確認</button><button class="secondary" id="reset-quiz" type="reset">リセット</button></div><div class="score" id="quiz-score" data-label="最終スコア"></div></form></article>
+</section></main><div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div><footer>Computer Fundamentals 2 · Lecture 12 · Startup, UEFI, Windows Recovery · Original 76-slide sequence preserved.</footer></body></html>
