@@ -1,0 +1,361 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第10講 — コンピュータセキュリティ基礎1</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script><style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head><body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture09/index.html">← 9</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture11/index.html">11 →</a></nav>
+<header id="top"><div class="header-inner"><div class="course">Computer Fundamentals 2 · 今学期 · ウェブ講義 10</div><div class="archive-note">元画像内の Lecture 15 表記は保持。ウェブ講義では現在の順番に合わせて Lecture 10 と表示します。</div><h1>コンピュータセキュリティ基礎1</h1><p class="subtitle">元の55枚のスライドを、そのまま学べるウェブ講義にしました。</p><p class="intro">危険なファイル、マルウェア、フィッシング、偽警告を見分け、止まり、証拠を取り、すぐ報告する練習です。</p><div class="lang-switch"><a href="lecture_en.html">English</a><a class="current" href="lecture_ja.html">日本語</a></div></div></header>
+<main class="container"><section class="core"><h2>中心の流れ</h2><div class="core-chain">危険に気づく → 止まる → スクリーンショット → 報告</div></section>
+<section class="progress-box"><strong>学習進行</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>考えた後で答えを開いてください。</span></section>
+<section class="notice"><h2>この講義の使い方</h2><p>元のスライドを見て、説明を読み、隠れた答えを開く前に考え、最後に安全対応の練習を行ってください。</p></section>
+<section class="notice map" id="lesson-map"><h2>講義マップ — 元の55枚のスライド</h2><ol><li><a href="#slide-1">スライド 1: 第10講 — コンピュータセキュリティ基礎1</a></li><li><a href="#slide-2">スライド 2: 今日の問い</a></li><li><a href="#slide-3">スライド 3: セキュリティはコンピュータだけを守るのではない</a></li><li><a href="#slide-4">スライド 4: セキュリティの3つの基本目標</a></li><li><a href="#slide-5">スライド 5: 病院の衛生との比較</a></li><li><a href="#slide-6">スライド 6: 人間が標的になることが多い</a></li><li><a href="#slide-7">スライド 7: マルウェア概要</a></li><li><a href="#slide-8">スライド 8: ウイルス</a></li><li><a href="#slide-9">スライド 9: ワーム</a></li><li><a href="#slide-10">スライド 10: トロイの木馬</a></li><li><a href="#slide-11">スライド 11: スパイウェア</a></li><li><a href="#slide-12">スライド 12: キーロガー</a></li><li><a href="#slide-13">スライド 13: ランサムウェア</a></li><li><a href="#slide-14">スライド 14: 偽アンチウイルス／偽クリーナー</a></li><li><a href="#slide-15">スライド 15: アドウェアとブラウザハイジャッカー</a></li><li><a href="#slide-16">スライド 16: ファイル名と拡張子が重要</a></li><li><a href="#slide-17">スライド 17: 危険な偽ドキュメント</a></li><li><a href="#slide-18">スライド 18: Windowsは拡張子を隠すことがある</a></li><li><a href="#slide-19">スライド 19: よくある危険なファイル種類</a></li><li><a href="#slide-20">スライド 20: ZIPファイルは危険を隠せる</a></li><li><a href="#slide-21">スライド 21: 偽ダウンロードボタン</a></li><li><a href="#slide-22">スライド 22: クラックソフトと無料ゲーム</a></li><li><a href="#slide-23">スライド 23: 偽ドライバー更新ツール</a></li><li><a href="#slide-24">スライド 24: USBメモリのリスク</a></li><li><a href="#slide-25">スライド 25: メールとメッセンジャー添付</a></li><li><a href="#slide-26">スライド 26: 安全なダウンロードの考え方</a></li><li><a href="#slide-27">スライド 27: フィッシングとは何か</a></li><li><a href="#slide-28">スライド 28: 偽ログインページ</a></li><li><a href="#slide-29">スライド 29: 偽の学校メッセージ</a></li><li><a href="#slide-30">スライド 30: 偽の配送・銀行メッセージ</a></li><li><a href="#slide-31">スライド 31: メッセージの危険サイン</a></li><li><a href="#slide-32">スライド 32: 認証コードは鍵</a></li><li><a href="#slide-33">スライド 33: 「私はサポートです、コードを教えて」</a></li><li><a href="#slide-34">スライド 34: QRコードフィッシング</a></li><li><a href="#slide-35">スライド 35: 更新が重要な理由</a></li><li><a href="#slide-36">スライド 36: 古いソフトは攻撃されやすい</a></li><li><a href="#slide-37">スライド 37: 更新は重要だが学校・病院PCでは勝手にしない</a></li><li><a href="#slide-38">スライド 38: アンチウイルス／Windows Security</a></li><li><a href="#slide-39">スライド 39: 偽アンチウイルス警告</a></li><li><a href="#slide-40">スライド 40: セキュリティは層で守る</a></li><li><a href="#slide-41">スライド 41: まず止まる</a></li><li><a href="#slide-42">スライド 42: スクリーンショットを取る</a></li><li><a href="#slide-43">スライド 43: すぐ報告する</a></li><li><a href="#slide-44">スライド 44: 証拠を早く消さない</a></li><li><a href="#slide-45">スライド 45: パスワードを入力した場合</a></li><li><a href="#slide-46">スライド 46: 認証コードを共有した場合</a></li><li><a href="#slide-47">スライド 47: マルウェアが動いているかもしれない場合</a></li><li><a href="#slide-48">スライド 48: 練習1：安全・疑わしい・危険</a></li><li><a href="#slide-49">スライド 49: 練習2：危険サインを見つける</a></li><li><a href="#slide-50">スライド 50: 練習3：セキュリティサポート報告</a></li><li><a href="#slide-51">スライド 51: 練習4：次に何をするか</a></li><li><a href="#slide-52">スライド 52: 復習マップ</a></li><li><a href="#slide-53">スライド 53: 覚える5つのこと</a></li><li><a href="#slide-54">スライド 54: 最後の安全文</a></li><li><a href="#slide-55">スライド 55: 宿題／短い課題</a></li></ol></section>
+<h2 class="part-title">導入 — セキュリティは行動</h2><article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">スライド 1</div><div class="slide-title"><h2>第10講 — コンピュータセキュリティ基礎1</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="第10講 — コンピュータセキュリティ基礎1" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 1 — タップして拡大</figcaption></figure>
+<section class="reading"><p>多くの攻撃は、リンクをクリックする、ファイルを開く、プログラムを入れる、偽ページでログインする、認証コードを共有する、という普通の行動から始まります。基本ルールは、止まる、スクリーンショットを取る、すぐ報告する、です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの中心ルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>危険を感じたら止まり、証拠を取り、早く報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">スライド 2</div><div class="slide-title"><h2>今日の問い</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="今日の問い" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 2 — タップして拡大</figcaption></figure>
+<section class="reading"><p>多くの攻撃は普通のユーザー行動から始まります。リンク、添付ファイル、インストール、偽ログイン、認証コード共有に注意します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの中心ルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>危険を感じたら止まり、証拠を取り、早く報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">スライド 3</div><div class="slide-title"><h2>セキュリティはコンピュータだけを守るのではない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="セキュリティはコンピュータだけを守るのではない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 3 — タップして拡大</figcaption></figure>
+<section class="reading"><p>セキュリティは機械だけでなく、アカウント、個人ファイル、学校データ、病院・患者データも守ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの中心ルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>危険を感じたら止まり、証拠を取り、早く報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">スライド 4</div><div class="slide-title"><h2>セキュリティの3つの基本目標</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="セキュリティの3つの基本目標" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 4 — タップして拡大</figcaption></figure>
+<section class="reading"><p>セキュリティの目標は、情報をprivate、correct、availableに保つことです。つまり秘密性、正確性、利用可能性です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの中心ルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>危険を感じたら止まり、証拠を取り、早く報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">スライド 5</div><div class="slide-title"><h2>病院の衛生との比較</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="病院の衛生との比較" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 5 — タップして拡大</figcaption></figure>
+<section class="reading"><p>病院で小さな不注意が感染を広げるように、コンピュータでも小さな不注意がマルウェアや情報漏えいを広げます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの中心ルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>危険を感じたら止まり、証拠を取り、早く報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">スライド 6</div><div class="slide-title"><h2>人間が標的になることが多い</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="人間が標的になることが多い" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 6 — タップして拡大</figcaption></figure>
+<section class="reading"><p>攻撃者は機械だけでなく人を狙います。急がせる、怖がらせる、信頼させる、好奇心を使う方法をsocial engineeringと呼びます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>このスライドの中心ルールは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>危険を感じたら止まり、証拠を取り、早く報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第1部 — マルウェア</h2><article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">スライド 7</div><div class="slide-title"><h2>マルウェア概要</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="マルウェア概要" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 7 — タップして拡大</figcaption></figure>
+<section class="reading"><p>マルウェアは有害なソフトウェアです。virus、worm、trojan、spyware、keylogger、ransomware、fake cleaner、adwareなどがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この種類のマルウェアで最初にすべき安全行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開かず、追加操作を止め、証拠を取り、報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">スライド 8</div><div class="slide-title"><h2>ウイルス</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="ウイルス" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 8 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ウイルスはファイルにくっつきます。感染ファイルを実行すると広がり、問題がさらに拡大することがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この種類のマルウェアで最初にすべき安全行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開かず、追加操作を止め、証拠を取り、報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">スライド 9</div><div class="slide-title"><h2>ワーム</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="ワーム" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 9 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ワームはネットワークを通って広がることがあります。通常のファイル共有なしで別のコンピュータへ移動する場合があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この種類のマルウェアで最初にすべき安全行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開かず、追加操作を止め、証拠を取り、報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">スライド 10</div><div class="slide-title"><h2>トロイの木馬</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="トロイの木馬" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 10 — タップして拡大</figcaption></figure>
+<section class="reading"><p>トロイの木馬は便利で安全に見えますが、中に危険を隠します。無料ゲーム、クラックソフト、偽PDFビューアなどが例です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この種類のマルウェアで最初にすべき安全行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開かず、追加操作を止め、証拠を取り、報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">スライド 11</div><div class="slide-title"><h2>スパイウェア</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="スパイウェア" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 11 — タップして拡大</figcaption></figure>
+<section class="reading"><p>スパイウェアはユーザーをこっそり監視します。履歴、メッセージ、ファイル、アカウント情報を集めることがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この種類のマルウェアで最初にすべき安全行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開かず、追加操作を止め、証拠を取り、報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">スライド 12</div><div class="slide-title"><h2>キーロガー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="キーロガー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 12 — タップして拡大</figcaption></figure>
+<section class="reading"><p>キーロガーはキーボード入力を記録します。パスワード、ユーザー名、メッセージ、認証コードを盗むことがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この種類のマルウェアで最初にすべき安全行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開かず、追加操作を止め、証拠を取り、報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">スライド 13</div><div class="slide-title"><h2>ランサムウェア</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="ランサムウェア" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 13 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ランサムウェアはファイルをロックまたは暗号化し、金銭を要求します。支払っても復旧できる保証はありません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この種類のマルウェアで最初にすべき安全行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開かず、追加操作を止め、証拠を取り、報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">スライド 14</div><div class="slide-title"><h2>偽アンチウイルス／偽クリーナー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="偽アンチウイルス／偽クリーナー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 14 — タップして拡大</figcaption></figure>
+<section class="reading"><p>偽クリーナーは「感染した」と怖がらせます。お金を要求したり、さらにマルウェアを入れることがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この種類のマルウェアで最初にすべき安全行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開かず、追加操作を止め、証拠を取り、報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">スライド 15</div><div class="slide-title"><h2>アドウェアとブラウザハイジャッカー</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="アドウェアとブラウザハイジャッカー" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 15 — タップして拡大</figcaption></figure>
+<section class="reading"><p>アドウェアは不要な広告を出し、ブラウザハイジャッカーはホームページや検索エンジンを勝手に変えます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この種類のマルウェアで最初にすべき安全行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>開かず、追加操作を止め、証拠を取り、報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第2部 — ファイルとダウンロード</h2><article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">スライド 16</div><div class="slide-title"><h2>ファイル名と拡張子が重要</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="ファイル名と拡張子が重要" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 16 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ファイルアイコンは嘘をつくことがあります。重要なのはファイル拡張子です。文書に見えてもプログラムの場合があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">スライド 17</div><div class="slide-title"><h2>危険な偽ドキュメント</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="危険な偽ドキュメント" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 17 — タップして拡大</figcaption></figure>
+<section class="reading"><p>invoice.pdf.exe はPDFではなく実行プログラムです。偽の文書名でユーザーをだますことがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">スライド 18</div><div class="slide-title"><h2>Windowsは拡張子を隠すことがある</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="Windowsは拡張子を隠すことがある" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 18 — タップして拡大</figcaption></figure>
+<section class="reading"><p>Windowsが拡張子を隠すと、危険なプログラムが普通の文書に見えることがあります。支援者はこのリスクを知る必要があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">スライド 19</div><div class="slide-title"><h2>よくある危険なファイル種類</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="よくある危険なファイル種類" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 19 — タップして拡大</figcaption></figure>
+<section class="reading"><p>.exe、.msi、.bat、.cmd、.js、.vbs、マクロ付きOfficeファイルなど、命令実行やインストールができるファイルに注意します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">スライド 20</div><div class="slide-title"><h2>ZIPファイルは危険を隠せる</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="ZIPファイルは危険を隠せる" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 20 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ZIPは入れ物です。安全なファイルも危険なファイルも入れられます。中身を確認してから開きます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">スライド 21</div><div class="slide-title"><h2>偽ダウンロードボタン</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="偽ダウンロードボタン" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 21 — タップして拡大</figcaption></figure>
+<section class="reading"><p>一部のサイトには偽ダウンロードボタンがあります。公式サイトと正しいリンクを使います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">スライド 22</div><div class="slide-title"><h2>クラックソフトと無料ゲーム</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="クラックソフトと無料ゲーム" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 22 — タップして拡大</figcaption></figure>
+<section class="reading"><p>クラックソフトや無料ゲームは危険です。trojan、spyware、keyloggerが含まれることがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">スライド 23</div><div class="slide-title"><h2>偽ドライバー更新ツール</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="偽ドライバー更新ツール" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 23 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ランダムなdriver updaterは危険です。ドライバーは強い権限で動くため、公式メーカー、Windows Update、IT支援を使います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">スライド 24</div><div class="slide-title"><h2>USBメモリのリスク</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="USBメモリのリスク" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 24 — タップして拡大</figcaption></figure>
+<section class="reading"><p>知らないUSBはマルウェアを含む可能性があります。学校や病院のPCに不明USBを挿してはいけません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">スライド 25</div><div class="slide-title"><h2>メールとメッセンジャー添付</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="メールとメッセンジャー添付" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 25 — タップして拡大</figcaption></figure>
+<section class="reading"><p>危険なファイルはメール、メッセンジャー、共有リンク、USB、偽サイトから届くことがあります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">スライド 26</div><div class="slide-title"><h2>安全なダウンロードの考え方</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="安全なダウンロードの考え方" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 26 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ファイルを開く前に、誰が送ったか、信頼できるか、予期していたか、ファイル種類が自然かを確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ファイルやダウンロードを見る時の確認点は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>送信者、予期していたか、拡張子、公式ソースかを確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第3部 — フィッシング</h2><article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">スライド 27</div><div class="slide-title"><h2>フィッシングとは何か</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="フィッシングとは何か" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 27 — タップして拡大</figcaption></figure>
+<section class="reading"><p>フィッシングは情報を盗むためのだましです。ログイン、パスワード、コードを盗もうとします。</p></section>
+<section class="think"><h3>考えて答える</h3><p>フィッシングで最も危険な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>怪しいリンクからログインしたり、パスワードやコードを入力・共有することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">スライド 28</div><div class="slide-title"><h2>偽ログインページ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="偽ログインページ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 28 — タップして拡大</figcaption></figure>
+<section class="reading"><p>偽ログインページは本物に見えます。パスワード入力前にWebアドレスを確認します。ロゴだけでは不十分です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>フィッシングで最も危険な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>怪しいリンクからログインしたり、パスワードやコードを入力・共有することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">スライド 29</div><div class="slide-title"><h2>偽の学校メッセージ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="偽の学校メッセージ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 29 — タップして拡大</figcaption></figure>
+<section class="reading"><p>フィッシングは恐怖や緊急性を使います。「今日中にアカウント停止」などで急がせます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>フィッシングで最も危険な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>怪しいリンクからログインしたり、パスワードやコードを入力・共有することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">スライド 30</div><div class="slide-title"><h2>偽の配送・銀行メッセージ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="偽の配送・銀行メッセージ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 30 — タップして拡大</figcaption></figure>
+<section class="reading"><p>攻撃者は配送、銀行、学校、仕事、ビザ、アカウント問題など日常の状況を使ってだまします。</p></section>
+<section class="think"><h3>考えて答える</h3><p>フィッシングで最も危険な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>怪しいリンクからログインしたり、パスワードやコードを入力・共有することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">スライド 31</div><div class="slide-title"><h2>メッセージの危険サイン</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="メッセージの危険サイン" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 31 — タップして拡大</figcaption></figure>
+<section class="reading"><p>危険サインは、緊急要求、恐怖、賞金、お金、変な送信者、変なリンク、予期しない添付、パスワードやコード要求です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>フィッシングで最も危険な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>怪しいリンクからログインしたり、パスワードやコードを入力・共有することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">スライド 32</div><div class="slide-title"><h2>認証コードは鍵</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="認証コードは鍵" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 32 — タップして拡大</figcaption></figure>
+<section class="reading"><p>認証コードは鍵です。他人に読まない、送らない、伝えない。自分で開いた公式アプリやサイトだけに入力します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>フィッシングで最も危険な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>怪しいリンクからログインしたり、パスワードやコードを入力・共有することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">スライド 33</div><div class="slide-title"><h2>「私はサポートです、コードを教えて」</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="「私はサポートです、コードを教えて」" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 33 — タップして拡大</figcaption></figure>
+<section class="reading"><p>「サポートです、コードを教えて」は攻撃の可能性があります。本物のサポートは一時ログインコードを求めるべきではありません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>フィッシングで最も危険な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>怪しいリンクからログインしたり、パスワードやコードを入力・共有することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">スライド 34</div><div class="slide-title"><h2>QRコードフィッシング</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="QRコードフィッシング" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 34 — タップして拡大</figcaption></figure>
+<section class="reading"><p>QRコードはリンクです。安全なサイトにも偽サイトにも行けます。ログイン前にリンク先を確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>フィッシングで最も危険な行動は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>怪しいリンクからログインしたり、パスワードやコードを入力・共有することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第4部 — 更新とアンチウイルス</h2><article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">スライド 35</div><div class="slide-title"><h2>更新が重要な理由</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="更新が重要な理由" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 35 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ソフトにはセキュリティ穴があります。更新は多くの穴を閉じ、古いシステムより安全にします。</p></section>
+<section class="think"><h3>考えて答える</h3><p>更新やアンチウイルスだけで十分ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。安全なユーザー行動も必要です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">スライド 36</div><div class="slide-title"><h2>古いソフトは攻撃されやすい</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="古いソフトは攻撃されやすい" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 36 — タップして拡大</figcaption></figure>
+<section class="reading"><p>古いソフトには既知の弱点が残ることがあります。攻撃者は既知の弱点を使うことが多いです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>更新やアンチウイルスだけで十分ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。安全なユーザー行動も必要です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">スライド 37</div><div class="slide-title"><h2>更新は重要だが学校・病院PCでは勝手にしない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="更新は重要だが学校・病院PCでは勝手にしない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 37 — タップして拡大</figcaption></figure>
+<section class="reading"><p>更新は重要ですが、学校や病院PCでは方針に従います。許可なく大きな変更を強制しません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>更新やアンチウイルスだけで十分ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。安全なユーザー行動も必要です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">スライド 38</div><div class="slide-title"><h2>アンチウイルス／Windows Security</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="アンチウイルス／Windows Security" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 38 — タップして拡大</figcaption></figure>
+<section class="reading"><p>AntivirusやWindows Securityは危険なファイル検出を助けますが、魔法ではありません。安全な行動も必要です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>更新やアンチウイルスだけで十分ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。安全なユーザー行動も必要です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">スライド 39</div><div class="slide-title"><h2>偽アンチウイルス警告</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="偽アンチウイルス警告" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 39 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ブラウザの「感染しています」ポップアップは偽物かもしれません。パニックボタンを押さず、ページを閉じて報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>更新やアンチウイルスだけで十分ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。安全なユーザー行動も必要です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">スライド 40</div><div class="slide-title"><h2>セキュリティは層で守る</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="セキュリティは層で守る" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 40 — タップして拡大</figcaption></figure>
+<section class="reading"><p>セキュリティは層で守ります。慎重な行動、更新、アンチウイルス、強いパスワード、二段階認証、バックアップが組み合わさります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>更新やアンチウイルスだけで十分ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。安全なユーザー行動も必要です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第5部 — 安全な対応</h2><article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">スライド 41</div><div class="slide-title"><h2>まず止まる</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="まず止まる" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 41 — タップして拡大</figcaption></figure>
+<section class="reading"><p>危険に気づいたら、まず止まります。さらにクリック、入力、インストールを続けると被害が広がります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>危険に気づいた時の基本順序は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>止まる、スクリーンショットを取る、すぐ報告する、です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">スライド 42</div><div class="slide-title"><h2>スクリーンショットを取る</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="スクリーンショットを取る" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 42 — タップして拡大</figcaption></figure>
+<section class="reading"><p>スクリーンショットは証拠です。正確なメッセージ、リンク、ファイル名、時刻を保存できます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>危険に気づいた時の基本順序は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>止まる、スクリーンショットを取る、すぐ報告する、です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">スライド 43</div><div class="slide-title"><h2>すぐ報告する</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="すぐ報告する" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 43 — タップして拡大</figcaption></figure>
+<section class="reading"><p>早く報告すれば被害を小さくできます。恥ずかしがって隠すと、問題が大きくなります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>危険に気づいた時の基本順序は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>止まる、スクリーンショットを取る、すぐ報告する、です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">スライド 44</div><div class="slide-title"><h2>証拠を早く消さない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="証拠を早く消さない" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 44 — タップして拡大</figcaption></figure>
+<section class="reading"><p>怪しいものをクリックした後でも、証拠を急いで消さないでください。何をクリックしたか、何が表示されたかを記録して報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>危険に気づいた時の基本順序は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>止まる、スクリーンショットを取る、すぐ報告する、です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">スライド 45</div><div class="slide-title"><h2>パスワードを入力した場合</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="パスワードを入力した場合" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 45 — タップして拡大</figcaption></figure>
+<section class="reading"><p>パスワードを入力した場合は緊急です。公式手順でパスワード変更、セッション確認、IT報告が必要です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>危険に気づいた時の基本順序は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>止まる、スクリーンショットを取る、すぐ報告する、です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">スライド 46</div><div class="slide-title"><h2>認証コードを共有した場合</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="認証コードを共有した場合" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 46 — タップして拡大</figcaption></figure>
+<section class="reading"><p>認証コードを共有した場合も緊急です。コードは一時的な鍵なので、すぐに報告し、公式手順で保護します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>危険に気づいた時の基本順序は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>止まる、スクリーンショットを取る、すぐ報告する、です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">スライド 47</div><div class="slide-title"><h2>マルウェアが動いているかもしれない場合</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="マルウェアが動いているかもしれない場合" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 47 — タップして拡大</figcaption></figure>
+<section class="reading"><p>マルウェアが動いている疑いがある場合、勝手に修理しません。指示があれば切断することもありますが、まず報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>危険に気づいた時の基本順序は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>止まる、スクリーンショットを取る、すぐ報告する、です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第6部 — 練習と復習</h2><article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">スライド 48</div><div class="slide-title"><h2>練習1：安全・疑わしい・危険</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="練習1：安全・疑わしい・危険" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 48 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ファイルの安全性を判断する練習です。拡張子、送信者、予期していたか、ソースが公式かを確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この練習で確認することは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>安全な行動と危険サインを区別できるかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">スライド 49</div><div class="slide-title"><h2>練習2：危険サインを見つける</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="練習2：危険サインを見つける" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 49 — タップして拡大</figcaption></figure>
+<section class="reading"><p>危険サインを探します。急がせる言葉、偽リンク、添付、コード要求などが手掛かりです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この練習で確認することは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>安全な行動と危険サインを区別できるかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">スライド 50</div><div class="slide-title"><h2>練習3：セキュリティサポート報告</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg"><img src="assets/slides/slide-50.jpg" alt="練習3：セキュリティサポート報告" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 50 — タップして拡大</figcaption></figure>
+<section class="reading"><p>短い報告には、何が起きたか、何をクリックしたか、ファイル名やリンク、入力した情報、スクリーンショット、必要な支援を書きます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この練習で確認することは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>安全な行動と危険サインを区別できるかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">スライド 51</div><div class="slide-title"><h2>練習4：次に何をするか</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg"><img src="assets/slides/slide-51.jpg" alt="練習4：次に何をするか" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 51 — タップして拡大</figcaption></figure>
+<section class="reading"><p>安全な次の行動は、スクリーンショット、報告、指示がある場合のみ切断です。さらにクリックや入力はしません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この練習で確認することは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>安全な行動と危険サインを区別できるかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">スライド 52</div><div class="slide-title"><h2>復習マップ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg"><img src="assets/slides/slide-52.jpg" alt="復習マップ" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 52 — タップして拡大</figcaption></figure>
+<section class="reading"><p>核心の流れは、リスクに気づく、止まる、証拠を集める、報告する、です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この練習で確認することは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>安全な行動と危険サインを区別できるかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-53">
+<div class="slide-head"><div class="badge">スライド 53</div><div class="slide-title"><h2>覚える5つのこと</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-53.jpg"><img src="assets/slides/slide-53.jpg" alt="覚える5つのこと" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 53 — タップして拡大</figcaption></figure>
+<section class="reading"><p>覚えることは5つです。不明ファイルを開かない、パニック警告を信じない、怪しいリンクでログインしない、認証コードを共有しない、スクリーンショットを取って報告する。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この練習で確認することは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>安全な行動と危険サインを区別できるかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-54">
+<div class="slide-head"><div class="badge">スライド 54</div><div class="slide-title"><h2>最後の安全文</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-54.jpg"><img src="assets/slides/slide-54.jpg" alt="最後の安全文" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 54 — タップして拡大</figcaption></figure>
+<section class="reading"><p>サポート担当者は勇敢であるより慎重であるべきです。慎重な行動がデバイス、アカウント、データを守ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この練習で確認することは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>安全な行動と危険サインを区別できるかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article><article class="slide-card" id="slide-55">
+<div class="slide-head"><div class="badge">スライド 55</div><div class="slide-title"><h2>宿題／短い課題</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-55.jpg"><img src="assets/slides/slide-55.jpg" alt="宿題／短い課題" loading="lazy"></button><figcaption>元のプレゼンテーション スライド 55 — タップして拡大</figcaption></figure>
+<section class="reading"><p>宿題は架空のセキュリティ報告を書くことです。何が起きたか、怪しいファイルやリンク、入力した情報、必要な支援を含めます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この練習で確認することは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>安全な行動と危険サインを区別できるかです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+<section class="interactive-section" id="interactive-review">
+<h2>拡張インタラクティブ復習</h2>
+<p>目的はハッキングではありません。危険サインを見つけ、安全に止まり、証拠を残して報告する練習です。</p>
+<div class="lab-grid">
+<article class="lab"><h3>1. ファイルリスクチェッカー</h3><div class="file-grid"><button class="file-card" data-risk="safe">report.pdf</button><button class="file-card" data-risk="risky">invoice.pdf.exe</button><button class="file-card" data-risk="risky">free_game_setup.exe</button><button class="file-card" data-risk="risky">driver_update_tool.msi</button><button class="file-card" data-risk="caution">homework.zip</button><button class="file-card" data-risk="risky">run_me.bat</button></div><div class="feedback" id="file-feedback"></div></article>
+<article class="lab"><h3>2. フィッシング危険サイン</h3><div class="redflag-grid"><div class="redflag-card" data-answer="red">今日中にアカウント停止<strong></strong></div><div class="redflag-card" data-answer="red">コードを送ってください<strong></strong></div><div class="redflag-card" data-answer="safe">自分で開いた公式サイト<strong></strong></div><div class="redflag-card" data-answer="red">奇妙な送信者と短縮リンク<strong></strong></div><div class="redflag-card" data-answer="red">予期しない添付ファイル<strong></strong></div><div class="redflag-card" data-answer="safe">先生が授業で予告した資料<strong></strong></div></div><div class="actions"><button class="primary" id="check-redflags" type="button">分類を確認</button></div><div class="feedback" id="redflag-feedback"></div></article>
+<article class="lab"><h3>3. Safe response順序</h3><div class="order-list"><div class="order-item">1. 止まる</div><div class="order-item">2. スクリーンショット</div><div class="order-item">3. 報告</div><div class="order-item">4. 指示を待つ</div></div><div class="feedback ok">順序：止まる → 証拠 → 報告 → 指示を待つ</div></article>
+<article class="lab"><h3>4. 認証コードルール</h3><select id="code-case"><option value="support">サポートを名乗る人がコードを要求</option><option value="official">自分で開いた公式サイトに入力</option><option value="friend">友達がログインを手伝うと言う</option><option value="message">メッセージでコード送信を要求</option></select><div class="feedback" id="code-feedback"></div></article>
+<article class="lab"><h3>5. セキュリティ報告ジェネレーター</h3><div class="report-builder"><input id="rep-device" value="PC-04"><select id="rep-case"><option value="fake-driver">Fake driver updater</option><option value="popup">Panic popup</option><option value="phishing">Fake school login</option><option value="usb">Unknown USB</option></select><input id="rep-action" value="Clicked link, no password entered"><button class="primary" id="build-report" type="button">報告を作成</button></div><pre class="report-output" id="report-output"></pre></article>
+<article class="lab"><h3>6. Malwareタイプ explorer</h3><div class="malware-grid"><button class="malware-card" data-kind="virus">Virus</button><button class="malware-card" data-kind="worm">Worm</button><button class="malware-card" data-kind="trojan">Trojan</button><button class="malware-card" data-kind="spyware">Spyware</button><button class="malware-card" data-kind="keylogger">Keylogger</button><button class="malware-card" data-kind="ransomware">Ransomware</button></div><div class="malware-info" id="malware-info"></div></article>
+</div>
+<article class="lab" style="margin-top:18px"><h3>7. 最終知識チェック</h3><form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. 基本の安全対応は何ですか。</legend><label><input type="radio" name="q1" value="0"> 急いでクリック</label><label><input type="radio" name="q1" value="1"> 止まる・スクリーンショット・報告</label><label><input type="radio" name="q1" value="2"> ランダム削除</label><label><input type="radio" name="q1" value="3"> 無視</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. Malwareとは何ですか。</legend><label><input type="radio" name="q2" value="0"> 便利なソフトだけ</label><label><input type="radio" name="q2" value="1"> 有害なソフト</label><label><input type="radio" name="q2" value="2"> 安全な更新</label><label><input type="radio" name="q2" value="3"> ポート</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>3. Trojanとは何ですか。</legend><label><input type="radio" name="q3" value="0"> 安全に見えて危険を隠す</label><label><input type="radio" name="q3" value="1"> 画像だけ</label><label><input type="radio" name="q3" value="2"> プリンター</label><label><input type="radio" name="q3" value="3"> ダウンロード不可</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. Ransomwareとは何ですか。</legend><label><input type="radio" name="q4" value="0"> ファイルをロックし金銭要求</label><label><input type="radio" name="q4" value="1"> 速度改善</label><label><input type="radio" name="q4" value="2"> 明るさ変更</label><label><input type="radio" name="q4" value="3"> 安全清掃</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>5. invoice.pdf.exe は何ですか。</legend><label><input type="radio" name="q5" value="0"> 必ずPDF</label><label><input type="radio" name="q5" value="1"> 文書に見せたプログラム</label><label><input type="radio" name="q5" value="2"> 常に安全</label><label><input type="radio" name="q5" value="3"> 写真</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. ZIPファイルは何ですか。</legend><label><input type="radio" name="q6" value="0"> 常に安全</label><label><input type="radio" name="q6" value="1"> 安全な物も危険な物も入る</label><label><input type="radio" name="q6" value="2"> プログラム不可</label><label><input type="radio" name="q6" value="3"> パスワード</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>7. ランダムなdriver updaterは何ですか。</legend><label><input type="radio" name="q7" value="0"> 常に必要</label><label><input type="radio" name="q7" value="1"> 危険</label><label><input type="radio" name="q7" value="2"> 必ず公式</label><label><input type="radio" name="q7" value="3"> キーボード</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. Phishingが盗もうとするものは何ですか。</legend><label><input type="radio" name="q8" value="0"> ログイン、パスワード、コード</label><label><input type="radio" name="q8" value="1"> 紙だけ</label><label><input type="radio" name="q8" value="2"> 画素</label><label><input type="radio" name="q8" value="3"> RAM</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>9. 認証コードは何ですか。</legend><label><input type="radio" name="q9" value="0"> 一時的な鍵</label><label><input type="radio" name="q9" value="1"> サポートに教えてよい</label><label><input type="radio" name="q9" value="2"> 飾り</label><label><input type="radio" name="q9" value="3"> 拡張子</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>10. QRコードフィッシングが成立する理由は何ですか。</legend><label><input type="radio" name="q10" value="0"> QRコードはリンクだから</label><label><input type="radio" name="q10" value="1"> バッテリーだから</label><label><input type="radio" name="q10" value="2"> RAMだから</label><label><input type="radio" name="q10" value="3"> 常に公式だから</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>11. ブラウザが感染警告を出したら最初に何をしますか。</legend><label><input type="radio" name="q11" value="0"> ボタンを押す</label><label><input type="radio" name="q11" value="1"> クリックせず安全に閉じて報告</label><label><input type="radio" name="q11" value="2"> クリーナー追加</label><label><input type="radio" name="q11" value="3"> パスワード入力</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. アンチウイルスは何ですか。</legend><label><input type="radio" name="q12" value="0"> 有用だが魔法ではない</label><label><input type="radio" name="q12" value="1"> すべてに十分</label><label><input type="radio" name="q12" value="2"> 行動の代わり</label><label><input type="radio" name="q12" value="3"> 無意味</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>13. 怪しいリンクをクリック後は何をしますか。</legend><label><input type="radio" name="q13" value="0"> さらにクリック</label><label><input type="radio" name="q13" value="1"> 止まって何が起きたか報告</label><label><input type="radio" name="q13" value="2"> 隠す</label><label><input type="radio" name="q13" value="3"> コード共有</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>14. 良い報告に含めるものは何ですか。</legend><label><input type="radio" name="q14" value="0"> 何が起きたかとスクリーンショット</label><label><input type="radio" name="q14" value="1"> 悪いだけ</label><label><input type="radio" name="q14" value="2"> 詳細なし</label><label><input type="radio" name="q14" value="3"> パスワード</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. 最後のルールは何ですか。</legend><label><input type="radio" name="q15" value="0"> 慎重な行動はパニックより強い</label><label><input type="radio" name="q15" value="1"> パニックが最善</label><label><input type="radio" name="q15" value="2"> 常に再インストール</label><label><input type="radio" name="q15" value="3"> コード共有</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">最終クイズを確認</button><button class="secondary" id="reset-quiz" type="reset">リセット</button></div><div class="score" id="quiz-score" data-label="最終スコア"></div></form></article>
+</section></main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · Lecture 10 · Computer Security Basics 1 · Original 55-slide sequence preserved.</footer></body></html>
