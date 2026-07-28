@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第3講 — コンピュータの電源</title>
+<link rel="stylesheet" href="assets/style.css">
+<script defer src="assets/interactive.js"></script>
+<style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head>
+<body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture02/index.html">← 2</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture04/index.html">4 →</a></nav>
+<header><div class="header-inner">
+<div class="course">Computer Fundamentals 2 · 今学期 · ウェブ講義 3</div>
+<h1>コンピュータの電源</h1>
+<p class="subtitle">元のプレゼンテーションスライドを、見やすい日英ウェブ講義に変換しました。</p>
+<p class="intro">この講義では、壁のAC電源から変換、アダプタと電源装置、バッテリー、充電、保護、安全な電源使用まで、電力の流れ全体を学びます。</p>
+<div class="lang-switch"><a href="lecture_en.html">English</a><a class="current" href="lecture_ja.html">日本語</a></div>
+</div></header>
+<main class="container">
+<section class="core"><h2>中心の流れ</h2><div class="core-chain">壁のAC → アダプタまたは電源装置 → 安全な低電圧DC → バッテリーとコンピュータ回路</div></section>
+<section class="progress-box"><strong>読書の進み具合</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span></section>
+<section class="notice"><h2>この講義の使い方</h2><p>各オリジナルスライド画像を開き、その下の短い説明を読み、チェック問題に答えて、最後に対話型復習を行ってください。</p></section>
+<section class="notice map" id="lesson-map"><h2>講義マップ — 39枚のスライド</h2><ol>
+<li><a href="#slide-1">スライド 1: 講義3 — コンピュータの電源</a></li>
+<li><a href="#slide-2">スライド 2: 大きな問い</a></li>
+<li><a href="#slide-3">スライド 3: コンセントとコンピュータ回路</a></li>
+<li><a href="#slide-4">スライド 4: 電力の流れ</a></li>
+<li><a href="#slide-5">スライド 5: AC — 交流</a></li>
+<li><a href="#slide-6">スライド 6: DC — 直流</a></li>
+<li><a href="#slide-7">スライド 7: ACとDC</a></li>
+<li><a href="#slide-8">スライド 8: 電圧・電流・電力</a></li>
+<li><a href="#slide-9">スライド 9: なぜ低く安定したDCが必要か</a></li>
+<li><a href="#slide-10">スライド 10: 変圧器の基本</a></li>
+<li><a href="#slide-11">スライド 11: コイルと磁界</a></li>
+<li><a href="#slide-12">スライド 12: 降圧変圧器</a></li>
+<li><a href="#slide-13">スライド 13: 変圧器だけでは不十分</a></li>
+<li><a href="#slide-14">スライド 14: ダイオード：一方向のドア</a></li>
+<li><a href="#slide-15">スライド 15: 整流器：ACからDCへ</a></li>
+<li><a href="#slide-16">スライド 16: 脈動DC</a></li>
+<li><a href="#slide-17">スライド 17: コンデンサによる平滑化</a></li>
+<li><a href="#slide-18">スライド 18: 電圧レギュレータ</a></li>
+<li><a href="#slide-19">スライド 19: 旧式電源の全体チェーン</a></li>
+<li><a href="#slide-20">スライド 20: 現代のノートPCアダプタ</a></li>
+<li><a href="#slide-21">スライド 21: アダプタの出力ラベル</a></li>
+<li><a href="#slide-22">スライド 22: 間違ったアダプタの問題</a></li>
+<li><a href="#slide-23">スライド 23: バッテリーは電気の箱ではない</a></li>
+<li><a href="#slide-24">スライド 24: リチウムイオン電池の部品</a></li>
+<li><a href="#slide-25">スライド 25: 内部のイオン、外部の電子</a></li>
+<li><a href="#slide-26">スライド 26: リチウムイオン電池の放電</a></li>
+<li><a href="#slide-27">スライド 27: リチウムイオン電池の充電</a></li>
+<li><a href="#slide-28">スライド 28: バッテリー保護回路</a></li>
+<li><a href="#slide-29">スライド 29: なぜバッテリーは古くなるのか</a></li>
+<li><a href="#slide-30">スライド 30: 膨張したバッテリーの危険</a></li>
+<li><a href="#slide-31">スライド 31: UPS — バックアップ電源</a></li>
+<li><a href="#slide-32">スライド 32: 停電のケース</a></li>
+<li><a href="#slide-33">スライド 33: 病院とオフィスの例</a></li>
+<li><a href="#slide-34">スライド 34: 電気安全ルール</a></li>
+<li><a href="#slide-35">スライド 35: 電源問題のトラブルシューティング</a></li>
+<li><a href="#slide-36">スライド 36: オンライン練習1 — ACかDCか</a></li>
+<li><a href="#slide-37">スライド 37: オンライン練習2 — 最初の確認</a></li>
+<li><a href="#slide-38">スライド 38: オンライン練習3 — 安全</a></li>
+<li><a href="#slide-39">スライド 39: 最終まとめ</a></li>
+</ol></section>
+
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">スライド 1</div><div class="slide-title"><h2>講義3 — コンピュータの電源</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="講義3 — コンピュータの電源"></button><figcaption>元のプレゼンテーション スライド 1 — タップして拡大</figcaption></figure>
+<section class="reading"><p>この講義では、壁のコンセントからコンピュータ内部の回路まで、電力がどのように変換されるかを学びます。重要な考えは、電力を変換し、制御し、安全にすることです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>コンピュータの電力に必要な3つのことは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>変換、制御、安全です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">スライド 2</div><div class="slide-title"><h2>大きな問い</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="大きな問い"></button><figcaption>元のプレゼンテーション スライド 2 — タップして拡大</figcaption></figure>
+<section class="reading"><p>壁のコンセントは比較的高い電圧のACを供給しますが、コンピュータのチップは低電圧で安定したDCを必要とします。アダプタや電源装置が変換と保護を行います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>なぜチップをコンセントに直接つなげないのですか。</p><details data-checkpoint><summary>答えを見る</summary><p>電圧と電流の種類が合わず、危険だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">スライド 3</div><div class="slide-title"><h2>コンセントとコンピュータ回路</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="コンセントとコンピュータ回路"></button><figcaption>元のプレゼンテーション スライド 3 — タップして拡大</figcaption></figure>
+<section class="reading"><p>日本のコンセントは約100 V ACです。ノートPCのアダプタ出力は約19 V DC、USBは通常5 V DCです。同じ電気でも使用条件は大きく違います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>日本の一般的なコンセントは何Vの何電流ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>約100 V ACです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">スライド 4</div><div class="slide-title"><h2>電力の流れ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="電力の流れ"></button><figcaption>元のプレゼンテーション スライド 4 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電力はコンピュータに届くまで複数の段階を通ります。各段階で電気の形を変えたり、人と機器を危険から守ったりします。</p></section>
+<section class="think"><h3>考えて答える</h3><p>なぜ電力は複数の段階を通るのですか。</p><details data-checkpoint><summary>答えを見る</summary><p>電力を変換し、人と機器を保護するためです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">スライド 5</div><div class="slide-title"><h2>AC — 交流</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="AC — 交流"></button><figcaption>元のプレゼンテーション スライド 5 — タップして拡大</figcaption></figure>
+<section class="reading"><p>交流は流れる向きが繰り返し変わります。送電網とコンセントではACが使われ、変圧器による電圧変換にも適しています。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ACでは電流の向きはどうなりますか。</p><details data-checkpoint><summary>答えを見る</summary><p>繰り返し変わります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">スライド 6</div><div class="slide-title"><h2>DC — 直流</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="DC — 直流"></button><figcaption>元のプレゼンテーション スライド 6 — タップして拡大</figcaption></figure>
+<section class="reading"><p>直流は主に一方向に流れます。バッテリー、USB電源、コンピュータ内部の電子回路ではDCが使われます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>コンピュータ内部では通常どちらを使いますか。</p><details data-checkpoint><summary>答えを見る</summary><p>DCです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">スライド 7</div><div class="slide-title"><h2>ACとDC</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="ACとDC"></button><figcaption>元のプレゼンテーション スライド 7 — タップして拡大</figcaption></figure>
+<section class="reading"><p>コンピュータの電源システムは、壁のACを電子回路用のDCに変換します。これはアダプタや電源装置の中心的な仕事です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ノートPCアダプタの主な変換は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>壁のACをノートPC用のDCに変換します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">スライド 8</div><div class="slide-title"><h2>電圧・電流・電力</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="電圧・電流・電力"></button><figcaption>元のプレゼンテーション スライド 8 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電圧は電位差、電流は電荷の流れ、電力は電気エネルギーを送る速さです。簡単なDC計算では、電力は電圧×電流です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>19 V × 3 A は何Wですか。</p><details data-checkpoint><summary>答えを見る</summary><p>57 Wです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">スライド 9</div><div class="slide-title"><h2>なぜ低く安定したDCが必要か</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="なぜ低く安定したDCが必要か"></button><figcaption>元のプレゼンテーション スライド 9 — タップして拡大</figcaption></figure>
+<section class="reading"><p>コンピュータのチップには非常に小さな電子構造があります。高すぎる電圧は部品を壊し、不安定な電圧はクラッシュやデータエラー、突然の停止を起こします。</p></section>
+<section class="think"><h3>考えて答える</h3><p>不安定な電力は何を起こしますか。</p><details data-checkpoint><summary>答えを見る</summary><p>クラッシュ、エラー、停止、または部品の損傷です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">スライド 10</div><div class="slide-title"><h2>変圧器の基本</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="変圧器の基本"></button><figcaption>元のプレゼンテーション スライド 10 — タップして拡大</figcaption></figure>
+<section class="reading"><p>変圧器は変化する磁界を使ってAC電圧を変えます。電圧を上げたり下げたりできますが、変圧器だけではACをDCにできません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>変圧器だけでDCを作れますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。電圧は変わりますが出力はまだACです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">スライド 11</div><div class="slide-title"><h2>コイルと磁界</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="コイルと磁界"></button><figcaption>元のプレゼンテーション スライド 11 — タップして拡大</figcaption></figure>
+<section class="reading"><p>一次コイルのACがコア内に変化する磁界を作ります。その磁界によって二次コイルに電圧が誘導されます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>エネルギーはどのように二次コイルへ伝わりますか。</p><details data-checkpoint><summary>答えを見る</summary><p>変化する磁界によって伝わります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">スライド 12</div><div class="slide-title"><h2>降圧変圧器</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="降圧変圧器"></button><figcaption>元のプレゼンテーション スライド 12 — タップして拡大</figcaption></figure>
+<section class="reading"><p>降圧変圧器はより低いAC電圧を作ります。簡単なモデルでは、二次コイルの巻き数が少ないと出力電圧が低くなります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>降圧変圧器は何をしますか。</p><details data-checkpoint><summary>答えを見る</summary><p>AC電圧を下げます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">スライド 13</div><div class="slide-title"><h2>変圧器だけでは不十分</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="変圧器だけでは不十分"></button><figcaption>元のプレゼンテーション スライド 13 — タップして拡大</figcaption></figure>
+<section class="reading"><p>変圧器の後では電圧は低くなっても、まだ交流です。コンピュータには滑らかで安定したDCを作る追加段階が必要です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>なぜ変圧器だけでは不十分ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>出力がまだACだからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">スライド 14</div><div class="slide-title"><h2>ダイオード：一方向のドア</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="ダイオード：一方向のドア"></button><figcaption>元のプレゼンテーション スライド 14 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ダイオードは電流を主に一方向へ通し、反対方向を止めます。この一方向性が整流の基本です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ダイオードを何にたとえられますか。</p><details data-checkpoint><summary>答えを見る</summary><p>電流の一方向ドアです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">スライド 15</div><div class="slide-title"><h2>整流器：ACからDCへ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="整流器：ACからDCへ"></button><figcaption>元のプレゼンテーション スライド 15 — タップして拡大</figcaption></figure>
+<section class="reading"><p>整流器は複数のダイオードを使って、出力電流を一方向にします。ただし、この段階の出力はまだ滑らかではありません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ACを一方向の電流に変える部品は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>整流器です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">スライド 16</div><div class="slide-title"><h2>脈動DC</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="脈動DC"></button><figcaption>元のプレゼンテーション スライド 16 — タップして拡大</figcaption></figure>
+<section class="reading"><p>整流後の電流は一方向ですが、電圧は波のように上下します。電子回路にはこの脈動を滑らかにする必要があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>脈動DCはすでにチップに十分安定していますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。まだ電圧が上下します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">スライド 17</div><div class="slide-title"><h2>コンデンサによる平滑化</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="コンデンサによる平滑化"></button><figcaption>元のプレゼンテーション スライド 17 — タップして拡大</figcaption></figure>
+<section class="reading"><p>コンデンサは電圧が高いときに電荷を蓄え、低くなると放出します。これによりリップルが減り、DCが滑らかになります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>整流後のリップルを減らす部品は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>コンデンサです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">スライド 18</div><div class="slide-title"><h2>電圧レギュレータ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="電圧レギュレータ"></button><figcaption>元のプレゼンテーション スライド 18 — タップして拡大</figcaption></figure>
+<section class="reading"><p>レギュレータは入力や負荷が変化しても、出力を必要な電圧に近く保ちます。安定した電圧は信頼できる動作を支えます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>電圧レギュレータの仕事は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>出力電圧を安定させることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">スライド 19</div><div class="slide-title"><h2>旧式電源の全体チェーン</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="旧式電源の全体チェーン"></button><figcaption>元のプレゼンテーション スライド 19 — タップして拡大</figcaption></figure>
+<section class="reading"><p>簡単な順序は、変圧器、整流器、コンデンサ、レギュレータです。これらが低く、一方向で、滑らかで、安定した電力を作ります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>壁のACの後の段階を順番に答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>変圧器 → 整流器 → コンデンサ → レギュレータです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">スライド 20</div><div class="slide-title"><h2>現代のノートPCアダプタ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="現代のノートPCアダプタ"></button><figcaption>元のプレゼンテーション スライド 20 — タップして拡大</figcaption></figure>
+<section class="reading"><p>現代のアダプタは通常スイッチング電源技術を使います。古い大型変圧器方式より小さく、軽く、効率的にできます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>現代のアダプタが比較的小さい理由は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>効率的なスイッチング電源を使うからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">スライド 21</div><div class="slide-title"><h2>アダプタの出力ラベル</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="アダプタの出力ラベル"></button><figcaption>元のプレゼンテーション スライド 21 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ラベルには出力電圧、最大電流、極性、場合によっては電力が書かれています。接続前に確認する必要があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>アダプタの電力計算に使う2つの値は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>電圧と電流です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">スライド 22</div><div class="slide-title"><h2>間違ったアダプタの問題</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="間違ったアダプタの問題"></button><figcaption>元のプレゼンテーション スライド 22 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電圧はノートPCの要求と一致する必要があります。電流容量は必要量以上で、端子と極性も正しくなければなりません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>電圧が違うアダプタを安全に使えますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。電圧は一致する必要があります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">スライド 23</div><div class="slide-title"><h2>バッテリーは電気の箱ではない</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="バッテリーは電気の箱ではない"></button><figcaption>元のプレゼンテーション スライド 23 — タップして拡大</figcaption></figure>
+<section class="reading"><p>バッテリーは可逆的な化学変化でエネルギーを保存します。放電では化学エネルギーが電気エネルギーになり、充電では保存できる化学状態を戻します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>バッテリーは何の形でエネルギーを保存しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>化学エネルギーです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">スライド 24</div><div class="slide-title"><h2>リチウムイオン電池の部品</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="リチウムイオン電池の部品"></button><figcaption>元のプレゼンテーション スライド 24 — タップして拡大</figcaption></figure>
+<section class="reading"><p>リチウムイオンセルには2つの電極、電解質、セパレータがあります。内部ではリチウムイオンが動き、外部回路では電子が動きます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>リチウムイオン電池の内部で動く粒子は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>リチウムイオンです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">スライド 25</div><div class="slide-title"><h2>内部のイオン、外部の電子</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="内部のイオン、外部の電子"></button><figcaption>元のプレゼンテーション スライド 25 — タップして拡大</figcaption></figure>
+<section class="reading"><p>リチウムイオンはバッテリー内部を動きます。電子は外部の配線と電子回路を通ってノートPCへエネルギーを届けます。</p></section>
+<section class="think"><h3>考えて答える</h3><p>放電中、電子はどこを動きますか。</p><details data-checkpoint><summary>答えを見る</summary><p>外部回路を動きます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">スライド 26</div><div class="slide-title"><h2>リチウムイオン電池の放電</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="リチウムイオン電池の放電"></button><figcaption>元のプレゼンテーション スライド 26 — タップして拡大</figcaption></figure>
+<section class="reading"><p>放電中、バッテリーはノートPCへエネルギーを供給します。イオンと電子が別々の経路を動き、化学状態が変化します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>放電とは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>バッテリーがノートPCへ電気エネルギーを与えることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">スライド 27</div><div class="slide-title"><h2>リチウムイオン電池の充電</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="リチウムイオン電池の充電"></button><figcaption>元のプレゼンテーション スライド 27 — タップして拡大</figcaption></figure>
+<section class="reading"><p>アダプタが電気エネルギーを供給し、バッテリーをエネルギー保存状態へ戻します。充電は慎重に制御する必要があります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>充電中のエネルギーはどこから来ますか。</p><details data-checkpoint><summary>答えを見る</summary><p>アダプタまたは充電器から来ます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">スライド 28</div><div class="slide-title"><h2>バッテリー保護回路</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="バッテリー保護回路"></button><figcaption>元のプレゼンテーション スライド 28 — タップして拡大</figcaption></figure>
+<section class="reading"><p>保護回路とバッテリー管理回路は、過充電、過放電、過熱、危険な電流を防ぎます。リチウム電池を単純な無保護セルとして扱ってはいけません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>保護回路が防ぐ危険を1つ答えてください。</p><details data-checkpoint><summary>答えを見る</summary><p>過充電、過放電、過熱、または過大電流です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">スライド 29</div><div class="slide-title"><h2>なぜバッテリーは古くなるのか</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="なぜバッテリーは古くなるのか"></button><figcaption>元のプレゼンテーション スライド 29 — タップして拡大</figcaption></figure>
+<section class="reading"><p>バッテリーの化学状態は時間、熱、充放電サイクルで少しずつ変わります。容量が減り、使用時間が短くなり、突然停止しやすくなります。</p></section>
+<section class="think"><h3>考えて答える</h3><p>バッテリー劣化を速めるものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>熱と多くの充放電サイクルです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">スライド 30</div><div class="slide-title"><h2>膨張したバッテリーの危険</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="膨張したバッテリーの危険"></button><figcaption>元のプレゼンテーション スライド 30 — タップして拡大</figcaption></figure>
+<section class="reading"><p>バッテリーの膨張は内部の化学的損傷やガス発生を示すことがあります。使用を止め、安全なら電源を切り、報告してください。押したり穴を開けたりしてはいけません。</p></section>
+<section class="think"><h3>考えて答える</h3><p>膨張したバッテリーを見つけたらどうしますか。</p><details data-checkpoint><summary>答えを見る</summary><p>使用を止めて報告し、押したり穴を開けたりしません。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">スライド 31</div><div class="slide-title"><h2>UPS — バックアップ電源</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="UPS — バックアップ電源"></button><figcaption>元のプレゼンテーション スライド 31 — タップして拡大</figcaption></figure>
+<section class="reading"><p>UPSは壁の電力が止まったときに一時的な電力を供給します。無限に動かす装置ではなく、作業保存や安全停止の時間を作る装置です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UPSは無制限の電力を供給しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。一時的なバックアップ時間を提供します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">スライド 32</div><div class="slide-title"><h2>停電のケース</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="停電のケース"></button><figcaption>元のプレゼンテーション スライド 32 — タップして拡大</figcaption></figure>
+<section class="reading"><p>壁の電力が止まると、UPSのバッテリーが選択された機器を短時間動かします。作業を保存し、安全に停止するか、組織の手順に従います。</p></section>
+<section class="think"><h3>考えて答える</h3><p>UPSが動いている間に何をすべきですか。</p><details data-checkpoint><summary>答えを見る</summary><p>作業を保存して安全に停止します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">スライド 33</div><div class="slide-title"><h2>病院とオフィスの例</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="病院とオフィスの例"></button><figcaption>元のプレゼンテーション スライド 33 — タップして拡大</figcaption></figure>
+<section class="reading"><p>受付PC、ネットワーク機器、サーバー、一部の医療システムは安定した電力に依存します。電力の信頼性は医療ITサポートの一部です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>病院で安定した電力が特に重要なのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>停止すると臨床・事務システムやデータ、サービス継続に影響するからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">スライド 34</div><div class="slide-title"><h2>電気安全ルール</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="電気安全ルール"></button><figcaption>元のプレゼンテーション スライド 34 — タップして拡大</figcaption></figure>
+<section class="reading"><p>熱、火花、煙、損傷したケーブル、焦げた臭い、バッテリー膨張は警告です。自分で無理に修理せず、使用を止めて報告します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>煙や火花がある場合の安全な対応は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>使用を止めて報告します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">スライド 35</div><div class="slide-title"><h2>電源問題のトラブルシューティング</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="電源問題のトラブルシューティング"></button><figcaption>元のプレゼンテーション スライド 35 — タップして拡大</figcaption></figure>
+<section class="reading"><p>電源ランプ、ケーブル接続、コンセント、アダプタの状態、正しい仕様から確認します。CPU、RAM、ソフトウェアを疑う前に電力経路を確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>内部部品を疑う前に何を確認しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>コンセント、ケーブル、アダプタ、電源表示です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">スライド 36</div><div class="slide-title"><h2>オンライン練習1 — ACかDCか</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="オンライン練習1 — ACかDCか"></button><figcaption>元のプレゼンテーション スライド 36 — タップして拡大</figcaption></figure>
+<section class="reading"><p>分類すると、壁のコンセントはAC、ノートPCバッテリー、USB電源、アダプタ出力はDCです。</p></section>
+<section class="think"><h3>考えて答える</h3><p>ノートPCアダプタの出力は通常ACですかDCですか。</p><details data-checkpoint><summary>答えを見る</summary><p>DCです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">スライド 37</div><div class="slide-title"><h2>オンライン練習2 — 最初の確認</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="オンライン練習2 — 最初の確認"></button><figcaption>元のプレゼンテーション スライド 37 — タップして拡大</figcaption></figure>
+<section class="reading"><p>ノートPCが起動せず電源ランプも消えているなら、外部の電力経路から確認します。ノートPCを開ける前にコンセント、ケーブル、アダプタを確認します。</p></section>
+<section class="think"><h3>考えて答える</h3><p>電源ランプが消えている場合、最初に何を確認しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>電源ケーブルとアダプタです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">スライド 38</div><div class="slide-title"><h2>オンライン練習3 — 安全</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="オンライン練習3 — 安全"></button><figcaption>元のプレゼンテーション スライド 38 — タップして拡大</figcaption></figure>
+<section class="reading"><p>損傷したケーブルを使うことは危険です。熱を報告する、確認前に電源を切る、通気を確保することはより安全な行動です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>この例で危険な行動はどれですか。</p><details data-checkpoint><summary>答えを見る</summary><p>損傷したケーブルを使用することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">スライド 39</div><div class="slide-title"><h2>最終まとめ</h2><p>最初に元のスライドを見て、その後ウェブ説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="最終まとめ"></button><figcaption>元のプレゼンテーション スライド 39 — タップして拡大</figcaption></figure>
+<section class="reading"><p>中心的な流れは、壁のAC → アダプタまたは電源装置 → 安全な低電圧DC → バッテリーとコンピュータ回路です。正しく安定した安全な電力が信頼できるコンピュータの基礎です。</p></section>
+<section class="think"><h3>考えて答える</h3><p>主な電力チェーンを完成してください。</p><details data-checkpoint><summary>答えを見る</summary><p>壁のAC → アダプタ／電源装置 → 安全な低電圧DC → バッテリーとコンピュータ回路です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">講義マップへ戻る ↑</a></div>
+</article>
+
+<section class="interactive-section" id="review">
+<h2>対話型復習</h2>
+<p>最終クイズの前に、シミュレーションと練習を使ってください。</p>
+<h2>対話型復習</h2>
+<p>最終クイズの前にシミュレーションを使ってください。</p>
+<h3>1. ACとDC</h3><div class="wave-lab"><div class="wave-card"><strong>AC</strong><div class="wave-box"><div class="axis"></div><div class="ac-wave"></div></div><p>向きと電圧が繰り返し変化します。</p></div><div class="wave-card"><strong>DC</strong><div class="wave-box"><div class="axis"></div><div class="dc-wave"></div></div><p>電流は主に一方向を保ちます。</p></div></div>
+<h3>2. 電力計算</h3><div class="power-calculator"><div class="field"><label for="volts">電圧 (V)</label><input id="volts" step="0.1" type="number" value="19"/></div><div class="field"><label for="amps">電流 (A)</label><input id="amps" step="0.1" type="number" value="3"/></div><button class="primary" onclick="document.getElementById('volts').dispatchEvent(new Event('input'))" type="button">計算</button><div class="power-result" id="power-result"></div></div>
+<h3>3. 変換チェーン</h3><div class="conversion-lab"><div class="stage"><strong>壁のAC</strong><small>高電圧交流入力</small></div><div class="stage"><strong>変圧器</strong><small>AC電圧を下げる</small></div><div class="stage"><strong>整流器</strong><small>一方向の電流にする</small></div><div class="stage"><strong>コンデンサ</strong><small>リップルを平滑化</small></div><div class="stage"><strong>レギュレータ</strong><small>出力を安定化</small></div></div><p><button class="primary" id="stage-button" type="button">次の段階</button></p>
+<h3>4. アダプタ確認</h3><div class="adapter-lab"><div class="adapter-panel"><label>機器電圧 (V)<input id="device-v" step="0.1" type="number" value="19"/></label><label>必要電流 (A)<input id="device-a" step="0.1" type="number" value="3"/></label></div><div class="adapter-panel"><label>アダプタ電圧 (V)<input id="adapter-v" step="0.1" type="number" value="19"/></label><label>電流容量 (A)<input id="adapter-a" step="0.1" type="number" value="3.42"/></label><div class="adapter-status" id="adapter-status"></div></div></div>
+<h3>5. バッテリー劣化モデル</h3><div class="battery-lab"><div><div class="battery"><div class="battery-fill"></div></div></div><div><div class="slider-row"><label for="battery-age"><strong>年数・負荷レベル</strong></label><input id="battery-age" max="10" min="0" type="range" value="2"/></div><div class="battery-message" id="battery-message"></div></div></div>
+<h3>6. UPSシミュレーション</h3><div class="ups-sim"><div class="ups-grid"><div class="ups-item on" id="wall">壁の電力</div><div class="ups-item" id="ups">UPS</div><div class="ups-item on" id="computer">コンピュータ</div><div class="ups-item on" id="network">ネットワーク</div></div><div class="timer" id="ups-timer">60 s</div><div class="actions"><button class="primary" id="power-fail" type="button">停電を開始</button><button class="secondary" id="safe-shutdown" type="button">安全に停止</button><button class="secondary" id="reset-ups" type="button">リセット</button></div></div>
+<h3>7. 安全判断</h3><p>各行動をタップして分類してください。</p><div class="safety-grid"><button class="safety-card" data-safe="1">熱いアダプタを報告する</button><button class="safety-card" data-safe="0">損傷したケーブルを使う</button><button class="safety-card" data-safe="1">膨張バッテリーの使用を止める</button><button class="safety-card" data-safe="0">バッテリーに穴を開ける</button><button class="safety-card" data-safe="1">通気を確保する</button><button class="safety-card" data-safe="0">煙や火花を無視する</button></div>
+<h3>8. 最終クイズ</h3><form id="quiz-form"><fieldset class="quiz-card" data-answer="1"><legend>1. 壁のコンセントから来る電流はどれですか。</legend><label><input name="q1" type="radio" value="0"/> DC</label><label><input name="q1" type="radio" value="1"/> AC</label><label><input name="q1" type="radio" value="2"/> USB</label><label><input name="q1" type="radio" value="3"/> バッテリー</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. コンピュータ回路内部で使う電流はどれですか。</legend><label><input name="q2" type="radio" value="0"/> AC</label><label><input name="q2" type="radio" value="1"/> DC</label><label><input name="q2" type="radio" value="2"/> 機械式</label><label><input name="q2" type="radio" value="3"/> 磁気だけ</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>3. 19 V × 3 A はいくつですか。</legend><label><input name="q3" type="radio" value="0"/> 22 W</label><label><input name="q3" type="radio" value="1"/> 57 W</label><label><input name="q3" type="radio" value="2"/> 63 W</label><label><input name="q3" type="radio" value="3"/> 190 W</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. 変圧器が変えるものは何ですか。</legend><label><input name="q4" type="radio" value="0"/> AC電圧</label><label><input name="q4" type="radio" value="1"/> DCをデータへ</label><label><input name="q4" type="radio" value="2"/> バッテリー化学</label><label><input name="q4" type="radio" value="3"/> ファイル</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>5. 主に一方向へ電流を通す部品は何ですか。</legend><label><input name="q5" type="radio" value="0"/> コンデンサ</label><label><input name="q5" type="radio" value="1"/> ダイオード</label><label><input name="q5" type="radio" value="2"/> ファン</label><label><input name="q5" type="radio" value="3"/> SSD</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>6. 整流器の仕事は何ですか。</legend><label><input name="q6" type="radio" value="0"/> ACを一方向の電流にする</label><label><input name="q6" type="radio" value="1"/> ファイルを保存する</label><label><input name="q6" type="radio" value="2"/> CPUを冷却する</label><label><input name="q6" type="radio" value="3"/> Wi-Fiを作る</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>7. 脈動DCを滑らかにする部品は何ですか。</legend><label><input name="q7" type="radio" value="0"/> キーボード</label><label><input name="q7" type="radio" value="1"/> コンデンサ</label><label><input name="q7" type="radio" value="2"/> HDD</label><label><input name="q7" type="radio" value="3"/> ラベル</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. 最終出力電圧を安定させるものは何ですか。</legend><label><input name="q8" type="radio" value="0"/> レギュレータ</label><label><input name="q8" type="radio" value="1"/> 画面</label><label><input name="q8" type="radio" value="2"/> ヒートシンク</label><label><input name="q8" type="radio" value="3"/> ルーター</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>9. 交換アダプタの電圧はどうすべきですか。</legend><label><input name="q9" type="radio" value="0"/> 一致させる</label><label><input name="q9" type="radio" value="1"/> 常に高くする</label><label><input name="q9" type="radio" value="2"/> 常に低くする</label><label><input name="q9" type="radio" value="3"/> 無視する</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>10. バッテリーは主に何としてエネルギーを保存しますか。</legend><label><input name="q10" type="radio" value="0"/> 自由電子</label><label><input name="q10" type="radio" value="1"/> 化学エネルギー</label><label><input name="q10" type="radio" value="2"/> 音</label><label><input name="q10" type="radio" value="3"/> データ</label></fieldset><fieldset class="quiz-card" data-answer="2"><legend>11. 膨張したバッテリーへの正しい対応はどれですか。</legend><label><input name="q11" type="radio" value="0"/> 平らに押す</label><label><input name="q11" type="radio" value="1"/> 充電を続ける</label><label><input name="q11" type="radio" value="2"/> 使用を止めて報告する</label><label><input name="q11" type="radio" value="3"/> 穴を開ける</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>12. UPSの主な目的は何ですか。</legend><label><input name="q12" type="radio" value="0"/> 無制限運転</label><label><input name="q12" type="radio" value="1"/> 一時的なバックアップ時間</label><label><input name="q12" type="radio" value="2"/> CPU高速化</label><label><input name="q12" type="radio" value="3"/> RAM増加</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>13. 電源ランプが消えているとき最初に確認するものは何ですか。</legend><label><input name="q13" type="radio" value="0"/> 壁紙</label><label><input name="q13" type="radio" value="1"/> ケーブルとアダプタ</label><label><input name="q13" type="radio" value="2"/> CPUグリス</label><label><input name="q13" type="radio" value="3"/> ブラウザ履歴</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>14. 危険な行動はどれですか。</legend><label><input name="q14" type="radio" value="0"/> 熱を報告する</label><label><input name="q14" type="radio" value="1"/> 損傷ケーブルを使う</label><label><input name="q14" type="radio" value="2"/> 通気を確保する</label><label><input name="q14" type="radio" value="3"/> 電源を切る</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. 正しいチェーンはどれですか。</legend><label><input name="q15" type="radio" value="0"/> 壁のAC → アダプタ → 低電圧DC</label><label><input name="q15" type="radio" value="1"/> 壁のDC → ファン → AC</label><label><input name="q15" type="radio" value="2"/> バッテリー → ACコンセント</label><label><input name="q15" type="radio" value="3"/> USB → 変圧器 → ネットワーク</label></fieldset><div class="actions"><button class="primary" data-action="check" type="button">答えを確認</button><button class="secondary" data-action="reset" type="button">リセット</button></div><div class="result" data-label="得点" data-review="赤く表示された問題を復習してください。" id="quiz-result"></div></form>
+
+</section>
+</main>
+<div class="modal" id="image-modal" role="dialog" aria-modal="true">
+<div class="modal-inner"><button type="button" aria-label="Close">×</button><img id="modal-image" alt=""></div>
+</div>
+<footer>Computer Fundamentals 2 · Lecture 3 · Power for Computers</footer>
+</body></html>

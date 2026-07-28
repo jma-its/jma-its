@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 3 — Power for Computers</title>
+<link rel="stylesheet" href="assets/style.css">
+<script defer src="assets/interactive.js"></script>
+<style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head>
+<body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture02/index.html">← 2</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture04/index.html">4 →</a></nav>
+<header><div class="header-inner">
+<div class="course">Computer Fundamentals 2 · Current Quarter · Lecture 3</div>
+<h1>Power for Computers</h1>
+<p class="subtitle">Original presentation slides turned into a clean bilingual web lecture.</p>
+<p class="intro">This lecture follows the full power chain: wall AC, conversion, adapters and power supplies, batteries, charging, protection, and safe power use.</p>
+<div class="lang-switch"><a class="current" href="lecture_en.html">English</a><a href="lecture_ja.html">日本語</a></div>
+</div></header>
+<main class="container">
+<section class="core"><h2>Core chain</h2><div class="core-chain">Wall AC → adapter or power supply → safe low-voltage DC → battery and computer circuits</div></section>
+<section class="progress-box"><strong>Reading progress</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span></section>
+<section class="notice"><h2>How to use this lecture</h2><p>Open each original slide image, read the short explanation under it, answer the checkpoint question, and then finish the interactive review at the end.</p></section>
+<section class="notice map" id="lesson-map"><h2>Lesson map — 39 slides</h2><ol>
+<li><a href="#slide-1">Slide 1: Lecture 3 — Power for Computers</a></li>
+<li><a href="#slide-2">Slide 2: Big question</a></li>
+<li><a href="#slide-3">Slide 3: Wall outlet vs computer circuits</a></li>
+<li><a href="#slide-4">Slide 4: Power chain</a></li>
+<li><a href="#slide-5">Slide 5: AC — Alternating Current</a></li>
+<li><a href="#slide-6">Slide 6: DC — Direct Current</a></li>
+<li><a href="#slide-7">Slide 7: AC vs DC</a></li>
+<li><a href="#slide-8">Slide 8: Voltage, current, power</a></li>
+<li><a href="#slide-9">Slide 9: Why low stable DC?</a></li>
+<li><a href="#slide-10">Slide 10: Transformer: the big idea</a></li>
+<li><a href="#slide-11">Slide 11: Coils and magnetic field</a></li>
+<li><a href="#slide-12">Slide 12: Step-down transformer</a></li>
+<li><a href="#slide-13">Slide 13: Transformer is not enough</a></li>
+<li><a href="#slide-14">Slide 14: Diode: one-way door</a></li>
+<li><a href="#slide-15">Slide 15: Rectifier: AC to DC</a></li>
+<li><a href="#slide-16">Slide 16: Pulsing DC</a></li>
+<li><a href="#slide-17">Slide 17: Capacitor smoothing</a></li>
+<li><a href="#slide-18">Slide 18: Voltage regulator</a></li>
+<li><a href="#slide-19">Slide 19: Full chain: old-style power supply</a></li>
+<li><a href="#slide-20">Slide 20: Modern laptop adapter</a></li>
+<li><a href="#slide-21">Slide 21: Adapter output label</a></li>
+<li><a href="#slide-22">Slide 22: Wrong adapter problems</a></li>
+<li><a href="#slide-23">Slide 23: Battery is not a box of electricity</a></li>
+<li><a href="#slide-24">Slide 24: Lithium-ion battery parts</a></li>
+<li><a href="#slide-25">Slide 25: Ions inside, electrons outside</a></li>
+<li><a href="#slide-26">Slide 26: Discharging a lithium-ion battery</a></li>
+<li><a href="#slide-27">Slide 27: Charging a lithium-ion battery</a></li>
+<li><a href="#slide-28">Slide 28: Battery protection circuit</a></li>
+<li><a href="#slide-29">Slide 29: Why batteries get old</a></li>
+<li><a href="#slide-30">Slide 30: Swollen battery danger</a></li>
+<li><a href="#slide-31">Slide 31: UPS — backup power</a></li>
+<li><a href="#slide-32">Slide 32: Power failure case</a></li>
+<li><a href="#slide-33">Slide 33: Hospital and office examples</a></li>
+<li><a href="#slide-34">Slide 34: Power safety rules</a></li>
+<li><a href="#slide-35">Slide 35: Troubleshooting power problems</a></li>
+<li><a href="#slide-36">Slide 36: Online practice 1 — AC or DC</a></li>
+<li><a href="#slide-37">Slide 37: Online practice 2 — choose first check</a></li>
+<li><a href="#slide-38">Slide 38: Online practice 3 — safety</a></li>
+<li><a href="#slide-39">Slide 39: Final summary</a></li>
+</ol></section>
+
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">Slide 1</div><div class="slide-title"><h2>Lecture 3 — Power for Computers</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="Lecture 3 — Power for Computers"></button><figcaption>Original presentation slide 1 — click to enlarge</figcaption></figure>
+<section class="reading"><p>This lecture follows electrical power from the wall outlet to the circuits inside a computer. The central idea is that computer power must be converted, controlled, and kept safe.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What three things must happen to computer power?</p><details data-checkpoint><summary>Show answer</summary><p>It must be converted, controlled, and kept safe.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">Slide 2</div><div class="slide-title"><h2>Big question</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="Big question"></button><figcaption>Original presentation slide 2 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A wall outlet supplies relatively high-voltage AC, while computer chips need low-voltage stable DC. A power adapter or power supply performs the conversion and adds protection.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can’t computer chips connect directly to the wall outlet?</p><details data-checkpoint><summary>Show answer</summary><p>The voltage and current type are wrong and unsafe for the chips.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">Slide 3</div><div class="slide-title"><h2>Wall outlet vs computer circuits</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="Wall outlet vs computer circuits"></button><figcaption>Original presentation slide 3 — click to enlarge</figcaption></figure>
+<section class="reading"><p>In Japan, wall power is about 100 V AC. A laptop adapter may output about 19 V DC, and USB commonly supplies 5 V DC. The same word electricity describes very different working conditions.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What kind of power comes from a typical Japanese wall outlet?</p><details data-checkpoint><summary>Show answer</summary><p>About 100 V AC.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">Slide 4</div><div class="slide-title"><h2>Power chain</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="Power chain"></button><figcaption>Original presentation slide 4 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Power passes through several stages before it reaches the computer. Each stage changes the electrical form or protects the user and hardware from dangerous conditions.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why does computer power pass through several stages?</p><details data-checkpoint><summary>Show answer</summary><p>To convert the power and protect the user and hardware.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">Slide 5</div><div class="slide-title"><h2>AC — Alternating Current</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="AC — Alternating Current"></button><figcaption>Original presentation slide 5 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Alternating current repeatedly changes direction. Power grids and wall outlets use AC because it is practical for distribution and transformer-based voltage conversion.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What happens to the direction of AC?</p><details data-checkpoint><summary>Show answer</summary><p>It changes direction repeatedly.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">Slide 6</div><div class="slide-title"><h2>DC — Direct Current</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="DC — Direct Current"></button><figcaption>Original presentation slide 6 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Direct current moves mainly in one direction. Batteries, USB power, and the electronic circuits inside computers use DC.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which type of current is normally used inside a computer?</p><details data-checkpoint><summary>Show answer</summary><p>DC.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">Slide 7</div><div class="slide-title"><h2>AC vs DC</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="AC vs DC"></button><figcaption>Original presentation slide 7 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A computer power system receives AC from the wall and produces DC for the electronics. This is the main conversion performed by an adapter or power supply.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main conversion made by a laptop adapter?</p><details data-checkpoint><summary>Show answer</summary><p>AC from the wall is converted into DC for the laptop.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">Slide 8</div><div class="slide-title"><h2>Voltage, current, power</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="Voltage, current, power"></button><figcaption>Original presentation slide 8 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Voltage is the electrical potential difference, current is the flow of charge, and power tells how quickly electrical energy is delivered. For simple DC calculations, power equals voltage multiplied by current.</p></section>
+<section class="think"><h3>Think and answer</h3><p>How much power is 19 V × 3 A?</p><details data-checkpoint><summary>Show answer</summary><p>57 W.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">Slide 9</div><div class="slide-title"><h2>Why low stable DC?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="Why low stable DC?"></button><figcaption>Original presentation slide 9 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Computer chips contain extremely small electronic structures. Excess voltage can damage them, while unstable voltage can cause crashes, data errors, or sudden shutdowns.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What can unstable power cause?</p><details data-checkpoint><summary>Show answer</summary><p>Crashes, errors, shutdowns, or hardware damage.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">Slide 10</div><div class="slide-title"><h2>Transformer: the big idea</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="Transformer: the big idea"></button><figcaption>Original presentation slide 10 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A transformer uses a changing magnetic field to change AC voltage. It can raise or lower voltage, but it does not by itself turn AC into DC.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Does a transformer alone produce DC?</p><details data-checkpoint><summary>Show answer</summary><p>No. It changes AC voltage but the output is still AC.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">Slide 11</div><div class="slide-title"><h2>Coils and magnetic field</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="Coils and magnetic field"></button><figcaption>Original presentation slide 11 — click to enlarge</figcaption></figure>
+<section class="reading"><p>AC in the primary coil creates a changing magnetic field in the core. That changing field induces voltage in the secondary coil.</p></section>
+<section class="think"><h3>Think and answer</h3><p>How does energy reach the secondary coil?</p><details data-checkpoint><summary>Show answer</summary><p>Through a changing magnetic field.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">Slide 12</div><div class="slide-title"><h2>Step-down transformer</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="Step-down transformer"></button><figcaption>Original presentation slide 12 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A step-down transformer produces a lower AC voltage. In the simplified model, fewer turns on the secondary coil give a lower output voltage.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does a step-down transformer do?</p><details data-checkpoint><summary>Show answer</summary><p>It lowers AC voltage.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">Slide 13</div><div class="slide-title"><h2>Transformer is not enough</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="Transformer is not enough"></button><figcaption>Original presentation slide 13 — click to enlarge</figcaption></figure>
+<section class="reading"><p>After the transformer, the voltage may be lower, but it is still alternating. Computer circuits require additional stages to create smooth, stable DC.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why is a transformer not enough for computer power?</p><details data-checkpoint><summary>Show answer</summary><p>Its output is still AC.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">Slide 14</div><div class="slide-title"><h2>Diode: one-way door</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="Diode: one-way door"></button><figcaption>Original presentation slide 14 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A diode lets current pass mainly in one direction and blocks it in the other direction. This one-way behavior is the basis of rectification.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What simple analogy describes a diode?</p><details data-checkpoint><summary>Show answer</summary><p>A one-way door for electric current.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">Slide 15</div><div class="slide-title"><h2>Rectifier: AC to DC</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="Rectifier: AC to DC"></button><figcaption>Original presentation slide 15 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A rectifier combines diodes so that the output current moves in one direction. The result is DC-like, but it is still not smooth.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What component changes AC into one-direction current?</p><details data-checkpoint><summary>Show answer</summary><p>A rectifier.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">Slide 16</div><div class="slide-title"><h2>Pulsing DC</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="Pulsing DC"></button><figcaption>Original presentation slide 16 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Rectified current has one direction, but its voltage rises and falls in pulses. Sensitive electronics need the pulses to be smoothed.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Is pulsing DC already stable enough for chips?</p><details data-checkpoint><summary>Show answer</summary><p>No. It still rises and falls.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">Slide 17</div><div class="slide-title"><h2>Capacitor smoothing</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="Capacitor smoothing"></button><figcaption>Original presentation slide 17 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A capacitor stores charge when voltage is high and releases charge when voltage falls. This reduces ripple and makes the DC smoother.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What component reduces ripple after rectification?</p><details data-checkpoint><summary>Show answer</summary><p>A capacitor.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">Slide 18</div><div class="slide-title"><h2>Voltage regulator</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="Voltage regulator"></button><figcaption>Original presentation slide 18 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A regulator holds the output close to the required voltage even when the input or load changes. Stable voltage supports reliable computer operation.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the job of a voltage regulator?</p><details data-checkpoint><summary>Show answer</summary><p>To keep the output voltage stable.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">Slide 19</div><div class="slide-title"><h2>Full chain: old-style power supply</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="Full chain: old-style power supply"></button><figcaption>Original presentation slide 19 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The simplified chain is transformer, rectifier, capacitor, and regulator. Together they produce lower, one-direction, smooth, stable power.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Put the stages in order after wall AC.</p><details data-checkpoint><summary>Show answer</summary><p>Transformer → rectifier → capacitor → regulator.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">Slide 20</div><div class="slide-title"><h2>Modern laptop adapter</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="Modern laptop adapter"></button><figcaption>Original presentation slide 20 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Modern adapters usually use switching power-supply technology. This allows them to be smaller, lighter, and more efficient than old large transformer designs.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why are modern adapters relatively small?</p><details data-checkpoint><summary>Show answer</summary><p>They usually use efficient switching power-supply technology.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">Slide 21</div><div class="slide-title"><h2>Adapter output label</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="Adapter output label"></button><figcaption>Original presentation slide 21 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The label shows output voltage, maximum current, polarity, and sometimes power. These values must be checked before connecting an adapter to a laptop.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which two numbers are used to calculate adapter power?</p><details data-checkpoint><summary>Show answer</summary><p>Voltage and current.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">Slide 22</div><div class="slide-title"><h2>Wrong adapter problems</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="Wrong adapter problems"></button><figcaption>Original presentation slide 22 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The voltage should match the laptop requirement. The adapter must provide at least enough current, and the connector and polarity must also be correct.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Can an adapter with the wrong voltage be used safely?</p><details data-checkpoint><summary>Show answer</summary><p>No. The voltage must match.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">Slide 23</div><div class="slide-title"><h2>Battery is not a box of electricity</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="Battery is not a box of electricity"></button><figcaption>Original presentation slide 23 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A battery stores energy through reversible chemical changes. During discharge, chemical energy becomes electrical energy; charging rebuilds the useful chemical state.</p></section>
+<section class="think"><h3>Think and answer</h3><p>In what form does a battery store energy?</p><details data-checkpoint><summary>Show answer</summary><p>Chemical energy.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">Slide 24</div><div class="slide-title"><h2>Lithium-ion battery parts</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="Lithium-ion battery parts"></button><figcaption>Original presentation slide 24 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A lithium-ion cell contains two electrodes, an electrolyte, and a separator. Lithium ions move inside the cell while the external circuit carries electrons.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What particles move inside a lithium-ion battery?</p><details data-checkpoint><summary>Show answer</summary><p>Lithium ions.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">Slide 25</div><div class="slide-title"><h2>Ions inside, electrons outside</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="Ions inside, electrons outside"></button><figcaption>Original presentation slide 25 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Lithium ions move through the battery internally. Electrons travel through the external wires and electronics, delivering energy to the laptop.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Where do electrons move during discharge?</p><details data-checkpoint><summary>Show answer</summary><p>Through the external circuit.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">Slide 26</div><div class="slide-title"><h2>Discharging a lithium-ion battery</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="Discharging a lithium-ion battery"></button><figcaption>Original presentation slide 26 — click to enlarge</figcaption></figure>
+<section class="reading"><p>During discharge, the battery provides energy to the laptop. The chemical state changes while ions and electrons move through their separate paths.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does discharging mean?</p><details data-checkpoint><summary>Show answer</summary><p>The battery gives electrical energy to the laptop.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">Slide 27</div><div class="slide-title"><h2>Charging a lithium-ion battery</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="Charging a lithium-ion battery"></button><figcaption>Original presentation slide 27 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The adapter supplies electrical energy that drives the battery toward a stored-energy state. Charging must be carefully controlled.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What provides energy during charging?</p><details data-checkpoint><summary>Show answer</summary><p>The adapter or charger.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">Slide 28</div><div class="slide-title"><h2>Battery protection circuit</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="Battery protection circuit"></button><figcaption>Original presentation slide 28 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A battery-management and protection circuit helps prevent overcharge, excessive discharge, overheating, and dangerous current. Lithium batteries should never be treated as simple unprotected cells.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Name one danger controlled by the protection circuit.</p><details data-checkpoint><summary>Show answer</summary><p>Overcharge, over-discharge, overheating, or excessive current.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">Slide 29</div><div class="slide-title"><h2>Why batteries get old</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="Why batteries get old"></button><figcaption>Original presentation slide 29 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Battery chemistry slowly changes with time, heat, and charge cycles. Capacity falls, operating time becomes shorter, and sudden shutdown may become more common.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What makes battery ageing faster?</p><details data-checkpoint><summary>Show answer</summary><p>Heat and many charge cycles.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">Slide 30</div><div class="slide-title"><h2>Swollen battery danger</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="Swollen battery danger"></button><figcaption>Original presentation slide 30 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A swollen battery can indicate internal chemical damage and gas formation. Stop using the device, disconnect power when safe, and report it. Do not press or puncture the battery.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you do with a swollen battery?</p><details data-checkpoint><summary>Show answer</summary><p>Stop using it and report it; do not press or puncture it.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">Slide 31</div><div class="slide-title"><h2>UPS — backup power</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="UPS — backup power"></button><figcaption>Original presentation slide 31 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A UPS supplies temporary power when wall electricity fails. It is designed to provide time for continuity, saving work, or safe shutdown—not endless operation.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Does a UPS provide unlimited power?</p><details data-checkpoint><summary>Show answer</summary><p>No. It provides temporary backup time.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">Slide 32</div><div class="slide-title"><h2>Power failure case</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="Power failure case"></button><figcaption>Original presentation slide 32 — click to enlarge</figcaption></figure>
+<section class="reading"><p>When wall power stops, the UPS battery keeps selected equipment running briefly. The correct response is to save work and shut down safely or follow the organization’s continuity procedure.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should a user do while the UPS is supporting the computer?</p><details data-checkpoint><summary>Show answer</summary><p>Save work and shut down safely.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">Slide 33</div><div class="slide-title"><h2>Hospital and office examples</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="Hospital and office examples"></button><figcaption>Original presentation slide 33 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Reception computers, network devices, servers, and some medical systems depend on stable power. Power reliability is part of safe medical IT support.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why is stable power especially important in a hospital?</p><details data-checkpoint><summary>Show answer</summary><p>Because interruptions can stop clinical or administrative systems and risk data or service continuity.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">Slide 34</div><div class="slide-title"><h2>Power safety rules</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="Power safety rules"></button><figcaption>Original presentation slide 34 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Heat, sparks, smoke, damaged cables, burning smell, or battery swelling are warning signs. Stop using the equipment and report the problem instead of improvising a repair.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the safe response to smoke or sparks?</p><details data-checkpoint><summary>Show answer</summary><p>Stop using the equipment and report it.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">Slide 35</div><div class="slide-title"><h2>Troubleshooting power problems</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="Troubleshooting power problems"></button><figcaption>Original presentation slide 35 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Start with simple evidence: power light, cable connection, wall outlet, adapter condition, and correct adapter specification. Check the power path before blaming the CPU, RAM, or software.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you check before blaming internal components?</p><details data-checkpoint><summary>Show answer</summary><p>The outlet, cable, adapter, and power indicators.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">Slide 36</div><div class="slide-title"><h2>Online practice 1 — AC or DC</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="Online practice 1 — AC or DC"></button><figcaption>Original presentation slide 36 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Classify each source: the wall outlet is AC; a laptop battery, USB power, and adapter output are DC.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Is laptop adapter output normally AC or DC?</p><details data-checkpoint><summary>Show answer</summary><p>DC.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">Slide 37</div><div class="slide-title"><h2>Online practice 2 — choose first check</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="Online practice 2 — choose first check"></button><figcaption>Original presentation slide 37 — click to enlarge</figcaption></figure>
+<section class="reading"><p>If a laptop does not turn on and the power light is off, begin with the external power path. Check the wall connection, cable, and adapter before opening the laptop.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the best first check when the power light is off?</p><details data-checkpoint><summary>Show answer</summary><p>The power cable and adapter.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">Slide 38</div><div class="slide-title"><h2>Online practice 3 — safety</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="Online practice 3 — safety"></button><figcaption>Original presentation slide 38 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Using a damaged cable is dangerous. Reporting heat, turning off power before inspection, and keeping ventilation clear are safer actions.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which action is dangerous in this example?</p><details data-checkpoint><summary>Show answer</summary><p>Using a damaged cable.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">Slide 39</div><div class="slide-title"><h2>Final summary</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="Final summary"></button><figcaption>Original presentation slide 39 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The core chain is wall AC → adapter or power supply → safe low-voltage DC → battery and computer circuits. Reliable computing begins with correct, stable, and safe power.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Complete the main power chain.</p><details data-checkpoint><summary>Show answer</summary><p>Wall AC → adapter/power supply → safe low-voltage DC → battery and computer circuits.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<section class="interactive-section" id="review">
+<h2>Interactive review</h2>
+<p>Use the simulations and exercises before the final quiz.</p>
+<h2>Interactive review</h2>
+<p>Use the simulations before taking the final quiz.</p>
+<h3>1. AC and DC</h3><div class="wave-lab"><div class="wave-card"><strong>AC</strong><div class="wave-box"><div class="axis"></div><div class="ac-wave"></div></div><p>Direction and voltage change repeatedly.</p></div><div class="wave-card"><strong>DC</strong><div class="wave-box"><div class="axis"></div><div class="dc-wave"></div></div><p>Current keeps one main direction.</p></div></div>
+<h3>2. Power calculator</h3><div class="power-calculator"><div class="field"><label for="volts">Voltage (V)</label><input id="volts" step="0.1" type="number" value="19"/></div><div class="field"><label for="amps">Current (A)</label><input id="amps" step="0.1" type="number" value="3"/></div><button class="primary" onclick="document.getElementById('volts').dispatchEvent(new Event('input'))" type="button">Calculate</button><div class="power-result" id="power-result"></div></div>
+<h3>3. Conversion chain</h3><div class="conversion-lab"><div class="stage"><strong>Wall AC</strong><small>High-voltage alternating input</small></div><div class="stage"><strong>Transformer</strong><small>Lowers AC voltage</small></div><div class="stage"><strong>Rectifier</strong><small>Makes one-direction current</small></div><div class="stage"><strong>Capacitor</strong><small>Smooths ripple</small></div><div class="stage"><strong>Regulator</strong><small>Stabilizes output</small></div></div><p><button class="primary" id="stage-button" type="button">Show next stage</button></p>
+<h3>4. Adapter checker</h3><div class="adapter-lab"><div class="adapter-panel"><label>Device voltage (V)<input id="device-v" step="0.1" type="number" value="19"/></label><label>Device current need (A)<input id="device-a" step="0.1" type="number" value="3"/></label></div><div class="adapter-panel"><label>Adapter voltage (V)<input id="adapter-v" step="0.1" type="number" value="19"/></label><label>Adapter current capacity (A)<input id="adapter-a" step="0.1" type="number" value="3.42"/></label><div class="adapter-status" id="adapter-status"></div></div></div>
+<h3>5. Battery ageing model</h3><div class="battery-lab"><div><div class="battery"><div class="battery-fill"></div></div></div><div><div class="slider-row"><label for="battery-age"><strong>Age / stress level</strong></label><input id="battery-age" max="10" min="0" type="range" value="2"/></div><div class="battery-message" id="battery-message"></div></div></div>
+<h3>6. UPS simulation</h3><div class="ups-sim"><div class="ups-grid"><div class="ups-item on" id="wall">Wall power</div><div class="ups-item" id="ups">UPS</div><div class="ups-item on" id="computer">Computer</div><div class="ups-item on" id="network">Network</div></div><div class="timer" id="ups-timer">60 s</div><div class="actions"><button class="primary" id="power-fail" type="button">Simulate power failure</button><button class="secondary" id="safe-shutdown" type="button">Safe shutdown</button><button class="secondary" id="reset-ups" type="button">Reset</button></div></div>
+<h3>7. Safety decisions</h3><p>Tap each action to classify it.</p><div class="safety-grid"><button class="safety-card" data-safe="1">Report a hot adapter</button><button class="safety-card" data-safe="0">Use a damaged cable</button><button class="safety-card" data-safe="1">Stop using a swollen battery</button><button class="safety-card" data-safe="0">Puncture a battery</button><button class="safety-card" data-safe="1">Keep ventilation clear</button><button class="safety-card" data-safe="0">Ignore smoke or sparks</button></div>
+<h3>8. Final quiz</h3><form id="quiz-form"><fieldset class="quiz-card" data-answer="1"><legend>1. Which type of current comes from a wall outlet?</legend><label><input name="q1" type="radio" value="0"/> DC</label><label><input name="q1" type="radio" value="1"/> AC</label><label><input name="q1" type="radio" value="2"/> USB</label><label><input name="q1" type="radio" value="3"/> Battery</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. Which type of current is used inside computer circuits?</legend><label><input name="q2" type="radio" value="0"/> AC</label><label><input name="q2" type="radio" value="1"/> DC</label><label><input name="q2" type="radio" value="2"/> Mechanical</label><label><input name="q2" type="radio" value="3"/> Magnetic only</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>3. 19 V × 3 A equals:</legend><label><input name="q3" type="radio" value="0"/> 22 W</label><label><input name="q3" type="radio" value="1"/> 57 W</label><label><input name="q3" type="radio" value="2"/> 63 W</label><label><input name="q3" type="radio" value="3"/> 190 W</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. What does a transformer change?</legend><label><input name="q4" type="radio" value="0"/> AC voltage</label><label><input name="q4" type="radio" value="1"/> DC into data</label><label><input name="q4" type="radio" value="2"/> Battery chemistry</label><label><input name="q4" type="radio" value="3"/> Files</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>5. What component allows current mainly one way?</legend><label><input name="q5" type="radio" value="0"/> Capacitor</label><label><input name="q5" type="radio" value="1"/> Diode</label><label><input name="q5" type="radio" value="2"/> Fan</label><label><input name="q5" type="radio" value="3"/> SSD</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>6. What does a rectifier do?</legend><label><input name="q6" type="radio" value="0"/> Makes AC one-direction current</label><label><input name="q6" type="radio" value="1"/> Stores files</label><label><input name="q6" type="radio" value="2"/> Cools the CPU</label><label><input name="q6" type="radio" value="3"/> Creates Wi-Fi</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>7. What smooths pulsing DC?</legend><label><input name="q7" type="radio" value="0"/> Keyboard</label><label><input name="q7" type="radio" value="1"/> Capacitor</label><label><input name="q7" type="radio" value="2"/> HDD</label><label><input name="q7" type="radio" value="3"/> Battery label</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. What stabilizes the final output voltage?</legend><label><input name="q8" type="radio" value="0"/> Regulator</label><label><input name="q8" type="radio" value="1"/> Screen</label><label><input name="q8" type="radio" value="2"/> Heat sink</label><label><input name="q8" type="radio" value="3"/> Router</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>9. For a replacement adapter, voltage should:</legend><label><input name="q9" type="radio" value="0"/> Match</label><label><input name="q9" type="radio" value="1"/> Always be higher</label><label><input name="q9" type="radio" value="2"/> Always be lower</label><label><input name="q9" type="radio" value="3"/> Be ignored</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>10. A battery stores energy mainly as:</legend><label><input name="q10" type="radio" value="0"/> Loose electrons</label><label><input name="q10" type="radio" value="1"/> Chemical energy</label><label><input name="q10" type="radio" value="2"/> Sound</label><label><input name="q10" type="radio" value="3"/> Data</label></fieldset><fieldset class="quiz-card" data-answer="2"><legend>11. What is the correct response to a swollen battery?</legend><label><input name="q11" type="radio" value="0"/> Press it flat</label><label><input name="q11" type="radio" value="1"/> Continue charging</label><label><input name="q11" type="radio" value="2"/> Stop use and report</label><label><input name="q11" type="radio" value="3"/> Puncture it</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>12. What is the main purpose of a UPS?</legend><label><input name="q12" type="radio" value="0"/> Unlimited operation</label><label><input name="q12" type="radio" value="1"/> Temporary backup time</label><label><input name="q12" type="radio" value="2"/> Faster CPU</label><label><input name="q12" type="radio" value="3"/> More RAM</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>13. When the power light is off, first check:</legend><label><input name="q13" type="radio" value="0"/> Wallpaper</label><label><input name="q13" type="radio" value="1"/> Cable and adapter</label><label><input name="q13" type="radio" value="2"/> CPU paste</label><label><input name="q13" type="radio" value="3"/> Browser history</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>14. Which is dangerous?</legend><label><input name="q14" type="radio" value="0"/> Reporting heat</label><label><input name="q14" type="radio" value="1"/> Using a damaged cable</label><label><input name="q14" type="radio" value="2"/> Keeping vents clear</label><label><input name="q14" type="radio" value="3"/> Turning power off</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. Complete the chain:</legend><label><input name="q15" type="radio" value="0"/> Wall AC → adapter → low-voltage DC</label><label><input name="q15" type="radio" value="1"/> Wall DC → fan → AC</label><label><input name="q15" type="radio" value="2"/> Battery → AC wall outlet</label><label><input name="q15" type="radio" value="3"/> USB → transformer → network</label></fieldset><div class="actions"><button class="primary" data-action="check" type="button">Check answers</button><button class="secondary" data-action="reset" type="button">Reset</button></div><div class="result" data-label="Score" data-review="Review the slides marked in red." id="quiz-result"></div></form>
+
+</section>
+</main>
+<div class="modal" id="image-modal" role="dialog" aria-modal="true">
+<div class="modal-inner"><button type="button" aria-label="Close">×</button><img id="modal-image" alt=""></div>
+</div>
+<footer>Computer Fundamentals 2 · Lecture 3 · Power for Computers</footer>
+</body></html>
