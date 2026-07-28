@@ -2,312 +2,555 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Computer Fundamentals II AA26 bilingual course website with twelve self-study lectures.">
-<title>Computer Fundamentals II · AA26 — Course Site</title>
-<link rel="stylesheet" href="assets/course.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Computer Fundamentals II bilingual course lectures in English and Japanese.">
+<title>Computer Fundamentals II · AA26</title>
+<style>
+:root {
+  --navy:#10284b;
+  --blue:#1768cf;
+  --blue-dark:#0d4eaa;
+  --yellow:#ffd64a;
+  --yellow-dark:#bd8700;
+  --ink:#162236;
+  --muted:#607087;
+  --line:#d8e2ee;
+  --paper:#ffffff;
+  --background:#f3f6fa;
+  --green:#14765a;
+  --purple:#6647b6;
+  --orange:#a54e17;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--background);
+  color:var(--ink);
+  font-family:"Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif;
+  line-height:1.5;
+}
+a { color:inherit; }
+.skip-link {
+  position:absolute; left:-999px; top:8px; z-index:1000;
+  padding:10px 14px; background:#fff; border-radius:10px;
+}
+.skip-link:focus { left:10px; }
+.site-header {
+  color:#fff;
+  background:
+    radial-gradient(circle at 82% 20%,rgba(255,255,255,.18),transparent 26%),
+    linear-gradient(135deg,#10284b 0%,#1768cf 58%,#14765a 100%);
+  border-bottom:7px solid var(--yellow);
+}
+.header-inner {
+  width:min(1120px,calc(100% - 32px));
+  margin:auto;
+  padding:42px 0 46px;
+}
+.course-code {
+  display:inline-block;
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.34);
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  font-weight:900;
+}
+h1 {
+  margin:18px 0 7px;
+  font-size:clamp(38px,7vw,66px);
+  line-height:1.03;
+}
+.header-ja {
+  margin:0 0 15px;
+  font-size:clamp(21px,3.2vw,29px);
+  color:#eaf3ff;
+  font-weight:800;
+}
+.header-description {
+  max-width:880px;
+  margin:6px 0;
+  font-size:18px;
+  color:#f4f8ff;
+}
+.header-stats {
+  display:flex; flex-wrap:wrap; gap:9px; margin-top:22px;
+}
+.header-stats span {
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.24);
+  font-weight:850;
+}
+.quick-nav {
+  position:sticky; top:0; z-index:50;
+  background:rgba(16,40,75,.97);
+  box-shadow:0 6px 18px rgba(20,35,58,.18);
+}
+.quick-nav-inner {
+  width:min(1120px,calc(100% - 24px));
+  margin:auto;
+  display:flex; gap:8px; overflow-x:auto; padding:10px 0;
+}
+.quick-nav a {
+  flex:0 0 auto;
+  color:#fff;
+  text-decoration:none;
+  font-weight:850;
+  padding:9px 13px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.20);
+}
+.quick-nav a:hover, .quick-nav a:focus {
+  background:var(--yellow);
+  color:#172033;
+}
+main {
+  width:min(1120px,calc(100% - 28px));
+  margin:auto;
+  padding:25px 0 60px;
+}
+.student-guide {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:0 0 36px;
+}
+.guide-step {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 10px 26px rgba(33,52,80,.07);
+}
+.guide-step strong {
+  display:block;
+  font-size:22px;
+  color:var(--blue-dark);
+}
+.guide-step span { color:var(--muted); font-weight:700; }
+.course-section { margin-top:38px; scroll-margin-top:80px; }
+.section-heading {
+  display:flex; align-items:end; justify-content:space-between;
+  gap:16px; margin:0 0 14px;
+}
+.section-heading h2 {
+  margin:0;
+  font-size:clamp(27px,4vw,38px);
+  line-height:1.12;
+}
+.section-heading p { margin:4px 0 0; color:var(--muted); font-size:16px; }
+.section-count {
+  white-space:nowrap;
+  padding:7px 11px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--muted);
+  font-weight:850;
+}
+.lecture-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.lecture-card {
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-top:6px solid var(--blue);
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 12px 32px rgba(33,52,80,.09);
+}
+.lecture-card.support { border-top-color:var(--green); }
+.lecture-card.security { border-top-color:var(--purple); }
+.lecture-card.recovery { border-top-color:var(--orange); }
+.lecture-number {
+  display:flex; justify-content:space-between; align-items:center;
+  gap:10px; font-weight:950; color:var(--blue-dark);
+}
+.support .lecture-number { color:var(--green); }
+.security .lecture-number { color:var(--purple); }
+.recovery .lecture-number { color:var(--orange); }
+.lecture-number span {
+  font-size:14px; color:var(--muted); font-weight:800;
+}
+.lecture-card h3 {
+  margin:10px 0 3px;
+  font-size:clamp(22px,2.7vw,29px);
+  line-height:1.16;
+}
+.ja-title {
+  margin:0 0 13px;
+  color:#4d617a;
+  font-size:17px;
+  font-weight:850;
+}
+.summary { margin:6px 0 0; color:var(--muted); font-size:16px; }
+.ja-summary { font-size:15px; }
+.details {
+  display:flex; flex-wrap:wrap; gap:7px; margin:15px 0 18px;
+}
+.details span {
+  padding:5px 9px;
+  border-radius:999px;
+  background:#edf2f8;
+  color:#50627a;
+  font-size:13px;
+  font-weight:850;
+}
+.lecture-actions {
+  margin-top:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.open-button {
+  min-height:72px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  text-decoration:none;
+  border-radius:14px;
+  border:3px solid transparent;
+  padding:10px 8px;
+  box-shadow:0 7px 16px rgba(21,43,76,.12);
+  transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.open-button:hover, .open-button:focus {
+  transform:translateY(-2px);
+  box-shadow:0 11px 22px rgba(21,43,76,.18);
+  outline:3px solid rgba(23,104,207,.22);
+  outline-offset:2px;
+}
+.english {
+  background:var(--blue);
+  border-color:var(--blue-dark);
+  color:#fff;
+}
+.japanese {
+  background:var(--yellow);
+  border-color:var(--yellow-dark);
+  color:#171b24;
+}
+.button-main {
+  display:block;
+  font-size:16px;
+  font-weight:950;
+  letter-spacing:.015em;
+}
+.button-sub {
+  display:block;
+  margin-top:2px;
+  font-size:12px;
+  font-weight:750;
+  opacity:.86;
+}
+footer {
+  padding:28px 16px 38px;
+  text-align:center;
+  color:#63748a;
+  border-top:1px solid var(--line);
+  background:#fff;
+}
+@media (max-width:800px) {
+  .student-guide { grid-template-columns:1fr; }
+  .lecture-grid { grid-template-columns:1fr; }
+  .section-heading { align-items:flex-start; flex-direction:column; gap:8px; }
+}
+@media (max-width:480px) {
+  .header-inner { padding:34px 0 38px; }
+  .lecture-card { padding:18px; }
+  .lecture-actions { grid-template-columns:1fr; }
+  .open-button { min-height:64px; }
+}
+@media print {
+  .quick-nav,.lecture-actions { display:none!important; }
+  body { background:#fff; }
+  .lecture-card { break-inside:avoid; box-shadow:none; }
+}
+</style>
 </head>
 <body>
-<a class="skip" href="#lectures">Skip to lectures / 講義へ移動</a>
+<a class="skip-link" href="#lectures">Skip to lectures / 講義へ移動</a>
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="brand" href="index.html"><span class="brand-mark">CFII</span><span>Computer Fundamentals II · AA26</span></a>
-    <nav class="topnav" aria-label="Course navigation">
-      <a class="active" href="#lectures">Lectures / 講義</a>
-      <a href="#support">IT Support</a>
-      <a href="#security">Security</a>
-    </nav>
+<header class="site-header">
+  <div class="header-inner">
+    <span class="course-code">Computer Fundamentals II · AA26</span>
+    <h1>Course Lectures</h1>
+    <p class="header-ja">コンピュータ基礎 II · ウェブ講義</p>
+    <p class="header-description">Choose a lecture and open the English or Japanese version.</p>
+    <p class="header-description">講義を選び、英語版または日本語版を開いてください。</p>
+    <div class="header-stats">
+      <span>12 lectures / 12講義</span>
+      <span>English + 日本語</span>
+      <span>Interactive self-study</span>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-inner">
-    <span class="eyebrow">Computer Fundamentals II · AA26</span>
-    <h1>Course Lectures</h1>
-    <div class="hero-sub">コンピュータ基礎 II · ウェブ講義</div>
-    <p>Study how a computer system is built, powered, connected, measured, supported, protected, and recovered.</p>
-    <p>コンピュータシステムの構造、電源、ネットワーク、性能測定、サポート、安全、復旧を学びます。</p>
-    <div class="hero-meta">
-      <span class="chip">12 lectures / 12講義</span>
-      <span class="chip">708 slides / スライド</span>
-      <span class="chip">English + 日本語</span>
-      <span class="chip">Offline self-study</span>
-    </div>
+<nav class="quick-nav" aria-label="Course sections">
+  <div class="quick-nav-inner">
+    <a href="#foundations">Foundations / 基礎</a>
+    <a href="#support">IT Support / ITサポート</a>
+    <a href="#security">Security & Recovery / セキュリティ・復旧</a>
   </div>
-</section>
-
-<div class="course-chain-wrap">
-  <div class="course-chain" aria-label="Course story">
-    <span class="chain-node">Hardware</span><span class="chain-arrow">→</span>
-    <span class="chain-node">Power</span><span class="chain-arrow">→</span>
-    <span class="chain-node">Networks</span><span class="chain-arrow">→</span>
-    <span class="chain-node">Performance</span><span class="chain-arrow">→</span>
-    <span class="chain-node">Support</span><span class="chain-arrow">→</span>
-    <span class="chain-node">Security</span><span class="chain-arrow">→</span>
-    <span class="chain-node">Recovery</span>
-  </div>
-</div>
+</nav>
 
 <main id="lectures">
-  <div class="course-note">
-    <div class="note-card"><strong>Read</strong><span>Study the visual and explanation.<br>画像と説明を読む。</span></div>
-    <div class="note-card"><strong>Think</strong><span>Answer before opening the checkpoint.<br>答えを見る前に考える。</span></div>
-    <div class="note-card"><strong>Practise</strong><span>Complete the interactive review and quiz.<br>対話型復習とクイズを行う。</span></div>
-  </div>
+  <section class="student-guide" aria-label="How to use the course">
+    <div class="guide-step"><strong>1. Choose</strong><span>Select a lecture. / 講義を選ぶ。</span></div>
+    <div class="guide-step"><strong>2. Open</strong><span>Press English or 日本語. / 言語を選ぶ。</span></div>
+    <div class="guide-step"><strong>3. Study</strong><span>Read, answer and complete the quiz. / 読む、答える、クイズを行う。</span></div>
+  </section>
 
-  
-<section id="foundations">
-  <div class="group-head">
-    <div><h2 class="group-title">Foundations / 基礎</h2><p class="group-sub">Hardware, power, devices, and networks / ハードウェア・電源・機器・ネットワーク</p></div>
-    <span class="group-count">5 lectures</span>
-  </div>
-  
-<article class="item foundation">
-  <div class="item-main">
-    <span class="badge">Lecture 1 · 第1講</span>
-    <h2>From Switches to Computer Memory</h2>
-    <div class="ja-title">スイッチからコンピュータメモリへ</div>
-    <p>Electricity, binary states, logic, relays, transistors, capacitors, RAM, SSD, and the physical chain behind computing.</p>
-    <p class="ja-desc">電気、0と1、論理、リレー、トランジスタ、コンデンサ、RAM、SSDからコンピュータの物理的な流れを学びます。</p>
-    <div class="meta">
-      <span>58 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
+  <section class="course-section" id="foundations">
+    <div class="section-heading">
+      <div><h2>Foundations / 基礎</h2><p>Hardware, power, devices and networks</p></div>
+      <span class="section-count">Lectures 1–5</span>
     </div>
-  </div>
-  <div class="buttons">
-    <a class="en" href="lecture01/lecture_en.html">English</a>
-    <a class="ja" href="lecture01/lecture_ja.html">日本語</a>
+    <div class="lecture-grid">
+<article class="lecture-card foundation">
+  <div class="lecture-number">Lecture 1<span>第1講</span></div>
+  <h3>From Switches to Computer Memory</h3>
+  <p class="ja-title">スイッチからコンピュータメモリへ</p>
+  <p class="summary">Electricity, binary logic, transistors, RAM and storage.</p>
+  <p class="summary ja-summary">電気、2進数、トランジスタ、RAM、ストレージ。</p>
+  <div class="details"><span>58 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 1 language">
+    <a class="open-button english" href="lecture01/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture01/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
 </article>
-<article class="item foundation">
-  <div class="item-main">
-    <span class="badge">Lecture 2 · 第2講</span>
-    <h2>How a Computer Is Built</h2>
-    <div class="ja-title">コンピュータはどのように作られるか</div>
-    <p>Motherboard, CPU, RAM, storage, cooling, ports, and how many components become one working computer.</p>
-    <p class="ja-desc">マザーボード、CPU、RAM、ストレージ、冷却、ポートが1台のコンピュータとして働く仕組みを学びます。</p>
-    <div class="meta">
-      <span>52 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
-    </div>
-  </div>
-  <div class="buttons">
-    <a class="en" href="lecture02/lecture_en.html">English</a>
-    <a class="ja" href="lecture02/lecture_ja.html">日本語</a>
-  </div>
-</article>
-<article class="item foundation">
-  <div class="item-main">
-    <span class="badge">Lecture 3 · 第3講</span>
-    <h2>Power for Computers</h2>
-    <div class="ja-title">コンピュータの電源</div>
-    <p>AC, DC, adapters, transformers, batteries, UPS, power calculations, troubleshooting, and electrical safety.</p>
-    <p class="ja-desc">AC、DC、アダプター、変圧器、バッテリー、UPS、電力計算、トラブル対応、安全を学びます。</p>
-    <div class="meta">
-      <span>39 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
-    </div>
-  </div>
-  <div class="buttons">
-    <a class="en" href="lecture03/lecture_en.html">English</a>
-    <a class="ja" href="lecture03/lecture_ja.html">日本語</a>
+<article class="lecture-card foundation">
+  <div class="lecture-number">Lecture 2<span>第2講</span></div>
+  <h3>How a Computer Is Built</h3>
+  <p class="ja-title">コンピュータはどのように作られるか</p>
+  <p class="summary">Motherboard, CPU, memory, storage, cooling and ports.</p>
+  <p class="summary ja-summary">マザーボード、CPU、メモリ、ストレージ、冷却、ポート。</p>
+  <div class="details"><span>52 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 2 language">
+    <a class="open-button english" href="lecture02/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture02/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
 </article>
-<article class="item foundation">
-  <div class="item-main">
-    <span class="badge">Lecture 4 · 第4講</span>
-    <h2>Hospital Workstation Hardware</h2>
-    <div class="ja-title">病院ワークステーションのハードウェア</div>
-    <p>Input and output devices, barcode systems, printers, scanners, storage, hospital workflow, and common hardware problems.</p>
-    <p class="ja-desc">入出力装置、バーコード、プリンター、スキャナー、保存装置、病院業務、ハードウェア障害を学びます。</p>
-    <div class="meta">
-      <span>96 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
-    </div>
-  </div>
-  <div class="buttons">
-    <a class="en" href="lecture04/lecture_en.html">English</a>
-    <a class="ja" href="lecture04/lecture_ja.html">日本語</a>
-  </div>
-</article>
-<article class="item foundation">
-  <div class="item-main">
-    <span class="badge">Lecture 5 · 第5講</span>
-    <h2>Networks and the Internet</h2>
-    <div class="ja-title">ネットワークとインターネット</div>
-    <p>Signals, cables, LANs, switches, routers, packets, IP, DNS, Wi-Fi, hospital networks, and troubleshooting.</p>
-    <p class="ja-desc">信号、ケーブル、LAN、スイッチ、ルーター、パケット、IP、DNS、Wi-Fi、病院ネットワークを学びます。</p>
-    <div class="meta">
-      <span>68 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
-    </div>
-  </div>
-  <div class="buttons">
-    <a class="en" href="lecture05/lecture_en.html">English</a>
-    <a class="ja" href="lecture05/lecture_ja.html">日本語</a>
+<article class="lecture-card foundation">
+  <div class="lecture-number">Lecture 3<span>第3講</span></div>
+  <h3>Power for Computers</h3>
+  <p class="ja-title">コンピュータの電源</p>
+  <p class="summary">AC/DC, adapters, batteries, UPS and electrical safety.</p>
+  <p class="summary ja-summary">AC/DC、アダプター、バッテリー、UPS、電気安全。</p>
+  <div class="details"><span>39 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 3 language">
+    <a class="open-button english" href="lecture03/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture03/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
 </article>
-</section>
-<section id="support">
-  <div class="group-head">
-    <div><h2 class="group-title">Performance and IT Support / 性能・ITサポート</h2><p class="group-sub">Measurement, diagnosis, workflow, drivers, and system evidence / 測定・診断・手順・ドライバー・証拠</p></div>
-    <span class="group-count">4 lectures</span>
-  </div>
-  
-<article class="item support">
-  <div class="item-main">
-    <span class="badge">Lecture 6 · 第6講</span>
-    <h2>Computer Performance and Bottlenecks</h2>
-    <div class="ja-title">コンピュータ性能とボトルネック</div>
-    <p>CPU, RAM, disk, network, heat, shared services, Task Manager evidence, and choosing a targeted fix.</p>
-    <p class="ja-desc">CPU、RAM、ディスク、ネットワーク、熱、共有サービスを測定し、正しい改善方法を選びます。</p>
-    <div class="meta">
-      <span>53 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
-    </div>
-  </div>
-  <div class="buttons">
-    <a class="en" href="lecture06/lecture_en.html">English</a>
-    <a class="ja" href="lecture06/lecture_ja.html">日本語</a>
+<article class="lecture-card foundation">
+  <div class="lecture-number">Lecture 4<span>第4講</span></div>
+  <h3>Hospital Workstation Hardware</h3>
+  <p class="ja-title">病院ワークステーションのハードウェア</p>
+  <p class="summary">Input/output devices, scanners, printers and hospital hardware.</p>
+  <p class="summary ja-summary">入出力装置、スキャナー、プリンター、病院のハードウェア。</p>
+  <div class="details"><span>96 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 4 language">
+    <a class="open-button english" href="lecture04/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture04/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
 </article>
-<article class="item support">
-  <div class="item-main">
-    <span class="badge">Lecture 7 · 第7講</span>
-    <h2>IT Support Workflow</h2>
-    <div class="ja-title">ITサポートのワークフロー</div>
-    <p>Check, find, report, fix, and test: a safe, repeatable workflow for real support work.</p>
-    <p class="ja-desc">確認、原因調査、報告、修正、テストという安全で再現可能なサポート手順を学びます。</p>
-    <div class="meta">
-      <span>48 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
-    </div>
+<article class="lecture-card foundation">
+  <div class="lecture-number">Lecture 5<span>第5講</span></div>
+  <h3>Networks and the Internet</h3>
+  <p class="ja-title">ネットワークとインターネット</p>
+  <p class="summary">LAN, switches, routers, packets, IP, DNS and Wi-Fi.</p>
+  <p class="summary ja-summary">LAN、スイッチ、ルーター、パケット、IP、DNS、Wi-Fi。</p>
+  <div class="details"><span>68 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 5 language">
+    <a class="open-button english" href="lecture05/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture05/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
-  <div class="buttons">
-    <a class="en" href="lecture07/lecture_en.html">English</a>
-    <a class="ja" href="lecture07/lecture_ja.html">日本語</a>
+</article></div>
+  </section>
+
+  <section class="course-section" id="support">
+    <div class="section-heading">
+      <div><h2>Performance and IT Support / 性能・ITサポート</h2><p>Diagnosis, workflow, drivers and system evidence</p></div>
+      <span class="section-count">Lectures 6–9</span>
+    </div>
+    <div class="lecture-grid">
+<article class="lecture-card support">
+  <div class="lecture-number">Lecture 6<span>第6講</span></div>
+  <h3>Computer Performance and Bottlenecks</h3>
+  <p class="ja-title">コンピュータ性能とボトルネック</p>
+  <p class="summary">CPU, RAM, disk, network, heat and Task Manager evidence.</p>
+  <p class="summary ja-summary">CPU、RAM、ディスク、ネットワーク、熱、Task Manager。</p>
+  <div class="details"><span>53 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 6 language">
+    <a class="open-button english" href="lecture06/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture06/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
 </article>
-<article class="item support">
-  <div class="item-main">
-    <span class="badge">Lecture 8 · 第8講</span>
-    <h2>Drivers and Device Manager</h2>
-    <div class="ja-title">ドライバーとDevice Manager</div>
-    <p>How Windows communicates with hardware, driver status clues, safe observation, and support cases.</p>
-    <p class="ja-desc">Windowsとハードウェアの通信、ドライバー状態、安全な観察、サポート事例を学びます。</p>
-    <div class="meta">
-      <span>55 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
-    </div>
-  </div>
-  <div class="buttons">
-    <a class="en" href="lecture08/lecture_en.html">English</a>
-    <a class="ja" href="lecture08/lecture_ja.html">日本語</a>
-  </div>
-</article>
-<article class="item support">
-  <div class="item-main">
-    <span class="badge">Lecture 9 · 第9講</span>
-    <h2>System Information and Hardware Status</h2>
-    <div class="ja-title">システム情報とハードウェア状態</div>
-    <p>Computer identity, Windows and hardware facts, screenshots as evidence, privacy, and clear support reports.</p>
-    <p class="ja-desc">PCの識別、Windows・ハードウェア情報、証拠のスクリーンショット、個人情報、報告方法を学びます。</p>
-    <div class="meta">
-      <span>49 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      <span class="notice">Reconstructed slide panels / 再構成スライド</span>
-    </div>
-  </div>
-  <div class="buttons">
-    <a class="en" href="lecture09/lecture_en.html">English</a>
-    <a class="ja" href="lecture09/lecture_ja.html">日本語</a>
+<article class="lecture-card support">
+  <div class="lecture-number">Lecture 7<span>第7講</span></div>
+  <h3>IT Support Workflow</h3>
+  <p class="ja-title">ITサポートのワークフロー</p>
+  <p class="summary">Check, find, report, fix and test safely.</p>
+  <p class="summary ja-summary">安全に確認、調査、報告、修正、テストする手順。</p>
+  <div class="details"><span>48 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 7 language">
+    <a class="open-button english" href="lecture07/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture07/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
 </article>
-</section>
-<section id="security">
-  <div class="group-head">
-    <div><h2 class="group-title">Security and Recovery / セキュリティ・復旧</h2><p class="group-sub">Safe behavior, accounts, privacy, backups, startup, and Windows recovery / 安全行動・アカウント・プライバシー・バックアップ・起動・復旧</p></div>
-    <span class="group-count">3 lectures</span>
-  </div>
-  
-<article class="item security">
-  <div class="item-main">
-    <span class="badge">Lecture 10 · 第10講</span>
-    <h2>Computer Security Basics 1</h2>
-    <div class="ja-title">コンピュータセキュリティ基礎1</div>
-    <p>Malware, phishing, dangerous files, fake warnings, verification codes, and the safe response: stop, screenshot, report.</p>
-    <p class="ja-desc">マルウェア、フィッシング、危険なファイル、偽警告、認証コード、安全な初動対応を学びます。</p>
-    <div class="meta">
-      <span>55 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
-    </div>
-  </div>
-  <div class="buttons">
-    <a class="en" href="lecture10/lecture_en.html">English</a>
-    <a class="ja" href="lecture10/lecture_ja.html">日本語</a>
+<article class="lecture-card support">
+  <div class="lecture-number">Lecture 8<span>第8講</span></div>
+  <h3>Drivers and Device Manager</h3>
+  <p class="ja-title">ドライバーとDevice Manager</p>
+  <p class="summary">Drivers, hardware status and safe Device Manager work.</p>
+  <p class="summary ja-summary">ドライバー、ハードウェア状態、安全なDevice Manager操作。</p>
+  <div class="details"><span>55 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 8 language">
+    <a class="open-button english" href="lecture08/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture08/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
 </article>
-<article class="item security">
-  <div class="item-main">
-    <span class="badge">Lecture 11 · 第11講</span>
-    <h2>Computer Security Basics 2</h2>
-    <div class="ja-title">コンピュータセキュリティ基礎2</div>
-    <p>Accounts, permissions, passwords, MFA, privacy, encryption, backups, recovery, and incident reporting.</p>
-    <p class="ja-desc">アカウント、権限、パスワード、MFA、プライバシー、暗号化、バックアップ、復旧を学びます。</p>
-    <div class="meta">
-      <span>59 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
-    </div>
+<article class="lecture-card support">
+  <div class="lecture-number">Lecture 9<span>第9講</span></div>
+  <h3>System Information and Hardware Status</h3>
+  <p class="ja-title">システム情報とハードウェア状態</p>
+  <p class="summary">Computer identity, hardware facts, screenshots and support reports.</p>
+  <p class="summary ja-summary">PCの識別、ハードウェア情報、スクリーンショット、報告。</p>
+  <div class="details"><span>49 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 9 language">
+    <a class="open-button english" href="lecture09/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture09/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
-  <div class="buttons">
-    <a class="en" href="lecture11/lecture_en.html">English</a>
-    <a class="ja" href="lecture11/lecture_ja.html">日本語</a>
+</article></div>
+  </section>
+
+  <section class="course-section" id="security">
+    <div class="section-heading">
+      <div><h2>Security and Recovery / セキュリティ・復旧</h2><p>Protection, accounts, startup and recovery</p></div>
+      <span class="section-count">Lectures 10–12</span>
+    </div>
+    <div class="lecture-grid">
+<article class="lecture-card security">
+  <div class="lecture-number">Lecture 10<span>第10講</span></div>
+  <h3>Computer Security Basics 1</h3>
+  <p class="ja-title">コンピュータセキュリティ基礎1</p>
+  <p class="summary">Malware, phishing, dangerous files and safe first response.</p>
+  <p class="summary ja-summary">マルウェア、フィッシング、危険なファイル、安全な初動対応。</p>
+  <div class="details"><span>55 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 10 language">
+    <a class="open-button english" href="lecture10/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture10/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
 </article>
-<article class="item recovery">
-  <div class="item-main">
-    <span class="badge">Lecture 12 · 第12講</span>
-    <h2>Startup, UEFI, Windows Recovery and Reinstallation</h2>
-    <div class="ja-title">起動、UEFI、Windows復旧と再インストール</div>
-    <p>Startup stages, POST, boot devices, UEFI observation, WinRE, repair tools, reset, reinstall, and safe recovery choices.</p>
-    <p class="ja-desc">起動段階、POST、ブート機器、UEFI観察、WinRE、修復ツール、リセット、再インストールを学びます。</p>
-    <div class="meta">
-      <span>76 slides / スライド</span>
-      <span>Self-study / 自習</span>
-      <span>Interactive review</span>
-      
-    </div>
-  </div>
-  <div class="buttons">
-    <a class="en" href="lecture12/lecture_en.html">English</a>
-    <a class="ja" href="lecture12/lecture_ja.html">日本語</a>
+<article class="lecture-card security">
+  <div class="lecture-number">Lecture 11<span>第11講</span></div>
+  <h3>Computer Security Basics 2</h3>
+  <p class="ja-title">コンピュータセキュリティ基礎2</p>
+  <p class="summary">Accounts, permissions, MFA, privacy, encryption and backups.</p>
+  <p class="summary ja-summary">アカウント、権限、MFA、プライバシー、暗号化、バックアップ。</p>
+  <div class="details"><span>59 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 11 language">
+    <a class="open-button english" href="lecture11/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture11/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
   </div>
 </article>
-</section>
+<article class="lecture-card recovery">
+  <div class="lecture-number">Lecture 12<span>第12講</span></div>
+  <h3>Startup, UEFI, Windows Recovery and Reinstallation</h3>
+  <p class="ja-title">起動、UEFI、Windows復旧と再インストール</p>
+  <p class="summary">POST, boot devices, UEFI, WinRE, repair, reset and reinstall.</p>
+  <p class="summary ja-summary">POST、ブート機器、UEFI、WinRE、修復、リセット、再インストール。</p>
+  <div class="details"><span>76 slides</span><span>Self-study</span><span>Quiz</span></div>
+  <div class="lecture-actions" aria-label="Lecture 12 language">
+    <a class="open-button english" href="lecture12/lecture_en.html">
+      <span class="button-main">OPEN IN ENGLISH</span>
+      <span class="button-sub">English lecture</span>
+    </a>
+    <a class="open-button japanese" href="lecture12/lecture_ja.html">
+      <span class="button-main">日本語で開く</span>
+      <span class="button-sub">Japanese lecture</span>
+    </a>
+  </div>
+</article></div>
+  </section>
 </main>
 
-<footer>Computer Fundamentals II · AA26 · Complete bilingual offline course package</footer>
+<footer>Computer Fundamentals II · AA26</footer>
 </body>
 </html>
