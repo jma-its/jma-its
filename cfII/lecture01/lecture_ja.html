@@ -1,0 +1,1517 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>スイッチからコンピュータメモリへ — Computer Fundamentals 2</title>
+<meta name="description" content="スイッチからコンピュータメモリへ — original slides with reading, checkpoints, and interactive review.">
+<link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script>
+<style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head>
+<body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture02/index.html">2 →</a></nav>
+<header id="top"><div class="header-inner">
+<div class="course">Computer Fundamentals 2 · 今学期 · ウェブ講義 1</div>
+<div class="archive-note">元のスライドの見た目を保存しています。スライド内部の古いコース表記もそのまま残しています。</div>
+<h1>スイッチからコンピュータメモリへ</h1>
+<p class="subtitle">元の58枚のスライドを、そのまま学べるウェブ講義にしたものです。</p>
+<p class="intro">各オリジナルスライドを見て、短い説明を読み、チェック問題に答え、最後に拡張インタラクティブ復習を行ってください。</p>
+<div class="lang-switch"><a href="lecture_en.html">English</a><a class="current" href="lecture_ja.html">日本語</a></div>
+</div></header>
+
+<main class="container">
+<section class="core"><h2>中心の流れ</h2><div class="core-chain">電気 → スイッチ → 0/1 → 論理 → メモリ → コンピュータ</div></section>
+
+<section class="progress-box"><strong>学習進行</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>答えは考えた後で開いてください。</span></section>
+
+<section class="notice"><h2>この講義の使い方</h2><p>まず元のスライド画像を見てください。クリックすると拡大できます。次にウェブ用の説明を読んでください。隠れた答えを開く前に、自分で考えて答えてください。最後に、すべてのインタラクティブ課題と最終クイズを行ってください。</p></section>
+<section class="notice map" id="lesson-map"><h2>授業マップ — 元の58枚のスライド</h2><ol><li><a href="#slide-1">スライド 1: 第9講 — スイッチからコンピュータメモリへ</a></li>
+<li><a href="#slide-2">スライド 2: この講義が重要な理由</a></li>
+<li><a href="#slide-3">スライド 3: ここまでのコースの流れ</a></li>
+<li><a href="#slide-4">スライド 4: 大きな問い</a></li>
+<li><a href="#slide-5">スライド 5: 第1部 — スイッチ</a></li>
+<li><a href="#slide-6">スライド 6: なぜコンピュータは2つの状態を使うのか</a></li>
+<li><a href="#slide-7">スライド 7: なぜコンピュータは2進数を使うのか</a></li>
+<li><a href="#slide-8">スライド 8: 10進数と2進数：最初の例</a></li>
+<li><a href="#slide-9">スライド 9: 2進数の位：1、2、4、8</a></li>
+<li><a href="#slide-10">スライド 10: スイッチで表す2進数</a></li>
+<li><a href="#slide-11">スライド 11: スイッチによる簡単な2進加算</a></li>
+<li><a href="#slide-12">スライド 12: デジタルは完全という意味ではない</a></li>
+<li><a href="#slide-13">スライド 13: 1つのスイッチからルールへ</a></li>
+<li><a href="#slide-14">スライド 14: AND論理</a></li>
+<li><a href="#slide-15">スライド 15: OR論理</a></li>
+<li><a href="#slide-16">スライド 16: NOT論理</a></li>
+<li><a href="#slide-17">スライド 17: 論理ゲートは物理的な装置</a></li>
+<li><a href="#slide-18">スライド 18: 第2部 — リレー</a></li>
+<li><a href="#slide-19">スライド 19: リレーの物理</a></li>
+<li><a href="#slide-20">スライド 20: リレーの動作手順</a></li>
+<li><a href="#slide-21">スライド 21: なぜリレーは画期的だったか</a></li>
+<li><a href="#slide-22">スライド 22: リレーによるAND論理</a></li>
+<li><a href="#slide-23">スライド 23: リレーによるOR論理</a></li>
+<li><a href="#slide-24">スライド 24: 歴史的な橋：リレー計算機</a></li>
+<li><a href="#slide-25">スライド 25: 例：Zuse Z3</a></li>
+<li><a href="#slide-26">スライド 26: 例：Harvard Mark I</a></li>
+<li><a href="#slide-27">スライド 27: リレーの問題点</a></li>
+<li><a href="#slide-28">スライド 28: リレー・真空管・トランジスタ</a></li>
+<li><a href="#slide-29">スライド 29: 第3部 — 真空管</a></li>
+<li><a href="#slide-30">スライド 30: 真空管の物理</a></li>
+<li><a href="#slide-31">スライド 31: 電子計算機</a></li>
+<li><a href="#slide-32">スライド 32: 例：ENIAC</a></li>
+<li><a href="#slide-33">スライド 33: 技術発展のパターン</a></li>
+<li><a href="#slide-34">スライド 34: 第4部 — トランジスタ</a></li>
+<li><a href="#slide-35">スライド 35: トランジスタの物理（簡略版）</a></li>
+<li><a href="#slide-36">スライド 36: 小さな電子スイッチとしてのトランジスタ</a></li>
+<li><a href="#slide-37">スライド 37: 歴史メモ：トランジスタの発明</a></li>
+<li><a href="#slide-38">スライド 38: トランジスタから集積回路へ</a></li>
+<li><a href="#slide-39">スライド 39: トランジスタから集積回路へ — 大きな図</a></li>
+<li><a href="#slide-40">スライド 40: 歴史メモ：集積回路</a></li>
+<li><a href="#slide-41">スライド 41: マイクロチップの内部 — とても多くの小さな回路</a></li>
+<li><a href="#slide-42">スライド 42: 主な歴史の流れ</a></li>
+<li><a href="#slide-43">スライド 43: スイッチからコンピュータメモリへ — 大きなまとめ</a></li>
+<li><a href="#slide-44">スライド 44: 第5部 — 計算だけでは足りない</a></li>
+<li><a href="#slide-45">スライド 45: 物理状態としてのメモリ</a></li>
+<li><a href="#slide-46">スライド 46: コンデンサは電荷を蓄える — 大きな図</a></li>
+<li><a href="#slide-47">スライド 47: コンデンサ：必要な物理</a></li>
+<li><a href="#slide-48">スライド 48: 静電容量の式</a></li>
+<li><a href="#slide-49">スライド 49: コンデンサは電池ではない</a></li>
+<li><a href="#slide-50">スライド 50: DRAM：小さなコンデンサによるメモリ</a></li>
+<li><a href="#slide-51">スライド 51: なぜDRAMはダイナミックなのか</a></li>
+<li><a href="#slide-52">スライド 52: RAMには電源が必要</a></li>
+<li><a href="#slide-53">スライド 53: SSDは異なる</a></li>
+<li><a href="#slide-54">スライド 54: SSDは電源がなくてもデータを保持する — 大きな図</a></li>
+<li><a href="#slide-55">スライド 55: CPU・RAM・SSD の3つの役割</a></li>
+<li><a href="#slide-56">スライド 56: 第6部 — ハードウェアからソフトウェアへ</a></li>
+<li><a href="#slide-57">スライド 57: コンピュータのように考える</a></li>
+<li><a href="#slide-58">スライド 58: トラブルシューティングの流れ — 大きな図</a></li>
+
+
+
+
+
+
+
+</ol></section>
+
+<h2 class="part-title">導入 — 物理からコンピュータへ</h2>
+<article class="slide-card" id="slide-1">
+  <div class="slide-head">
+    <div class="badge">スライド 1</div>
+    <div class="slide-title">
+      <h2>第9講 — スイッチからコンピュータメモリへ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-01.jpg" aria-label="Open slide 1 in full screen">
+      <img src="assets/slides/slide-01.jpg" alt="Slide 1: 第9講 — スイッチからコンピュータメモリへ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 1 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>今日は電気からコンピュータへ進みます。スイッチは OFF または ON になり、コンピュータはこの単純な物理的な考えを何百万回、何十億回も使います。主な流れは、電気 → スイッチ → 0/1 → 論理 → メモリ → コンピュータです。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>この講義の主な流れは何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電気 → スイッチ → 0/1 → 論理 → メモリ → コンピュータ</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-2">
+  <div class="slide-head">
+    <div class="badge">スライド 2</div>
+    <div class="slide-title">
+      <h2>この講義が重要な理由</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-02.jpg" aria-label="Open slide 2 in full screen">
+      <img src="assets/slides/slide-02.jpg" alt="Slide 2: この講義が重要な理由" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 2 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>この講義は、前に学んだ物理の話題とコンピュータハードウェアの橋渡しです。技術は段階的に発展します。物理現象が役に立つ装置になり、その装置が改良され、小さくなり、最後にコンピュータシステムの一部になります。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>なぜこの講義は橋渡しなのですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電気や磁気のような物理現象とコンピュータハードウェアを結びつけるからです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-3">
+  <div class="slide-head">
+    <div class="badge">スライド 3</div>
+    <div class="slide-title">
+      <h2>ここまでのコースの流れ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-03.jpg" aria-label="Open slide 3 in full screen">
+      <img src="assets/slides/slide-03.jpg" alt="Slide 3: ここまでのコースの流れ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 3 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>これまでの内容では、材料、運動、エネルギー、電気、磁気、そして有用な出力など、機械の物理的基礎を学びました。今日は、新しい問いを加えます。制御された電気はどのように論理とメモリになるのでしょうか。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>今日新しく加わる問いは何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電気はどのように論理とメモリになるのか、という問いです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-4">
+  <div class="slide-head">
+    <div class="badge">スライド 4</div>
+    <div class="slide-title">
+      <h2>大きな問い</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-04.jpg" aria-label="Open slide 4 in full screen">
+      <img src="assets/slides/slide-04.jpg" alt="Slide 4: 大きな問い" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 4 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>電気は人間のように考えません。コンピュータは正確な規則に従います。電気的な状態は 0 と 1 を表すことができ、多数の状態を使うことで論理、計算、メモリを作れます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>コンピュータは人間のように理解しますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>いいえ。制御された物理状態を使って正確な規則に従います。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<h2 class="part-title">第1部 — スイッチ、2進数、論理</h2>
+<article class="slide-card" id="slide-5">
+  <div class="slide-head">
+    <div class="badge">スライド 5</div>
+    <div class="slide-title">
+      <h2>第1部 — スイッチ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-05.jpg" aria-label="Open slide 5 in full screen">
+      <img src="assets/slides/slide-05.jpg" alt="Slide 5: 第1部 — スイッチ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 5 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>スイッチは2つのはっきりした状態を与えます。OFF は開いた回路で、0 を表せます。ON は閉じた回路で、1 を表せます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>0 と 1 を表せる物理状態は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>開いている / OFF が 0、閉じている / ON が 1 を表せます。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-6">
+  <div class="slide-head">
+    <div class="badge">スライド 6</div>
+    <div class="slide-title">
+      <h2>なぜコンピュータは2つの状態を使うのか</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-06.jpg" aria-label="Open slide 6 in full screen">
+      <img src="assets/slides/slide-06.jpg" alt="Slide 6: なぜコンピュータは2つの状態を使うのか" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 6 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>コンピュータが2つの状態を使うのは、機械には明確な違いが必要だからです。低い電圧の範囲を 0、高い電圧の範囲を 1 と考えられます。正確な値は変わっても、分類は明確です。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>なぜ2つの状態が機械に便利なのですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>明確で信頼できる分類を作れるからです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-7">
+  <div class="slide-head">
+    <div class="badge">スライド 7</div>
+    <div class="slide-title">
+      <h2>なぜコンピュータは2進数を使うのか</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-07.jpg" aria-label="Open slide 7 in full screen">
+      <img src="assets/slides/slide-07.jpg" alt="Slide 7: なぜコンピュータは2進数を使うのか" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 7 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>2進数は 0 と 1 だけを使う数の体系です。電子スイッチにも OFF と ON の2つの有用な状態があるため、コンピュータと自然によく合います。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>2進数は何個の記号を使いますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>2つです。0 と 1。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-8">
+  <div class="slide-head">
+    <div class="badge">スライド 8</div>
+    <div class="slide-title">
+      <h2>10進数と2進数：最初の例</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-08.jpg" aria-label="Open slide 8 in full screen">
+      <img src="assets/slides/slide-08.jpg" alt="Slide 8: 10進数と2進数：最初の例" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 8 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>10進数と2進数は、同じ値を違う方法で書けます。10進数の 2 は 2進数の 10、10進数の 3 は 11、10進数の 4 は 100 です。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>2進数は別の種類の数ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>いいえ。同じ数の値を別の方法で表しているだけです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-9">
+  <div class="slide-head">
+    <div class="badge">スライド 9</div>
+    <div class="slide-title">
+      <h2>2進数の位：1、2、4、8</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-09.jpg" aria-label="Open slide 9 in full screen">
+      <img src="assets/slides/slide-09.jpg" alt="Slide 9: 2進数の位：1、2、4、8" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 9 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>2進数の位は 2 のべき乗で増えます。右から左へ、最初の位は 1、2、4、8 です。1 が入っている位だけを足します。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>最初の4つの2進数の位は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>1、2、4、8 です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-10">
+  <div class="slide-head">
+    <div class="badge">スライド 10</div>
+    <div class="slide-title">
+      <h2>スイッチで表す2進数</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-10.jpg" aria-label="Open slide 10 in full screen">
+      <img src="assets/slides/slide-10.jpg" alt="Slide 10: スイッチで表す2進数" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 10 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>4つのスイッチで 8、4、2、1 の位を表せます。ON のスイッチはその値を足し、OFF のスイッチは何も足しません。例えば 0011 は 2 + 1 = 3 です。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>4つのスイッチで10進数の 3 をどう表しますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>2 と 1 のスイッチを ON にします。0011 です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-11">
+  <div class="slide-head">
+    <div class="badge">スライド 11</div>
+    <div class="slide-title">
+      <h2>スイッチによる簡単な2進加算</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-11.jpg" aria-label="Open slide 11 in full screen">
+      <img src="assets/slides/slide-11.jpg" alt="Slide 11: スイッチによる簡単な2進加算" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 11 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>2進加算では繰り上がりを使います。2進数では 1 + 1 = 10 です。1つの位には 0 か 1 しか置けないからです。同様に 010 + 010 = 100 になります。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>2進数で 1 + 1 は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>10 です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-12">
+  <div class="slide-head">
+    <div class="badge">スライド 12</div>
+    <div class="slide-title">
+      <h2>デジタルは完全という意味ではない</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-12.jpg" aria-label="Open slide 12 in full screen">
+      <img src="assets/slides/slide-12.jpg" alt="Slide 12: デジタルは完全という意味ではない" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 12 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>デジタル信号も物理的なもので、ノイズを含むことがあります。回路は完全に正確な電圧を必要としません。その信号が LOW の範囲か HIGH の範囲かを判断します。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>少し乱れた信号に対してデジタル回路は何をしますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>その信号を LOW / 0 または HIGH / 1 として分類します。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-13">
+  <div class="slide-head">
+    <div class="badge">スライド 13</div>
+    <div class="slide-title">
+      <h2>1つのスイッチからルールへ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-13.jpg" aria-label="Open slide 13 in full screen">
+      <img src="assets/slides/slide-13.jpg" alt="Slide 13: 1つのスイッチからルールへ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 13 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>1つのスイッチは1ビットを保存できます。2つ以上のスイッチを使うと、1つのルールを作れます。A と B の両方が ON のときだけランプが点くなら、すでにコンピュータの論理になっています。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>2つのスイッチで何を作れますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>論理ルールを作れます。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-14">
+  <div class="slide-head">
+    <div class="badge">スライド 14</div>
+    <div class="slide-title">
+      <h2>AND論理</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-14.jpg" aria-label="Open slide 14 in full screen">
+      <img src="assets/slides/slide-14.jpg" alt="Slide 14: AND論理" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 14 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>AND は厳しい条件です。両方の入力が 1 のときだけ出力が 1 になります。出力 1 を作る入力の組は 1 AND 1 だけです。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>AND が 1 を出すのはいつですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>両方の入力が 1 のときだけです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-15">
+  <div class="slide-head">
+    <div class="badge">スライド 15</div>
+    <div class="slide-title">
+      <h2>OR論理</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-15.jpg" aria-label="Open slide 15 in full screen">
+      <img src="assets/slides/slide-15.jpg" alt="Slide 15: OR論理" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 15 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>OR は柔軟です。どちらか1つが真なら十分です。OR が 0 を出すのは、両方が 0 のときだけです。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>OR が 0 を出すのはいつですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>両方の入力が 0 のときだけです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-16">
+  <div class="slide-head">
+    <div class="badge">スライド 16</div>
+    <div class="slide-title">
+      <h2>NOT論理</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-16.jpg" aria-label="Open slide 16 in full screen">
+      <img src="assets/slides/slide-16.jpg" alt="Slide 16: NOT論理" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 16 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>NOT は状態を反転します。NOT 0 は 1、NOT 1 は 0 になります。後でソフトウェアでも、not ready や not connected のように同じ考え方を使います。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>NOT は何をしますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>入力の状態を反転します。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-17">
+  <div class="slide-head">
+    <div class="badge">スライド 17</div>
+    <div class="slide-title">
+      <h2>論理ゲートは物理的な装置</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-17.jpg" aria-label="Open slide 17 in full screen">
+      <img src="assets/slides/slide-17.jpg" alt="Slide 17: 論理ゲートは物理的な装置" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 17 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>論理ゲートは図だけではありません。実際の電圧入力を受け取り、ルールに従って実際の電圧出力を作る物理回路です。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>論理ゲートは物理的なものですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>はい。物理的な電子回路です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<h2 class="part-title">第2部 — リレーと電気機械式計算機</h2>
+<article class="slide-card" id="slide-18">
+  <div class="slide-head">
+    <div class="badge">スライド 18</div>
+    <div class="slide-title">
+      <h2>第2部 — リレー</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-18.jpg" aria-label="Open slide 18 in full screen">
+      <img src="assets/slides/slide-18.jpg" alt="Slide 18: 第2部 — リレー" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 18 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>リレーは、ある電気回路で別の電気回路を制御できる装置です。手で操作するスイッチと自動計算の間の重要な橋です。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>リレーの重要な考え方は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>小さな電気信号で別の回路を制御できることです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-19">
+  <div class="slide-head">
+    <div class="badge">スライド 19</div>
+    <div class="slide-title">
+      <h2>リレーの物理</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-19.jpg" aria-label="Open slide 19 in full screen">
+      <img src="assets/slides/slide-19.jpg" alt="Slide 19: リレーの物理" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 19 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>コイルに電流が流れると磁場ができます。その磁場が金属のアーマチュアを引き、接点を動かし、別の回路を開いたり閉じたりします。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>どの物理効果でリレーは動きますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電磁気です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-20">
+  <div class="slide-head">
+    <div class="badge">スライド 20</div>
+    <div class="slide-title">
+      <h2>リレーの動作手順</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-20.jpg" aria-label="Open slide 20 in full screen">
+      <img src="assets/slides/slide-20.jpg" alt="Slide 20: リレーの動作手順" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 20 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>リレーの動作は、入力電流 → 磁場 → 力 → 動く接点 → 出力回路、という流れに従います。各段階には物理的な原因があります。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>リレーの接点を動かすのは何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>アーマチュアに働く磁力です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-21">
+  <div class="slide-head">
+    <div class="badge">スライド 21</div>
+    <div class="slide-title">
+      <h2>なぜリレーは画期的だったか</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-21.jpg" aria-label="Open slide 21 in full screen">
+      <img src="assets/slides/slide-21.jpg" alt="Slide 21: なぜリレーは画期的だったか" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 21 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>リレーによって、機械は人の指なしで切り替えできるようになりました。電気信号で順序、計算、自動判断を制御できました。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>なぜリレーは画期的だったのですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電気で自動的に制御される切り替えを可能にしたからです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-22">
+  <div class="slide-head">
+    <div class="badge">スライド 22</div>
+    <div class="slide-title">
+      <h2>リレーによるAND論理</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-22.jpg" aria-label="Open slide 22 in full screen">
+      <img src="assets/slides/slide-22.jpg" alt="Slide 22: リレーによるAND論理" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 22 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>リレー接点を直列につなぐと AND を実現できます。両方の接点が閉じているときだけ電流が出力に届きます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>リレーで AND を作るにはどうしますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>2つの接点を直列につなぎます。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-23">
+  <div class="slide-head">
+    <div class="badge">スライド 23</div>
+    <div class="slide-title">
+      <h2>リレーによるOR論理</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-23.jpg" aria-label="Open slide 23 in full screen">
+      <img src="assets/slides/slide-23.jpg" alt="Slide 23: リレーによるOR論理" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 23 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>リレー接点を並列につなぐと OR を実現できます。どちらかの経路が閉じていれば電流が出力に届きます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>リレーで OR を作るにはどうしますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>接点を並列につなぎます。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-24">
+  <div class="slide-head">
+    <div class="badge">スライド 24</div>
+    <div class="slide-title">
+      <h2>歴史的な橋：リレー計算機</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-24.jpg" aria-label="Open slide 24 in full screen">
+      <img src="assets/slides/slide-24.jpg" alt="Slide 24: 歴史的な橋：リレー計算機" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 24 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>初期のリレー計算機は、多数の制御されたスイッチをつなげて自動的に処理を行いました。重要でしたが、大きく、遅く、機械的に複雑でした。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>リレー計算機は何を証明しましたか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>制御されたスイッチで自動論理と計算を作れることを証明しました。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-25">
+  <div class="slide-head">
+    <div class="badge">スライド 25</div>
+    <div class="slide-title">
+      <h2>例：Zuse Z3</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-25.jpg" aria-label="Open slide 25 in full screen">
+      <img src="assets/slides/slide-25.jpg" alt="Slide 25: 例：Zuse Z3" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 25 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>1941年に完成した Zuse Z3 は、何千個ものリレーと2進演算を使いました。プログラム可能な機械が2進状態で動けることを示しました。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>Z3 はどの数体系を使いましたか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>2進数です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-26">
+  <div class="slide-head">
+    <div class="badge">スライド 26</div>
+    <div class="slide-title">
+      <h2>例：Harvard Mark I</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-26.jpg" aria-label="Open slide 26 in full screen">
+      <img src="assets/slides/slide-26.jpg" alt="Slide 26: 例：Harvard Mark I" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 26 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>Harvard Mark I は、大きな電気機械式計算機でした。長い配線、スイッチ、カウンタ、動く機構を持ち、長い計算を自動化しました。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>Harvard Mark I は完全なソリッドステート機械でしたか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>いいえ。電気機械式でした。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-27">
+  <div class="slide-head">
+    <div class="badge">スライド 27</div>
+    <div class="slide-title">
+      <h2>リレーの問題点</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-27.jpg" aria-label="Open slide 27 in full screen">
+      <img src="assets/slides/slide-27.jpg" alt="Slide 27: リレーの問題点" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 27 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>リレーには動く金属部品があります。動きがあるため、遅く、うるさく、大きく、摩耗しやすいです。技術者は機械的な動きのない、より速いスイッチを必要としました。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>リレーの中心的な弱点は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>動く部品があることです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-28">
+  <div class="slide-head">
+    <div class="badge">スライド 28</div>
+    <div class="slide-title">
+      <h2>リレー・真空管・トランジスタ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-28.jpg" aria-label="Open slide 28 in full screen">
+      <img src="assets/slides/slide-28.jpg" alt="Slide 28: リレー・真空管・トランジスタ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 28 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>リレー、真空管、トランジスタはどれも電流を制御しますが、物理的な方法は異なります。新しい技術はそれぞれ、前の技術の重要な弱点を減らしました。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>これらの技術で共通していたことは何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電流を制御し、状態を表現する必要があったことです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<h2 class="part-title">第3部 — 真空管と電子計算機</h2>
+<article class="slide-card" id="slide-29">
+  <div class="slide-head">
+    <div class="badge">スライド 29</div>
+    <div class="slide-title">
+      <h2>第3部 — 真空管</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-29.jpg" aria-label="Open slide 29 in full screen">
+      <img src="assets/slides/slide-29.jpg" alt="Slide 29: 第3部 — 真空管" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 29 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>真空管はスイッチングを電子的にしました。動く接点をなくし、ガラス管の内部で電子の流れを電場で制御しました。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>真空管は何をなくしましたか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>動く機械的な接点です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-30">
+  <div class="slide-head">
+    <div class="badge">スライド 30</div>
+    <div class="slide-title">
+      <h2>真空管の物理</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-30.jpg" aria-label="Open slide 30 in full screen">
+      <img src="assets/slides/slide-30.jpg" alt="Slide 30: 真空管の物理" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 30 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>真空管の中では、加熱された陰極が電子を放出します。他の電極の電圧が、電子が出力まで届くかどうかを制御します。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>真空管の中で動くものは何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電子です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-31">
+  <div class="slide-head">
+    <div class="badge">スライド 31</div>
+    <div class="slide-title">
+      <h2>電子計算機</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-31.jpg" aria-label="Open slide 31 in full screen">
+      <img src="assets/slides/slide-31.jpg" alt="Slide 31: 電子計算機" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 31 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>電子的なスイッチングは、リレーの機械的な動きよりずっと速かったです。そのため、コンピュータははるかに高速で計算できるようになりました。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>なぜ真空管コンピュータは速かったのですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>スイッチングが機械的ではなく電子的だったからです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-32">
+  <div class="slide-head">
+    <div class="badge">スライド 32</div>
+    <div class="slide-title">
+      <h2>例：ENIAC</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-32.jpg" aria-label="Open slide 32 in full screen">
+      <img src="assets/slides/slide-32.jpg" alt="Slide 32: 例：ENIAC" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 32 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>ENIAC は多数の真空管を使いました。当時としては高速でしたが、非常に大きく、熱く、電力を多く消費し、保守が難しかったです。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>ENIAC の保守上の問題を1つ挙げてください。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>熱、消費電力の大きさ、巨大さ、または真空管故障の多さです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-33">
+  <div class="slide-head">
+    <div class="badge">スライド 33</div>
+    <div class="slide-title">
+      <h2>技術発展のパターン</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-33.jpg" aria-label="Open slide 33 in full screen">
+      <img src="assets/slides/slide-33.jpg" alt="Slide 33: 技術発展のパターン" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 33 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>技術発展はよく似たパターンをたどります。1つの問題を解決すると、新しい制限が見え、よりよい装置が作られます。速度が向上すると、次はサイズ、熱、信頼性、配線が問題になります。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>1つの工学的問題が解決した後、普通は何が起こりますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>新しい制限が見え、設計が再び改良されます。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<h2 class="part-title">第4部 — トランジスタと集積回路</h2>
+<article class="slide-card" id="slide-34">
+  <div class="slide-head">
+    <div class="badge">スライド 34</div>
+    <div class="slide-title">
+      <h2>第4部 — トランジスタ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-34.jpg" aria-label="Open slide 34 in full screen">
+      <img src="assets/slides/slide-34.jpg" alt="Slide 34: 第4部 — トランジスタ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 34 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>次の大きなスイッチはトランジスタでした。半導体の中で電流を制御し、動く機械部品も熱いガラス管もありません。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>トランジスタに使われる材料の種類は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>半導体材料です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-35">
+  <div class="slide-head">
+    <div class="badge">スライド 35</div>
+    <div class="slide-title">
+      <h2>トランジスタの物理（簡略版）</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-35.jpg" aria-label="Open slide 35 in full screen">
+      <img src="assets/slides/slide-35.jpg" alt="Slide 35: トランジスタの物理（簡略版）" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 35 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>小さな電気入力で、別の経路を流れる大きな電流を制御できます。半導体の詳しい物理は複雑ですが、スイッチの考え方は単純です。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>小さな入力は何を制御しますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>別の経路を流れる電流を制御します。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-36">
+  <div class="slide-head">
+    <div class="badge">スライド 36</div>
+    <div class="slide-title">
+      <h2>小さな電子スイッチとしてのトランジスタ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-36.jpg" aria-label="Open slide 36 in full screen">
+      <img src="assets/slides/slide-36.jpg" alt="Slide 36: 小さな電子スイッチとしてのトランジスタ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 36 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>トランジスタは小さな電子スイッチとして働けます。OFF では有用な電流を止め、ON では流します。非常に高速に切り替えられます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>トランジスタはどの2つの状態を表せますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>OFF / 0 と ON / 1 です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-37">
+  <div class="slide-head">
+    <div class="badge">スライド 37</div>
+    <div class="slide-title">
+      <h2>歴史メモ：トランジスタの発明</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-37.jpg" aria-label="Open slide 37 in full screen">
+      <img src="assets/slides/slide-37.jpg" alt="Slide 37: 歴史メモ：トランジスタの発明" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 37 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>最初の動作するトランジスタは1947年に Bell Labs で実演されました。これにより、より小さく、より冷たく、より信頼できる電子機器への道が開かれました。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>トランジスタが歴史的に重要なのはなぜですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>より小さく、より冷たく、より信頼できる電子スイッチングを可能にしたからです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-38">
+  <div class="slide-head">
+    <div class="badge">スライド 38</div>
+    <div class="slide-title">
+      <h2>トランジスタから集積回路へ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-38.jpg" aria-label="Open slide 38 in full screen">
+      <img src="assets/slides/slide-38.jpg" alt="Slide 38: トランジスタから集積回路へ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 38 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>1個のトランジスタは役に立ちますが、コンピュータには多数の接続された装置が必要です。次の段階は、複数の部品を1つの集積回路としてまとめて製造することでした。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>集積回路はどんな問題に対応しましたか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>多くの部品を効率よく接続し製造する問題です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-39">
+  <div class="slide-head">
+    <div class="badge">スライド 39</div>
+    <div class="slide-title">
+      <h2>トランジスタから集積回路へ — 大きな図</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-39.jpg" aria-label="Open slide 39 in full screen">
+      <img src="assets/slides/slide-39.jpg" alt="Slide 39: トランジスタから集積回路へ — 大きな図" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 39 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>発展の流れは、トランジスタ → 多数のトランジスタ → 接続された回路 → 集積回路です。集積化によって、別々の配線やサイズが減ります。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>集積化で何が減りますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>別々の部品、配線、物理的な大きさです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-40">
+  <div class="slide-head">
+    <div class="badge">スライド 40</div>
+    <div class="slide-title">
+      <h2>歴史メモ：集積回路</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-40.jpg" aria-label="Open slide 40 in full screen">
+      <img src="assets/slides/slide-40.jpg" alt="Slide 40: 歴史メモ：集積回路" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 40 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>初期の集積回路は1950年代後半に現れました。いくつかの電子部品を、1つの小さな半導体材料の上に作りました。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>集積回路の基本的な考えは何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>多くの部品を1つの半導体片の上で一緒に作ることです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-41">
+  <div class="slide-head">
+    <div class="badge">スライド 41</div>
+    <div class="slide-title">
+      <h2>マイクロチップの内部 — とても多くの小さな回路</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-41.jpg" aria-label="Open slide 41 in full screen">
+      <img src="assets/slides/slide-41.jpg" alt="Slide 41: マイクロチップの内部 — とても多くの小さな回路" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 41 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>現代のマイクロチップには、非常に多くの小さなトランジスタと接続が入っています。それらが論理、制御、計算、メモリ回路を作ります。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>マイクロチップの内部で繰り返される小さな装置は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>トランジスタです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-42">
+  <div class="slide-head">
+    <div class="badge">スライド 42</div>
+    <div class="slide-title">
+      <h2>主な歴史の流れ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-42.jpg" aria-label="Open slide 42 in full screen">
+      <img src="assets/slides/slide-42.jpg" alt="Slide 42: 主な歴史の流れ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 42 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>主な歴史の流れは、機械式スイッチ → リレー → 真空管 → トランジスタ → 集積回路です。物理的なスイッチは変わっても、論理の役割は残りました。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>リレー、真空管、トランジスタ、集積回路を順に並べてください。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>リレー → 真空管 → トランジスタ → 集積回路</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-43">
+  <div class="slide-head">
+    <div class="badge">スライド 43</div>
+    <div class="slide-title">
+      <h2>スイッチからコンピュータメモリへ — 大きなまとめ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-43.jpg" aria-label="Open slide 43 in full screen">
+      <img src="assets/slides/slide-43.jpg" alt="Slide 43: スイッチからコンピュータメモリへ — 大きなまとめ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 43 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>この大きなまとめは、全体の物語をつなげます。制御された電気が状態を作り、状態が論理を作り、改良されたスイッチがより速いコンピュータを作り、回路にはメモリも必要です。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>役に立つコンピュータに必要な2つの能力は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>論理 / 計算を行うことと、情報を保存することです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<h2 class="part-title">第5部 — 物理メモリ、RAM、SSD</h2>
+<article class="slide-card" id="slide-44">
+  <div class="slide-head">
+    <div class="badge">スライド 44</div>
+    <div class="slide-title">
+      <h2>第5部 — 計算だけでは足りない</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-44.jpg" aria-label="Open slide 44 in full screen">
+      <img src="assets/slides/slide-44.jpg" alt="Slide 44: 第5部 — 計算だけでは足りない" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 44 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>計算だけでは足りません。コンピュータは命令、現在のデータ、中間結果、保存された情報を覚えておかなければなりません。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>なぜ計算だけでは不十分なのですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>後で使うために情報を保持しなければならないからです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-45">
+  <div class="slide-head">
+    <div class="badge">スライド 45</div>
+    <div class="slide-title">
+      <h2>物理状態としてのメモリ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-45.jpg" aria-label="Open slide 45 in full screen">
+      <img src="assets/slides/slide-45.jpg" alt="Slide 45: 物理状態としてのメモリ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 45 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>メモリとは、後で読み取れるだけの時間、残っている物理状態です。例として、電荷、磁化の向き、閉じ込められた電子、安定した回路状態などがあります。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>コンピュータメモリは物理的ですか、それとも想像上ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>物理的です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-46">
+  <div class="slide-head">
+    <div class="badge">スライド 46</div>
+    <div class="slide-title">
+      <h2>コンデンサは電荷を蓄える — 大きな図</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-46.jpg" aria-label="Open slide 46 in full screen">
+      <img src="assets/slides/slide-46.jpg" alt="Slide 46: コンデンサは電荷を蓄える — 大きな図" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 46 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>コンデンサは、絶縁体をはさんだ2枚の導体板に分かれた電荷を蓄えます。その蓄えられた電荷が1ビットを表せます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>コンデンサの中の電荷は何を表せますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>2進の状態、つまり1ビットを表せます。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-47">
+  <div class="slide-head">
+    <div class="badge">スライド 47</div>
+    <div class="slide-title">
+      <h2>コンデンサ：必要な物理</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-47.jpg" aria-label="Open slide 47 in full screen">
+      <img src="assets/slides/slide-47.jpg" alt="Slide 47: コンデンサ：必要な物理" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 47 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>コンデンサは充電と放電を行います。短時間エネルギーを蓄えたり、電圧のふるまいを変えたりできます。メモリでは、小さな電荷があるかどうかが重要です。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>コンデンサができる2つの動作は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>充電と放電です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-48">
+  <div class="slide-head">
+    <div class="badge">スライド 48</div>
+    <div class="slide-title">
+      <h2>静電容量の式</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-48.jpg" aria-label="Open slide 48 in full screen">
+      <img src="assets/slides/slide-48.jpg" alt="Slide 48: 静電容量の式" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 48 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>静電容量は、ある電圧に対してどれだけの電荷を蓄えられるかを表します。関係式は C = Q / V です。この授業では計算よりも関係の理解が重要です。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>C = Q / V に出てくる量は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>静電容量、電荷、電圧です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-49">
+  <div class="slide-head">
+    <div class="badge">スライド 49</div>
+    <div class="slide-title">
+      <h2>コンデンサは電池ではない</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-49.jpg" aria-label="Open slide 49 in full screen">
+      <img src="assets/slides/slide-49.jpg" alt="Slide 49: コンデンサは電池ではない" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 49 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>コンデンサは電池と同じではありません。コンデンサは電荷を直接蓄え、通常は短時間だけ保持します。一方、電池は化学反応を使い、はるかに多くのエネルギーを蓄えます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>化学反応を使うのはどちらですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電池です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-50">
+  <div class="slide-head">
+    <div class="badge">スライド 50</div>
+    <div class="slide-title">
+      <h2>DRAM：小さなコンデンサによるメモリ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-50.jpg" aria-label="Open slide 50 in full screen">
+      <img src="assets/slides/slide-50.jpg" alt="Slide 50: DRAM：小さなコンデンサによるメモリ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 50 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>DRAM セルは、小さなコンデンサで1ビットを保持し、トランジスタでアクセスを制御します。多くのセルが集まってコンピュータの作業用メモリになります。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>簡略化した DRAM セルを構成する主な2つの装置は何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>コンデンサとトランジスタです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-51">
+  <div class="slide-head">
+    <div class="badge">スライド 51</div>
+    <div class="slide-title">
+      <h2>なぜDRAMはダイナミックなのか</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-51.jpg" aria-label="Open slide 51 in full screen">
+      <img src="assets/slides/slide-51.jpg" alt="Slide 51: なぜDRAMはダイナミックなのか" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 51 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>小さなコンデンサの電荷は少しずつ漏れます。DRAM は状態を繰り返し読み出し、元に戻さなければなりません。この繰り返しを refresh と呼びます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>なぜ DRAM は dynamic と呼ばれるのですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電荷を繰り返しリフレッシュしなければならないからです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-52">
+  <div class="slide-head">
+    <div class="badge">スライド 52</div>
+    <div class="slide-title">
+      <h2>RAMには電源が必要</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-52.jpg" aria-label="Open slide 52 in full screen">
+      <img src="assets/slides/slide-52.jpg" alt="Slide 52: RAMには電源が必要" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 52 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>RAM は揮発性メモリです。現在のデータを保つために電源が必要です。電源が消えると、RAM 内の未保存の作業データは失われます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>volatile とは何を意味しますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電源がなくなるとデータが失われることです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-53">
+  <div class="slide-head">
+    <div class="badge">スライド 53</div>
+    <div class="slide-title">
+      <h2>SSDは異なる</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-53.jpg" aria-label="Open slide 53 in full screen">
+      <img src="assets/slides/slide-53.jpg" alt="Slide 53: SSDは異なる" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 53 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>SSD は DRAM コンデンサではなくフラッシュメモリを使います。フラッシュセルは、連続した電源がなくても保存状態を保てます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>SSD はファイルを保持するために常に電源が必要ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>いいえ。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-54">
+  <div class="slide-head">
+    <div class="badge">スライド 54</div>
+    <div class="slide-title">
+      <h2>SSDは電源がなくてもデータを保持する — 大きな図</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-54.jpg" aria-label="Open slide 54 in full screen">
+      <img src="assets/slides/slide-54.jpg" alt="Slide 54: SSDは電源がなくてもデータを保持する — 大きな図" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 54 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>この図は不揮発性ストレージを強調しています。シャットダウン後も、ファイルやプログラムは SSD に残ります。ただし、読み出したり書き換えたりするには電力が必要です。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>non-volatile とは何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>電源を切っても保存情報が残ることです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-55">
+  <div class="slide-head">
+    <div class="badge">スライド 55</div>
+    <div class="slide-title">
+      <h2>CPU・RAM・SSD の3つの役割</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-55.jpg" aria-label="Open slide 55 in full screen">
+      <img src="assets/slides/slide-55.jpg" alt="Slide 55: CPU・RAM・SSD の3つの役割" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 55 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>CPU、RAM、SSD には異なる役割があります。CPU は命令を処理し、RAM は現在の作業データを持ち、SSD はプログラムやファイルを長期保存します。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>現在の作業データは普通どこに置かれますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>RAM です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<h2 class="part-title">第6部 — ハードウェア、ソフトウェア、トラブルシューティング</h2>
+<article class="slide-card" id="slide-56">
+  <div class="slide-head">
+    <div class="badge">スライド 56</div>
+    <div class="slide-title">
+      <h2>第6部 — ハードウェアからソフトウェアへ</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-56.jpg" aria-label="Open slide 56 in full screen">
+      <img src="assets/slides/slide-56.jpg" alt="Slide 56: 第6部 — ハードウェアからソフトウェアへ" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 56 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>ハードウェアがあるからソフトウェアが可能になります。プログラムは抽象的に見えても、最終的にはすべての命令が物理信号と回路状態で表現されます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>ソフトウェア命令の下には何がありますか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>物理的なハードウェア信号と状態です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-57">
+  <div class="slide-head">
+    <div class="badge">スライド 57</div>
+    <div class="slide-title">
+      <h2>コンピュータのように考える</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-57.jpg" aria-label="Open slide 57 in full screen">
+      <img src="assets/slides/slide-57.jpg" alt="Slide 57: コンピュータのように考える" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 57 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>コンピュータは正確な条件と順序に従います。コンピュータのように考えるとは、仕事を明確な入力、ルール、状態、出力に分けることです。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>ここでいう『コンピュータのように考える』とは何ですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>明確な入力、ルール、状態、順序立った手順を使うことです。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-58">
+  <div class="slide-head">
+    <div class="badge">スライド 58</div>
+    <div class="slide-title">
+      <h2>トラブルシューティングの流れ — 大きな図</h2>
+      <p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-58.jpg" aria-label="Open slide 58 in full screen">
+      <img src="assets/slides/slide-58.jpg" alt="Slide 58: トラブルシューティングの流れ — 大きな図" loading="lazy">
+    </button>
+    <figcaption>元のプレゼンテーションのスライド 58 — クリックで拡大</figcaption>
+  </figure>
+  <section class="reading"><p>トラブルシューティングは、電源 → ハードウェア → ファームウェア / 起動 → OS → ソフトウェア → ネットワーク → ユーザー操作、という流れで考えます。最後に動いていた段階を見つけます。</p></section>
+  <section class="think">
+    <h3>考えて答えましょう</h3>
+    <p>サポート担当者は最初に何を見つけるべきですか。</p>
+    <details data-checkpoint><summary>答えを見る</summary><p>最後に動いていた段階と、最初に失敗した段階です。</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+
+
+
+
+<h2 class="part-title">復習活動と元のスライドクイズ</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="interactive-section" id="interactive-review">
+<h2>拡張インタラクティブ復習</h2>
+<p>この部分は元のプレゼンテーションに追加したものです。すべてのスライドを学んだ後に行ってください。</p>
+
+<div class="lab-grid">
+<article class="lab">
+<h3>1. 2進数を作ってみましょう</h3>
+<p>8、4、2、1 のスイッチを切り替えてください。</p>
+<div class="switches">
+<button class="bit-switch" data-value="8" aria-pressed="false">8</button>
+<button class="bit-switch" data-value="4" aria-pressed="false">4</button>
+<button class="bit-switch" data-value="2" aria-pressed="false">2</button>
+<button class="bit-switch" data-value="1" aria-pressed="false">1</button>
+</div>
+<div class="binary-output">2進数: <span id="binary-text">0000</span> · 10進数: <span id="decimal-text">0</span></div>
+</article>
+
+<article class="lab">
+<h3>2. 論理ゲート実験</h3>
+<div class="gate-controls"><button class="toggle" id="gate-a">0</button><button class="toggle" id="gate-b">0</button></div>
+<select class="gate-select" id="gate-select"><option>AND</option><option>OR</option><option>XOR</option><option>NAND</option><option value="NOTA">NOT A</option></select>
+<div class="lamp" id="gate-lamp">0</div>
+</article>
+
+<article class="lab">
+<h3>3. 技術の順番を並べる</h3>
+<p>矢印を使って発展の順番を並べてください。</p>
+<div class="order-list" id="order-list"><div class="order-item" data-key="transistor"><strong>トランジスタ</strong><button type="button" data-move="up">↑</button><button type="button" data-move="down">↓</button></div><div class="order-item" data-key="relay"><strong>リレー</strong><button type="button" data-move="up">↑</button><button type="button" data-move="down">↓</button></div><div class="order-item" data-key="ic"><strong>集積回路</strong><button type="button" data-move="up">↑</button><button type="button" data-move="down">↓</button></div><div class="order-item" data-key="tube"><strong>真空管</strong><button type="button" data-move="up">↑</button><button type="button" data-move="down">↓</button></div></div>
+<div class="actions"><button class="primary" id="check-order" type="button">順番を確認</button></div><div class="feedback" id="order-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>4. コンピュータ部品の役割を対応させる</h3>
+<table class="match-table"><tr><th>部品</th><th>役割</th></tr>
+<tr><td>CPU</td><td><select class="role-select" data-answer="process"><option value="">選ぶ</option><option value="process">命令を処理する</option><option value="work">現在の作業を保持する</option><option value="store">ファイルを長期保存する</option></select></td></tr>
+<tr><td>RAM</td><td><select class="role-select" data-answer="work"><option value="">選ぶ</option><option value="process">命令を処理する</option><option value="work">現在の作業を保持する</option><option value="store">ファイルを長期保存する</option></select></td></tr>
+<tr><td>SSD</td><td><select class="role-select" data-answer="store"><option value="">選ぶ</option><option value="process">命令を処理する</option><option value="work">現在の作業を保持する</option><option value="store">ファイルを長期保存する</option></select></td></tr>
+</table><div class="actions"><button class="primary" id="check-match" type="button">対応を確認</button></div><div class="feedback" id="match-feedback"></div>
+</article>
+</div>
+
+<article class="lab" style="margin-top:18px">
+<h3>5. 物理的問題か論理的問題か？</h3>
+<p>各カードをクリックしてください：空欄 → 物理 → 論理 → 空欄</p>
+<div class="scenario-grid">
+<div class="scenario" data-answer="physical"><strong>クリックして分類</strong><br>ゆるい電源コネクタ</div>
+<div class="scenario" data-answer="logical"><strong>クリックして分類</strong><br>誤った権限ルール</div>
+<div class="scenario" data-answer="physical"><strong>クリックして分類</strong><br>チップの過熱</div>
+<div class="scenario" data-answer="logical"><strong>クリックして分類</strong><br>誤ったプログラムの順序</div>
+<div class="scenario" data-answer="physical"><strong>クリックして分類</strong><br>腐食したケーブル接点</div>
+<div class="scenario" data-answer="logical"><strong>クリックして分類</strong><br>誤ったネットワーク設定</div>
+</div><div class="actions"><button class="primary" id="check-scenarios" type="button">分類を確認</button></div><div class="feedback" id="scenario-feedback"></div>
+</article>
+
+<article class="lab" style="margin-top:18px">
+<h3>6. 最終知識チェック</h3>
+<form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. 通常、閉じたスイッチを表す状態はどれですか。</legend><label><input type="radio" name="q1" value="0"> 0 / OFF</label><label><input type="radio" name="q1" value="1"> 1 / ON</label><label><input type="radio" name="q1" value="2"> ノイズ</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. 最初の4つの2進数の位は何ですか。</legend><label><input type="radio" name="q2" value="0"> 1, 10, 100, 1000</label><label><input type="radio" name="q2" value="1"> 1, 2, 4, 8</label><label><input type="radio" name="q2" value="2"> 0, 1, 2, 3</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>3. 2進数 0011 は10進数でいくつですか。</legend><label><input type="radio" name="q3" value="0"> 2</label><label><input type="radio" name="q3" value="1"> 3</label><label><input type="radio" name="q3" value="2"> 4</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. 両方の入力が 1 のときだけ 1 を出すゲートはどれですか。</legend><label><input type="radio" name="q4" value="0"> AND</label><label><input type="radio" name="q4" value="1"> OR</label><label><input type="radio" name="q4" value="2"> NOT</label></fieldset><fieldset class="quiz-card" data-answer="2"><legend>5. 入力を反転するゲートはどれですか。</legend><label><input type="radio" name="q5" value="0"> AND</label><label><input type="radio" name="q5" value="1"> OR</label><label><input type="radio" name="q5" value="2"> NOT</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>6. リレーの接点を動かす物理効果は何ですか。</legend><label><input type="radio" name="q6" value="0"> 電磁気</label><label><input type="radio" name="q6" value="1"> 化学的腐食</label><label><input type="radio" name="q6" value="2"> 重力だけ</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>7. リレーの主な弱点は何でしたか。</legend><label><input type="radio" name="q7" value="0"> 電気入力がない</label><label><input type="radio" name="q7" value="1"> 動く部品がある</label><label><input type="radio" name="q7" value="2"> 論理を作れない</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. 講義の流れで、リレーの次に来る技術は何ですか。</legend><label><input type="radio" name="q8" value="0"> 真空管</label><label><input type="radio" name="q8" value="1"> 集積回路</label><label><input type="radio" name="q8" value="2"> SSD</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>9. 多くの真空管を置き換えた装置は何ですか。</legend><label><input type="radio" name="q9" value="0"> コンデンサ</label><label><input type="radio" name="q9" value="1"> トランジスタ</label><label><input type="radio" name="q9" value="2"> 電池</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>10. マイクロチップの内部で非常に多く繰り返されるのは何ですか。</legend><label><input type="radio" name="q10" value="0"> 機械式リレー</label><label><input type="radio" name="q10" value="1"> トランジスタ</label><label><input type="radio" name="q10" value="2"> ハードディスク</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>11. DRAM では、帯電した小さなコンデンサは何を表せますか。</legend><label><input type="radio" name="q11" value="0"> 1ビット</label><label><input type="radio" name="q11" value="1"> 1つのファン</label><label><input type="radio" name="q11" value="2"> 1つのファイル名</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. なぜ DRAM はリフレッシュが必要ですか。</legend><label><input type="radio" name="q12" value="0"> 電荷が少しずつ漏れるから</label><label><input type="radio" name="q12" value="1"> SSD が満杯になるから</label><label><input type="radio" name="q12" value="2"> CPU が命令を忘れるから</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>13. 電源を切るとデータを失うメモリはどれですか。</legend><label><input type="radio" name="q13" value="0"> SSD</label><label><input type="radio" name="q13" value="1"> RAM</label><label><input type="radio" name="q13" value="2"> フラッシュドライブ</label></fieldset><fieldset class="quiz-card" data-answer="2"><legend>14. 通常、ファイルを長期保存する部品はどれですか。</legend><label><input type="radio" name="q14" value="0"> CPU</label><label><input type="radio" name="q14" value="1"> RAM</label><label><input type="radio" name="q14" value="2"> SSD</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>15. 良いトラブルシューティング方法はどれですか。</legend><label><input type="radio" name="q15" value="0"> 一度に多くのことを変える</label><label><input type="radio" name="q15" value="1"> 最後に動いた段階と最初に失敗した段階を見つける</label><label><input type="radio" name="q15" value="2"> いつも最初に Windows を再インストールする</label></fieldset>
+<div class="actions"><button class="primary" id="check-quiz" type="button">最終クイズを確認</button><button class="secondary" id="reset-quiz" type="reset">リセット</button></div>
+<div class="score" id="quiz-score"></div></form>
+</article>
+</section>
+</main>
+
+<div class="modal" id="slide-modal" role="dialog" aria-modal="true" aria-label="Full slide image"><button type="button" aria-label="Close">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · ウェブ講義 1 · 元の58枚のスライド構成を保持。</footer>
+</body></html>

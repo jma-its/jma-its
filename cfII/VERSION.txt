@@ -1,0 +1,18 @@
+CFII FINAL PACKAGE
+Build date: 2026-07-28
+Lectures: 12
+Total slides: 708
+Start page: cfII/index.html
+
+01 |  58 slides | From Switches to Computer Memory
+02 |  52 slides | How a Computer Is Built
+03 |  39 slides | Power for Computers
+04 |  96 slides | Hospital Workstation Hardware
+05 |  68 slides | Networks and the Internet
+06 |  53 slides | Computer Performance and Bottlenecks
+07 |  48 slides | IT Support Workflow
+08 |  55 slides | Drivers and Device Manager
+09 |  49 slides | System Information and Hardware Status
+10 |  55 slides | Computer Security Basics 1
+11 |  59 slides | Computer Security Basics 2
+12 |  76 slides | Startup, UEFI, Windows Recovery and Reinstallation

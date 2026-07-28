@@ -1,0 +1,394 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 2 — How a Computer Is Built</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script><style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head><body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture01/index.html">← 1</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture03/index.html">3 →</a></nav>
+<header><div class="header-inner"><div class="course">Computer Fundamentals 2 · Current Quarter · Lecture 2</div><div class="archive-note">Original slide artwork remains the main content. Historical labels inside slides are preserved.</div><h1>How a Computer Is Built</h1><p class="subtitle">The original 52-slide visual lecture, adapted for independent web study.</p><p class="intro">Study each original slide, read the short explanation, answer the checkpoint, and finish the extended interactive review.</p><div class="lang-switch"><a class="current" href="lecture_en.html">English</a><a href="lecture_ja.html">日本語</a></div></div></header>
+<main class="container">
+<section class="core"><h2>Core method</h2><div class="core-chain">part → job → physical principle → possible problem</div></section>
+<section class="progress-box"><strong>Reading progress</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>Open answers only after thinking.</span></section>
+<section class="notice"><h2>How to use this lecture</h2><p>Look at the original slide first. Click it to enlarge. Read the short explanation, answer before opening the hidden answer, and finish the interactive section.</p></section>
+<section class="notice map" id="lesson-map"><h2>Lesson map — 52 original slides</h2><ol><li><a href="#slide-1">Slide 1: Lecture 2 — How a Computer Is Built</a></li><li><a href="#slide-2">Slide 2: Big Idea: One Laptop, Many Computers</a></li><li><a href="#slide-3">Slide 3: Laptop Outside Overview</a></li><li><a href="#slide-4">Slide 4: Outside Parts: Input, Output, Power</a></li><li><a href="#slide-5">Slide 5: Ports on the Right Side</a></li><li><a href="#slide-6">Slide 6: Left Side and Bottom Features</a></li><li><a href="#slide-7">Slide 7: Inside the Laptop</a></li><li><a href="#slide-8">Slide 8: What Is Inside the Laptop?</a></li><li><a href="#slide-9">Slide 9: Inside View: Main Computer Organs</a></li><li><a href="#slide-10">Slide 10: Motherboard — The Main Board</a></li><li><a href="#slide-11">Slide 11: Motherboard: Main Board and Nerves</a></li><li><a href="#slide-12">Slide 12: CPU / Processor — The Brain</a></li><li><a href="#slide-13">Slide 13: CPU: What Does CPU Mean?</a></li><li><a href="#slide-14">Slide 14: CPU: Principle of Work</a></li><li><a href="#slide-15">Slide 15: RAM — Short-Term Memory</a></li><li><a href="#slide-16">Slide 16: RAM: What Does RAM Mean?</a></li><li><a href="#slide-17">Slide 17: RAM: Principle of Work</a></li><li><a href="#slide-18">Slide 18: HDD and SSD — Long-Term Storage</a></li><li><a href="#slide-19">Slide 19: Storage: HDD and SSD</a></li><li><a href="#slide-20">Slide 20: HDD: What Does HDD Mean?</a></li><li><a href="#slide-21">Slide 21: SSD: What Does SSD Mean?</a></li><li><a href="#slide-22">Slide 22: Changing from HDD to SSD</a></li><li><a href="#slide-23">Slide 23: Cooling Fan and Heat Sink</a></li><li><a href="#slide-24">Slide 24: Cooling System: Fan, Heat Pipe, Heat Sink</a></li><li><a href="#slide-25">Slide 25: Battery — Power and Energy Storage</a></li><li><a href="#slide-26">Slide 26: Battery and Charger: Power System</a></li><li><a href="#slide-27">Slide 27: Charger and Power Adapter — External Power</a></li><li><a href="#slide-28">Slide 28: Wi‑Fi Card — Wireless Connection</a></li><li><a href="#slide-29">Slide 29: Wi‑Fi Card: Network Communication</a></li><li><a href="#slide-30">Slide 30: Speakers — Sound Output</a></li><li><a href="#slide-31">Slide 31: Keyboard and Touchpad — Input Devices</a></li><li><a href="#slide-32">Slide 32: Screen / Display — Visual Output</a></li><li><a href="#slide-33">Slide 33: Webcam and Microphone — Camera and Sound Input</a></li><li><a href="#slide-34">Slide 34: Input and Output Devices — How We Talk With the Laptop</a></li><li><a href="#slide-35">Slide 35: How Data Moves Inside the Laptop — Diagram</a></li><li><a href="#slide-36">Slide 36: How Data Moves Inside the Laptop</a></li><li><a href="#slide-37">Slide 37: Power Button to Working Laptop — Visual Boot Sequence</a></li><li><a href="#slide-38">Slide 38: Booting: From Power Button to Working Laptop</a></li><li><a href="#slide-39">Slide 39: All Parts Work Together</a></li><li><a href="#slide-40">Slide 40: System Summary: All Parts Work Together</a></li><li><a href="#slide-41">Slide 41: Opening the Laptop Safely</a></li><li><a href="#slide-42">Slide 42: Tools for Laptop Disassembly</a></li><li><a href="#slide-43">Slide 43: Safety Before Opening a Laptop — Visual Rules</a></li><li><a href="#slide-44">Slide 44: Safety Before Opening a Laptop</a></li><li><a href="#slide-45">Slide 45: Step-by-Step Laptop Disassembly</a></li><li><a href="#slide-46">Slide 46: Practice: Name the Parts</a></li><li><a href="#slide-47">Slide 47: Old Laptop Problems and Checks</a></li><li><a href="#slide-48">Slide 48: Common Problems in Old Laptops</a></li><li><a href="#slide-49">Slide 49: Quick Checks Before Repair</a></li><li><a href="#slide-50">Slide 50: Quick Repair Thinking</a></li><li><a href="#slide-51">Slide 51: Review: Match the Part and the Job</a></li><li><a href="#slide-52">Slide 52: Final Message</a></li></ol></section>
+<h2 class="part-title">Opening — A computer is a system</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">Slide 1</div><div class="slide-title"><h2>Lecture 2 — How a Computer Is Built</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="Lecture 2 — How a Computer Is Built" loading="lazy"></button><figcaption>Original presentation slide 1 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Today we look at a computer as a complete physical system. We use one older laptop as an example, but the same main jobs exist in many laptops, desktops, hospital workstations, and medical devices.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Is a computer one part or a system?</p><details data-checkpoint><summary>Show answer</summary><p>A system of many parts.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">Slide 2</div><div class="slide-title"><h2>Big Idea: One Laptop, Many Computers</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="Big Idea: One Laptop, Many Computers" loading="lazy"></button><figcaption>Original presentation slide 2 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The example laptop is not the only design. Different computers place parts in different locations, but they still need processing, working memory, storage, connections, power, cooling, input, and output.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why do we use one old laptop in this lesson?</p><details data-checkpoint><summary>Show answer</summary><p>It is a clear real example for understanding many computers.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 1 — Outside parts and connections</h2>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">Slide 3</div><div class="slide-title"><h2>Laptop Outside Overview</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="Laptop Outside Overview" loading="lazy"></button><figcaption>Original presentation slide 3 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Before opening a computer, observe the outside. Check the screen, keyboard, touchpad, webcam, microphone, speakers, power button, vents, ports, charger connector, and visible damage.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Should support staff open the laptop before checking the outside?</p><details data-checkpoint><summary>Show answer</summary><p>No. Check simple outside causes first.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">Slide 4</div><div class="slide-title"><h2>Outside Parts: Input, Output, Power</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="Outside Parts: Input, Output, Power" loading="lazy"></button><figcaption>Original presentation slide 4 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Input devices send information into the computer. Output devices present information to the user. Ports connect other devices. The charger and battery belong to the power system.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Is the keyboard input or output?</p><details data-checkpoint><summary>Show answer</summary><p>Input.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">Slide 5</div><div class="slide-title"><h2>Ports on the Right Side</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="Ports on the Right Side" loading="lazy"></button><figcaption>Original presentation slide 5 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A port is a physical connection point. USB connects many devices. HDMI sends video and sound. Audio ports carry sound. Ethernet connects a cable network. The correct port, cable, and driver must all work together.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Name one device that can use USB.</p><details data-checkpoint><summary>Show answer</summary><p>Examples: mouse, keyboard, flash drive, phone, printer, scanner, or barcode reader.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">Slide 6</div><div class="slide-title"><h2>Left Side and Bottom Features</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="Left Side and Bottom Features" loading="lazy"></button><figcaption>Original presentation slide 6 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Vents allow air to move. Rubber feet create space under the laptop. Screws hold the case. Labels identify the model and electrical requirements. A soft blanket or dust can block airflow.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What can block laptop airflow?</p><details data-checkpoint><summary>Show answer</summary><p>Dust, paper, cloth, a blanket, or another soft surface.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 2 — Inside the laptop</h2>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">Slide 7</div><div class="slide-title"><h2>Inside the Laptop</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="Inside the Laptop" loading="lazy"></button><figcaption>Original presentation slide 7 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Now the virtual disassembly begins. Inside the laptop are systems for processing, memory, storage, power, cooling, communication, input, and output.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What four questions should we ask about each part?</p><details data-checkpoint><summary>Show answer</summary><p>What is it? What job does it do? What principle makes it work? What problem can occur?</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">Slide 8</div><div class="slide-title"><h2>What Is Inside the Laptop?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="What Is Inside the Laptop?" loading="lazy"></button><figcaption>Original presentation slide 8 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Do not treat the internal picture as random complexity. Organize it by function: process, remember now, store later, connect, power, cool, communicate, input, and output.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is a good way to understand a busy internal picture?</p><details data-checkpoint><summary>Show answer</summary><p>Group the parts by their functions.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">Slide 9</div><div class="slide-title"><h2>Inside View: Main Computer Organs</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="Inside View: Main Computer Organs" loading="lazy"></button><figcaption>Original presentation slide 9 — click to enlarge</figcaption></figure>
+<section class="reading"><p>CPU processes. RAM holds current work. HDD or SSD keeps files. The motherboard connects parts. Cooling removes heat. Learn shapes and jobs, not one exact position.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which part keeps saved files after shutdown?</p><details data-checkpoint><summary>Show answer</summary><p>HDD or SSD.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 3 — Motherboard, CPU, and RAM</h2>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">Slide 10</div><div class="slide-title"><h2>Motherboard — The Main Board</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="Motherboard — The Main Board" loading="lazy"></button><figcaption>Original presentation slide 10 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The motherboard is the main circuit board. It carries power and signals and contains connectors, chips, resistors, capacitors, and control circuits. Damage can cause many different symptoms.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can motherboard problems be difficult to diagnose?</p><details data-checkpoint><summary>Show answer</summary><p>Many different parts depend on the motherboard.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">Slide 11</div><div class="slide-title"><h2>Motherboard: Main Board and Nerves</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="Motherboard: Main Board and Nerves" loading="lazy"></button><figcaption>Original presentation slide 11 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Thin copper paths act like roads and nerves. They carry physical electrical signals between CPU, RAM, storage, ports, network devices, screen, keyboard, and power circuits.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Are data signals on the motherboard physical or magical?</p><details data-checkpoint><summary>Show answer</summary><p>Physical electrical signals.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">Slide 12</div><div class="slide-title"><h2>CPU / Processor — The Brain</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="CPU / Processor — The Brain" loading="lazy"></button><figcaption>Original presentation slide 12 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The CPU follows instructions, calculates, compares, and controls work. It is called the brain as a learning analogy, but it does not understand meaning like a human.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Can the CPU work alone without RAM, storage, power, and cooling?</p><details data-checkpoint><summary>Show answer</summary><p>No.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">Slide 13</div><div class="slide-title"><h2>CPU: What Does CPU Mean?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="CPU: What Does CPU Mean?" loading="lazy"></button><figcaption>Original presentation slide 13 — click to enlarge</figcaption></figure>
+<section class="reading"><p>CPU means Central Processing Unit. Central means main, processing means working with information, and unit means one important part.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does the letter P mean in CPU?</p><details data-checkpoint><summary>Show answer</summary><p>Processing.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">Slide 14</div><div class="slide-title"><h2>CPU: Principle of Work</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="CPU: Principle of Work" loading="lazy"></button><figcaption>Original presentation slide 14 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Inside the CPU are huge numbers of tiny transistors. They switch between electrical states very quickly. Switching uses energy and creates heat, so the CPU needs cooling.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why does the CPU need cooling?</p><details data-checkpoint><summary>Show answer</summary><p>Electrical switching creates heat.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">Slide 15</div><div class="slide-title"><h2>RAM — Short-Term Memory</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="RAM — Short-Term Memory" loading="lazy"></button><figcaption>Original presentation slide 15 — click to enlarge</figcaption></figure>
+<section class="reading"><p>RAM is the fast working area for open programs and current data. It is like a desk: useful for work happening now, not permanent storage.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Does RAM help mainly with work now or storage later?</p><details data-checkpoint><summary>Show answer</summary><p>Work now.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">Slide 16</div><div class="slide-title"><h2>RAM: What Does RAM Mean?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="RAM: What Does RAM Mean?" loading="lazy"></button><figcaption>Original presentation slide 16 — click to enlarge</figcaption></figure>
+<section class="reading"><p>RAM means Random Access Memory. The CPU can quickly access many different memory locations. More RAM gives more working space when many programs or large data sets are open.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What does more RAM usually provide?</p><details data-checkpoint><summary>Show answer</summary><p>More working space.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">Slide 17</div><div class="slide-title"><h2>RAM: Principle of Work</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="RAM: Principle of Work" loading="lazy"></button><figcaption>Original presentation slide 17 — click to enlarge</figcaption></figure>
+<section class="reading"><p>RAM chips hold temporary electrical states and are read and written very frequently. Normal RAM is volatile: its working data disappears when power is removed.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Does normal RAM keep unsaved data after power is removed?</p><details data-checkpoint><summary>Show answer</summary><p>No.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 4 — HDD, SSD, cooling, and power</h2>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">Slide 18</div><div class="slide-title"><h2>HDD and SSD — Long-Term Storage</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="HDD and SSD — Long-Term Storage" loading="lazy"></button><figcaption>Original presentation slide 18 — click to enlarge</figcaption></figure>
+<section class="reading"><p>HDD and SSD both keep the operating system, programs, and files after shutdown. They can have the same physical size and connector, but their internal technology is different.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Do HDD and SSD have the same job?</p><details data-checkpoint><summary>Show answer</summary><p>Yes, long-term storage, but they use different technology.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">Slide 19</div><div class="slide-title"><h2>Storage: HDD and SSD</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="Storage: HDD and SSD" loading="lazy"></button><figcaption>Original presentation slide 19 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Storage is different from RAM. RAM supports current work; storage keeps information for later. An old laptop may have a 2.5-inch SATA HDD that can often be replaced by an SSD.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which is temporary: RAM or storage?</p><details data-checkpoint><summary>Show answer</summary><p>RAM.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">Slide 20</div><div class="slide-title"><h2>HDD: What Does HDD Mean?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="HDD: What Does HDD Mean?" loading="lazy"></button><figcaption>Original presentation slide 20 — click to enlarge</figcaption></figure>
+<section class="reading"><p>HDD means Hard Disk Drive. A motor spins magnetic platters, and a moving head reads or writes data. Mechanical movement makes HDDs slower and sensitive to shock.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why can shock damage a working HDD?</p><details data-checkpoint><summary>Show answer</summary><p>It contains spinning platters and a moving read/write head.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">Slide 21</div><div class="slide-title"><h2>SSD: What Does SSD Mean?</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="SSD: What Does SSD Mean?" loading="lazy"></button><figcaption>Original presentation slide 21 — click to enlarge</figcaption></figure>
+<section class="reading"><p>SSD means Solid State Drive. It uses flash-memory chips and a controller. It has no moving mechanical storage parts and is normally faster, quieter, and more shock-resistant than an HDD.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Does an SSD use spinning magnetic platters?</p><details data-checkpoint><summary>Show answer</summary><p>No.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">Slide 22</div><div class="slide-title"><h2>Changing from HDD to SSD</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="Changing from HDD to SSD" loading="lazy"></button><figcaption>Original presentation slide 22 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Replacing an old HDD with a compatible SSD is often a useful upgrade. It can improve startup and loading speed, but compatibility, data backup, cloning or installation, and the condition of the whole computer must be considered.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Does an SSD upgrade repair every possible slow-computer problem?</p><details data-checkpoint><summary>Show answer</summary><p>No. RAM, heat, software, CPU, and other problems may also matter.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">Slide 23</div><div class="slide-title"><h2>Cooling Fan and Heat Sink</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="Cooling Fan and Heat Sink" loading="lazy"></button><figcaption>Original presentation slide 23 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The CPU may be hidden under the cooling assembly. A heat pipe carries heat, metal fins spread it, and the fan moves air through the fins and vents.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which visible cooling part moves air?</p><details data-checkpoint><summary>Show answer</summary><p>The fan.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">Slide 24</div><div class="slide-title"><h2>Cooling System: Fan, Heat Pipe, Heat Sink</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="Cooling System: Fan, Heat Pipe, Heat Sink" loading="lazy"></button><figcaption>Original presentation slide 24 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Heat moves from the hot chip into cooler metal and then into moving air. Dust, blocked vents, dried thermal material, or a broken fan can cause thermal throttling or shutdown.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Can a heat problem make a computer slow?</p><details data-checkpoint><summary>Show answer</summary><p>Yes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">Slide 25</div><div class="slide-title"><h2>Battery — Power and Energy Storage</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="Battery — Power and Energy Storage" loading="lazy"></button><figcaption>Original presentation slide 25 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The laptop battery stores chemical energy and supplies electrical energy when the charger is disconnected. Batteries lose capacity with age and may become unsafe if damaged or swollen.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What kind of energy is stored inside a battery?</p><details data-checkpoint><summary>Show answer</summary><p>Chemical energy.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">Slide 26</div><div class="slide-title"><h2>Battery and Charger: Power System</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="Battery and Charger: Power System" loading="lazy"></button><figcaption>Original presentation slide 26 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The adapter converts wall power into suitable laptop power. The motherboard distributes power and manages charging. A weak battery is one fault in the chain, not proof that the whole laptop is broken.</p></section>
+<section class="think"><h3>Think and answer</h3><p>If a laptop works with the charger but not on battery, which part should be checked?</p><details data-checkpoint><summary>Show answer</summary><p>The battery and charging system.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">Slide 27</div><div class="slide-title"><h2>Charger and Power Adapter — External Power</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="Charger and Power Adapter — External Power" loading="lazy"></button><figcaption>Original presentation slide 27 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Check the cable, connector, adapter label, output voltage, current capacity, and visible damage. A wrong or damaged adapter can fail to charge, overheat, or damage equipment.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Should an adapter with exposed wire continue to be used?</p><details data-checkpoint><summary>Show answer</summary><p>No.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 5 — Network, input, and output</h2>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">Slide 28</div><div class="slide-title"><h2>Wi‑Fi Card — Wireless Connection</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="Wi‑Fi Card — Wireless Connection" loading="lazy"></button><figcaption>Original presentation slide 28 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The Wi‑Fi card is a small network device, usually connected to thin antenna wires. It sends and receives radio signals.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What do the thin wires connected to a Wi‑Fi card do?</p><details data-checkpoint><summary>Show answer</summary><p>They connect the antennas.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">Slide 29</div><div class="slide-title"><h2>Wi‑Fi Card: Network Communication</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="Wi‑Fi Card: Network Communication" loading="lazy"></button><figcaption>Original presentation slide 29 — click to enlarge</figcaption></figure>
+<section class="reading"><p>No internet does not automatically mean the whole laptop is broken. Check Wi‑Fi status, airplane mode, drivers, antenna connections, router, signal, and the network service.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Can the laptop work while the network fails?</p><details data-checkpoint><summary>Show answer</summary><p>Yes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">Slide 30</div><div class="slide-title"><h2>Speakers — Sound Output</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="Speakers — Sound Output" loading="lazy"></button><figcaption>Original presentation slide 30 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Speakers convert electrical audio signals into physical vibration and sound. Low volume, wrong output device, damaged speakers, cables, drivers, or software settings can cause silence.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Are speakers input or output devices?</p><details data-checkpoint><summary>Show answer</summary><p>Output.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">Slide 31</div><div class="slide-title"><h2>Keyboard and Touchpad — Input Devices</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="Keyboard and Touchpad — Input Devices" loading="lazy"></button><figcaption>Original presentation slide 31 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The keyboard and touchpad convert human actions into electrical signals. A key press becomes coded input; touchpad sensors detect finger movement and clicks.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What direction does information travel through an input device?</p><details data-checkpoint><summary>Show answer</summary><p>From the user into the computer.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">Slide 32</div><div class="slide-title"><h2>Screen / Display — Visual Output</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="Screen / Display — Visual Output" loading="lazy"></button><figcaption>Original presentation slide 32 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The screen converts electronic image signals into controlled light. A black screen may involve brightness, the display panel, cable, graphics circuits, startup, RAM, or power.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Does a black screen always mean the screen panel is broken?</p><details data-checkpoint><summary>Show answer</summary><p>No.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">Slide 33</div><div class="slide-title"><h2>Webcam and Microphone — Camera and Sound Input</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="Webcam and Microphone — Camera and Sound Input" loading="lazy"></button><figcaption>Original presentation slide 33 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The webcam converts light into digital image data. The microphone converts sound pressure into an electrical signal and digital audio. Privacy settings and application selection also matter.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Are webcam and microphone input devices?</p><details data-checkpoint><summary>Show answer</summary><p>Yes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">Slide 34</div><div class="slide-title"><h2>Input and Output Devices — How We Talk With the Laptop</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="Input and Output Devices — How We Talk With the Laptop" loading="lazy"></button><figcaption>Original presentation slide 34 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Input sends information to the system; output presents results. A complete user action often uses both: type with a keyboard, process in the computer, then see text on the screen.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Give one input and one output device.</p><details data-checkpoint><summary>Show answer</summary><p>Example: keyboard and screen.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 6 — Data flow and booting</h2>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">Slide 35</div><div class="slide-title"><h2>How Data Moves Inside the Laptop — Diagram</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="How Data Moves Inside the Laptop — Diagram" loading="lazy"></button><figcaption>Original presentation slide 35 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Follow one letter: the keyboard creates an input signal, the motherboard carries it, the CPU processes it, RAM holds current data, and the screen displays the result.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which part holds the current letter while the program is working?</p><details data-checkpoint><summary>Show answer</summary><p>RAM.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">Slide 36</div><div class="slide-title"><h2>How Data Moves Inside the Laptop</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="How Data Moves Inside the Laptop" loading="lazy"></button><figcaption>Original presentation slide 36 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Input → processing → working memory → output. Storage is used when the file is saved or when program data must be loaded for later use.</p></section>
+<section class="think"><h3>Think and answer</h3><p>When does storage keep the typed letter long-term?</p><details data-checkpoint><summary>Show answer</summary><p>When the file is saved.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">Slide 37</div><div class="slide-title"><h2>Power Button to Working Laptop — Visual Boot Sequence</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="Power Button to Working Laptop — Visual Boot Sequence" loading="lazy"></button><figcaption>Original presentation slide 37 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Power reaches the motherboard, startup circuits wake the system, the CPU begins, RAM is checked and used, firmware finds a boot device, and the operating system loads from storage.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which long-term device normally provides the operating system during boot?</p><details data-checkpoint><summary>Show answer</summary><p>The HDD or SSD.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">Slide 38</div><div class="slide-title"><h2>Booting: From Power Button to Working Laptop</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="Booting: From Power Button to Working Laptop" loading="lazy"></button><figcaption>Original presentation slide 38 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A slow boot can have several causes: an old HDD, failing storage, insufficient RAM, overheating, many startup programs, or an old operating system. Check evidence step by step.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Is a slow boot always caused by the CPU?</p><details data-checkpoint><summary>Show answer</summary><p>No.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">Slide 39</div><div class="slide-title"><h2>All Parts Work Together</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="All Parts Work Together" loading="lazy"></button><figcaption>Original presentation slide 39 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A computer is a system. One weak part can limit the whole system. Fast CPU with failing storage, insufficient RAM, weak power, or poor cooling can still give poor results.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Can one weak part affect the whole computer?</p><details data-checkpoint><summary>Show answer</summary><p>Yes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">Slide 40</div><div class="slide-title"><h2>System Summary: All Parts Work Together</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="System Summary: All Parts Work Together" loading="lazy"></button><figcaption>Original presentation slide 40 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Use the body analogy carefully: CPU is the brain, RAM is short-term memory, storage is long-term memory, motherboard is roads and nerves, battery is energy, and cooling is breathing and sweating.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which part is compared with long-term memory?</p><details data-checkpoint><summary>Show answer</summary><p>HDD or SSD.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 7 — Safe virtual disassembly</h2>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">Slide 41</div><div class="slide-title"><h2>Opening the Laptop Safely</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="Opening the Laptop Safely" loading="lazy"></button><figcaption>Original presentation slide 41 — click to enlarge</figcaption></figure>
+<section class="reading"><p>The lesson now moves from theory to virtual disassembly. Hardware can break, short circuit, cut, or contain a dangerous battery. Safe habits are professional habits.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why learn disassembly safety in an online class?</p><details data-checkpoint><summary>Show answer</summary><p>Students may later handle real computers at school, home, or work.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">Slide 42</div><div class="slide-title"><h2>Tools for Laptop Disassembly</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="Tools for Laptop Disassembly" loading="lazy"></button><figcaption>Original presentation slide 42 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Use the correct small screwdriver, plastic opening tools, containers for screws, and a clean hard table. Wrong tools and excessive force damage screws, clips, cables, and boards.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Is good repair fast and forceful or slow and careful?</p><details data-checkpoint><summary>Show answer</summary><p>Slow and careful.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">Slide 43</div><div class="slide-title"><h2>Safety Before Opening a Laptop — Visual Rules</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="Safety Before Opening a Laptop — Visual Rules" loading="lazy"></button><figcaption>Original presentation slide 43 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Turn the laptop off, unplug the charger, remove the battery if possible, work with dry hands, organize screws, and avoid force. Stop if there is swelling, liquid, smoke, or burning smell.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Should the charger remain connected while opening the laptop?</p><details data-checkpoint><summary>Show answer</summary><p>No.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">Slide 44</div><div class="slide-title"><h2>Safety Before Opening a Laptop</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="Safety Before Opening a Laptop" loading="lazy"></button><figcaption>Original presentation slide 44 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Power may remain even after shutdown. Disconnect external power and batteries when possible. Avoid static, liquid, metal tools near live circuits, and unnecessary contact with chips.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why remove the battery if possible?</p><details data-checkpoint><summary>Show answer</summary><p>The laptop may still have electrical power.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">Slide 45</div><div class="slide-title"><h2>Step-by-Step Laptop Disassembly</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="Step-by-Step Laptop Disassembly" loading="lazy"></button><figcaption>Original presentation slide 45 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Work in order: record the condition, shut down, unplug, remove the battery, organize tools, record screw locations, open slowly, disconnect carefully, identify parts, reassemble, and test.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why record screw locations?</p><details data-checkpoint><summary>Show answer</summary><p>Different screws may have different lengths and positions.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">Slide 46</div><div class="slide-title"><h2>Practice: Name the Parts</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="Practice: Name the Parts" loading="lazy"></button><figcaption>Original presentation slide 46 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Identify the motherboard, CPU area, RAM, HDD or SSD, cooling system, battery, Wi‑Fi card, speakers, ports, and cables. Explain each part by its job, not only its name.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What should you say after naming a part?</p><details data-checkpoint><summary>Show answer</summary><p>Its job or function.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article><h2 class="part-title">Part 8 — Problems, checks, and review</h2>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">Slide 47</div><div class="slide-title"><h2>Old Laptop Problems and Checks</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="Old Laptop Problems and Checks" loading="lazy"></button><figcaption>Original presentation slide 47 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Old laptops are useful training tools because dust, weak batteries, HDD slowness, worn hinges, damaged ports, loose cables, and limited RAM are easy to observe.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Does old automatically mean useless?</p><details data-checkpoint><summary>Show answer</summary><p>No.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">Slide 48</div><div class="slide-title"><h2>Common Problems in Old Laptops</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="Common Problems in Old Laptops" loading="lazy"></button><figcaption>Original presentation slide 48 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Common problems include slow HDD, low RAM, overheating, dead battery, damaged charger, loose screen cable, broken keyboard, weak Wi‑Fi, damaged ports, and outdated software.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Name one common physical problem in an old laptop.</p><details data-checkpoint><summary>Show answer</summary><p>Examples: dust, weak battery, damaged cable, HDD failure, fan failure, or broken port.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">Slide 49</div><div class="slide-title"><h2>Quick Checks Before Repair</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="Quick Checks Before Repair" loading="lazy"></button><figcaption>Original presentation slide 49 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Ask simple questions first: Is power connected? Are lights on? Is brightness low? Does the fan move? Is there a beep? Does an external display work? Is the storage detected? What changed before the problem?</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why perform quick checks before opening the laptop?</p><details data-checkpoint><summary>Show answer</summary><p>Many problems have simple external causes.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">Slide 50</div><div class="slide-title"><h2>Quick Repair Thinking</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg"><img src="assets/slides/slide-50.jpg" alt="Quick Repair Thinking" loading="lazy"></button><figcaption>Original presentation slide 50 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Do not guess too quickly. Follow the system: power, display, cooling, storage, RAM, network, and user action. Change one thing at a time and record the result.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Why change only one thing at a time?</p><details data-checkpoint><summary>Show answer</summary><p>So you can know which action affected the result.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">Slide 51</div><div class="slide-title"><h2>Review: Match the Part and the Job</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg"><img src="assets/slides/slide-51.jpg" alt="Review: Match the Part and the Job" loading="lazy"></button><figcaption>Original presentation slide 51 — click to enlarge</figcaption></figure>
+<section class="reading"><p>Review the main roles: CPU processes, RAM supports current work, storage keeps files, motherboard connects, cooling removes heat, battery supplies energy, Wi‑Fi communicates, input sends in, and output presents results.</p></section>
+<section class="think"><h3>Think and answer</h3><p>Which part connects the main internal components?</p><details data-checkpoint><summary>Show answer</summary><p>The motherboard.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">Slide 52</div><div class="slide-title"><h2>Final Message</h2><p>Study the original slide first. Then read the web explanation.</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg"><img src="assets/slides/slide-52.jpg" alt="Final Message" loading="lazy"></button><figcaption>Original presentation slide 52 — click to enlarge</figcaption></figure>
+<section class="reading"><p>A computer is a physical system of cooperating parts. A good IT support worker identifies the part, understands its job and principle, observes symptoms, works safely, and checks the system step by step.</p></section>
+<section class="think"><h3>Think and answer</h3><p>What is the main professional habit from this lecture?</p><details data-checkpoint><summary>Show answer</summary><p>Understand the system and troubleshoot step by step.</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<section class="interactive-section" id="interactive-review"><h2>Extended interactive review</h2><p>Complete these tasks after all 52 slides.</p>
+<div class="lab-grid">
+<article class="lab"><h3>1. Component explorer</h3><p>Select a component to review its main job.</p><div class="component-grid">
+<button class="component" data-part="motherboard">Motherboard</button><button class="component" data-part="cpu">CPU</button><button class="component" data-part="ram">RAM</button><button class="component" data-part="storage">HDD / SSD</button><button class="component" data-part="cooling">Cooling</button><button class="component" data-part="wifi">Wi‑Fi</button>
+</div><div class="component-info" id="component-info"></div></article>
+<article class="lab"><h3>2. Put safe disassembly steps in order</h3><p>Use the arrows to create a safe sequence.</p><div class="order-list" id="order-list"><div class="order-item" data-key="identify"><strong>Identify parts</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="open"><strong>Open slowly</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="shutdown"><strong>Shut down</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="reassemble"><strong>Reassemble and test</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="battery"><strong>Remove battery if possible</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="screws"><strong>Record screw locations</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="unplug"><strong>Unplug charger and devices</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="prepare"><strong>Prepare tools and clean table</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div></div><div class="actions"><button class="primary" id="check-order" type="button">Check order</button></div><div class="feedback" id="order-feedback"></div></article>
+<article class="lab"><h3>3. Match the part and the job</h3><table class="match-table"><tr><th>Part</th><th>Job</th></tr><tr><td>CPU</td><td><select class="role-select" data-answer="process"><option value="">Choose</option><option value="process">Process instructions</option><option value="work">Hold current work</option><option value="store">Keep files long-term</option><option value="connect">Connect components</option><option value="cool">Remove heat</option><option value="wireless">Wireless communication</option></select></td></tr><tr><td>RAM</td><td><select class="role-select" data-answer="work"><option value="">Choose</option><option value="process">Process instructions</option><option value="work">Hold current work</option><option value="store">Keep files long-term</option><option value="connect">Connect components</option><option value="cool">Remove heat</option><option value="wireless">Wireless communication</option></select></td></tr><tr><td>HDD / SSD</td><td><select class="role-select" data-answer="store"><option value="">Choose</option><option value="process">Process instructions</option><option value="work">Hold current work</option><option value="store">Keep files long-term</option><option value="connect">Connect components</option><option value="cool">Remove heat</option><option value="wireless">Wireless communication</option></select></td></tr><tr><td>Motherboard</td><td><select class="role-select" data-answer="connect"><option value="">Choose</option><option value="process">Process instructions</option><option value="work">Hold current work</option><option value="store">Keep files long-term</option><option value="connect">Connect components</option><option value="cool">Remove heat</option><option value="wireless">Wireless communication</option></select></td></tr><tr><td>Cooling</td><td><select class="role-select" data-answer="cool"><option value="">Choose</option><option value="process">Process instructions</option><option value="work">Hold current work</option><option value="store">Keep files long-term</option><option value="connect">Connect components</option><option value="cool">Remove heat</option><option value="wireless">Wireless communication</option></select></td></tr><tr><td>Wi‑Fi</td><td><select class="role-select" data-answer="wireless"><option value="">Choose</option><option value="process">Process instructions</option><option value="work">Hold current work</option><option value="store">Keep files long-term</option><option value="connect">Connect components</option><option value="cool">Remove heat</option><option value="wireless">Wireless communication</option></select></td></tr></table><div class="actions"><button class="primary" id="check-match" type="button">Check matches</button></div><div class="feedback" id="match-feedback"></div></article>
+<article class="lab"><h3>4. Select the safe or useful first actions</h3><p>Click all appropriate actions.</p><div class="scenario-grid"><div class="scenario" data-correct="1">Swollen battery: stop use and report</div><div class="scenario" data-correct="0">No Wi‑Fi: replace motherboard immediately</div><div class="scenario" data-correct="1">No power light: check outlet, adapter, and cable</div><div class="scenario" data-correct="0">Black screen: use force to open the case first</div><div class="scenario" data-correct="1">Very hot laptop: check vents and fan</div><div class="scenario" data-correct="0">Loose USB connector: continue bending it</div></div><div class="actions"><button class="primary" id="check-scenarios" type="button">Check selected actions</button></div><div class="feedback" id="scenario-feedback"></div></article>
+</div>
+<article class="lab" style="margin-top:18px"><h3>5. Virtual disassembly checklist</h3><p>Click each step as you complete the virtual procedure.</p><div class="checklist"><div class="checkitem">Shut down</div><div class="checkitem">Unplug charger and devices</div><div class="checkitem">Remove battery if possible</div><div class="checkitem">Prepare a clean hard table</div><div class="checkitem">Organize screws</div><div class="checkitem">Open slowly without force</div><div class="checkitem">Identify parts before touching</div><div class="checkitem">Reassemble and test</div></div></article>
+<article class="lab" style="margin-top:18px"><h3>6. Final knowledge check</h3><form id="final-quiz"><fieldset class="quiz-card" data-answer="0"><legend>1. Which part is the main circuit board?</legend><label><input type="radio" name="q1" value="0"> Motherboard</label><label><input type="radio" name="q1" value="1"> Battery</label><label><input type="radio" name="q1" value="2"> Speaker</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. Which part normally holds current working data?</legend><label><input type="radio" name="q2" value="0"> SSD</label><label><input type="radio" name="q2" value="1"> RAM</label><label><input type="radio" name="q2" value="2"> Charger</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>3. Which device has spinning magnetic platters?</legend><label><input type="radio" name="q3" value="0"> HDD</label><label><input type="radio" name="q3" value="1"> SSD</label><label><input type="radio" name="q3" value="2"> RAM</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. Which part removes heat by moving air?</legend><label><input type="radio" name="q4" value="0"> Fan</label><label><input type="radio" name="q4" value="1"> Keyboard</label><label><input type="radio" name="q4" value="2"> Wi‑Fi card</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>5. What does the CPU mainly do?</legend><label><input type="radio" name="q5" value="0"> Process instructions</label><label><input type="radio" name="q5" value="1"> Store files permanently</label><label><input type="radio" name="q5" value="2"> Supply battery power</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. What happens to normal RAM data without power?</legend><label><input type="radio" name="q6" value="0"> It remains forever</label><label><input type="radio" name="q6" value="1"> It is lost</label><label><input type="radio" name="q6" value="2"> It moves to the keyboard</label></fieldset><fieldset class="quiz-card" data-answer="2"><legend>7. Which device is an input device?</legend><label><input type="radio" name="q7" value="0"> Screen</label><label><input type="radio" name="q7" value="1"> Speaker</label><label><input type="radio" name="q7" value="2"> Keyboard</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>8. Which device is an output device?</legend><label><input type="radio" name="q8" value="0"> Microphone</label><label><input type="radio" name="q8" value="1"> Screen</label><label><input type="radio" name="q8" value="2"> Touchpad</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>9. Does no internet always mean the whole laptop is broken?</legend><label><input type="radio" name="q9" value="0"> Yes</label><label><input type="radio" name="q9" value="1"> No</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>10. What should happen before opening a laptop?</legend><label><input type="radio" name="q10" value="0"> Unplug power</label><label><input type="radio" name="q10" value="1"> Start a game</label><label><input type="radio" name="q10" value="2"> Increase volume</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>11. Why record screw positions?</legend><label><input type="radio" name="q11" value="0"> To improve Wi‑Fi</label><label><input type="radio" name="q11" value="1"> Screws can have different lengths</label><label><input type="radio" name="q11" value="2"> To charge the battery</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. Can overheating make a computer slow?</legend><label><input type="radio" name="q12" value="0"> Yes</label><label><input type="radio" name="q12" value="1"> No</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>13. What usually stores Windows and files after shutdown?</legend><label><input type="radio" name="q13" value="0"> RAM</label><label><input type="radio" name="q13" value="1"> HDD or SSD</label><label><input type="radio" name="q13" value="2"> CPU cache only</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>14. What is a good first support habit?</legend><label><input type="radio" name="q14" value="0"> Guess quickly</label><label><input type="radio" name="q14" value="1"> Check simple external causes</label><label><input type="radio" name="q14" value="2"> Replace the motherboard immediately</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. Why change one thing at a time during troubleshooting?</legend><label><input type="radio" name="q15" value="0"> To identify what affected the result</label><label><input type="radio" name="q15" value="1"> To make more noise</label><label><input type="radio" name="q15" value="2"> To delete more files</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">Check final quiz</button><button class="secondary" id="reset-quiz" type="reset">Reset</button></div><div class="score" id="quiz-score"></div></form></article>
+</section></main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div><footer>Computer Fundamentals 2 · Lecture 2 · Original 52-slide sequence preserved.</footer></body></html>

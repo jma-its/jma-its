@@ -1,0 +1,1517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 1 — From Switches to Computer Memory</title>
+<meta name="description" content="From Switches to Computer Memory — original slides with reading, checkpoints, and interactive review.">
+<link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script>
+<style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head>
+<body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture02/index.html">2 →</a></nav>
+<header id="top"><div class="header-inner">
+<div class="course">Computer Fundamentals 2 · Current Quarter · Lecture 1</div>
+<div class="archive-note">The original slide artwork is preserved, including historical course labels printed inside the slides.</div>
+<h1>From Switches to Computer Memory</h1>
+<p class="subtitle">The original 58-slide visual lecture, adapted for independent web study.</p>
+<p class="intro">Study each original slide, read the short explanation, answer the checkpoint, and finish the extended interactive review.</p>
+<div class="lang-switch"><a class="current" href="lecture_en.html">English</a><a href="lecture_ja.html">日本語</a></div>
+</div></header>
+
+<main class="container">
+<section class="core"><h2>Core chain</h2><div class="core-chain">electricity → switch → 0/1 → logic → memory → computer</div></section>
+
+<section class="progress-box"><strong>Reading progress</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>Open answers only after thinking.</span></section>
+
+<section class="notice"><h2>How to use the lecture</h2><p>First study the original slide image. Click it to enlarge. Then read the web explanation. Answer the checkpoint before opening the hidden answer. At the end, complete all interactive tasks and the final quiz.</p></section>
+<section class="notice map" id="lesson-map"><h2>Lesson map — 58 original slides</h2><ol><li><a href="#slide-1">Slide 1: Lecture 9 — From Switches to Computer Memory</a></li>
+<li><a href="#slide-2">Slide 2: Why this lecture matters</a></li>
+<li><a href="#slide-3">Slide 3: Course chain so far</a></li>
+<li><a href="#slide-4">Slide 4: Big question</a></li>
+<li><a href="#slide-5">Slide 5: Part 1 — The switch</a></li>
+<li><a href="#slide-6">Slide 6: Why computers use two states</a></li>
+<li><a href="#slide-7">Slide 7: Why Computers Use Binary Numbers</a></li>
+<li><a href="#slide-8">Slide 8: Decimal and Binary: First Examples</a></li>
+<li><a href="#slide-9">Slide 9: Binary Place Values: 1, 2, 4, 8</a></li>
+<li><a href="#slide-10">Slide 10: Binary Numbers with Switches</a></li>
+<li><a href="#slide-11">Slide 11: Simple Binary Addition with Switches</a></li>
+<li><a href="#slide-12">Slide 12: Digital does not mean perfect</a></li>
+<li><a href="#slide-13">Slide 13: From one switch to a rule</a></li>
+<li><a href="#slide-14">Slide 14: AND logic</a></li>
+<li><a href="#slide-15">Slide 15: OR logic</a></li>
+<li><a href="#slide-16">Slide 16: NOT logic</a></li>
+<li><a href="#slide-17">Slide 17: Logic gates are physical devices</a></li>
+<li><a href="#slide-18">Slide 18: Part 2 — Relay</a></li>
+<li><a href="#slide-19">Slide 19: Relay physics</a></li>
+<li><a href="#slide-20">Slide 20: Relay step by step</a></li>
+<li><a href="#slide-21">Slide 21: Why relay was revolutionary</a></li>
+<li><a href="#slide-22">Slide 22: Relay AND logic</a></li>
+<li><a href="#slide-23">Slide 23: Relay OR logic</a></li>
+<li><a href="#slide-24">Slide 24: Historical bridge: relay computers</a></li>
+<li><a href="#slide-25">Slide 25: Example: Zuse Z3</a></li>
+<li><a href="#slide-26">Slide 26: Example: Harvard Mark I</a></li>
+<li><a href="#slide-27">Slide 27: The relay problem</a></li>
+<li><a href="#slide-28">Slide 28: Relay vs Vacuum Tube vs Transistor</a></li>
+<li><a href="#slide-29">Slide 29: Part 3 — Vacuum tubes</a></li>
+<li><a href="#slide-30">Slide 30: Vacuum tube physics</a></li>
+<li><a href="#slide-31">Slide 31: Electronic computers</a></li>
+<li><a href="#slide-32">Slide 32: Example: ENIAC</a></li>
+<li><a href="#slide-33">Slide 33: Technology development pattern</a></li>
+<li><a href="#slide-34">Slide 34: Part 4 — Transistor</a></li>
+<li><a href="#slide-35">Slide 35: Transistor physics, simplified</a></li>
+<li><a href="#slide-36">Slide 36: Transistor as a Tiny Electronic Switch</a></li>
+<li><a href="#slide-37">Slide 37: Historical note: transistor invention</a></li>
+<li><a href="#slide-38">Slide 38: From transistor to integrated circuit</a></li>
+<li><a href="#slide-39">Slide 39: From Transistor to Integrated Circuit — large diagram</a></li>
+<li><a href="#slide-40">Slide 40: Historical note: integrated circuit</a></li>
+<li><a href="#slide-41">Slide 41: Inside a Microchip — Many Tiny Circuits</a></li>
+<li><a href="#slide-42">Slide 42: Main history chain</a></li>
+<li><a href="#slide-43">Slide 43: From Switches to Computer Memory — large summary</a></li>
+<li><a href="#slide-44">Slide 44: Part 5 — Calculation is not enough</a></li>
+<li><a href="#slide-45">Slide 45: Memory as physical state</a></li>
+<li><a href="#slide-46">Slide 46: Capacitor Stores Charge — large diagram</a></li>
+<li><a href="#slide-47">Slide 47: Capacitor: the needed physics</a></li>
+<li><a href="#slide-48">Slide 48: Capacitance formula</a></li>
+<li><a href="#slide-49">Slide 49: Capacitor is not a battery</a></li>
+<li><a href="#slide-50">Slide 50: DRAM: memory from tiny capacitors</a></li>
+<li><a href="#slide-51">Slide 51: Why DRAM is dynamic</a></li>
+<li><a href="#slide-52">Slide 52: RAM needs power</a></li>
+<li><a href="#slide-53">Slide 53: SSD is different</a></li>
+<li><a href="#slide-54">Slide 54: SSD Keeps Data Without Power — large diagram</a></li>
+<li><a href="#slide-55">Slide 55: CPU, RAM, SSD: three roles</a></li>
+<li><a href="#slide-56">Slide 56: Part 6 — From hardware to software</a></li>
+<li><a href="#slide-57">Slide 57: Thinking like a computer</a></li>
+<li><a href="#slide-58">Slide 58: Troubleshooting Chain — large diagram</a></li>
+
+
+
+
+
+
+
+</ol></section>
+
+<h2 class="part-title">Opening — From physics to computers</h2>
+<article class="slide-card" id="slide-1">
+  <div class="slide-head">
+    <div class="badge">Slide 1</div>
+    <div class="slide-title">
+      <h2>Lecture 9 — From Switches to Computer Memory</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-01.jpg" aria-label="Open slide 1 in full screen">
+      <img src="assets/slides/slide-01.jpg" alt="Slide 1: Lecture 9 — From Switches to Computer Memory" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 1 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Today we move from electricity to computers. A switch can be OFF or ON, and a computer uses this simple physical idea millions or billions of times. Follow the main chain: electricity → switch → 0/1 → logic → memory → computer.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What is the main chain of this lecture?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>electricity → switch → 0/1 → logic → memory → computer</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-2">
+  <div class="slide-head">
+    <div class="badge">Slide 2</div>
+    <div class="slide-title">
+      <h2>Why this lecture matters</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-02.jpg" aria-label="Open slide 2 in full screen">
+      <img src="assets/slides/slide-02.jpg" alt="Slide 2: Why this lecture matters" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 2 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>This lecture is the bridge from earlier physics topics to computer hardware. Technology develops step by step: a physical effect becomes a useful device, the device improves, becomes smaller, and finally joins a computer system.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Why is this lecture a bridge?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Because it connects physical effects such as electricity and magnetism to computer hardware.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-3">
+  <div class="slide-head">
+    <div class="badge">Slide 3</div>
+    <div class="slide-title">
+      <h2>Course chain so far</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-03.jpg" aria-label="Open slide 3 in full screen">
+      <img src="assets/slides/slide-03.jpg" alt="Slide 3: Course chain so far" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 3 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Earlier topics explain the physical foundation of machines: materials, motion, energy, electricity, magnetism, and useful output. Today we add the question: how can controlled electricity become logic and memory?</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What new question do we add today?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>How can electricity become logic and memory?</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-4">
+  <div class="slide-head">
+    <div class="badge">Slide 4</div>
+    <div class="slide-title">
+      <h2>Big question</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-04.jpg" aria-label="Open slide 4 in full screen">
+      <img src="assets/slides/slide-04.jpg" alt="Slide 4: Big question" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 4 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Electricity does not think like a human. A computer follows exact rules. Electrical states can represent 0 and 1; many such states can make logic, calculation, and memory.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Does a computer understand like a human?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>No. It follows exact rules using controlled physical states.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 1 — Switches, binary numbers, and logic</h2>
+<article class="slide-card" id="slide-5">
+  <div class="slide-head">
+    <div class="badge">Slide 5</div>
+    <div class="slide-title">
+      <h2>Part 1 — The switch</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-05.jpg" aria-label="Open slide 5 in full screen">
+      <img src="assets/slides/slide-05.jpg" alt="Slide 5: Part 1 — The switch" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 5 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>A switch gives two clear states. OFF means an open circuit and can represent 0. ON means a closed circuit and can represent 1.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What physical states can represent 0 and 1?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Open/OFF can represent 0; closed/ON can represent 1.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-6">
+  <div class="slide-head">
+    <div class="badge">Slide 6</div>
+    <div class="slide-title">
+      <h2>Why computers use two states</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-06.jpg" aria-label="Open slide 6 in full screen">
+      <img src="assets/slides/slide-06.jpg" alt="Slide 6: Why computers use two states" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 6 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Computers use two states because machines need clear differences. A low-voltage range can mean 0 and a high-voltage range can mean 1. The exact values vary, but the category is clear.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Why are two states useful for machines?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>They create clear, reliable categories.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-7">
+  <div class="slide-head">
+    <div class="badge">Slide 7</div>
+    <div class="slide-title">
+      <h2>Why Computers Use Binary Numbers</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-07.jpg" aria-label="Open slide 7 in full screen">
+      <img src="assets/slides/slide-07.jpg" alt="Slide 7: Why Computers Use Binary Numbers" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 7 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Binary is a number system using only 0 and 1. It fits computers naturally because electronic switches also have two useful states: OFF and ON.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>How many symbols does binary use?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Two: 0 and 1.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-8">
+  <div class="slide-head">
+    <div class="badge">Slide 8</div>
+    <div class="slide-title">
+      <h2>Decimal and Binary: First Examples</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-08.jpg" aria-label="Open slide 8 in full screen">
+      <img src="assets/slides/slide-08.jpg" alt="Slide 8: Decimal and Binary: First Examples" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 8 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Decimal and binary can write the same value in different ways. Decimal 2 is binary 10; decimal 3 is binary 11; decimal 4 is binary 100.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Is binary a different kind of number?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>No. It is a different way to write the same numerical value.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-9">
+  <div class="slide-head">
+    <div class="badge">Slide 9</div>
+    <div class="slide-title">
+      <h2>Binary Place Values: 1, 2, 4, 8</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-09.jpg" aria-label="Open slide 9 in full screen">
+      <img src="assets/slides/slide-09.jpg" alt="Slide 9: Binary Place Values: 1, 2, 4, 8" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 9 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Binary place values grow by powers of two. From right to left the first places are 1, 2, 4, and 8. Add only the places that contain 1.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What are the first four binary place values?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>1, 2, 4, and 8.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-10">
+  <div class="slide-head">
+    <div class="badge">Slide 10</div>
+    <div class="slide-title">
+      <h2>Binary Numbers with Switches</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-10.jpg" aria-label="Open slide 10 in full screen">
+      <img src="assets/slides/slide-10.jpg" alt="Slide 10: Binary Numbers with Switches" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 10 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Four switches can represent the place values 8, 4, 2, and 1. An ON switch adds its value; an OFF switch adds nothing. For example, 0011 equals 2 + 1 = 3.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>How do four switches show decimal 3?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Turn ON the 2 and 1 switches: 0011.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-11">
+  <div class="slide-head">
+    <div class="badge">Slide 11</div>
+    <div class="slide-title">
+      <h2>Simple Binary Addition with Switches</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-11.jpg" aria-label="Open slide 11 in full screen">
+      <img src="assets/slides/slide-11.jpg" alt="Slide 11: Simple Binary Addition with Switches" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 11 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Binary addition uses carrying. In binary, 1 + 1 = 10 because one place can show only 0 or 1. Similarly, binary 010 + 010 = 100.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What is 1 + 1 in binary?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>10.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-12">
+  <div class="slide-head">
+    <div class="badge">Slide 12</div>
+    <div class="slide-title">
+      <h2>Digital does not mean perfect</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-12.jpg" aria-label="Open slide 12 in full screen">
+      <img src="assets/slides/slide-12.jpg" alt="Slide 12: Digital does not mean perfect" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 12 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Digital signals are physical and can contain noise. A circuit does not need a perfectly exact voltage; it decides whether the signal belongs to the LOW range or the HIGH range.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What does a digital circuit do with a slightly messy signal?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>It classifies the signal as LOW/0 or HIGH/1.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-13">
+  <div class="slide-head">
+    <div class="badge">Slide 13</div>
+    <div class="slide-title">
+      <h2>From one switch to a rule</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-13.jpg" aria-label="Open slide 13 in full screen">
+      <img src="assets/slides/slide-13.jpg" alt="Slide 13: From one switch to a rule" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 13 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>One switch stores one bit. Two or more switches can create a rule. A lamp that turns on only when A and B are on is already following computer logic.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What can two switches create?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>A logical rule.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-14">
+  <div class="slide-head">
+    <div class="badge">Slide 14</div>
+    <div class="slide-title">
+      <h2>AND logic</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-14.jpg" aria-label="Open slide 14 in full screen">
+      <img src="assets/slides/slide-14.jpg" alt="Slide 14: AND logic" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 14 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>AND is strict: both inputs must be 1. The only input pair that produces output 1 is 1 AND 1.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>When does AND produce 1?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Only when both inputs are 1.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-15">
+  <div class="slide-head">
+    <div class="badge">Slide 15</div>
+    <div class="slide-title">
+      <h2>OR logic</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-15.jpg" aria-label="Open slide 15 in full screen">
+      <img src="assets/slides/slide-15.jpg" alt="Slide 15: OR logic" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 15 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>OR is flexible: one true input is enough. OR produces 0 only when both inputs are 0.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>When does OR produce 0?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Only when both inputs are 0.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-16">
+  <div class="slide-head">
+    <div class="badge">Slide 16</div>
+    <div class="slide-title">
+      <h2>NOT logic</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-16.jpg" aria-label="Open slide 16 in full screen">
+      <img src="assets/slides/slide-16.jpg" alt="Slide 16: NOT logic" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 16 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>NOT reverses a state. NOT 0 becomes 1, and NOT 1 becomes 0. Software later uses the same idea in conditions such as not ready or not connected.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What does NOT do?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>It reverses the input state.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-17">
+  <div class="slide-head">
+    <div class="badge">Slide 17</div>
+    <div class="slide-title">
+      <h2>Logic gates are physical devices</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-17.jpg" aria-label="Open slide 17 in full screen">
+      <img src="assets/slides/slide-17.jpg" alt="Slide 17: Logic gates are physical devices" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 17 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>A logic gate is not only a diagram. It is a physical circuit receiving real voltage inputs and producing a real voltage output according to a rule.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Are logic gates physical?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Yes. They are physical electronic circuits.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 2 — Relays and electromechanical computers</h2>
+<article class="slide-card" id="slide-18">
+  <div class="slide-head">
+    <div class="badge">Slide 18</div>
+    <div class="slide-title">
+      <h2>Part 2 — Relay</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-18.jpg" aria-label="Open slide 18 in full screen">
+      <img src="assets/slides/slide-18.jpg" alt="Slide 18: Part 2 — Relay" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 18 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>A relay lets electricity control another electrical circuit. It is an important bridge between a hand-operated switch and automatic computing.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What is the key relay idea?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>A small electrical signal can control another circuit.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-19">
+  <div class="slide-head">
+    <div class="badge">Slide 19</div>
+    <div class="slide-title">
+      <h2>Relay physics</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-19.jpg" aria-label="Open slide 19 in full screen">
+      <img src="assets/slides/slide-19.jpg" alt="Slide 19: Relay physics" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 19 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Current through a wire coil creates a magnetic field. The field pulls a metal armature, moves a contact, and opens or closes another circuit.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Which physical effect makes a relay work?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Electromagnetism.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-20">
+  <div class="slide-head">
+    <div class="badge">Slide 20</div>
+    <div class="slide-title">
+      <h2>Relay step by step</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-20.jpg" aria-label="Open slide 20 in full screen">
+      <img src="assets/slides/slide-20.jpg" alt="Slide 20: Relay step by step" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 20 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Relay operation follows a chain: input current → magnetic field → force → moving contact → output circuit. Each step has a physical cause.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What moves the relay contact?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Magnetic force acting on the armature.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-21">
+  <div class="slide-head">
+    <div class="badge">Slide 21</div>
+    <div class="slide-title">
+      <h2>Why relay was revolutionary</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-21.jpg" aria-label="Open slide 21 in full screen">
+      <img src="assets/slides/slide-21.jpg" alt="Slide 21: Why relay was revolutionary" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 21 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Relays allowed machines to switch without a human finger. Electrical signals could control sequences, calculations, and automatic decisions.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Why were relays revolutionary?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>They enabled automatic electrically controlled switching.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-22">
+  <div class="slide-head">
+    <div class="badge">Slide 22</div>
+    <div class="slide-title">
+      <h2>Relay AND logic</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-22.jpg" aria-label="Open slide 22 in full screen">
+      <img src="assets/slides/slide-22.jpg" alt="Slide 22: Relay AND logic" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 22 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Relay contacts in series can implement AND. Current reaches the output only when both contacts are closed.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>How can relays make AND?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Connect two contacts in series.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-23">
+  <div class="slide-head">
+    <div class="badge">Slide 23</div>
+    <div class="slide-title">
+      <h2>Relay OR logic</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-23.jpg" aria-label="Open slide 23 in full screen">
+      <img src="assets/slides/slide-23.jpg" alt="Slide 23: Relay OR logic" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 23 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Relay contacts in parallel can implement OR. Current can reach the output through either closed path.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>How can relays make OR?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Connect the contacts in parallel.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-24">
+  <div class="slide-head">
+    <div class="badge">Slide 24</div>
+    <div class="slide-title">
+      <h2>Historical bridge: relay computers</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-24.jpg" aria-label="Open slide 24 in full screen">
+      <img src="assets/slides/slide-24.jpg" alt="Slide 24: Historical bridge: relay computers" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 24 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Early relay computers connected many controlled switches to perform steps automatically. They were important, but large, slow, and mechanically complex.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What did relay computers prove?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>That automatic logic and calculation could be built from controlled switches.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-25">
+  <div class="slide-head">
+    <div class="badge">Slide 25</div>
+    <div class="slide-title">
+      <h2>Example: Zuse Z3</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-25.jpg" aria-label="Open slide 25 in full screen">
+      <img src="assets/slides/slide-25.jpg" alt="Slide 25: Example: Zuse Z3" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 25 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>The Zuse Z3, completed in 1941, used thousands of relays and binary arithmetic. It showed that a programmable machine could work with binary states.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Which number system did the Z3 use?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Binary.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-26">
+  <div class="slide-head">
+    <div class="badge">Slide 26</div>
+    <div class="slide-title">
+      <h2>Example: Harvard Mark I</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-26.jpg" aria-label="Open slide 26 in full screen">
+      <img src="assets/slides/slide-26.jpg" alt="Slide 26: Example: Harvard Mark I" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 26 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>The Harvard Mark I was a large electromechanical calculator with long wiring, switches, counters, and moving mechanisms. It automated long calculations.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Was the Harvard Mark I fully solid-state?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>No. It was electromechanical.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-27">
+  <div class="slide-head">
+    <div class="badge">Slide 27</div>
+    <div class="slide-title">
+      <h2>The relay problem</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-27.jpg" aria-label="Open slide 27 in full screen">
+      <img src="assets/slides/slide-27.jpg" alt="Slide 27: The relay problem" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 27 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Relays have moving metal parts. Movement makes them slow, noisy, large, and subject to wear. Engineers needed a faster switch with no mechanical motion.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What is the central weakness of a relay?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>It has moving parts.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-28">
+  <div class="slide-head">
+    <div class="badge">Slide 28</div>
+    <div class="slide-title">
+      <h2>Relay vs Vacuum Tube vs Transistor</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-28.jpg" aria-label="Open slide 28 in full screen">
+      <img src="assets/slides/slide-28.jpg" alt="Slide 28: Relay vs Vacuum Tube vs Transistor" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 28 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Relay, vacuum tube, and transistor all control current, but their physical methods differ. Each new technology reduced an important weakness of the earlier one.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What stayed the same across these technologies?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>The need to control electrical current and represent states.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 3 — Vacuum tubes and electronic computers</h2>
+<article class="slide-card" id="slide-29">
+  <div class="slide-head">
+    <div class="badge">Slide 29</div>
+    <div class="slide-title">
+      <h2>Part 3 — Vacuum tubes</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-29.jpg" aria-label="Open slide 29 in full screen">
+      <img src="assets/slides/slide-29.jpg" alt="Slide 29: Part 3 — Vacuum tubes" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 29 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Vacuum tubes made switching electronic. They removed the moving contact and used electric fields to control electron flow inside a glass tube.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What did vacuum tubes remove?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>The moving mechanical contact.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-30">
+  <div class="slide-head">
+    <div class="badge">Slide 30</div>
+    <div class="slide-title">
+      <h2>Vacuum tube physics</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-30.jpg" aria-label="Open slide 30 in full screen">
+      <img src="assets/slides/slide-30.jpg" alt="Slide 30: Vacuum tube physics" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 30 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Inside a vacuum tube, a heated cathode releases electrons. Voltages on other electrodes control whether electrons reach the output.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What moves inside a vacuum tube?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Electrons.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-31">
+  <div class="slide-head">
+    <div class="badge">Slide 31</div>
+    <div class="slide-title">
+      <h2>Electronic computers</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-31.jpg" aria-label="Open slide 31 in full screen">
+      <img src="assets/slides/slide-31.jpg" alt="Slide 31: Electronic computers" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 31 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Electronic switching was much faster than relay movement. This allowed computers to calculate at much higher speed.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Why were vacuum-tube computers faster?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Switching was electronic, not mechanical.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-32">
+  <div class="slide-head">
+    <div class="badge">Slide 32</div>
+    <div class="slide-title">
+      <h2>Example: ENIAC</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-32.jpg" aria-label="Open slide 32 in full screen">
+      <img src="assets/slides/slide-32.jpg" alt="Slide 32: Example: ENIAC" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 32 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>ENIAC used many vacuum tubes. It was fast for its time, but very large, hot, power-hungry, and difficult to maintain.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Name one ENIAC maintenance problem.</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Heat, high power use, large size, or many tube failures.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-33">
+  <div class="slide-head">
+    <div class="badge">Slide 33</div>
+    <div class="slide-title">
+      <h2>Technology development pattern</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-33.jpg" aria-label="Open slide 33 in full screen">
+      <img src="assets/slides/slide-33.jpg" alt="Slide 33: Technology development pattern" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 33 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Technology development often follows a pattern: solve one problem, discover a new limitation, and create a better device. Speed improved, then size, heat, reliability, and wiring became the next problems.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What usually happens after one engineering problem is solved?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>A new limitation becomes visible and engineers improve the design again.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 4 — Transistors and integrated circuits</h2>
+<article class="slide-card" id="slide-34">
+  <div class="slide-head">
+    <div class="badge">Slide 34</div>
+    <div class="slide-title">
+      <h2>Part 4 — Transistor</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-34.jpg" aria-label="Open slide 34 in full screen">
+      <img src="assets/slides/slide-34.jpg" alt="Slide 34: Part 4 — Transistor" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 34 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>The transistor became the next major switch. It controls current inside a semiconductor and has no moving mechanical parts or hot glass envelope.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What material class is used in a transistor?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Semiconductor material.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-35">
+  <div class="slide-head">
+    <div class="badge">Slide 35</div>
+    <div class="slide-title">
+      <h2>Transistor physics, simplified</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-35.jpg" aria-label="Open slide 35 in full screen">
+      <img src="assets/slides/slide-35.jpg" alt="Slide 35: Transistor physics, simplified" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 35 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>A small electrical input can control a larger current path in a transistor. The exact semiconductor physics is complex, but the switching idea is simple.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What does the small input control?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>The current through another path.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-36">
+  <div class="slide-head">
+    <div class="badge">Slide 36</div>
+    <div class="slide-title">
+      <h2>Transistor as a Tiny Electronic Switch</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-36.jpg" aria-label="Open slide 36 in full screen">
+      <img src="assets/slides/slide-36.jpg" alt="Slide 36: Transistor as a Tiny Electronic Switch" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 36 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>A transistor can work as a tiny electronic switch: OFF blocks useful current; ON allows useful current. It can switch extremely quickly.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Which two switching states can a transistor represent?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>OFF/0 and ON/1.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-37">
+  <div class="slide-head">
+    <div class="badge">Slide 37</div>
+    <div class="slide-title">
+      <h2>Historical note: transistor invention</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-37.jpg" aria-label="Open slide 37 in full screen">
+      <img src="assets/slides/slide-37.jpg" alt="Slide 37: Historical note: transistor invention" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 37 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>The first working transistor was demonstrated at Bell Labs in 1947. It opened the path to smaller, cooler, and more reliable electronics.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Why was the transistor historically important?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>It enabled smaller, cooler, more reliable electronic switching.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-38">
+  <div class="slide-head">
+    <div class="badge">Slide 38</div>
+    <div class="slide-title">
+      <h2>From transistor to integrated circuit</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-38.jpg" aria-label="Open slide 38 in full screen">
+      <img src="assets/slides/slide-38.jpg" alt="Slide 38: From transistor to integrated circuit" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 38 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>One transistor is useful, but computers require many connected devices. The next step was to manufacture multiple components together as one integrated circuit.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What problem did integrated circuits address?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Connecting and manufacturing many components efficiently.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-39">
+  <div class="slide-head">
+    <div class="badge">Slide 39</div>
+    <div class="slide-title">
+      <h2>From Transistor to Integrated Circuit — large diagram</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-39.jpg" aria-label="Open slide 39 in full screen">
+      <img src="assets/slides/slide-39.jpg" alt="Slide 39: From Transistor to Integrated Circuit — large diagram" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 39 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>The development chain is transistor → many transistors → connected circuit → integrated circuit. Integration reduces separate wiring and size.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What does integration reduce?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Separate components, wiring, and physical size.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-40">
+  <div class="slide-head">
+    <div class="badge">Slide 40</div>
+    <div class="slide-title">
+      <h2>Historical note: integrated circuit</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-40.jpg" aria-label="Open slide 40 in full screen">
+      <img src="assets/slides/slide-40.jpg" alt="Slide 40: Historical note: integrated circuit" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 40 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Early integrated circuits appeared in the late 1950s. They placed several electronic components on one small piece of semiconductor material.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What is the basic integrated-circuit idea?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Many components made together on one semiconductor piece.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-41">
+  <div class="slide-head">
+    <div class="badge">Slide 41</div>
+    <div class="slide-title">
+      <h2>Inside a Microchip — Many Tiny Circuits</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-41.jpg" aria-label="Open slide 41 in full screen">
+      <img src="assets/slides/slide-41.jpg" alt="Slide 41: Inside a Microchip — Many Tiny Circuits" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 41 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>A modern microchip contains enormous numbers of tiny transistors and connections. They form logic, control, calculation, and memory circuits.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What tiny device is repeated inside microchips?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>The transistor.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-42">
+  <div class="slide-head">
+    <div class="badge">Slide 42</div>
+    <div class="slide-title">
+      <h2>Main history chain</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-42.jpg" aria-label="Open slide 42 in full screen">
+      <img src="assets/slides/slide-42.jpg" alt="Slide 42: Main history chain" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 42 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>The main history chain is mechanical switch → relay → vacuum tube → transistor → integrated circuit. The physical switch changed, but the logic role remained.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Put relay, vacuum tube, transistor, and integrated circuit in order.</p>
+    <details data-checkpoint><summary>Show answer</summary><p>relay → vacuum tube → transistor → integrated circuit</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-43">
+  <div class="slide-head">
+    <div class="badge">Slide 43</div>
+    <div class="slide-title">
+      <h2>From Switches to Computer Memory — large summary</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-43.jpg" aria-label="Open slide 43 in full screen">
+      <img src="assets/slides/slide-43.jpg" alt="Slide 43: From Switches to Computer Memory — large summary" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 43 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>This large summary connects the full story: controlled electricity creates states; states create logic; improved switches make faster computers; circuits also need memory.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What two abilities does a useful computer need?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>It needs to process logic/calculation and store information.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 5 — Physical memory, RAM, and SSD</h2>
+<article class="slide-card" id="slide-44">
+  <div class="slide-head">
+    <div class="badge">Slide 44</div>
+    <div class="slide-title">
+      <h2>Part 5 — Calculation is not enough</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-44.jpg" aria-label="Open slide 44 in full screen">
+      <img src="assets/slides/slide-44.jpg" alt="Slide 44: Part 5 — Calculation is not enough" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 44 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Calculation is not enough. A computer must remember instructions, current data, intermediate results, and saved information.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Why is calculation alone insufficient?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Because the computer must keep information for later use.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-45">
+  <div class="slide-head">
+    <div class="badge">Slide 45</div>
+    <div class="slide-title">
+      <h2>Memory as physical state</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-45.jpg" aria-label="Open slide 45 in full screen">
+      <img src="assets/slides/slide-45.jpg" alt="Slide 45: Memory as physical state" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 45 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Memory is a physical state that remains long enough to be read later. Possible states include electric charge, magnetic direction, trapped electrons, or a stable circuit state.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Is computer memory physical or imaginary?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Physical.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-46">
+  <div class="slide-head">
+    <div class="badge">Slide 46</div>
+    <div class="slide-title">
+      <h2>Capacitor Stores Charge — large diagram</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-46.jpg" aria-label="Open slide 46 in full screen">
+      <img src="assets/slides/slide-46.jpg" alt="Slide 46: Capacitor Stores Charge — large diagram" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 46 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>A capacitor stores separated electric charge on two conductive plates with an insulator between them. The stored charge can represent a bit.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What can charge in a capacitor represent?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>A binary state or bit.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-47">
+  <div class="slide-head">
+    <div class="badge">Slide 47</div>
+    <div class="slide-title">
+      <h2>Capacitor: the needed physics</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-47.jpg" aria-label="Open slide 47 in full screen">
+      <img src="assets/slides/slide-47.jpg" alt="Slide 47: Capacitor: the needed physics" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 47 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Capacitors charge and discharge. They can store energy briefly and change voltage behaviour. In memory, the important question is whether a small charge is present.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What two actions can a capacitor perform?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Charge and discharge.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-48">
+  <div class="slide-head">
+    <div class="badge">Slide 48</div>
+    <div class="slide-title">
+      <h2>Capacitance formula</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-48.jpg" aria-label="Open slide 48 in full screen">
+      <img src="assets/slides/slide-48.jpg" alt="Slide 48: Capacitance formula" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 48 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Capacitance describes how much charge is stored for a given voltage. The relationship is C = Q / V. In this course, understanding the relationship is more important than calculation.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What quantities appear in C = Q / V?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Capacitance, charge, and voltage.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-49">
+  <div class="slide-head">
+    <div class="badge">Slide 49</div>
+    <div class="slide-title">
+      <h2>Capacitor is not a battery</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-49.jpg" aria-label="Open slide 49 in full screen">
+      <img src="assets/slides/slide-49.jpg" alt="Slide 49: Capacitor is not a battery" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 49 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>A capacitor is not the same as a battery. A capacitor stores electric charge directly and usually for a short time; a battery uses chemical reactions and stores much more energy.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Which device uses chemical reactions?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>A battery.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-50">
+  <div class="slide-head">
+    <div class="badge">Slide 50</div>
+    <div class="slide-title">
+      <h2>DRAM: memory from tiny capacitors</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-50.jpg" aria-label="Open slide 50 in full screen">
+      <img src="assets/slides/slide-50.jpg" alt="Slide 50: DRAM: memory from tiny capacitors" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 50 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>A DRAM cell uses a tiny capacitor to hold a bit and a transistor to control access. Many cells form computer working memory.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Which two main devices form a simplified DRAM cell?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>A capacitor and a transistor.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-51">
+  <div class="slide-head">
+    <div class="badge">Slide 51</div>
+    <div class="slide-title">
+      <h2>Why DRAM is dynamic</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-51.jpg" aria-label="Open slide 51 in full screen">
+      <img src="assets/slides/slide-51.jpg" alt="Slide 51: Why DRAM is dynamic" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 51 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Charge slowly leaks from a tiny capacitor. DRAM must repeatedly read and restore the state. This repeated process is called refresh.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Why is DRAM called dynamic?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Because its charge must be refreshed repeatedly.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-52">
+  <div class="slide-head">
+    <div class="badge">Slide 52</div>
+    <div class="slide-title">
+      <h2>RAM needs power</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-52.jpg" aria-label="Open slide 52 in full screen">
+      <img src="assets/slides/slide-52.jpg" alt="Slide 52: RAM needs power" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 52 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>RAM is volatile memory. It needs power to keep active data. If power disappears, unsaved working data in RAM is lost.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What does volatile mean?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>The data is lost when power is removed.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-53">
+  <div class="slide-head">
+    <div class="badge">Slide 53</div>
+    <div class="slide-title">
+      <h2>SSD is different</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-53.jpg" aria-label="Open slide 53 in full screen">
+      <img src="assets/slides/slide-53.jpg" alt="Slide 53: SSD is different" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 53 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>SSD storage uses flash memory rather than DRAM capacitors. Flash cells can keep stored states without continuous power.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Does an SSD need continuous power to keep files?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>No.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-54">
+  <div class="slide-head">
+    <div class="badge">Slide 54</div>
+    <div class="slide-title">
+      <h2>SSD Keeps Data Without Power — large diagram</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-54.jpg" aria-label="Open slide 54 in full screen">
+      <img src="assets/slides/slide-54.jpg" alt="Slide 54: SSD Keeps Data Without Power — large diagram" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 54 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>This diagram emphasizes non-volatile storage. Files and programs remain on the SSD after shutdown, although the SSD still needs power to read or change data.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What does non-volatile mean?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Stored information remains when power is off.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-55">
+  <div class="slide-head">
+    <div class="badge">Slide 55</div>
+    <div class="slide-title">
+      <h2>CPU, RAM, SSD: three roles</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-55.jpg" aria-label="Open slide 55 in full screen">
+      <img src="assets/slides/slide-55.jpg" alt="Slide 55: CPU, RAM, SSD: three roles" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 55 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>CPU, RAM, and SSD have different roles. The CPU processes instructions, RAM holds current working data, and SSD stores programs and files long-term.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>Where is current working data normally held?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>RAM.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+<h2 class="part-title">Part 6 — Hardware, software, and troubleshooting</h2>
+<article class="slide-card" id="slide-56">
+  <div class="slide-head">
+    <div class="badge">Slide 56</div>
+    <div class="slide-title">
+      <h2>Part 6 — From hardware to software</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-56.jpg" aria-label="Open slide 56 in full screen">
+      <img src="assets/slides/slide-56.jpg" alt="Slide 56: Part 6 — From hardware to software" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 56 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Hardware makes software possible. Programs look abstract, but every instruction is eventually represented by physical signals and circuit states.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What is beneath software instructions?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Physical hardware signals and states.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-57">
+  <div class="slide-head">
+    <div class="badge">Slide 57</div>
+    <div class="slide-title">
+      <h2>Thinking like a computer</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-57.jpg" aria-label="Open slide 57 in full screen">
+      <img src="assets/slides/slide-57.jpg" alt="Slide 57: Thinking like a computer" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 57 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Computers follow exact conditions and sequences. Thinking like a computer means breaking a task into clear inputs, rules, states, and outputs.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What does &#x27;thinking like a computer&#x27; mean here?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>Using clear inputs, rules, states, and ordered steps.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+<article class="slide-card" id="slide-58">
+  <div class="slide-head">
+    <div class="badge">Slide 58</div>
+    <div class="slide-title">
+      <h2>Troubleshooting Chain — large diagram</h2>
+      <p>Study the original slide first. Then read the web explanation.</p>
+    </div>
+  </div>
+  <figure class="slide-image">
+    <button class="image-button" type="button" data-full="assets/slides/slide-58.jpg" aria-label="Open slide 58 in full screen">
+      <img src="assets/slides/slide-58.jpg" alt="Slide 58: Troubleshooting Chain — large diagram" loading="lazy">
+    </button>
+    <figcaption>Original presentation slide 58 — click to enlarge</figcaption>
+  </figure>
+  <section class="reading"><p>Troubleshooting follows a chain: power → hardware → firmware/startup → operating system → software → network → user action. Find the last stage that worked.</p></section>
+  <section class="think">
+    <h3>Think and answer</h3>
+    <p>What should support workers locate first?</p>
+    <details data-checkpoint><summary>Show answer</summary><p>The last stage that worked and the first stage that failed.</p></details>
+  </section>
+  <div class="footer-nav"><a href="#lesson-map">Back to lesson map ↑</a></div>
+</article>
+
+
+
+
+<h2 class="part-title">Review activities and original slide quiz</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="interactive-section" id="interactive-review">
+<h2>Extended interactive review</h2>
+<p>This part is additional to the original presentation. Complete it after studying all slides.</p>
+
+<div class="lab-grid">
+<article class="lab">
+<h3>1. Build a binary number</h3>
+<p>Toggle the 8, 4, 2, and 1 switches.</p>
+<div class="switches">
+<button class="bit-switch" data-value="8" aria-pressed="false">8</button>
+<button class="bit-switch" data-value="4" aria-pressed="false">4</button>
+<button class="bit-switch" data-value="2" aria-pressed="false">2</button>
+<button class="bit-switch" data-value="1" aria-pressed="false">1</button>
+</div>
+<div class="binary-output">Binary: <span id="binary-text">0000</span> · Decimal: <span id="decimal-text">0</span></div>
+</article>
+
+<article class="lab">
+<h3>2. Logic gate laboratory</h3>
+<div class="gate-controls"><button class="toggle" id="gate-a">0</button><button class="toggle" id="gate-b">0</button></div>
+<select class="gate-select" id="gate-select"><option>AND</option><option>OR</option><option>XOR</option><option>NAND</option><option value="NOTA">NOT A</option></select>
+<div class="lamp" id="gate-lamp">0</div>
+</article>
+
+<article class="lab">
+<h3>3. Put the technologies in order</h3>
+<p>Use the arrows to arrange the development sequence.</p>
+<div class="order-list" id="order-list"><div class="order-item" data-key="transistor"><strong>Transistor</strong><button type="button" data-move="up">↑</button><button type="button" data-move="down">↓</button></div><div class="order-item" data-key="relay"><strong>Relay</strong><button type="button" data-move="up">↑</button><button type="button" data-move="down">↓</button></div><div class="order-item" data-key="ic"><strong>Integrated circuit</strong><button type="button" data-move="up">↑</button><button type="button" data-move="down">↓</button></div><div class="order-item" data-key="tube"><strong>Vacuum tube</strong><button type="button" data-move="up">↑</button><button type="button" data-move="down">↓</button></div></div>
+<div class="actions"><button class="primary" id="check-order" type="button">Check order</button></div><div class="feedback" id="order-feedback"></div>
+</article>
+
+<article class="lab">
+<h3>4. Match the computer roles</h3>
+<table class="match-table"><tr><th>Part</th><th>Job</th></tr>
+<tr><td>CPU</td><td><select class="role-select" data-answer="process"><option value="">Choose</option><option value="process">Process instructions</option><option value="work">Hold current work</option><option value="store">Keep files long-term</option></select></td></tr>
+<tr><td>RAM</td><td><select class="role-select" data-answer="work"><option value="">Choose</option><option value="process">Process instructions</option><option value="work">Hold current work</option><option value="store">Keep files long-term</option></select></td></tr>
+<tr><td>SSD</td><td><select class="role-select" data-answer="store"><option value="">Choose</option><option value="process">Process instructions</option><option value="work">Hold current work</option><option value="store">Keep files long-term</option></select></td></tr>
+</table><div class="actions"><button class="primary" id="check-match" type="button">Check matches</button></div><div class="feedback" id="match-feedback"></div>
+</article>
+</div>
+
+<article class="lab" style="margin-top:18px">
+<h3>5. Physical problem or logical problem?</h3>
+<p>Click each card: blank → PHYSICAL → LOGICAL → blank.</p>
+<div class="scenario-grid">
+<div class="scenario" data-answer="physical"><strong>CLICK TO CLASSIFY</strong><br>Loose power connector</div>
+<div class="scenario" data-answer="logical"><strong>CLICK TO CLASSIFY</strong><br>Wrong permission rule</div>
+<div class="scenario" data-answer="physical"><strong>CLICK TO CLASSIFY</strong><br>Overheating chip</div>
+<div class="scenario" data-answer="logical"><strong>CLICK TO CLASSIFY</strong><br>Incorrect program sequence</div>
+<div class="scenario" data-answer="physical"><strong>CLICK TO CLASSIFY</strong><br>Corroded cable contact</div>
+<div class="scenario" data-answer="logical"><strong>CLICK TO CLASSIFY</strong><br>Wrong network setting</div>
+</div><div class="actions"><button class="primary" id="check-scenarios" type="button">Check classification</button></div><div class="feedback" id="scenario-feedback"></div>
+</article>
+
+<article class="lab" style="margin-top:18px">
+<h3>6. Final knowledge check</h3>
+<form id="final-quiz"><fieldset class="quiz-card" data-answer="1"><legend>1. Which state normally represents a closed switch?</legend><label><input type="radio" name="q1" value="0"> 0 / OFF</label><label><input type="radio" name="q1" value="1"> 1 / ON</label><label><input type="radio" name="q1" value="2"> Noise</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. What are the first four binary place values?</legend><label><input type="radio" name="q2" value="0"> 1, 10, 100, 1000</label><label><input type="radio" name="q2" value="1"> 1, 2, 4, 8</label><label><input type="radio" name="q2" value="2"> 0, 1, 2, 3</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>3. Binary 0011 equals decimal:</legend><label><input type="radio" name="q3" value="0"> 2</label><label><input type="radio" name="q3" value="1"> 3</label><label><input type="radio" name="q3" value="2"> 4</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. Which gate produces 1 only when both inputs are 1?</legend><label><input type="radio" name="q4" value="0"> AND</label><label><input type="radio" name="q4" value="1"> OR</label><label><input type="radio" name="q4" value="2"> NOT</label></fieldset><fieldset class="quiz-card" data-answer="2"><legend>5. Which gate reverses its input?</legend><label><input type="radio" name="q5" value="0"> AND</label><label><input type="radio" name="q5" value="1"> OR</label><label><input type="radio" name="q5" value="2"> NOT</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>6. What physical effect moves a relay contact?</legend><label><input type="radio" name="q6" value="0"> Electromagnetism</label><label><input type="radio" name="q6" value="1"> Chemical corrosion</label><label><input type="radio" name="q6" value="2"> Gravity only</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>7. What was the main relay weakness?</legend><label><input type="radio" name="q7" value="0"> No electrical input</label><label><input type="radio" name="q7" value="1"> Moving parts</label><label><input type="radio" name="q7" value="2"> It could not make logic</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>8. Which technology came directly after relays in the lecture chain?</legend><label><input type="radio" name="q8" value="0"> Vacuum tubes</label><label><input type="radio" name="q8" value="1"> Integrated circuits</label><label><input type="radio" name="q8" value="2"> SSDs</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>9. What device replaced many vacuum tubes?</legend><label><input type="radio" name="q9" value="0"> Capacitor</label><label><input type="radio" name="q9" value="1"> Transistor</label><label><input type="radio" name="q9" value="2"> Battery</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>10. What is repeated in enormous numbers inside a microchip?</legend><label><input type="radio" name="q10" value="0"> Mechanical relays</label><label><input type="radio" name="q10" value="1"> Transistors</label><label><input type="radio" name="q10" value="2"> Hard disks</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>11. What can a charged tiny capacitor represent in DRAM?</legend><label><input type="radio" name="q11" value="0"> One bit</label><label><input type="radio" name="q11" value="1"> One fan</label><label><input type="radio" name="q11" value="2"> One file name</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. Why must DRAM be refreshed?</legend><label><input type="radio" name="q12" value="0"> Its charge leaks away</label><label><input type="radio" name="q12" value="1"> The SSD becomes full</label><label><input type="radio" name="q12" value="2"> The CPU forgets instructions</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>13. Which memory loses data when power is removed?</legend><label><input type="radio" name="q13" value="0"> SSD</label><label><input type="radio" name="q13" value="1"> RAM</label><label><input type="radio" name="q13" value="2"> Flash drive</label></fieldset><fieldset class="quiz-card" data-answer="2"><legend>14. Which part normally stores files long-term?</legend><label><input type="radio" name="q14" value="0"> CPU</label><label><input type="radio" name="q14" value="1"> RAM</label><label><input type="radio" name="q14" value="2"> SSD</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>15. What is a good troubleshooting method?</legend><label><input type="radio" name="q15" value="0"> Change many things at once</label><label><input type="radio" name="q15" value="1"> Find the last working stage and first failed stage</label><label><input type="radio" name="q15" value="2"> Always reinstall Windows first</label></fieldset>
+<div class="actions"><button class="primary" id="check-quiz" type="button">Check final quiz</button><button class="secondary" id="reset-quiz" type="reset">Reset</button></div>
+<div class="score" id="quiz-score"></div></form>
+</article>
+</section>
+</main>
+
+<div class="modal" id="slide-modal" role="dialog" aria-modal="true" aria-label="Full slide image"><button type="button" aria-label="Close">×</button><img alt="Enlarged slide"></div>
+<footer>Computer Fundamentals 2 · Lecture 1 · Original 58-slide visual sequence preserved.</footer>
+</body></html>

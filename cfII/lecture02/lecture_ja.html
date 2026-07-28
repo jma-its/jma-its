@@ -1,0 +1,394 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>コンピュータはどう作られているか — CF2</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/interactive.js"></script><style id="cfii-global-navigation-style">
+.cfii-global-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cfii-global-nav a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#142645;color:#fff!important;text-decoration:none!important;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(12,29,54,.28);font:850 14px/1.2 "Segoe UI","Noto Sans JP","Yu Gothic",Arial,sans-serif}
+.cfii-global-nav a:hover{background:#2869c7;transform:translateY(-1px)}
+@media(max-width:650px){.cfii-global-nav{right:8px;bottom:8px}.cfii-global-nav a{padding:9px 12px;font-size:13px}}
+@media print{.cfii-global-nav{display:none!important}}
+</style>
+</head><body>
+<nav class="cfii-global-nav" aria-label="Course navigation"><a href="../lecture01/index.html">← 1</a><a href="../index.html">⌂ Course Home / コースホーム</a><a href="../lecture03/index.html">3 →</a></nav>
+<header><div class="header-inner"><div class="course">Computer Fundamentals 2 · 今学期 · ウェブ講義 2</div><div class="archive-note">元のスライド画像が主な教材です。スライド内部の古い表記もそのまま残します。</div><h1>コンピュータはどう作られているか</h1><p class="subtitle">元の52枚のスライドを、そのまま学べるウェブ講義にしたものです。</p><p class="intro">各オリジナルスライドを見て、短い説明を読み、チェック問題に答え、最後に拡張インタラクティブ復習を行ってください。</p><div class="lang-switch"><a href="lecture_en.html">English</a><a class="current" href="lecture_ja.html">日本語</a></div></div></header>
+<main class="container">
+<section class="core"><h2>中心の方法</h2><div class="core-chain">部品 → 役割 → 物理原理 → 起こり得る問題</div></section>
+<section class="progress-box"><strong>学習進行</strong><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label"></span><span>考えた後で答えを開いてください。</span></section>
+<section class="notice"><h2>この講義の使い方</h2><p>まず元のスライドを見てください。クリックで拡大できます。短い説明を読み、答えを開く前に考え、最後にインタラクティブ課題を行います。</p></section>
+<section class="notice map" id="lesson-map"><h2>授業マップ — 元の52枚のスライド</h2><ol><li><a href="#slide-1">スライド 1: 第2講 — コンピュータはどう作られているか</a></li><li><a href="#slide-2">スライド 2: 大きな考え：1台のノートPCから多くのコンピュータへ</a></li><li><a href="#slide-3">スライド 3: ノートPC外側の全体図</a></li><li><a href="#slide-4">スライド 4: 外側の部品：入力・出力・電源</a></li><li><a href="#slide-5">スライド 5: 右側のポート</a></li><li><a href="#slide-6">スライド 6: 左側と底面の機能</a></li><li><a href="#slide-7">スライド 7: ノートPCの内部</a></li><li><a href="#slide-8">スライド 8: ノートPCの中には何があるか</a></li><li><a href="#slide-9">スライド 9: 内部の主なコンピュータ器官</a></li><li><a href="#slide-10">スライド 10: マザーボード — メイン基板</a></li><li><a href="#slide-11">スライド 11: マザーボード：基板と神経</a></li><li><a href="#slide-12">スライド 12: CPU / プロセッサ — 脳</a></li><li><a href="#slide-13">スライド 13: CPUとは何か</a></li><li><a href="#slide-14">スライド 14: CPUの動作原理</a></li><li><a href="#slide-15">スライド 15: RAM — 短期記憶</a></li><li><a href="#slide-16">スライド 16: RAMとは何か</a></li><li><a href="#slide-17">スライド 17: RAMの動作原理</a></li><li><a href="#slide-18">スライド 18: HDDとSSD — 長期保存</a></li><li><a href="#slide-19">スライド 19: ストレージ：HDDとSSD</a></li><li><a href="#slide-20">スライド 20: HDDとは何か</a></li><li><a href="#slide-21">スライド 21: SSDとは何か</a></li><li><a href="#slide-22">スライド 22: HDDからSSDへの交換</a></li><li><a href="#slide-23">スライド 23: 冷却ファンとヒートシンク</a></li><li><a href="#slide-24">スライド 24: 冷却システム：ファン・ヒートパイプ・ヒートシンク</a></li><li><a href="#slide-25">スライド 25: バッテリー — 電源とエネルギー保存</a></li><li><a href="#slide-26">スライド 26: バッテリーと充電器：電源システム</a></li><li><a href="#slide-27">スライド 27: 充電器と電源アダプタ</a></li><li><a href="#slide-28">スライド 28: Wi‑Fiカード — 無線接続</a></li><li><a href="#slide-29">スライド 29: Wi‑Fiカード：ネットワーク通信</a></li><li><a href="#slide-30">スライド 30: スピーカー — 音声出力</a></li><li><a href="#slide-31">スライド 31: キーボードとタッチパッド — 入力装置</a></li><li><a href="#slide-32">スライド 32: 画面 / ディスプレイ — 視覚出力</a></li><li><a href="#slide-33">スライド 33: ウェブカメラとマイク — 画像・音声入力</a></li><li><a href="#slide-34">スライド 34: 入力装置と出力装置 — 人とPCの通信</a></li><li><a href="#slide-35">スライド 35: ノートPC内部のデータ移動 — 図</a></li><li><a href="#slide-36">スライド 36: ノートPC内部のデータ移動</a></li><li><a href="#slide-37">スライド 37: 電源ボタンから動作するPCへ — 起動図</a></li><li><a href="#slide-38">スライド 38: 起動：電源ボタンから動作するPCへ</a></li><li><a href="#slide-39">スライド 39: すべての部品が協力する</a></li><li><a href="#slide-40">スライド 40: システムまとめ：すべての部品が協力する</a></li><li><a href="#slide-41">スライド 41: ノートPCを安全に開く</a></li><li><a href="#slide-42">スライド 42: ノートPC分解用の道具</a></li><li><a href="#slide-43">スライド 43: ノートPCを開く前の安全 — 図</a></li><li><a href="#slide-44">スライド 44: ノートPCを開く前の安全</a></li><li><a href="#slide-45">スライド 45: ノートPC分解の手順</a></li><li><a href="#slide-46">スライド 46: 練習：部品の名前を答える</a></li><li><a href="#slide-47">スライド 47: 古いノートPCの問題と確認</a></li><li><a href="#slide-48">スライド 48: 古いノートPCによくある問題</a></li><li><a href="#slide-49">スライド 49: 修理前の簡単な確認</a></li><li><a href="#slide-50">スライド 50: 簡単な修理思考</a></li><li><a href="#slide-51">スライド 51: 復習：部品と役割を対応させる</a></li><li><a href="#slide-52">スライド 52: 最終メッセージ</a></li></ol></section>
+<h2 class="part-title">導入 — コンピュータはシステム</h2>
+<article class="slide-card" id="slide-1">
+<div class="slide-head"><div class="badge">スライド 1</div><div class="slide-title"><h2>第2講 — コンピュータはどう作られているか</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-01.jpg"><img src="assets/slides/slide-01.jpg" alt="第2講 — コンピュータはどう作られているか" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 1 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>今日はコンピュータを1つの完全な物理システムとして見ます。1台の古いノートPCを例にしますが、同じ主な役割は多くのノートPC、デスクトップ、病院ワークステーション、医療機器にもあります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>コンピュータは1つの部品ですか、それともシステムですか。</p><details data-checkpoint><summary>答えを見る</summary><p>多くの部品からなるシステムです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-2">
+<div class="slide-head"><div class="badge">スライド 2</div><div class="slide-title"><h2>大きな考え：1台のノートPCから多くのコンピュータへ</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-02.jpg"><img src="assets/slides/slide-02.jpg" alt="大きな考え：1台のノートPCから多くのコンピュータへ" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 2 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>例のノートPCだけを暗記しません。場所や形は違っても、処理、作業メモリ、保存、接続、電源、冷却、入力、出力という仕事は必要です。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>なぜ1台の古いノートPCを使うのですか。</p><details data-checkpoint><summary>答えを見る</summary><p>多くのコンピュータを理解するための分かりやすい実例だからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第1部 — 外側の部品と接続</h2>
+<article class="slide-card" id="slide-3">
+<div class="slide-head"><div class="badge">スライド 3</div><div class="slide-title"><h2>ノートPC外側の全体図</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-03.jpg"><img src="assets/slides/slide-03.jpg" alt="ノートPC外側の全体図" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 3 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>PCを開ける前に外側を観察します。画面、キーボード、タッチパッド、カメラ、マイク、スピーカー、電源ボタン、通気口、ポート、充電端子、見える損傷を確認します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>外側を確認する前にPCを開けるべきですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。まず簡単な外側の原因を確認します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-4">
+<div class="slide-head"><div class="badge">スライド 4</div><div class="slide-title"><h2>外側の部品：入力・出力・電源</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-04.jpg"><img src="assets/slides/slide-04.jpg" alt="外側の部品：入力・出力・電源" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 4 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>入力装置は情報をPCへ送ります。出力装置は利用者へ情報を示します。ポートは他の機器を接続します。充電器とバッテリーは電源システムです。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>キーボードは入力ですか、出力ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>入力です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-5">
+<div class="slide-head"><div class="badge">スライド 5</div><div class="slide-title"><h2>右側のポート</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-05.jpg"><img src="assets/slides/slide-05.jpg" alt="右側のポート" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 5 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>ポートは物理的な接続点です。USB、HDMI、音声端子、LANなどがあります。正しいポート、ケーブル、ドライバが一緒に動く必要があります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>USBを使う機器を1つ挙げてください。</p><details data-checkpoint><summary>答えを見る</summary><p>例：マウス、キーボード、USBメモリ、電話、プリンタ、スキャナ。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-6">
+<div class="slide-head"><div class="badge">スライド 6</div><div class="slide-title"><h2>左側と底面の機能</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-06.jpg"><img src="assets/slides/slide-06.jpg" alt="左側と底面の機能" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 6 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>通気口は空気を通します。ゴム足はPCの下に空間を作ります。ネジはケースを固定します。ほこりや柔らかい布は空気の流れを止めることがあります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>ノートPCの空気の流れを妨げるものは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ほこり、紙、布、毛布などです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第2部 — ノートPCの内部</h2>
+<article class="slide-card" id="slide-7">
+<div class="slide-head"><div class="badge">スライド 7</div><div class="slide-title"><h2>ノートPCの内部</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-07.jpg"><img src="assets/slides/slide-07.jpg" alt="ノートPCの内部" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 7 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>ここから仮想分解です。内部には、処理、メモリ、保存、電源、冷却、通信、入力、出力のシステムがあります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>各部品について尋ねる4つの質問は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>何か、役割、原理、起こり得る問題です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-8">
+<div class="slide-head"><div class="badge">スライド 8</div><div class="slide-title"><h2>ノートPCの中には何があるか</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-08.jpg"><img src="assets/slides/slide-08.jpg" alt="ノートPCの中には何があるか" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 8 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>内部写真をランダムな複雑さとして見ないでください。処理、現在の記憶、長期保存、接続、電源、冷却、通信、入力、出力で整理します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>複雑な内部写真を理解する良い方法は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>部品を機能ごとに分類することです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-9">
+<div class="slide-head"><div class="badge">スライド 9</div><div class="slide-title"><h2>内部の主なコンピュータ器官</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-09.jpg"><img src="assets/slides/slide-09.jpg" alt="内部の主なコンピュータ器官" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 9 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>CPUは処理、RAMは現在の作業、HDD/SSDはファイル保存、マザーボードは接続、冷却は熱除去を行います。位置ではなく形と役割を学びます。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>シャットダウン後も保存ファイルを保持する部品は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>HDDまたはSSDです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第3部 — マザーボード、CPU、RAM</h2>
+<article class="slide-card" id="slide-10">
+<div class="slide-head"><div class="badge">スライド 10</div><div class="slide-title"><h2>マザーボード — メイン基板</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-10.jpg"><img src="assets/slides/slide-10.jpg" alt="マザーボード — メイン基板" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 10 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>マザーボードは主回路基板です。電力と信号を運び、コネクタ、チップ、抵抗、コンデンサ、制御回路があります。故障すると多くの症状が出ます。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>なぜマザーボード故障は診断が難しいのですか。</p><details data-checkpoint><summary>答えを見る</summary><p>多くの部品がマザーボードに依存するからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-11">
+<div class="slide-head"><div class="badge">スライド 11</div><div class="slide-title"><h2>マザーボード：基板と神経</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-11.jpg"><img src="assets/slides/slide-11.jpg" alt="マザーボード：基板と神経" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 11 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>細い銅配線は道路と神経のように働きます。CPU、RAM、ストレージ、ポート、ネットワーク、画面、キーボード、電源回路の間で物理的な電気信号を運びます。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>マザーボード上のデータ信号は物理的ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。物理的な電気信号です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-12">
+<div class="slide-head"><div class="badge">スライド 12</div><div class="slide-title"><h2>CPU / プロセッサ — 脳</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-12.jpg"><img src="assets/slides/slide-12.jpg" alt="CPU / プロセッサ — 脳" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 12 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>CPUは命令に従い、計算し、比較し、制御します。学習上は脳に例えますが、人のように意味を理解するわけではありません。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>CPUはRAM、ストレージ、電源、冷却なしで単独動作できますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-13">
+<div class="slide-head"><div class="badge">スライド 13</div><div class="slide-title"><h2>CPUとは何か</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-13.jpg"><img src="assets/slides/slide-13.jpg" alt="CPUとは何か" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 13 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>CPUはCentral Processing Unitです。Centralは中心、Processingは情報処理、Unitは重要な1つの部分という意味です。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>CPUのPは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>Processingです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-14">
+<div class="slide-head"><div class="badge">スライド 14</div><div class="slide-title"><h2>CPUの動作原理</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-14.jpg"><img src="assets/slides/slide-14.jpg" alt="CPUの動作原理" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 14 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>CPU内部には非常に多くの小さなトランジスタがあります。電気状態を高速で切り替えます。切り替えにはエネルギーが必要で熱が出るため、冷却が必要です。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>なぜCPUに冷却が必要ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>電気的な切り替えで熱が出るからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-15">
+<div class="slide-head"><div class="badge">スライド 15</div><div class="slide-title"><h2>RAM — 短期記憶</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-15.jpg"><img src="assets/slides/slide-15.jpg" alt="RAM — 短期記憶" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 15 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>RAMは実行中のプログラムと現在のデータの高速作業場所です。机のように、今の作業に使い、永久保存には使いません。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>RAMは今の作業と後の保存のどちらを助けますか。</p><details data-checkpoint><summary>答えを見る</summary><p>今の作業です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-16">
+<div class="slide-head"><div class="badge">スライド 16</div><div class="slide-title"><h2>RAMとは何か</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-16.jpg"><img src="assets/slides/slide-16.jpg" alt="RAMとは何か" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 16 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>RAMはRandom Access Memoryです。CPUは多くの場所へ高速アクセスできます。RAMが多いと、多数のプログラムや大きなデータを開く作業空間が増えます。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>RAMが増えると通常何が増えますか。</p><details data-checkpoint><summary>答えを見る</summary><p>作業空間です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-17">
+<div class="slide-head"><div class="badge">スライド 17</div><div class="slide-title"><h2>RAMの動作原理</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-17.jpg"><img src="assets/slides/slide-17.jpg" alt="RAMの動作原理" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 17 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>RAMチップは一時的な電気状態を保持し、頻繁に読み書きされます。通常のRAMは揮発性で、電源を切ると作業データが消えます。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>通常のRAMは電源を切っても未保存データを保持しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第4部 — HDD、SSD、冷却、電源</h2>
+<article class="slide-card" id="slide-18">
+<div class="slide-head"><div class="badge">スライド 18</div><div class="slide-title"><h2>HDDとSSD — 長期保存</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-18.jpg"><img src="assets/slides/slide-18.jpg" alt="HDDとSSD — 長期保存" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 18 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>HDDとSSDはOS、プログラム、ファイルをシャットダウン後も保持します。同じサイズや端子の場合がありますが、内部技術は異なります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>HDDとSSDの役割は同じですか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。長期保存ですが、技術は異なります。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-19">
+<div class="slide-head"><div class="badge">スライド 19</div><div class="slide-title"><h2>ストレージ：HDDとSSD</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-19.jpg"><img src="assets/slides/slide-19.jpg" alt="ストレージ：HDDとSSD" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 19 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>ストレージはRAMと違います。RAMは現在の作業、ストレージは後で使う情報を保持します。古いSATA HDDはSSDへ交換できることがあります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>一時的なのはRAMとストレージのどちらですか。</p><details data-checkpoint><summary>答えを見る</summary><p>RAMです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-20">
+<div class="slide-head"><div class="badge">スライド 20</div><div class="slide-title"><h2>HDDとは何か</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-20.jpg"><img src="assets/slides/slide-20.jpg" alt="HDDとは何か" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 20 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>HDDはHard Disk Driveです。モーターが磁気ディスクを回し、動くヘッドがデータを読み書きします。機械的な動きがあるため衝撃に弱いです。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>動作中のHDDが衝撃に弱いのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>回転するディスクと動くヘッドがあるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-21">
+<div class="slide-head"><div class="badge">スライド 21</div><div class="slide-title"><h2>SSDとは何か</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-21.jpg"><img src="assets/slides/slide-21.jpg" alt="SSDとは何か" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 21 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>SSDはSolid State Driveです。フラッシュメモリチップとコントローラを使い、保存用の機械的可動部品がありません。通常はHDDより速く静かです。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>SSDは回転する磁気ディスクを使いますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-22">
+<div class="slide-head"><div class="badge">スライド 22</div><div class="slide-title"><h2>HDDからSSDへの交換</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-22.jpg"><img src="assets/slides/slide-22.jpg" alt="HDDからSSDへの交換" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 22 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>古いHDDを互換性のあるSSDへ交換すると起動や読み込みが速くなることがあります。ただし互換性、バックアップ、データ移行、PC全体の状態を確認します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>SSD交換ですべての遅さが必ず直りますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。RAM、熱、ソフト、CPUなども関係します。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-23">
+<div class="slide-head"><div class="badge">スライド 23</div><div class="slide-title"><h2>冷却ファンとヒートシンク</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-23.jpg"><img src="assets/slides/slide-23.jpg" alt="冷却ファンとヒートシンク" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 23 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>CPUは冷却部品の下にあることがあります。ヒートパイプが熱を運び、金属フィンが広げ、ファンが空気を動かします。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>空気を動かす冷却部品は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ファンです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-24">
+<div class="slide-head"><div class="badge">スライド 24</div><div class="slide-title"><h2>冷却システム：ファン・ヒートパイプ・ヒートシンク</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-24.jpg"><img src="assets/slides/slide-24.jpg" alt="冷却システム：ファン・ヒートパイプ・ヒートシンク" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 24 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>熱は熱いチップから金属へ、次に動く空気へ移ります。ほこり、通気口の詰まり、古い熱材料、壊れたファンで低速化や停止が起こります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>熱の問題でPCが遅くなることはありますか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-25">
+<div class="slide-head"><div class="badge">スライド 25</div><div class="slide-title"><h2>バッテリー — 電源とエネルギー保存</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-25.jpg"><img src="assets/slides/slide-25.jpg" alt="バッテリー — 電源とエネルギー保存" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 25 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>バッテリーは化学エネルギーを保存し、充電器を外した時に電気を供給します。古くなると容量が下がり、膨張や損傷は危険です。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>バッテリー内部に保存されるエネルギーは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>化学エネルギーです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-26">
+<div class="slide-head"><div class="badge">スライド 26</div><div class="slide-title"><h2>バッテリーと充電器：電源システム</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-26.jpg"><img src="assets/slides/slide-26.jpg" alt="バッテリーと充電器：電源システム" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 26 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>アダプタは壁の電力をノートPC用に変換し、基板が電力と充電を管理します。弱いバッテリーはチェーンの1つの故障で、PC全体の故障とは限りません。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>充電器接続時だけ動く場合、何を確認しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>バッテリーと充電システムです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-27">
+<div class="slide-head"><div class="badge">スライド 27</div><div class="slide-title"><h2>充電器と電源アダプタ</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-27.jpg"><img src="assets/slides/slide-27.jpg" alt="充電器と電源アダプタ" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 27 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>ケーブル、端子、表示、出力電圧、電流容量、損傷を確認します。不適合や破損したアダプタは充電不良、過熱、機器損傷の原因になります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>導線が見えるアダプタケーブルを使い続けますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第5部 — ネットワーク、入力、出力</h2>
+<article class="slide-card" id="slide-28">
+<div class="slide-head"><div class="badge">スライド 28</div><div class="slide-title"><h2>Wi‑Fiカード — 無線接続</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-28.jpg"><img src="assets/slides/slide-28.jpg" alt="Wi‑Fiカード — 無線接続" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 28 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>Wi‑Fiカードは小さなネットワーク装置で、細いアンテナ線につながっています。無線信号を送受信します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>Wi‑Fiカードにつながる細い線は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>アンテナ線です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-29">
+<div class="slide-head"><div class="badge">スライド 29</div><div class="slide-title"><h2>Wi‑Fiカード：ネットワーク通信</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-29.jpg"><img src="assets/slides/slide-29.jpg" alt="Wi‑Fiカード：ネットワーク通信" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 29 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>インターネットがないからPC全体が壊れたとは限りません。Wi‑Fi状態、機内モード、ドライバ、アンテナ、ルーター、電波、ネットワークを確認します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>PCは動作していてネットワークだけ失敗することはありますか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-30">
+<div class="slide-head"><div class="badge">スライド 30</div><div class="slide-title"><h2>スピーカー — 音声出力</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-30.jpg"><img src="assets/slides/slide-30.jpg" alt="スピーカー — 音声出力" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 30 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>スピーカーは電気的な音声信号を振動と音へ変えます。音量、出力先、スピーカー、ケーブル、ドライバ、設定などを確認します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>スピーカーは入力ですか出力ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>出力です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-31">
+<div class="slide-head"><div class="badge">スライド 31</div><div class="slide-title"><h2>キーボードとタッチパッド — 入力装置</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-31.jpg"><img src="assets/slides/slide-31.jpg" alt="キーボードとタッチパッド — 入力装置" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 31 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>キーボードとタッチパッドは人の操作を電気信号へ変えます。キー操作はコード化された入力になり、タッチパッドは指の動きとクリックを検出します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>入力装置では情報はどちらへ進みますか。</p><details data-checkpoint><summary>答えを見る</summary><p>利用者からコンピュータへ進みます。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-32">
+<div class="slide-head"><div class="badge">スライド 32</div><div class="slide-title"><h2>画面 / ディスプレイ — 視覚出力</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-32.jpg"><img src="assets/slides/slide-32.jpg" alt="画面 / ディスプレイ — 視覚出力" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 32 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>画面は電子的な画像信号を制御された光へ変えます。黒い画面は明るさ、パネル、ケーブル、画像回路、起動、RAM、電源などが原因の場合があります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>黒い画面は必ずパネル故障ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-33">
+<div class="slide-head"><div class="badge">スライド 33</div><div class="slide-title"><h2>ウェブカメラとマイク — 画像・音声入力</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-33.jpg"><img src="assets/slides/slide-33.jpg" alt="ウェブカメラとマイク — 画像・音声入力" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 33 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>ウェブカメラは光をデジタル画像へ、マイクは音圧を電気信号とデジタル音声へ変えます。プライバシー設定とアプリ選択も重要です。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>ウェブカメラとマイクは入力装置ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-34">
+<div class="slide-head"><div class="badge">スライド 34</div><div class="slide-title"><h2>入力装置と出力装置 — 人とPCの通信</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-34.jpg"><img src="assets/slides/slide-34.jpg" alt="入力装置と出力装置 — 人とPCの通信" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 34 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>入力は情報をシステムへ送り、出力は結果を示します。キーボードで入力し、PCが処理し、画面に文字が出る流れです。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>入力装置と出力装置を1つずつ挙げてください。</p><details data-checkpoint><summary>答えを見る</summary><p>例：キーボードと画面。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第6部 — データの流れと起動</h2>
+<article class="slide-card" id="slide-35">
+<div class="slide-head"><div class="badge">スライド 35</div><div class="slide-title"><h2>ノートPC内部のデータ移動 — 図</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-35.jpg"><img src="assets/slides/slide-35.jpg" alt="ノートPC内部のデータ移動 — 図" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 35 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>1文字の流れを追います。キーボードが信号を作り、マザーボードが運び、CPUが処理し、RAMが現在のデータを持ち、画面が表示します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>プログラム動作中に現在の文字を保持するのは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>RAMです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-36">
+<div class="slide-head"><div class="badge">スライド 36</div><div class="slide-title"><h2>ノートPC内部のデータ移動</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-36.jpg"><img src="assets/slides/slide-36.jpg" alt="ノートPC内部のデータ移動" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 36 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>入力 → 処理 → 作業メモリ → 出力です。ファイルを保存する時や後で読み込む時にストレージを使います。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>入力した文字が長期保存されるのはいつですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ファイルを保存した時です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-37">
+<div class="slide-head"><div class="badge">スライド 37</div><div class="slide-title"><h2>電源ボタンから動作するPCへ — 起動図</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-37.jpg"><img src="assets/slides/slide-37.jpg" alt="電源ボタンから動作するPCへ — 起動図" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 37 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>電力が基板へ届き、起動回路がシステムを起こし、CPUが始まり、RAMを確認し、ファームウェアが起動装置を探し、OSをストレージから読み込みます。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>起動時にOSを提供する長期装置は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>HDDまたはSSDです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-38">
+<div class="slide-head"><div class="badge">スライド 38</div><div class="slide-title"><h2>起動：電源ボタンから動作するPCへ</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-38.jpg"><img src="assets/slides/slide-38.jpg" alt="起動：電源ボタンから動作するPCへ" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 38 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>起動が遅い原因は、古いHDD、故障ストレージ、少ないRAM、過熱、多い自動起動プログラム、古いOSなどがあります。証拠を順に確認します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>遅い起動は必ずCPUが原因ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-39">
+<div class="slide-head"><div class="badge">スライド 39</div><div class="slide-title"><h2>すべての部品が協力する</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-39.jpg"><img src="assets/slides/slide-39.jpg" alt="すべての部品が協力する" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 39 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>コンピュータはシステムです。1つの弱い部品が全体を制限します。速いCPUでも、故障ストレージ、少ないRAM、弱い電源、悪い冷却があれば結果は悪くなります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>1つの弱い部品がPC全体へ影響しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>はい。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-40">
+<div class="slide-head"><div class="badge">スライド 40</div><div class="slide-title"><h2>システムまとめ：すべての部品が協力する</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-40.jpg"><img src="assets/slides/slide-40.jpg" alt="システムまとめ：すべての部品が協力する" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 40 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>体の比喩を使います。CPUは脳、RAMは短期記憶、ストレージは長期記憶、マザーボードは道路と神経、バッテリーはエネルギー、冷却は呼吸と発汗です。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>長期記憶に例えられる部品は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>HDDまたはSSDです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第7部 — 安全な仮想分解</h2>
+<article class="slide-card" id="slide-41">
+<div class="slide-head"><div class="badge">スライド 41</div><div class="slide-title"><h2>ノートPCを安全に開く</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-41.jpg"><img src="assets/slides/slide-41.jpg" alt="ノートPCを安全に開く" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 41 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>ここから理論から仮想分解へ進みます。ハードウェアは壊れたり短絡したり、手を傷つけたり、危険なバッテリーを含むことがあります。安全習慣は専門的習慣です。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>オンライン授業でも分解安全を学ぶのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>将来、学校、家庭、仕事で実機を扱う可能性があるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-42">
+<div class="slide-head"><div class="badge">スライド 42</div><div class="slide-title"><h2>ノートPC分解用の道具</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-42.jpg"><img src="assets/slides/slide-42.jpg" alt="ノートPC分解用の道具" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 42 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>正しい小型ドライバー、プラスチック工具、ネジ容器、清潔で硬い机を使います。間違った工具と力はネジ、クリップ、ケーブル、基板を壊します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>良い修理は速く力強いですか、それとも遅く慎重ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>遅く慎重です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-43">
+<div class="slide-head"><div class="badge">スライド 43</div><div class="slide-title"><h2>ノートPCを開く前の安全 — 図</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-43.jpg"><img src="assets/slides/slide-43.jpg" alt="ノートPCを開く前の安全 — 図" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 43 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>シャットダウン、充電器を抜く、可能ならバッテリーを外す、乾いた手、ネジ整理、力を使わない、を守ります。膨張、液体、煙、焦げ臭では停止します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>PCを開く時、充電器を接続したままにしますか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-44">
+<div class="slide-head"><div class="badge">スライド 44</div><div class="slide-title"><h2>ノートPCを開く前の安全</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-44.jpg"><img src="assets/slides/slide-44.jpg" alt="ノートPCを開く前の安全" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 44 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>シャットダウン後も電力が残る場合があります。可能なら外部電源とバッテリーを外します。静電気、液体、通電回路付近の金属工具、不必要なチップ接触を避けます。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>可能ならバッテリーを外すのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>ノートPCにまだ電力がある可能性があるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-45">
+<div class="slide-head"><div class="badge">スライド 45</div><div class="slide-title"><h2>ノートPC分解の手順</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-45.jpg"><img src="assets/slides/slide-45.jpg" alt="ノートPC分解の手順" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 45 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>状態を記録し、シャットダウン、電源を外す、バッテリーを外す、工具準備、ネジ位置記録、ゆっくり開く、慎重に接続を外す、部品識別、組み立て、テストの順です。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>なぜネジ位置を記録しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>ネジの長さと場所が違うことがあるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-46">
+<div class="slide-head"><div class="badge">スライド 46</div><div class="slide-title"><h2>練習：部品の名前を答える</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-46.jpg"><img src="assets/slides/slide-46.jpg" alt="練習：部品の名前を答える" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 46 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>マザーボード、CPU部分、RAM、HDD/SSD、冷却、バッテリー、Wi‑Fi、スピーカー、ポート、ケーブルを識別します。名前だけでなく役割を説明します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>部品名の次に何を説明すべきですか。</p><details data-checkpoint><summary>答えを見る</summary><p>その役割です。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article><h2 class="part-title">第8部 — 問題、確認、復習</h2>
+<article class="slide-card" id="slide-47">
+<div class="slide-head"><div class="badge">スライド 47</div><div class="slide-title"><h2>古いノートPCの問題と確認</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-47.jpg"><img src="assets/slides/slide-47.jpg" alt="古いノートPCの問題と確認" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 47 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>古いノートPCは、ほこり、弱いバッテリー、遅いHDD、摩耗したヒンジ、破損ポート、ゆるいケーブル、少ないRAMなどを観察しやすい練習機です。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>古いことは自動的に役に立たないという意味ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>いいえ。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-48">
+<div class="slide-head"><div class="badge">スライド 48</div><div class="slide-title"><h2>古いノートPCによくある問題</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-48.jpg"><img src="assets/slides/slide-48.jpg" alt="古いノートPCによくある問題" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 48 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>遅いHDD、少ないRAM、過熱、弱いバッテリー、壊れた充電器、ゆるい画面ケーブル、キーボード故障、弱いWi‑Fi、破損ポート、古いソフトなどがあります。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>古いノートPCの物理的問題を1つ挙げてください。</p><details data-checkpoint><summary>答えを見る</summary><p>例：ほこり、弱いバッテリー、ケーブル損傷、HDD故障、ファン故障。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-49">
+<div class="slide-head"><div class="badge">スライド 49</div><div class="slide-title"><h2>修理前の簡単な確認</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-49.jpg"><img src="assets/slides/slide-49.jpg" alt="修理前の簡単な確認" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 49 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>電源、ランプ、明るさ、ファン、ビープ音、外部画面、ストレージ検出、問題前の変更を確認します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>PCを開く前に簡単な確認をするのはなぜですか。</p><details data-checkpoint><summary>答えを見る</summary><p>多くの問題に簡単な外部原因があるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-50">
+<div class="slide-head"><div class="badge">スライド 50</div><div class="slide-title"><h2>簡単な修理思考</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-50.jpg"><img src="assets/slides/slide-50.jpg" alt="簡単な修理思考" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 50 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>早く決めつけません。電源、画面、冷却、ストレージ、RAM、ネットワーク、ユーザー操作を順に追います。一度に1つだけ変更し、結果を記録します。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>なぜ一度に1つだけ変更しますか。</p><details data-checkpoint><summary>答えを見る</summary><p>どの行動が結果へ影響したか分かるからです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-51">
+<div class="slide-head"><div class="badge">スライド 51</div><div class="slide-title"><h2>復習：部品と役割を対応させる</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-51.jpg"><img src="assets/slides/slide-51.jpg" alt="復習：部品と役割を対応させる" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 51 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>CPUは処理、RAMは現在の作業、ストレージはファイル保存、マザーボードは接続、冷却は熱除去、バッテリーはエネルギー、Wi‑Fiは通信、入力は送信、出力は結果提示です。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>主な内部部品を接続するのは何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>マザーボードです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<article class="slide-card" id="slide-52">
+<div class="slide-head"><div class="badge">スライド 52</div><div class="slide-title"><h2>最終メッセージ</h2><p>まず元のスライドを見てください。次にウェブ用の説明を読んでください。</p></div></div>
+<figure class="slide-image"><button class="image-button" type="button" data-full="assets/slides/slide-52.jpg"><img src="assets/slides/slide-52.jpg" alt="最終メッセージ" loading="lazy"></button><figcaption>元のプレゼンテーションのスライド 52 — クリックで拡大</figcaption></figure>
+<section class="reading"><p>コンピュータは協力する部品からなる物理システムです。良いITサポート担当者は部品、役割、原理、症状を理解し、安全に段階的確認を行います。</p></section>
+<section class="think"><h3>考えて答えましょう</h3><p>この講義の主な専門的習慣は何ですか。</p><details data-checkpoint><summary>答えを見る</summary><p>システムを理解し、段階的にトラブルシューティングすることです。</p></details></section>
+<div class="footer-nav"><a href="#lesson-map">授業マップへ戻る ↑</a></div>
+</article>
+<section class="interactive-section" id="interactive-review"><h2>拡張インタラクティブ復習</h2><p>52枚すべてを学んだ後に行ってください。</p>
+<div class="lab-grid">
+<article class="lab"><h3>1. 部品エクスプローラ</h3><p>部品を選び、主な役割を確認してください。</p><div class="component-grid">
+<button class="component" data-part="motherboard">Motherboard</button><button class="component" data-part="cpu">CPU</button><button class="component" data-part="ram">RAM</button><button class="component" data-part="storage">HDD / SSD</button><button class="component" data-part="cooling">Cooling</button><button class="component" data-part="wifi">Wi‑Fi</button>
+</div><div class="component-info" id="component-info"></div></article>
+<article class="lab"><h3>2. 安全な分解手順を並べる</h3><p>矢印を使って安全な順序にしてください。</p><div class="order-list" id="order-list"><div class="order-item" data-key="identify"><strong>部品を識別</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="open"><strong>ゆっくり開く</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="shutdown"><strong>シャットダウン</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="reassemble"><strong>再組立てとテスト</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="battery"><strong>可能ならバッテリーを外す</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="screws"><strong>ネジ位置を記録</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="unplug"><strong>充電器と機器を外す</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div><div class="order-item" data-key="prepare"><strong>工具と机を準備</strong><button data-move="up" type="button">↑</button><button data-move="down" type="button">↓</button></div></div><div class="actions"><button class="primary" id="check-order" type="button">順番を確認</button></div><div class="feedback" id="order-feedback"></div></article>
+<article class="lab"><h3>3. 部品と役割を対応させる</h3><table class="match-table"><tr><th>部品</th><th>役割</th></tr><tr><td>CPU</td><td><select class="role-select" data-answer="process"><option value="">選ぶ</option><option value="process">命令を処理</option><option value="work">現在の作業を保持</option><option value="store">ファイルを長期保存</option><option value="connect">部品を接続</option><option value="cool">熱を除去</option><option value="wireless">無線通信</option></select></td></tr><tr><td>RAM</td><td><select class="role-select" data-answer="work"><option value="">選ぶ</option><option value="process">命令を処理</option><option value="work">現在の作業を保持</option><option value="store">ファイルを長期保存</option><option value="connect">部品を接続</option><option value="cool">熱を除去</option><option value="wireless">無線通信</option></select></td></tr><tr><td>HDD / SSD</td><td><select class="role-select" data-answer="store"><option value="">選ぶ</option><option value="process">命令を処理</option><option value="work">現在の作業を保持</option><option value="store">ファイルを長期保存</option><option value="connect">部品を接続</option><option value="cool">熱を除去</option><option value="wireless">無線通信</option></select></td></tr><tr><td>Motherboard</td><td><select class="role-select" data-answer="connect"><option value="">選ぶ</option><option value="process">命令を処理</option><option value="work">現在の作業を保持</option><option value="store">ファイルを長期保存</option><option value="connect">部品を接続</option><option value="cool">熱を除去</option><option value="wireless">無線通信</option></select></td></tr><tr><td>Cooling</td><td><select class="role-select" data-answer="cool"><option value="">選ぶ</option><option value="process">命令を処理</option><option value="work">現在の作業を保持</option><option value="store">ファイルを長期保存</option><option value="connect">部品を接続</option><option value="cool">熱を除去</option><option value="wireless">無線通信</option></select></td></tr><tr><td>Wi‑Fi</td><td><select class="role-select" data-answer="wireless"><option value="">選ぶ</option><option value="process">命令を処理</option><option value="work">現在の作業を保持</option><option value="store">ファイルを長期保存</option><option value="connect">部品を接続</option><option value="cool">熱を除去</option><option value="wireless">無線通信</option></select></td></tr></table><div class="actions"><button class="primary" id="check-match" type="button">対応を確認</button></div><div class="feedback" id="match-feedback"></div></article>
+<article class="lab"><h3>4. 安全で役立つ最初の行動を選ぶ</h3><p>適切な行動をすべてクリックしてください。</p><div class="scenario-grid"><div class="scenario" data-correct="1">膨張バッテリー：使用停止して報告</div><div class="scenario" data-correct="0">Wi‑Fiなし：すぐマザーボード交換</div><div class="scenario" data-correct="1">電源ランプなし：コンセント、アダプタ、ケーブル確認</div><div class="scenario" data-correct="0">黒い画面：最初に力でケースを開く</div><div class="scenario" data-correct="1">非常に熱い：通気口とファン確認</div><div class="scenario" data-correct="0">ゆるいUSB端子：曲げ続ける</div></div><div class="actions"><button class="primary" id="check-scenarios" type="button">選択した行動を確認</button></div><div class="feedback" id="scenario-feedback"></div></article>
+</div>
+<article class="lab" style="margin-top:18px"><h3>5. 仮想分解チェックリスト</h3><p>仮想手順を完了したら各項目をクリックしてください。</p><div class="checklist"><div class="checkitem">シャットダウン</div><div class="checkitem">充電器と機器を外す</div><div class="checkitem">可能ならバッテリーを外す</div><div class="checkitem">清潔で硬い机を準備</div><div class="checkitem">ネジを整理</div><div class="checkitem">力を使わずゆっくり開く</div><div class="checkitem">触る前に部品を識別</div><div class="checkitem">再組立てしてテスト</div></div></article>
+<article class="lab" style="margin-top:18px"><h3>6. 最終知識チェック</h3><form id="final-quiz"><fieldset class="quiz-card" data-answer="0"><legend>1. 主回路基板はどれですか。</legend><label><input type="radio" name="q1" value="0"> マザーボード</label><label><input type="radio" name="q1" value="1"> バッテリー</label><label><input type="radio" name="q1" value="2"> スピーカー</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>2. 現在の作業データを通常保持するのはどれですか。</legend><label><input type="radio" name="q2" value="0"> SSD</label><label><input type="radio" name="q2" value="1"> RAM</label><label><input type="radio" name="q2" value="2"> 充電器</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>3. 回転する磁気ディスクを持つのはどれですか。</legend><label><input type="radio" name="q3" value="0"> HDD</label><label><input type="radio" name="q3" value="1"> SSD</label><label><input type="radio" name="q3" value="2"> RAM</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>4. 空気を動かして熱を除去する部品はどれですか。</legend><label><input type="radio" name="q4" value="0"> ファン</label><label><input type="radio" name="q4" value="1"> キーボード</label><label><input type="radio" name="q4" value="2"> Wi‑Fiカード</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>5. CPUの主な仕事は何ですか。</legend><label><input type="radio" name="q5" value="0"> 命令を処理する</label><label><input type="radio" name="q5" value="1"> ファイルを永久保存する</label><label><input type="radio" name="q5" value="2"> バッテリー電力を供給する</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>6. 通常のRAMデータは電源がなくなるとどうなりますか。</legend><label><input type="radio" name="q6" value="0"> 永久に残る</label><label><input type="radio" name="q6" value="1"> 失われる</label><label><input type="radio" name="q6" value="2"> キーボードへ移る</label></fieldset><fieldset class="quiz-card" data-answer="2"><legend>7. 入力装置はどれですか。</legend><label><input type="radio" name="q7" value="0"> 画面</label><label><input type="radio" name="q7" value="1"> スピーカー</label><label><input type="radio" name="q7" value="2"> キーボード</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>8. 出力装置はどれですか。</legend><label><input type="radio" name="q8" value="0"> マイク</label><label><input type="radio" name="q8" value="1"> 画面</label><label><input type="radio" name="q8" value="2"> タッチパッド</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>9. インターネットがないとPC全体が必ず故障ですか。</legend><label><input type="radio" name="q9" value="0"> はい</label><label><input type="radio" name="q9" value="1"> いいえ</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>10. ノートPCを開く前に何をしますか。</legend><label><input type="radio" name="q10" value="0"> 電源を外す</label><label><input type="radio" name="q10" value="1"> ゲームを始める</label><label><input type="radio" name="q10" value="2"> 音量を上げる</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>11. ネジ位置を記録するのはなぜですか。</legend><label><input type="radio" name="q11" value="0"> Wi‑Fi改善</label><label><input type="radio" name="q11" value="1"> ネジの長さが違うことがある</label><label><input type="radio" name="q11" value="2"> バッテリー充電</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>12. 過熱でPCが遅くなることはありますか。</legend><label><input type="radio" name="q12" value="0"> はい</label><label><input type="radio" name="q12" value="1"> いいえ</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>13. シャットダウン後もWindowsとファイルを保存するのは通常どれですか。</legend><label><input type="radio" name="q13" value="0"> RAM</label><label><input type="radio" name="q13" value="1"> HDDまたはSSD</label><label><input type="radio" name="q13" value="2"> CPUキャッシュだけ</label></fieldset><fieldset class="quiz-card" data-answer="1"><legend>14. 良い最初のサポート習慣は何ですか。</legend><label><input type="radio" name="q14" value="0"> すぐ推測</label><label><input type="radio" name="q14" value="1"> 簡単な外部原因を確認</label><label><input type="radio" name="q14" value="2"> すぐ基板交換</label></fieldset><fieldset class="quiz-card" data-answer="0"><legend>15. トラブル対応で一度に1つだけ変更するのはなぜですか。</legend><label><input type="radio" name="q15" value="0"> 何が結果へ影響したか確認するため</label><label><input type="radio" name="q15" value="1"> 音を増やすため</label><label><input type="radio" name="q15" value="2"> ファイルを多く削除するため</label></fieldset><div class="actions"><button class="primary" id="check-quiz" type="button">最終クイズを確認</button><button class="secondary" id="reset-quiz" type="reset">リセット</button></div><div class="score" id="quiz-score"></div></form></article>
+</section></main>
+<div class="modal" id="slide-modal"><button type="button">×</button><img alt="Enlarged slide"></div><footer>Computer Fundamentals 2 · ウェブ講義 2 · 元の52枚の順序を保持。</footer></body></html>
