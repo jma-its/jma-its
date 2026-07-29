@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SoftII — Lecture Block</title>
+<style>
+:root{
+  --bg:#eef4fb;
+  --card:#ffffff;
+  --text:#18324a;
+  --muted:#5f7286;
+  --blue:#2b67c8;
+  --blue2:#1e4e9f;
+  --green:#1f8a60;
+  --border:#d8e2ee;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI","Noto Sans JP",Arial,sans-serif;line-height:1.5}
+.hero{background:linear-gradient(135deg,#12396e 0%, #2d6dca 58%, #1f8a60 100%);color:#fff;padding:54px 20px 38px}
+.hero-inner,.wrap{width:min(1120px,calc(100% - 32px));margin:0 auto}
+.kicker{display:inline-block;padding:8px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:16px;background:rgba(255,255,255,.08)}
+h1{font-size:clamp(38px,6vw,64px);line-height:1.05;margin:0 0 10px}
+.hero p{font-size:19px;max-width:920px;margin:0;color:#e8f0fb}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:24px auto 0}
+.summary .item{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:16px 18px}
+.summary .num{display:block;font-size:30px;font-weight:800;line-height:1}
+.summary .label{display:block;margin-top:6px;color:#eaf2ff;font-size:14px}
+main{padding:28px 0 44px}
+.notice{background:#eaf7f0;border-left:6px solid var(--green);padding:18px 20px;border-radius:6px 16px 16px 6px;font-size:18px;margin:0 0 24px}
+.grid{display:grid;gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 14px 34px rgba(36,56,84,.09)}
+.card-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.card h2{font-size:30px;line-height:1.15;margin:0 0 8px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.badge{display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;background:#edf3fb;border:1px solid #d5e1f1;color:var(--blue2);font-size:14px;font-weight:700}
+.desc{font-size:17px;color:var(--muted);margin:12px 0 16px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.links a{text-decoration:none;font-weight:800;padding:12px 16px;border-radius:12px;transition:.15s ease}
+.links a.en{background:var(--blue);color:#fff}
+.links a.ja{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+.links a:hover{transform:translateY(-1px)}
+.footerbox{margin-top:26px;background:#fff;border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:0 14px 34px rgba(36,56,84,.07)}
+.footerbox h3{margin:0 0 10px;font-size:28px}
+.footerbox p{margin:0;color:var(--muted);font-size:17px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">Software II · AA26 · Lecture Block Only</div>
+    <h1>SoftII</h1>
+    <p>Complete web lecture block rebuilt from the original presentations. English and Japanese versions are included. Each lecture contains the original slide flow and an upgraded final quiz with feedback and retry.</p>
+    <div class="summary">
+      <div class="item"><span class="num">5</span><span class="label">Lectures</span></div>
+      <div class="item"><span class="num">281</span><span class="label">Original slides total</span></div>
+      <div class="item"><span class="num">116</span><span class="label">Quiz questions total</span></div>
+      <div class="item"><span class="num">EN / JA</span><span class="label">Two language versions</span></div>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <div class="notice"><strong>Lecture block only.</strong> This archive contains the lecture part of the Software II course. The practical block is intentionally excluded for now.</div>
+
+    <section class="grid">
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>Lecture 1 — Windows, File Explorer, Files and Folders</h2>
+            <div class="meta">
+              <span class="badge">97 slides</span>
+              <span class="badge">24-question quiz</span>
+            </div>
+          </div>
+        </div>
+        <p class="desc">The Windows desktop, File Explorer, files, folders, names, extensions, selection, copy and move, delete and restore, and final folder structure checks.</p>
+        <div class="links">
+          <a class="en" href="lecture01/lecture_en.html">Open English</a>
+          <a class="ja" href="lecture01/lecture_ja.html">日本語版を開く</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>Lecture 2 — Archives, ZIP, Extract, Search and Screenshot Proof</h2>
+            <div class="meta">
+              <span class="badge">44 slides</span>
+              <span class="badge">20-question quiz</span>
+            </div>
+          </div>
+        </div>
+        <p class="desc">Creating archive folders, making ZIP files, extraction, using search, checking properties, and creating screenshot proof of completed work.</p>
+        <div class="links">
+          <a class="en" href="lecture02/lecture_en.html">Open English</a>
+          <a class="ja" href="lecture02/lecture_ja.html">日本語版を開く</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>Lecture 3 — Windows Settings and Personalization</h2>
+            <div class="meta">
+              <span class="badge">40 slides</span>
+              <span class="badge">20-question quiz</span>
+            </div>
+          </div>
+        </div>
+        <p class="desc">Personalization, taskbar, themes, scaling, default apps, startup items, storage, updates, and safe versus dangerous settings.</p>
+        <div class="links">
+          <a class="en" href="lecture03/lecture_en.html">Open English</a>
+          <a class="ja" href="lecture03/lecture_ja.html">日本語版を開く</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>Lecture 4 — Browser Basics</h2>
+            <div class="meta">
+              <span class="badge">74 slides</span>
+              <span class="badge">28-question quiz</span>
+            </div>
+          </div>
+        </div>
+        <p class="desc">Browser windows and tabs, the address bar, search, domains, safe downloading, forms, translation, permissions, uploads, and common web problems.</p>
+        <div class="links">
+          <a class="en" href="lecture04/lecture_en.html">Open English</a>
+          <a class="ja" href="lecture04/lecture_ja.html">日本語版を開く</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>Lecture 5 — Office Software and Alternatives</h2>
+            <div class="meta">
+              <span class="badge">70 slides</span>
+              <span class="badge">24-question quiz</span>
+            </div>
+          </div>
+        </div>
+        <p class="desc">Office suites, Writer, Calc, Impress, Microsoft Office, alternatives, file formats, compatibility, PDF, saving, backups, and safe download choices.</p>
+        <div class="links">
+          <a class="en" href="lecture05/lecture_en.html">Open English</a>
+          <a class="ja" href="lecture05/lecture_ja.html">日本語版を開く</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="footerbox">
+      <h3>Archive note</h3>
+      <p>This package is intended as the main lecture archive for the Software II course. It excludes practical exercises for now, so the lecture block can be used independently for review, translation, and test preparation.</p>
+    </section>
+  </div>
+</main>
+</body>
+</html>
