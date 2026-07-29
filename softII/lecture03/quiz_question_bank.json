@@ -1,0 +1,422 @@
+[
+  {
+    "type": "Knowledge",
+    "category": "Settings and Windows versions",
+    "correct": "B",
+    "q_en": "Which shortcut opens Windows Settings?",
+    "opts_en": [
+      "Ctrl + H",
+      "Windows key + I",
+      "Alt + F4",
+      "Ctrl + Shift + T"
+    ],
+    "exp_en": "Windows key + I opens the Settings app directly.",
+    "q_ja": "Windows Settingsを開くShortcutはどれですか？",
+    "opts_ja": [
+      "Ctrl + H",
+      "Windows key + I",
+      "Alt + F4",
+      "Ctrl + Shift + T"
+    ],
+    "exp_ja": "Windows key + IでSettings appを直接開きます。"
+  },
+  {
+    "type": "Knowledge",
+    "category": "Settings and Windows versions",
+    "correct": "D",
+    "q_en": "Where are Windows 11 taskbar icons placed by default?",
+    "opts_en": [
+      "At the top of the screen",
+      "On the right side",
+      "Only inside Start",
+      "In the center"
+    ],
+    "exp_en": "Windows 11 normally centers taskbar icons. They can be moved left with a safe setting.",
+    "q_ja": "Windows 11のTaskbar iconはDefaultでどこにありますか？",
+    "opts_ja": [
+      "Screenの上",
+      "右側",
+      "Startの中だけ",
+      "Center"
+    ],
+    "exp_ja": "Windows 11では通常Taskbar iconはCenterです。Safe settingでLeftへ変更できます。"
+  },
+  {
+    "type": "Knowledge",
+    "category": "Personalization",
+    "correct": "A",
+    "q_en": "What does Personalization mainly change?",
+    "opts_en": [
+      "The appearance of Windows",
+      "The CPU model",
+      "The Internet provider",
+      "The amount of RAM"
+    ],
+    "exp_en": "Personalization changes visual settings such as background, colors, themes, Start, taskbar, and lock screen.",
+    "q_ja": "Personalizationは主に何を変更しますか？",
+    "opts_ja": [
+      "WindowsのAppearance",
+      "CPU model",
+      "Internet provider",
+      "RAMのAmount"
+    ],
+    "exp_ja": "PersonalizationはBackground、Color、Theme、Start、Taskbar、Lock screenなどのVisual settingを変更します。"
+  },
+  {
+    "type": "Knowledge",
+    "category": "Personalization",
+    "correct": "C",
+    "q_en": "Which path is used to change a Windows theme?",
+    "opts_en": [
+      "Settings → Apps → Startup",
+      "Control Panel → Programs",
+      "Settings → Personalization → Themes",
+      "File Explorer → View"
+    ],
+    "exp_en": "Themes are found in Settings → Personalization → Themes.",
+    "q_ja": "Windows Themeを変更するPathはどれですか？",
+    "opts_ja": [
+      "Settings → Apps → Startup",
+      "Control Panel → Programs",
+      "Settings → Personalization → Themes",
+      "File Explorer → View"
+    ],
+    "exp_ja": "ThemeはSettings → Personalization → Themesにあります。"
+  },
+  {
+    "type": "Knowledge",
+    "category": "Apps and storage",
+    "correct": "B",
+    "q_en": "What does a default app do?",
+    "opts_en": [
+      "Deletes old files automatically",
+      "Opens a file type automatically",
+      "Changes the file extension",
+      "Creates a new Windows account"
+    ],
+    "exp_en": "A default app is the program Windows normally uses to open a particular file type.",
+    "q_ja": "Default appは何をしますか？",
+    "opts_ja": [
+      "Old fileを自動Deleteする",
+      "File typeを自動で開く",
+      "File extensionを変更する",
+      "New Windows accountを作る"
+    ],
+    "exp_ja": "Default appはSpecific file typeを通常開くProgramです。"
+  },
+  {
+    "type": "Knowledge",
+    "category": "Apps and storage",
+    "correct": "D",
+    "q_en": "What information does Storage show?",
+    "opts_en": [
+      "Only the wallpaper size",
+      "Only the battery level",
+      "The mouse speed",
+      "Used and free disk space"
+    ],
+    "exp_en": "Storage shows how disk space is used and how much free space remains.",
+    "q_ja": "Storageは何を表示しますか？",
+    "opts_ja": [
+      "Wallpaper sizeだけ",
+      "Battery levelだけ",
+      "Mouse speed",
+      "Used disk spaceとFree space"
+    ],
+    "exp_ja": "StorageはDisk spaceの使用量と残りのFree spaceを表示します。"
+  },
+  {
+    "type": "Knowledge",
+    "category": "Safety and maintenance",
+    "correct": "A",
+    "q_en": "Why is Windows Update important?",
+    "opts_en": [
+      "It helps keep Windows safer and more stable",
+      "It changes the desktop picture every day",
+      "It makes every program free",
+      "It replaces the keyboard language"
+    ],
+    "exp_en": "Windows Update provides security fixes, bug fixes, and other system improvements.",
+    "q_ja": "Windows Updateが重要なのはなぜですか？",
+    "opts_ja": [
+      "WindowsをよりSafeでStableに保つため",
+      "毎日Desktop pictureを変更するため",
+      "すべてのProgramをFreeにするため",
+      "Keyboard languageを交換するため"
+    ],
+    "exp_ja": "Windows UpdateはSecurity fix、Bug fix、System improvementを提供します。"
+  },
+  {
+    "type": "Knowledge",
+    "category": "Safety and maintenance",
+    "correct": "C",
+    "q_en": "What is virtual memory or the page file?",
+    "opts_en": [
+      "A cloud account",
+      "A desktop theme",
+      "Disk space used as emergency memory",
+      "A list of installed fonts"
+    ],
+    "exp_en": "When RAM is full, Windows can use part of the disk as emergency memory. This advanced setting should usually not be changed by students.",
+    "q_ja": "Virtual memoryまたはPage fileとは何ですか？",
+    "opts_ja": [
+      "Cloud account",
+      "Desktop theme",
+      "Emergency memoryとして使うDisk space",
+      "Installed fontのList"
+    ],
+    "exp_ja": "RAMがFullの時、WindowsはDiskの一部をEmergency memoryとして使えます。Studentは通常このAdvanced settingを変更しません。"
+  },
+  {
+    "type": "Knowledge",
+    "category": "Apps and storage",
+    "correct": "B",
+    "q_en": "What are Startup Apps?",
+    "opts_en": [
+      "Files inside Recycle Bin",
+      "Programs that can run automatically when Windows starts",
+      "Only apps downloaded today",
+      "Programs stored only on USB drives"
+    ],
+    "exp_en": "Startup Apps can launch automatically when Windows starts. Too many can slow startup.",
+    "q_ja": "Startup Appsとは何ですか？",
+    "opts_ja": [
+      "Recycle Bin内のFile",
+      "Windows start時に自動でRunできるProgram",
+      "Today downloadしたAppだけ",
+      "USB driveだけにあるProgram"
+    ],
+    "exp_ja": "Startup AppsはWindows start時に自動でLaunchできます。多すぎるとStartupが遅くなることがあります。"
+  },
+  {
+    "type": "Knowledge",
+    "category": "Safety and maintenance",
+    "correct": "D",
+    "q_en": "Which item belongs to the Danger Zone?",
+    "opts_en": [
+      "Wallpaper",
+      "Taskbar alignment",
+      "Light or dark mode",
+      "Registry"
+    ],
+    "exp_en": "Registry is an advanced system area. Incorrect changes can damage Windows settings or prevent normal operation.",
+    "q_ja": "Danger Zoneに入るItemはどれですか？",
+    "opts_ja": [
+      "Wallpaper",
+      "Taskbar alignment",
+      "LightまたはDark mode",
+      "Registry"
+    ],
+    "exp_ja": "RegistryはAdvanced system areaです。Incorrect changeでWindows settingやNormal operationを壊す可能性があります。"
+  },
+  {
+    "type": "Situation",
+    "category": "Personalization",
+    "correct": "A",
+    "q_en": "A student wants Windows 11 to feel more like older Windows. Which safe change is best?",
+    "opts_en": [
+      "Move taskbar icons to the left",
+      "Edit the Registry",
+      "Change BIOS settings",
+      "Disable system services"
+    ],
+    "exp_en": "Moving taskbar icons left is a normal Personalization setting. The other choices are advanced and risky.",
+    "q_ja": "Windows 11をOld Windowsのように感じさせたいです。Best safe changeはどれですか？",
+    "opts_ja": [
+      "Taskbar iconをLeftへ移動する",
+      "RegistryをEditする",
+      "BIOS settingを変更する",
+      "System serviceをDisableする"
+    ],
+    "exp_ja": "Taskbar iconをLeftへ移動するのはNormal Personalization settingです。他はAdvancedでRiskyです。"
+  },
+  {
+    "type": "Situation",
+    "category": "Display and input",
+    "correct": "C",
+    "q_en": "Text and buttons are too small on a laptop screen. What should the student check first?",
+    "opts_en": [
+      "Registry Editor",
+      "Startup Apps",
+      "Display Scale",
+      "Virtual Memory"
+    ],
+    "exp_en": "Display Scale changes the size of text and interface items without changing the actual files.",
+    "q_ja": "Laptop screenでTextとButtonが小さすぎます。最初に何を確認しますか？",
+    "opts_ja": [
+      "Registry Editor",
+      "Startup Apps",
+      "Display Scale",
+      "Virtual Memory"
+    ],
+    "exp_ja": "Display ScaleはActual fileを変えずにTextやInterface itemのSizeを変更します。"
+  },
+  {
+    "type": "Situation",
+    "category": "Apps and storage",
+    "correct": "D",
+    "q_en": "A .txt file opens in the wrong program. What is the safest solution?",
+    "opts_en": [
+      "Delete the file",
+      "Rename .txt to .exe",
+      "Change the BIOS boot order",
+      "Use Open with or change the default app"
+    ],
+    "exp_en": "Open with lets the student choose another program. A suitable program can then be set as the default app.",
+    "q_ja": ".txt fileがWrong programで開きます。最もSafeなSolutionはどれですか？",
+    "opts_ja": [
+      "FileをDeleteする",
+      ".txtを.exeへRenameする",
+      "BIOS boot orderを変更する",
+      "Open withを使う、またはDefault appを変更する"
+    ],
+    "exp_ja": "Open withで別Programを選べます。その後Suitable programをDefault appに設定できます。"
+  },
+  {
+    "type": "Situation",
+    "category": "Apps and storage",
+    "correct": "B",
+    "q_en": "A student sees an unknown program in Startup Apps. What should the student do?",
+    "opts_en": [
+      "Delete it immediately",
+      "Leave it unchanged and ask for help",
+      "Rename it to Windows",
+      "Move it to Documents"
+    ],
+    "exp_en": "An unknown startup item may be important. Students should not disable or remove it without understanding its purpose.",
+    "q_ja": "Startup AppsにUnknown programがあります。Studentはどうしますか？",
+    "opts_ja": [
+      "すぐDeleteする",
+      "変更せず、HelpをAskする",
+      "WindowsへRenameする",
+      "DocumentsへMoveする"
+    ],
+    "exp_ja": "Unknown startup itemはImportantな可能性があります。Purposeを理解せずDisableやRemoveしてはいけません。"
+  },
+  {
+    "type": "Situation",
+    "category": "Apps and storage",
+    "correct": "A",
+    "q_en": "Drive C: has very little free space. What is the best first action?",
+    "opts_en": [
+      "Open Storage and check what uses the space",
+      "Delete random folders from Windows",
+      "Change the taskbar color",
+      "Increase mouse speed"
+    ],
+    "exp_en": "First inspect Storage. Check categories and temporary files before deleting anything. Never delete random system folders.",
+    "q_ja": "Drive C:のFree spaceがとても少ないです。Best first actionはどれですか？",
+    "opts_ja": [
+      "Storageを開き、何がSpaceを使っているか確認する",
+      "WindowsからRandom folderをDeleteする",
+      "Taskbar colorを変更する",
+      "Mouse speedを上げる"
+    ],
+    "exp_ja": "最初にStorageを確認します。Delete前にCategoryやTemporary fileをCheckし、Random system folderは削除しません。"
+  },
+  {
+    "type": "Situation",
+    "category": "Personalization",
+    "correct": "C",
+    "q_en": "A student wants to use a class picture as the desktop background. Where should the student go?",
+    "opts_en": [
+      "Settings → Windows Update",
+      "Settings → Installed Apps",
+      "Settings → Personalization → Background",
+      "Device Manager → Display adapters"
+    ],
+    "exp_en": "Desktop wallpaper is changed in Settings → Personalization → Background.",
+    "q_ja": "Class pictureをDesktop backgroundにしたいです。どこへ行きますか？",
+    "opts_ja": [
+      "Settings → Windows Update",
+      "Settings → Installed Apps",
+      "Settings → Personalization → Background",
+      "Device Manager → Display adapters"
+    ],
+    "exp_ja": "Desktop wallpaperはSettings → Personalization → Backgroundで変更します。"
+  },
+  {
+    "type": "Situation",
+    "category": "Apps and storage",
+    "correct": "D",
+    "q_en": "A school program appears in Installed Apps, but the student does not recognize it. What is the correct action?",
+    "opts_en": [
+      "Uninstall it to save space",
+      "Change its extension",
+      "Move it to the Desktop",
+      "Do not remove it; ask the teacher or administrator"
+    ],
+    "exp_en": "Installed Apps includes important school and system software. Unknown programs should not be removed without permission.",
+    "q_ja": "Installed AppsにSchool programがありますが、Studentは知りません。Correct actionはどれですか？",
+    "opts_ja": [
+      "Space節約のためUninstallする",
+      "Extensionを変更する",
+      "DesktopへMoveする",
+      "Removeせず、TeacherまたはAdministratorにAskする"
+    ],
+    "exp_ja": "Installed AppsにはImportant school softwareやSystem softwareがあります。PermissionなしでUnknown programをRemoveしません。"
+  },
+  {
+    "type": "Situation",
+    "category": "Display and input",
+    "correct": "B",
+    "q_en": "A student cannot type normal English letters because the input mode is wrong. Which setting should be checked?",
+    "opts_en": [
+      "Battery and Power",
+      "Keyboard and Language input",
+      "Desktop Icons",
+      "Storage Sense"
+    ],
+    "exp_en": "Keyboard and Language settings control English, Japanese, and other input methods. The correct input mode is important for names and passwords.",
+    "q_ja": "Input modeがWrongでNormal English letterを入力できません。どのSettingを確認しますか？",
+    "opts_ja": [
+      "Battery and Power",
+      "Keyboard and Language input",
+      "Desktop Icons",
+      "Storage Sense"
+    ],
+    "exp_ja": "Keyboard and Language settingはEnglish、JapaneseなどのInput methodを管理します。NameやPasswordにはCorrect input modeが重要です。"
+  },
+  {
+    "type": "Situation",
+    "category": "Safety and maintenance",
+    "correct": "A",
+    "q_en": "A video says changing the page file will make every computer faster. What should a student do?",
+    "opts_en": [
+      "Leave the setting unchanged and ask for help",
+      "Set the page file to zero",
+      "Copy the video settings exactly",
+      "Open Registry and change more values"
+    ],
+    "exp_en": "Virtual memory is an advanced setting. Advice from a random video may not fit the school computer, so students should not change it.",
+    "q_ja": "Videoが「Page fileを変更するとすべてのComputerがFastになる」と言っています。Studentはどうしますか？",
+    "opts_ja": [
+      "Settingを変更せず、HelpをAskする",
+      "Page fileをZeroにする",
+      "Video settingをそのままCopyする",
+      "Registryを開きMore valueを変更する"
+    ],
+    "exp_ja": "Virtual memoryはAdvanced settingです。Random videoのAdviceはSchool computerに合わない可能性があるため変更しません。"
+  },
+  {
+    "type": "Situation",
+    "category": "Safety and maintenance",
+    "correct": "C",
+    "q_en": "Which item is a correct example to write as a Danger Zone setting in settings_report.txt?",
+    "opts_en": [
+      "Wallpaper",
+      "Taskbar alignment",
+      "Registry",
+      "Dark mode"
+    ],
+    "exp_en": "Registry is a Danger Zone example. Wallpaper, taskbar alignment, and dark mode are normal safe Personalization settings.",
+    "q_ja": "settings_report.txtにDanger Zone settingのExampleとして書けるItemはどれですか？",
+    "opts_ja": [
+      "Wallpaper",
+      "Taskbar alignment",
+      "Registry",
+      "Dark mode"
+    ],
+    "exp_ja": "RegistryはDanger ZoneのExampleです。Wallpaper、Taskbar alignment、Dark modeはNormal safe Personalization settingです。"
+  }
+]

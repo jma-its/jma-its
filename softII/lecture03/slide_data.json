@@ -1,0 +1,322 @@
+[
+  {
+    "n": 1,
+    "title": "Windows Settings and Personalization",
+    "en": "Today we will learn how Windows can look different and how we can change it safely. We will use Windows Settings, personalization, useful system settings, and some danger zone examples.",
+    "task": false,
+    "image": "assets/slides/slide-01.jpg",
+    "ja": "今日はWindowsの見た目が違う理由と、安全に変更する方法を学びます。Windows Settings、Personalization、Useful system settings、Danger Zoneを扱います。"
+  },
+  {
+    "n": 2,
+    "title": "What we will learn today",
+    "en": "Today has four main parts. First, we look at old and new Windows.",
+    "task": false,
+    "image": "assets/slides/slide-02.jpg",
+    "ja": "今日は4つのMain partがあります。最初にOld WindowsとNew Windowsを比べ、その後でSafe settingとPractice taskへ進みます。"
+  },
+  {
+    "n": 3,
+    "title": "Windows changes over time",
+    "en": "Windows does not always look the same. Different computers and different versions can look different.",
+    "task": false,
+    "image": "assets/slides/slide-03.jpg",
+    "ja": "Windowsの見た目はVersionやComputerによって変わります。しかしStart、Taskbar、Window、SettingsなどのMain ideaは似ています。"
+  },
+  {
+    "n": 4,
+    "title": "Windows XP look",
+    "en": "This is the old Windows XP style. The Start button is on the left, the taskbar is at the bottom, and desktop icons are important.",
+    "task": false,
+    "image": "assets/slides/slide-04.jpg",
+    "ja": "Windows XPはClassicなDesignでした。Start buttonは左、Taskbarは下、Desktop iconが重要でした。"
+  },
+  {
+    "n": 5,
+    "title": "Windows 7 look",
+    "en": "Windows 7 looks more modern than XP, but it is still familiar. It has a Start menu, taskbar, desktop, and Control Panel.",
+    "task": false,
+    "image": "assets/slides/slide-05.jpg",
+    "ja": "Windows 7はXPよりModernですが、Start menu、Taskbar、Desktop、Control Panelは分かりやすい形で残りました。"
+  },
+  {
+    "n": 6,
+    "title": "Windows 10 look",
+    "en": "Windows 10 added a new Start menu with tiles. The Settings app became more important.",
+    "task": false,
+    "image": "assets/slides/slide-06.jpg",
+    "ja": "Windows 10ではTile付きStart menuが追加され、Settings appがより重要になりました。"
+  },
+  {
+    "n": 7,
+    "title": "Windows 11 look",
+    "en": "Windows 11 has a cleaner and softer design. The taskbar icons are centered by default.",
+    "task": false,
+    "image": "assets/slides/slide-07.jpg",
+    "ja": "Windows 11はよりCleanでSoftなDesignです。Taskbar iconはDefaultでCenterにあります。"
+  },
+  {
+    "n": 8,
+    "title": "Old Start Menu vs New Start Menu",
+    "en": "The Start menu changed a lot. Old Windows and Windows 11 look different, but the purpose is similar.",
+    "task": false,
+    "image": "assets/slides/slide-08.jpg",
+    "ja": "Old WindowsとWindows 11ではStart menuの見た目が大きく違いますが、AppやSettingsを開くPurposeは同じです。"
+  },
+  {
+    "n": 9,
+    "title": "Old Taskbar vs New Taskbar",
+    "en": "The taskbar still shows open apps and important icons. In Windows 11, the icons can be centered or aligned left.",
+    "task": false,
+    "image": "assets/slides/slide-09.jpg",
+    "ja": "TaskbarのDesignは変わっても、Open appとImportant iconを表示する役割は同じです。Windows 11ではCenterまたはLeftにできます。"
+  },
+  {
+    "n": 10,
+    "title": "Control Panel vs Settings",
+    "en": "Older Windows used Control Panel for many settings. Windows 11 uses the Settings app more often.",
+    "task": false,
+    "image": "assets/slides/slide-10.jpg",
+    "ja": "Old WindowsではControl Panelを多く使いました。Windows 11ではSettings appを使う場面が増えています。"
+  },
+  {
+    "n": 11,
+    "title": "Open Windows Settings",
+    "en": "There are two easy ways to open Settings. You can click Start and then click Settings.",
+    "task": false,
+    "image": "assets/slides/slide-11.jpg",
+    "ja": "SettingsはStart menuから開くか、Windows key + IでQuickに開けます。"
+  },
+  {
+    "n": 12,
+    "title": "Safe Settings and Danger Zone",
+    "en": "Some settings are safe to change, such as wallpaper, colors, and display scale. Some settings are dangerous and can break Windows.",
+    "task": false,
+    "image": "assets/slides/slide-12.jpg",
+    "ja": "Wallpaper、Color、Display scaleなどは通常Safeです。RegistryやAdvanced settingはWindowsを壊す可能性があるため変更しません。"
+  },
+  {
+    "n": 13,
+    "title": "Personalization Summary",
+    "en": "Personalization changes how Windows looks. You can change the background, colors, theme, Start menu, taskbar, lock screen, and desktop icons.",
+    "task": false,
+    "image": "assets/slides/slide-13.jpg",
+    "ja": "PersonalizationはWindowsの見た目を変えます。Background、Color、Theme、Start、Taskbar、Lock screen、Desktop iconを設定できます。"
+  },
+  {
+    "n": 14,
+    "title": "Background, Themes, Colors",
+    "en": "Background means the desktop picture. A theme can change the background, colors, and sounds together.",
+    "task": false,
+    "image": "assets/slides/slide-14.jpg",
+    "ja": "BackgroundはDesktop pictureです。ThemeはBackground、Color、Soundなどをまとめて変える場合があります。"
+  },
+  {
+    "n": 15,
+    "title": "Change the Theme",
+    "en": "To change a theme, open Settings, then Personalization, then Themes. Click a theme you like.",
+    "task": false,
+    "image": "assets/slides/slide-15.jpg",
+    "ja": "Settings → Personalization → Themesを開き、好きなThemeを選びます。Shared computerではPermissionを確認します。"
+  },
+  {
+    "n": 16,
+    "title": "Dark Mode and Light Mode",
+    "en": "Light mode is bright and easy to see in a bright room. Dark mode is darker and softer for the eyes.",
+    "task": false,
+    "image": "assets/slides/slide-16.jpg",
+    "ja": "Light modeは明るい部屋で見やすく、Dark modeは暗い画面で目にSoftに感じる場合があります。どちらもSafeなAppearance settingです。"
+  },
+  {
+    "n": 17,
+    "title": "Wallpaper and Lock Screen",
+    "en": "Wallpaper is the picture on the desktop. The lock screen appears before login.",
+    "task": false,
+    "image": "assets/slides/slide-17.jpg",
+    "ja": "WallpaperはDesktopのPictureです。Lock screenはLogin前に表示されるScreenです。"
+  },
+  {
+    "n": 18,
+    "title": "Desktop Icons and Clean Desktop",
+    "en": "Too many desktop icons make Windows confusing. A clean desktop is easier to use.",
+    "task": false,
+    "image": "assets/slides/slide-18.jpg",
+    "ja": "Desktop iconが多すぎるとFileを探しにくくなります。Clean desktopはWorkを分かりやすくします。"
+  },
+  {
+    "n": 19,
+    "title": "Desktop Icons in Windows 11",
+    "en": "You can show or hide common desktop icons, such as This PC and Recycle Bin. Open Personalization, then Themes, then Desktop icon settings.",
+    "task": false,
+    "image": "assets/slides/slide-19.jpg",
+    "ja": "Windows 11ではThis PCやRecycle BinなどのCommon iconをShow / Hideできます。Personalization → Themes → Desktop icon settingsを使います。"
+  },
+  {
+    "n": 20,
+    "title": "Taskbar Settings",
+    "en": "The taskbar shows important buttons and open apps. In Settings, you can show or hide taskbar items.",
+    "task": false,
+    "image": "assets/slides/slide-20.jpg",
+    "ja": "TaskbarにはImportant buttonとOpen appが表示されます。Settingsで一部のTaskbar itemをShow / Hideできます。"
+  },
+  {
+    "n": 21,
+    "title": "Taskbar Alignment",
+    "en": "Windows 11 usually puts taskbar icons in the center. If you want a more old-style look, you can move them to the left.",
+    "task": false,
+    "image": "assets/slides/slide-21.jpg",
+    "ja": "Windows 11はDefaultでCenter alignmentです。Left alignmentにするとOld Windowsに近いFeelingになります。"
+  },
+  {
+    "n": 22,
+    "title": "Start Menu Settings",
+    "en": "The Start menu helps you find apps, files, and settings. You can control what appears in Start.",
+    "task": false,
+    "image": "assets/slides/slide-22.jpg",
+    "ja": "Start menuはApp、File、Settingsを探す場所です。不要なItemを減らしてCleanに保ちます。"
+  },
+  {
+    "n": 23,
+    "title": "Windows 11 with a more classic look",
+    "en": "Windows 11 can look more classic without dangerous changes. Use a simple wallpaper, move taskbar icons to the left, and show useful desktop icons.",
+    "task": false,
+    "image": "assets/slides/slide-23.jpg",
+    "ja": "Windows 11はDangerous toolを使わなくてもClassicなFeelingにできます。Simple wallpaper、Left taskbar、Useful desktop iconを使います。"
+  },
+  {
+    "n": 24,
+    "title": "Useful settings: main screen",
+    "en": "The Settings main screen has many useful categories. System includes display, sound, power, and storage.",
+    "task": false,
+    "image": "assets/slides/slide-24.jpg",
+    "ja": "SettingsのMain screenには多くのCategoryがあります。SystemにはDisplay、Sound、Power、Storageなどがあります。"
+  },
+  {
+    "n": 25,
+    "title": "Display Settings",
+    "en": "Display settings help you see the screen better. Brightness changes screen light.",
+    "task": false,
+    "image": "assets/slides/slide-25.jpg",
+    "ja": "Display settingsではBrightness、Scale、Resolutionを確認できます。特にScaleはTextやButtonを見やすくします。"
+  },
+  {
+    "n": 26,
+    "title": "Mouse and Touchpad Settings",
+    "en": "Mouse and touchpad settings help with daily computer work. You can change pointer speed and check right-click or touchpad taps.",
+    "task": false,
+    "image": "assets/slides/slide-26.jpg",
+    "ja": "MouseとTouchpad settingはDaily workに重要です。Pointer speedやTwo-finger right-clickなどを確認できます。"
+  },
+  {
+    "n": 27,
+    "title": "Keyboard and Language",
+    "en": "Keyboard and language settings are important for file names. Check English and Japanese input.",
+    "task": false,
+    "image": "assets/slides/slide-27.jpg",
+    "ja": "KeyboardとLanguageはFile name入力に影響します。EnglishとJapanese inputを正しく確認します。"
+  },
+  {
+    "n": 28,
+    "title": "Default Apps",
+    "en": "A default app is the app that opens a file type. Text files usually open in Notepad, images open in Photos or Paint, and HTML files open in a browser.",
+    "task": false,
+    "image": "assets/slides/slide-28.jpg",
+    "ja": "Default appはSpecific file typeを通常開くProgramです。必要な時はOpen withで別のProgramを選べます。"
+  },
+  {
+    "n": 29,
+    "title": "Installed Apps",
+    "en": "Installed Apps shows programs on the computer. You can view apps and sometimes uninstall them.",
+    "task": false,
+    "image": "assets/slides/slide-29.jpg",
+    "ja": "Installed AppsではComputerにあるProgramを確認できます。School softwareやUnknown appを勝手にUninstallしません。"
+  },
+  {
+    "n": 30,
+    "title": "Startup Apps",
+    "en": "Startup apps run automatically when Windows starts. Too many startup apps can slow the computer.",
+    "task": false,
+    "image": "assets/slides/slide-30.jpg",
+    "ja": "Startup AppsはWindows起動時にAutomaticで動きます。Unknown appは勝手にOffにせず、TeacherやAdministratorに確認します。"
+  },
+  {
+    "n": 31,
+    "title": "Storage and Free Space",
+    "en": "Storage shows how much space is used on drive C. Temporary files can take space.",
+    "task": false,
+    "image": "assets/slides/slide-31.jpg",
+    "ja": "StorageではC: driveのUsed spaceとFree spaceを確認します。Free spaceが少ないとWindowsやUpdateに問題が起こる場合があります。"
+  },
+  {
+    "n": 32,
+    "title": "Battery and Power",
+    "en": "Battery and Power settings are useful for laptops. Check the battery level and power mode.",
+    "task": false,
+    "image": "assets/slides/slide-32.jpg",
+    "ja": "LaptopではBattery levelとPower modeを確認します。Power settingでBatteryとPerformanceのBalanceを調整できます。"
+  },
+  {
+    "n": 33,
+    "title": "Windows Update and Security",
+    "en": "Windows Update helps keep the computer safe and stable. Check the update status.",
+    "task": false,
+    "image": "assets/slides/slide-33.jpg",
+    "ja": "Windows UpdateはSecurityとStabilityに重要です。Statusを確認しますが、School computerでは勝手に大きなChangeをしません。"
+  },
+  {
+    "n": 34,
+    "title": "Page File / Virtual Memory",
+    "en": "Virtual memory means Windows can use disk space as emergency memory. It helps when RAM is full.",
+    "task": false,
+    "image": "assets/slides/slide-34.jpg",
+    "ja": "Virtual memoryはRAMが足りない時にDisk spaceをEmergency memoryとして使う仕組みです。Advanced settingなので通常は変更しません。"
+  },
+  {
+    "n": 35,
+    "title": "Danger Zone: Advanced Settings",
+    "en": "Danger Zone includes Registry, Services, Virtual Memory, BIOS or UEFI, and Device Manager. You may look, but do not change these settings without help.",
+    "task": false,
+    "image": "assets/slides/slide-35.jpg",
+    "ja": "Danger ZoneにはRegistry、Services、Virtual Memory、BIOS / UEFI、Device Managerなどがあります。見るだけにして、Helpなしで変更しません。"
+  },
+  {
+    "n": 36,
+    "title": "Safe Personalization",
+    "en": "Safe changes include wallpaper, themes, colors, light or dark mode, taskbar alignment, and display scale. Danger Zone settings include registry, services, page file, and advanced system settings.",
+    "task": false,
+    "image": "assets/slides/slide-36.jpg",
+    "ja": "Safe changeはWallpaper、Theme、Color、Light / Dark mode、Taskbar alignment、Display scaleです。RegistryやServicesなどはPractice対象ではありません。"
+  },
+  {
+    "n": 37,
+    "title": "Practice Assignment",
+    "en": "Now you will do a personalization task. Change safe settings only.",
+    "task": true,
+    "image": "assets/slides/slide-37.jpg",
+    "ja": "ここからPracticeです。Safe settingだけを変更し、settings_report.txtを作ります。"
+  },
+  {
+    "n": 38,
+    "title": "Personalization Practice Workflow",
+    "en": "Follow the workflow. Open Settings, change one safe setting, check the new look, write a short report, and show the teacher.",
+    "task": true,
+    "image": "assets/slides/slide-38.jpg",
+    "ja": "WorkflowはOpen Settings → Safe settingを1つ変更 → ResultをCheck → Short reportを書く → Teacherに見せる、です。"
+  },
+  {
+    "n": 39,
+    "title": "What to write in settings_report.txt",
+    "en": "In your report, write your name, what you changed, and how Windows looks now. Also write your taskbar alignment, keyboard language, free space, and one danger zone setting you should not change.",
+    "task": true,
+    "image": "assets/slides/slide-39.jpg",
+    "ja": "settings_report.txtにはName、Changed setting、New look、Taskbar、Language、Free space、触ってはいけないDanger Zone settingを書きます。"
+  },
+  {
+    "n": 40,
+    "title": "Final rule",
+    "en": "Personalize Windows safely. Make Windows comfortable for you.",
+    "task": true,
+    "image": "assets/slides/slide-40.jpg",
+    "ja": "Final ruleはSafe settings onlyです。Comfortableな見た目にしても、Danger Zoneは変更しません。"
+  }
+]
