@@ -1,0 +1,530 @@
+[
+  {
+    "number": 1,
+    "type": "Knowledge",
+    "category": "Office tools",
+    "correct": "B",
+    "q_en": "What is office software mainly used for?",
+    "opts_en": [
+      "Changing BIOS settings",
+      "Creating, editing, calculating, organizing, saving, and sharing information",
+      "Repairing all computer hardware",
+      "Providing Internet without a network"
+    ],
+    "exp_en": "Office software supports common information work such as documents, tables, calculations, presentations, saving, printing, and sharing.",
+    "q_ja": "Office softwareは主に何に使いますか？",
+    "opts_ja": [
+      "BIOS settingを変更する",
+      "InformationのCreate、Edit、Calculate、Organize、Save、Share",
+      "すべてのHardwareを修理する",
+      "NetworkなしでInternetを提供する"
+    ],
+    "exp_ja": "Office softwareはDocument、Table、Calculation、Presentation、Save、Print、ShareなどのInformation workを助けます。"
+  },
+  {
+    "number": 2,
+    "type": "Knowledge",
+    "category": "Office tools",
+    "correct": "D",
+    "q_en": "What is an office suite?",
+    "opts_en": [
+      "One text file",
+      "A browser bookmark",
+      "Only a cloud-storage account",
+      "A group of office applications in one package or ecosystem"
+    ],
+    "exp_en": "An office suite usually combines applications for documents, spreadsheets, presentations, and sometimes databases or diagrams.",
+    "q_ja": "Office suiteとは何ですか？",
+    "opts_ja": [
+      "1つのText file",
+      "Browser bookmark",
+      "Cloud storage accountだけ",
+      "複数のOffice applicationをまとめたPackageまたはEcosystem"
+    ],
+    "exp_ja": "Office suiteは通常Document、Spreadsheet、Presentation、場合によってDatabaseやDiagramのApplicationをまとめています。"
+  },
+  {
+    "number": 3,
+    "type": "Knowledge",
+    "category": "Applications",
+    "correct": "A",
+    "q_en": "Which application is mainly used for reports, letters, and forms?",
+    "opts_en": [
+      "A document editor",
+      "A spreadsheet",
+      "A presentation program",
+      "A browser history tool"
+    ],
+    "exp_en": "A document editor such as Word or Writer is used for reports, letters, forms, and long text.",
+    "q_ja": "Report、Letter、Formに主に使うApplicationはどれですか？",
+    "opts_ja": [
+      "Document editor",
+      "Spreadsheet",
+      "Presentation program",
+      "Browser history tool"
+    ],
+    "exp_ja": "WordやWriterなどのDocument editorはReport、Letter、Form、Long textに使います。"
+  },
+  {
+    "number": 4,
+    "type": "Knowledge",
+    "category": "Applications",
+    "correct": "C",
+    "q_en": "Which application is mainly used for numbers, formulas, tables, and charts?",
+    "opts_en": [
+      "A presentation program",
+      "A drawing program",
+      "A spreadsheet",
+      "A text-only editor"
+    ],
+    "exp_en": "A spreadsheet such as Excel or Calc organizes data in cells and uses formulas and charts.",
+    "q_ja": "Number、Formula、Table、Chartに主に使うApplicationはどれですか？",
+    "opts_ja": [
+      "Presentation program",
+      "Drawing program",
+      "Spreadsheet",
+      "Text-only editor"
+    ],
+    "exp_ja": "ExcelやCalcなどのSpreadsheetはCellでDataを整理し、FormulaやChartを使います。"
+  },
+  {
+    "number": 5,
+    "type": "Knowledge",
+    "category": "Applications",
+    "correct": "B",
+    "q_en": "Which LibreOffice applications match Word, Excel, and PowerPoint?",
+    "opts_en": [
+      "Pages, Numbers, Keynote",
+      "Writer, Calc, Impress",
+      "Docs, Sheets, Forms",
+      "Notepad, Paint, Edge"
+    ],
+    "exp_en": "Writer is for documents, Calc for spreadsheets, and Impress for presentations.",
+    "q_ja": "Word、Excel、PowerPointに対応するLibreOffice applicationはどれですか？",
+    "opts_ja": [
+      "Pages、Numbers、Keynote",
+      "Writer、Calc、Impress",
+      "Docs、Sheets、Forms",
+      "Notepad、Paint、Edge"
+    ],
+    "exp_ja": "WriterはDocument、CalcはSpreadsheet、ImpressはPresentationに使います。"
+  },
+  {
+    "number": 6,
+    "type": "Knowledge",
+    "category": "Ecosystems",
+    "correct": "D",
+    "q_en": "What is one important strength of Google Docs or Google Workspace?",
+    "opts_en": [
+      "It never needs an account",
+      "It works only from a DVD",
+      "It guarantees perfect file compatibility",
+      "Easy online sharing and real-time collaboration"
+    ],
+    "exp_en": "Google Workspace is browser-centered and is strong for sharing and simultaneous online editing.",
+    "q_ja": "Google Docs / Google Workspaceの重要なStrengthは何ですか？",
+    "opts_ja": [
+      "Accountが不要",
+      "DVDからだけ動く",
+      "Perfect compatibilityを保証する",
+      "Online shareとReal-time collaborationが簡単"
+    ],
+    "exp_ja": "Google WorkspaceはBrowser中心で、ShareとSimultaneous online editingに強いです。"
+  },
+  {
+    "number": 7,
+    "type": "Knowledge",
+    "category": "File formats",
+    "correct": "A",
+    "q_en": "Which pair contains document formats?",
+    "opts_en": [
+      "DOCX and ODT",
+      "XLSX and ODS",
+      "PPTX and ODP",
+      "PNG and JPG"
+    ],
+    "exp_en": "DOCX is commonly used by Microsoft Word, and ODT is the OpenDocument text format.",
+    "q_ja": "Document formatのPairはどれですか？",
+    "opts_ja": [
+      "DOCXとODT",
+      "XLSXとODS",
+      "PPTXとODP",
+      "PNGとJPG"
+    ],
+    "exp_ja": "DOCXはMicrosoft Word系、ODTはOpenDocument text formatです。"
+  },
+  {
+    "number": 8,
+    "type": "Knowledge",
+    "category": "File formats",
+    "correct": "C",
+    "q_en": "Which pair contains spreadsheet formats?",
+    "opts_en": [
+      "DOCX and ODT",
+      "PPTX and ODP",
+      "XLSX and ODS",
+      "PDF and TXT"
+    ],
+    "exp_en": "XLSX is a Microsoft Excel format, and ODS is the OpenDocument spreadsheet format.",
+    "q_ja": "Spreadsheet formatのPairはどれですか？",
+    "opts_ja": [
+      "DOCXとODT",
+      "PPTXとODP",
+      "XLSXとODS",
+      "PDFとTXT"
+    ],
+    "exp_ja": "XLSXはMicrosoft Excel系、ODSはOpenDocument spreadsheet formatです。"
+  },
+  {
+    "number": 9,
+    "type": "Knowledge",
+    "category": "File formats",
+    "correct": "B",
+    "q_en": "What is PDF mainly used for?",
+    "opts_en": [
+      "Installing an office suite",
+      "Fixed viewing, sharing, and printing",
+      "Keeping spreadsheet formulas easy to edit",
+      "Changing the operating system"
+    ],
+    "exp_en": "PDF normally preserves page layout for viewing, sharing, and printing. It is not the best normal editing format.",
+    "q_ja": "PDFは主に何に使いますか？",
+    "opts_ja": [
+      "Office suiteのInstall",
+      "Fixed viewing、Share、Print",
+      "Spreadsheet formulaをEasy editのまま保存",
+      "Operating SystemのChange"
+    ],
+    "exp_ja": "PDFは通常Page layoutを固定してView、Share、Printするために使います。Normal editing formatではありません。"
+  },
+  {
+    "number": 10,
+    "type": "Knowledge",
+    "category": "Saving and compatibility",
+    "correct": "D",
+    "q_en": "What does compatibility mean in office work?",
+    "opts_en": [
+      "How bright the screen is",
+      "How fast the computer starts",
+      "How many files are in Downloads",
+      "How correctly another program can open, edit, and save a file"
+    ],
+    "exp_en": "Compatibility describes how well files work between different programs, versions, or operating systems.",
+    "q_ja": "Office workでCompatibilityとは何ですか？",
+    "opts_ja": [
+      "ScreenのBrightness",
+      "ComputerのStart speed",
+      "Downloads内のFile数",
+      "別ProgramでFileを正しくOpen、Edit、Saveできる程度"
+    ],
+    "exp_ja": "CompatibilityはDifferent program、Version、Operating System間でFileがどの程度正しく動くかを示します。"
+  },
+  {
+    "number": 11,
+    "type": "Knowledge",
+    "category": "Saving and compatibility",
+    "correct": "A",
+    "q_en": "What is the main difference between Save and Save As?",
+    "opts_en": [
+      "Save updates the current file; Save As creates a new copy, name, location, or format",
+      "Save deletes the file; Save As restores it",
+      "They always do exactly the same thing",
+      "Save works only online"
+    ],
+    "exp_en": "Save updates the current file. Save As is used when you need another copy, another name, another folder, or another format.",
+    "q_ja": "SaveとSave Asの主な違いは何ですか？",
+    "opts_ja": [
+      "SaveはCurrent fileをUpdateし、Save AsはNew copy、Name、Location、Formatを作る",
+      "SaveはDelete、Save AsはRestore",
+      "常に完全に同じ",
+      "SaveはOnlineだけで動く"
+    ],
+    "exp_ja": "SaveはCurrent fileをUpdateします。Save AsはAnother copy、Name、Folder、Formatが必要な時に使います。"
+  },
+  {
+    "number": 12,
+    "type": "Knowledge",
+    "category": "Backup and safety",
+    "correct": "C",
+    "q_en": "What is a backup?",
+    "opts_en": [
+      "The only original file",
+      "A browser tab",
+      "A separate recovery copy stored away from the original",
+      "A file extension"
+    ],
+    "exp_en": "A backup is a separate copy that can be used if the original is lost, damaged, or changed incorrectly.",
+    "q_ja": "Backupとは何ですか？",
+    "opts_ja": [
+      "Only original file",
+      "Browser tab",
+      "Originalとは別に保存するRecovery copy",
+      "File extension"
+    ],
+    "exp_ja": "BackupはOriginalがLost、Damaged、Wrong changeされた時に使えるSeparate copyです。"
+  },
+  {
+    "number": 13,
+    "type": "Situation",
+    "category": "Applications",
+    "correct": "B",
+    "q_en": "A hospital office must calculate item quantity × price and make a chart. Which tool is best?",
+    "opts_en": [
+      "A presentation program",
+      "A spreadsheet",
+      "A plain text editor",
+      "A browser bookmark"
+    ],
+    "exp_en": "A spreadsheet is designed for tables, formulas, totals, and charts.",
+    "q_ja": "Hospital officeでQuantity × Priceを計算し、Chartを作ります。最適なToolはどれですか？",
+    "opts_ja": [
+      "Presentation program",
+      "Spreadsheet",
+      "Plain text editor",
+      "Browser bookmark"
+    ],
+    "exp_ja": "SpreadsheetはTable、Formula、Total、Chartのために作られています。"
+  },
+  {
+    "number": 14,
+    "type": "Situation",
+    "category": "Applications",
+    "correct": "D",
+    "q_en": "A teacher needs three slides to explain a weekly plan to the class. Which application is best?",
+    "opts_en": [
+      "A database",
+      "A ZIP program",
+      "A text-only editor",
+      "A presentation program"
+    ],
+    "exp_en": "A presentation program such as PowerPoint or Impress is designed to show information to an audience using slides.",
+    "q_ja": "TeacherがClassへWeekly planを3 Slideで説明します。最適なApplicationはどれですか？",
+    "opts_ja": [
+      "Database",
+      "ZIP program",
+      "Text-only editor",
+      "Presentation program"
+    ],
+    "exp_ja": "PowerPointやImpressなどのPresentation programはAudienceへSlideでInformationを見せるためのToolです。"
+  },
+  {
+    "number": 15,
+    "type": "Situation",
+    "category": "Offline and online",
+    "correct": "A",
+    "q_en": "Internet is unavailable, but a student must continue editing a local report. Which choice is most suitable?",
+    "opts_en": [
+      "A desktop office application with the file saved locally",
+      "An online-only form that is not loaded",
+      "A search-engine advertisement",
+      "A browser extension"
+    ],
+    "exp_en": "A desktop application can usually continue working with local files without an Internet connection.",
+    "q_ja": "Internetが使えませんが、Local reportのEditを続ける必要があります。最適なChoiceはどれですか？",
+    "opts_ja": [
+      "Local保存したFileをDesktop office applicationで編集する",
+      "LoadされていないOnline-only form",
+      "Search-engine advertisement",
+      "Browser extension"
+    ],
+    "exp_ja": "Desktop applicationは通常InternetなしでもLocal fileをEditできます。"
+  },
+  {
+    "number": 16,
+    "type": "Situation",
+    "category": "Offline and online",
+    "correct": "C",
+    "q_en": "Four students must edit the same class document at the same time from different computers. What is most useful?",
+    "opts_en": [
+      "Saving four unrelated copies",
+      "Printing the document",
+      "A shared cloud document with real-time collaboration",
+      "Renaming the file many times"
+    ],
+    "exp_en": "A shared cloud document lets multiple users work in the same file and see changes in real time.",
+    "q_ja": "4人のStudentがDifferent computerから同じClass documentを同時にEditします。最もUsefulなのはどれですか？",
+    "opts_ja": [
+      "関係のない4 CopyをSaveする",
+      "DocumentをPrintする",
+      "Real-time collaborationがあるShared cloud document",
+      "Fileを何度もRenameする"
+    ],
+    "exp_ja": "Shared cloud documentではMultiple userが同じFileで作業し、ChangeをReal timeで確認できます。"
+  },
+  {
+    "number": 17,
+    "type": "Situation",
+    "category": "File formats",
+    "correct": "B",
+    "q_en": "A finished report must look the same when opened for printing on another computer. Which file should also be provided?",
+    "opts_en": [
+      "CSV",
+      "PDF",
+      "TXT only",
+      "A browser shortcut"
+    ],
+    "exp_en": "PDF is useful because it normally preserves the page layout for viewing and printing.",
+    "q_ja": "Finished reportを別ComputerでPrintしても同じLayoutにしたいです。どのFileも提供すべきですか？",
+    "opts_ja": [
+      "CSV",
+      "PDF",
+      "TXTだけ",
+      "Browser shortcut"
+    ],
+    "exp_ja": "PDFは通常Page layoutをPreserveするため、ViewとPrintにUsefulです。"
+  },
+  {
+    "number": 18,
+    "type": "Situation",
+    "category": "File formats",
+    "correct": "D",
+    "q_en": "A student manually renames report.odt to report.docx in File Explorer. What is the problem?",
+    "opts_en": [
+      "The document becomes a perfect DOCX",
+      "The document is automatically translated",
+      "The file becomes a PDF",
+      "Changing only the extension does not correctly convert the file"
+    ],
+    "exp_en": "A real format conversion must be done with Save As or Export. Renaming the extension does not change the internal file structure.",
+    "q_ja": "StudentがFile Explorerでreport.odtをreport.docxへManual renameしました。問題は何ですか？",
+    "opts_ja": [
+      "Perfect DOCXになる",
+      "Automatic translateされる",
+      "PDFになる",
+      "Extensionだけ変えても正しくConvertされない"
+    ],
+    "exp_ja": "Real format conversionはSave AsやExportで行います。ExtensionのRenameだけではInternal structureは変わりません。"
+  },
+  {
+    "number": 19,
+    "type": "Situation",
+    "category": "Compatibility",
+    "correct": "A",
+    "q_en": "A DOCX file opens in another office suite, but some fonts and page breaks change. What is the best response?",
+    "opts_en": [
+      "Check the whole document carefully before saving, printing, or submitting",
+      "Assume it is always perfect",
+      "Delete the original immediately",
+      "Change the extension by hand"
+    ],
+    "exp_en": "Different programs may interpret fonts, spacing, charts, or layout differently. Important files need a visual check.",
+    "q_ja": "DOCXを別Office suiteで開くとFontとPage breakが変わりました。Best responseはどれですか？",
+    "opts_ja": [
+      "Save、Print、Submit前にDocument全体をCarefully checkする",
+      "常にPerfectだと考える",
+      "OriginalをすぐDeleteする",
+      "ExtensionをManual changeする"
+    ],
+    "exp_ja": "Different programではFont、Spacing、Chart、Layoutが変わる場合があります。Important fileはVisual checkが必要です。"
+  },
+  {
+    "number": 20,
+    "type": "Situation",
+    "category": "Compatibility",
+    "correct": "C",
+    "q_en": "A document uses a font that is not installed on another computer. What may happen?",
+    "opts_en": [
+      "The SSD is erased",
+      "The browser closes",
+      "Another font may replace it and the layout may change",
+      "The file becomes a ZIP archive"
+    ],
+    "exp_en": "A missing font can be substituted by another font, which may change line lengths, spacing, and page breaks.",
+    "q_ja": "DocumentのFontが別ComputerにInstallされていません。何が起きる可能性がありますか？",
+    "opts_ja": [
+      "SSDがEraseされる",
+      "BrowserがCloseする",
+      "別FontにReplaceされ、Layoutが変わる",
+      "ZIP archiveになる"
+    ],
+    "exp_ja": "Missing fontはAnother fontへReplaceされ、Line length、Spacing、Page breakが変わることがあります。"
+  },
+  {
+    "number": 21,
+    "type": "Situation",
+    "category": "Saving and compatibility",
+    "correct": "D",
+    "q_en": "A student must submit DOCX but also wants to keep the original ODT file. What is the safest method?",
+    "opts_en": [
+      "Overwrite the only file",
+      "Delete the ODT first",
+      "Rename .odt to .docx",
+      "Keep the ODT and use Save As to create a DOCX copy"
+    ],
+    "exp_en": "Keeping the original and creating a new-format copy protects the editable source and reduces conversion risk.",
+    "q_ja": "DOCXをSubmitしますがOriginal ODTも残したいです。最もSafeな方法はどれですか？",
+    "opts_ja": [
+      "Only fileをOverwriteする",
+      "ODTを先にDeleteする",
+      ".odtを.docxへRenameする",
+      "ODTを残し、Save AsでDOCX copyを作る"
+    ],
+    "exp_ja": "Originalを残し、New-format copyを作るとEditable sourceを守り、Conversion riskを減らせます。"
+  },
+  {
+    "number": 22,
+    "type": "Situation",
+    "category": "Backup and safety",
+    "correct": "B",
+    "q_en": "An important project exists only on one laptop. What is the best improvement?",
+    "opts_en": [
+      "Trust Autosave only",
+      "Create another copy on separate storage or cloud",
+      "Put the only file in Recycle Bin",
+      "Change the wallpaper"
+    ],
+    "exp_en": "Important work should have a separate backup copy. One device and one file are a single point of failure.",
+    "q_ja": "Important projectが1台のLaptopに1 Copyだけあります。最適なImprovementはどれですか？",
+    "opts_ja": [
+      "Autosaveだけを信頼する",
+      "Separate storageまたはCloudにAnother copyを作る",
+      "Only fileをRecycle Binへ入れる",
+      "Wallpaperを変える"
+    ],
+    "exp_ja": "Important workにはSeparate backup copyが必要です。1 Device・1 FileだけではFailure時に失います。"
+  },
+  {
+    "number": 23,
+    "type": "Situation",
+    "category": "Backup and safety",
+    "correct": "A",
+    "q_en": "A student wants to download LibreOffice. Which source is best?",
+    "opts_en": [
+      "The official LibreOffice website",
+      "A random advertisement",
+      "An unknown file-sharing page",
+      "A torrent link"
+    ],
+    "exp_en": "Official developer websites are the safest normal source for software installers.",
+    "q_ja": "StudentがLibreOfficeをDownloadします。最適なSourceはどれですか？",
+    "opts_ja": [
+      "Official LibreOffice website",
+      "Random advertisement",
+      "Unknown file-sharing page",
+      "Torrent link"
+    ],
+    "exp_ja": "Software installerはOfficial developer websiteからDownloadするのがNormalでSafeです。"
+  },
+  {
+    "number": 24,
+    "type": "Situation",
+    "category": "Choosing software",
+    "correct": "C",
+    "q_en": "A school must choose an office suite. Which decision method is best?",
+    "opts_en": [
+      "Choose only the most expensive name",
+      "Choose only the prettiest icon",
+      "Compare tasks, budget, compatibility, Internet needs, collaboration, and support",
+      "Choose the first sponsored result"
+    ],
+    "exp_en": "Software should be selected for the real task and constraints, not only by brand, price, or appearance.",
+    "q_ja": "SchoolがOffice suiteを選びます。最適なDecision methodはどれですか？",
+    "opts_ja": [
+      "最も高いNameだけで選ぶ",
+      "最もきれいなIconだけで選ぶ",
+      "Task、Budget、Compatibility、Internet、Collaboration、Supportを比較する",
+      "First sponsored resultを選ぶ"
+    ],
+    "exp_ja": "SoftwareはBrand、Price、Appearanceだけでなく、Real taskとConstraintで選びます。"
+  }
+]
