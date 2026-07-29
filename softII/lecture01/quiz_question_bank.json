@@ -1,0 +1,530 @@
+[
+  {
+    "number": 1,
+    "type": "Knowledge",
+    "category": "Operating system",
+    "correct": "B",
+    "q_en": "What is the main job of an operating system?",
+    "opts_en": [
+      "Store only pictures",
+      "Manage programs, files, hardware, and user input",
+      "Make every website safe",
+      "Replace the SSD"
+    ],
+    "exp_en": "Windows manages programs, files, hardware, keyboard and mouse input, and windows on the screen.",
+    "q_ja": "Operating Systemの主な仕事は何ですか？",
+    "opts_ja": [
+      "Pictureだけを保存する",
+      "Program、File、Hardware、User inputを管理する",
+      "すべてのWebsiteを安全にする",
+      "SSDを交換する"
+    ],
+    "exp_ja": "WindowsはProgram、File、Hardware、Input、Screen上のWindowを管理します。"
+  },
+  {
+    "number": 2,
+    "type": "Knowledge",
+    "category": "Operating system",
+    "correct": "D",
+    "q_en": "What is File Explorer mainly used for?",
+    "opts_en": [
+      "Changing BIOS settings",
+      "Editing only text",
+      "Testing Internet speed",
+      "Working with files, folders, and storage locations"
+    ],
+    "exp_en": "File Explorer is the Windows file manager. It is used to create, find, copy, move, rename, and delete items.",
+    "q_ja": "File Explorerは主に何に使いますか？",
+    "opts_ja": [
+      "BIOSを変更する",
+      "Textだけを編集する",
+      "Internet speedを測る",
+      "File、Folder、Storage locationを操作する"
+    ],
+    "exp_ja": "File ExplorerはWindowsのFile managerです。ItemのCreate、Find、Copy、Move、Rename、Deleteに使います。"
+  },
+  {
+    "number": 3,
+    "type": "Knowledge",
+    "category": "Storage",
+    "correct": "A",
+    "q_en": "What is Local Disk (C:) usually?",
+    "opts_en": [
+      "The main internal Windows drive",
+      "The Recycle Bin",
+      "A browser tab",
+      "Always a USB drive"
+    ],
+    "exp_en": "C: is normally the main internal drive. Windows and user folders such as Documents are usually stored there.",
+    "q_ja": "Local Disk (C:)は通常何ですか？",
+    "opts_ja": [
+      "Main internal Windows drive",
+      "Recycle Bin",
+      "Browser tab",
+      "必ずUSB drive"
+    ],
+    "exp_ja": "C:は通常Main internal driveです。WindowsやDocumentsが保存されています。"
+  },
+  {
+    "number": 4,
+    "type": "Knowledge",
+    "category": "Storage",
+    "correct": "C",
+    "q_en": "What is a folder?",
+    "opts_en": [
+      "A program for websites",
+      "A file extension",
+      "A container used to organize files and other folders",
+      "A Windows password"
+    ],
+    "exp_en": "A folder is a container. It organizes files and can contain other folders.",
+    "q_ja": "Folderとは何ですか？",
+    "opts_ja": [
+      "Website用Program",
+      "File extension",
+      "Fileや他のFolderを整理するContainer",
+      "Windows password"
+    ],
+    "exp_ja": "FolderはContainerです。Fileや他のFolderを整理します。"
+  },
+  {
+    "number": 5,
+    "type": "Knowledge",
+    "category": "File Explorer",
+    "correct": "B",
+    "q_en": "What does the File Explorer address bar show?",
+    "opts_en": [
+      "Battery power",
+      "The current path or location",
+      "Browser history",
+      "Only file size"
+    ],
+    "exp_en": "The address bar answers “Where am I now?” It shows the current drive and folder path.",
+    "q_ja": "Address barは何を表示しますか？",
+    "opts_ja": [
+      "Battery power",
+      "Current pathまたはLocation",
+      "Browser history",
+      "File sizeだけ"
+    ],
+    "exp_ja": "Address barはCurrent driveとFolder pathを表示します。"
+  },
+  {
+    "number": 6,
+    "type": "Knowledge",
+    "category": "File Explorer",
+    "correct": "D",
+    "q_en": "Why is Details view useful for study work?",
+    "opts_en": [
+      "It changes the wallpaper",
+      "It shows pictures only",
+      "It changes file contents",
+      "It clearly shows names, types, dates, and sizes"
+    ],
+    "exp_en": "Details view displays Name, Type, Date modified, and Size. It does not change the files.",
+    "q_ja": "Details viewが便利なのはなぜですか？",
+    "opts_ja": [
+      "Wallpaperを変える",
+      "Pictureだけ表示する",
+      "File contentsを変える",
+      "Name、Type、Date、Sizeを表示する"
+    ],
+    "exp_ja": "Details viewはFile情報を明確に表示し、File自体は変更しません。"
+  },
+  {
+    "number": 7,
+    "type": "Knowledge",
+    "category": "Names and extensions",
+    "correct": "A",
+    "q_en": "What does the extension .txt normally identify?",
+    "opts_en": [
+      "A text file",
+      "A folder",
+      "A ZIP archive",
+      "A spreadsheet"
+    ],
+    "exp_en": "The extension is the part after the final dot. .txt identifies a text file.",
+    "q_ja": ".txtは通常何を示しますか？",
+    "opts_ja": [
+      "Text file",
+      "Folder",
+      "ZIP archive",
+      "Spreadsheet"
+    ],
+    "exp_ja": "Extensionは最後のDotの後ろです。.txtはText fileです。"
+  },
+  {
+    "number": 8,
+    "type": "Knowledge",
+    "category": "Names and extensions",
+    "correct": "C",
+    "q_en": "Why should file extensions be visible in this class?",
+    "opts_en": [
+      "They make names shorter",
+      "They move files safely",
+      "They reveal the real file type and help prevent mistakes",
+      "They add a password"
+    ],
+    "exp_en": "Visible extensions show the real file type and help detect misleading names.",
+    "q_ja": "Extensionを表示する理由は？",
+    "opts_ja": [
+      "Nameを短くする",
+      "安全にMoveする",
+      "Real file typeを確認しMistakeを防ぐ",
+      "Passwordを追加する"
+    ],
+    "exp_ja": "Extensionを表示するとReal file typeを確認できます。"
+  },
+  {
+    "number": 9,
+    "type": "Knowledge",
+    "category": "Names and extensions",
+    "correct": "B",
+    "q_en": "What does Rename normally change?",
+    "opts_en": [
+      "The file location",
+      "The item name, but not its contents or location",
+      "The file type automatically",
+      "The number of copies"
+    ],
+    "exp_en": "Rename gives the same item a new name. Contents and location stay the same.",
+    "q_ja": "Renameで何が変わりますか？",
+    "opts_ja": [
+      "File location",
+      "Item nameだけ。ContentsとLocationは同じ",
+      "File typeが自動で変わる",
+      "Copyの数"
+    ],
+    "exp_ja": "RenameはNameだけを変更します。"
+  },
+  {
+    "number": 10,
+    "type": "Knowledge",
+    "category": "Saving",
+    "correct": "D",
+    "q_en": "What does Ctrl + S normally do?",
+    "opts_en": [
+      "Select all",
+      "Search",
+      "Close the program",
+      "Save the current work"
+    ],
+    "exp_en": "Ctrl + S saves the current file. Use it regularly so recent changes are not lost.",
+    "q_ja": "Ctrl + Sは何をしますか？",
+    "opts_ja": [
+      "Select all",
+      "Search",
+      "ProgramをCloseする",
+      "Current workをSaveする"
+    ],
+    "exp_ja": "Ctrl + SはCurrent fileをSaveします。"
+  },
+  {
+    "number": 11,
+    "type": "Knowledge",
+    "category": "Selection",
+    "correct": "A",
+    "q_en": "What is Ctrl + click used for in File Explorer?",
+    "opts_en": [
+      "Selecting separate items",
+      "Selecting every item",
+      "Opening Properties",
+      "Undoing the last action"
+    ],
+    "exp_en": "Ctrl + click selects separate items. Ctrl + A selects all items.",
+    "q_ja": "Ctrl + Clickは何に使いますか？",
+    "opts_ja": [
+      "Separate itemをSelect",
+      "All itemをSelect",
+      "PropertiesをOpen",
+      "Undo"
+    ],
+    "exp_ja": "Ctrl + ClickはSeparate itemをSelectします。"
+  },
+  {
+    "number": 12,
+    "type": "Knowledge",
+    "category": "Copy and move",
+    "correct": "C",
+    "q_en": "What is the main difference between Copy and Move?",
+    "opts_en": [
+      "They are always the same",
+      "Copy changes name; Move changes extension",
+      "Copy keeps the original; Move changes the original location",
+      "Move always deletes permanently"
+    ],
+    "exp_en": "Copy creates another item and keeps the source. Move relocates the original item.",
+    "q_ja": "CopyとMoveの違いは？",
+    "opts_ja": [
+      "常に同じ",
+      "CopyはName、MoveはExtensionを変える",
+      "CopyはOriginalを残し、MoveはLocationを変える",
+      "Moveは必ずPermanent delete"
+    ],
+    "exp_ja": "CopyはSourceを残し、MoveはOriginal itemのLocationを変えます。"
+  },
+  {
+    "number": 13,
+    "type": "Situation",
+    "category": "Safe location",
+    "correct": "B",
+    "q_en": "A student needs a safe place for class files. Which location is best?",
+    "opts_en": [
+      "A random folder in Downloads",
+      "Documents → aa26",
+      "C:\\Windows",
+      "C:\\Program Files"
+    ],
+    "exp_en": "Documents → aa26 is the assigned class location. System folders are not practice areas.",
+    "q_ja": "Class fileの安全な場所は？",
+    "opts_ja": [
+      "DownloadsのRandom folder",
+      "Documents → aa26",
+      "C:\\Windows",
+      "C:\\Program Files"
+    ],
+    "exp_ja": "Documents → aa26が指定されたClass locationです。"
+  },
+  {
+    "number": 14,
+    "type": "Situation",
+    "category": "Views",
+    "correct": "D",
+    "q_en": "A student changes a folder from Large icons to Details. What happened to the files?",
+    "opts_en": [
+      "They became text",
+      "They were compressed",
+      "They moved to another drive",
+      "Only the way they are displayed changed"
+    ],
+    "exp_en": "View settings change only the display. They do not change, copy, move, or convert the files.",
+    "q_ja": "Large iconsからDetailsへ変えました。Fileには何が起きましたか？",
+    "opts_ja": [
+      "Textになった",
+      "Compressされた",
+      "別DriveへMoveした",
+      "Display方法だけ変わった"
+    ],
+    "exp_ja": "View settingはDisplayだけを変更します。"
+  },
+  {
+    "number": 15,
+    "type": "Situation",
+    "category": "Exact names",
+    "correct": "A",
+    "q_en": "The required name is lesson2_note.txt, but a student creates lesson2 note.txt. What is correct?",
+    "opts_en": [
+      "It is different because a space and an underscore are different",
+      "It is exactly the same",
+      "Windows changes it to ZIP",
+      "The extension is missing"
+    ],
+    "exp_en": "A space and an underscore are different characters. Computer work often requires the exact name.",
+    "q_ja": "lesson2_note.txtの代わりにlesson2 note.txtを作りました。正しい説明は？",
+    "opts_ja": [
+      "SpaceとUnderscoreは違うのでDifferent name",
+      "完全に同じ",
+      "ZIPになる",
+      "Extensionがない"
+    ],
+    "exp_ja": "SpaceとUnderscoreはDifferent characterです。"
+  },
+  {
+    "number": 16,
+    "type": "Situation",
+    "category": "Extensions",
+    "correct": "C",
+    "q_en": "Extensions are hidden. A file looks like report.pdf, but its full name is report.pdf.exe. What is the real file type?",
+    "opts_en": [
+      "A normal PDF",
+      "A text file",
+      "An executable .exe file",
+      "A folder"
+    ],
+    "exp_en": "The final extension is .exe. The earlier .pdf is only part of the name.",
+    "q_ja": "Full nameがreport.pdf.exeです。Real file typeは？",
+    "opts_ja": [
+      "Normal PDF",
+      "Text file",
+      "Executable .exe file",
+      "Folder"
+    ],
+    "exp_ja": "Final extensionは.exeです。"
+  },
+  {
+    "number": 17,
+    "type": "Situation",
+    "category": "Rename",
+    "correct": "D",
+    "q_en": "You must rename note.txt to lesson2_note.txt. What should you do?",
+    "opts_en": [
+      "Delete .txt",
+      "Type lesson2_note.txt.txt",
+      "Move it to another folder",
+      "Change only the part before .txt"
+    ],
+    "exp_en": "Keep the extension once. Change note to lesson2_note.",
+    "q_ja": "note.txtをlesson2_note.txtへRenameするには？",
+    "opts_ja": [
+      ".txtをDelete",
+      "lesson2_note.txt.txtと入力",
+      "別FolderへMove",
+      ".txtの前だけ変更"
+    ],
+    "exp_ja": "Extensionは1回だけ残します。"
+  },
+  {
+    "number": 18,
+    "type": "Situation",
+    "category": "Selection",
+    "correct": "B",
+    "q_en": "A student wants to select three separate files. Which action is best?",
+    "opts_en": [
+      "Shift + click only",
+      "Hold Ctrl and click each required file",
+      "Press Ctrl + S",
+      "Double-click every file"
+    ],
+    "exp_en": "Ctrl + click selects separate items. Shift + click is normally used for a continuous range.",
+    "q_ja": "Separateな3 FileをSelectする最適なActionは？",
+    "opts_ja": [
+      "Shift + Clickだけ",
+      "CtrlをHoldして必要なFileをClick",
+      "Ctrl + S",
+      "すべてDouble-click"
+    ],
+    "exp_ja": "Ctrl + ClickはSeparate itemをSelectします。"
+  },
+  {
+    "number": 19,
+    "type": "Situation",
+    "category": "Copy",
+    "correct": "A",
+    "q_en": "memo.txt is copied from aa26 into lesson2. What should be true?",
+    "opts_en": [
+      "The original remains in aa26 and another memo.txt appears in lesson2",
+      "The original is deleted",
+      "Both go to Recycle Bin",
+      "It becomes memo.zip"
+    ],
+    "exp_en": "Copy keeps the source item and creates another item in the destination folder.",
+    "q_ja": "memo.txtをaa26からlesson2へCopyしました。正しい状態は？",
+    "opts_ja": [
+      "Originalはaa26に残り、Another memo.txtがlesson2に現れる",
+      "OriginalがDelete",
+      "両方Recycle Bin",
+      "memo.zipになる"
+    ],
+    "exp_ja": "CopyはSourceを残し、DestinationにAnother itemを作ります。"
+  },
+  {
+    "number": 20,
+    "type": "Situation",
+    "category": "Move",
+    "correct": "C",
+    "q_en": "An old folder is moved from aa26 into archive. What should happen?",
+    "opts_en": [
+      "A second copy stays in aa26",
+      "It becomes a shortcut",
+      "It disappears from aa26 and appears inside archive",
+      "Its extension changes"
+    ],
+    "exp_en": "Move changes the item location. It should no longer remain in the original folder.",
+    "q_ja": "Old folderをaa26からarchiveへMoveしました。何が起きますか？",
+    "opts_ja": [
+      "Second copyが残る",
+      "Shortcutになる",
+      "aa26から消えarchive内に現れる",
+      "Extensionが変わる"
+    ],
+    "exp_ja": "MoveはItemのLocationを変えます。"
+  },
+  {
+    "number": 21,
+    "type": "Situation",
+    "category": "Recovery",
+    "correct": "D",
+    "q_en": "A practice file is visible in Recycle Bin. Which action returns it?",
+    "opts_en": [
+      "Compress",
+      "Sort",
+      "Open With",
+      "Restore"
+    ],
+    "exp_en": "Restore returns a Recycle Bin item to its previous location.",
+    "q_ja": "Recycle BinのFileを戻すActionは？",
+    "opts_ja": [
+      "Compress",
+      "Sort",
+      "Open With",
+      "Restore"
+    ],
+    "exp_ja": "RestoreはItemをPrevious locationへ戻します。"
+  },
+  {
+    "number": 22,
+    "type": "Situation",
+    "category": "Undo",
+    "correct": "B",
+    "q_en": "A student makes a small recent mistake while moving a practice file. Which shortcut may undo it?",
+    "opts_en": [
+      "Ctrl + V",
+      "Ctrl + Z",
+      "Ctrl + T",
+      "Ctrl + P"
+    ],
+    "exp_en": "Ctrl + Z can undo many recent actions. The result should still be checked.",
+    "q_ja": "Recent mistakeをUndoするShortcutは？",
+    "opts_ja": [
+      "Ctrl + V",
+      "Ctrl + Z",
+      "Ctrl + T",
+      "Ctrl + P"
+    ],
+    "exp_ja": "Ctrl + ZはRecent actionをUndoできます。"
+  },
+  {
+    "number": 23,
+    "type": "Situation",
+    "category": "Final structure",
+    "correct": "A",
+    "q_en": "Where should memo_copy.txt be in the final folder structure?",
+    "opts_en": [
+      "Documents → aa26 → lesson2 → memo_copy.txt",
+      "Documents → memo_copy.txt",
+      "C:\\Windows → lesson2 → memo_copy.txt",
+      "Recycle Bin → memo_copy.txt"
+    ],
+    "exp_en": "The final structure places memo_copy.txt inside lesson2, inside aa26, inside Documents.",
+    "q_ja": "memo_copy.txtのFinal locationは？",
+    "opts_ja": [
+      "Documents → aa26 → lesson2 → memo_copy.txt",
+      "Documents → memo_copy.txt",
+      "C:\\Windows → lesson2 → memo_copy.txt",
+      "Recycle Bin → memo_copy.txt"
+    ],
+    "exp_ja": "memo_copy.txtはDocuments → aa26 → lesson2の中です。"
+  },
+  {
+    "number": 24,
+    "type": "Situation",
+    "category": "Two windows",
+    "correct": "C",
+    "q_en": "Why can two File Explorer windows side by side help with copying?",
+    "opts_en": [
+      "They create a backup automatically",
+      "They change every extension",
+      "One shows the source and the other the destination",
+      "They delete duplicate files"
+    ],
+    "exp_en": "Two windows make “from here → to there” visible: one shows the source and one the destination.",
+    "q_ja": "2つのFile Explorer windowがCopyに便利な理由は？",
+    "opts_ja": [
+      "自動Backup",
+      "Extension変更",
+      "一方にSource、もう一方にDestinationを表示",
+      "DuplicateをDelete"
+    ],
+    "exp_ja": "SourceとDestinationを同時に表示できます。"
+  }
+]
