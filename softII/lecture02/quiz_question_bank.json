@@ -1,0 +1,442 @@
+[
+  {
+    "type": "Knowledge",
+    "category": "Organization and locations",
+    "correct": "B",
+    "q_en": "Where is the main work folder for this lesson?",
+    "opts_en": [
+      "Desktop → archive",
+      "Documents → aa26",
+      "Downloads → ZIP",
+      "C:\\Windows → aa26"
+    ],
+    "exp_en": "The assigned work location is Documents → aa26. Using the exact location makes files easier to find and check.",
+    "q_ja": "このLessonのMain work folderはどこですか？",
+    "opts_ja": [
+      "Desktop → archive",
+      "Documents → aa26",
+      "Downloads → ZIP",
+      "C:\\Windows → aa26"
+    ],
+    "exp_ja": "指定されたWork locationはDocuments → aa26です。Exact locationを使うとFileをFindしてCheckしやすくなります。",
+    "number": 1
+  },
+  {
+    "type": "Knowledge",
+    "category": "Organization and locations",
+    "correct": "D",
+    "q_en": "What is the purpose of the archive folder?",
+    "opts_en": [
+      "To install Windows",
+      "To store browser passwords",
+      "To replace Documents",
+      "To keep old practice folders together"
+    ],
+    "exp_en": "The archive folder organizes old practice folders in one place and keeps the main aa26 folder cleaner.",
+    "q_ja": "archive folderの目的は何ですか？",
+    "opts_ja": [
+      "WindowsをInstallする",
+      "Browser passwordを保存する",
+      "DocumentsをReplaceする",
+      "Old practice folderを1か所にまとめる"
+    ],
+    "exp_ja": "archive folderはOld practice folderを1か所に整理し、Main aa26 folderをCleanにします。",
+    "number": 2
+  },
+  {
+    "type": "Knowledge",
+    "category": "Organization and locations",
+    "correct": "A",
+    "q_en": "What is the main difference between Copy and Move?",
+    "opts_en": [
+      "Copy keeps the original; Move changes the original location",
+      "Copy deletes the original; Move makes two files",
+      "They are always identical",
+      "Move changes the extension"
+    ],
+    "exp_en": "Copy creates another item and keeps the source. Move relocates the original item to a new folder.",
+    "q_ja": "CopyとMoveの主な違いは何ですか？",
+    "opts_ja": [
+      "CopyはOriginalを残し、MoveはOriginal locationを変える",
+      "CopyはOriginalをDeleteし、Moveは2 Fileを作る",
+      "常に同じ",
+      "MoveはExtensionを変える"
+    ],
+    "exp_ja": "CopyはAnother itemを作ってSourceを残します。MoveはOriginal itemをNew folderへ移動します。",
+    "number": 3
+  },
+  {
+    "type": "Knowledge",
+    "category": "ZIP and Properties",
+    "correct": "C",
+    "q_en": "What is a ZIP file?",
+    "opts_en": [
+      "A Windows user account",
+      "A normal folder that must stay open",
+      "One compressed file that can contain many files and folders",
+      "A screenshot format"
+    ],
+    "exp_en": "ZIP is a compressed file. It can keep many files and folders together for upload, backup, or transfer.",
+    "q_ja": "ZIP fileとは何ですか？",
+    "opts_ja": [
+      "Windows user account",
+      "OpenしたままにするNormal folder",
+      "多くのFileやFolderを含める1つのCompressed file",
+      "Screenshot format"
+    ],
+    "exp_ja": "ZIPはCompressed fileです。多くのFileやFolderを1つにまとめ、Upload、Backup、Transferに使えます。",
+    "number": 4
+  },
+  {
+    "type": "Knowledge",
+    "category": "Extract and Search",
+    "correct": "B",
+    "q_en": "Why should important work be extracted before editing?",
+    "opts_en": [
+      "Extraction deletes the file",
+      "A ZIP is not a normal working folder",
+      "Extraction changes every file to PDF",
+      "Windows cannot open folders"
+    ],
+    "exp_en": "A ZIP may look like a folder, but it is a compressed file. Extract it first, then work in the normal extracted folder.",
+    "q_ja": "Important workをEditする前にExtractする理由は何ですか？",
+    "opts_ja": [
+      "ExtractするとFileがDeleteされるから",
+      "ZIPはNormal working folderではないから",
+      "すべてのFileがPDFになるから",
+      "WindowsはFolderをOpenできないから"
+    ],
+    "exp_ja": "ZIPはFolderのように見えてもCompressed fileです。まずExtractし、Normal extracted folderで作業します。",
+    "number": 5
+  },
+  {
+    "type": "Knowledge",
+    "category": "ZIP and Properties",
+    "correct": "D",
+    "q_en": "Which information can normally be checked in ZIP Properties?",
+    "opts_en": [
+      "Browser history and bookmarks",
+      "Keyboard language only",
+      "The teacher’s email password",
+      "Type, location, size, and date modified"
+    ],
+    "exp_en": "Properties shows useful file information such as Type, Location, Size, and Date modified.",
+    "q_ja": "ZIPのPropertiesで通常確認できるInformationはどれですか？",
+    "opts_ja": [
+      "Browser historyとBookmark",
+      "Keyboard languageだけ",
+      "TeacherのEmail password",
+      "Type、Location、Size、Date modified"
+    ],
+    "exp_ja": "PropertiesではType、Location、Size、Date modifiedなどのUseful file informationを確認できます。",
+    "number": 6
+  },
+  {
+    "type": "Knowledge",
+    "category": "Extract and Search",
+    "correct": "A",
+    "q_en": "Which search pattern finds all text files?",
+    "opts_en": [
+      "*.txt",
+      "txt.*",
+      "all.txt.folder",
+      "search-text"
+    ],
+    "exp_en": "The asterisk means “any name.” Therefore, *.txt finds files whose extension is .txt.",
+    "q_ja": "すべてのText fileをFindするSearch patternはどれですか？",
+    "opts_ja": [
+      "*.txt",
+      "txt.*",
+      "all.txt.folder",
+      "search-text"
+    ],
+    "exp_ja": "Asteriskは「Any name」を意味します。*.txtはExtensionが.txtのFileをFindします。",
+    "number": 7
+  },
+  {
+    "type": "Knowledge",
+    "category": "Screenshot proof",
+    "correct": "C",
+    "q_en": "Which shortcut opens the Windows screenshot snipping tool?",
+    "opts_en": [
+      "Ctrl + Shift + Z",
+      "Alt + F4",
+      "Win + Shift + S",
+      "Ctrl + J"
+    ],
+    "exp_en": "Win + Shift + S opens the Windows screen snipping tool so you can select an area and save proof.",
+    "q_ja": "WindowsのScreenshot snipping toolを開くShortcutはどれですか？",
+    "opts_ja": [
+      "Ctrl + Shift + Z",
+      "Alt + F4",
+      "Win + Shift + S",
+      "Ctrl + J"
+    ],
+    "exp_ja": "Win + Shift + SでWindows screen snipping toolを開き、AreaをSelectしてProofをSaveできます。",
+    "number": 8
+  },
+  {
+    "type": "Knowledge",
+    "category": "File safety",
+    "correct": "B",
+    "q_en": "Which file type needs extra care before opening?",
+    "opts_en": [
+      ".png",
+      ".exe",
+      ".txt",
+      ".pdf"
+    ],
+    "exp_en": "An .exe file can run a program. Unknown executable files should not be opened without teacher approval.",
+    "q_ja": "Openする前に特に注意が必要なFile typeはどれですか？",
+    "opts_ja": [
+      ".png",
+      ".exe",
+      ".txt",
+      ".pdf"
+    ],
+    "exp_ja": ".exe fileはProgramをRunできます。Unknown executable fileはTeacher approvalなしでOpenしません。",
+    "number": 9
+  },
+  {
+    "type": "Knowledge",
+    "category": "Final workflow",
+    "correct": "D",
+    "q_en": "What is the four-part work rule used in this lecture?",
+    "opts_en": [
+      "Fast click, any folder, short name, no check",
+      "Download, install, restart, update",
+      "Open, edit, print, delete",
+      "Exact place, exact name, correct action, check result"
+    ],
+    "exp_en": "Reliable computer work follows the requested location and name, uses the correct action, and checks the result.",
+    "q_ja": "このLectureで使う4-part work ruleは何ですか？",
+    "opts_ja": [
+      "Fast click、Any folder、Short name、No check",
+      "Download、Install、Restart、Update",
+      "Open、Edit、Print、Delete",
+      "Exact place、Exact name、Correct action、Check result"
+    ],
+    "exp_ja": "Reliable computer workではRequested locationとNameを使い、Correct actionを行い、ResultをCheckします。",
+    "number": 10
+  },
+  {
+    "type": "Situation",
+    "category": "Organization and locations",
+    "correct": "A",
+    "q_en": "A student is organizing aa26. Which item should NOT be moved blindly into archive?",
+    "opts_en": [
+      "The new archive folder itself",
+      "An old completed practice folder",
+      "An old folder the teacher told the class to store",
+      "A closed old exercise folder"
+    ],
+    "exp_en": "Moving the archive folder into itself is impossible and incorrect. Open files and today’s instruction file should also be checked before moving.",
+    "q_ja": "Studentがaa26を整理しています。Blindly archiveへMoveしてはいけないItemはどれですか？",
+    "opts_ja": [
+      "New archive folder自体",
+      "Old completed practice folder",
+      "TeacherがStoreするように言ったOld folder",
+      "Closed old exercise folder"
+    ],
+    "exp_ja": "archive folderを自分自身の中へMoveすることはできず、Incorrectです。Open fileやTodayのInstruction fileにも注意します。",
+    "number": 11
+  },
+  {
+    "type": "Situation",
+    "category": "ZIP and Properties",
+    "correct": "C",
+    "q_en": "The right-click menu does not show “Compress to ZIP file.” What should the student try?",
+    "opts_en": [
+      "Delete the folder and start again",
+      "Rename the folder to .zip manually",
+      "Open “Show more options” and find Send to → Compressed folder",
+      "Move the folder into C:\\Windows"
+    ],
+    "exp_en": "Windows menus can differ. “Show more options” may reveal Send to → Compressed (zipped) folder.",
+    "q_ja": "Right-click menuに「Compress to ZIP file」がありません。何を試しますか？",
+    "opts_ja": [
+      "FolderをDeleteして最初からやり直す",
+      "Folder nameに.zipを手動で付ける",
+      "Show more optionsを開き、Send to → Compressed folderを探す",
+      "FolderをC:\\WindowsへMoveする"
+    ],
+    "exp_ja": "Windows menuはVersionで違うことがあります。Show more optionsからSend to → Compressed folderを使えます。",
+    "number": 12
+  },
+  {
+    "type": "Situation",
+    "category": "Extract and Search",
+    "correct": "D",
+    "q_en": "A student opens archive.zip and wants to edit an important file immediately. What is the best action?",
+    "opts_en": [
+      "Edit it inside the ZIP and never save",
+      "Delete archive.zip",
+      "Change .zip to .txt",
+      "Extract the ZIP first and edit the extracted copy"
+    ],
+    "exp_en": "Important work should be edited in a normal extracted folder, not directly inside the compressed archive.",
+    "q_ja": "Studentがarchive.zipを開き、Important fileをすぐEditしたいです。Best actionはどれですか？",
+    "opts_ja": [
+      "ZIP内でEditし、Saveしない",
+      "archive.zipをDeleteする",
+      ".zipを.txtへ変える",
+      "まずZIPをExtractし、Extracted copyをEditする"
+    ],
+    "exp_ja": "Important workはCompressed archive内ではなく、Normal extracted folderでEditします。",
+    "number": 13
+  },
+  {
+    "type": "Situation",
+    "category": "Extract and Search",
+    "correct": "B",
+    "q_en": "Where should archive.zip be extracted for the lesson test?",
+    "opts_en": [
+      "C:\\Program Files",
+      "Documents → aa26 → extracted_test",
+      "Recycle Bin",
+      "A random browser folder"
+    ],
+    "exp_en": "The assigned test destination is Documents → aa26 → extracted_test. This proves the ZIP can be unpacked correctly.",
+    "q_ja": "Lesson testでarchive.zipをどこへExtractしますか？",
+    "opts_ja": [
+      "C:\\Program Files",
+      "Documents → aa26 → extracted_test",
+      "Recycle Bin",
+      "Random browser folder"
+    ],
+    "exp_ja": "Assigned test destinationはDocuments → aa26 → extracted_testです。ZIPを正しくUnpackできることを確認します。",
+    "number": 14
+  },
+  {
+    "type": "Situation",
+    "category": "ZIP and Properties",
+    "correct": "A",
+    "q_en": "After archive.zip is created, the normal archive folder is still visible. Is this a problem?",
+    "opts_en": [
+      "No. Compression normally creates a ZIP and keeps the original folder",
+      "Yes. The ZIP failed because the original remains",
+      "Yes. Both items must be deleted",
+      "No, because archive.zip is only a shortcut"
+    ],
+    "exp_en": "Creating a ZIP normally makes a new compressed file and keeps the original source folder.",
+    "q_ja": "archive.zipを作った後もNormal archive folderが見えます。Problemですか？",
+    "opts_ja": [
+      "いいえ。Compressionは通常ZIPを作り、Original folderを残す",
+      "はい。Originalが残るとZIPはFailure",
+      "はい。両方Deleteする必要がある",
+      "いいえ。archive.zipはShortcutだから"
+    ],
+    "exp_ja": "ZIP作成では通常New compressed fileが作られ、Original source folderは残ります。",
+    "number": 15
+  },
+  {
+    "type": "Situation",
+    "category": "Extract and Search",
+    "correct": "C",
+    "q_en": "A student needs to find every PNG picture inside aa26. What should be entered in Search?",
+    "opts_en": [
+      "png.all",
+      "picture.png.folder",
+      "*.png",
+      "png.*.txt"
+    ],
+    "exp_en": "*.png finds all files whose extension is .png, regardless of the name before the extension.",
+    "q_ja": "aa26内のすべてのPNG pictureをFindしたいです。Searchに何を入力しますか？",
+    "opts_ja": [
+      "png.all",
+      "picture.png.folder",
+      "*.png",
+      "png.*.txt"
+    ],
+    "exp_ja": "*.pngはExtensionが.pngのすべてのFileを、前のNameに関係なくFindします。",
+    "number": 16
+  },
+  {
+    "type": "Situation",
+    "category": "Screenshot proof",
+    "correct": "D",
+    "q_en": "Which screenshot result follows the lesson instructions?",
+    "opts_en": [
+      "A picture named Screenshot1 saved in Pictures",
+      "A ZIP file named proof.zip",
+      "A screenshot showing only the desktop wallpaper",
+      "archive_proof.png in Documents → aa26, showing archive, archive.zip, and extracted_test"
+    ],
+    "exp_en": "The proof must show the three required items and use the exact name archive_proof.png in the assigned folder.",
+    "q_ja": "Lesson instructionに従ったScreenshot resultはどれですか？",
+    "opts_ja": [
+      "Picturesに保存したScreenshot1",
+      "proof.zipというZIP file",
+      "Desktop wallpaperだけのScreenshot",
+      "Documents → aa26のarchive_proof.pngで、archive、archive.zip、extracted_testが見える"
+    ],
+    "exp_ja": "Proofには3つのRequired itemを表示し、Assigned folderでExact name archive_proof.pngを使います。",
+    "number": 17
+  },
+  {
+    "type": "Situation",
+    "category": "Troubleshooting",
+    "correct": "B",
+    "q_en": "An old folder is no longer visible in aa26 after a Move action. Where should the student check first?",
+    "opts_en": [
+      "Browser History",
+      "Inside the archive folder",
+      "C:\\Windows\\System32",
+      "A search engine"
+    ],
+    "exp_en": "A successful Move changes the location. The old folder should now be inside archive.",
+    "q_ja": "Move後、Old folderがaa26に見えません。最初にどこをCheckしますか？",
+    "opts_ja": [
+      "Browser History",
+      "archive folderの中",
+      "C:\\Windows\\System32",
+      "Search engine"
+    ],
+    "exp_ja": "Successful MoveはLocationを変えます。Old folderはarchiveの中にあるはずです。",
+    "number": 18
+  },
+  {
+    "type": "Situation",
+    "category": "ZIP and Properties",
+    "correct": "A",
+    "q_en": "The teacher asks for the ZIP file size. What is the best way to find it?",
+    "opts_en": [
+      "Right-click archive.zip and open Properties",
+      "Count the files by eye",
+      "Rename archive.zip to size.txt",
+      "Open Windows Settings → Personalization"
+    ],
+    "exp_en": "Properties displays the file size together with its type, location, and modified date.",
+    "q_ja": "TeacherがZIP file sizeを質問しました。Best wayはどれですか？",
+    "opts_ja": [
+      "archive.zipをRight-clickしてPropertiesを開く",
+      "目でFile数を数える",
+      "archive.zipをsize.txtへRenameする",
+      "Windows Settings → Personalizationを開く"
+    ],
+    "exp_ja": "PropertiesにはFile size、Type、Location、Modified dateが表示されます。",
+    "number": 19
+  },
+  {
+    "type": "Situation",
+    "category": "File safety",
+    "correct": "C",
+    "q_en": "A student receives unknown_file.scr from an unknown source. What should the student do?",
+    "opts_en": [
+      "Open it to see what happens",
+      "Rename it to .png and open it",
+      "Do not open it; ask the teacher first",
+      "Put it inside a ZIP and run it"
+    ],
+    "exp_en": ".scr can be an executable screen-saver program. Unknown executable files must not be opened without approval.",
+    "q_ja": "StudentがUnknown sourceからunknown_file.scrを受け取りました。どうしますか？",
+    "opts_ja": [
+      "何が起きるかOpenする",
+      ".pngへRenameしてOpenする",
+      "Openせず、まずTeacherに確認する",
+      "ZIPに入れてRunする"
+    ],
+    "exp_ja": ".scrはExecutable screen-saver programの場合があります。Unknown executable fileはApprovalなしでOpenしません。",
+    "number": 20
+  }
+]
