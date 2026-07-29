@@ -1,0 +1,618 @@
+[
+  {
+    "number": 1,
+    "type": "Knowledge",
+    "category": "Core concepts",
+    "correct": "B",
+    "q_en": "What is a web browser?",
+    "opts_en": [
+      "The whole Internet",
+      "A program used to open and use websites",
+      "A folder for downloads",
+      "A search result"
+    ],
+    "exp_en": "A browser is an application such as Edge, Chrome, Firefox, or Safari. It displays webpages and lets you use web services.",
+    "q_ja": "Web browserとは何ですか？",
+    "opts_ja": [
+      "Internet全体",
+      "Websiteを開いて使うProgram",
+      "Download用のFolder",
+      "Search result"
+    ],
+    "exp_ja": "BrowserはEdge、Chrome、Firefox、SafariなどのApplicationです。Webpageを表示し、Web serviceを使います。"
+  },
+  {
+    "number": 2,
+    "type": "Knowledge",
+    "category": "Core concepts",
+    "correct": "D",
+    "q_en": "Which statement is correct?",
+    "opts_en": [
+      "Google is an operating system",
+      "Chrome is the Internet",
+      "A search engine is a folder",
+      "Chrome is a browser; Google Search is a search engine"
+    ],
+    "exp_en": "A browser is the program. A search engine is a website or service used inside a browser to find information.",
+    "q_ja": "正しい説明はどれですか？",
+    "opts_ja": [
+      "GoogleはOperating System",
+      "ChromeはInternetそのもの",
+      "Search engineはFolder",
+      "ChromeはBrowser、Google SearchはSearch engine"
+    ],
+    "exp_ja": "BrowserはProgramです。Search engineはBrowser内でInformationを探すWebsiteやServiceです。"
+  },
+  {
+    "number": 3,
+    "type": "Knowledge",
+    "category": "Browser controls",
+    "correct": "A",
+    "q_en": "What is the main purpose of the address bar?",
+    "opts_en": [
+      "Type or read a website address, and often search",
+      "Show only battery power",
+      "Store downloaded files",
+      "Choose a Windows user"
+    ],
+    "exp_en": "The address bar shows the current web address. You can type an exact address or search words there.",
+    "q_ja": "Address barの主なPurposeは何ですか？",
+    "opts_ja": [
+      "Website addressを入力・確認し、Searchにも使う",
+      "Battery powerだけを表示する",
+      "Downloaded fileを保存する",
+      "Windows userを選ぶ"
+    ],
+    "exp_ja": "Address barはCurrent web addressを表示します。Exact addressやSearch wordを入力できます。"
+  },
+  {
+    "number": 4,
+    "type": "Knowledge",
+    "category": "Tabs and navigation",
+    "correct": "C",
+    "q_en": "What does Ctrl + T normally do in a browser?",
+    "opts_en": [
+      "Close the browser",
+      "Open History",
+      "Open a new tab",
+      "Save a webpage as PDF"
+    ],
+    "exp_en": "Ctrl + T opens a new tab and keeps the old page open.",
+    "q_ja": "BrowserでCtrl + Tは通常何をしますか？",
+    "opts_ja": [
+      "Browserを閉じる",
+      "Historyを開く",
+      "New tabを開く",
+      "WebpageをPDFで保存する"
+    ],
+    "exp_ja": "Ctrl + TはNew tabを開き、Old pageを残します。"
+  },
+  {
+    "number": 5,
+    "type": "Knowledge",
+    "category": "Tabs and navigation",
+    "correct": "B",
+    "q_en": "What does Ctrl + Shift + T normally do?",
+    "opts_en": [
+      "Open Downloads",
+      "Reopen the last closed tab",
+      "Reset zoom",
+      "Open a private window"
+    ],
+    "exp_en": "This shortcut restores the most recently closed tab in most browsers.",
+    "q_ja": "Ctrl + Shift + Tは通常何をしますか？",
+    "opts_ja": [
+      "Downloadsを開く",
+      "Last closed tabをReopenする",
+      "ZoomをResetする",
+      "Private windowを開く"
+    ],
+    "exp_ja": "このShortcutはMost browserでMost recently closed tabをRestoreします。"
+  },
+  {
+    "number": 6,
+    "type": "Knowledge",
+    "category": "Reading tools",
+    "correct": "D",
+    "q_en": "What does Ctrl + F search?",
+    "opts_en": [
+      "All files on the computer",
+      "The browser history",
+      "The whole Internet",
+      "Text on the current webpage"
+    ],
+    "exp_en": "Find on Page searches only the webpage that is currently open.",
+    "q_ja": "Ctrl + Fは何をSearchしますか？",
+    "opts_ja": [
+      "Computer内のAll file",
+      "Browser history",
+      "Internet全体",
+      "Current webpage内のText"
+    ],
+    "exp_ja": "Find on Pageは現在OpenしているWebpageの中だけをSearchします。"
+  },
+  {
+    "number": 7,
+    "type": "Knowledge",
+    "category": "Reading tools",
+    "correct": "A",
+    "q_en": "Which shortcut resets webpage zoom to 100%?",
+    "opts_en": [
+      "Ctrl + 0",
+      "Ctrl + H",
+      "Ctrl + J",
+      "Ctrl + P"
+    ],
+    "exp_en": "Ctrl + 0 resets page zoom. Ctrl + plus and Ctrl + minus change the size.",
+    "q_ja": "Webpage zoomを100%へResetするShortcutはどれですか？",
+    "opts_ja": [
+      "Ctrl + 0",
+      "Ctrl + H",
+      "Ctrl + J",
+      "Ctrl + P"
+    ],
+    "exp_ja": "Ctrl + 0はPage zoomをResetします。Ctrl + plus / minusでSizeを変更します。"
+  },
+  {
+    "number": 8,
+    "type": "Knowledge",
+    "category": "History and downloads",
+    "correct": "C",
+    "q_en": "What does Ctrl + J normally open?",
+    "opts_en": [
+      "Bookmarks",
+      "Browser settings",
+      "The Downloads panel",
+      "The address bar"
+    ],
+    "exp_en": "The Downloads panel shows recent downloads, progress, errors, and Show in folder.",
+    "q_ja": "Ctrl + Jは通常何を開きますか？",
+    "opts_ja": [
+      "Bookmark",
+      "Browser setting",
+      "Downloads panel",
+      "Address bar"
+    ],
+    "exp_ja": "Downloads panelはRecent download、Progress、Error、Show in folderを表示します。"
+  },
+  {
+    "number": 9,
+    "type": "Knowledge",
+    "category": "Addresses and safety",
+    "correct": "B",
+    "q_en": "What is a domain name?",
+    "opts_en": [
+      "The colour of a webpage",
+      "The main website name in an address",
+      "A downloaded file size",
+      "A browser extension"
+    ],
+    "exp_en": "The domain identifies the website, for example example.jp. Read it before signing in or downloading.",
+    "q_ja": "Domain nameとは何ですか？",
+    "opts_ja": [
+      "WebpageのColour",
+      "Address内のMain website name",
+      "Downloaded file size",
+      "Browser extension"
+    ],
+    "exp_ja": "DomainはWebsiteを識別します。Sign inやDownloadの前に確認します。"
+  },
+  {
+    "number": 10,
+    "type": "Knowledge",
+    "category": "Addresses and safety",
+    "correct": "D",
+    "q_en": "What does HTTPS mainly tell you?",
+    "opts_en": [
+      "The website is always honest",
+      "Every download is safe",
+      "The page has no advertisements",
+      "The connection between your browser and the site is encrypted"
+    ],
+    "exp_en": "HTTPS protects the connection, but you must still check the domain and the purpose of the website.",
+    "q_ja": "HTTPSは主に何を示しますか？",
+    "opts_ja": [
+      "Websiteが必ずHonest",
+      "すべてのDownloadがSafe",
+      "Advertisementがない",
+      "BrowserとSite間のConnectionがEncrypted"
+    ],
+    "exp_ja": "HTTPSはConnectionをProtectしますが、DomainとWebsite purposeも確認する必要があります。"
+  },
+  {
+    "number": 11,
+    "type": "Knowledge",
+    "category": "Forms and accounts",
+    "correct": "A",
+    "q_en": "What does a radio button normally allow?",
+    "opts_en": [
+      "One choice from a group",
+      "Many independent choices",
+      "A file download only",
+      "Automatic translation"
+    ],
+    "exp_en": "Radio buttons usually allow one choice. Checkboxes often allow more than one choice.",
+    "q_ja": "Radio buttonは通常何をAllowしますか？",
+    "opts_ja": [
+      "Groupから1 Choice",
+      "Many independent choices",
+      "File downloadだけ",
+      "Automatic translation"
+    ],
+    "exp_ja": "Radio buttonは通常1 Choiceです。CheckboxはMultiple choiceが可能な場合があります。"
+  },
+  {
+    "number": 12,
+    "type": "Knowledge",
+    "category": "Forms and accounts",
+    "correct": "C",
+    "q_en": "Why should you use Sign out on a shared computer?",
+    "opts_en": [
+      "To improve the Internet speed",
+      "To clear every downloaded file",
+      "To close your account session so another person cannot use it",
+      "To change the website language"
+    ],
+    "exp_en": "Closing a tab may leave the account signed in. Sign out ends the session.",
+    "q_ja": "Shared computerでSign outする理由は何ですか？",
+    "opts_ja": [
+      "Internet speedを上げる",
+      "すべてのDownloaded fileを消す",
+      "Account sessionを閉じ、他人に使われないようにする",
+      "Website languageを変更する"
+    ],
+    "exp_ja": "TabをCloseするだけではSigned inのままの場合があります。Sign outでSessionを終了します。"
+  },
+  {
+    "number": 13,
+    "type": "Knowledge",
+    "category": "Download and upload",
+    "correct": "B",
+    "q_en": "What is an upload?",
+    "opts_en": [
+      "Saving a bookmark",
+      "Sending a file from your computer to a website or service",
+      "Opening a link in a new tab",
+      "Moving a file to Recycle Bin"
+    ],
+    "exp_en": "Upload moves data from your computer to a website or online service. Download is the opposite direction.",
+    "q_ja": "Uploadとは何ですか？",
+    "opts_ja": [
+      "BookmarkをSaveする",
+      "ComputerからWebsiteやServiceへFileを送る",
+      "LinkをNew tabで開く",
+      "FileをRecycle BinへMoveする"
+    ],
+    "exp_ja": "UploadはComputerからWebsiteやOnline serviceへDataを送ります。DownloadはOpposite directionです。"
+  },
+  {
+    "number": 14,
+    "type": "Knowledge",
+    "category": "Download and upload",
+    "correct": "D",
+    "q_en": "What does Show in folder do after a download?",
+    "opts_en": [
+      "Uploads the file",
+      "Changes its extension",
+      "Deletes the browser history",
+      "Opens File Explorer at the downloaded file"
+    ],
+    "exp_en": "Show in folder opens the exact file location in File Explorer.",
+    "q_ja": "Download後のShow in folderは何をしますか？",
+    "opts_ja": [
+      "FileをUploadする",
+      "Extensionを変更する",
+      "Browser historyをDeleteする",
+      "Downloaded fileのLocationをFile Explorerで開く"
+    ],
+    "exp_ja": "Show in folderはDownloaded fileのExact locationをFile Explorerで開きます。"
+  },
+  {
+    "number": 15,
+    "type": "Situation",
+    "category": "Tabs and navigation",
+    "correct": "A",
+    "q_en": "The class instructions are open. You need Google Search but must keep the instructions open. What is best?",
+    "opts_en": [
+      "Open a new tab",
+      "Press Back many times",
+      "Close the instructions",
+      "Refresh the page repeatedly"
+    ],
+    "exp_en": "A new tab lets you search while keeping the class page open.",
+    "q_ja": "Class instructionをOpenしています。Instructionを残してGoogle Searchを使いたいです。Best actionは？",
+    "opts_ja": [
+      "New tabを開く",
+      "Backを何度も押す",
+      "InstructionをCloseする",
+      "Refreshを繰り返す"
+    ],
+    "exp_ja": "New tabならClass pageを残したままSearchできます。"
+  },
+  {
+    "number": 16,
+    "type": "Situation",
+    "category": "Addresses and safety",
+    "correct": "C",
+    "q_en": "A login page has the domain go0gle.com instead of google.com. What should you do?",
+    "opts_en": [
+      "Enter the password because the logo looks correct",
+      "Refresh until the name changes",
+      "Do not sign in; close it and use the correct official address",
+      "Save the page as a bookmark"
+    ],
+    "exp_en": "Small domain changes can indicate a different or fake website. Do not enter account information.",
+    "q_ja": "Login pageのDomainがgoogle.comではなくgo0gle.comです。何をしますか？",
+    "opts_ja": [
+      "Logoが正しいのでPasswordを入力する",
+      "Nameが変わるまでRefreshする",
+      "Sign inせずCloseし、Correct official addressを使う",
+      "BookmarkにSaveする"
+    ],
+    "exp_ja": "Small domain changeはDifferentまたはFake websiteの可能性があります。Account informationを入力しません。"
+  },
+  {
+    "number": 17,
+    "type": "Situation",
+    "category": "Search and results",
+    "correct": "D",
+    "q_en": "A search result is marked Sponsored. What does this mean?",
+    "opts_en": [
+      "It is guaranteed to be official",
+      "It contains no advertisements",
+      "It is always dangerous",
+      "It is a paid advertisement and must still be checked"
+    ],
+    "exp_en": "Sponsored means paid advertising. It may be useful, but it is not automatically official or best.",
+    "q_ja": "Search resultにSponsoredと表示されています。意味は何ですか？",
+    "opts_ja": [
+      "必ずOfficial",
+      "Advertisementがない",
+      "必ずDangerous",
+      "Paid advertisementであり、内容をCheckする必要がある"
+    ],
+    "exp_ja": "SponsoredはPaid advertisingです。自動的にOfficialやBestになるわけではありません。"
+  },
+  {
+    "number": 18,
+    "type": "Situation",
+    "category": "Search and results",
+    "correct": "B",
+    "q_en": "A student searches only “computer” and gets too many unrelated results. What is the best improvement?",
+    "opts_en": [
+      "Click the first result quickly",
+      "Add specific words such as “how to take a screenshot on Windows 11”",
+      "Install another browser",
+      "Clear the Downloads folder"
+    ],
+    "exp_en": "Specific keywords describe the real task and reduce unrelated results.",
+    "q_ja": "Studentが“computer”だけでSearchし、Unrelated resultが多すぎます。Best improvementは？",
+    "opts_ja": [
+      "First resultをすぐClickする",
+      "“how to take a screenshot on Windows 11”のようなSpecific wordを追加する",
+      "別BrowserをInstallする",
+      "Downloads folderをClearする"
+    ],
+    "exp_ja": "Specific keywordはReal taskを説明し、Unrelated resultを減らします。"
+  },
+  {
+    "number": 19,
+    "type": "Situation",
+    "category": "Addresses and safety",
+    "correct": "A",
+    "q_en": "A teacher QR code opens a webpage. What should the student do after it opens?",
+    "opts_en": [
+      "Check the address and domain",
+      "Allow every permission",
+      "Save the password",
+      "Click every button"
+    ],
+    "exp_en": "QR codes can hide the destination before opening. Check the address after the page opens.",
+    "q_ja": "Teacher QR codeでWebpageを開きました。Open後に何をしますか？",
+    "opts_ja": [
+      "AddressとDomainを確認する",
+      "すべてのPermissionをAllowする",
+      "PasswordをSaveする",
+      "すべてのButtonをClickする"
+    ],
+    "exp_ja": "QR codeはOpen前にDestinationを隠します。PageがOpenしたらAddressを確認します。"
+  },
+  {
+    "number": 20,
+    "type": "Situation",
+    "category": "Translation and page use",
+    "correct": "C",
+    "q_en": "Browser translation changes an important file name in the instructions. What is safest?",
+    "opts_en": [
+      "Use the translated name without checking",
+      "Rename every file into Japanese",
+      "Check the original spelling of the file name",
+      "Turn off the Internet"
+    ],
+    "exp_en": "Automatic translation can make mistakes. Exact names, buttons, and numbers should be checked in the original text.",
+    "q_ja": "Browser translationがInstruction内のImportant file nameを変えました。Safest actionは？",
+    "opts_ja": [
+      "Translated nameをCheckせず使う",
+      "すべてのFileをJapaneseへRenameする",
+      "Original spellingを確認する",
+      "InternetをOffにする"
+    ],
+    "exp_ja": "Automatic translationはMistakeを起こすことがあります。Exact name、Button、NumberはOriginal textで確認します。"
+  },
+  {
+    "number": 21,
+    "type": "Situation",
+    "category": "Forms and accounts",
+    "correct": "B",
+    "q_en": "A form will not submit and a red message appears beside one field. What should you do first?",
+    "opts_en": [
+      "Click Submit many more times",
+      "Read the red message and correct the field",
+      "Close the browser immediately",
+      "Upload a random file"
+    ],
+    "exp_en": "Red messages often identify a missing required field or an incorrect value.",
+    "q_ja": "FormがSubmitできず、1 Fieldの横にRed messageがあります。First actionは？",
+    "opts_ja": [
+      "Submitを何度もClickする",
+      "Red messageを読み、Fieldを修正する",
+      "BrowserをすぐCloseする",
+      "Random fileをUploadする"
+    ],
+    "exp_ja": "Red messageはMissing required fieldやIncorrect valueを示すことが多いです。"
+  },
+  {
+    "number": 22,
+    "type": "Situation",
+    "category": "Forms and accounts",
+    "correct": "D",
+    "q_en": "A form is slow after you click Submit once. What is best?",
+    "opts_en": [
+      "Refresh repeatedly",
+      "Close the tab immediately",
+      "Click Submit five more times",
+      "Wait and look for a confirmation before trying again"
+    ],
+    "exp_en": "Repeated Submit clicks can create duplicate responses. Wait for the page or confirmation.",
+    "q_ja": "Submitを1回Clickした後、FormがSlowです。Best actionは？",
+    "opts_ja": [
+      "Refreshを繰り返す",
+      "TabをすぐCloseする",
+      "Submitをさらに5回Clickする",
+      "待ってConfirmationを確認してから再試行する"
+    ],
+    "exp_ja": "Repeated Submit clickはDuplicate responseを作る可能性があります。PageやConfirmationを待ちます。"
+  },
+  {
+    "number": 23,
+    "type": "Situation",
+    "category": "Forms and accounts",
+    "correct": "A",
+    "q_en": "A shared classroom computer asks to save your password. What should you choose?",
+    "opts_en": [
+      "Never or Not now",
+      "Save forever",
+      "Allow all websites",
+      "Install a password extension"
+    ],
+    "exp_en": "Do not save personal passwords on a shared computer. Sign out when finished.",
+    "q_ja": "Shared classroom computerがPassword保存を求めています。何を選びますか？",
+    "opts_ja": [
+      "NeverまたはNot now",
+      "Save forever",
+      "All websiteをAllow",
+      "Password extensionをInstall"
+    ],
+    "exp_ja": "Shared computerにはPersonal passwordをSaveしません。終了時にSign outします。"
+  },
+  {
+    "number": 24,
+    "type": "Situation",
+    "category": "Permissions and privacy",
+    "correct": "C",
+    "q_en": "A simple text website asks for camera and location access, but the task does not need them. What is best?",
+    "opts_en": [
+      "Allow both because the page asked",
+      "Install an extension first",
+      "Deny or do not allow the unnecessary permissions",
+      "Enter private mode and allow them"
+    ],
+    "exp_en": "Website permissions should be allowed only when the correct task needs them.",
+    "q_ja": "Simple text websiteがCameraとLocation accessを求めていますが、Taskには不要です。Best actionは？",
+    "opts_ja": [
+      "Pageが求めたので両方Allow",
+      "先にExtensionをInstall",
+      "不要なPermissionをDenyまたはAllowしない",
+      "Private modeでAllowする"
+    ],
+    "exp_ja": "Website permissionはCorrect taskに必要な時だけAllowします。"
+  },
+  {
+    "number": 25,
+    "type": "Situation",
+    "category": "Download and upload",
+    "correct": "B",
+    "q_en": "A page shows three large Download buttons, and two are advertisements. What should you do?",
+    "opts_en": [
+      "Click the brightest button",
+      "Check the domain, instructions, and expected file name before choosing",
+      "Open all three",
+      "Disable browser security"
+    ],
+    "exp_en": "Fake or advertising buttons may look more visible than the official button. Verify the page and expected file.",
+    "q_ja": "PageにLarge Download buttonが3つあり、2つはAdvertisementです。何をしますか？",
+    "opts_ja": [
+      "最もBrightなButtonをClick",
+      "Domain、Instruction、Expected file nameを確認して選ぶ",
+      "3つ全部Openする",
+      "Browser securityをDisableする"
+    ],
+    "exp_ja": "FakeやAdvertising buttonはOfficial buttonより目立つ場合があります。PageとExpected fileをVerifyします。"
+  },
+  {
+    "number": 26,
+    "type": "Situation",
+    "category": "Download and upload",
+    "correct": "A",
+    "q_en": "A download finished, but the student cannot find the file. What is the best first method?",
+    "opts_en": [
+      "Open the Downloads panel and use Show in folder",
+      "Download it five more times",
+      "Search C:\\Windows",
+      "Empty Recycle Bin"
+    ],
+    "exp_en": "The Downloads panel records recent downloads and Show in folder opens the exact location.",
+    "q_ja": "DownloadがFinishedしましたが、StudentはFileを見つけられません。Best first methodは？",
+    "opts_ja": [
+      "Downloads panelを開きShow in folderを使う",
+      "さらに5回Downloadする",
+      "C:\\WindowsをSearchする",
+      "Recycle BinをEmptyにする"
+    ],
+    "exp_ja": "Downloads panelはRecent downloadを記録し、Show in folderでExact locationを開きます。"
+  },
+  {
+    "number": 27,
+    "type": "Situation",
+    "category": "Download and upload",
+    "correct": "C",
+    "q_en": "After upload, the website shows the wrong file name. What should the student do before Submit?",
+    "opts_en": [
+      "Submit and explain later",
+      "Rename the displayed text only",
+      "Remove the wrong file and choose the correct file again",
+      "Refresh until the name changes"
+    ],
+    "exp_en": "The attached file must be correct before final Submit. Remove an incorrect upload and select again.",
+    "q_ja": "Upload後、WebsiteにWrong file nameが表示されました。Submit前に何をしますか？",
+    "opts_ja": [
+      "Submitして後で説明する",
+      "Displayed textだけRenameする",
+      "Wrong fileをRemoveし、Correct fileを選び直す",
+      "Nameが変わるまでRefreshする"
+    ],
+    "exp_ja": "Final Submit前にAttached fileがCorrectである必要があります。Incorrect uploadはRemoveして選び直します。"
+  },
+  {
+    "number": 28,
+    "type": "Situation",
+    "category": "Troubleshooting",
+    "correct": "D",
+    "q_en": "A page does not load. Which troubleshooting order is best?",
+    "opts_en": [
+      "Click random links, install an extension, restart Windows",
+      "Submit the form again, then clear all files",
+      "Change the wallpaper, then try another browser",
+      "Check the address, refresh once, try another site, check the Internet icon, then ask for help"
+    ],
+    "exp_en": "This order separates an address mistake, one broken site, and a wider connection problem.",
+    "q_ja": "PageがLoadしません。Best troubleshooting orderは？",
+    "opts_ja": [
+      "Random linkをClick、ExtensionをInstall、WindowsをRestart",
+      "Formを再Submitし、All fileをClear",
+      "WallpaperをChangeして別Browserを試す",
+      "Address確認、Refresh 1回、別Site、Internet icon確認、Helpを求める"
+    ],
+    "exp_ja": "このOrderはAddress mistake、One broken site、Wider connection problemを区別します。"
+  }
+]
