@@ -1,0 +1,74 @@
+/* Learning Portal front page: scoped styles; shares JMA's original header and footer */
+.portal-home-hero{position:relative;overflow:hidden;color:white;padding:70px 24px 79px; background:linear-gradient(105deg,rgba(0,35,91,.94),rgba(0,52,109,.79) 65%,rgba(2,42,85,.61)),url('../background-hero.jpg') center 42%/cover no-repeat}
+.portal-home-hero::after{content:"";position:absolute;inset:auto 0 0;height:5px;background:linear-gradient(90deg,#36b4e8 0%,#9fdded 55%,transparent 100%)}
+.portal-home-hero .portal-home-wrap{max-width:1100px;margin:auto;position:relative;z-index:1}
+.portal-home-hero .portal-home-label{display:inline-flex;gap:9px;align-items:center;border:1px solid rgba(255,255,255,.32);color:#e5f7ff;background:rgba(0,32,81,.25);border-radius:999px;padding:6px 16px;letter-spacing:.12em;font-weight:800;font-size:.73rem;text-transform:uppercase}
+.portal-home-hero h1{font-family:'Playfair Display',serif;margin:23px 0 16px;line-height:1.12;font-size:clamp(2.35rem,5vw,4.15rem);max-width:730px}
+.portal-home-hero p{font-size:clamp(1rem,1.3vw,1.2rem);color:#e3eff9;max-width:720px;margin:0;line-height:1.75}
+.portal-home-main{max-width:1100px;margin:0 auto;padding:30px 24px 85px}
+.portal-home-crumb{color:#61758d;font-size:.9rem;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.portal-home-crumb a{color:#0b67a3;text-decoration:none}
+.portal-home-crumb a:hover{text-decoration:underline}
+.portal-home-head{margin:47px 0 23px;display:flex;align-items:end;justify-content:space-between;gap:16px}
+.portal-home-overline{font-size:.75rem;text-transform:uppercase;letter-spacing:.13em;font-weight:800;color:#007cb9}
+.portal-home-head h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.45rem);color:#003087;line-height:1.2;margin:9px 0 7px}
+.portal-home-head p{color:#65748b;font-size:.98rem;margin:0}
+.portal-role-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.portal-role-card{min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid #d8e5f3;border-radius:20px;overflow:hidden;box-shadow:0 9px 30px rgba(6,34,89,.08);transition:transform .2s,box-shadow .2s,border-color .2s;color:#21334d;text-decoration:none}
+.portal-role-card:hover{transform:translateY(-4px);box-shadow:0 18px 39px rgba(6,34,89,.13);border-color:#90bade}
+.portal-role-card:focus-visible{outline:3px solid #00a0df;outline-offset:4px}
+.portal-role-accent{height:6px;background:linear-gradient(90deg,#00a0df,#70cfeb)}
+.portal-role-card.staff .portal-role-accent{background:linear-gradient(90deg,#003087,#3581bf)}
+.portal-role-inner{padding:30px 30px 27px;flex:1;display:flex;flex-direction:column}
+.portal-role-icon{display:grid;place-items:center;width:66px;height:66px;font-size:2rem;background:#e9f7fc;border-radius:18px;margin-bottom:21px}
+.portal-role-card.staff .portal-role-icon{background:#eaf0fc}
+.portal-role-label{font-size:.73rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#217ba5;margin-bottom:8px}
+.portal-role-card.staff .portal-role-label{color:#456cad}
+.portal-role-card h3{color:#003087;font-size:1.65rem;margin:0 0 9px;line-height:1.3}
+.portal-role-card .desc{color:#5e7187;min-height:52px;margin:0 0 24px;font-size:.99rem;line-height:1.65}
+.portal-role-features{list-style:none;padding:0;margin:0 0 23px;display:grid;gap:10px}
+.portal-role-features li{display:flex;gap:9px;align-items:baseline;color:#354e6c;font-size:.94rem}
+.portal-role-features li::before{content:"✓";font-weight:800;color:#008eba;flex-shrink:0}
+.portal-role-card.staff .portal-role-features li::before{color:#335da2}
+.portal-role-cta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid #e6edf6;padding-top:22px;color:#006fae;font-weight:800}
+.portal-role-card.staff .portal-role-cta{color:#164c94}
+.portal-role-arrow{background:#eaf6fd;display:grid;place-items:center;border-radius:50%;font-size:1.25rem;width:37px;height:37px;flex-shrink:0;transition:transform .2s}
+.portal-role-card:hover .portal-role-arrow{transform:translateX(3px)}
+.portal-home-note{margin-top:25px;display:flex;gap:15px;align-items:flex-start;padding:20px 23px;border-radius:15px;border:1px solid #d3e2f1;background:#eef5fc;color:#3d526e;line-height:1.65}
+.portal-home-note .shield{font-size:1.45rem;line-height:1.3}
+.portal-home-note strong{color:#173d71}
+.portal-home-note p{margin:4px 0 0;font-size:.93rem}
+.portal-home-links{margin:46px 0 0;padding:25px 0 0;border-top:1px solid #dce5ee;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.portal-home-links span{font-weight:650;color:#476078}
+.portal-home-links a{color:#006ea9;font-weight:700;text-decoration:none}
+.portal-home-links a:hover{text-decoration:underline}
+@media(max-width:1180px){.portal-home-hero{padding:62px 24px 65px}}
+@media(max-width:720px){.portal-home-hero{padding:50px 20px 55px}.portal-home-main{padding:24px 20px 60px}.portal-home-head{margin:32px 0 20px}.portal-role-grid{grid-template-columns:1fr;gap:17px}.portal-role-inner{padding:25px}.portal-role-card .desc{min-height:0}.portal-home-note{padding:16px}.portal-home-links{margin-top:36px}.portal-role-card h3{font-size:1.48rem}}
+@media(prefers-reduced-motion:reduce){.portal-role-card,.portal-role-arrow{transition:none}}
+
+/* Third portal choice: Hospital Training Simulator */
+.portal-role-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.portal-role-inner{padding:26px 23px 25px}
+.portal-role-card h3{font-size:1.48rem;min-height:2.6em}
+.portal-role-card .desc{min-height:112px;font-size:.96rem}
+.portal-role-features li{font-size:.91rem}
+.portal-role-card.simulator .portal-role-accent{background:linear-gradient(90deg,#087d91,#51c8bd)}
+.portal-role-card.simulator .portal-role-icon{background:#e5f7f2}
+.portal-role-card.simulator .portal-role-label{color:#147b7b}
+.portal-role-card.simulator .portal-role-features li::before{color:#0c928b}
+.portal-role-card.simulator .portal-role-cta{color:#087675}
+.portal-role-card.simulator .portal-role-arrow{background:#e6f7f2}
+@media(max-width:1030px) and (min-width:721px){
+  .portal-role-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portal-role-card.simulator{grid-column:1 / -1}
+  .portal-role-card.simulator .portal-role-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:25px}
+  .portal-role-card.simulator .portal-role-icon,.portal-role-card.simulator .portal-role-label,.portal-role-card.simulator h3,.portal-role-card.simulator .desc{grid-column:1}
+  .portal-role-card.simulator .portal-role-features{grid-column:2;grid-row:2 / span 3;align-self:center}
+  .portal-role-card.simulator .portal-role-cta{grid-column:1 / -1}
+  .portal-role-card.simulator h3,.portal-role-card.simulator .desc{min-height:0}
+}
+@media(max-width:720px){
+  .portal-role-grid{grid-template-columns:1fr}
+  .portal-role-card h3{min-height:0}
+  .portal-role-card .desc{min-height:0}
+}
