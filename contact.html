@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | JMA Medical Information College</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | JMA Medical Information College</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<style>
     * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
@@ -276,137 +276,82 @@
       transform: rotate(-45deg) translate(5px, -5px);
     }
   </style>
+<link href="portal-ui.css" rel="stylesheet"/>
+<script defer="" src="portal-nav.js"></script>
 </head>
 <body>
-
-  <!-- HEADER (правильная) -->
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo">JMA Medical Information</a>
-      
-      <nav class="desktop-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="lang-switch">
-        <button onclick="location.href='contact_jp.html'">JP</button>
-        <button class="active">EN</button>
-      </div>
-
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="mobile-menu" id="mobile-menu">
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="mobile-lang">
-        <button onclick="location.href='contact_jp.html'">日本語</button>
-        <button class="active">English</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero — теперь стандартизирован -->
-  <section class="hero">
-    <h1>Contact Us</h1>
-  </section>
-
-  <div class="content">
-    <a href="index.html" class="back-btn">← Back to Home</a>
-
-    <p style="font-size:1.25rem; color:#555;">日本医療専門学校 医療情報学科</p>
-
-    <div class="contact-grid">
-      <div>
-        <h2>Get in Touch</h2>
-        <p>We are happy to answer any questions about the program, admissions, or campus visits.</p>
-
-        <h3>Address</h3>
-        <p>〒751-0806<br>
-           山口県下関市一の宮町3-12-28<br>
+<!-- HEADER (правильная) -->
+<header><div class="nav-container"><a class="logo" href="index.html">JMA Medical Information</a><nav aria-label="Main navigation" class="desktop-nav"><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="program.html">Program</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="news.html">News &amp; Events</a></li><li><a aria-current="page" href="contact.html">Contact</a></li><li class="portal-menu-item"><details class="portal-menu"><summary>Learning Portal <span aria-hidden="true" class="portal-chevron"></span></summary><div class="portal-submenu"><a href="learning/index.html">Portal Home</a><a href="students/index.html">For Students</a><a href="teachers/index.html">For Teachers</a></div></details></li></ul></nav><div class="portal-lang-switch"><a href="contact_jp.html" lang="ja">JP</a><a aria-current="page" class="active" href="contact.html" lang="en">EN</a></div><button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu"><nav aria-label="Mobile navigation"><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="program.html">Program</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="news.html">News &amp; Events</a></li><li><a aria-current="page" href="contact.html">Contact</a></li><li><a class="mobile-portal-title" href="learning/index.html">Learning Portal</a></li><li><a class="mobile-portal-child" href="students/index.html">↳ For Students</a></li><li><a class="mobile-portal-child" href="teachers/index.html">↳ For Teachers</a></li></ul></nav><div class="mobile-lang portal-mobile-lang"><a href="contact_jp.html" lang="ja">JP</a><a aria-current="page" class="active" href="contact.html" lang="en">EN</a></div></div></header>
+<!-- Hero — теперь стандартизирован -->
+<section class="hero">
+<h1>Contact Us</h1>
+</section>
+<div class="content">
+<a class="back-btn" href="index.html">← Back to Home</a>
+<p style="font-size:1.25rem; color:#555;">日本医療専門学校 医療情報学科</p>
+<div class="contact-grid">
+<div>
+<h2>Get in Touch</h2>
+<p>We are happy to answer any questions about the program, admissions, or campus visits.</p>
+<h3>Address</h3>
+<p>〒751-0806<br/>
+           山口県下関市一の宮町3-12-28<br/>
            日本医療専門学校</p>
-
-        <h3>Phone</h3>
-        <p>083-256-7711（代表）</p>
-
-        <h3>Email</h3>
-        <p><a href="mailto:info@its.jma.ac.jp" style="color:#003087;">info@its.jma.ac.jp</a></p>
-      </div>
-
-      <div>
-        <div style="border-radius:16px; overflow:hidden; box-shadow:0 15px 35px rgba(0,0,0,0.15); height:420px;">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.85!2d130.94815!3d33.99615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3543f0b0b0b0b0b0%3A0x8b5e5e5e5e5e5e5e!2z5pel5pys5Yy755m85LiT6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1743772800000" 
-                  width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-
-        <div class="form-container" style="margin-top:40px;">
-          <h3>Send us a message</h3>
-          <form action="#" method="POST">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <input type="text" placeholder="Subject">
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit" class="submit-btn">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div>
-        <div class="footer-logo" style="color:white;">JMA Medical Information</div>
-        <p style="color:#ccc; max-width:320px;">Training the next generation of healthcare IT professionals in Shimonoseki.</p>
-      </div>
-
-      <div>
-        <h3>Navigation</h3>
-        <p><a href="index.html">Home</a></p>
-        <p><a href="about.html">About Us</a></p>
-        <p><a href="program.html">Program</a></p>
-        <p><a href="admissions.html">Admissions</a></p>
-      </div>
-
-      <div>
-        <h3>Quick Links</h3>
-        <p><a href="news.html">News & Events</a></p>
-        <p><a href="contact.html">Contact</a></p>
-      </div>
-
-      <div>
-        <h3>Contact</h3>
-        <p>〒751-0806 山口県下関市一の宮町3-12-28</p>
-        <p>TEL: 083-256-7711</p>
-        <p><a href="mailto:info@its.jma.ac.jp">info@its.jma.ac.jp</a></p>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br>
+<h3>Phone</h3>
+<p>083-256-7711（代表）</p>
+<h3>Email</h3>
+<p><a href="mailto:info@its.jma.ac.jp" style="color:#003087;">info@its.jma.ac.jp</a></p>
+</div>
+<div>
+<div style="border-radius:16px; overflow:hidden; box-shadow:0 15px 35px rgba(0,0,0,0.15); height:420px;">
+<iframe allowfullscreen="" height="420" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.85!2d130.94815!3d33.99615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3543f0b0b0b0b0b0%3A0x8b5e5e5e5e5e5e5e!2z5pel5pys5Yy755m85LiT6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1743772800000" style="border:0;" width="100%"></iframe>
+</div>
+<div class="form-container" style="margin-top:40px;">
+<h3>Send us a message</h3>
+<form action="#" method="POST">
+<input placeholder="Your Name" required="" type="text"/>
+<input placeholder="Email Address" required="" type="email"/>
+<input placeholder="Subject" type="text"/>
+<textarea placeholder="Your Message" required=""></textarea>
+<button class="submit-btn" type="submit">Send Message</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer>
+<div class="footer-container">
+<div>
+<div class="footer-logo" style="color:white;">JMA Medical Information</div>
+<p style="color:#ccc; max-width:320px;">Training the next generation of healthcare IT professionals in Shimonoseki.</p>
+</div>
+<div>
+<h3>Navigation</h3>
+<p><a href="index.html">Home</a></p>
+<p><a href="about.html">About Us</a></p>
+<p><a href="program.html">Program</a></p>
+<p><a href="admissions.html">Admissions</a></p>
+</div>
+<div>
+<h3>Quick Links</h3>
+<p><a href="news.html">News &amp; Events</a></p>
+<p><a href="contact.html">Contact</a><br/>
+<a href="learning/index.html">Learning Portal</a></p>
+</div>
+<div>
+<h3>Contact</h3>
+<p>〒751-0806 山口県下関市一の宮町3-12-28</p>
+<p>TEL: 083-256-7711</p>
+<p><a href="mailto:info@its.jma.ac.jp">info@its.jma.ac.jp</a></p>
+</div>
+</div>
+<div class="footer-bottom">
+      © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br/>
       School Corporation Japan Medical Academy
     </div>
-  </footer>
-
-  <script>
+</footer>
+<script>
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 

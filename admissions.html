@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admissions | JMA Medical Information College</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admissions | JMA Medical Information College</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<style>
     * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
@@ -293,184 +293,129 @@
       transform: rotate(-45deg) translate(5px, -5px);
     }
   </style>
-</head>
+<link href="portal-ui.css" rel="stylesheet"/></head>
 <body>
-
-  <!-- HEADER — точно как в program.html (правильная высота) -->
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo">JMA Medical Information</a>
-      
-      <nav class="desktop-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="lang-switch">
-        <button onclick="location.href='admissions_jp.html'">JP</button>
-        <button class="active">EN</button>
-      </div>
-
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+<!-- HEADER — точно как в program.html (правильная высота) -->
+<header><div class="nav-container"><a class="logo" href="index.html">JMA Medical Information</a><nav aria-label="Main navigation" class="desktop-nav"><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="program.html">Program</a></li><li><a aria-current="page" href="admissions.html">Admissions</a></li><li><a href="news.html">News &amp; Events</a></li><li><a href="contact.html">Contact</a></li><li class="portal-menu-item"><details class="portal-menu"><summary>Learning Portal <span aria-hidden="true" class="portal-chevron"></span></summary><div class="portal-submenu"><a href="learning/index.html">Portal Home</a><a href="students/index.html">For Students</a><a href="teachers/index.html">For Teachers</a></div></details></li></ul></nav><div class="portal-lang-switch"><a href="about_jp.html" lang="ja">JP</a><a aria-current="page" class="active" href="about.html" lang="en">EN</a></div><button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu"><nav aria-label="Mobile navigation"><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="program.html">Program</a></li><li><a aria-current="page" href="admissions.html">Admissions</a></li><li><a href="news.html">News &amp; Events</a></li><li><a href="contact.html">Contact</a></li><li><a class="mobile-portal-title" href="learning/index.html">Learning Portal</a></li><li><a class="mobile-portal-child" href="students/index.html">↳ For Students</a></li><li><a class="mobile-portal-child" href="teachers/index.html">↳ For Teachers</a></li></ul></nav><div class="mobile-lang portal-mobile-lang"><a href="about_jp.html" lang="ja">JP</a><a aria-current="page" class="active" href="about.html" lang="en">EN</a></div></div></header>
+<!-- Hero -->
+<section class="hero">
+<h1>Admissions</h1>
+</section>
+<div class="content">
+<a class="back-btn" href="index.html">← Back to Home</a>
+<h2>Admission to Department of Medical Information (2027 Entry)</h2>
+<p>We welcome motivated individuals who want to build a career connecting healthcare and advanced information technology.</p>
+<div class="highlight">
+<strong>Capacity:</strong> 40 students<br/>
+<strong>Program duration:</strong> 2 years (full-time)<br/>
+<strong>Degree awarded:</strong> Diploma (専門士)
     </div>
-
-    <div class="mobile-menu" id="mobile-menu">
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="mobile-lang">
-        <button onclick="location.href='admissions_jp.html'">日本語</button>
-        <button class="active">English</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Admissions</h1>
-  </section>
-
-  <div class="content">
-    <a href="index.html" class="back-btn">← Back to Home</a>
-
-    <h2>Admission to Department of Medical Information (2027 Entry)</h2>
-    <p>We welcome motivated individuals who want to build a career connecting healthcare and advanced information technology.</p>
-
-    <div class="highlight">
-      <strong>Capacity:</strong> 40 students<br>
-      <strong>Program duration:</strong> 2 years (full-time)<br>
-      <strong>Degree awarded:</strong> Diploma (専門士)
-    </div>
-
-    <h2>Eligibility</h2>
-    <ul>
-      <li>High school graduates or those expected to graduate in March 2027</li>
-      <li>Individuals who have completed 12 years of formal education or equivalent (as recognized by the Minister of Education, Culture, Sports, Science and Technology)</li>
-      <li>International students who meet the above criteria and have sufficient Japanese language proficiency (JLPT N2 or equivalent recommended)</li>
-    </ul>
-
-    <h2>Admission Types</h2>
-    <div class="admission-types">
-      <div class="type-card">
-        <h3>総合型選抜 (Comprehensive Selection / AO)</h3>
-        <p>Evaluation based on motivation, aptitude, and interview. Ideal for those with clear goals in medical IT.</p>
-      </div>
-      <div class="type-card">
-        <h3>学校推薦型選抜 (School Recommendation)</h3>
-        <p>Recommended by your high school. Focuses on academic record and recommendation letter.</p>
-      </div>
-      <div class="type-card">
-        <h3>一般選抜 (General Entrance Examination)</h3>
-        <p>Essay (小論文) + Interview. Open to all eligible applicants.</p>
-      </div>
-    </div>
-
-    <h2>Selection Process</h2>
-    <p>Most examinations include:</p>
-    <ul>
-      <li>Essay (小論文 ≈ 800 characters) on topics related to healthcare and IT</li>
-      <li>Personal interview (individual or group)</li>
-      <li>Review of academic transcript and motivation</li>
-    </ul>
-
-    <h2>Important Dates for 2027 Entry</h2>
-    <table>
-      <tr>
-        <th>Admission Type</th>
-        <th>Application Period</th>
-        <th>Examination Date</th>
-        <th>Result Announcement</th>
-      </tr>
-      <tr>
-        <td>総合型選抜 (1st)</td>
-        <td>September – October 2026</td>
-        <td>October – November 2026</td>
-        <td>Within 2 weeks</td>
-      </tr>
-      <tr>
-        <td>学校推薦型</td>
-        <td>November – December 2026</td>
-        <td>December 2026 – January 2027</td>
-        <td>Within 2 weeks</td>
-      </tr>
-      <tr>
-        <td>一般選抜</td>
-        <td>January – February 2027</td>
-        <td>February 2027</td>
-        <td>Within 1 week</td>
-      </tr>
-    </table>
-
-    <p style="font-size:1.05rem; color:#555;">※ Exact dates will be announced on the official website and in the 2027 Student Recruitment Guidelines (募集要項). Please check the latest information on our website or contact us.</p>
-
-    <h2>Required Documents</h2>
-    <ul>
-      <li>Application form (official form)</li>
-      <li>High school transcript (調査書)</li>
-      <li>Letter of recommendation (for recommendation-based admission)</li>
-      <li>Essay (if required)</li>
-      <li>Health certificate (if applicable)</li>
-      <li>Application fee: ¥20,000</li>
-    </ul>
-
-    <a href="contact.html" class="back-btn" style="background:#003087; color:white; margin-top:40px;">
+<h2>Eligibility</h2>
+<ul>
+<li>High school graduates or those expected to graduate in March 2027</li>
+<li>Individuals who have completed 12 years of formal education or equivalent (as recognized by the Minister of Education, Culture, Sports, Science and Technology)</li>
+<li>International students who meet the above criteria and have sufficient Japanese language proficiency (JLPT N2 or equivalent recommended)</li>
+</ul>
+<h2>Admission Types</h2>
+<div class="admission-types">
+<div class="type-card">
+<h3>総合型選抜 (Comprehensive Selection / AO)</h3>
+<p>Evaluation based on motivation, aptitude, and interview. Ideal for those with clear goals in medical IT.</p>
+</div>
+<div class="type-card">
+<h3>学校推薦型選抜 (School Recommendation)</h3>
+<p>Recommended by your high school. Focuses on academic record and recommendation letter.</p>
+</div>
+<div class="type-card">
+<h3>一般選抜 (General Entrance Examination)</h3>
+<p>Essay (小論文) + Interview. Open to all eligible applicants.</p>
+</div>
+</div>
+<h2>Selection Process</h2>
+<p>Most examinations include:</p>
+<ul>
+<li>Essay (小論文 ≈ 800 characters) on topics related to healthcare and IT</li>
+<li>Personal interview (individual or group)</li>
+<li>Review of academic transcript and motivation</li>
+</ul>
+<h2>Important Dates for 2027 Entry</h2>
+<table>
+<tr>
+<th>Admission Type</th>
+<th>Application Period</th>
+<th>Examination Date</th>
+<th>Result Announcement</th>
+</tr>
+<tr>
+<td>総合型選抜 (1st)</td>
+<td>September – October 2026</td>
+<td>October – November 2026</td>
+<td>Within 2 weeks</td>
+</tr>
+<tr>
+<td>学校推薦型</td>
+<td>November – December 2026</td>
+<td>December 2026 – January 2027</td>
+<td>Within 2 weeks</td>
+</tr>
+<tr>
+<td>一般選抜</td>
+<td>January – February 2027</td>
+<td>February 2027</td>
+<td>Within 1 week</td>
+</tr>
+</table>
+<p style="font-size:1.05rem; color:#555;">※ Exact dates will be announced on the official website and in the 2027 Student Recruitment Guidelines (募集要項). Please check the latest information on our website or contact us.</p>
+<h2>Required Documents</h2>
+<ul>
+<li>Application form (official form)</li>
+<li>High school transcript (調査書)</li>
+<li>Letter of recommendation (for recommendation-based admission)</li>
+<li>Essay (if required)</li>
+<li>Health certificate (if applicable)</li>
+<li>Application fee: ¥20,000</li>
+</ul>
+<a class="back-btn" href="contact.html" style="background:#003087; color:white; margin-top:40px;">
       Contact Admissions Office →
     </a>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div>
-        <div class="footer-logo">JMA Medical Information</div>
-        <p>Training the next generation of healthcare IT professionals in Shimonoseki, Yamaguchi.</p>
-      </div>
-      <div>
-        <h3>Navigation</h3>
-        <a href="index.html">Home</a><br>
-        <a href="about.html">About Us</a><br>
-        <a href="program.html">Program</a><br>
-        <a href="admissions.html">Admissions</a><br>
-        <a href="news.html">News & Events</a><br>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div>
-        <h3>Quick Links</h3>
-        <a href="admissions.html">Apply Now</a><br>
-        <a href="program.html">Curriculum</a><br>
-        <a href="contact.html">Campus Visit</a>
-      </div>
-      <div>
-        <h3>Contact Info</h3>
-        <p>〒751-0806<br>
-           山口県下関市一の宮町3-12-28<br><br>
-           TEL: 083-256-7711<br>
+</div>
+<!-- FOOTER -->
+<footer>
+<div class="footer-container">
+<div>
+<div class="footer-logo">JMA Medical Information</div>
+<p>Training the next generation of healthcare IT professionals in Shimonoseki, Yamaguchi.</p>
+</div>
+<div>
+<h3>Navigation</h3>
+<a href="index.html">Home</a><br/>
+<a href="about.html">About Us</a><br/>
+<a href="program.html">Program</a><br/>
+<a href="admissions.html">Admissions</a><br/>
+<a href="news.html">News &amp; Events</a><br/>
+<a href="contact.html">Contact</a>
+<br/><a href="learning/index.html">Learning Portal</a></div>
+<div>
+<h3>Quick Links</h3>
+<a href="admissions.html">Apply Now</a><br/>
+<a href="program.html">Curriculum</a><br/>
+<a href="contact.html">Campus Visit</a>
+</div>
+<div>
+<h3>Contact Info</h3>
+<p>〒751-0806<br/>
+           山口県下関市一の宮町3-12-28<br/><br/>
+           TEL: 083-256-7711<br/>
            Email: <a href="mailto:info@its.jma.ac.jp">info@its.jma.ac.jp</a>
-        </p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br>
+</p>
+</div>
+</div>
+<div class="footer-bottom">
+      © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br/>
       School Corporation Japan Medical Academy
     </div>
-  </footer>
-
-  <script>
+</footer>
+<script>
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -486,5 +431,5 @@
       });
     });
   </script>
-</body>
+<script defer="True" src="portal-nav.js"></script></body>
 </html>

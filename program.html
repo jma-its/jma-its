@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Program | JMA Medical Information College</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Program | JMA Medical Information College</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<style>
     * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
@@ -270,180 +270,126 @@
       transform: rotate(-45deg) translate(5px, -5px);
     }
   </style>
+<link href="portal-ui.css" rel="stylesheet"/>
+<script defer="" src="portal-nav.js"></script>
 </head>
 <body>
-
-  <!-- HEADER (унифицированный) -->
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo">JMA Medical Information</a>
-      
-      <nav class="desktop-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="lang-switch">
-        <button onclick="location.href='program_jp.html'">JP</button>
-        <button class="active">EN</button>
-      </div>
-
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="mobile-lang">
-        <button onclick="location.href='program_jp.html'">日本語</button>
-        <button class="active">English</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Our Program</h1>
-  </section>
-
-  <div class="content">
-    <a href="index.html" class="back-btn">← Back to Home</a>
-
-    <h2>Department of Medical Information</h2>
-    <p>The Department of Medical Information (医療情報学科) trains specialists who bridge medicine and information technology. In an era of rapid digitalization of healthcare — including electronic medical records (電子カルテ), hospital information systems, and medical data analysis — we develop professionals capable of supporting high-quality, efficient medical services.</p>
-
-    <h2>Program Overview</h2>
-    <p>• Duration: 2 years (full-time)<br>
-       • Capacity: 40 students per year<br>
+<!-- HEADER (унифицированный) -->
+<header><div class="nav-container"><a class="logo" href="index.html">JMA Medical Information</a><nav aria-label="Main navigation" class="desktop-nav"><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a aria-current="page" href="program.html">Program</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="news.html">News &amp; Events</a></li><li><a href="contact.html">Contact</a></li><li class="portal-menu-item"><details class="portal-menu"><summary>Learning Portal <span aria-hidden="true" class="portal-chevron"></span></summary><div class="portal-submenu"><a href="learning/index.html">Portal Home</a><a href="students/index.html">For Students</a><a href="teachers/index.html">For Teachers</a></div></details></li></ul></nav><div class="portal-lang-switch"><a href="program_jp.html" lang="ja">JP</a><a aria-current="page" class="active" href="program.html" lang="en">EN</a></div><button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu"><nav aria-label="Mobile navigation"><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a aria-current="page" href="program.html">Program</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="news.html">News &amp; Events</a></li><li><a href="contact.html">Contact</a></li><li><a class="mobile-portal-title" href="learning/index.html">Learning Portal</a></li><li><a class="mobile-portal-child" href="students/index.html">↳ For Students</a></li><li><a class="mobile-portal-child" href="teachers/index.html">↳ For Teachers</a></li></ul></nav><div class="mobile-lang portal-mobile-lang"><a href="program_jp.html" lang="ja">JP</a><a aria-current="page" class="active" href="program.html" lang="en">EN</a></div></div></header>
+<!-- Hero -->
+<section class="hero">
+<h1>Our Program</h1>
+</section>
+<div class="content">
+<a class="back-btn" href="index.html">← Back to Home</a>
+<h2>Department of Medical Information</h2>
+<p>The Department of Medical Information (医療情報学科) trains specialists who bridge medicine and information technology. In an era of rapid digitalization of healthcare — including electronic medical records (電子カルテ), hospital information systems, and medical data analysis — we develop professionals capable of supporting high-quality, efficient medical services.</p>
+<h2>Program Overview</h2>
+<p>• Duration: 2 years (full-time)<br/>
+       • Capacity: 40 students per year<br/>
        • Qualification: Diploma (専門士) in Medical Information</p>
-
-    <p>Our curriculum combines medical knowledge with practical IT skills. Students learn to manage electronic health records, implement hospital systems, analyze medical data, and ensure information security — all while understanding the unique requirements of the healthcare environment.</p>
-
-    <h2>Curriculum</h2>
-    <div class="curriculum-grid">
-      <div class="curriculum-card">
-        <h3>Medical Foundation</h3>
-        <ul>
-          <li>Medical Terminology</li>
-          <li>Anatomy and Physiology</li>
-          <li>Clinical Medicine Overview</li>
-          <li>Healthcare System and Medical Ethics</li>
-          <li>Public Health</li>
-        </ul>
-      </div>
-
-      <div class="curriculum-card">
-        <h3>Information Technology</h3>
-        <ul>
-          <li>Computer Fundamentals and Programming</li>
-          <li>Database Systems</li>
-          <li>Network and System Administration</li>
-          <li>Web Development for Medical Applications</li>
-          <li>Information Security</li>
-        </ul>
-      </div>
-
-      <div class="curriculum-card">
-        <h3>Medical Informatics</h3>
-        <ul>
-          <li>Electronic Medical Records (EMR)</li>
-          <li>Hospital Information Systems (HIS)</li>
-          <li>Medical Image Management (PACS)</li>
-          <li>Medical Data Analysis and Statistics</li>
-          <li>Order Entry Systems and Receipt Processing</li>
-        </ul>
-      </div>
-
-      <div class="curriculum-card">
-        <h3>Practical Training</h3>
-        <ul>
-          <li>Internship at partner hospitals and clinics</li>
-          <li>System implementation exercises</li>
-          <li>Project-based learning</li>
-          <li>Graduation research / thesis</li>
-        </ul>
-      </div>
-    </div>
-
-    <h2>Aimable Qualifications</h2>
-    <p>Students can prepare for and obtain the following certifications during or after the program:</p>
-    <ul>
-      <li>Medical Informatics Engineer (医療情報技師)</li>
-      <li>IT Passport (ITパスポート)</li>
-      <li>Fundamental Information Technology Engineer (基本情報技術者)</li>
-      <li>Certified Medical Office Administrator related qualifications</li>
-    </ul>
-
-    <h2>After Graduation</h2>
-    <p>Graduates work in various healthcare IT roles:</p>
-    <ul>
-      <li>Hospital / Clinic IT departments</li>
-      <li>Medical system vendors and developers</li>
-      <li>Electronic medical record management</li>
-      <li>Medical data analysis and healthcare AI support</li>
-      <li>Medical information management positions</li>
-    </ul>
-
-    <a href="admissions.html" class="back-btn" style="background:#003087; color:white; margin-top:40px;">
+<p>Our curriculum combines medical knowledge with practical IT skills. Students learn to manage electronic health records, implement hospital systems, analyze medical data, and ensure information security — all while understanding the unique requirements of the healthcare environment.</p>
+<h2>Curriculum</h2>
+<div class="curriculum-grid">
+<div class="curriculum-card">
+<h3>Medical Foundation</h3>
+<ul>
+<li>Medical Terminology</li>
+<li>Anatomy and Physiology</li>
+<li>Clinical Medicine Overview</li>
+<li>Healthcare System and Medical Ethics</li>
+<li>Public Health</li>
+</ul>
+</div>
+<div class="curriculum-card">
+<h3>Information Technology</h3>
+<ul>
+<li>Computer Fundamentals and Programming</li>
+<li>Database Systems</li>
+<li>Network and System Administration</li>
+<li>Web Development for Medical Applications</li>
+<li>Information Security</li>
+</ul>
+</div>
+<div class="curriculum-card">
+<h3>Medical Informatics</h3>
+<ul>
+<li>Electronic Medical Records (EMR)</li>
+<li>Hospital Information Systems (HIS)</li>
+<li>Medical Image Management (PACS)</li>
+<li>Medical Data Analysis and Statistics</li>
+<li>Order Entry Systems and Receipt Processing</li>
+</ul>
+</div>
+<div class="curriculum-card">
+<h3>Practical Training</h3>
+<ul>
+<li>Internship at partner hospitals and clinics</li>
+<li>System implementation exercises</li>
+<li>Project-based learning</li>
+<li>Graduation research / thesis</li>
+</ul>
+</div>
+</div>
+<h2>Aimable Qualifications</h2>
+<p>Students can prepare for and obtain the following certifications during or after the program:</p>
+<ul>
+<li>Medical Informatics Engineer (医療情報技師)</li>
+<li>IT Passport (ITパスポート)</li>
+<li>Fundamental Information Technology Engineer (基本情報技術者)</li>
+<li>Certified Medical Office Administrator related qualifications</li>
+</ul>
+<h2>After Graduation</h2>
+<p>Graduates work in various healthcare IT roles:</p>
+<ul>
+<li>Hospital / Clinic IT departments</li>
+<li>Medical system vendors and developers</li>
+<li>Electronic medical record management</li>
+<li>Medical data analysis and healthcare AI support</li>
+<li>Medical information management positions</li>
+</ul>
+<a class="back-btn" href="admissions.html" style="background:#003087; color:white; margin-top:40px;">
       Learn About Admissions →
     </a>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div>
-        <div class="footer-logo">JMA Medical Information</div>
-        <p>Training the next generation of healthcare IT professionals in Shimonoseki, Yamaguchi.</p>
-      </div>
-      <div>
-        <h3>Navigation</h3>
-        <a href="index.html">Home</a><br>
-        <a href="about.html">About Us</a><br>
-        <a href="program.html">Program</a><br>
-        <a href="admissions.html">Admissions</a><br>
-        <a href="news.html">News & Events</a><br>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div>
-        <h3>Quick Links</h3>
-        <a href="admissions.html">Apply Now</a><br>
-        <a href="program.html">Curriculum</a><br>
-        <a href="contact.html">Campus Visit</a>
-      </div>
-      <div>
-        <h3>Contact Info</h3>
-        <p>〒751-0806<br>
-           山口県下関市一の宮町3-12-28<br><br>
-           TEL: 083-256-7711<br>
+</div>
+<!-- FOOTER -->
+<footer>
+<div class="footer-container">
+<div>
+<div class="footer-logo">JMA Medical Information</div>
+<p>Training the next generation of healthcare IT professionals in Shimonoseki, Yamaguchi.</p>
+</div>
+<div>
+<h3>Navigation</h3>
+<a href="index.html">Home</a><br/>
+<a href="about.html">About Us</a><br/>
+<a href="program.html">Program</a><br/>
+<a href="admissions.html">Admissions</a><br/>
+<a href="news.html">News &amp; Events</a><br/>
+<a href="contact.html">Contact</a><br/>
+<a href="learning/index.html">Learning Portal</a>
+</div>
+<div>
+<h3>Quick Links</h3>
+<a href="admissions.html">Apply Now</a><br/>
+<a href="program.html">Curriculum</a><br/>
+<a href="contact.html">Campus Visit</a>
+</div>
+<div>
+<h3>Contact Info</h3>
+<p>〒751-0806<br/>
+           山口県下関市一の宮町3-12-28<br/><br/>
+           TEL: 083-256-7711<br/>
            Email: <a href="mailto:info@its.jma.ac.jp">info@its.jma.ac.jp</a>
-        </p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br>
+</p>
+</div>
+</div>
+<div class="footer-bottom">
+      © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br/>
       School Corporation Japan Medical Academy
     </div>
-  </footer>
-
-  <script>
+</footer>
+<script>
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 

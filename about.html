@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | JMA Medical Information College</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | JMA Medical Information College</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<style>
     * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
@@ -239,115 +239,67 @@
       transform: rotate(-45deg) translate(5px, -5px);
     }
   </style>
+<link href="portal-ui.css" rel="stylesheet"/>
+<script defer="" src="portal-nav.js"></script>
 </head>
 <body>
-
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo">JMA Medical Information</a>
-      
-      <nav class="desktop-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="lang-switch">
-        <button onclick="location.href='about_jp.html'">JP</button>
-        <button class="active">EN</button>
-      </div>
-
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="mobile-menu" id="mobile-menu">
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="news.html">News & Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="mobile-lang">
-        <button onclick="location.href='about_jp.html'">日本語</button>
-        <button class="active">English</button>
-      </div>
-    </div>
-  </header>
-
-  <section class="hero">
-    <h1>About Us</h1>
-  </section>
-
-  <div class="content">
-    <a href="index.html" class="back-btn">← Back to Home</a>
-
-    <h2>Our Mission</h2>
-    <p>The Japan Medical Vocational School (日本医療専門学校) was established to train highly qualified professionals in the field of medical informatics. We aim to develop specialists who can effectively utilize information technology to improve healthcare services and contribute to a highly information-oriented society.</p>
-
-    <h2>Medical Information Department</h2>
-    <p>Our core program, the Department of Medical Information (医療情報学科), focuses on the integration of medical knowledge and advanced IT systems. Students learn to manage electronic medical records, hospital information systems, medical data analysis, and healthcare IT infrastructure.</p>
-
-    <h2>Why Study With Us?</h2>
-    <p>• Practical, hands-on training with real medical institutions<br>
-       • Curriculum designed according to current industry needs<br>
-       • Small class sizes with personalized guidance<br>
+<header><div class="nav-container"><a class="logo" href="index.html">JMA Medical Information</a><nav aria-label="Main navigation" class="desktop-nav"><ul><li><a href="index.html">Home</a></li><li><a aria-current="page" href="about.html">About</a></li><li><a href="program.html">Program</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="news.html">News &amp; Events</a></li><li><a href="contact.html">Contact</a></li><li class="portal-menu-item"><details class="portal-menu"><summary>Learning Portal <span aria-hidden="true" class="portal-chevron"></span></summary><div class="portal-submenu"><a href="learning/index.html">Portal Home</a><a href="students/index.html">For Students</a><a href="teachers/index.html">For Teachers</a></div></details></li></ul></nav><div class="portal-lang-switch"><a href="about_jp.html" lang="ja">JP</a><a aria-current="page" class="active" href="about.html" lang="en">EN</a></div><button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu"><nav aria-label="Mobile navigation"><ul><li><a href="index.html">Home</a></li><li><a aria-current="page" href="about.html">About</a></li><li><a href="program.html">Program</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="news.html">News &amp; Events</a></li><li><a href="contact.html">Contact</a></li><li><a class="mobile-portal-title" href="learning/index.html">Learning Portal</a></li><li><a class="mobile-portal-child" href="students/index.html">↳ For Students</a></li><li><a class="mobile-portal-child" href="teachers/index.html">↳ For Teachers</a></li></ul></nav><div class="mobile-lang portal-mobile-lang"><a href="about_jp.html" lang="ja">JP</a><a aria-current="page" class="active" href="about.html" lang="en">EN</a></div></div></header>
+<section class="hero">
+<h1>About Us</h1>
+</section>
+<div class="content">
+<a class="back-btn" href="index.html">← Back to Home</a>
+<h2>Our Mission</h2>
+<p>The Japan Medical Vocational School (日本医療専門学校) was established to train highly qualified professionals in the field of medical informatics. We aim to develop specialists who can effectively utilize information technology to improve healthcare services and contribute to a highly information-oriented society.</p>
+<h2>Medical Information Department</h2>
+<p>Our core program, the Department of Medical Information (医療情報学科), focuses on the integration of medical knowledge and advanced IT systems. Students learn to manage electronic medical records, hospital information systems, medical data analysis, and healthcare IT infrastructure.</p>
+<h2>Why Study With Us?</h2>
+<p>• Practical, hands-on training with real medical institutions<br/>
+       • Curriculum designed according to current industry needs<br/>
+       • Small class sizes with personalized guidance<br/>
        • Strong employment record and industry partnerships</p>
-
-    <h2>Location</h2>
-    <p>Located in Shimonoseki City, Yamaguchi Prefecture, our school offers a peaceful study environment with easy access to major cities. The Kanmon Strait, which connects Honshu and Kyushu, provides a unique and inspiring backdrop for learning.</p>
-
-    <a href="contact.html" class="back-btn" style="background:#003087; color:white;">How to Find Us → Access & Campus Map</a>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div>
-        <div class="footer-logo">JMA Medical Information</div>
-        <p>Training the next generation of healthcare IT professionals in Shimonoseki, Yamaguchi.</p>
-      </div>
-      <div>
-        <h3>Navigation</h3>
-        <a href="index.html">Home</a><br>
-        <a href="about.html">About Us</a><br>
-        <a href="program.html">Program</a><br>
-        <a href="admissions.html">Admissions</a><br>
-        <a href="news.html">News & Events</a><br>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div>
-        <h3>Quick Links</h3>
-        <a href="admissions.html">Apply Now</a><br>
-        <a href="program.html">Curriculum</a><br>
-        <a href="contact.html">Campus Visit</a>
-      </div>
-      <div>
-        <h3>Contact Info</h3>
-        <p>〒751-0806<br>
-           山口県下関市一の宮町3-12-28<br><br>
-           TEL: 083-256-7711<br>
+<h2>Location</h2>
+<p>Located in Shimonoseki City, Yamaguchi Prefecture, our school offers a peaceful study environment with easy access to major cities. The Kanmon Strait, which connects Honshu and Kyushu, provides a unique and inspiring backdrop for learning.</p>
+<a class="back-btn" href="contact.html" style="background:#003087; color:white;">How to Find Us → Access &amp; Campus Map</a>
+</div>
+<!-- FOOTER -->
+<footer>
+<div class="footer-container">
+<div>
+<div class="footer-logo">JMA Medical Information</div>
+<p>Training the next generation of healthcare IT professionals in Shimonoseki, Yamaguchi.</p>
+</div>
+<div>
+<h3>Navigation</h3>
+<a href="index.html">Home</a><br/>
+<a href="about.html">About Us</a><br/>
+<a href="program.html">Program</a><br/>
+<a href="admissions.html">Admissions</a><br/>
+<a href="news.html">News &amp; Events</a><br/>
+<a href="contact.html">Contact</a><br/>
+<a href="learning/index.html">Learning Portal</a>
+</div>
+<div>
+<h3>Quick Links</h3>
+<a href="admissions.html">Apply Now</a><br/>
+<a href="program.html">Curriculum</a><br/>
+<a href="contact.html">Campus Visit</a>
+</div>
+<div>
+<h3>Contact Info</h3>
+<p>〒751-0806<br/>
+           山口県下関市一の宮町3-12-28<br/><br/>
+           TEL: 083-256-7711<br/>
            Email: <a href="mailto:info@its.jma.ac.jp">info@its.jma.ac.jp</a>
-        </p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br>
+</p>
+</div>
+</div>
+<div class="footer-bottom">
+      © 2026 日本医療専門学校 医療情報学科 All Rights Reserved.<br/>
       School Corporation Japan Medical Academy
     </div>
-  </footer>
-
-  <script>
+</footer>
+<script>
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 
