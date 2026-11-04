@@ -1,0 +1,16 @@
+JHTS 1.5 — START WITH TRAINING ACADEMY
+
+1. Open academy.html on the class website.
+2. Start Level 0. Do the Learn steps first, then Guided Practice.
+3. Follow the instruction card. Use real menu pages, Search, View details and Confirm this patient.
+4. Read patient IDs and dates of birth carefully. Looking at a record does not count as a mistake. Confirming the wrong patient does.
+5. Finish Independent Practice and Skill Check. You need 80% or more and no critical identification mistakes to unlock Level 1 (unless your teacher changes class settings).
+6. Do Level 1 the same way.
+7. Open Save & Reports. Enter your name and download BOTH JSON and TXT.
+8. Send both files to your teacher. Do NOT press Reset Data.
+
+Use fictional training data only. Your progress is saved in this browser; do not clear browser data before exporting.
+The language button switches English / Japanese without resetting the lesson.
+
+JHTS 1.6 — LEVEL 2 APPOINTMENTS
+After passing Level 1, open Academy → Level 2. Use View details on the Appointments page. Confirm only if the record is Scheduled and every ticket field matches; otherwise choose Needs review.

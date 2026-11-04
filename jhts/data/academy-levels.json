@@ -1,0 +1,494 @@
+{
+  "version": 1,
+  "levels": [
+    {
+      "id": 0,
+      "title": {
+        "en": "Start here: System Basics",
+        "ja": "最初のステップ：システムの基本"
+      },
+      "summary": {
+        "en": "Navigation, search, patient card and language switch.",
+        "ja": "画面移動、検索、患者カード、言語切替。"
+      },
+      "phases": [
+        [
+          {
+            "type": "ack",
+            "text": {
+              "en": "This is a training hospital. All patients are fictional. Changes are saved in this browser.",
+              "ja": "これは学習用の病院システムです。患者情報はすべて架空です。変更はこのブラウザーに保存されます。"
+            }
+          },
+          {
+            "type": "ack",
+            "text": {
+              "en": "You will use the left menu. Each page shows different information about patients and visits.",
+              "ja": "左のメニューを使います。各ページには患者や受診に関する異なる情報があります。"
+            }
+          }
+        ],
+        [
+          {
+            "type": "open_page",
+            "page": "patients",
+            "text": {
+              "en": "Open Patients using the left menu.",
+              "ja": "左のメニューから Patients を開いてください。"
+            }
+          },
+          {
+            "type": "switch_language",
+            "lang": "ja",
+            "text": {
+              "en": "Click the Japanese language button.",
+              "ja": "日本語の言語ボタンを押してください。"
+            }
+          },
+          {
+            "type": "switch_language",
+            "lang": "en",
+            "text": {
+              "en": "Switch back to English.",
+              "ja": "英語に戻してください。"
+            }
+          },
+          {
+            "type": "search_patient",
+            "id": "P-10001",
+            "text": {
+              "en": "Find patient ID P-10001. Type the full ID in Search.",
+              "ja": "患者ID P-10001 を検索欄に入力してください。"
+            }
+          }
+        ],
+        [
+          {
+            "type": "open_page",
+            "page": "appointments",
+            "text": {
+              "en": "Open Appointments.",
+              "ja": "Appointments を開いてください。"
+            }
+          },
+          {
+            "type": "open_page",
+            "page": "insurance",
+            "text": {
+              "en": "Open Insurance.",
+              "ja": "Insurance を開いてください。"
+            }
+          },
+          {
+            "type": "open_page",
+            "page": "reports",
+            "text": {
+              "en": "Open Save & Reports.",
+              "ja": "Save & Reports を開いてください。"
+            }
+          }
+        ],
+        [
+          {
+            "type": "open_page",
+            "page": "patients",
+            "text": {
+              "en": "Go back to Patients.",
+              "ja": "Patients に戻ってください。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "id": "P-10008",
+            "ticket": "id_dob",
+            "text": {
+              "en": "Find the patient on this ticket. Open View details and click Confirm patient.",
+              "ja": "チケットの患者を探し、詳細表示から「患者を確認」を押してください。"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "title": {
+        "en": "Patient Records and Identity",
+        "ja": "患者記録と本人確認"
+      },
+      "summary": {
+        "en": "Choose the correct patient, even when names are similar.",
+        "ja": "名前が似ている場合でも正しい患者を確認します。"
+      },
+      "phases": [
+        [
+          {
+            "type": "ack",
+            "text": {
+              "en": "Patient ID identifies one person. A name alone is not enough.",
+              "ja": "患者IDは一人の患者を識別します。名前だけでは十分ではありません。"
+            }
+          },
+          {
+            "type": "ack",
+            "text": {
+              "en": "Check two details before confirming: the patient name and date of birth, or the ID and date of birth.",
+              "ja": "確認する前に氏名と生年月日、またはIDと生年月日の二つを照合してください。"
+            }
+          }
+        ],
+        [
+          {
+            "type": "patient_confirm",
+            "id": "P-10002",
+            "ticket": "id_dob",
+            "text": {
+              "en": "Look for the patient using this ID and date of birth.",
+              "ja": "このIDと生年月日で患者を探してください。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "id": "P-10027",
+            "ticket": "name_dob",
+            "text": {
+              "en": "Find the patient by name and date of birth.",
+              "ja": "氏名と生年月日で患者を探してください。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "id": "P-10029",
+            "ticket": "surname_dob",
+            "text": {
+              "en": "Find the patient using the family name and date of birth.",
+              "ja": "姓と生年月日で患者を探してください。"
+            }
+          }
+        ],
+        [
+          {
+            "type": "patient_confirm",
+            "pool": "general",
+            "ticket": "name_dob",
+            "text": {
+              "en": "Find the matching patient and confirm the correct record.",
+              "ja": "該当する患者を探して、正しい記録を確認してください。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "pool": "general",
+            "ticket": "name_dob",
+            "text": {
+              "en": "Find the matching patient and confirm the correct record.",
+              "ja": "該当する患者を探して、正しい記録を確認してください。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "pool": "general",
+            "ticket": "name_dob",
+            "text": {
+              "en": "Find the matching patient and confirm the correct record.",
+              "ja": "該当する患者を探して、正しい記録を確認してください。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "pool": "general",
+            "ticket": "name_dob",
+            "text": {
+              "en": "Find the matching patient and confirm the correct record.",
+              "ja": "該当する患者を探して、正しい記録を確認してください。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "pool": "general",
+            "ticket": "id_dob",
+            "text": {
+              "en": "Match this Patient ID and date of birth.",
+              "ja": "患者IDと生年月日を照合してください。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "pool": "general",
+            "ticket": "id_dob",
+            "text": {
+              "en": "Match this Patient ID and date of birth.",
+              "ja": "患者IDと生年月日を照合してください。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "pool": "surname",
+            "ticket": "surname_dob",
+            "text": {
+              "en": "Several names look similar. Use the date of birth.",
+              "ja": "似た名前があります。生年月日を使ってください。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "pool": "surname",
+            "ticket": "surname_dob",
+            "text": {
+              "en": "Several names look similar. Use the date of birth.",
+              "ja": "似た名前があります。生年月日を使ってください。"
+            }
+          }
+        ],
+        [
+          {
+            "type": "patient_confirm",
+            "id": "P-10002",
+            "ticket": "surname_dob",
+            "text": {
+              "en": "Confirm the correct patient. This is a skill check without hints.",
+              "ja": "正しい患者を確認してください。ヒントなしのスキル確認です。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "id": "P-10027",
+            "ticket": "surname_dob",
+            "text": {
+              "en": "Confirm the correct patient. This is a skill check without hints.",
+              "ja": "正しい患者を確認してください。ヒントなしのスキル確認です。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "id": "P-10015",
+            "ticket": "name_dob",
+            "text": {
+              "en": "Confirm the correct patient. This is a skill check without hints.",
+              "ja": "正しい患者を確認してください。ヒントなしのスキル確認です。"
+            }
+          },
+          {
+            "type": "patient_confirm",
+            "id": "P-10029",
+            "ticket": "surname_dob",
+            "text": {
+              "en": "Confirm the correct patient. This is a skill check without hints.",
+              "ja": "正しい患者を確認してください。ヒントなしのスキル確認です。"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "title": {
+        "en": "Appointments: dates, times and departments",
+        "ja": "予約管理：日付・時間・診療科"
+      },
+      "summary": {
+        "en": "Find appointments, compare records and send mismatches for review.",
+        "ja": "予約を検索し、記録を照合し、不一致を確認依頼に回します。"
+      },
+      "phases": [
+        [
+          {
+            "type": "ack",
+            "text": {
+              "en": "A patient can have several visits. An appointment links a Patient ID to a date, a time and a department.",
+              "ja": "患者は複数回受診できます。予約は患者IDと日付・時間・診療科を結びつけます。"
+            }
+          },
+          {
+            "type": "ack",
+            "text": {
+              "en": "A cancelled appointment is not an active appointment. Do not confirm it as a valid booking.",
+              "ja": "キャンセルされた予約は有効な予約ではありません。有効な予約として確認しないでください。"
+            }
+          },
+          {
+            "type": "ack",
+            "text": {
+              "en": "If the ticket and record do not match, choose Needs review. Never guess or silently change patient data.",
+              "ja": "チケットと記録が一致しない場合は「要確認」を選びます。推測したり患者情報を勝手に変更したりしないでください。"
+            }
+          }
+        ],
+        [
+          {
+            "type": "open_page",
+            "page": "appointments",
+            "text": {
+              "en": "Open Appointments from the menu.",
+              "ja": "メニューから Appointments を開いてください。"
+            }
+          },
+          {
+            "type": "appointment_search",
+            "id": "A-105",
+            "text": {
+              "en": "Type A-105 into the appointment Search box. The code is an Appointment ID.",
+              "ja": "予約検索欄に A-105 と入力してください。これは予約IDです。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "none",
+            "pool": "scheduled",
+            "text": {
+              "en": "Guided: compare the ticket with the appointment record. Confirm only a scheduled appointment with matching details; otherwise select Needs review.",
+              "ja": "ガイド付き：チケットと予約記録を照合してください。予約中で全項目が一致した場合のみ確認し、異なる場合は「要確認」を選択します。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "cancelled",
+            "pool": "cancelled",
+            "text": {
+              "en": "Guided: compare the ticket with the appointment record. Confirm only a scheduled appointment with matching details; otherwise select Needs review.",
+              "ja": "ガイド付き：チケットと予約記録を照合してください。予約中で全項目が一致した場合のみ確認し、異なる場合は「要確認」を選択します。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "time_mismatch",
+            "pool": "scheduled",
+            "text": {
+              "en": "Guided: compare the ticket with the appointment record. Confirm only a scheduled appointment with matching details; otherwise select Needs review.",
+              "ja": "ガイド付き：チケットと予約記録を照合してください。予約中で全項目が一致した場合のみ確認し、異なる場合は「要確認」を選択します。"
+            }
+          }
+        ],
+        [
+          {
+            "type": "appointment_decision",
+            "issue": "none",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "none",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "none",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "time_mismatch",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "dept_mismatch",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "date_mismatch",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "cancelled",
+            "pool": "cancelled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "none",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          }
+        ],
+        [
+          {
+            "type": "appointment_decision",
+            "issue": "none",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "time_mismatch",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "cancelled",
+            "pool": "cancelled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "none",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "dept_mismatch",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          },
+          {
+            "type": "appointment_decision",
+            "issue": "date_mismatch",
+            "pool": "scheduled",
+            "text": {
+              "en": "Find this appointment. Open View details. Compare every field and its status. Choose Confirm appointment or Needs review.",
+              "ja": "予約を探して詳細を開き、全項目と状態を照合してください。「予約を確認」または「要確認」を選んでください。"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

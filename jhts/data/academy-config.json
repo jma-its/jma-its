@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "visibleLevels": [
+    0,
+    1,
+    2
+  ],
+  "requireMasteryToUnlock": true,
+  "masteryPercent": 80,
+  "criticalMustBeZero": true,
+  "phaseNames": {
+    "en": [
+      "Learn",
+      "Guided Practice",
+      "Independent Practice",
+      "Skill Check"
+    ],
+    "ja": [
+      "学習",
+      "ガイド付き練習",
+      "自主練習",
+      "スキル確認"
+    ]
+  }
+}
